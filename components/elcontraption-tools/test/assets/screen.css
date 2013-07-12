@@ -1,0 +1,477 @@
+/*
+ * Set base font size
+ */
+/**
+ * tools-combined.scss
+ *
+ * Include all tools here in order
+ *
+ * Darin Reid
+ * http://elcontraption.com/
+ */
+/* ==========================================================================
+   Helpful mixins
+   ========================================================================== */
+/*
+ * Use rems with px fallback
+ */
+/*  Horzontal rule for debugging
+    ======================================================================== */
+/*  Font size and line height
+    ======================================================================== */
+/*  Media queries
+    ======================================================================== */
+/*  Placeholders
+    ======================================================================== */
+/*
+ * tools-default.scss
+ */
+/* HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+/* line 20, ../../styles/tools-defaults.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+/* line 24, ../../styles/tools-defaults.scss */
+html {
+  font-size: 16px;
+  font-size: 1pxrem;
+  line-height: 24px;
+  line-height: 1.5rem;
+}
+
+/* line 30, ../../styles/tools-defaults.scss */
+body {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 24px;
+  line-height: 1.5rem;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+/* line 41, ../../styles/tools-defaults.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 46, ../../styles/tools-defaults.scss */
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+/* line 55, ../../styles/tools-defaults.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+/* line 68, ../../styles/tools-defaults.scss */
+img {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+/* line 76, ../../styles/tools-defaults.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+/* line 86, ../../styles/tools-defaults.scss */
+textarea {
+  resize: vertical;
+}
+
+/**
+ * tools-common.scss
+ *
+ * Darin Reid
+ * http://elcontraption.com/
+ */
+/*  Apply a natural box layout model to all elements
+    http://paulirish.com/2012/box-sizing-border-box-ftw/
+    ======================================================================== */
+/* line 11, ../../styles/tools-common.scss */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  Responsive images
+    ======================================================================== */
+/* line 20, ../../styles/tools-common.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* line 24, ../../styles/tools-common.scss */
+img .lt-ie9 {
+  width: auto;
+}
+
+/*  Antialiased type
+    ======================================================================== */
+/* line 33, ../../styles/tools-common.scss */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   From HTML5Boilerplate
+   http://html5boilerplate.com/
+   ========================================================================== */
+/*
+ * Image replacement
+ */
+/* line 46, ../../styles/tools-common.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
+}
+
+/* line 54, ../../styles/tools-common.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+/* line 65, ../../styles/tools-common.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+/* line 74, ../../styles/tools-common.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+/* line 91, ../../styles/tools-common.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+/* line 104, ../../styles/tools-common.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/*  Old clearfix
+    The micro method
+    ======================================================================== */
+/* line 112, ../../styles/tools-common.scss */
+.clearfix, .media,
+.media-body {
+  zoom: 1;
+}
+/* line 115, ../../styles/tools-common.scss */
+.clearfix:before, .media:before,
+.media-body:before, .clearfix:after, .media:after,
+.media-body:after {
+  content: " ";
+  display: table;
+}
+/* line 119, ../../styles/tools-common.scss */
+.clearfix:after, .media:after,
+.media-body:after {
+  clear: both;
+}
+
+/*   ==========================================================================
+    Stubbornella clearfix method
+    https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_clearfix-me.scss
+    ========================================================================== */
+/*  Unselectable
+    ======================================================================== */
+/* line 177, ../../styles/tools-common.scss */
+.disable-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  /* line 192, ../../styles/tools-common.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 200, ../../styles/tools-common.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 204, ../../styles/tools-common.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 208, ../../styles/tools-common.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  /* line 218, ../../styles/tools-common.scss */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 223, ../../styles/tools-common.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 228, ../../styles/tools-common.scss */
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  /* line 233, ../../styles/tools-common.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* line 237, ../../styles/tools-common.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 247, ../../styles/tools-common.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 253, ../../styles/tools-common.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+/* ==========================================================================
+   Media objects
+   ========================================================================== */
+/* line 268, ../../styles/tools-common.scss */
+.media,
+.media .media {
+  margin-top: 15px;
+}
+
+/* line 272, ../../styles/tools-common.scss */
+.media:first-child {
+  margin-top: 0;
+}
+
+/* line 276, ../../styles/tools-common.scss */
+.media-object {
+  display: block;
+}
+
+/* line 280, ../../styles/tools-common.scss */
+.media-heading {
+  margin: 0 0 5px;
+}
+
+/* line 284, ../../styles/tools-common.scss */
+.media > .pull-left {
+  margin-right: 10px;
+}
+
+/* line 288, ../../styles/tools-common.scss */
+.media > .pull-right {
+  margin-left: 10px;
+}
+
+/**
+ * tools-type.scss
+ *
+ * Typographic reset
+ * Include after normalize.css
+ *
+ * Darin Reid
+ * http://elcontraption.com/
+ */
+/*
+ * Headings
+ */
+/* line 15, ../../styles/tools-type.scss */
+h1 {
+  margin: 24px 0;
+  margin: 1.5rem 0;
+  line-height: 48px;
+  line-height: 3rem;
+  font-size: 48px;
+  font-size: 3rem;
+}
+
+/* line 22, ../../styles/tools-type.scss */
+h2 {
+  margin: 24px 0 24px;
+  margin: 1.5rem 0 1.5rem;
+  line-height: 48px;
+  line-height: 3rem;
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+/* line 28, ../../styles/tools-type.scss */
+h3 {
+  margin: 0 0;
+  margin: 0 0;
+  line-height: 24px;
+  line-height: 1.5rem;
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+/* line 34, ../../styles/tools-type.scss */
+h4 {
+  margin: 0;
+  margin: 0;
+  line-height: 24px;
+  line-height: 1.5rem;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+/* line 40, ../../styles/tools-type.scss */
+h5 {
+  margin: 0;
+  margin: 0;
+  line-height: 24px;
+  line-height: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/* line 46, ../../styles/tools-type.scss */
+h6 {
+  margin: 0;
+  margin: 0;
+  line-height: 24px;
+  line-height: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/*
+ * Other elements
+ */
+/* line 56, ../../styles/tools-type.scss */
+p, ul, ol {
+  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
+}
+
+/*	Media object
+		======================================================================== */
+/* line 5, screen.scss */
+body {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(95%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 200, 125, 0.2)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 200, 125, 0.2) 100%);
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 200, 125, 0.2) 100%);
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 200, 125, 0.2) 100%);
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0) 95%, rgba(0, 200, 125, 0.2) 100%);
+  background-size: 100% 1.5rem;
+  padding: 24px 0;
+  padding: 1.5rem 0;
+}
+
+/* line 10, screen.scss */
+.container {
+  margin: 0 auto;
+  width: 80%;
+}

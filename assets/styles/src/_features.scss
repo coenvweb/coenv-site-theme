@@ -1,0 +1,215 @@
+
+/*	Home page features
+		======================================================================== */
+
+#features {
+	@extend .clearfix;
+
+	.features-container {
+		text-align: center;
+	}
+
+	.feature {
+		@extend .clearfix;
+		position: relative;
+		@include rem('margin', 0, 0.5);
+		max-width: $max_width;
+		background: #fff;
+		@extend .shadow;
+		text-align: left;
+
+		&.loading {
+
+			.js & {
+				@extend .invisible;
+			}
+
+		} // &.loading
+
+		@include min-width ( $iPadPortrait ) {
+			@include rem('margin', 0, 1);
+			min-height: 450px;
+		}
+
+		// when viewport is bigger than $max-width + side margins
+		@include min-width ( $maxWidthBreakpoint ) {
+			display: inline-block;
+			width: 100%;
+		}
+
+		.feature-image {
+			position: relative;
+			padding-top: 60%;
+			width: 100%;
+			height: 100%;
+			// background image is set inline
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+
+			@include max-width ( $iPadPortrait - 1 ) {
+				.lt-ie9 & {
+					-ms-behavior: url(/backgroundsize.min.htc);
+				}
+			}
+
+			@include min-width ( $iPadPortrait ) {
+				float: left;
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				bottom: 0;
+				padding: 0;
+				width: percentage( 675 / ( $max-width / 1px ) );
+			}
+
+			// TODO: display feature image caption
+			.feature-image-caption {
+				display: none;
+			}
+
+		} // .feature-image
+
+		.feature-info-container {
+			position: relative;
+
+			@include min-width ( $iPadPortrait ) {
+				display: table;
+				float: right;
+				width: percentage( 386 / ( $max-width / 1px ) );
+				height: 450px;
+			}
+
+			.feature-info {
+				@include rem('padding', 1);
+				// background-color is set inline
+
+				@include min-width ( $iPadPortrait ) {
+					display: table-cell;
+					@include rem('padding', 1.5);
+					vertical-align: bottom;
+				}
+
+				.feature-type {
+					position: absolute;
+					right: 0;
+					bottom: 100%;
+					left: 0;
+					@include rem('padding', 0.25, 1);
+					@include font-size(11);
+					text-transform: uppercase;
+					font-weight: 600;
+					letter-spacing: 0.1em;
+					color: #fff;
+					background: #363533;
+					background: rgba(0,0,0,0.6);
+
+					@include min-width ( $iPadPortrait ) {
+						position: relative;
+						@include rem('padding', 1, 0);
+						background: none;
+						color: rgba(255,255,255,0.8);
+					}
+
+					.lt-ie9 & {
+						position: relative;
+						background: none;
+					}
+
+				} // .feature-type
+
+				.feature-content {
+					color: #fff;
+
+					h1 {
+						@include rem('margin', 0, 0, 0.5);
+						@include serif;
+						@include font-size(24);
+						@include line-height(24);
+						font-weight: 300;
+					}
+
+					p {
+						@include rem('margin', 0, 0, 1);
+						@include font-size(13);
+						@include line-height(19.5);
+						color: #fff;
+						color: rgba(255,255,255,0.9);
+					}
+
+					.feature-caption {
+						@include rem('margin', 1, 0, 0);
+						@include font-size(11);
+						color: rgba(255,255,255,0.8);
+					}
+
+					a {
+						color: #fff;
+					}
+
+					a:hover {
+						color: #fff !important;
+					}
+
+				} // .feature-content
+
+			} // .feature-info
+
+		} // .feature-info-container
+
+		.feature-content {
+			position: relative;
+
+		} // .feature-content
+
+	} //.feature
+
+	// nav buttons, added in home.js
+	.features-nav {
+		margin: 0 auto;
+		max-width: $max-width;
+
+		ul {
+			@include rem('margin', 0.5);
+			padding: 0;
+			text-align: right;
+
+			@include min-width ( $iPadPortrait ) {
+				@include rem('margin', 0.5, 1);
+			}
+
+			@include min-width ( $maxWidthBreakpoint ) {
+				@include rem('margin', 0.5, 0);
+			}
+
+		} // ul
+
+		li {
+			display: inline-block;
+			@include rem('margin-left', 0.5);
+		}
+
+		a {
+			display: block;
+			@include rem('width', 1);
+			@include rem('height', 1);
+			background: #bbb;
+			background: rgba(0,0,0,0.2);
+			@include border-radius( 50% );
+			cursor: pointer;
+
+			span {
+				@extend .visuallyhidden;
+			}
+
+			&:hover,
+			&.active {
+				background: $accent;
+			}
+
+		} // a
+
+	} // .features-nav
+
+} // #features

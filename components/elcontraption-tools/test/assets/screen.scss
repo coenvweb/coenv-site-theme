@@ -1,0 +1,13 @@
+@import 'config.scss';
+@import 'compass';
+@import 'tools-combined.scss';
+
+body {
+	@include baseline-grid( rgba(0,200,125,0.2) );
+	@include rem('padding', 1.5, 0);
+}
+
+.container {
+	margin: 0 auto;
+	width: 80%;
+}

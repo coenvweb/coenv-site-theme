@@ -1,0 +1,63 @@
+
+/*	Main content section
+		======================================================================== */
+
+#page {
+	@include rem('padding-bottom', 2);
+	background: #fff;
+
+	.page-header.side-col {
+
+
+	} // .page-header.side-col
+
+	.banner-caption {
+		float: right;
+		@include rem('padding', 0.5, 0.5);
+		@include font-size(12);
+		color: #888;
+
+		@include min-width ( $iPadPortrait ) {
+			@include rem('padding', 0.5, 0.5);
+		}
+
+	} // .banner-caption
+
+} // #page
+
+/*	Search pages
+		======================================================================== */
+
+#search {
+
+	.search-results .entry-header h1 {
+		@include sans;
+	}
+
+	.entry {
+		@include rem('padding-top', 1);
+		@include rem('padding-bottom', 1);
+
+		.entry-header {
+
+			h1 {
+				margin: 0;
+				@include font-size(24);
+			}
+
+		} // .entry-header
+
+		.entry-excerpt {
+			display: none;
+
+			@include min-width ( $iPadPortrait ) {
+				display: block;
+				@include rem('padding-bottom', 2);
+				border-bottom: 1px solid #ddd;
+			}
+
+		} // .entry-excerpt
+
+	} // .entry
+
+} // #search

@@ -1,0 +1,20 @@
+{
+  "name": "elcontraption-tools",
+  "version": "0.0.0",
+  "author": {
+    "name": "Darin Reid / elegant contraption"
+  },
+  "devDependencies": {
+    "normalize-css": "~2.1.1"
+  },
+  "gitHead": "4cf8ad8b73faf70bf09b54548de3f0a699db4a94",
+  "readme": "# elcontraption-tools\n\nMy common css/js tools for web projects.\n\n* * *\nCopyright (c) 2013 Darin Reid / elegant contraption\n\nhttp://elcontraption.com/",
+  "readmeFilename": "README.md",
+  "_id": "elcontraption-tools@0.1.0",
+  "description": "My common css/js tools for web projects.",
+  "commit": "4cf8ad8b73faf70bf09b54548de3f0a699db4a94",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elcontraption/elcontraption-tools.git"
+  }
+}

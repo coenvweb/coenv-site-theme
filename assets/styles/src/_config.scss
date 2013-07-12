@@ -1,0 +1,62 @@
+/*  Maximum width
+    ======================================================================== */
+
+$max-width: 1060px;
+$maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2 ) / 1px );
+
+/*	Base font size
+		======================================================================== */
+
+$base-font-size: 14px;
+
+/*	Asset paths
+		======================================================================== */
+
+$images-path: '../../img/';
+$fonts-path: '../../fonts/';
+
+/*	Colors
+		======================================================================== */
+
+$white: #fff;
+$accent: #3B2559;
+$accent-purple: $accent;
+$accent-lt: lighten( $accent, 15% );
+$accent-blue: #00a8ff;
+$accent-red: #b82828;
+$accent-hover: $accent-lt;
+
+$text: #333;
+$text-md: #444;
+$text-lt: #666;
+$text-very-lt: #eee;
+
+$border: #ddd;
+
+$bg-dk: #363533;
+
+/*	Fonts
+		======================================================================== */
+
+@mixin sans() {
+  font: {
+    family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+@mixin serif() {
+  font: {
+    family: "Skolar", Georgia, serif;
+  }
+}
+
+/*  Global shadow
+    ======================================================================== */
+
+@mixin shadow {
+  @include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+}
+
+.shadow {
+  @include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+}

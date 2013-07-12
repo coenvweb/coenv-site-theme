@@ -1,0 +1,162 @@
+/**
+ * starter-type.scss
+ *
+ * Typographic reset
+ * Include after normalize.css
+ *
+ * Darin Reid
+ * http://elcontraption.com/
+ *
+ */
+
+ /*  Font sizing using rems
+        http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+        ======================================================================== */
+
+@mixin font-size( $val ) {
+        font-size: $val + px;
+        font-size: ( $val / 10 ) + rem;
+}
+
+@mixin line-height ( $val  ) {
+        line-height: $val + px;
+        line-height: ( $val / 10 ) + rem;
+}
+
+@mixin line-margin ( $tval, $bval: $tval  ) {
+        margin: ( $tval + px ) 0 ( $bval + px );
+        margin: ( $tval / 10 ) + rem 0 ( $bval / 10 ) + rem;
+}
+
+/*  Defaults, many from HTML5Boilerplate
+        https://github.com/h5bp/html5-boilerplate/blob/v4.1.0/css/main.css
+        ======================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+        color: #222;
+}
+
+body {
+        @include font-size(16);
+        @include line-height(24);
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+        background: #b3d4fc;
+        text-shadow: none;
+}
+
+::selection {
+        background: #b3d4fc;
+        text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+        vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+        resize: vertical;
+}
+
+/*  Establish vertical rhythm
+        ======================================================================== */
+
+body.debug-vertical-rhythm {
+        @include background-image( linear-gradient( rgba(75,125,255,0.1), #fff 0.1rem ) );
+        background-size: 2.4rem 2.4rem;
+        background-position: 0 -1px;
+}
+
+html {
+        font-size: 62.5%; // base 10
+}
+
+h1 {
+        @include line-margin(36);
+        @include font-size(48);
+        @include line-height(48);
+}
+
+h2 {
+        @include line-margin(36);
+        @include font-size(32);
+        @include line-height(48);
+}
+
+h3 {
+        @include line-margin(24);
+        @include font-size(24);
+        @include line-height(24);
+}
+
+h4 {
+        @include line-margin(24);
+        @include font-size(18);
+        @include line-height(24);
+}
+
+h5 {
+        @include line-margin(24);
+        @include font-size(14);
+        @include line-height(24);
+}
+
+h6 {
+        @include line-margin(24);
+        @include font-size(12);
+        @include line-height(24);
+}
+
+p, ul, ol, blockquote, figure {
+        @include line-margin(24);
+        padding: 0;
+}
+
+ul ul,
+ul ol
+ol ol,
+ol ul {
+        margin-left: 1.5rem;
+}

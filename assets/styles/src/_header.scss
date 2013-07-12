@@ -1,0 +1,190 @@
+
+/*	Header
+		======================================================================== */
+
+.banner-wrapper {
+
+	// default banner padding
+	@include rem('padding-bottom', 0);
+
+	// for 'page' content type, set default banner padding
+	.page &,
+	.blog &,
+	.search & {
+		@include rem('padding-bottom', 7);
+	}
+
+	// for pages that have banners assigned
+	// define banner behavior
+	.has-banner & {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		// help out older browsers with background-size
+		.lt-ie9 & {
+			-ms-behavior: url(/backgroundsize.min.htc);
+		}
+
+	} // .has-banner &
+
+	// top level pages have bigger banners
+	.page-top-level.has-banner & {
+		padding-bottom: 25%;
+	}
+
+	// disable default padding for specific pages
+	.home & {
+		padding: 0;
+	}
+
+} // .banner-wrapper
+
+//.banner-wrapper {
+//
+//	// fix bottom padding for pages that don't have banners
+//	.page &,
+//	.blog & {
+//		@include rem('padding-bottom', 7);
+//	}
+//
+//	// but not for home page
+//	.home & {
+//		padding: 0;
+//	}
+//
+//	.has-banner & {
+//		background-repeat: no-repeat;
+//		background-size: cover;
+//		background-position: center;
+//
+//		.lt-ie9 & {
+//			-ms-behavior: url(/backgroundsize.min.htc);
+//		}
+//
+//		@include min-width ( $iPadPortrait ) {
+//			padding-bottom: 25%;
+//		}
+//
+//	} // &.has-banner
+//
+//} // .banner-wrapper
+
+.container.header-container {
+	@include rem('padding', 0.5);
+
+	@include min-width( $iPadPortrait ) {
+		@include rem('padding', 1);
+		//@include rem('padding', 1, 1, 2);
+	}
+
+} // .container.header-container
+
+#header {
+	@extend .clearfix;
+	display: table;
+	width: 100%;
+	height: 100%;
+	background: $white;
+	@extend .shadow;
+
+	@include min-width ( $iPadPortrait ) {
+		display: block;
+		height: 99px;
+	}
+
+	#logo {
+		display: table-cell;
+		margin: 0;
+		width: 85%;
+
+		@include min-width ( 580 ) {
+			float: left;
+			display: block;
+			width: 446px;
+		}
+
+		a {
+			position: relative;
+			display: block;
+			padding-top: 22.4%;
+			width: 100%;
+
+			img {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: -3px; // fine tune white gaps
+				max-height: 99px;
+			}
+
+		} // a
+
+	} // #logo
+
+	#show-menu {
+		display: table-cell;
+		height: 100%;
+		vertical-align: middle;
+		text-align: right;
+
+		@include min-width ( $iPadPortrait ) {
+			display: none;
+		}
+
+		button {
+			display: inline;
+			margin: 0;
+			@include rem('padding-right', 1);
+			border: none;
+			background: none;
+			@extend .icon-list;
+			@include font-size(14);
+			color: #888;
+
+			&:hover {
+				color: $text !important;
+			}
+
+			span {
+				position: relative;
+				@include sans;
+				@include font-size(11);
+				font-weight: 600;
+				text-transform: uppercase;
+				//@extend .visuallyhidden;
+
+				@include min-width ( 580 ) {
+					top: -0.1em;
+				}
+
+			} // span
+
+		} // button
+
+	} // #show-menu
+
+} // #header
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
