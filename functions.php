@@ -11,6 +11,12 @@ $update_checker = new ThemeUpdateChecker(
 );
 
 /**
+ * Incorporate CoEnv Member API into the theme
+ * this used to be a separate plugin, but it makes more sense to include it in the theme
+ */
+require 'member-api.php';
+
+/**
  * Print styles and scripts in header and footer
  */
 add_action( 'wp_enqueue_scripts', 'coenv_styles_and_scripts' );
