@@ -45,9 +45,6 @@ function coenv_styles_and_scripts() {
 	// register faculty scripts, enqueued within template files
 	wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'jquery', 'coenv-main' ), null, true );
 
-	// REMOVE THIS AND MAKE SURE FACULTY.JS IS INCLUDED IN GRUNT BUILD PROCESS
-	//wp_register_script( 'coenv-faculty-test', get_template_directory_uri() . '/assets/scripts/src/faculty.js', array( 'jquery', 'coenv-main', 'coenv-faculty' ), null, true );
-
 	// make variables available to theme scripts
 	wp_localize_script( 'coenv-main', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
 }
