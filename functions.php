@@ -35,8 +35,8 @@ function coenv_styles_and_scripts() {
 	wp_enqueue_script( 'jquery-fallback' );
 
 	// include jQuery migrate plugin
-	wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/components/jquery/jquery-migrate.min.js', array( 'jquery' ), '1.1.0', false );
-	wp_enqueue_script( 'jquery-migrate' );
+	//wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/components/jquery/jquery-migrate.min.js', array( 'jquery' ), '1.1.0', false );
+	//wp_enqueue_script( 'jquery-migrate' );
 
 	// include theme scripts in footer
 	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', array( 'jquery' ), null, true );

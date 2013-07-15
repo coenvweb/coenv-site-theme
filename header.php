@@ -21,7 +21,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon-57x57-precomposed.png">
         <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon.png">
 
-        <script src="<?php echo get_template_directory_uri() ?>/components/modernizr/modernizr.js"></script>
+        <!--<script src="<?php echo get_template_directory_uri() ?>/components/modernizr/modernizr.js"></script>-->
 
         <script src="//use.typekit.net/ymr3xiv.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>

@@ -23,8 +23,8 @@
 @import 'plugins/royalslider.scss';
 
 // Chosen for styling form elements
-@import '../../../components/chosen/chosen/chosen.css';
-@import 'chosen-theme.scss';
+@import 'plugins/chosen.scss';
+@import 'plugins/chosen-theme.scss';
 
 // Isotope for faculty grid
 @import 'isotope.scss';
