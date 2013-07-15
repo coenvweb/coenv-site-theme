@@ -103,15 +103,6 @@ module.exports = function(grunt) {
 					}
 				}
 			}
-		},
-		rsync: {
-			dev: {
-				src: './',
-				dest: '~/webapps/coenvdev/wordpress/wp-content/themes/coenv',
-				host: 'darinreid@darinreid.webfactional.com',
-				recursive: true,
-				syncDest: true
-			}
 		}
 	});
 
@@ -121,7 +112,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-livereload');
 	grunt.loadNpmTasks('grunt-regarde');
-	grunt.loadNpmTasks('grunt-rsync');
 
 	grunt.renameTask('regarde', 'watch');
 
@@ -130,11 +120,6 @@ module.exports = function(grunt) {
 		'livereload-start',
 		'connect:livereload',
 		'watch'
-	]);
-
-	grunt.registerTask('deploy', [
-		'default',
-		'rsync:dev'
 	]);
 
 	grunt.registerTask('default', [

@@ -1,0 +1,10 @@
+{
+	"name": "CoEnv WordPress Theme",
+	"slug": "coenv-wordpress-theme",
+	"download_url": "https://github.com/elcontraption/coenv-wordpress-theme/archive/master.zip",
+	"version": "0.0.1",
+	"author": "Elegant Contraption",
+	"sections": {
+		"description": "University of Washington College of the Environment WordPress Theme"
+	}
+}
