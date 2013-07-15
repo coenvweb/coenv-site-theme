@@ -9,6 +9,17 @@
 		text-align: center;
 	}
 
+	.no-js & .feature {
+		display: none;
+		margin-right: auto;
+		margin-left: auto;
+
+		&:first-child {
+			display: block;
+		}
+
+	} // .no-js &
+
 	.feature {
 		@extend .clearfix;
 		position: relative;

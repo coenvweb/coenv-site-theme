@@ -12,12 +12,10 @@ $features = new WP_Query( array(
     'order' => 'ASC'
 ) );
 
-// Get top 3 sticky posts
-// With fallback to latest posts
+// Get all posts
 $stories = new WP_Query( array(
     'post_type' => 'post',
-    'posts_per_page' => 3,
-    //'post__in' => get_option( 'sticky_posts' )
+    'posts_per_page' => 3
 ) );
 
 ?>
@@ -44,7 +42,7 @@ $stories = new WP_Query( array(
 
     <div class="container">
 
-        <?php if ( $stories->have_posts() ) : ?>
+        <?php if ( $stories->have_posts() ) : $count = 0; ?>
 
             <section class="widget featured-stories">
 
@@ -54,7 +52,7 @@ $stories = new WP_Query( array(
 
                 <div class="stories-container">
 
-                    <?php while ( $stories->have_posts() ) : $stories->the_post() ?>
+                    <?php while ( $stories->have_posts() && $count < 3 ) : $stories->the_post(); $count++; ?>
 
                         <?php get_template_part( 'partials/partial', 'story' ) ?>
 
