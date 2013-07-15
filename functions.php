@@ -230,13 +230,11 @@ function coenv_theme_setup() {
 
 	// Register nav menus
 	register_nav_menus(array(
-		'top'					=> 'Header Quick Links Menu',
-		'utility'			=> 'Utility',
-		'university' 	=> 'University Menu',
+		'university' 	=> 'UW shortcuts',
+		'top'					=> 'CoEnv shortcuts',
+		'buttons'			=> 'Top buttons',
 		'main' 				=> 'Main Menu',
-		'footer'			=> 'Footer Sitemap Menu',
-		'bottom'			=> 'Footer Quick Links Menu',
-		'blog'				=> 'Blog Links Menu'
+		'footer'			=> 'Footer shortcuts',
 	));
 
 	// Featured images

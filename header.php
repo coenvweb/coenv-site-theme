@@ -69,9 +69,9 @@
                             <?php get_search_form() ?>
 
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'utility', 
+                                'theme_location' => 'buttons', 
                                 'depth' => 1, 
-                                'menu_id' => 'menu-utility',
+                                'menu_id' => 'menu-buttons',
                                 'container' => false,
                                 'fallback_cb' => false
                             )); ?>
