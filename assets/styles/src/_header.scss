@@ -10,6 +10,7 @@
 	// for 'page' content type, set default banner padding
 	.page &,
 	.blog &,
+	.single &,
 	.search & {
 		@include rem('padding-bottom', 7);
 	}
