@@ -1,13 +1,13 @@
 <?php
 
-// http://w-shadow.com/blog/2010/09/02/automatic-updates-for-any-plugin/
-// uses version number above and in wp-plugin.json to determine
-// if a new version is available. Both must be updated, match, and be higher than the previous version.
-require 'plugin-updates/plugin-update-checker.php';
-$update_checker = new PluginUpdateChecker(
-	'https://github.com/elcontraption/coenv-wordpress-theme/archive/master.zip',
-	__FILE__,
-	'coenv-wordpress-theme'
+/**
+ * Theme updates
+ * Version number must be updated in style.css and theme-info.json!
+ */
+require 'theme-updates/theme-update-checker.php';
+$update_checker = new ThemeUpdateChecker(
+	'coenv-wordpress-theme',
+	'https://github.com/elcontraption/coenv-wordpress-theme/archive/master.zip'
 );
 
 /**
