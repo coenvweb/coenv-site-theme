@@ -117,6 +117,10 @@ class CoEnv_Widget_Events extends WP_Widget {
 			);
 		}
 
+		if ( empty( $events ) ) {
+			return;
+		}
+
 		?>
 			<?php echo $before_widget ?>
 			
