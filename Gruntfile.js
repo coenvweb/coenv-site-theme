@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 			dist: {
 				files: {
 					'<%= paths.dev %>/assets/scripts/build/main.min.js': [
+						'<%= paths.dev %>/components/jquery/jquery-migrate.min.js',
 						'<%= paths.dev %>/components/jquery-fast-click/jQuery.fastClick.js',
 						'<%= paths.dev %>/components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
 						'<%= paths.dev %>/components/jquery.lazyload/jquery.lazyload.js',
@@ -45,7 +46,6 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>/components/get-size/get-size.js',
 						'<%= paths.dev %>/components/isotope/jquery.isotope.js',
-						//'<%= paths.dev %>/components/isotope-perfectmasonry/jquery.isotope.perfectmasonry.js',
 						'<%= paths.dev %>/components/procession/jquery.procession.js',
 						'<%= paths.dev %>/assets/scripts/src/faculty.js'
 					],
