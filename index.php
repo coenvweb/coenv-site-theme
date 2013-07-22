@@ -32,6 +32,10 @@ get_header();
 
 				<?php endif ?>
 
+				<footer class="pagination">
+					<?php coenv_paginate() ?>
+				</footer>
+
 			</div><!-- .main-col -->
 
 			<div class="side-col">

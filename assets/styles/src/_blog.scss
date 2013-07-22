@@ -79,3 +79,37 @@ display: none;
 	} // .entry
 
 } // .blog
+
+/*	Pagination
+		======================================================================== */
+
+.pagination {
+	@extend .shadow;
+	@include rem('margin', 2, 1);
+	@include rem('padding', 2);
+	background: #fff;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+	}
+
+	li {
+		display: inline-block;
+	}
+
+	li .current {
+		@extend .button;
+		background: $accent;
+	}
+
+	a {
+		@extend .button;
+		text-decoration: none;
+		color: $text;
+	}
+
+} // .pagination
+
