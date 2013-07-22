@@ -588,7 +588,7 @@ function coenv_get_ancestor($attr = 'ID') {
 		return false;
 	}
 
-	if ( ($post->post_type == 'post' || is_archive() || is_search()) && !is_post_type_archive() ) {
+	if ( ($post->post_type == 'post' || is_archive() || is_search()) && !is_post_type_archive( array( 'faculty' ) ) ) {
 
 		$page_for_posts = get_option( 'page_for_posts' );
 
@@ -847,6 +847,50 @@ function coenv_paginate( $query = null ) {
 function coenv_post_date() {
 	global $post;
 	return '<time class="updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" pubdate>' . esc_html( get_the_date() ) . '</time>';
+}
+
+/*
+|---------------------------------------------------------------------------
+| Archive titles
+|---------------------------------------------------------------------------
+*/
+if ( !function_exists( 'coenv_archive_title' ) ) {
+
+	function coenv_archive_title()
+	{
+		if ( is_category() ) {
+			printf( __( 'Category Archives: %s', 'moskowitz' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+
+		} elseif ( is_tag() ) {
+			printf( __( 'Tag Archives: %s', 'moskowitz' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+
+		} elseif ( is_author() ) {
+			/* Queue the first post, that way we know
+			 * what author we're dealing with (if that is the case).
+			*/
+			the_post();
+			printf( __( 'Author Archives: %s', 'moskowitz' ), '<span class="vcard"><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
+			/* Since we called the_post() above, we need to
+			 * rewind the loop back to the beginning that way
+			 * we can run the loop properly, in full.
+			 */
+			rewind_posts();
+
+		} elseif ( is_day() ) {
+			printf( __( 'Daily Archives: %s', 'moskowitz' ), '<span>' . get_the_date() . '</span>' );
+
+		} elseif ( is_month() ) {
+			printf( __( 'Monthly Archives: %s', 'moskowitz' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+
+		} elseif ( is_year() ) {
+			printf( __( 'Yearly Archives: %s', 'moskowitz' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+
+		} else {
+			_e( 'Archives', 'moskowitz' );
+
+		}
+	}
+
 }
 
 
