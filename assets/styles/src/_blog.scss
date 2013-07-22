@@ -29,15 +29,22 @@
 
 		input[type="text"],
 		button[type="submit"] {
-			background: #666;
-			color: #fff;
+			background: #ccc;
+			color: $text;
 			border: none;
 		}
 
 		input[type="text"] {
+			@include placeholder {
+				color: $text;
+			}
 		}
 
 		button[type="submit"] {
+			&:hover {
+				color: #fff;
+				background: #666;
+			}
 		}
 
 		.input-item {
@@ -61,13 +68,22 @@
 .blog {
 
 	.entry {
-		@include rem('margin', 1);
 		@extend .shadow;
+		@include rem('margin', 1);
+		@include rem('padding', 0);
 		background: #fff;
 
 		.entry-header {
 
+			.meta {
+				@include rem('padding', 0.5, 2);
+				background: #eee;
+				@include font-size(12);
+			} // .meta
+
 			h1 {
+				margin: 0;
+				@include rem('padding', 1.5, 2, 1);
 				@include font-size(24);
 				@include line-height(30);
 			}
@@ -75,6 +91,7 @@
 		} // .entry-header
 
 		.entry-content {
+			@include rem('padding', 0, 2, 1);
 
 
 		} // .entry-content

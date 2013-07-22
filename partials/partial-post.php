@@ -2,6 +2,10 @@
 	
 	<header class="entry-header">
 
+		<div class="meta">
+			<?php echo coenv_post_date() ?>
+		</div><!-- .meta -->
+
 		<?php if ( is_single() ) : ?>
 
 			<h1><?php the_title() ?></h1>			

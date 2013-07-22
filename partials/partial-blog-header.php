@@ -9,6 +9,8 @@
 				<button type="submit"><i class="icon-search"></i><span>Submit</span></button>
 			</div>
 
+			<?php echo get_search_query() ?>
+
 		</div><!-- .input-item -->
 
 		<div class="input-item select-category">
