@@ -19,13 +19,24 @@
 		======================================================================== */
 
 #blog-header {
+	@extend .clearfix;
 	@extend .shadow;
 	@include rem('margin', 1);
 	background: #fff;
 
-	form {
-		@extend .clearfix;
+	form,
+	.input-item {
+		float: left;
 		@include rem('padding', 1);
+		width: 33.3333%;
+	}
+
+	.input-wrap,
+	.chzn-container {
+		width: 100% !important;
+	}
+
+	form {
 
 		input[type="text"],
 		button[type="submit"] {
@@ -45,12 +56,6 @@
 				color: #fff;
 				background: #666;
 			}
-		}
-
-		.input-item {
-			float: left;
-			@include rem('padding', 0, 1);
-			width: 33.3333%;
 		}
 
 		.input-wrap,

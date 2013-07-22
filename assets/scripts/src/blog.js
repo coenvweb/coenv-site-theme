@@ -18,6 +18,8 @@ $.fn.blogHeader = function () {
 	$selectMonth.chosen();
 
 	$selectCategory.on( 'change', function () {
-		var term_id = $(this).val();
+		var term_id = $(this).val(),
+				url = $(this).parent('div').attr('data-url');
+		window.location.href = url + term_id;
 	} );
 };
