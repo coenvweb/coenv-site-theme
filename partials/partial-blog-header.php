@@ -5,7 +5,7 @@
 		<div class="input-item">
 
 			<div class="input-wrap">
-				<input type="text" name="s" placeholder="Search..." />
+				<input type="text" name="s" placeholder="Search..." value="<?php echo get_search_query() ?>" />
 				<button type="submit"><i class="icon-search"></i><span>Submit</span></button>
 			</div>
 

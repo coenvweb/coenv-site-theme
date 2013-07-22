@@ -700,15 +700,31 @@ function coenv_banner() {
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 /**
- * Display breadcrumb links for a page
+ * Display breadcrumb links for a page, post or faculty
  */
 function coenv_breadcrumbs() {
 	global $post;
 
 	$post_type_obj = get_post_type_object( get_post_type( $post ) );
 
+	switch ( $post_type_obj->labels->singular_name ) {
+		case 'Post':
+			$post_type = 'News';
+			break;
+		default:
+			$post_type = $post_type_obj->labels->singular_name;
+			break;
+	}
+
 	$output = '<div class="breadcrumbs">';
-	$output .= $post_type_obj->labels->singular_name . ': ';
+	$output .= $post_type . ': ';
+
+	// for news, output date
+	if ( $post_type == 'News' ) {
+		$output .= '<ul class="breadcrumbs">';
+		$output .= '<li>' . coenv_post_date() . '</li>';
+		$output .= '</ul>';
+	}
 
 	if ( isset( $post->ancestors ) && !empty( $post->ancestors ) ) {
 		$output .= '<ul class="breadcrumbs">';
@@ -825,6 +841,13 @@ function coenv_paginate( $query = null ) {
 	echo paginate_links( $pagination );
 }
 
+/**
+ * Format post dates
+ */
+function coenv_post_date() {
+	global $post;
+	return '<time class="updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" pubdate>' . esc_html( get_the_date() ) . '</time>';
+}
 
 
 

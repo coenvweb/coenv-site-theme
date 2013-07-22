@@ -31,7 +31,7 @@ get_header();
 
 						<?php while ( have_posts() ) : the_post() ?>
 
-							<?php if ( get_post_type() === 'post' ) continue; // filter for pages only ?>
+							<?php// if ( get_post_type() === 'post' ) continue; // filter for pages only ?>
 
 							<section class="entry">
 
