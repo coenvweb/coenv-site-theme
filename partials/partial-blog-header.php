@@ -1,6 +1,16 @@
 <div id="blog-header">
 
-	<form action="">
+	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+	  <div class="input-wrap">
+	  	<input type="hidden" name="post_type" value="post" />
+	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search this site" />
+	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+	  </div>
+	</form>
+
+<!--
+
+	<form method="get" action="<?php echo home_url( '/' ); ?>">
 
 		<div class="input-item">
 
@@ -9,9 +19,7 @@
 				<button type="submit"><i class="icon-search"></i><span>Submit</span></button>
 			</div>
 
-			<?php echo get_search_query() ?>
-
-		</div><!-- .input-item -->
+		</div>
 
 		<div class="input-item select-category">
 
@@ -21,7 +29,7 @@
 				) );
 			?>
 
-		</div><!-- .input-item -->
+		</div>
 
 		<div class="input-item select-month">
 
@@ -36,7 +44,9 @@
 			  ?>
 			</select>
 
-		</div><!-- .input-item -->
+		</div>
 	</form>
+
+-->
 	
 </div><!-- #blog-header -->

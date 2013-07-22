@@ -5,6 +5,7 @@
  * The search results template.
  */
 get_header();
+
 ?>
 
 	<section id="search" role="main" class="page-area">
@@ -60,6 +61,10 @@ get_header();
 					<?php endif ?>
 
 				</div><!-- .search-results -->
+
+				<footer class="pagination">
+					<?php coenv_paginate() ?>
+				</footer>
 
 			</div><!-- .main-col -->
 
