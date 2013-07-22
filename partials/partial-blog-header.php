@@ -9,10 +9,20 @@
 	</form>
 
 	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url') . '/news/category/' ?>">
-		<?php  
-			wp_dropdown_categories( array(
-					'show_option_all' => 'Browse by category'
-				) );
+		<?php
+			$cats = get_categories(array(
+				'type' => 'post',
+				'taxonomy' => 'category'
+			));
+
+			if ( !empty( $cats ) ) {
+				$output .= '<select name="category-dropdown">';
+				foreach ( $cats as $cat ) { 
+					$output .= '<option value="' . $cat->slug . '">' . $cat->name . '</option>';
+				}
+				$output .= '</select>';
+			}
+			echo $output;
 		?>
 	</div>
 
