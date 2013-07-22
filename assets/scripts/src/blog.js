@@ -22,4 +22,9 @@ $.fn.blogHeader = function () {
 				url = $(this).parent('div').attr('data-url');
 		window.location.href = url + term_id;
 	} );
+
+	$selectMonth.on( 'change', function () {
+		var url = $(this).val();
+		window.location.href = url;
+	} );
 };
