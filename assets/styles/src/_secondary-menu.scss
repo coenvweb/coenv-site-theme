@@ -17,6 +17,10 @@
 		text-decoration: none;
 		color: $text;
 
+		br {
+			display: none;
+		}
+
 		// hide arrow after each nav item
 		i {
 			display: none;
