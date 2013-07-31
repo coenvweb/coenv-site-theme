@@ -386,8 +386,22 @@ class CoEnvMemberApiImporter {
 			$file = $this->attachments[ $filename ];
 		} else {
 			$file = $this->attachments['Blank Member.jpg'];
+			$this->set_post_to_draft( $post_id );
 		}
 		update_field( 'field_18', $file, $post_id );
+	}
+
+	/**
+	 * Set post status to 'draft'
+	 * We'll do this for any faculty w/out an image
+	 */
+	function set_post_to_draft( $post_id ) {
+
+		wp_update_post( array(
+			'ID' => $post_id,
+			'post_status' => 'draft'
+		) );
+
 	}
 
 }
