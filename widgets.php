@@ -109,14 +109,6 @@ class CoEnv_Widget_Events extends WP_Widget {
 			$events_xml = file_get_contents( $feed_url );
 			set_transient( 'trumba_events_xml', $events_xml, 1 * HOUR_IN_SECONDS );
 		}
-
-//		// get cached XML from WP transient API
-//		$events_xml = get_transient( 'trumba_events_xml' );
-//		if ( false === $events_xml || '' === $events_xml ) {
-//			$events_xml = file_get_contents('http://www.trumba.com/calendars/featuredevents-1.rss');
-//			//$events_xml = file_get_contents( $feed_url );
-//		    set_transient( 'trumba_events_xml', $events_xml, 1 * HOUR_IN_SECONDS);
-//		}
 		
 		$xml = new SimpleXmlElement($events_xml);
 		
@@ -133,6 +125,8 @@ class CoEnv_Widget_Events extends WP_Widget {
 		if ( empty( $events ) ) {
 			return;
 		}
+
+		$events = array_slice( $events, 0, $posts_per_page );
 
 		?>
 			<?php echo $before_widget ?>
