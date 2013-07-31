@@ -492,8 +492,8 @@ class CoEnvMemberAPI {
 			$results[] = $this->setup_faculty_attributes( $f );
 		}
 
-		if ( $test_data ) {
-			$results = $this->setup_test_data( $results );
+		if ( $test_data === true ) {
+			//$results = $this->setup_test_data( $results );
 		}
 
 		return $results;
