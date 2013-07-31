@@ -6,10 +6,6 @@ global $coenv_member_api;
 global $count;
 global $featured;
 
-// set up demo image
-// TODO: remove this
-global $images;
-
 // set up theme classes
 $themes = get_the_terms( get_the_ID(), 'member_theme' );
 $member_classes = ' theme-all';

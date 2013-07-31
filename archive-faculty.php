@@ -18,10 +18,6 @@ $units = get_terms(
 	array( 'hide_empty' => false )
 );
 
-// choose random theme to start
-//$selected_theme_key = array_rand( $themes );
-//$selected_theme = $themes[ $selected_theme_key ];
-
 // the faculty query
 $faculty = new WP_Query(array(
 	'post_type' => 'faculty',
@@ -34,15 +30,6 @@ $featured = range(9, 199);
 shuffle($featured);
 $featured = array_slice($featured, 0, 20);
 
-// set up demo images
-// TODO: remove this
-$images = array();
-for ( $i = 1; $i < 13; $i++ ) {
-	$images[] = array(
-		'sm' => get_template_directory_uri() . '/assets/img/faculty-test-images/' . $i . '-sm.jpg',
-		'lg' => get_template_directory_uri() . '/assets/img/faculty-test-images/' . $i . '.jpg'
-	);
-}
 ?>
 
 	<section id="faculty-archive" class="archive-faculty" role="main">

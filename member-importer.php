@@ -203,6 +203,8 @@ class CoEnvMemberApiImporter {
 	 */
 	function parse_csv( $file ) {
 
+		set_time_limit(3000);
+
 		$data = array_map( 'str_getcsv', file( $file ) );
 
 		$header = array_shift( $data );
