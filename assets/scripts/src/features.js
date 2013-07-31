@@ -29,7 +29,7 @@ $.fn.homeFeatures = function() {
 		autoHeight: true,
 		navigateByClick: false,
 		autoPlay: {
-			enabled: false,
+			enabled: true,
 			pauseOnHover: true,
 			stopAtAction: false,
 			delay: 8000
@@ -40,19 +40,19 @@ $.fn.homeFeatures = function() {
 
 	$features.removeClass('loading');
 
-//	// start/stop autoplay when scrolling up or down past 
-//	// halfway point of feature
-//	$(window).on( 'scroll', $.debounce( 200, function () {
-//		var scrollTop = $(window).scrollTop(),
-//				rsContainerOffset = $rsContainer.offset().top,
-//				rsContainerHeight = $rsContainer.outerHeight(true);
-//
-//		if ( scrollTop > rsContainerOffset + ( rsContainerHeight / 2 ) ) {
-//			rsInstance.stopAutoPlay();
-//		} else {
-//			rsInstance.startAutoPlay();
-//		}
-//	} ) );
+	// start/stop autoplay when scrolling up or down past 
+	// halfway point of feature
+	$(window).on( 'scroll', $.debounce( 200, function () {
+		var scrollTop = $(window).scrollTop(),
+				rsContainerOffset = $rsContainer.offset().top,
+				rsContainerHeight = $rsContainer.outerHeight(true);
+
+		if ( scrollTop > rsContainerOffset + ( rsContainerHeight / 2 ) ) {
+			rsInstance.stopAutoPlay();
+		} else {
+			rsInstance.startAutoPlay();
+		}
+	} ) );
 
 	// set up nav links
 	navOutput = '<ul>';
