@@ -47,7 +47,7 @@ $stories = new WP_Query( array(
             <section class="widget featured-stories">
 
                 <header>
-                    <h1><span>Stories from CoEnv Currents</span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
+                    <h1><span>News from the College</span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
                 </header>
 
                 <div class="stories-container">

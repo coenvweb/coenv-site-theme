@@ -30,7 +30,7 @@ class CoEnv_Widget_Social extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Connect with CoEnv', 'coenv' );
+			$title = __( 'Connect with the College', 'coenv' );
 		}
  
 		?>
