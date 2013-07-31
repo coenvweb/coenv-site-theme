@@ -95,15 +95,28 @@ class CoEnv_Widget_Events extends WP_Widget {
 		extract( $args );
 
 		$title = apply_filters( 'widget_title', $instance['title'] );
+		$feed_url = apply_filters( 'feed_url', $instance['feed_url'] );
 		$events_url = apply_filters( 'events_url', $instance['events_url'] );
 		$posts_per_page = (int) $instance['posts_per_page'];
 
+		if ( !isset( $feed_url ) || empty( $feed_url ) ) {
+			return;
+		}
+
 		// get cached XML from WP transient API
 		$events_xml = get_transient( 'trumba_events_xml' );
-		if ( false === $events_xml || '' === $events_xml ) {
-			$events_xml = file_get_contents('http://www.trumba.com/calendars/featuredevents-1.rss');
-		    set_transient( 'trumba_events_xml', $events_xml, 1 * HOUR_IN_SECONDS);
+		if ( $events_xml === false || $events_xml === '' ) {
+			$events_xml = file_get_contents( $feed_url );
+			set_transient( 'trumba_events_xml', $events_xml, 1 * HOUR_IN_SECONDS );
 		}
+
+//		// get cached XML from WP transient API
+//		$events_xml = get_transient( 'trumba_events_xml' );
+//		if ( false === $events_xml || '' === $events_xml ) {
+//			$events_xml = file_get_contents('http://www.trumba.com/calendars/featuredevents-1.rss');
+//			//$events_xml = file_get_contents( $feed_url );
+//		    set_transient( 'trumba_events_xml', $events_xml, 1 * HOUR_IN_SECONDS);
+//		}
 		
 		$xml = new SimpleXmlElement($events_xml);
 		
@@ -172,6 +185,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 	public function form( $instance ) {
 
 		$title = isset( $instance['title'] ) ? $instance['title'] : __( 'Events', 'coenv' );
+		$feed_url = $instance['feed_url'];
 		$events_url = $instance['events_url'];
 		$posts_per_page = isset( $instance['posts_per_page'] ) ? (int) $instance['posts_per_page'] : 5;
  
@@ -179,6 +193,10 @@ class CoEnv_Widget_Events extends WP_Widget {
 			<p>
 				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'feed_url' ) ?>"><?php _e( 'Feed URL:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'feed_url' ) ?>" name="<?php echo $this->get_field_name( 'feed_url' ) ?>" value="<?php echo esc_attr( $feed_url ) ?>" />
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_name( 'events_url' ) ?>"><?php _e( 'More link (URL):' ) ?></label>
@@ -194,6 +212,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['feed_url'] = strip_tags( $new_instance['feed_url'] );
 		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
 		$instance['events_url'] = strip_tags( $new_instance['events_url'] );
 		 
