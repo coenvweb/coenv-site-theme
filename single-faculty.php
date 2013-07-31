@@ -1,4 +1,7 @@
-<?php 
+<?php
+/**
+ * Template to show single faculty member
+ */
 get_header();
 
 $obj = get_queried_object();

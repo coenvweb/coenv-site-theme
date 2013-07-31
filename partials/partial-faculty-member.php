@@ -31,22 +31,23 @@ if ( !empty( $unit ) ) {
 	$member_classes .= ' unit-' . $unit->slug;
 }
 
-// set up demo image
-// TODO: remove this
+$image_id = get_field( 'image' );
 if ( in_array( $count, $featured ) ) {
 	$member_classes .= ' featured';
-	$image = $images[ array_rand( $images ) ]['lg'];
+//	$image = $images[ array_rand( $images ) ]['lg'];
+	$image = wp_get_attachment_image_src( $image_id, 'large' );
 } else {
-	$image = $images[ array_rand( $images ) ]['sm'];
+//	$image = $images[ array_rand( $images ) ]['sm'];
+	$image = wp_get_attachment_image_src( $image_id, 'thumbnail' );
 }
 
 ?>
 <article class="faculty-member search-<?php the_ID() ?> jsIsotopeItem<?php echo $member_classes ?>">
 
-	<a href="<?php bloginfo('url') ?>/faculty/katharine-w-huntington/" class="faculty-member-inner jsIsotopeItemInner"<?php echo $unit_style ?>>
+	<a href="<?php the_permalink() ?>" class="faculty-member-inner jsIsotopeItemInner"<?php echo $unit_style ?>>
 
-		<div class="faculty-member-image" data-image="<?php echo $image ?>">
-			<img src="<?php echo $image ?>" />
+		<div class="faculty-member-image" data-image="<?php echo $image[0] ?>">
+			<img src="<?php echo $image[0] ?>" />
 			<noscript><img src="<?php echo $image ?>" /></noscript>
 		</div><!-- .faculty-member-image -->
 

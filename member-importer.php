@@ -7,6 +7,8 @@ class CoEnvMemberApiImporter {
 	function __construct() {
 
 		$this->init();
+
+		$this->attachments = array();
 	}
 
 	/**
@@ -14,27 +16,12 @@ class CoEnvMemberApiImporter {
 	 */
 	function init () {
 
-		// enqueue scripts
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles_and_scripts' ) );
-
 		// add admin import page
 		add_action( 'admin_menu', array( $this, 'add_import_page' ) );
-
-		add_action( 'wp_ajax_coenv_member_api_import', array( $this, 'ajax_import' ) );
 	}
 
 	function add_import_page () {
 		add_submenu_page( 'edit.php?post_type=faculty', 'Faculty Import', 'Faculty Import', 'manage_options', 'coenv-member-api-tools', array( $this, 'display_submenu_page' ) );
-	}
-
-	/**
-	 * Enqueue scripts
-	 */
-	function admin_styles_and_scripts () {
-
-		wp_register_script( 'coenv-member-api-importer', plugins_url( 'member-importer.js', __FILE__ ), 'jquery' );
-		wp_enqueue_script( 'coenv-member-api-importer' );
-
 	}
 
 	/**
@@ -44,13 +31,15 @@ class CoEnvMemberApiImporter {
 	 */
 	function display_submenu_page () {
 
+		$messages = array();
+
 		// check for submitted file
 		if ( isset( $_FILES['member_import'] ) ) {
 
 			if ( $_FILES['member_import']['size'] > 0 ) {
-				$notice = $this->import_csv( $_FILES['member_import'] );
+				$messages[] = $this->import_csv( $_FILES['member_import'] );
 			} else {
-				$notice = array( 'type' => 'error', 'message' => 'Please choose a CSV file.' );
+				$messages[] = array( 'type' => 'error', 'message' => 'Please choose a CSV file.' );
 			}
 
 		}
@@ -60,8 +49,10 @@ class CoEnvMemberApiImporter {
 				<div id="icon-tools" class="icon32"><br /></div>
 				<h2><?php echo __( 'Faculty Import' ) ?></h2>
 
-				<?php if ( isset( $notice ) ) : ?>
-					<div class="<?php echo $notice['type'] ?>"><p><?php echo $notice['message'] ?></p></div>
+				<?php if ( isset( $messages ) && !empty( $messages ) ) : ?>
+					<?php foreach ( $message as $message ) : ?>
+						<div class="<?php echo $message['type'] ?>"><p><?php echo $message['message'] ?></p></div>	
+					<?php endforeach ?>
 				<?php endif ?>
 
 				<p>Import faculty members from a CSV file.</p>
@@ -147,6 +138,8 @@ class CoEnvMemberApiImporter {
 		// must include image.php for wp_generate_attachment_metadata() to work
 		require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
+		require_once( WP_CONTENT_DIR . '/plugins/advanced-custom-fields/acf.php' );
+
 		$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_location );
 		wp_update_attachment_metadata( $attachment_id, $attachment_data );
 
@@ -156,11 +149,9 @@ class CoEnvMemberApiImporter {
 		}
 
 		// pass file to CSV parser
-		$saved = $this->parse_csv( $file_location );
+		$message = $this->parse_csv( $file_location );
 
-		if ( $saved ) {
-			return array( 'type' => 'updated', 'message' => $saved . ' faculty members were successfully added.' );
-		}
+		return $message;
 
 	}
 
@@ -222,6 +213,15 @@ class CoEnvMemberApiImporter {
 			$rows[] = array_combine( $header, $row );
 		}
 
+		// get all attachments
+		$attachment_posts = get_posts( array( 'posts_per_page' => -1, 'post_type' => 'attachment' ) );
+
+		// save attachments attributes
+		// $this->attachments is searched for portrait file names by $this->attach_faculty_portrait()
+		foreach ( $attachment_posts as $attachment ) {
+			$this->attachments[ $attachment->post_title . '.jpg' ] = $attachment->ID;
+		}
+
 		$this->insert_units( $rows );
 		$this->insert_themes( $rows );
 		$this->insert_faculty( $rows );
@@ -236,6 +236,7 @@ class CoEnvMemberApiImporter {
 	function insert_units( $rows ) {
 
 		$units = array();
+		$messages = array();
 
 		foreach ( $rows as $row ) {
 
@@ -254,6 +255,7 @@ class CoEnvMemberApiImporter {
 		}
 
 		foreach ( $units as $unit ) {
+
 			$term = wp_insert_term( $unit, 'member_unit' );
 
 			// add unit color
@@ -291,7 +293,7 @@ class CoEnvMemberApiImporter {
 	 */
 	function insert_themes( $rows ) {
 
-		$non_theme_cols = array( 'Name', 'First', 'Last', 'Title', 'Department' );
+		$non_theme_cols = array( 'Name', 'First', 'Last', 'Filename', 'Title', 'Department' );
 
 		$themes = array();
 
@@ -357,7 +359,10 @@ class CoEnvMemberApiImporter {
 				wp_set_post_terms( $id, $themes, 'member_theme', false );
 			}
 
-			// Super basic first name extraction (first word from string)
+			// attach portrait file by filename
+			$this->attach_faculty_portrait( $id, $f['Filename'] );
+
+			// super basic first name extraction (first word from string)
 			$first_name = explode( ' ', trim( $f['First'] ) );
 			$first_name = $first_name[0];
 
@@ -370,9 +375,17 @@ class CoEnvMemberApiImporter {
 		return count( $faculty );
 	}
 
-	function ajax_import () {
-		echo 'it works';
-		die();
+	/**
+	 * Attach faculty portrait
+	 */
+	function attach_faculty_portrait( $post_id, $filename ){
+
+		if ( array_key_exists( $filename, $this->attachments ) ) {
+			$file = $this->attachments[ $filename ];
+		} else {
+			$file = $this->attachments['Blank Member.jpg'];
+		}
+		update_field( 'field_18', $file, $post_id );
 	}
 
 }
