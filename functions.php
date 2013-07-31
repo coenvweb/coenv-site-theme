@@ -660,6 +660,8 @@ function coenv_editor_formats( $init )
 
 /**
  * Page banners
+ *
+ * 2013.07.31 | Darin | disabled check for post thumbnail, will always fall back to ancestor thumbnail.
  */
 function coenv_banner() {
 	$obj = get_queried_object();
@@ -667,15 +669,9 @@ function coenv_banner() {
 	$page_id = false;
 	$banner = false;
 
-	// check for post thumbnail
-	if ( has_post_thumbnail( $obj->ID ) ) {
-
-		$page_id = $obj->ID;
-
-	} else if ( has_post_thumbnail( coenv_get_ancestor() ) ) {
-
-		$page_id = coenv_get_ancestor();
-
+	$ancestor_id = coenv_get_ancestor('ID');
+	if ( has_post_thumbnail( $ancestor_id ) ) {
+		$page_id = $ancestor_id;
 	}
 
 	if ( $page_id == false ) {
