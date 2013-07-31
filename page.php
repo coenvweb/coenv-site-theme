@@ -30,7 +30,7 @@ $banner = coenv_banner();
 	        	wp_nav_menu( array(
 		          'menu' => 'menu-secondary',
 		          'theme_location' => 'main', 
-		          'depth' => 3,
+		          'depth' => 4,
 		          'menu_id' => 'menu-secondary',
 		          'container' => false,
 		          'fallback_cb' => false,

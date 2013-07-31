@@ -355,6 +355,9 @@ class CoEnv_Main_Menu_Walker extends Walker_Nav_Menu {
 
 }
 
+/**
+ * TODO: this needs to show 4th level links
+ */
 class CoEnv_Secondary_Menu_Walker extends Walker_Nav_Menu {
 
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
