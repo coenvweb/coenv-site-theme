@@ -139,6 +139,13 @@ video {
 			//@include rem('margin-bottom', 1);
 		}
 
+		ul ul,
+		ul ol,
+		ol ol,
+		ol ul {
+			margin-bottom: 0;
+		}
+
 		&.entry-excerpt p {
 			margin-bottom: 0;
 		}
