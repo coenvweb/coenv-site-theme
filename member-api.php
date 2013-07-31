@@ -348,8 +348,8 @@ class CoEnvMemberAPI {
 
 			$results = $this->get_faculty(array(
 				
-				// remove this for production
-				'test_data' => true
+				// set to 'false' for production
+				'test_data' => false
 			));
 
 		// test for single faculty member
@@ -361,8 +361,8 @@ class CoEnvMemberAPI {
 			$results = $this->get_faculty(array(
 				'p' => $post->ID,
 				
-				// remove this for production
-				'test_data' => true
+				// set to 'false' for production
+				'test_data' => false
 			));
 
 		// test for themes && units query vars

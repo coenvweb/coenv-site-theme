@@ -23,7 +23,7 @@
 			margin-left: 4px;
 			width: 100%;
 			height: 100%;
-			background: #c3c2c0;
+			background: #b4b4b4;
 		}
 
 		.upper {
@@ -226,7 +226,7 @@
 			@include rem('padding', 1);
 			list-style: none;
 			background: #eee;
-			//background: #c3c2c0;
+			//background: #b4b4b4;
 			color: $text-md;
 
 			li {
@@ -266,7 +266,7 @@
 
 		#member-tab-nav {
 			margin: 4px 0 0;
-			background: #c3c2c0;
+			background: #b4b4b4;
 			color: $text-md;
 
 			ul {
