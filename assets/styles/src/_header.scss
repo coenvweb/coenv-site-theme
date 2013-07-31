@@ -39,36 +39,6 @@
 
 } // .banner-wrapper
 
-//.banner-wrapper {
-//
-//	// fix bottom padding for pages that don't have banners
-//	.page &,
-//	.blog & {
-//		@include rem('padding-bottom', 7);
-//	}
-//
-//	// but not for home page
-//	.home & {
-//		padding: 0;
-//	}
-//
-//	.has-banner & {
-//		background-repeat: no-repeat;
-//		background-size: cover;
-//		background-position: center;
-//
-//		.lt-ie9 & {
-//			-ms-behavior: url(/backgroundsize.min.htc);
-//		}
-//
-//		@include min-width ( $iPadPortrait ) {
-//			padding-bottom: 25%;
-//		}
-//
-//	} // &.has-banner
-//
-//} // .banner-wrapper
-
 .container.header-container {
 	@include rem('padding', 0.5);
 
