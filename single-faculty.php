@@ -136,9 +136,15 @@ if ( !empty( $member['stories'] ) ) {
 
 								<li>
 
-									<?php if ( !empty( $link['url'] ) ) : ?><a href="#"><?php endif ?>
+									<?php 
+									if ( $link['type'] === 'email' ) {
+										$link['url'] = 'mailto:' . $link['url'];
+									}
+									?>
 
-									<i class="icon-contact-link-<?php echo $link['type'] ?>"></i><?php echo $link['title'] ?>
+									<?php if ( !empty( $link['url'] ) ) : ?><a href="<?php echo $link['url'] ?>"><?php endif ?>
+
+										<i class="icon-contact-link-<?php echo $link['type'] ?>"></i><?php echo $link['title'] ?>
 
 									<?php if ( !empty( $link['url'] ) ) : ?></a><?php endif ?>
 

@@ -169,7 +169,7 @@ video {
 			@include rem('margin-bottom', 1);
 			@include serif;
 			@include font-size(24);
-			@include line-height(36);
+			@include line-height(30);
 			font-weight: 300;
 			color: $text-md;
 			//color: #666;
