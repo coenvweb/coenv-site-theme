@@ -33,7 +33,8 @@ get_header();
 				<?php endif ?>
 
 				<footer class="pagination">
-					<?php coenv_paginate() ?>
+					<?php //coenv_paginate() ?>
+					<?php //echo paginate_links() ?>
 				</footer>
 
 			</div><!-- .main-col -->
