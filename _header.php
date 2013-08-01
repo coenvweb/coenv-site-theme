@@ -109,14 +109,15 @@
 
                                 <?php get_search_form() ?>
 
-                                <ul id="menu-main" class="menu">
-                                    <?php wp_list_pages( array(
-                                        'depth' => 3,
-                                        'walker' => new CoEnv_Main_Menu_Walker,
-                                        'title_li' => false,
-                                        'sort_column' => 'menu_order'
-                                    ) ) ?>
-                                </ul>
+                                <?php wp_nav_menu( array(
+                                    'menu' => 'main-menu',
+                                    'theme_location' => 'main', 
+                                    'depth' => 3,
+                                    'menu_id' => 'menu-main',
+                                    'container' => false,
+                                    'fallback_cb' => false,
+                                    'walker' => new CoEnv_Main_Menu_Walker
+                                ) ); ?>
                             </nav>
 
                         </header><!-- #header -->

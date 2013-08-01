@@ -23,9 +23,10 @@ jQuery(function ($) {
 		outerSelector: '#outer',
 		wrapperSelector: '#wrapper',
 		menuSelector: '.main-menu',
+		submenuClass: 'children',
 		topMenuSelector: '.top-menu',
 		menuButtonSelector: '#show-menu button',
-		topLevelItemSelector: '.menu-item-depth-0',
+		topLevelItemSelector: '.page-depth-0',
 		mobileMenuClass: 'mobile-menu',
 		normalMenuClass: 'normal-menu',
 		normalTopMenuClass: 'normal-top-menu',
@@ -91,11 +92,13 @@ jQuery(function ($) {
 	 */
 	$.CoEnvMenu.prototype._buildMenu = function () {
 
+		var _this = this;
+
 		// select top level menu items
 		var $navItem = this.$menu.find( this.options.topLevelItemSelector );
 
 		// select all submenus in the menu
-		var $submenu = $navItem.find('> .sub-menu');
+		var $submenu = $navItem.find('> .' + this.options.submenuClass);
 
 		var $submenuContainer = $('<div class="submenu-container"></div>');
 
@@ -123,15 +126,15 @@ jQuery(function ($) {
 			url = $link.attr('href');
 
 			// add submenu if it does not exist
-			if ( !$(this).find('> .sub-menu').length ) {
-				$(this).append('<ul class="sub-menu"></ul>');
+			if ( !$(this).find('> .' + _this.options.submenuClass).length ) {
+				$(this).append('<ul class="' + _this.options.submenuClass + '"></ul>');
 			}
 
-			$(this).find('> .sub-menu').prepend('<li class="pagenav"><a href="' + url + '">' + title + '</a></li>');
+			$(this).find('> .' + _this.options.submenuClass).prepend('<li class="pagenav"><a href="' + url + '">' + title + '</a></li>');
 		} );
 
-		// wrap first .sub-menu in .submenu-container
-		this.$menu.find( this.options.topLevelItemSelector + ' > .sub-menu' ).wrap( $submenuContainer );
+		// wrap first sub menu in .submenu-container
+		this.$menu.find( this.options.topLevelItemSelector + ' > .' + this.options.submenuClass ).wrap( $submenuContainer );
 
 	};
 
@@ -141,7 +144,7 @@ jQuery(function ($) {
 		var _this = this;
 
 		// use hover intent to apply active class to top level nav items
-		this.$menu.find( this.options.topLevelItemSelector ).has('.sub-menu').hoverIntent( function () {
+		this.$menu.find( this.options.topLevelItemSelector ).has('.' + this.options.submenuClass).hoverIntent( function () {
 			$(this).toggleClass( _this.options.menuItemActiveClass );
 		} );
 	};
@@ -162,7 +165,7 @@ jQuery(function ($) {
 	// Add arrow icons to menu items
 	// =========================================================================
 	$.CoEnvMenu.prototype._addArrowIcons = function () {
-		this.$mobileMenu.find( this.options.topLevelItemSelector ).has('.sub-menu').each(function () {
+		this.$mobileMenu.find( this.options.topLevelItemSelector ).has('.' + this.options.submenuClass).each(function () {
 			$(this).find('a').first().prepend('<i></i>');
 		});
 	};
@@ -239,7 +242,7 @@ jQuery(function ($) {
 
 			var $item = $(this).parents( _this.options.topLevelItemSelector ),
 					$icon = $(this).find('i'),
-					$subMenu = $item.find('.sub-menu');
+					$subMenu = $item.find('.' + _this.options.submenuClass);
 
 			if ( $item.hasClass('expanded') ) {
 				$subMenu.slideUp( 200 );

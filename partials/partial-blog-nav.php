@@ -17,6 +17,6 @@ $ancestor = array(
 			'depth' => 3,
 			'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
 			'link_after' => '<i class="icon-arrow-right"></i>'
-		)); 
+		));
 	?>
 </ul>

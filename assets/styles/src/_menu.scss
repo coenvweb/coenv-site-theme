@@ -53,7 +53,7 @@
 	} // a
 
 	// top level items
-	.menu-item-depth-0 {
+	.page-depth-0 {
 		@include font-size(12);
 		@include line-height(13);
 		text-transform: uppercase;
@@ -74,7 +74,7 @@
 			@extend .icon-arrow-down;
 		}
 
-	} // .menu-item-depth-0
+	} // .page-depth-0
 
 	.search-form {
 		@include rem('padding', 1);
@@ -129,7 +129,7 @@
 /*	Mobile menu drop down items
 		======================================================================== */
 
-.main-menu.mobile-menu .menu-item-depth-0  {
+.main-menu.mobile-menu .page-depth-0  {
 	position: relative;
 
 	&:hover span > a {
@@ -156,10 +156,10 @@
 
 		} // > span > a
 
-		.sub-menu {
+		.children {
 			display: block;
 
-		} // .sub-menu
+		} // .children
 
 	} // current or ancestor
 
@@ -168,18 +168,18 @@
 		color: #fff;
 	}
 
-	.sub-menu {
+	.children {
 		display: none;
 
-		.sub-menu {
+		.children {
 			display: none !important;
 		}
 
-		li.menu-item-subheader .sub-menu {
+		li.menu-item-subheader .children {
 			display: block !important;
 			@include rem('padding-left', 1);
 
-		} // li.menu-item-subheader .sub-menu
+		} // li.menu-item-subheader .children
 
 		.pagenav {
 		}
@@ -207,9 +207,9 @@
 			@include rem('padding-left', 1);
 		}
 
-	} // .sub-menu
+	} // .children
 
-} // .main-menu.mobile-menu .menu-item-depth-0
+} // .main-menu.mobile-menu .page-depth-0
 
 // disable hover for touch devices
 .touch .main-menu.mobile-menu {
@@ -308,7 +308,7 @@
 		} // .column
 
 		// top level items
-		.menu-item-depth-0 {
+		.page-depth-0 {
 			position: relative;
 			@include rem('padding', 0, 0, 0, 0.5);
 			width: 100%;
@@ -385,7 +385,9 @@
 			//	display: none;
 			}
 
-			&.current-page-ancestor span > a,
+			&.current_page_ancestor span > a,
+			&.current_page_item span > a,
+			&.current_page_parent span > a,
 			&.current-menu-item span > a {
 				background: $accent;
 				color: #fff;
@@ -416,7 +418,7 @@
 
 			} // &.current-page-ancestor a
 
-		} // .menu-item-depth-0
+		} // .page-depth-0
 
 	} // #menu-main
 
@@ -430,21 +432,21 @@
 /*	Normal menu drop down items
 		======================================================================== */
 
-.main-menu.normal-menu .menu-item-depth-0  {
+.main-menu.normal-menu .page-depth-0  {
 	position: relative;
 	
 	.submenu-container {
 		position: relative;
 	}
 
-	&.menu-item-active .sub-menu {
+	&.menu-item-active .children {
 		display: block;
 
-		.sub-menu {
+		.children {
 			display: none;
 		}
 
-	} // &.menu-item-active .sub-menu
+	} // &.menu-item-active .children
 
 	&.menu-item-active > span > a {
 		background: $accent-lt !important;
@@ -464,7 +466,7 @@
 		border-left: 40px solid transparent;
 	}
 
-	.sub-menu {
+	.children {
 		display: none;
 		position: absolute;
 		z-index: 999;
@@ -511,13 +513,13 @@
 
 		} // li
 
-		.sub-menu {
+		.children {
 			position: relative;
 			width: 50%;
 			background: none;
 		}
 
-		.sub-menu li {
+		.children li {
 			width: 50%;
 			//width: 50%;
 		}
@@ -532,7 +534,7 @@
 				border-bottom: 1px solid #444;
 			}
 
-			.sub-menu {
+			.children {
 				display: block;
 			}
 
@@ -548,13 +550,13 @@
 
 		} // a
 
-		li.current_page_item a {
+		li.current_page_item > a {
 			background: $accent;
 		}
 
-	} // .sub-menu
+	} // .children
 
-} // .main-menu.normal-menu .menu-item-depth-0
+} // .main-menu.normal-menu .page-depth-0
 
 
 
