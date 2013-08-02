@@ -286,9 +286,11 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		$this->top_level_counter = 0;
 		$this->top_level_pages = $this->get_top_level_pages();
 		$this->top_level_page_ids = $this->get_top_level_page_ids();
+
 		$this->menu_pages = $this->get_menu_pages();
 		$this->menu_page_ids = $this->get_menu_page_ids();
 
+		$this->subheader_page_ids = $this->get_subheader_page_ids();
 	}
 
 	/**
@@ -359,6 +361,32 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		return $menu_page_ids;
 	}
 
+	/**
+	 * Get page ids that are set to appear in the main menu as subheaders
+	 */
+	function get_subheader_page_ids() {
+		$subheader_page_ids = array();
+		$subheader_pages = get_posts( array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'meta_query' => array(
+				array(
+					'key' => 'show_as_sub-header',
+					'value' => '1',
+					'compare' => '=='
+				)
+			)
+		) );
+
+		if ( !empty( $subheader_pages ) ) {
+			foreach ( $subheader_pages as $subheader_page ) {
+				$subheader_page_ids[] = $subheader_page->ID;
+			}
+		}
+		return $subheader_page_ids;
+	}
+
 	function walk ( $elements, $max_depth ) {
 
 		$args = array_slice(func_get_args(), 2);
@@ -417,6 +445,15 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 
 		extract($args, EXTR_SKIP);
 		$css_class = array('page-depth-' . $depth, 'page_item', 'page-item-'.$page->ID);
+
+		// check if this item is a "subheader item"
+		// meaning we need to show it in subheader style and show its children
+		// at launch, we're using this for the students section, where the dropdown
+		// should show items underneath 'undergraduate' and 'graduate'
+		if ( $depth == 1 && in_array( $page->ID, $this->subheader_page_ids ) ) {
+			array_push( $css_class, 'menu-item-subheader' );
+		}
+
 		if ( !empty($current_page) ) {
 			$_current_page = get_post( $current_page );
 			if ( in_array( $page->ID, $_current_page->ancestors ) )
