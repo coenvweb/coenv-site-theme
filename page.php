@@ -34,35 +34,6 @@ $banner = coenv_banner();
               ) ) ?>
           </ul>
 
-<?php
-
-//	        if ( coenv_has_menu( 'main-menu' ) ) {
-//
-//	        	wp_nav_menu( array(
-//		          'menu' => 'menu-secondary',
-//		          'theme_location' => 'main', 
-//		          'depth' => 4,
-//		          'menu_id' => 'menu-secondary',
-//		          'container' => false,
-//		          'fallback_cb' => false,
-//		          'walker' => new CoEnv_Secondary_Menu_Walker
-//		        ) );
-//
-//	        } else {
-//
-//	        //	echo '<ul id="menu-secondary" class="menu">';
-//	        //	wp_list_pages( array(
-//					//		'child_of' => $ancestor['id'],
-//					//		'depth' => 3,
-//					//		'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-//					//		'link_after' => '<i class="icon-arrow-right"></i>',
-//					//		'walker' => new CoEnv_Secondary_Fallback_Menu_Walker
-//					//	) );
-//					//	echo '</ul>';
-//
-//	        }
-
-?>
 			</nav><!-- #secondary-nav.side-col -->
 
 			<div class="main-col">

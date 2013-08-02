@@ -191,6 +191,12 @@ $wrapper-translateX: 80%;
 			float: none;
 		}
 
+		li.current-menu-item a,
+		li.current_page_item a,
+		li.current_page_parent a {
+			background: $accent-hover;
+		}
+
 	} // #menu-top
 
 	#menu-buttons {
