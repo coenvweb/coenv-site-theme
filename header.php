@@ -44,6 +44,8 @@
 
             <div id="wrapper">
 
+                <?php coenv_notifications(); ?>
+
                 <nav id="top-nav">
 
                     <div class="container">
@@ -110,12 +112,15 @@
                                 <?php get_search_form() ?>
 
                                 <ul id="menu-main" class="menu">
-                                    <?php wp_list_pages( array(
-                                        'depth' => 3,
-                                        'walker' => new CoEnv_Main_Menu_Walker,
-                                        'title_li' => false,
-                                        'sort_column' => 'menu_order'
-                                    ) ) ?>
+                                    <?php new CoEnv_Main_Menu() ?>
+                                    <?php 
+                                        //wp_list_pages( array(
+                                        //'depth' => 3,
+                                        //'walker' => new CoEnv_Main_Menu_Walker,
+                                        //'title_li' => false,
+                                        //'sort_column' => 'menu_order'
+                                        //) ) 
+                                    ?>
                                 </ul>
                             </nav>
 

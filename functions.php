@@ -281,6 +281,169 @@ function coenv_theme_setup() {
  */
 class CoEnv_Main_Menu_Walker extends Walker_Page {
 
+	function __construct() {
+
+		$this->top_level_counter = 0;
+		$this->top_level_pages = array();
+		$this->menu_pages = array();
+
+		$top_level_pages = get_posts( array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'meta_query' => array(
+				array(
+					'key' => 'show_as_top-level_page',
+					'value' => '1',
+					'compare' => '=='
+				)
+			)
+		) );
+
+		if ( !empty( $top_level_pages ) ) {
+			foreach ( $top_level_pages as $top_level_page ) {
+				$this->top_level_pages[] = $top_level_page->ID;
+			}
+		}
+
+		// get all pages that are set to appear in the main menu
+		$menu_pages = get_posts( array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'meta_query' => array(
+				array(
+					'key' => 'show_in_main_menu',
+					'value' => '1',
+					'compare' => '=='
+				)
+			)
+		) );
+
+		if ( !empty( $menu_pages ) ) {
+			foreach ( $menu_pages as $mpage ) {
+				$this->menu_pages[] = $mpage->ID;
+			}
+		}
+
+	}
+
+	/**
+	 * Test if an item is set to appear in the main menu
+	 */
+	function in_main_menu( $item, $depth ) {
+
+		if ( $depth !== 0 ) { return false; }
+
+		// $item->ID must be in $this->menu_pages
+		if ( !in_array( $item->ID, $this->menu_pages ) ) {
+			return false;
+		}
+
+		// if this is a top-level page, it must be in $this->top_level_pages
+		if ( $depth === 0 && !in_array( $item->ID, $this->top_level_pages ) ) {
+			return false;
+		}
+
+		// if this is not a top-level page, it's ancestor must be in $this->top_level_pages
+		if ( $depth !== 0 ) {
+			$ancestor_id = array_pop( $item->ancestors );
+			if ( !in_array( $ancestor_id, $this->top_level_pages ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		
+		if ( $depth !== 0 ) { return false; }
+
+		parent::start_lvl( $output, $depth, $args );
+	}
+
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+
+		if ( $depth !== 0 ) { return false; }
+
+		parent::end_lvl( $output, $depth, $args );
+	}
+
+	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+	
+		// check that this page is set to appear in the main menu
+		if ( !$this->in_main_menu( $page, $depth ) ) {
+			return false;
+		}
+
+		extract($args, EXTR_SKIP);
+		$css_class = array('page-depth-' . $depth, 'page_item', 'page-item-'.$page->ID);
+		if ( !empty($current_page) ) {
+			$_current_page = get_post( $current_page );
+			if ( in_array( $page->ID, $_current_page->ancestors ) )
+				$css_class[] = 'current_page_ancestor';
+			if ( $page->ID == $current_page )
+				$css_class[] = 'current_page_item';
+			elseif ( $_current_page && $page->ID == $_current_page->post_parent )
+				$css_class[] = 'current_page_parent';
+		} elseif ( $page->ID == get_option('page_for_posts') ) {
+			$css_class[] = 'current_page_parent';
+		}
+
+		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+		if ( $depth == 0 ) {
+
+			if ( $this->top_level_counter % 3 == 0 ) {
+				$output .= "\n" . '<li class="column">' . "\n";
+				$output .= '<ul>' . "\n";
+			}
+
+			$this->top_level_counter++;
+
+		}
+
+		$output .= '<li class="' . $css_class . '">';
+
+		// wrap top-level items in <span>
+		if ( $depth == 0 ) {
+			$output .= '<span>';
+		}
+
+		$output .= '<a href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
+
+		// wrap top-level items in <span>
+		if ( $depth == 0 ) {
+			$output .= '</span>';
+		}
+	}
+
+	function end_el( &$output, $page, $depth = 0, $args = array() ) {
+
+		// check that this element is set to appear in main menu
+		if ( !$this->in_main_menu( $page, $depth ) ) {
+			return false;
+		}
+
+		// continue with original end_el()
+		parent::end_el( $output, $page, $depth, $args );
+
+		if ( $depth == 0 ) {
+
+			if ( ( $this->top_level_counter % 3 == 0 ) || ( $this->top_level_counter == count( $this->top_level_pages ) ) ) {
+				$output .= '</ul>' . "\n";
+				$output .= '</li><!-- .column -->' . "\n";
+			}
+
+		}
+	}
+
+}
+
+
+class _CoEnv_Main_Menu_Walker extends Walker_Page {
+
 	function __construct () {
 
 		$this->top_level_counter = 0;
@@ -470,7 +633,7 @@ function coenv_update_pages() {
 	) );
 
 	foreach ( $pages as $page ) {
-		//update_field( 'field_51fa8ff231d73', 1, $page->ID );
+		//update_field( 'field_51fa8ff231d73', '1', $page->ID );
 	}
 
 }
@@ -1021,7 +1184,154 @@ if ( !function_exists( 'coenv_archive_title' ) ) {
 
 }
 
+/**
+ * CoEnv Main Menu
+ */
+class CoEnv_Main_Menu {
 
+	function __construct() {
+
+		$this->menu_pages = $this->get_menu_pages();
+		$this->menu_page_ids = $this->get_menu_page_ids();
+
+		$this->top_level_pages = $this->get_top_level_pages();
+		$this->top_level_page_ids = $this->get_top_level_page_ids();
+		//$this->top_level_counter = 0;
+
+		$this->menu();
+
+	}
+
+	/**
+	 * Build and output the menu
+	 */
+	function menu() {
+
+		$output = '';
+
+		// loop through top-level pages
+		foreach ( $this->top_level_pages as $top_level_page ) {
+
+			// start a new top-level column list every third top level page
+			if ( $this->top_level_counter % 3 == 0 ) {
+				$output .= "\n" . '<li class="column">' . "\n";
+				$output .= '<ul>' . "\n";
+			}
+
+			// increment top level counter
+			$this->top_level_counter++;
+
+			// start top-level item
+			$output .= '<li class="page-depth-0"><span><a href="' . get_permalink( $top_level_page->ID ) . '">' . $top_level_page->post_title . '</a></span>';
+
+			// end top-level item
+			$output .= '</li>';
+
+			// close top-level column every third item (or the last item)
+			if ( ( $this->top_level_counter % 3 == 0 ) || ( $this->top_level_counter == count( $this->top_level_items ) ) ) {
+				$output .= '</ul>' . "\n";
+				$output .= '</li><!-- .column -->' . "\n";
+			}
+
+		}
+
+		echo $output;
+	}
+
+	/**
+	 * Get all pages that are set to show in the menu
+	 */
+	function get_menu_pages() {
+		$menu_pages = get_posts( array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'show_in_main_menu',
+					'value' => '1',
+					'compare' => '=='
+				)
+			)
+		) );
+
+		return $menu_pages;
+	}
+
+	/**
+	 * Build array of menu page ids
+	 */
+	function get_menu_page_ids() {
+		$menu_page_ids = array();
+		$menu_pages = $this->menu_pages;
+
+		if ( !empty( $menu_pages ) ) {
+			foreach ( $menu_pages as $menu_page ) {
+				$menu_page_ids[] = $menu_page->ID;
+			}
+		}
+		return $menu_page_ids;
+	}
+
+	/**
+	 * Get top-level pages that are set to show in the menu
+	 */
+	function get_top_level_pages() {
+		$top_level_pages = get_posts( array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'meta_query' => array(
+				array(
+					'key' => 'show_as_top-level_page',
+					'value' => '1',
+					'compare' => '=='
+				)
+			)
+		) );
+		return $top_level_pages;
+	}
+
+	/**
+	 * Build array of top level page ids
+	 */
+	function get_top_level_page_ids() {
+		$top_level_page_ids = array();
+		$top_level_pages = $this->top_level_pages;
+
+		if ( !empty( $top_level_pages ) ) {
+			foreach ( $top_level_pages as $top_level_page ) {
+				$top_level_page_ids[] = $top_level_page->ID;
+			}
+		}
+	}
+
+}
+
+/**
+ * Development notifications
+ */
+function coenv_notifications() {
+
+	$notifications = array(
+		'Development notice: main menu dropdowns are temporarily disabled.'
+	);
+
+	$output = '<div class="dev-notifications">';
+	$output .= '<ul>';
+
+	foreach ( $notifications as $notification ) {
+		$output .= '<li>' . $notification . '</li>';
+	}
+
+	$output .= '</ul></div>';
+
+	echo $output;
+}
 
 
 

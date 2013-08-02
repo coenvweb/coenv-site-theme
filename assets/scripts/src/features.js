@@ -29,7 +29,7 @@ $.fn.homeFeatures = function() {
 		autoHeight: true,
 		navigateByClick: false,
 		autoPlay: {
-			enabled: true,
+			enabled: false,
 			pauseOnHover: true,
 			stopAtAction: false,
 			delay: 8000
