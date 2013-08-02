@@ -214,7 +214,7 @@ $wrapper-translateX: 80%;
 
 	.search-form {
 		display: inline-block;
-		@include rem('margin-right', 0.25);
+		//@include rem('margin-right', 0.25);
 		margin-bottom: -3px;
 		padding: 0;
 
