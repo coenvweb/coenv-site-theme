@@ -2,18 +2,20 @@
 		UW College of the Environment
 		Authors: Darin Reid & Ryan Scherler
 		2012-2013
+
+		Import all components here
 		========================================================================== */
 
 // Compass framework
 @import 'compass';
 
-// Constants
+// Global settings
 @import 'config.scss';
 
 // Normalize CSS
 @import 'normalize/index.scss';
 
-// Elcontraption: tools and defaults
+// elcontraption: tools and defaults
 @import 'elcontraption-tools/styles/tools-combined.scss';
 
 // Icon fonts
@@ -65,7 +67,6 @@
 // Faculty area specific
 @import 'faculty-archive.scss';
 @import 'faculty-single.scss';
-//@import 'faculty-widget.scss';
 
 
 

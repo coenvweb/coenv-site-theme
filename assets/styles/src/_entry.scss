@@ -118,25 +118,28 @@ img.aligncenter {
 
 		// h1 is dissallowed
 
-		h2, h3, h4 {
+		h1, h2, h3, h4, h5, h6 {
 			@include rem('margin-bottom', 1);
 			@include serif;
 			font-weight: 400;
 		}
 
-		h2 {
+		h1, h2 {
+			@include font-size(30);
+			@include line-height(36);
+		}
+
+		h3 {
 			@include font-size(24);
 			@include line-height(30);
 		}
 
-		h3 {
-			@include font-size(20);
-			@include line-height(24);
-		}
-
 		h4 {
-			@include font-size(18);
+			@include font-size(16);
 			@include line-height(24);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
 		}
 
 		p {
@@ -156,12 +159,12 @@ img.aligncenter {
 
 		// full bleed breakout elements
 		.breakout {
-			margin: 0;
+			//margin: 0;
 
 			@include min-width ( $iPadPortrait ) {
-				@include rem('margin', 0, -9, 0, 0);
-				width: auto !important;
-				max-width: 124.600639%; // 780 / 626
+				//@include rem('margin', 0, -9, 0, 0);
+				//width: auto !important;
+				//max-width: 124.600639%; // 780 / 626
 			}
 
 		} // .breakout
@@ -289,7 +292,6 @@ img.aligncenter {
     	width: 100%;
 
     	td {
-    		width: 33.3333%;
     		@include rem('padding', 1);
     		border: 1px solid #ccc;
     		vertical-align: top;
