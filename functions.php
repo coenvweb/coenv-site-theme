@@ -301,6 +301,7 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		$top_level_pages = get_posts( array(
 			'posts_per_page' => -1,
 			'post_type' => 'page',
+			'post_parent' => 0,
 			'post_status' => 'publish',
 			'meta_query' => array(
 				array(

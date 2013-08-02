@@ -55,23 +55,26 @@ video {
 	margin-left: auto;
 }
 
-.img.alignleft {
-	@include rem('margin', 0);
+.img.alignleft,
+img.alignleft {
+	@include rem('margin', 0, 1, 1, 0);
 }
 
 .wp-caption.alignleft {
 	@include rem('margin', 0);
 }
 
-.img.alignright {
-	@include rem('margin', 0);
+.img.alignright,
+img.alignright {
+	@include rem('margin', 0, 0, 1, 1);
 }
 
 .wp-caption.alignright {
 	@include rem('margin', 0);
 }
 
-.img.aligncenter {
+.img.aligncenter,
+img.aligncenter {
 	@include rem('margin', 0, auto);
 }
 
@@ -111,6 +114,7 @@ video {
 	} // .entry-header
 
 	.entry-content {
+		@extend .clearfix;
 
 		// h1 is dissallowed
 
