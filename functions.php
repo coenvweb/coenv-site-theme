@@ -1222,9 +1222,11 @@ if ( !function_exists( 'coenv_archive_title' ) ) {
  */
 function coenv_notifications() {
 
-	$notifications = array(
-		'Development notice: main menu dropdowns are temporarily disabled.'
-	);
+	$notifications = array();
+
+	if ( empty( $notifications ) ) {
+		return false;
+	}
 
 	$output = '<div class="dev-notifications">';
 	$output .= '<ul>';
