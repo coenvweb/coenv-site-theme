@@ -284,9 +284,18 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 	function __construct() {
 
 		$this->top_level_counter = 0;
-		$this->top_level_pages = array();
-		$this->menu_pages = array();
+		$this->top_level_pages = $this->get_top_level_pages();
+		$this->top_level_page_ids = $this->get_top_level_page_ids();
+		$this->menu_pages = $this->get_menu_pages();
+		$this->menu_page_ids = $this->get_menu_page_ids();
 
+	}
+
+	/**
+	 * Get top-level pages that are set to appear as top-level 
+	 * in the main menu as post objects
+	 */
+	function get_top_level_pages() {
 		$top_level_pages = get_posts( array(
 			'posts_per_page' => -1,
 			'post_type' => 'page',
@@ -299,14 +308,28 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 				)
 			)
 		) );
+		return $top_level_pages;
+	}
 
-		if ( !empty( $top_level_pages ) ) {
-			foreach ( $top_level_pages as $top_level_page ) {
-				$this->top_level_pages[] = $top_level_page->ID;
+	/**
+	 * Build array of ids for top-level menu items
+	 */
+	function get_top_level_page_ids() {
+		$top_level_page_ids = array();
+
+		if ( !empty( $this->top_level_pages ) ) {
+			foreach ( $this->top_level_pages as $top_level_page ) {
+				$top_level_page_ids[] = $top_level_page->ID;
 			}
 		}
+		return $top_level_page_ids;
+	}
 
-		// get all pages that are set to appear in the main menu
+	/**
+	 * Get pages that are set to appear in the main menu system
+	 * as wp objects
+	 */
+	function get_menu_pages() {
 		$menu_pages = get_posts( array(
 			'posts_per_page' => -1,
 			'post_type' => 'page',
@@ -319,63 +342,78 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 				)
 			)
 		) );
-
-		if ( !empty( $menu_pages ) ) {
-			foreach ( $menu_pages as $mpage ) {
-				$this->menu_pages[] = $mpage->ID;
-			}
-		}
-
+		return $menu_pages;
 	}
 
 	/**
-	 * Test if an item is set to appear in the main menu
+	 * Build array of menu page ids
 	 */
-	function in_main_menu( $item, $depth ) {
+	function get_menu_page_ids() {
+		$menu_page_ids = array();
 
-		if ( $depth !== 0 ) { return false; }
-
-		// $item->ID must be in $this->menu_pages
-		if ( !in_array( $item->ID, $this->menu_pages ) ) {
-			return false;
+		if ( !empty( $this->menu_pages ) ) {
+			foreach ( $this->menu_pages as $mpage ) {
+				$menu_page_ids[] = $mpage->ID;
+			}
 		}
+		return $menu_page_ids;
+	}
 
-		// if this is a top-level page, it must be in $this->top_level_pages
-		if ( $depth === 0 && !in_array( $item->ID, $this->top_level_pages ) ) {
-			return false;
-		}
+	function walk ( $elements, $max_depth ) {
 
-		// if this is not a top-level page, it's ancestor must be in $this->top_level_pages
-		if ( $depth !== 0 ) {
-			$ancestor_id = array_pop( $item->ancestors );
-			if ( !in_array( $ancestor_id, $this->top_level_pages ) ) {
-				return false;
+		$args = array_slice(func_get_args(), 2);
+		$output = '';
+
+		if ($max_depth < -1) //invalid parameter
+			return $output;
+
+		if (empty($elements)) //nothing to walk
+			return $output;
+
+		$id_field = $this->db_fields['id'];
+		$parent_field = $this->db_fields['parent'];
+
+		/*
+		 * need to display in hierarchical order
+		 * separate elements into two buckets: top level and children elements
+		 * children_elements is two dimensional array, eg.
+		 * children_elements[10][] contains all sub-elements whose parent is 10.
+		 */
+		$top_level_elements = array();
+		$children_elements  = array();
+		foreach ( $elements as $e) {
+			if ( 0 == $e->$parent_field ) {
+				$top_level_elements[] = $e;
+			} else {
+
+				// child elements must be set to appear in the main menu
+				if ( in_array( $e->ID, $this->menu_page_ids ) ) {
+					$children_elements[ $e->$parent_field ][] = $e;
+				}
+
 			}
 		}
 
-		return true;
+		foreach ( $top_level_elements as $e ) {
+
+			// check that element id is in top_level_page_ids
+			if ( in_array( $e->ID, $this->top_level_page_ids ) ) {
+				$this->display_element( $e, $children_elements, $max_depth, 0, $args, $output );
+			}
+		}
+
+		return $output;
 	}
 
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
-		
-		if ( $depth !== 0 ) { return false; }
-
 		parent::start_lvl( $output, $depth, $args );
 	}
 
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
-
-		if ( $depth !== 0 ) { return false; }
-
 		parent::end_lvl( $output, $depth, $args );
 	}
 
 	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
-	
-		// check that this page is set to appear in the main menu
-		if ( !$this->in_main_menu( $page, $depth ) ) {
-			return false;
-		}
 
 		extract($args, EXTR_SKIP);
 		$css_class = array('page-depth-' . $depth, 'page_item', 'page-item-'.$page->ID);
@@ -420,11 +458,6 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 	}
 
 	function end_el( &$output, $page, $depth = 0, $args = array() ) {
-
-		// check that this element is set to appear in main menu
-		if ( !$this->in_main_menu( $page, $depth ) ) {
-			return false;
-		}
 
 		// continue with original end_el()
 		parent::end_el( $output, $page, $depth, $args );
@@ -1179,134 +1212,6 @@ if ( !function_exists( 'coenv_archive_title' ) ) {
 		} else {
 			_e( 'Archives', 'moskowitz' );
 
-		}
-	}
-
-}
-
-/**
- * CoEnv Main Menu
- */
-class CoEnv_Main_Menu {
-
-	function __construct() {
-
-		$this->menu_pages = $this->get_menu_pages();
-		$this->menu_page_ids = $this->get_menu_page_ids();
-
-		$this->top_level_pages = $this->get_top_level_pages();
-		$this->top_level_page_ids = $this->get_top_level_page_ids();
-		//$this->top_level_counter = 0;
-
-		$this->menu();
-
-	}
-
-	/**
-	 * Build and output the menu
-	 */
-	function menu() {
-
-		$output = '';
-
-		// loop through top-level pages
-		foreach ( $this->top_level_pages as $top_level_page ) {
-
-			// start a new top-level column list every third top level page
-			if ( $this->top_level_counter % 3 == 0 ) {
-				$output .= "\n" . '<li class="column">' . "\n";
-				$output .= '<ul>' . "\n";
-			}
-
-			// increment top level counter
-			$this->top_level_counter++;
-
-			// start top-level item
-			$output .= '<li class="page-depth-0"><span><a href="' . get_permalink( $top_level_page->ID ) . '">' . $top_level_page->post_title . '</a></span>';
-
-			// end top-level item
-			$output .= '</li>';
-
-			// close top-level column every third item (or the last item)
-			if ( ( $this->top_level_counter % 3 == 0 ) || ( $this->top_level_counter == count( $this->top_level_items ) ) ) {
-				$output .= '</ul>' . "\n";
-				$output .= '</li><!-- .column -->' . "\n";
-			}
-
-		}
-
-		echo $output;
-	}
-
-	/**
-	 * Get all pages that are set to show in the menu
-	 */
-	function get_menu_pages() {
-		$menu_pages = get_posts( array(
-			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
-			'meta_query' => array(
-				array(
-					'key' => 'show_in_main_menu',
-					'value' => '1',
-					'compare' => '=='
-				)
-			)
-		) );
-
-		return $menu_pages;
-	}
-
-	/**
-	 * Build array of menu page ids
-	 */
-	function get_menu_page_ids() {
-		$menu_page_ids = array();
-		$menu_pages = $this->menu_pages;
-
-		if ( !empty( $menu_pages ) ) {
-			foreach ( $menu_pages as $menu_page ) {
-				$menu_page_ids[] = $menu_page->ID;
-			}
-		}
-		return $menu_page_ids;
-	}
-
-	/**
-	 * Get top-level pages that are set to show in the menu
-	 */
-	function get_top_level_pages() {
-		$top_level_pages = get_posts( array(
-			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
-			'meta_query' => array(
-				array(
-					'key' => 'show_as_top-level_page',
-					'value' => '1',
-					'compare' => '=='
-				)
-			)
-		) );
-		return $top_level_pages;
-	}
-
-	/**
-	 * Build array of top level page ids
-	 */
-	function get_top_level_page_ids() {
-		$top_level_page_ids = array();
-		$top_level_pages = $this->top_level_pages;
-
-		if ( !empty( $top_level_pages ) ) {
-			foreach ( $top_level_pages as $top_level_page ) {
-				$top_level_page_ids[] = $top_level_page->ID;
-			}
 		}
 	}
 
