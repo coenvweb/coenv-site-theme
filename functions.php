@@ -1019,7 +1019,7 @@ function coenv_get_ancestor($attr = 'ID') {
 add_filter('tiny_mce_before_init', 'coenv_editor_formats');
 function coenv_editor_formats( $init )
 {
-	$init['theme_advanced_blockformats'] = 'p, h2, h3, h4';
+	$init['theme_advanced_blockformats'] = 'p, h1, h2, h3, h4';
 	
 	return $init;
 }
@@ -1254,36 +1254,6 @@ if ( !function_exists( 'coenv_archive_title' ) ) {
 	}
 
 }
-
-/**
- * Development notifications
- */
-function coenv_notifications() {
-
-	$notifications = array();
-
-	if ( empty( $notifications ) ) {
-		return false;
-	}
-
-	$output = '<div class="dev-notifications">';
-	$output .= '<ul>';
-
-	foreach ( $notifications as $notification ) {
-		$output .= '<li>' . $notification . '</li>';
-	}
-
-	$output .= '</ul></div>';
-
-	echo $output;
-}
-
-
-
-
-
-
-
 
 
 

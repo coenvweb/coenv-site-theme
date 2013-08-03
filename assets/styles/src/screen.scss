@@ -31,6 +31,27 @@
 // Isotope for faculty grid
 @import 'isotope.scss';
 
+/*	Modules
+		Define modular elements
+		======================================================================== */
+@import 'modules/_links.scss';
+@import 'modules/_button.scss';
+@import 'modules/_form.scss';
+@import 'modules/_article.scss';
+
+
+/*	Templates
+		Specific pages and page areas that further extend modules
+		======================================================================== */
+@import 'templates/_layout.scss';
+@import 'templates/_menu_top.scss';
+@import 'templates/_home.scss';
+@import 'templates/_page.scss';
+@import 'templates/_blog.scss';
+
+
+
+
 // Primary stylesheet
 @import 'main.scss';
 
@@ -44,16 +65,10 @@
 @import 'secondary-menu.scss';
 
 // General forms
-@import 'forms.scss';
+//@import 'forms.scss';
 
 // Home page features
 @import 'features.scss';
-
-// General page
-@import 'page.scss';
-
-// General page and post entries
-@import 'entry.scss';
 
 // CoEnv Currents stories on the home page
 @import 'stories.scss';
@@ -62,7 +77,7 @@
 @import 'events.scss';
 
 // Blog specific
-@import 'blog.scss';
+//@import 'blog.scss';
 
 // Faculty area specific
 @import 'faculty-archive.scss';

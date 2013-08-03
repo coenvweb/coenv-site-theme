@@ -45,7 +45,7 @@ $banner = coenv_banner();
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'post' ) ?>
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
 

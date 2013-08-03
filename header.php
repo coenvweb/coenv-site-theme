@@ -40,17 +40,15 @@
     </head>
     <body <?php body_class( $banner_class ) ?>>
 
-        <div id="outer">
+        <div id="outer" class="layout-outer">
 
-            <div id="wrapper">
-
-                <?php coenv_notifications(); ?>
+            <div id="wrapper" class="layout-wrapper">
 
                 <nav id="top-nav">
 
-                    <div class="container">
+                    <div class="container layout-container">
 
-                        <nav class="top-menu normal-top-menu">
+                        <div class="top-menu normal-top-menu">
 
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'university',
@@ -78,7 +76,7 @@
                                 'fallback_cb' => false
                             )); ?>
 
-                        </nav><!-- .top-menu -->
+                        </div><!-- .top-menu -->
 
                     </div><!-- .container -->
 

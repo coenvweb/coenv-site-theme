@@ -1,0 +1,222 @@
+
+/*	Module: article
+		
+		======================================================================== */
+
+.article {
+	@include rem('margin', 1);
+
+	@include min-width ( $iPadPortrait ) {
+		@include rem('margin', 3);
+	}
+
+} // .article
+
+.article_header {
+
+	.article_title {
+		margin-top: 0;
+		@include rem('padding-bottom', 1);
+		@include serif;
+		@include font-size(36);
+		@include line-height(48);
+		font-weight: 400;
+		border-bottom: 2px solid $border;
+
+		@include min-width ( $iPadPortrait ) {
+			@include font-size(48);
+			@include line-height(56);
+		}
+
+		a {
+			text-decoration: none;
+			color: $text;
+		}
+
+	} // .article_title
+
+} // .article-header
+
+.article_content {
+	@extend .clearfix;
+
+	h1 {
+		@include serif;
+		@include font-size(24);
+		@include line-height(30);
+		font-weight: 400;
+
+		@include min-width ( $iPadPortrait ) {
+			@include font-size(36);
+			@include line-height(48);
+		}
+
+	} // h1
+
+	h2 {
+		@include serif;
+		@include font-size(18);
+		@include line-height(24);
+		font-weight: 400;
+
+		@include min-width ( $iPadPortrait ) {
+			@include font-size(24);
+			@include line-height(30);
+		}
+
+	} // h2
+
+	h3 {
+		@include serif;
+		@include font-size(16);
+		@include line-height(24);
+		font-weight: 400;
+
+		@include min-width ( $iPadPortrait ) {
+			@include font-size(18);
+			@include line-height(24);
+		}
+
+	} // h3
+
+	h4 {
+		@include font-size(14);
+		@include line-height(24);
+		text-transform: uppercase;
+	}
+
+	blockquote {
+		@include rem('margin', 1, 2);
+
+	} // blockquote
+
+	// tables
+	table {
+		width: 100%;
+
+		th,
+		td {
+			@include rem('padding-right', 0.25);
+			text-align: left;
+		}
+
+	} // table
+
+	// definition lists
+	dl {
+
+		dt {
+			font-weight: 800;
+		}
+
+		dd {
+			@include rem('margin-bottom', 0.5);
+		}
+
+	} // dl
+
+	// lists
+	ul ul,
+	ul ol,
+	ol ol,
+	ol ul {
+		margin-bottom: 0;
+	}
+
+	// responsive elements
+	// make sure elements with WP-added height and width attributes are scaled correctly
+	img,
+	img.size-small,
+	img.size-medium,
+	img.size-full,
+	img.size-large,
+	img.wp-post-image
+	img[class*="align"],
+	img[class*="wp-image-"],
+	img[class*="attachment-"],
+	.wp-caption,
+	.twitter-tweet-rendered {
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	embed,
+	object,
+	iframe,
+	video {
+		max-width: 100%;
+	}
+
+	// alignment
+	.alignleft {
+		float: left;
+	}
+
+	.alignright {
+		float: right;
+	}
+
+	.aligncenter {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	// margins
+	img.alignleft,
+	.wp-caption.alignleft {
+		@include rem('margin', 0, 1, 1, 0);
+	}
+
+	img.alignright,
+	.wp-caption.alignright {
+		@include rem('margin', 0, 0, 1, 1);
+	}
+
+	// captions
+	.wp-caption {
+		margin: 0;
+		padding: 0;
+		width: auto !important;
+
+		.wp-caption-text {
+			margin: 0;
+			@include font-size(12);
+			color: $text-lt;
+			text-align: left;
+		}
+
+		img {
+			margin: 0;
+			padding: 0;
+		}
+
+	} // .wp-caption
+
+} // .article-content
+
+.article_meta {
+	@include font-size(12);
+	color: $text-lt;
+
+	.article_categories {
+		display: inline-block;
+
+		ul {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		li {
+			display: inline-block;
+		}
+
+	} // .article_categories
+
+} // .article_meta
+
+.article_footer {
+
+} // .article-footer

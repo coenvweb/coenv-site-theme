@@ -1,0 +1,87 @@
+
+/*	Layout
+		Site-wide main layout styles
+		======================================================================== */
+
+html.mobile-menu-active {
+	height: 100%;
+
+	body,
+	.layout-outer {
+		height: 100%;
+	}
+
+} // html.mobile-menu-active
+
+body {
+	@include sans;
+	color: $text;
+}
+
+.layout-outer {
+	position: relative;
+
+	.lt-ie9 & {
+		width: $max-width;
+	}
+
+} // .layout-outer
+
+$layout-wrapper-translateX: 80%;
+.layout-wrapper {
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	overflow-y: scroll;
+
+	// this is here to help out decorative pseudo elements
+	// that have negative right positions on single faculty pages
+	// might have to remove if this causes negative effects anywhere else.
+	overflow-x: hidden;
+	background: url( $images-path + 'bg-wave-cut.png' ) top center;
+
+	@include transition( transform 0.2s ease );
+	//@include transform-style( preserve-3d );
+	//@include backface-visibility( hidden );
+	//@include transform( translate3d(0,0,0) );
+
+	.lt-ie9 & {
+		width: auto;
+		overflow: auto;
+	}
+
+	.mobile-menu-active & {
+		@include transform( translateX(-$layout-wrapper-translateX) );
+		height: 100%;
+		overflow-y: hidden;
+	}
+
+} // .layout-wrapper
+
+// transition to .layout-container
+.container,
+.layout-container {
+	@extend .clearfix;
+	margin: 0 auto;
+	@include rem('padding', 0, 0.5);
+	max-width: ( $max-width / 1px ) + ( 2 * ( $base-font-size / 1px ) ) + px;
+
+	@include min-width ( $iPadPortrait ) {
+		@include rem('padding', 0, 1);
+	}
+
+} // .layout-container
+
+// columns
+@mixin col-1() {
+	width: 24.7169811%; // 262px at widest
+}
+
+@mixin col-2 {
+	width: 49.8113208%; // 528px at widest
+}
+
+@mixin col-3 {
+	width: 74.9056604%; // 794px at widest
+}
+

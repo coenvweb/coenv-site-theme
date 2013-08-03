@@ -1,0 +1,12 @@
+
+/*	Module: links
+		======================================================================== */
+
+a {
+	color: $accent-blue;
+
+	&:hover {
+		color: $accent-hover !important;
+	}
+
+} // a

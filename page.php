@@ -46,25 +46,7 @@ $banner = coenv_banner();
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<section class="entry">
-
-							<header class="entry-header">
-
-								<h1><?php the_title() ?></h1>
-
-							</header><!-- .entry-header -->
-
-							<section class="entry-content">
-
-								<?php the_content() ?>
-
-							</section><!-- .entry-content -->
-
-							<footer class="entry-footer">
-
-							</footer><!-- .entry-footer -->
-
-						</section><!-- .entry -->
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
 
