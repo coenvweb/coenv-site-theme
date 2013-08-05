@@ -43,7 +43,6 @@ display: none;
 		@include min-width ( $iPadPortrait ) {
 			float: right;
 			@include col-3;
-			//@include rem('padding-left', 2);
 		}
 
 	} // .main-col

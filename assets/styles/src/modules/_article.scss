@@ -4,10 +4,11 @@
 		======================================================================== */
 
 .article {
-	@include rem('margin', 1);
+//outline: 1px solid red;
+	@include rem('padding', 1);
 
 	@include min-width ( $iPadPortrait ) {
-		@include rem('margin', 3);
+		@include rem('padding', 2, 3);
 	}
 
 } // .article

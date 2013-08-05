@@ -8,13 +8,11 @@ body.single-post {
 
 	.article {
 		@extend .shadow;
-		@include rem('margin-top', 0);
-		@include rem('margin-bottom', 1);
-		@include rem('padding', 2, 2, 1);
+		@include rem('margin', 1);
+		@include rem('padding', 2);
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin-bottom', 2);
 		}
 
 		.article_header {
@@ -41,7 +39,6 @@ body.single-post {
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, 3);
 		}
 
 		form,

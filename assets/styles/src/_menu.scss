@@ -77,17 +77,20 @@
 	} // .page-depth-0
 
 	.search-form {
+		display: block;
+		width: 100%;
 		@include rem('padding', 1);
 		border-bottom: 1px solid #3d3d3d;
 
-		.input-wrap {
+		.field-wrap {
+			display: block;
 			width: 100%;
 		}
 
 		input[type="text"] {
 			width: 85%;
 			background: #666;
-			color: #fff;
+			color: #eee;
 		}
 
 		button[type="submit"] {
