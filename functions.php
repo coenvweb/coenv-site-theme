@@ -1046,7 +1046,7 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'full' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'huge' );
 	$attachment_post_obj = get_post( $thumb_id );
 
 	$banner = array(
