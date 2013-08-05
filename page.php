@@ -13,34 +13,32 @@ $ancestor = array(
 	'permalink' => get_permalink( $ancestor_id ),
 	'title' => get_the_title( $ancestor_id )
 );
-
-$banner = coenv_banner();
 ?>
 
 	<section id="page" role="main" class="page-area">
 
 		<div class="container">
 
-			<nav id="secondary-nav" class="side-col">
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-					<ul id="menu-secondary" class="menu">
-              <?php wp_list_pages( array(
-              		'child_of' => $ancestor['id'],
-                  'depth' => 3,
-                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-                  'link_after' => '<i class="icon-arrow-right"></i>',
-                  'walker' => new CoEnv_Secondary_Menu_Walker,
-                  'sort_column' => 'menu_order'
-              ) ) ?>
-          </ul>
+				<nav id="secondary-nav" class="side-col">
 
-			</nav><!-- #secondary-nav.side-col -->
+						<ul id="menu-secondary" class="menu">
+	              <?php wp_list_pages( array(
+	              		'child_of' => $ancestor['id'],
+	                  'depth' => 3,
+	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+	                  'link_after' => '<i class="icon-arrow-right"></i>',
+	                  'walker' => new CoEnv_Secondary_Menu_Walker,
+	                  'sort_column' => 'menu_order'
+	              ) ) ?>
+	          </ul>
+
+				</nav><!-- #secondary-nav.side-col -->
+
+			<?php endif ?>
 
 			<div class="main-col">
-
-				<?php if ( isset( $banner ) && isset( $banner['caption'] ) && !empty( $banner['caption'] ) ) : ?>
-					<p class="banner-caption">Banner image: <?php echo $banner['caption'] ?></p>
-				<?php endif ?>
 
 				<?php if ( have_posts() ) : ?>
 

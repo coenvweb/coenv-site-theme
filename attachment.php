@@ -1,13 +1,21 @@
 <?php
 /**
- * attachment.php
+ * page.php
  *
- * Single attachment template
+ * The main page template
  */
 get_header();
+
+$ancestor_id = coenv_get_ancestor();
+
+$ancestor = array(
+	'id' => $ancestor_id,
+	'permalink' => get_permalink( $ancestor_id ),
+	'title' => get_the_title( $ancestor_id )
+);
 ?>
 
-	<section id="page" role="main" class="page-area">
+	<section id="page" role="main" class="full-width">
 
 		<div class="container">
 
@@ -17,37 +25,17 @@ get_header();
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<article class="entry attachment">
-
-							<header>
-								<h1><?php the_title() ?></h1>
-
-								<?php
-								$metadata = wp_get_attachment_metadata();
-									printf( __( '<span class="meta-prep meta-prep-entry-date">Published </span> <span class="entry-date"><time class="entry-date" datetime="%1$s">%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%8$s</a>.', 'coenv' ),
-										esc_attr( get_the_date( 'c' ) ),
-										esc_html( get_the_date() ),
-										esc_url( wp_get_attachment_url() ),
-										$metadata['width'],
-										$metadata['height'],
-										esc_url( get_permalink( $post->post_parent ) ),
-										esc_attr( strip_tags( get_the_title( $post->post_parent ) ) ),
-										get_the_title( $post->post_parent )
-									);
-								?>
-							</header>
-
-							<div class="entry-content">
-								<?php echo wp_get_attachment_image( $post->ID, $attachment_size ) ?>
-							</div>
-
-						</article>
+						<?php get_template_part( 'partials/partial', 'attachment' ) ?>
 
 					<?php endwhile ?>
 
 				<?php endif ?>
 
 			</div><!-- .main-col -->
+
+			<div class="side-col">
+				<?php get_sidebar() ?>
+			</div><!-- .side-col -->
 
 		</div><!-- .container -->
 

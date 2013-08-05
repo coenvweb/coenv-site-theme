@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-arrow-up, .icon-arrow-right, .icon-arrow-down, .icon-arrow-left, .icon-list, .icon-icon-uw, .icon-mail, .icon-search, .icon-link, .icon-twitter, .icon-facebook, .icon-vimeo, .icon-googleplus, .icon-pinterest, .icon-flickr, .icon-instagram, .icon-dropbox, .icon-share, .icon-phone, .icon-cog, .icon-search-2, .icon-vcard, .icon-export, .icon-comment, .icon-camera, .icon-earth, .icon-rss, .icon-bars, .icon-info, .icon-shuffle, .icon-arrow-left-2, .icon-arrow-down-2, .icon-arrow-up-2, .icon-arrow-right-2, .icon-skype, .icon-youtube, .icon-heart, .icon-faculty-grid-alt-2, .icon-calendar {
+.icon-arrow-up, .icon-arrow-right, .icon-arrow-down, .icon-arrow-left, .icon-list, .icon-icon-uw, .icon-mail, .icon-search, .icon-link, .icon-twitter, .icon-facebook, .icon-vimeo, .icon-googleplus, .icon-pinterest, .icon-flickr, .icon-instagram, .icon-dropbox, .icon-share, .icon-phone, .icon-cog, .icon-search-2, .icon-vcard, .icon-export, .icon-comment, .icon-camera, .icon-earth, .icon-rss, .icon-bars, .icon-info, .icon-shuffle, .icon-arrow-left-2, .icon-arrow-down-2, .icon-arrow-up-2, .icon-arrow-right-2, .icon-skype, .icon-youtube, .icon-heart, .icon-faculty-grid-alt-2, .icon-calendar, .icon-cross {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -153,4 +153,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-calendar:before {
 	content: "\e00f";
+}
+.icon-cross:before {
+	content: "\e005";
 }

@@ -8,6 +8,8 @@
 	@include rem('padding', 0.4, 0);
 	text-align: right;
 	background: $bg-dk;
+	opacity: 1;
+	@extend .hide-on-banner-reveal;
 
 	@include min-width ( $iPadPortrait ) {
 		display: block;

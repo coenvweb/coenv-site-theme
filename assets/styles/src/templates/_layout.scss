@@ -33,6 +33,7 @@ $layout-wrapper-translateX: 80%;
 	z-index: 100;
 	width: 100%;
 	overflow-y: scroll;
+	@include transition( background .25s ease );
 
 	// this is here to help out decorative pseudo elements
 	// that have negative right positions on single faculty pages
@@ -54,6 +55,10 @@ $layout-wrapper-translateX: 80%;
 		@include transform( translateX(-$layout-wrapper-translateX) );
 		height: 100%;
 		overflow-y: hidden;
+	}
+
+	.banner-revealed & {
+		background: #222;
 	}
 
 } // .layout-wrapper

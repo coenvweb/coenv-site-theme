@@ -3,6 +3,7 @@
 		======================================================================== */
 
 .banner-wrapper {
+	position: relative;
 
 	// default banner padding
 	@include rem('padding-bottom', 7);
@@ -19,6 +20,7 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
+		@include transition( padding-bottom .25s ease );
 
 		// help out older browsers with background-size
 		.lt-ie9 & {
@@ -32,10 +34,90 @@
 		padding-bottom: 25%;
 	}
 
+	.has-banner.banner-revealed & {
+		padding-bottom: 50% !important;
+		background-size: contain;
+		cursor: pointer;
+	}
+
 	// disable default padding for specific pages
 	.home & {
 		padding: 0;
 	}
+
+	.banner-info {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: 0 auto;
+		max-width: $max-width;
+		text-align: right;
+
+		.banner-revealed & {
+			//display: none;
+		}
+
+		a {
+			display: inline-block;
+			@include rem('margin', 0, 1);
+			@include rem('padding', 0.5, 1);
+			@include font-size(11);
+			color: #fff;
+			color: rgba(255,255,255,0.8);
+			text-decoration: none;
+			@include text-shadow( rgba(0,0,0,0.5) 0px 0px 1em );
+
+			&:hover {
+				color: #fff !important;
+				background: $bg-dk;
+				background: rgba(0,0,0,0.9);
+			}
+
+		} // a
+
+		i {
+			position: relative;
+			top: 0.1em;
+			@include rem('margin-right', 0.25);
+			@include font-size(14);
+
+			.banner-revealed & {
+				@extend .icon-cross;
+			}
+
+		} // i
+
+	} // .banner-info
+
+	.banner-caption {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		left: 0;
+		margin: 0 auto;
+		@include rem('padding', 1);
+		@extend .antialiased;
+		@include font-size(12);
+		@include col-2;
+		display: block;
+		max-width: $max-width;
+		color: #ddd;
+		opacity: 0;
+		@include transition( all .25s ease );
+
+		.banner-revealed & {
+			opacity: 1;
+		}
+
+		h2 {
+			margin: 0;
+			@include serif;
+			font-weight: 400;
+			color: #fff;
+		}
+
+	} // .banner-caption
 
 } // .banner-wrapper
 
@@ -56,6 +138,7 @@
 	height: 100%;
 	background: $white;
 	@extend .shadow;
+	@extend .hide-on-banner-reveal;
 
 	@include min-width ( $iPadPortrait ) {
 		display: block;

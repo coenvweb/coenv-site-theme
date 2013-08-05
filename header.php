@@ -110,7 +110,6 @@
                                 <?php get_search_form() ?>
 
                                 <ul id="menu-main" class="menu">
-                                    <?php //new CoEnv_Main_Menu() ?>
                                     <?php 
                                     wp_list_pages( array(
                                         'depth' => 3,
@@ -125,5 +124,13 @@
                         </header><!-- #header -->
 
                     </div><!-- .container.header-container -->
+
+                    <?php if ( isset( $banner['caption'] ) && !empty( $banner['caption'] ) ) : ?>
+                        <div class="banner-info"><a href="<?php echo $banner['permalink'] ?>"><i class="icon-camera"></i>About the image</a></div>
+                        <div class="banner-caption">
+                            <h2><?php echo $banner['title'] ?></h2>
+                            <?php echo $banner['caption'] ?>
+                        </div>
+                    <?php endif ?>
 
                 </div><!-- .banner-wrapper -->

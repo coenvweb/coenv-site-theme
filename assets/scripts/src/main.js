@@ -10,7 +10,40 @@ jQuery(function ($) {
 	// single faculty member tabs
 	$('#member-tab-nav').memberTabs();
 
+	// banner image reveals
+	$('.banner-wrapper').bannerReveals();
+
 });
+
+/**
+ * Banner image reveals
+ */
+$.fn.bannerReveals = function () {
+	'use strict';
+
+	return this.each( function () {
+
+		var $container = $(this),
+				$revealBtn = $('.banner-info'),
+				activeClass = 'banner-revealed';
+
+
+
+		$revealBtn.on( 'click', function ( e ) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			$('body').toggleClass( activeClass );
+		} );
+
+		$container.on( 'click', function () {
+			if ( $('body').hasClass( activeClass ) ) {
+				$('body').removeClass( activeClass );
+			}
+		} );
+
+	} );
+};
 
 /**
  * Handle responsive videos

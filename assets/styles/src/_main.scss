@@ -1,4 +1,13 @@
+.hide-on-banner-reveal {
+	opacity: 1;
+	@include transition( opacity 0.25s ease );
 
+	.banner-revealed & {
+		opacity: 0;
+		//display: none;
+	}
+
+} // .hide-on-banner-reveal
 
 
 /*	Main content section
@@ -7,6 +16,7 @@
 section[role="main"] {
 	@extend .clearfix;
 	position: relative;
+	@extend .hide-on-banner-reveal;
 
 	// white background 'page'
 	&.page-area,
@@ -46,6 +56,10 @@ display: none;
 		}
 
 	} // .main-col
+
+	&.full-width .main-col  {
+		width: 100%;
+	}
 
 	.side-col {
 		clear: left;
