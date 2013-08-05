@@ -17,8 +17,10 @@
 
 			if ( !empty( $cats ) ) {
 				$output .= '<select name="category-dropdown">';
-				foreach ( $cats as $cat ) { 
-					$output .= '<option value="' . $cat->slug . '">' . $cat->name . '</option>';
+				$output .= '<option value="">Select category</option>';
+				foreach ( $cats as $cat ) {
+					$selected = get_query_var('cat') == $cat->term_id ? ' selected="selected"' : '';
+					$output .= '<option value="' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';
 				}
 				$output .= '</select>';
 				echo $output;
@@ -28,6 +30,7 @@
 
 	<div class="input-item select-month">
 			<select name="archive-dropdown">
+				<option value="">Select month</option>
 				<?php wp_get_archives(array(
 					'type' => 'monthly',
 					'format' => 'option'

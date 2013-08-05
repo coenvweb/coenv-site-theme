@@ -47,8 +47,7 @@ $banner = coenv_banner();
 				<?php endif ?>
 
 				<footer class="pagination">
-					<?php //coenv_paginate() ?>
-					<?php //echo paginate_links() ?>
+					<?php coenv_paginate() ?>
 				</footer>
 
 			</div><!-- .main-col -->
