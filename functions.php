@@ -514,201 +514,22 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 }
 
 
-class _CoEnv_Main_Menu_Walker extends Walker_Page {
-
-	function __construct () {
-
-		$this->top_level_counter = 0;
-
-		$this->menu_pages = array();
-		$this->top_level_pages = array();
-		$this->subheader_pages = array();
-
-		// get all pages that are set to appear in the main menu
-		$menu_pages = get_posts( array(
-			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'meta_query' => array(
-				array(
-					'key' => 'show_in_main_menu',
-					'value' => 1,
-					'compare' => 'LIKE'
-				)
-			)
-		) );
-
-		if ( !empty( $menu_pages ) ) {
-			foreach ( $menu_pages as $page ) {
-				$this->menu_pages[] = $page->ID;
-
-				if ( empty( $page->ancestors ) ) {
-					$this->top_level_pages[] = $page->ID;
-				}
-			}
-		}
-
-		$subheader_pages = get_posts( array(
-			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'meta_query' => array(
-				array(
-					'key' => 'make_subheader',
-					'value' => 1,
-					'compare' => 'LIKE'
-				)
-			)
-		) );
-
-		if ( !empty( $subheader_pages ) ) {
-			foreach ( $subheader_pages as $page ) {
-				$this->subheader_pages[] = $page->ID;
-			}
-		}
-	}
-
-	function in_main_menu( $item, $depth ) {
-
-		// item must be in menu pages
-		if ( !in_array( $item->ID, $this->menu_pages ) ) {
-			return false;
-		}
-
-		$ancestor_id = array_pop( $item->ancestors );
-
-		// if child item, item ancestor must be in top level pages
-		if ( $depth !== 0 && !in_array( $ancestor_id, $this->top_level_pages ) ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Starts a branch of the tree (<ul>)
-	 */
-	function start_lvl ( &$output, $depth = 0, $args = array() ) {
-
-		// continue with original start_lvl()
-		parent::start_lvl( $output, $depth, $args );
-	}
-
-	/**
-	 * Ends a branch of the tree (</ul>)
-	 */
-	function end_lvl ( &$output, $depth = 0, $args = array() ) {
-
-		// continue with original end_lvl()
-		parent::end_lvl( $output, $depth, $args );
-	}
-
-	/**
-	 * Starts an element of a branch (<li>)
-	 */
-	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
-		extract($args, EXTR_SKIP);
-
-		// check that this page is set to appear in the main menu
-		if ( !$this->in_main_menu( $page, $depth ) ) {
-			return false;
-		}
-
-		// set up css classes
-		$css_class = array( 'page-depth-' . $depth, 'page_item', 'page-item' . $page->ID );
-
-		// check if this item is a "subheader item"
-		// meaning we need to show it in subheader style and show its children
-		// at launch, we're using this for the students section, where the dropdown
-		// should show items underneath 'undergraduate' and 'graduate'
-		if ( $depth == 1 && in_array( $page->ID, $this->subheader_pages ) ) {
-			array_push( $css_class, 'menu-item-subheader' );
-		}
-
-		if ( !empty($current_page) ) {
-			$_current_page = get_post( $current_page );
-			if ( in_array( $page->ID, $_current_page->ancestors ) )
-				$css_class[] = 'current_page_ancestor';
-			if ( $page->ID == $current_page )
-				$css_class[] = 'current_page_item';
-			elseif ( $_current_page && $page->ID == $_current_page->post_parent )
-				$css_class[] = 'current_page_parent';
-		} elseif ( $page->ID == get_option('page_for_posts') ) {
-			$css_class[] = 'current_page_parent';
-		}
-		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-
-		// top-level only
-		if ( $depth == 0 ) {
-
-			// start a new column of items
-			if ( $this->top_level_counter % 3 == 0 ) {
-				$output .= "\n" . '<li class="column">' . "\n";
-				$output .= '<ul>' . "\n";
-			}
-
-			// increment top_level_counter
-			$this->top_level_counter++;
-		}
-
-		$output .= '<li class="' . $css_class . '">';
-
-		// wrap top-level items in <span>
-		if ( $depth == 0 ) {
-			$output .= '<span>';
-		}
-
-		$output .= '<a href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
-
-		// wrap top-level items in <span>
-		if ( $depth == 0 ) {
-			$output .= '</span>';
-		}
-
-	}
-
-	/**
-	 * Ends an element of a branch (</li>)
-	 */
-	function end_el ( &$output, $page, $depth = 0, $args = array() ) {
-
-		// check that this element is set to appear in main menu
-		if ( !$this->in_main_menu( $page, $depth ) ) {
-			return false;
-		}
-
-		// continue with original end_el()
-		parent::end_el( $output, $page, $depth, $args );
-
-
-		// end the current column every third item (3, 9, ...) or last item
-		//if ( $depth == 0 && ( ( $this->top_level_counter % 3 == 0 ) || ( $item->menu_order == $this->current_menu->count) ) ) {
-		if ( $depth == 0 && ( $this->top_level_counter % 3 == 0 ) || ( $this->top_level_counter == count( $this->top_level_pages )  ) ) {
-			$output .= '</ul>' . "\n";
-			$output .= '</li><!-- .column -->' . "\n";
-		}
-
-	}
-
-}
-
-
 // update all pages
 // BEWARE
 //add_action('admin_init', 'coenv_update_pages');
-function coenv_update_pages() {
-
-	$pages = get_posts( array(
-		'posts_per_page' => -1,
-		'post_type' => 'page',
-		'post_status' => 'publish'
-	) );
-
-	foreach ( $pages as $page ) {
-		//update_field( 'field_51fa8ff231d73', '1', $page->ID );
-	}
-
-}
+//function coenv_update_pages() {
+//
+//	$pages = get_posts( array(
+//		'posts_per_page' => -1,
+//		'post_type' => 'page',
+//		'post_status' => 'publish'
+//	) );
+//
+//	foreach ( $pages as $page ) {
+//		//update_field( 'field_51fa8ff231d73', '1', $page->ID );
+//	}
+//
+//}
 
 /**
  * Used for secondary nav on pages that don't appear within the main menu
@@ -801,6 +622,18 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 		// continue with original end_el()
 		parent::end_el( $output, $page, $depth, $args );
 
+	}
+
+}
+
+class CoEnv_Top_Menu_Walker extends Walker_Nav_Menu {
+
+//	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+
+	//}
+
+	function start_el( &$output, $item, $depth = 0, $args = array() ) {
+		parent::start_el( $output, $item, $depth, $args );
 	}
 
 }

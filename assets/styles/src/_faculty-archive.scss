@@ -214,23 +214,32 @@ display: none;
 			border-top: 1px solid #222;
 		} // .hrule
 		
-		.input-wrap {
+		.field-wrap {
 			@include rem('margin', 0.5, 0, 0);
 			width: 100%;
 
 			input[type="text"] {
-				width: 85%;
 				background: #666;
+				@include font-size(12);
 				color: #fff;
-			}
+
+				@include placeholder() {
+					color: #fff;
+				}
+
+			} // input[type="text"]
 
 			button[type="submit"] {
-				width: 15%;
 				background: #666;
 				border-left: none;
-			}
 
-		} // .input-wrap
+				i {
+					color: #fff;
+				}
+
+			} // button[type="submit"]
+
+		} // .field-wrap
 
 	} // .faculty-toolbox-form
 

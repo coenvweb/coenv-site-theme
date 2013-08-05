@@ -63,6 +63,7 @@
                                 'depth' => 1,
                                 'menu_id' => 'menu-top',
                                 'container' => false, 
+                                'walker' => new CoEnv_Top_Menu_Walker(),
                                 'fallback_cb' => false
                             )); ?>
 
@@ -113,7 +114,7 @@
                                     <?php 
                                     wp_list_pages( array(
                                         'depth' => 3,
-                                        'walker' => new CoEnv_Main_Menu_Walker,
+                                        'walker' => new CoEnv_Main_Menu_Walker(),
                                         'title_li' => false,
                                         'sort_column' => 'menu_order, post_title'
                                     ) );

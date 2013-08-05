@@ -78,11 +78,11 @@ $ordered_themes = $themes;
 
 	        	<div class="hrule"></div>
 
-	          <div class="input-wrap search-form">
+	          <div class="field-wrap search-form">
 	              <input id="keyword-search" name="s" type="text" placeholder="<?php echo esc_attr(__('Search all faculty')); ?>" value="<?php the_search_query(); ?>">
 	              <input type="hidden" name="post_type" value="faculty" /> <!-- important! -->
 	              <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-	          </div><!-- .input-wrap -->
+	          </div><!-- .field-wrap -->
 	          <label>Search</label>
 	      </form>
 

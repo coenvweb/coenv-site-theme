@@ -6,13 +6,11 @@ form {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-	line-height: 0;
 
 	input,
 	button {
 		@include sans;
 		@include font-size(14);
-		//@include line-height(14);
 		white-space: nowrap;
 		display: inline-block;
 		background: #fff;
@@ -44,6 +42,7 @@ form {
 		button {
 			display: inline-block;
 			vertical-align: middle;
+			@include font-size(12);
 			@include border-radius(0);
 			@include rem('height', $field-wrap-height);
 		}
