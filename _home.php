@@ -1,9 +1,8 @@
 <?php
 /**
- * index.php
+ * page.php
  *
- * Main template
- * Used for blog posts
+ * The main page template
  */
 get_header();
 
@@ -14,11 +13,9 @@ $ancestor = array(
 	'permalink' => get_permalink( $ancestor_id ),
 	'title' => get_the_title( $ancestor_id )
 );
-
-$banner = coenv_banner();
 ?>
 
-	<section id="blog" role="main">
+	<section id="page" role="main" class="page-area">
 
 		<div class="container">
 
@@ -37,8 +34,6 @@ $banner = coenv_banner();
 
 			<div class="main-col">
 
-				<?php get_template_part( 'partials/partial', 'blog-header' ) ?>
-
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
@@ -49,11 +44,6 @@ $banner = coenv_banner();
 
 				<?php endif ?>
 
-				<footer class="pagination">
-					<?php //coenv_paginate() ?>
-					<?php //echo paginate_links() ?>
-				</footer>
-
 			</div><!-- .main-col -->
 
 			<div class="side-col">
@@ -62,6 +52,6 @@ $banner = coenv_banner();
 
 		</div><!-- .container -->
 
-	</section><!-- #blog -->
+	</section><!-- #page -->
 
 <?php get_footer() ?>
