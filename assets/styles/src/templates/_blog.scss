@@ -13,6 +13,7 @@ body.single-post {
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
+			@include rem('margin', 1, 0, 1, 1);
 		}
 
 		.article_header {
@@ -39,6 +40,7 @@ body.single-post {
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
+			@include rem('margin', 1, 0, 1, 1);
 		}
 
 		form,
