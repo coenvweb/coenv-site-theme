@@ -1,3 +1,8 @@
+<?php  
+/**
+ * An individual article
+ */
+?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
 	<header class="article__header">

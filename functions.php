@@ -919,13 +919,13 @@ function coenv_breadcrumbs() {
 
 	// for news, output date
 	if ( $post_type == 'News' ) {
-		$output .= '<ul class="breadcrumbs">';
+		$output .= '<ul class="breadcrumbs__list">';
 		$output .= '<li>' . coenv_post_date() . '</li>';
 		$output .= '</ul>';
 	}
 
 	if ( isset( $post->ancestors ) && !empty( $post->ancestors ) ) {
-		$output .= '<ul class="breadcrumbs">';
+		$output .= '<ul class="breadcrumbs__list">';
 		
 		foreach ( $post->ancestors as $ancestor ) {
 			$output .= '<li><a href="' . get_permalink( $ancestor ) . '">' . get_the_title( $ancestor ) . '</a></li>';

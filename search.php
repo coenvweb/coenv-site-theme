@@ -6,7 +6,7 @@
  */
 get_header();
 
-$classes = array();
+$classes = array( 'template-search' );
 
 if ( get_query_var('post_type') == 'post' ) {
 	$classes[] = 'template-blog';
@@ -16,7 +16,7 @@ if ( get_query_var('post_type') == 'post' ) {
 
 ?>
 
-	<section id="search" role="main" class="<?php echo implode( ',', $classes ) ?>">
+	<section id="search" role="main" class="<?php echo implode( ' ', $classes ) ?>">
 
 		<div class="layout-container">
 
@@ -28,9 +28,9 @@ if ( get_query_var('post_type') == 'post' ) {
 
 			<div class="main-col">
 
-				<section class="article">
-					<header class="article-header">
-						<h1>Search results for "<?php the_search_query() ?>"</h1>
+				<section class="article search-header">
+					<header class="article__header">
+						<h1 class="article__title">Search results for "<?php the_search_query() ?>"</h1>
 					</header>
 				</section>
 
@@ -40,7 +40,15 @@ if ( get_query_var('post_type') == 'post' ) {
 
 						<?php while ( have_posts() ) : the_post() ?>
 
-							<?php get_template_part( 'partials/partial', 'article' ) ?>
+							<?php if ( in_array( 'template-blog', $classes ) ) : ?>
+
+								<?php get_template_part( 'partials/partial', 'article' ) ?>
+
+							<?php else : ?>
+
+								<?php get_template_part( 'partials/partial', 'article-search' ) ?>
+
+							<?php endif ?>
 
 						<?php endwhile ?>
 

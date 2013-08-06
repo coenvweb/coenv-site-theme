@@ -24,8 +24,8 @@
 		border-bottom: 2px solid $border;
 
 		@include min-width ( $iPadPortrait ) {
-			@include font-size(48);
-			@include line-height(56);
+			@include font-size(36);
+			@include line-height(48);
 		}
 
 		a {
