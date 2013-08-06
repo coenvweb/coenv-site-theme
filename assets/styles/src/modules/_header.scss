@@ -1,5 +1,6 @@
 
 /*	Header
+		Site-wide header area, including primary navigation and banner images.
 		======================================================================== */
 
 .banner-wrapper {
@@ -121,7 +122,7 @@
 
 } // .banner-wrapper
 
-.container.header-container {
+.layout-container--header {
 	@include rem('padding', 0.5);
 
 	@include min-width( $iPadPortrait ) {
@@ -131,7 +132,10 @@
 
 } // .container.header-container
 
-#header {
+/*	Site-wide header
+		======================================================================== */
+
+.site-header {
 	@extend .clearfix;
 	display: table;
 	width: 100%;
@@ -217,7 +221,7 @@
 
 	} // #show-menu
 
-} // #header
+} // .site-header
 
 
 

@@ -85,9 +85,9 @@
 
                 <div class="banner-wrapper"<?php if ( $banner ) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
 
-                    <div class="container header-container">
+                    <div class="layout-container layout-container--header">
 
-                        <header id="header" role="banner">
+                        <header id="header" role="banner" class="site-header">
 
                             <h1 id="logo">
                                 <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
@@ -106,11 +106,11 @@
                                 </button>
                             </div><!-- #show-menu -->
 
-                            <nav class="main-menu normal-menu" role="navigation">
+                            <nav class="nav-main main-menu normal-menu" role="navigation">
 
                                 <?php get_search_form() ?>
 
-                                <ul id="menu-main" class="menu">
+                                <ul id="menu-main" class="nav-main__menu  menu">
                                     <?php 
                                     wp_list_pages( array(
                                         'depth' => 3,

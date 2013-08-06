@@ -5,7 +5,7 @@ jQuery(function ($) {
 	$('select.chosen').chosen();
 
 	// fitvids for responsive videos
-	$('.entry-content').handleFitVids();
+	$('.article-content').handleFitVids();
 
 	// single faculty member tabs
 	$('#member-tab-nav').memberTabs();

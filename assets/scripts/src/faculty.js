@@ -138,46 +138,6 @@ jQuery(function ($) {
 
 		} );
 
-		// handle clicking on the interaction layer
-//		$interactionLayer.on( 'click', function ( e ) {
-//
-//			_this.$roller.focus();
-//
-//			var posX = $(this).offset().top,
-//					clickY = e.pageY,
-//					$items = _this.$roller.find('.faculty-toolbox-theme-roller-item'),
-//					coordinates = getCoordinates( $items ),
-//					data = {},
-//					targetIndex,
-//					$item,
-//					message;
-//
-//			for ( var i = 0, len = $items.length; i < len; i++ ) {
-//				if ( clickY >= coordinates[i].rangeA && clickY < coordinates[i].rangeB ) {
-//					targetIndex = coordinates[i].index;
-//				}
-//			}
-//
-//			$item = $items.eq( targetIndex );
-//
-//			data.filters = {
-//				theme: {
-//					name: $item.text(),
-//					slug: $item.attr('data-theme'),
-//					permalink: $item.attr('data-permalink')
-//				}
-//			};
-//
-//			// trigger isotope
-//			_this.$grid.trigger( 'triggerIsotope', [ data ] );
-//
-//			// trigger rollerChange
-//			_this.$roller.trigger('rollerChange', [ data ] );
-//
-//			// trigger click for procession item
-//			$item.click();
-//		} );
-
 		this.$toolbox.on( 'rollerView', function () {
 			// reset roller
 			_this.$roller.procession('destroy');
