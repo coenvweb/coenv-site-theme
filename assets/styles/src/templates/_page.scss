@@ -3,43 +3,7 @@
 		Customizations applied to content within the page.php template
 		======================================================================== */
 
-body.page {
+.template-page {
+	background: #fff;
 
-} // body.page
-
-/*	Search pages
-		======================================================================== */
-
-#search {
-
-	.search-results .entry-header h1 {
-		@include sans;
-	}
-
-	.entry {
-		@include rem('padding-top', 1);
-		@include rem('padding-bottom', 1);
-
-		.entry-header {
-
-			h1 {
-				margin: 0;
-				@include font-size(24);
-			}
-
-		} // .entry-header
-
-		.entry-excerpt {
-			display: none;
-
-			@include min-width ( $iPadPortrait ) {
-				display: block;
-				@include rem('padding-bottom', 2);
-				border-bottom: 1px solid #ddd;
-			}
-
-		} // .entry-excerpt
-
-	} // .entry
-
-} // #search
+} // .template-page

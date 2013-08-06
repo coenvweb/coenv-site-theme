@@ -12,9 +12,9 @@
 
 } // .article
 
-.article_header {
+.article__header {
 
-	.article_title {
+	.article__title {
 		margin-top: 0;
 		@include rem('padding-bottom', 1);
 		@include serif;
@@ -33,11 +33,11 @@
 			color: $text;
 		}
 
-	} // .article_title
+	} // .article__title
 
-} // .article-header
+} // .article__header
 
-.article_content {
+.article__content {
 	@extend .clearfix;
 
 	h1 {
@@ -193,13 +193,13 @@
 
 	} // .wp-caption
 
-} // .article-content
+} // .article__content
 
-.article_meta {
+.article__meta {
 	@include font-size(12);
 	color: $text-lt;
 
-	.article_categories {
+	.article__categories {
 		display: inline-block;
 
 		ul {
@@ -213,10 +213,10 @@
 			display: inline-block;
 		}
 
-	} // .article_categories
+	} // .article__categories
 
-} // .article_meta
+} // .article__meta
 
-.article_footer {
+.article__footer {
 
-} // .article-footer
+} // .article__footer

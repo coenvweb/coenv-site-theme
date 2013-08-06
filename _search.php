@@ -6,17 +6,13 @@
  */
 get_header();
 
-$classes = array();
-
 if ( get_query_var('post_type') == 'post' ) {
-	$classes[] = 'template-blog';
-} else {
-	$classes[] = 'template-page';
+
 }
 
 ?>
 
-	<section id="search" role="main" class="<?php echo implode( ',', $classes ) ?>">
+	<section id="search" role="main" class="page-area full-width">
 
 		<div class="layout-container">
 
@@ -40,7 +36,29 @@ if ( get_query_var('post_type') == 'post' ) {
 
 						<?php while ( have_posts() ) : the_post() ?>
 
-							<?php get_template_part( 'partials/partial', 'article' ) ?>
+							<?php// if ( get_post_type() === 'post' ) continue; // filter for pages only ?>
+
+							<section class="article">
+
+								<header class="article-header">
+
+									<?php echo coenv_breadcrumbs() ?>
+
+									<h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
+
+								</header><!-- .article-header -->
+
+								<section class="article-content article-excerpt">
+
+									<?php the_excerpt() ?>
+
+								</section><!-- .article-content -->
+
+								<footer class="article-footer">
+
+								</footer><!-- .article-footer -->
+
+							</section><!-- .article -->
 
 						<?php endwhile ?>
 
@@ -53,6 +71,13 @@ if ( get_query_var('post_type') == 'post' ) {
 				</footer>
 
 			</div><!-- .main-col -->
+
+			<div class="side-col">
+
+				<?php //if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-search')): endif; ?>
+				<?php get_sidebar() ?>
+
+			</div><!-- .side-col -->
 
 		</div><!-- .layout-container -->
 

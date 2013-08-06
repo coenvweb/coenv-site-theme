@@ -105,7 +105,7 @@ if ( !empty( $member['stories'] ) ) {
 
 		</div><!-- .container -->
 
-		<div class="profile-bottom page-area">
+		<div class="profile-bottom template-page">
 
 			<div class="container">
 

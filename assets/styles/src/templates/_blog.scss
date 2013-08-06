@@ -3,9 +3,7 @@
 		Customizations specific to the blog section
 		======================================================================== */
 
-body.blog,
-body.single-post,
-body.archive {
+.template-blog {
 
 	.article {
 		@extend .shadow;
@@ -65,37 +63,6 @@ body.archive {
 		} // form
 
 	} // .blog-header
-
-/*	Pagination
-		======================================================================== */
-
-.pagination {
-
-	ul {
-		@extend .shadow;
-		@include rem('margin', 1);
-		@include rem('padding', 1);
-		background: #fff;
-		list-style: none;
-		text-align: center;
-	}
-
-	li {
-		display: inline-block;
-	}
-
-	li .current {
-		@extend .button;
-		background: $accent;
-	}
-
-	a {
-		@extend .button;
-		text-decoration: none;
-		color: $text;
-	}
-
-} // .pagination
 
 
 

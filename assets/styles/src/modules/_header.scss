@@ -3,6 +3,16 @@
 		Site-wide header area, including primary navigation and banner images.
 		======================================================================== */
 
+.hide-on-banner-reveal {
+	opacity: 1;
+	@include transition( opacity 0.25s ease );
+
+	.banner-revealed & {
+		opacity: 0;
+	}
+
+} // .hide-on-banner-reveal
+
 .banner-wrapper {
 	position: relative;
 
