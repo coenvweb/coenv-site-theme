@@ -109,10 +109,17 @@ module.exports = function(grunt) {
 		rsync: {
 			dev: {
 				src: './',
-				dest: rsyncConfig.dest,
-				host: rsyncConfig.host,
+				dest: rsyncConfig.dev.dest,
+				host: rsyncConfig.dev.host,
 				recursive: true,
 				syncDest: true
+			},
+			staging: {
+				src: './',
+				dest: rsyncConfig.staging.dest,
+				host: rsyncConfig.staging.host,
+				recursive: true,
+				syncDest: false
 			}
 		}
 	});
@@ -136,7 +143,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('deploy', [
 		'default',
-		'rsync'
+		'rsync:dev'
 	]);
 
 	grunt.registerTask('default', [

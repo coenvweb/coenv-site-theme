@@ -5,7 +5,7 @@
 
 #top-nav {
 	display: none;
-	@include rem('padding', 0.4, 0);
+	@include rem('padding', 0.3, 0, 0.1);
 	text-align: right;
 	background: $bg-dk;
 	opacity: 1;
