@@ -243,11 +243,11 @@ function coenv_theme_setup() {
 
 	// Register nav menus
 	register_nav_menus(array(
-		'university' 	=> 'UW shortcuts',
-		'top'					=> 'CoEnv shortcuts',
-		'buttons'			=> 'Top buttons',
-		'main' 				=> 'Main Menu',
-		'footer'			=> 'Footer shortcuts',
+		'uw-links' => 'UW links',
+		'top-links' => 'Top links',
+		'top-buttons' => 'Top buttons',
+		//'main-menu' => 'Main Menu',
+		'footer-units' => 'Footer academic units'
 	));
 
 	// Featured images

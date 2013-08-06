@@ -51,7 +51,7 @@
                         <div class="top-menu normal-top-menu">
 
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'university',
+                                'theme_location' => 'uw-links',
                                 'depth' => 1,
                                 'menu_id' => 'menu-university',
                                 'container' => false,
@@ -59,7 +59,7 @@
                             )) ?>
 
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'top', 
+                                'theme_location' => 'top-links', 
                                 'depth' => 1,
                                 'menu_id' => 'menu-top',
                                 'container' => false, 
@@ -70,7 +70,7 @@
                             <?php get_search_form() ?>
 
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'buttons', 
+                                'theme_location' => 'top-buttons', 
                                 'depth' => 1, 
                                 'menu_id' => 'menu-buttons',
                                 'container' => false,

@@ -1,9 +1,10 @@
 /*	Footer
 		======================================================================== */
 
-#footer {
+.site-footer {
 	@include rem('padding', 2, 0);
-	background: $bg-dk url(../../img/bg-wave-cut-dk.jpg);
+	//background: $bg-dk url(../../img/bg-wave-cut-dk.jpg);
+	background: $bg-dk;
 
 	@include min-width ( $iPadPortrait ) {
 		//@include rem('padding', 2, 0);
@@ -34,7 +35,8 @@
 
 			span {
 				@include rem('padding-right', 0.5);
-				background: url( $images-path + 'bg-wave-cut-dk.jpg' );
+				//background: url( $images-path + 'bg-wave-cut-dk.jpg' );
+				background: $bg-dk;
 			}
 
 		} // h1
@@ -139,6 +141,6 @@
 
 	} // #bottom-links
 
-} // #footer
+} // .site-footer
 
 

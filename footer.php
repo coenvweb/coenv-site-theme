@@ -1,10 +1,10 @@
 
-                <footer id="footer" role="contentinfo">
+                <footer id="footer" role="contentinfo" class="site-footer">
 
-                    <div class="container">
+                    <div class="layout-container">
 
-                        <header>
-                            <h1><span>Explore the College of the Environment</span></h1>
+                        <header class="footer__header">
+                            <h1><span>University of Washington College of the Environment</span></h1>
                         </header>
 
                         <nav id="footer-nav">
@@ -18,16 +18,25 @@
                         </nav><!-- #footer-nav -->
 
                         <nav id="bottom-links">
-                            <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
 
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'bottom',
+                                'theme_location' => 'footer-links',
                                 'depth' => 2,
-                                'menu_id' => 'menu-bottom',
+                                'menu_id' => 'menu-footer-links',
+                                'container' => false,
+                                'fallback_cb' => false
+                            )) ?>
+
+                            <?php wp_nav_menu(array(
+                                'theme_location' => 'footer-units',
+                                'depth' => 2,
+                                'menu_id' => 'menu-footer-units',
                                 'container' => false,
                                 'fallback_cb' => false
                             )) ?>
                         </nav>
+
+                        <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
 
                     </div><!-- .container -->
 
