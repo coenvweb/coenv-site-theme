@@ -3,23 +3,27 @@
 		Authors: Darin Reid & Ryan Scherler
 		2012-2013
 
+		Styles authored in SASS
+		Compass
+
 		Import all components here
 		========================================================================== */
 
-// Compass framework
+/*	Frameworks
+		======================================================================== */
 @import 'compass';
 
-// Global settings
+/*	Project-wide settings
+		======================================================================== */
 @import 'config.scss';
 
-// Normalize CSS
+/*	Normalization
+		======================================================================== */
 @import 'normalize/index.scss';
-
-// elcontraption: tools and defaults
 @import 'elcontraption-tools/styles/tools-combined.scss';
 
-// Icon fonts
-@import 'icomoon.scss';
+/*	Plugins
+		======================================================================== */
 
 // RoyalSlider for home page features
 @import 'plugins/royalslider.scss';
@@ -29,59 +33,39 @@
 @import 'plugins/chosen-theme.scss';
 
 // Isotope for faculty grid
-@import 'isotope.scss';
+@import 'plugins/_isotope.scss';
+
+/*	Base styles
+		======================================================================== */
+@import 'base/_icomoon.scss';
+@import 'base/_fonts.scss';
+@import 'base/_layout.scss';
+@import 'base/_links.scss';
 
 /*	Modules
-		Define modular elements
 		======================================================================== */
-@import 'modules/_links.scss';
 @import 'modules/_button.scss';
 @import 'modules/_form.scss';
+@import 'modules/_menu_top.scss';
+@import 'modules/_header.scss';
+@import 'modules/_menu_main.scss';
+@import 'modules/_menu_secondary.scss';
+@import 'modules/_banner.scss';
 @import 'modules/_article.scss';
+@import 'modules/_widget.scss';
+@import 'modules/_widget_social.scss';
+@import 'modules/_widget_events.scss';
 
 
 /*	Templates
-		Specific pages and page areas that further extend modules
+		Specific pages and page areas that further extend modules and components
 		======================================================================== */
-@import 'templates/_layout.scss';
-@import 'templates/_menu_top.scss';
 @import 'templates/_home.scss';
 @import 'templates/_page.scss';
 @import 'templates/_blog.scss';
-
-
-
-
-// Primary stylesheet
-@import 'main.scss';
-
-// Header specific, including page banners
-@import 'header.scss';
-
-// Main menu, normal and mobile
-@import 'menu.scss';
-
-// Secondary side column menus
-@import 'secondary-menu.scss';
-
-// General forms
-//@import 'forms.scss';
-
-// Home page features
-@import 'features.scss';
-
-// CoEnv Currents stories on the home page
-@import 'stories.scss';
-
-// Home page events widget
-@import 'events.scss';
-
-// Blog specific
-//@import 'blog.scss';
-
-// Faculty area specific
-@import 'faculty-archive.scss';
-@import 'faculty-single.scss';
+@import 'templates/_footer.scss';
+@import 'templates/faculty-archive.scss';
+@import 'templates/faculty-single.scss';
 
 
 

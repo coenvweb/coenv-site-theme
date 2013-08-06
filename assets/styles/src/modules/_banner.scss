@@ -1,0 +1,14 @@
+
+/*	Module: banner
+		Full-width image banners displayed at the top of pages.
+		======================================================================== */
+
+.hide-on-banner-reveal {
+	opacity: 1;
+	@include transition( opacity 0.25s ease );
+
+	.banner-revealed & {
+		opacity: 0;
+	}
+
+} // .hide-on-banner-reveal

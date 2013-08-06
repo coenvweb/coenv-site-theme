@@ -4,16 +4,13 @@
 $max-width: 1060px;
 $maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2 ) / 1px );
 
-/*	Base font size
+/*	Base font size and rounded corners
 		======================================================================== */
-
 $base-font-size: 14px;
-
 $radius: 2px;
 
 /*	Asset paths
 		======================================================================== */
-
 $images-path: '../../img/';
 $fonts-path: '../../fonts/';
 
@@ -36,21 +33,6 @@ $text-very-lt: #eee;
 $border: #ddd;
 
 $bg-dk: #363533;
-
-/*	Fonts
-		======================================================================== */
-
-@mixin sans() {
-  font: {
-    family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-}
-
-@mixin serif() {
-  font: {
-    family: "Skolar", Georgia, serif;
-  }
-}
 
 /*  Global shadow
     ======================================================================== */

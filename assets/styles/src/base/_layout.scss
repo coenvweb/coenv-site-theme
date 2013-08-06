@@ -90,3 +90,68 @@ $layout-wrapper-translateX: 80%;
 	width: 74.9056604%; // 794px at widest
 }
 
+/*	Main content section
+		======================================================================== */
+
+section[role="main"] {
+	@extend .clearfix;
+	position: relative;
+	@extend .hide-on-banner-reveal;
+
+	// white background 'page'
+	&.page-area,
+	.page-area {
+		background: #fff;
+
+	} // &.page-area
+
+	// big title within banner area
+	// place within main col if main and side cols are present
+	.section-header {
+display: none;
+		position: absolute;
+		bottom: 100%;
+
+		h1 {
+			margin: 0;
+			@include rem('padding', 1);
+			@include serif;
+			font-weight: 400;
+
+			.has-banner & {
+				color: #fff;
+				@extend .antialiased;
+				background: rgba(0,0,0,0.5);
+			}
+
+		} // h1
+
+	} // .section-header
+
+	.main-col {
+
+		@include min-width ( $iPadPortrait ) {
+			float: right;
+			@include col-3;
+		}
+
+	} // .main-col
+
+	&.full-width .main-col  {
+		width: 100%;
+	}
+
+	.side-col {
+		clear: left;
+		@include rem('margin-bottom', 1);
+
+		@include min-width ( $iPadPortrait ) {
+			float: left;
+			@include col-1;
+		}
+
+	} // .side-col
+
+} // section[role="main"]
+
+
