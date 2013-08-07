@@ -8,6 +8,10 @@
 	@include font-size(12);
 	color: #bbb;
 
+	a:hover {
+		color: #fff !important;
+	}
+
 	@include min-width ( $iPadPortrait ) {
 	}
 

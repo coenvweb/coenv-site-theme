@@ -478,17 +478,24 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 			}
 
 			$this->top_level_counter++;
-
 		}
 
 		$output .= '<li class="' . $css_class . '">';
 
+		$alt_title = '';
+
 		// wrap top-level items in <span>
 		if ( $depth == 0 ) {
+
+			// check for alternate drop-down title
+			// like "Meet our faculty" for "Faculty"
+			$alt_title = get_field( 'drop-down_title', $page->ID );
+			$alt_title = $alt_title ? ' title="' . $alt_title . '"' : '';
+
 			$output .= '<span>';
 		}
 
-		$output .= '<a href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
+		$output .= '<a' . $alt_title . ' href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
 
 		// wrap top-level items in <span>
 		if ( $depth == 0 ) {
