@@ -3,40 +3,24 @@
 
                     <div class="layout-container">
 
-                        <header class="footer__header">
+                        <header class="site-footer__header">
                             <h1><span>University of Washington College of the Environment</span></h1>
                         </header>
 
-                        <nav id="footer-nav">
-                            <?php wp_nav_menu(array(
-                                'theme_location' => 'footer',
-                                'depth' => 2,
-                                'menu_id' => 'menu-footer',
-                                'container' => false,
-                                'fallback_cb' => false
-                            )) ?>
-                        </nav><!-- #footer-nav -->
+                        <div class="footer__info">
+                            <?php get_search_form() ?>
+                            <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
+                        </div>
 
-                        <nav id="bottom-links">
-
-                            <?php wp_nav_menu(array(
-                                'theme_location' => 'footer-links',
-                                'depth' => 2,
-                                'menu_id' => 'menu-footer-links',
-                                'container' => false,
-                                'fallback_cb' => false
-                            )) ?>
-
+                        <nav class="footer-nav">
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'footer-units',
-                                'depth' => 2,
-                                'menu_id' => 'menu-footer-units',
+                                'depth' => 1,
+                                'menu_class' => 'menu-footer-units',
                                 'container' => false,
                                 'fallback_cb' => false
                             )) ?>
                         </nav>
-
-                        <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
 
                     </div><!-- .container -->
 

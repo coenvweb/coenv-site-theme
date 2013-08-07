@@ -300,7 +300,7 @@
 
 			.member-tab {
 				display: none;
-				@extend .entry;
+				@extend .article;
 
 				&.active-tab {
 					display: block;

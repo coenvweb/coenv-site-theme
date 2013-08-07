@@ -146,6 +146,11 @@ module.exports = function(grunt) {
 		'rsync:dev'
 	]);
 
+	grunt.registerTask('stage', [
+		'default',
+		'rsync:staging'
+	]);
+
 	grunt.registerTask('default', [
 		'jshint',
 		'compass',
