@@ -112,7 +112,7 @@ module.exports = function(grunt) {
 				dest: rsyncConfig.staging.dest,
 				host: rsyncConfig.staging.host,
 				recursive: true,
-				syncDest: false
+				syncDest: true
 			}
 		}
 	});
