@@ -95,12 +95,18 @@
 			width: 85%;
 			background: #666;
 			color: #eee;
-		}
+
+			@include placeholder {
+				color: #eee;
+			}
+
+		} // input[type="text"]
 
 		button[type="submit"] {
 			width: 15%;
 			background: #666;
 			border-left: none;
+			color: #eee;
 		}
 
 	} // .search-form
