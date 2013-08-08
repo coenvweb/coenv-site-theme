@@ -17,6 +17,10 @@
 	background: #303030;
 	//@include transition( all 0.25s ease );
 
+	@media print {
+		display: none;
+	}
+
 	@include min-width ( $iPadPortrait ) {
 		display: none !important;
 	}
@@ -135,6 +139,10 @@
 .main-menu.mobile-menu .page-depth-0  {
 	position: relative;
 
+	@media print {
+		display: none;
+	}
+
 	&:hover span > a {
 		background: none;
 		color: #ddd;
@@ -240,6 +248,10 @@
 
 	@include min-width ( $iPadPortrait ) {
 		display: block;
+	}
+
+	@media print {
+		display: none;
 	}
 
 	// all <ul>s

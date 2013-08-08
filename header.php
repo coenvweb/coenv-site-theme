@@ -36,6 +36,7 @@
         <?php 
             $banner = coenv_banner();
             $banner_class = $banner ? 'has-banner' : '';
+            $banner_class .= ' template-print';
         ?>
     </head>
     <body <?php body_class( $banner_class ) ?>>

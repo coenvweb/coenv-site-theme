@@ -15,6 +15,10 @@
 		display: block;
 	}
 
+	@media print {
+		display: none !important;
+	}
+
 	// all <ul>s
 	ul {
 		display: inline-block;

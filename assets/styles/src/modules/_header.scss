@@ -56,6 +56,10 @@
 		padding: 0;
 	}
 
+	@media print {
+		padding: 0 !important;
+	}
+
 	.banner-info {
 		position: absolute;
 		right: 0;
@@ -64,6 +68,10 @@
 		margin: 0 auto;
 		max-width: $max-width;
 		text-align: right;
+
+		@media print {
+			display: none;
+		}
 
 		.banner-revealed & {
 			//display: none;
@@ -116,6 +124,10 @@
 		color: #ddd;
 		opacity: 0;
 		@include transition( all .25s ease );
+
+		@media print {
+			display: none;
+		}
 
 		.banner-revealed & {
 			opacity: 1;
@@ -194,6 +206,10 @@
 		height: 100%;
 		vertical-align: middle;
 		text-align: right;
+
+		@media print {
+			display: none;
+		}
 
 		@include min-width ( $iPadPortrait ) {
 			display: none;

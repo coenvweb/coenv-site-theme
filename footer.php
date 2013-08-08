@@ -3,24 +3,38 @@
 
                     <div class="layout-container">
 
+                        <!--
                         <header class="site-footer__header">
                             <h1><span>University of Washington College of the Environment</span></h1>
                         </header>
+                        -->
 
                         <div class="footer__info">
                             <?php get_search_form() ?>
-                            <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
                         </div>
 
                         <nav class="footer-nav">
-                            <?php wp_nav_menu(array(
+                            <!--<h1 class="footer-nav__title">Units and programs</h1>-->
+                            <?php wp_nav_menu( array(
                                 'theme_location' => 'footer-units',
                                 'depth' => 1,
                                 'menu_class' => 'menu-footer-units',
                                 'container' => false,
                                 'fallback_cb' => false
-                            )) ?>
+                            ) ) ?>
                         </nav>
+
+                        <div class="uw-footer">
+                            <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
+
+                            <?php wp_nav_menu( array(
+                                'theme_location' => 'footer-links',
+                                'depth' => 1,
+                                'menu_class' => 'menu-footer-links',
+                                'container' => false,
+                                'fallback_cb' => false
+                            ) ) ?>
+                        </div>
 
                     </div><!-- .container -->
 

@@ -130,6 +130,10 @@ display: none;
 			@include col-3;
 		}
 
+		@media print {
+			width: 100%;
+		}
+
 	} // .main-col
 
 	&.full-width .main-col  {
@@ -143,6 +147,10 @@ display: none;
 		@include min-width ( $iPadPortrait ) {
 			float: left;
 			@include col-1;
+		}
+
+		@media print {
+			display: none;
 		}
 
 	} // .side-col
