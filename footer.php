@@ -9,6 +9,14 @@
 
                         <div class="footer__info">
                             <?php get_search_form() ?>
+                            <?php wp_nav_menu(array(
+                                'theme_location' => 'top-links', 
+                                'depth' => 1,
+                                'menu_class' => 'top-links',
+                                'container' => false, 
+                                'walker' => new CoEnv_Top_Menu_Walker(),
+                                'fallback_cb' => false
+                            )); ?>
                         </div>
 
                         <nav class="footer-nav">
