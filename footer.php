@@ -3,11 +3,9 @@
 
                     <div class="layout-container">
 
-                        <!--
                         <header class="site-footer__header">
                             <h1><span>University of Washington College of the Environment</span></h1>
                         </header>
-                        -->
 
                         <div class="footer__info">
                             <?php get_search_form() ?>
