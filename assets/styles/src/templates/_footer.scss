@@ -6,7 +6,6 @@
 	@include rem('padding', 2, 0);
 	background: $bg-dk;
 	@include font-size(12);
-	color: #bbb;
 
 	a:hover {
 		color: #fff !important;
@@ -134,7 +133,7 @@
 		@include font-size(10);
 		@include rem('padding', 2, 0, 0);
 		background: none;
-		color: #ddd;
+		color: #bbb;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
