@@ -25,7 +25,10 @@ module.exports = function(grunt) {
 		uglify: {
 			dist: {
 				options: {
-					//sourceMap
+					sourceMap: '<%= paths.dev %>/assets/scripts/maps/main.js.map',
+					sourceMapRoot: '../src/',
+					sourceMappingURL: '../maps/main.js.map',
+					sourceMapPrefix: '3'
 				},
 				files: {
 					'<%= paths.dev %>/assets/scripts/build/main.min.js': [
@@ -90,43 +93,43 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: ['<%= paths.dev %>/assets/styles/src/**/*.scss'],
-				tasks: [ 'sass' ],
-				options: {
-					livereload: true
-				}
+				tasks: [ 'sass' ]
 			},
 			scripts: {
 				files: ['<%= paths.dev %>/assets/scripts/src/**/*.js'],
-				tasks: ['jshint', 'uglify'],
-				options: {
-					livereload: true
-				}
+				tasks: ['jshint', 'uglify']
 			},
-			files: {
-				files: [
-					'<%= paths.dev %>/**/*.{html,php}'
-				],
-				tasks: [],
+			livereload: {
 				options: {
 					livereload: true
-				}
+				},
+				files: [
+					'<%= paths.dev %>/assets/styles/build/**/*.css',
+					'<%= paths.dev %>/assets/scripts/build/**/*.js',
+					'<%= paths.dev %>/**/*.{html,php}'
+				]
 			}
 		},
 
 		rsync: {
+			options: {},
 			stage: {
-				src: './',
-				dest: rsyncConfig.staging.dest,
-				host: rsyncConfig.staging.host,
-				recursive: true,
-				syncDest: false
+				options: {
+					src: './',
+					dest: rsyncConfig.staging.dest,
+					host: rsyncConfig.staging.host,
+					recursive: true,
+					syncDest: false
+				}
 			},
 			deploy: {
-				src: './',
-				dest: rsyncConfig.deployment.dest,
-				host: rsyncConfig.deployment.host,
-				recursive: true,
-				syncDest: false
+				options: {
+					src: './',
+					dest: rsyncConfig.deployment.dest,
+					host: rsyncConfig.deployment.host,
+					recursive: true,
+					syncDest: false
+				}
 			}
 		}
 	});
