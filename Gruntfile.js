@@ -1,19 +1,15 @@
 'use strict';
-var path = require('path');
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var folderMount = function folderMount(connect, point) {
-	return connect.static(path.resolve(point));
-};
 
 var rsyncConfig = require('./rsync-config.json');
 
 module.exports = function(grunt) {
 
 	grunt.initConfig({
+
 		paths: {
-			dev: '.',
-			test: 'test'
+			dev: '.'
 		},
+
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -25,8 +21,12 @@ module.exports = function(grunt) {
 				'!<%= paths.dev %>/assets/scripts/src/plugins/{,*/}*.js'
 			]
 		},
+
 		uglify: {
 			dist: {
+				options: {
+					//sourceMap
+				},
 				files: {
 					'<%= paths.dev %>/assets/scripts/build/main.min.js': [
 						'<%= paths.dev %>/components/jquery/jquery-migrate.min.js',
@@ -60,89 +60,104 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		compass: {
+
+		sass: {
 			dist: {
 				options: {
-					sassDir: '<%= paths.dev %>/assets/styles/src',
-					cssDir: '<%= paths.dev %>/assets/styles/build',
-					imagesDir: '<%= paths.dev %>/assets/img',
-					javascriptsDir: '<%= paths.dev %>/assets/scripts/build',
-					fontsDir: '<%= paths.dev %>/assets/fonts',
-					importPath: 'components',
-					outputStyle: 'compressed',
-					relativeAssets: true
+					sourcemap: true
+				},
+				files: {
+					'<%= paths.dev %>/assets/styles/build/screen.css': [
+						'<%= paths.dev %>/assets/styles/src/screen.scss'
+					]
 				}
 			}
 		},
-		watch: {
-			compass: {
-				files: ['<%= paths.dev %>/assets/styles/src/**/*.scss'],
-				tasks: ['compass']
-			},
-			srcjs: {
-				files: ['<%= paths.dev %>/assets/scripts/src/**/*.js'],
-				tasks: ['jshint', 'uglify']
-			},
-			livereload: {
-				files: [
-					'<%= paths.dev %>/assets/scripts/build/**/*.js',
-					'<%= paths.dev %>/assets/styles/build/*.css',
-					'<%= paths.dev %>/**/*.{html,php}',
-				],
-				tasks: ['livereload']
-			}
-		},
-		livereload: {
-			port: 35729 // Default livereload listening port.
-			// Must have livereload browser extension installed and working
-		},
-		connect: {
-			livereload: {
+
+		autoprefixer: {
+			dist: {
 				options: {
-					port: 9001,
-					middleware: function(connect, options) {
-						return [lrSnippet, folderMount(connect, options.base)];
-					}
+					browsers: ['last 2 versions']
+				},
+				files: {
+					'<%= paths.dev %>/assets/styles/build/screen.css' : [
+						'<%= paths.dev %>/assets/styles/build/screen.css'
+					]
 				}
 			}
 		},
+
+		watch: {
+			css: {
+				files: ['<%= paths.dev %>/assets/styles/src/**/*.scss'],
+				tasks: [ 'sass' ],
+				options: {
+					livereload: true
+				}
+			},
+			scripts: {
+				files: ['<%= paths.dev %>/assets/scripts/src/**/*.js'],
+				tasks: ['jshint', 'uglify'],
+				options: {
+					livereload: true
+				}
+			},
+			files: {
+				files: [
+					'<%= paths.dev %>/**/*.{html,php}'
+				],
+				tasks: [],
+				options: {
+					livereload: true
+				}
+			}
+		},
+
 		rsync: {
-			staging: {
+			stage: {
 				src: './',
 				dest: rsyncConfig.staging.dest,
 				host: rsyncConfig.staging.host,
 				recursive: true,
-				syncDest: true
+				syncDest: false
+			},
+			deploy: {
+				src: './',
+				dest: rsyncConfig.deployment.dest,
+				host: rsyncConfig.deployment.host,
+				recursive: true,
+				syncDest: false
 			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-livereload');
-	grunt.loadNpmTasks('grunt-regarde');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-rsync');
-
-	grunt.renameTask('regarde', 'watch');
 
 	grunt.registerTask('server', [
 		'default',
-		'livereload-start',
-		'connect:livereload',
 		'watch'
+	]);
+
+	grunt.registerTask('stage', [
+		'default',
+		'rsync:stage'
 	]);
 
 	grunt.registerTask('deploy', [
 		'default',
-		'rsync:staging'
+		'rsync:deploy'
 	]);
 
 	grunt.registerTask('default', [
 		'jshint',
-		'compass',
-		'uglify'
+		'uglify',
+		'sass',
+		'autoprefixer'
 	]);
 
 };

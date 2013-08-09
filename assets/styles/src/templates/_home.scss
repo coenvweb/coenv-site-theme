@@ -217,7 +217,7 @@ body.home {
 			@include rem('height', 1);
 			background: #bbb;
 			background: rgba(0,0,0,0.2);
-			@include border-radius( 50% );
+			border-radius: 50%;
 			cursor: pointer;
 
 			span {

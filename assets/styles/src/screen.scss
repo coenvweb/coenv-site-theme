@@ -11,7 +11,7 @@
 
 /*	Frameworks
 		======================================================================== */
-@import 'compass';
+//@import 'compass';
 
 /*	Project-wide settings
 		======================================================================== */
@@ -19,8 +19,8 @@
 
 /*	Normalization
 		======================================================================== */
-@import 'normalize/index.scss';
-@import 'elcontraption-tools/styles/tools-combined.scss';
+@import '../../../components/normalize/index.scss';
+@import '../../../components/elcontraption-tools/styles/tools-combined.scss';
 
 /*	Plugins
 		======================================================================== */

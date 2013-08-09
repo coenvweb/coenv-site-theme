@@ -47,7 +47,7 @@
 	// acts as slide container for theme roller and form
 	.faculty-toolbox-tools-inner {
 		position: relative;
-		@include transition( all .2s ease );
+		transition: all .2s ease;
 
 	} // .faculty-toolbox-tools-inner
 
@@ -57,7 +57,7 @@
 		.csstransforms & {
 
 			.faculty-toolbox-tools-inner {
-				@include transform( translateX(-100%) );	
+				transform: translateX(-100%);
 			}
 
 			.faculty-toolbox-feedback {
@@ -130,13 +130,13 @@ display: none;
 			&:before {
 				top: 0;
 				background-position: 0 bottom;
-				@include border-radius(4px 4px 0 0);
+				border-radius: 4px 4px 0 0;
 			}
 
 			&:after {
 				bottom: 0;
 				background-position: 0 top;
-				@include border-radius(0 0 4px 4px);
+				border-radius: 0 0 4px 4px;
 			}
 
 		} // .faculty-toolbox-interaction-layer
@@ -149,8 +149,8 @@ display: none;
 			@include rem('left', 0.75);
 			overflow: hidden;
 			background: #666;
-			@include border-radius(4px);
-			@include box-shadow( inset 0 0 10px rgba(0,0,0,0.5) );
+			border-radius: 4px;
+			box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 		}
 
 		.faculty-toolbox-theme-roller-item {
@@ -192,7 +192,7 @@ display: none;
 			margin: 0;
 			width: 100%;
 			@include font-size(14);
-			@include border-radius(4px);
+			border-radius: 4px;
 		}
 
 		.chzn-container {
@@ -256,7 +256,7 @@ display: none;
 		@include font-size(12);
 		@include line-height(16);
 		color: #fff;
-		@include transition( all .2s ease );
+		transition: all .2s ease;
 		border-bottom: 1px solid #222;
 		@extend .antialiased;
 		font-weight: 600;
@@ -298,7 +298,7 @@ display: none;
 
 	.faculty-toolbox-more-search-tools {
 		padding: 0;
-		@include transition( all .2s ease );
+		transition: all .2s ease;
 		border-top: 1px solid #3d3d3d;
 
 		a {

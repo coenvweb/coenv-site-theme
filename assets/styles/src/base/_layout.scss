@@ -35,7 +35,8 @@ $layout-wrapper-translateX: 80%;
 	z-index: 100;
 	width: 100%;
 	overflow-y: scroll;
-	@include transition( background .25s ease );
+	//@include transition( background .25s ease );
+	transition: background .25s ease;
 
 	// this is here to help out decorative pseudo elements
 	// that have negative right positions on single faculty pages
@@ -43,7 +44,8 @@ $layout-wrapper-translateX: 80%;
 	overflow-x: hidden;
 	background: url( $images-path + 'bg-wave-cut.png' ) top center;
 
-	@include transition( transform 0.2s ease );
+	//@include transition( transform 0.2s ease );
+	transition: transform 0.2s ease;
 	//@include transform-style( preserve-3d );
 	//@include backface-visibility( hidden );
 	//@include transform( translate3d(0,0,0) );
@@ -54,7 +56,8 @@ $layout-wrapper-translateX: 80%;
 	}
 
 	.mobile-menu-active & {
-		@include transform( translateX(-$layout-wrapper-translateX) );
+		//@include transform( translateX(-$layout-wrapper-translateX) );
+		transform: translateX( -$layout-wrapper-translateX );
 		height: 100%;
 		overflow-y: hidden;
 	}

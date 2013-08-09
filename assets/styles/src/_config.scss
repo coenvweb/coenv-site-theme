@@ -1,13 +1,13 @@
+/*	Base font size and rounded corners
+		======================================================================== */
+$base-font-size: 14px;
+$radius: 2px;
+
 /*  Maximum width
     ======================================================================== */
 
 $max-width: 1060px;
 $maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2 ) / 1px );
-
-/*	Base font size and rounded corners
-		======================================================================== */
-$base-font-size: 14px;
-$radius: 2px;
 
 /*	Asset paths
 		======================================================================== */
@@ -38,9 +38,11 @@ $bg-dk: #363533;
     ======================================================================== */
 
 @mixin shadow {
-  @include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  //@include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .shadow {
-  @include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  //@include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }

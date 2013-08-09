@@ -43,14 +43,14 @@ form {
 			display: inline-block;
 			vertical-align: middle;
 			@include font-size(12);
-			@include border-radius(0);
+			border-radius: 0;
 			@include rem('height', $field-wrap-height);
 		}
 
 		input[type="text"] {
 			@include rem('padding', 0, 0.5);
 			width: 85%;
-			@include border-radius( $radius 0 0 $radius );
+			border-radius: $radius 0 0 $radius;
 		}
 
 		button[type="submit"] {
@@ -58,7 +58,7 @@ form {
 			width: 15%;
 			text-align: center;
 			background: #ddd;
-			@include border-radius( 0 $radius $radius 0 );
+			border-radius: 0 $radius $radius 0;
 
 			span {
 				@extend .visuallyhidden;
