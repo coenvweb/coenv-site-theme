@@ -15,7 +15,7 @@
 	//height: 100%;
 	overflow-y: scroll;
 	background: #303030;
-	//@include transition( all 0.25s ease );
+	//transition: all 0.25s ease;
 
 	@media print {
 		display: none;

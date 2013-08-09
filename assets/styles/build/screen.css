@@ -2128,10 +2128,9 @@ body {
   z-index: 100;
   width: 100%;
   overflow-y: scroll;
-  -webkit-transition: background .25s ease;
-  transition: background .25s ease;
   overflow-x: hidden;
   background: url("../../img/bg-wave-cut.png") top center;
+  -webkit-transition: -webkit-transform 0.2s ease;
   transition: -ms-transform 0.2s ease;
   transition: transform 0.2s ease;
 }
