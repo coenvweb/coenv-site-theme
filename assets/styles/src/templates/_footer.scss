@@ -75,11 +75,11 @@
 			margin: 0;
 			padding: 0;
 			list-style: none;
-			//@include columns(2);
+			columns: 2;
 
 
 			@include min-width ( $iPadPortrait ) {
-				//@include columns(3);
+				columns: 3;
 			}
 
 			li {
