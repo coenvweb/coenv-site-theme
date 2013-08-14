@@ -2101,12 +2101,8 @@ you can use the generic selector below, but it's slower:
 		Site-wide main layout styles
 		======================================================================== */
 
-html.mobile-menu-active {
-  height: 100%;
-}
-
-html.mobile-menu-active body,
-html.mobile-menu-active .layout-outer {
+html,
+body {
   height: 100%;
 }
 
@@ -2127,7 +2123,6 @@ body {
   position: relative;
   z-index: 100;
   width: 100%;
-  overflow-y: scroll;
   overflow-x: hidden;
   background: url("../../img/bg-wave-cut.png") top center;
   -webkit-transition: -webkit-transform 0.2s ease;

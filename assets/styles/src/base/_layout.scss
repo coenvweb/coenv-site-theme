@@ -3,15 +3,20 @@
 		Site-wide main layout styles
 		======================================================================== */
 
-html.mobile-menu-active {
+html,
+body {
 	height: 100%;
+}
 
-	body,
-	.layout-outer {
-		height: 100%;
-	}
-
-} // html.mobile-menu-active
+//html.mobile-menu-active {
+//	height: 100%;
+//
+//	body,
+//	.layout-outer {
+//		height: 100%;
+//	}
+//
+//} // html.mobile-menu-active
 
 body {
 	@include sans;
@@ -34,7 +39,7 @@ $layout-wrapper-translateX: 80%;
 	position: relative;
 	z-index: 100;
 	width: 100%;
-	overflow-y: scroll;
+	//overflow-y: scroll;
 	//@include transition( background .25s ease );
 	//transition: background .25s ease;
 
