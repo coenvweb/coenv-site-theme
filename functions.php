@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Theme updates
- * Version number must be updated in style.css and theme-info.json!
- */
-require 'theme-updates/theme-update-checker.php';
-$update_checker = new ThemeUpdateChecker(
-	'coenv-wordpress-theme',
-	'https://github.com/elcontraption/coenv-wordpress-theme/archive/master.zip'
-);
-
-/**
  * Incorporate CoEnv Member API into the theme
  * this used to be a separate plugin, but it makes more sense to include it in the theme
  */
