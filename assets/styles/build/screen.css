@@ -3675,6 +3675,17 @@ section[role="main"],
   text-align: left;
 }
 
+.article__content table th {
+  background: #D9D9D9;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.article__content table tbody th {
+  background: #eee;
+  font-weight: 400;
+  border: none;
+}
+
 .article__content dl dt {
   font-weight: 800;
 }
