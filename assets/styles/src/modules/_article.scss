@@ -100,7 +100,7 @@
 
 		th,
 		td {
-			@include rem('padding-right', 0.25);
+			@include rem('padding', 0.25, 0.25, 0.25, 0.5);
 			text-align: left;
 		}
 
