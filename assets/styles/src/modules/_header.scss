@@ -183,21 +183,36 @@
 		}
 
 		a {
-			position: relative;
 			display: block;
 			padding-top: 22.4%;
 			width: 100%;
+			background: {
+				image: url(../../../assets/img/logo.svg);
+				repeat: no-repeat;
+			}
 
-			img {
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: -3px; // fine tune white gaps
-				max-height: 99px;
+			span {
+				@extend .visuallyhidden;
 			}
 
 		} // a
+
+//		a {
+//			position: relative;
+//			display: block;
+//			padding-top: 22.4%;
+//			width: 100%;
+//
+//			img {
+//				position: absolute;
+//				top: 0;
+//				right: 0;
+//				bottom: 0;
+//				left: -3px; // fine tune white gaps
+//				max-height: 99px;
+//			}
+
+//		} // a
 
 	} // #logo
 

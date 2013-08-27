@@ -91,7 +91,14 @@
                         <header id="header" role="banner" class="site-header">
 
                             <h1 id="logo">
-                                <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>"><span><?php bloginfo('name') ?></span></a>
+                                <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+                                    <!--[if lt IE 9]>
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" />
+                                    <![endif]-->
+                                    <!--[if gt IE 8]><!-->
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" />
+                                    <!--<![endif]-->
+                                </a>
                             </h1>
 
                             <div id="show-menu">

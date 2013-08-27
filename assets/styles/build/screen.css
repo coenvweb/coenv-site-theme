@@ -671,6 +671,7 @@ img .lt-ie9 {
 .visuallyhidden,
 form .field-wrap label,
 form .field-wrap button[type="submit"] span,
+.site-header #logo a span,
 #features .features-nav a span {
   border: 0;
   clip: rect(0 0 0 0);
@@ -690,10 +691,12 @@ form .field-wrap button[type="submit"] span,
 .visuallyhidden.focusable:active,
 form .field-wrap label.focusable:active,
 form .field-wrap button[type="submit"] span.focusable:active,
+.site-header #logo a span.focusable:active,
 #features .features-nav a span.focusable:active,
 .visuallyhidden.focusable:focus,
 form .field-wrap label.focusable:focus,
 form .field-wrap button[type="submit"] span.focusable:focus,
+.site-header #logo a span.focusable:focus,
 #features .features-nav a span.focusable:focus {
   clip: auto;
   height: auto;
@@ -2630,19 +2633,11 @@ section[role="main"],
 }
 
 .site-header #logo a {
-  position: relative;
   display: block;
   padding-top: 22.4%;
   width: 100%;
-}
-
-.site-header #logo a img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: -3px;
-  max-height: 99px;
+  background-image: url(../../../assets/img/logo.svg);
+  background-repeat: no-repeat;
 }
 
 .site-header #show-menu {
