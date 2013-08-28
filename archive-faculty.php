@@ -1,4 +1,11 @@
 <?php
+
+// Redirect to /coenv-faculty/ if not logged in
+if ( !is_user_logged_in() ) {
+	wp_redirect( get_bloginfo('url') . '/coenv-faculty/' );
+}
+
+
 /**
  * The faculty archive page
  */
