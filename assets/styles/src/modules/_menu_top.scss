@@ -40,7 +40,26 @@
 
 	input[type="text"] {
 		@include font-size(12);
-	}
+		background: #666;
+				color: #fff;
+				@include placeholder {
+					color: #eee;
+				}
+	} // input[type="text"]
+
+	button[type="submit"] {
+		background: #666;
+
+		i {
+			@include font-size(16);
+			color: #eee;
+		}
+
+		&:hover i {
+			color: #fff;
+		}
+
+	} // button[type="submit"]
 
 	a,
 	input,
@@ -78,7 +97,14 @@
 		li.give a {
 			background: $accent-red;
 			color: #fff;
-		}
+
+			i {
+				position: relative;
+				top: 0.1em;
+				@include rem('margin-right', 0.2);
+			}
+
+		} // li.give a
 
 		li.give a:hover {
 			background: darken( $accent-red, 10% );

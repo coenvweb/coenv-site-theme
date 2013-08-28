@@ -144,11 +144,12 @@ body.home {
 					color: #fff;
 
 					h1 {
+						@extend .antialiased;
 						@include rem('margin', 0, 0, 0.5);
 						@include serif;
 						@include font-size(24);
-						@include line-height(24);
-						font-weight: 300;
+						@include line-height(30);
+						font-weight: 400;
 					}
 
 					p {

@@ -619,6 +619,7 @@ img .lt-ie9 {
 #secondary-nav .pagenav > ul .children > li.current_page_item > a,
 #secondary-nav .pagenav > ul .children > li.current_page_ancestor > a,
 #secondary-nav .pagenav > ul .children > li.current_page_parent > a,
+#features .feature .feature-info-container .feature-info .feature-content h1,
 .faculty-toolbox .faculty-toolbox-header h1,
 .faculty-toolbox .faculty-toolbox-theme-roller-section p.title,
 .faculty-toolbox .faculty-toolbox-theme-roller,
@@ -2403,6 +2404,38 @@ form .field-wrap button[type="submit"] i {
 #top-nav input[type="text"] {
   font-size: 12px;
   font-size: 0.85714rem;
+  background: #666;
+  color: #fff;
+}
+
+#top-nav input[type="text"]::-webkit-input-placeholder {
+  color: #eee;
+}
+
+#top-nav input[type="text"]:-moz-placeholder {
+  color: #eee;
+}
+
+#top-nav input[type="text"]::-moz-placeholder {
+  color: #eee;
+}
+
+#top-nav input[type="text"]:-ms-input-placeholder {
+  color: #eee;
+}
+
+#top-nav button[type="submit"] {
+  background: #666;
+}
+
+#top-nav button[type="submit"] i {
+  font-size: 16px;
+  font-size: 1.14286rem;
+  color: #eee;
+}
+
+#top-nav button[type="submit"]:hover i {
+  color: #fff;
 }
 
 #top-nav a,
@@ -2434,6 +2467,13 @@ form .field-wrap button[type="submit"] i {
 #top-nav #menu-buttons li.give a {
   background: #b82828;
   color: #fff;
+}
+
+#top-nav #menu-buttons li.give a i {
+  position: relative;
+  top: 0.1em;
+  margin-right: 2.8px;
+  margin-right: 0.2rem;
 }
 
 #top-nav #menu-buttons li.give a:hover {
@@ -4116,9 +4156,9 @@ img[class*="align"],
   font-family: "Skolar", Georgia, serif;
   font-size: 24px;
   font-size: 1.71429rem;
-  line-height: 24px;
-  line-height: 1.71429rem;
-  font-weight: 300;
+  line-height: 30px;
+  line-height: 2.14286rem;
+  font-weight: 400;
 }
 
 #features .feature .feature-info-container .feature-info .feature-content p {
