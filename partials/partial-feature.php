@@ -55,7 +55,7 @@ $feature = array(
 
 			<div class="feature-content">
 
-				<?php if ( get_field('feature_type') == 'from-coenv-currents' || get_field('feature_type') == 'basic' ) : ?>
+				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
 
 					<h1><?php the_field('headline') ?></h1>
 
