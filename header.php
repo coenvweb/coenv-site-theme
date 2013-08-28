@@ -21,7 +21,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon-57x57-precomposed.png">
         <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon.png">
 
-        <script src="<?php echo get_template_directory_uri() ?>/assets/styles/src/plugins/modernizr.custom.29825.js"></script>
+        <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
 
         <script src="//use.typekit.net/ymr3xiv.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
@@ -57,7 +57,7 @@
                                 'menu_id' => 'menu-university',
                                 'container' => false,
                                 'fallback_cb' => false
-                            )) ?>
+                            )) ?> 
 
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'top-links', 

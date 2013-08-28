@@ -4,64 +4,67 @@
 		======================================================================== */
 
 #top-nav {
-	@extend .clearfix;
 	display: none;
-	@include rem('padding', 0);
+	@include rem('padding', 0.25, 0, 0.3);
 	background: $bg-dk;
+	font-size: 0;
 	text-align: right;
 
 	@include min-width ( $iPadPortrait ) {
 		display: block;
 	}
 
-	ul {
-		display: inline-block;
-		margin: 0;
-		@include rem('padding', 0.3, 0);
-		list-style: none;
-
-		li {
-			display: inline-block;
-		}
-
-		a {
-			//@extend .antialiased;
-			display: inline-block;
-			vertical-align: middle;
-			@include rem('padding', 0.1, 0.5);
-			@include sans;
-			@include font-size(10);
-			font-weight: 600;
-			background: none;
-			text-decoration: none;
-			color: #ddd;
-			border-radius: $radius;
-			text-transform: uppercase;
-			letter-spacing: 0.1em;
-
-			&:hover {
-				background: #666;
-				color: #fff !important;
-			}
-
-			i {
-				@include rem('margin-right', 0.25);
-			}
-
-		} // a
-
-	} // ul
-
+	ul,
 	form {
 		display: inline-block;
-		background: green;
-		vertical-align: middle;
+		@include rem('margin', 0, 0, 0, 0.3);
+		padding: 0;
+		font-size: 0;
+		vertical-align: top;
+	}
 
-		input,
-		button {
-			@include rem('height', 1.7);
-			vertical-align: middle;
+	ul {
+		list-style: none;
+	}
+
+	li,
+	input,
+	button {
+		display: inline-block;
+		padding: 0;
+		@include font-size(10);
+		@include rem('line-height', 1.8);
+		@include rem('height', 1.8);
+		vertical-align: top;
+	}
+
+	input[type="text"] {
+		@include font-size(12);
+	}
+
+	a,
+	input,
+	button {
+		@include rem('padding', 0, 0.5);
+	}
+
+	a {
+		display: block;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-weight: 600;
+		text-decoration: none;
+		color: #ddd;
+		border-radius: $radius;
+
+		&:hover {
+			background: #666;
+			color: #fff !important;
 		}
+
+	} // a
+
+	form {
 
 	} // form
 
@@ -84,3 +87,86 @@
 	} // #menu-buttons
 
 } // #top-nav
+
+//#top-nav {
+//	display: none;
+//	@include rem('padding', 0);
+//	background: $bg-dk;
+//	text-align: right;
+//
+//	@include min-width ( $iPadPortrait ) {
+//		display: block;
+//	}
+//
+//	ul {
+//		float: right;
+//		margin: 0;
+//		@include rem('padding', 0.3, 0);
+//		list-style: none;
+//		background: red;
+//
+//		li {
+//			//display: table-cell;
+//			display: inline-block;
+//		}
+//
+//		a {
+//			//@extend .antialiased;
+//			display: inline-block;
+//			vertical-align: middle;
+//			@include rem('padding', 0.1, 0.5);
+//			@include sans;
+//			@include font-size(10);
+//			font-weight: 600;
+//			background: none;
+//			text-decoration: none;
+//			color: #ddd;
+//			border-radius: $radius;
+//			text-transform: uppercase;
+//			letter-spacing: 0.1em;
+//
+//			&:hover {
+//				background: #666;
+//				color: #fff !important;
+//			}
+//
+//			i {
+//				@include rem('margin-right', 0.25);
+//			}
+//
+//		} // a
+//
+//	} // ul
+//
+//	form {
+//		float: right;
+//		background: green;
+//		vertical-align: middle;
+//
+//		input,
+//		button {
+//			@include rem('height', 1.7);
+//			vertical-align: middle;
+//		}
+//
+//	} // form
+//
+//	#menu-university {
+//		float: left;
+//
+//	} // #menu-university
+//
+//	#menu-buttons {
+//
+//		li.give a {
+//			background: $accent-red;
+//			color: #fff;
+//		}
+//
+//		li.give a:hover {
+//			background: darken( $accent-red, 10% );
+//		}
+//
+//	} // #menu-buttons
+//
+//} // #top-nav

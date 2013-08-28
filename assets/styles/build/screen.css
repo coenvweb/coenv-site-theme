@@ -725,7 +725,6 @@ form .field-wrap button[type="submit"] span.focusable:focus,
 .layout-container,
 .container,
 section[role="main"],
-#top-nav,
 .site-header,
 .article__content,
 .widget,
@@ -745,7 +744,6 @@ section[role="main"],
 .layout-container:before,
 .container:before,
 section[role="main"]:before,
-#top-nav:before,
 .site-header:before,
 .article__content:before,
 .widget:before,
@@ -762,7 +760,6 @@ section[role="main"]:before,
 .layout-container:after,
 .container:after,
 section[role="main"]:after,
-#top-nav:after,
 .site-header:after,
 .article__content:after,
 .widget:after,
@@ -783,7 +780,6 @@ section[role="main"]:after,
 .layout-container:after,
 .container:after,
 section[role="main"]:after,
-#top-nav:after,
 .site-header:after,
 .article__content:after,
 .widget:after,
@@ -2296,30 +2292,22 @@ form button {
   display: inline-block;
   background: #fff;
   border: none;
-}
-
-form input,
-form button {
   color: #666666;
 }
 
-form input::-webkit-input-placeholder,
-form button::-webkit-input-placeholder {
+form input[type="text"]::-webkit-input-placeholder {
   color: #666666;
 }
 
-form input:-moz-placeholder,
-form button:-moz-placeholder {
+form input[type="text"]:-moz-placeholder {
   color: #666666;
 }
 
-form input::-moz-placeholder,
-form button::-moz-placeholder {
+form input[type="text"]::-moz-placeholder {
   color: #666666;
 }
 
-form input:-ms-input-placeholder,
-form button:-ms-input-placeholder {
+form input[type="text"]:-ms-input-placeholder {
   color: #666666;
 }
 
@@ -2371,9 +2359,10 @@ form .field-wrap button[type="submit"] i {
 
 #top-nav {
   display: none;
-  padding: 0;
-  padding: 0;
+  padding: 3.5px 0 4.2px;
+  padding: 0.25rem 0 0.3rem;
   background: #363533;
+  font-size: 0;
   text-align: right;
 }
 
@@ -2383,56 +2372,59 @@ form .field-wrap button[type="submit"] i {
   }
 }
 
-#top-nav ul {
+#top-nav ul,
+#top-nav form {
   display: inline-block;
-  margin: 0;
-  padding: 4.2px 0;
-  padding: 0.3rem 0;
+  margin: 0 0 0 4.2px;
+  margin: 0 0 0 0.3rem;
+  padding: 0;
+  font-size: 0;
+  vertical-align: top;
+}
+
+#top-nav ul {
   list-style: none;
 }
 
-#top-nav ul li {
+#top-nav li,
+#top-nav input,
+#top-nav button {
   display: inline-block;
-}
-
-#top-nav ul a {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 1.4px 7px;
-  padding: 0.1rem 0.5rem;
-  font-family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
   font-size: 10px;
   font-size: 0.71429rem;
+  line-height: 25.2px;
+  line-height: 1.8rem;
+  height: 25.2px;
+  height: 1.8rem;
+  vertical-align: top;
+}
+
+#top-nav input[type="text"] {
+  font-size: 12px;
+  font-size: 0.85714rem;
+}
+
+#top-nav a,
+#top-nav input,
+#top-nav button {
+  padding: 0 7px;
+  padding: 0 0.5rem;
+}
+
+#top-nav a {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   font-weight: 600;
-  background: none;
   text-decoration: none;
   color: #ddd;
   border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
-#top-nav ul a:hover {
+#top-nav a:hover {
   background: #666;
   color: #fff !important;
-}
-
-#top-nav ul a i {
-  margin-right: 3.5px;
-  margin-right: 0.25rem;
-}
-
-#top-nav form {
-  display: inline-block;
-  background: green;
-  vertical-align: middle;
-}
-
-#top-nav form input,
-#top-nav form button {
-  height: 23.8px;
-  height: 1.7rem;
-  vertical-align: middle;
 }
 
 #top-nav #menu-university {
@@ -2446,6 +2438,23 @@ form .field-wrap button[type="submit"] i {
 
 #top-nav #menu-buttons li.give a:hover {
   background: #8e1f1f;
+}
+
+/*	Browsehappy message
+		======================================================================== */
+
+.lt-ie9 .browsehappy {
+  position: fixed;
+  z-index: 99999999;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 14px;
+  padding: 1rem;
+  width: 100%;
+  background: #3b2559;
+  color: #fff;
+  text-decoration: none;
 }
 
 /*	Header
@@ -2636,8 +2645,12 @@ section[role="main"],
   display: block;
   padding-top: 22.4%;
   width: 100%;
-  background-image: url(../../../assets/img/logo.svg);
+  background-image: url(../../../assets/img/logo.png);
   background-repeat: no-repeat;
+}
+
+.svg .site-header #logo a {
+  background-image: url(../../../assets/img/logo.svg);
 }
 
 .site-header #show-menu {

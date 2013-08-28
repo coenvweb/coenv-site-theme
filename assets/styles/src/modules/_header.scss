@@ -1,4 +1,21 @@
 
+/*	Browsehappy message
+		======================================================================== */
+.lt-ie9 .browsehappy {
+	position: fixed;
+	z-index: 99999999;
+	top: 0;
+	right: 0;
+	left: 0;
+	@include rem('padding', 1);
+	width: 100%;
+	background: $accent-purple;
+	color: #fff;
+	text-decoration: none;
+
+} // .browshappy
+
+
 /*	Header
 		Site-wide header area, including primary navigation and banner images.
 		======================================================================== */
@@ -187,9 +204,13 @@
 			padding-top: 22.4%;
 			width: 100%;
 			background: {
-				image: url(../../../assets/img/logo.svg);
+				image: url(../../../assets/img/logo.png);
 				repeat: no-repeat;
 			}
+
+			.svg & {
+				background-image: url(../../../assets/img/logo.svg);
+			} // .svg &
 
 			span {
 				@extend .visuallyhidden;
