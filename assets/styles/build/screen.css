@@ -3585,6 +3585,10 @@ section[role="main"],
   color: #333333;
 }
 
+.article__header .article__title br {
+  display: none;
+}
+
 .article__content h1 {
   font-family: "Skolar", Georgia, serif;
   font-size: 24px;
