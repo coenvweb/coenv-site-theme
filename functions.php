@@ -254,7 +254,7 @@ function coenv_theme_setup() {
   // small: 262x262
 	if ( function_exists( 'add_image_size' ) ) { 
 		add_image_size( 'small', 262, 262 );
-		add_image_size( 'huge', 1060, 1060 );
+		add_image_size( 'banner', 1680 );
 	}
 
   // medium: 528x528
@@ -876,7 +876,7 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'huge' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
 
 	$banner = array(
