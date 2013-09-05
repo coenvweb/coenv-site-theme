@@ -2563,6 +2563,7 @@ section[role="main"],
   bottom: 0;
   left: 0;
   margin: 0 auto;
+  width: 100%;
   max-width: 1060px;
   text-align: right;
 }
