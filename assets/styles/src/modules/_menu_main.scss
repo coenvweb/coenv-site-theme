@@ -21,6 +21,10 @@
 		display: none !important;
 	}
 
+	@media print {
+		display: none !important;
+	}
+
 	.mobile-menu-active & {
 		bottom: 0;
 		height: 100%;
@@ -142,7 +146,7 @@
 	position: relative;
 
 	@media print {
-		display: none;
+		display: none !important;
 	}
 
 	&:hover span > a {

@@ -2650,6 +2650,12 @@ section[role="main"],
   }
 }
 
+@media print {
+  .main-menu.mobile-menu {
+    display: none !important;
+  }
+}
+
 .mobile-menu-active .main-menu.mobile-menu {
   bottom: 0;
   height: 100%;
@@ -2775,7 +2781,7 @@ section[role="main"],
 
 @media print {
   .main-menu.mobile-menu .page-depth-0 {
-    display: none;
+    display: none !important;
   }
 }
 
