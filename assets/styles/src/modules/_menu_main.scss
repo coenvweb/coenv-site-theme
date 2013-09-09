@@ -256,6 +256,10 @@
 		display: block;
 	}
 
+	@media print {
+		display: none;
+	}
+
 	// all <ul>s
 	ul {
 		margin: 0;

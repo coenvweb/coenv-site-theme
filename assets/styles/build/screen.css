@@ -2551,12 +2551,6 @@ section[role="main"],
   }
 }
 
-@media print {
-  .site-header {
-    display: none;
-  }
-}
-
 .site-header #logo {
   display: table-cell;
   margin: 0;
@@ -2581,6 +2575,36 @@ section[role="main"],
 
 .svg .site-header #logo a {
   background-image: url(../../../assets/img/logo.svg);
+}
+
+@media print {
+  .site-header #logo a {
+    position: relative;
+    display: block;
+    padding-top: 22.4%;
+    width: 100%;
+    background: none !important;
+  }
+
+  .site-header #logo a:after {
+    display: none !important;
+  }
+}
+
+.site-header #logo a img {
+  display: none;
+}
+
+@media print {
+  .site-header #logo a img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -3px;
+    max-height: 99px;
+  }
 }
 
 .site-header #show-menu {
@@ -2895,6 +2919,12 @@ section[role="main"],
 @media (min-width: 768px) {
   .main-menu.normal-menu {
     display: block;
+  }
+}
+
+@media print {
+  .main-menu.normal-menu {
+    display: none;
   }
 }
 
@@ -3957,6 +3987,7 @@ img[class*="align"],
 
 @media print {
   #features .feature {
+    position: relative;
     display: block;
     width: auto;
     max-width: auto;
