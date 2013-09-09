@@ -58,6 +58,13 @@ body.home {
 			width: 100%;
 		}
 
+		@media print {
+			display: block;
+			width: auto;
+			max-width: auto;
+			max-height: auto;
+		}
+
 		.feature-image {
 			position: relative;
 			padding-top: 60%;
@@ -90,6 +97,10 @@ body.home {
 				display: none;
 			}
 
+			@media print {
+				display: none;
+			}
+
 		} // .feature-image
 
 		.feature-info-container {
@@ -100,6 +111,13 @@ body.home {
 				float: right;
 				width: percentage( 386 / ( $max-width / 1px ) );
 				height: 450px;
+			}
+
+			@media print {
+				display: block;
+				float: none;
+				width: auto;
+				height: auto;
 			}
 
 			.feature-info {
@@ -136,6 +154,10 @@ body.home {
 					.lt-ie9 & {
 						position: relative;
 						background: none;
+					}
+
+					@media print { 
+						position: relative;
 					}
 
 				} // .feature-type
