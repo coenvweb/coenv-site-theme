@@ -4,7 +4,6 @@
 		2012-2013
 
 		Styles authored in SASS
-		Compass
 
 		Import all components here
 		========================================================================== */
@@ -13,59 +12,60 @@
 		======================================================================== */
 //@import 'compass';
 
-/*	Project-wide settings
+/*	Utilities
 		======================================================================== */
-@import 'config.scss';
+@import 'utilities/config.scss';
+@import 'utilities/normalize.scss';
+@import 'utilities/mixins.scss';
+@import 'utilities/defaults.scss';
 
-/*	Normalization
-		======================================================================== */
-@import '../../../components/normalize/index.scss';
-@import '../../../components/elcontraption-tools/styles/tools-combined.scss';
-
-/*	Plugins
+/*	Vendor/plugins
 		======================================================================== */
 
 // RoyalSlider for home page features
-@import 'plugins/royalslider.scss';
+@import 'vendor/royalslider.scss';
 
 // Chosen for styling form elements
-@import 'plugins/chosen.scss';
-@import 'plugins/chosen-theme.scss';
+@import 'vendor/chosen.scss';
+@import 'vendor/chosen-theme.scss';
 
 // Isotope for faculty grid
-@import 'plugins/_isotope.scss';
+@import 'vendor/isotope.scss';
+
+// Icomoon for icons
+@import 'vendor/icomoon.scss';
 
 /*	Base styles
 		======================================================================== */
-@import 'base/_icomoon.scss';
-@import 'base/_fonts.scss';
-@import 'base/_layout.scss';
-@import 'base/_links.scss';
+@import 'base/type.scss';
+@import 'base/layout.scss';
+@import 'base/links.scss';
 
 /*	Modules
 		======================================================================== */
-@import 'modules/_button.scss';
-@import 'modules/_form.scss';
-@import 'modules/_menu_top.scss';
-@import 'modules/_header.scss';
-@import 'modules/_menu_main.scss';
-@import 'modules/_menu_secondary.scss';
-@import 'modules/_article.scss';
-@import 'modules/_pagination.scss';
-@import 'modules/_breadcrumbs.scss';
-@import 'modules/_widget.scss';
-@import 'modules/_widget_social.scss';
-@import 'modules/_widget_events.scss';
+@import 'modules/button.scss';
+@import 'modules/media.scss';
+@import 'modules/form.scss';
+@import 'modules/menu_top.scss';
+@import 'modules/header.scss';
+@import 'modules/menu_main.scss';
+@import 'modules/menu_secondary.scss';
+@import 'modules/article.scss';
+@import 'modules/pagination.scss';
+@import 'modules/breadcrumbs.scss';
+@import 'modules/widget.scss';
+@import 'modules/widget_social.scss';
+@import 'modules/widget_events.scss';
 
 
 /*	Templates
 		Specific pages and page areas that further extend modules and components
 		======================================================================== */
-@import 'templates/_home.scss';
-@import 'templates/_page.scss';
-@import 'templates/_blog.scss';
-@import 'templates/_search.scss';
-@import 'templates/_footer.scss';
+@import 'templates/home.scss';
+@import 'templates/page.scss';
+@import 'templates/blog.scss';
+@import 'templates/search.scss';
+@import 'templates/footer.scss';
 @import 'templates/faculty-archive.scss';
 @import 'templates/faculty-single.scss';
 

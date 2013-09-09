@@ -32,13 +32,13 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'<%= paths.dev %>/assets/scripts/build/main.min.js': [
-						'<%= paths.dev %>/components/jquery/jquery-migrate.min.js',
-						'<%= paths.dev %>/components/jquery-fast-click/jQuery.fastClick.js',
-						'<%= paths.dev %>/components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
-						'<%= paths.dev %>/components/jquery.lazyload/jquery.lazyload.js',
-						'<%= paths.dev %>/components/chosen/chosen/chosen.jquery.js',
-						'<%= paths.dev %>/components/jquery.fitvids/jquery.fitvids.js',
-						'<%= paths.dev %>/components/jquery-hoverIntent/jquery.hoverIntent.js',
+						'<%= paths.dev %>/bower_components/jquery/jquery-migrate.min.js',
+						'<%= paths.dev %>/bower_components/jquery-fast-click/jQuery.fastClick.js',
+						'<%= paths.dev %>/bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
+						'<%= paths.dev %>/bower_components/jquery.lazyload/jquery.lazyload.js',
+						'<%= paths.dev %>/bower_components/chosen/chosen/chosen.jquery.js',
+						'<%= paths.dev %>/bower_components/jquery.fitvids/jquery.fitvids.js',
+						'<%= paths.dev %>/bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
 						'<%= paths.dev %>/assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>/assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
 						'<%= paths.dev %>/assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
@@ -48,10 +48,10 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/assets/scripts/src/blog.js'
 					],
 					'<%= paths.dev %>/assets/scripts/build/faculty.min.js': [
-						'<%= paths.dev %>/components/get-style-property/get-style-property.js',
-						'<%= paths.dev %>/components/get-size/get-size.js',
-						'<%= paths.dev %>/components/isotope/jquery.isotope.js',
-						'<%= paths.dev %>/components/procession/jquery.procession.js',
+						'<%= paths.dev %>/bower_components/get-style-property/get-style-property.js',
+						'<%= paths.dev %>/bower_components/get-size/get-size.js',
+						'<%= paths.dev %>/bower_components/isotope/jquery.isotope.js',
+						'<%= paths.dev %>/bower_components/procession/jquery.procession.js',
 						'<%= paths.dev %>/assets/scripts/src/faculty.js'
 					],
 					'<%= paths.dev %>/assets/scripts/build/jquery-fallback.min.js': [

@@ -18,7 +18,6 @@
     "selectivizr": "~1.0.2",
     "jquery.lazyload": "~1.8.4",
     "jquery.fitvids": "~1.0.2",
-    "elcontraption-tools": "https://github.com/elcontraption/elcontraption-tools.git",
     "jquery-fast-click": "https://github.com/dave1010/jquery-fast-click.git#~1.0.0",
     "hammerjs": "~1.0.5",
     "get-size": "https://github.com/desandro/get-size.git#~1.1.2",
