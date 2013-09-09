@@ -2552,6 +2552,7 @@ section[role="main"],
 }
 
 .site-header #logo {
+  position: relative;
   display: table-cell;
   margin: 0;
   width: 85%;
@@ -2565,7 +2566,21 @@ section[role="main"],
   }
 }
 
+.site-header #logo:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  background: #3b2559;
+  width: 2px;
+  height: 100%;
+}
+
 .site-header #logo a {
+  position: relative;
+  z-index: 100;
   display: block;
   padding-top: 22.4%;
   width: 100%;
