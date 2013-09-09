@@ -17,10 +17,6 @@
 	background: #303030;
 	//transition: all 0.25s ease;
 
-	@media print {
-		display: none;
-	}
-
 	@include min-width ( $iPadPortrait ) {
 		display: none !important;
 	}
@@ -254,10 +250,6 @@
 
 	@include min-width ( $iPadPortrait ) {
 		display: block;
-	}
-
-	@media print {
-		display: none;
 	}
 
 	// all <ul>s

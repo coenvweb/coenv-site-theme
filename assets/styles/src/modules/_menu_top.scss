@@ -14,6 +14,10 @@
 		display: block;
 	}
 
+	@media print {
+		display: none !important;
+	}
+
 	ul,
 	form {
 		display: inline-block;
@@ -113,86 +117,3 @@
 	} // #menu-buttons
 
 } // #top-nav
-
-//#top-nav {
-//	display: none;
-//	@include rem('padding', 0);
-//	background: $bg-dk;
-//	text-align: right;
-//
-//	@include min-width ( $iPadPortrait ) {
-//		display: block;
-//	}
-//
-//	ul {
-//		float: right;
-//		margin: 0;
-//		@include rem('padding', 0.3, 0);
-//		list-style: none;
-//		background: red;
-//
-//		li {
-//			//display: table-cell;
-//			display: inline-block;
-//		}
-//
-//		a {
-//			//@extend .antialiased;
-//			display: inline-block;
-//			vertical-align: middle;
-//			@include rem('padding', 0.1, 0.5);
-//			@include sans;
-//			@include font-size(10);
-//			font-weight: 600;
-//			background: none;
-//			text-decoration: none;
-//			color: #ddd;
-//			border-radius: $radius;
-//			text-transform: uppercase;
-//			letter-spacing: 0.1em;
-//
-//			&:hover {
-//				background: #666;
-//				color: #fff !important;
-//			}
-//
-//			i {
-//				@include rem('margin-right', 0.25);
-//			}
-//
-//		} // a
-//
-//	} // ul
-//
-//	form {
-//		float: right;
-//		background: green;
-//		vertical-align: middle;
-//
-//		input,
-//		button {
-//			@include rem('height', 1.7);
-//			vertical-align: middle;
-//		}
-//
-//	} // form
-//
-//	#menu-university {
-//		float: left;
-//
-//	} // #menu-university
-//
-//	#menu-buttons {
-//
-//		li.give a {
-//			background: $accent-red;
-//			color: #fff;
-//		}
-//
-//		li.give a:hover {
-//			background: darken( $accent-red, 10% );
-//		}
-//
-//	} // #menu-buttons
-//
-//} // #top-nav

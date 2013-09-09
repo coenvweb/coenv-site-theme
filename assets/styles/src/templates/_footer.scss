@@ -146,6 +146,10 @@
 			padding: 0;
 			list-style: none;
 
+			@media print {
+				display: none;
+			}
+
 			a {
 				text-decoration: none;
 				color: #bbb;
@@ -188,6 +192,10 @@
 			@include min-width ( $iPadPortrait ) {
 				display: inline-block;
 				float: right;
+			}
+
+			@media print {
+				display: none;
 			}
 
 			li {

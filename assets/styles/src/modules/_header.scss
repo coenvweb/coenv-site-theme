@@ -189,6 +189,10 @@
 		height: 99px;
 	}
 
+	@media print {
+		display: none;
+	}
+
 	#logo {
 		display: table-cell;
 		margin: 0;
@@ -285,6 +289,18 @@
 	} // #show-menu
 
 } // .site-header
+
+/*	Print breadcrumbs
+		======================================================================== */
+
+.coenv-print-breadcrumbs {
+	display: none;
+
+	@media print {
+		display: block;
+	}
+
+} // .coenv-print-breadcrumbs
 
 
 
