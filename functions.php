@@ -662,7 +662,7 @@ function coenv_register_features() {
 	$args = array(
 		'labels' => $labels,
 		'menu_position' => null,
-		'supports' => array('title','editor'),
+		'supports' => array('title','editor','page-attributes'),
 		'public' => true,
 		'has_archive' => false,
 		'hierarchical' => false,
