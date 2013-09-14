@@ -29,8 +29,8 @@
         <?php wp_head() ?>
         
         <!--[if lt IE 9]>
-            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/components/selectivizr/selectivizr.js"></script>
-            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/components/respond/respond.min.js"></script>
+            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js"></script>
+            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/respond/respond.min.js"></script>
         <![endif]-->
 
         <?php 
