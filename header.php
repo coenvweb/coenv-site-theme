@@ -29,7 +29,7 @@
         <!--[if lt IE 8]>
             <link rel='stylesheet' id='screen-css'  href='http://coenv.dev/wp-content/themes/coenv-wordpress-theme/assets/styles/build/lt-ie8.css' type='text/css' media='all' />
         <![endif]-->
-        <!--[if gt IE 8]><!--> 
+        <!--[if gte IE 8]><!--> 
             <link rel='stylesheet' id='screen-css'  href='http://coenv.dev/wp-content/themes/coenv-wordpress-theme/assets/styles/build/screen.css' type='text/css' media='all' />
         <!--<![endif]-->
 
