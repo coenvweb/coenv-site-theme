@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>/bower_components/get-size/get-size.js',
 						'<%= paths.dev %>/bower_components/isotope/jquery.isotope.js',
-						'<%= paths.dev %>/bower_components/procession/jquery.procession.js',
+						'<%= paths.dev %>/assets/scripts/src/plugins/procession/jquery.procession.js',
 						'<%= paths.dev %>/assets/scripts/src/faculty.js'
 					],
 					'<%= paths.dev %>/assets/scripts/build/jquery-fallback.min.js': [
