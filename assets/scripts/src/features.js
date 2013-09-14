@@ -1,7 +1,10 @@
 jQuery(function ($) {
 	'use strict';
 
-	$('.home #features').homeFeatures();
+	// no feature animations for < ie8
+	if ( !$('body').hasClass('lt-ie8') ) {
+		$('.home #features').homeFeatures();
+	}
 
 });
 

@@ -17,9 +17,9 @@ function coenv_styles_and_scripts() {
 		return false;
 	}
 
-	// main theme stylesheet
-	wp_register_style( 'screen', get_template_directory_uri() . '/assets/styles/build/screen.css' );
-	wp_enqueue_style( 'screen' );
+//	// main theme stylesheet (now in header to prevent serving to < ie8)
+//	wp_register_style( 'screen', get_template_directory_uri() . '/assets/styles/build/screen.css' );
+//	wp_enqueue_style( 'screen' );
 
 	// include jQuery, using CDN version first
 	wp_deregister_script( 'jquery' );

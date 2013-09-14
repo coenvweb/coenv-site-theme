@@ -73,6 +73,9 @@ module.exports = function(grunt) {
 				files: {
 					'<%= paths.dev %>/assets/styles/build/screen.css': [
 						'<%= paths.dev %>/assets/styles/src/screen.scss'
+					],
+					'<%= paths.dev %>/assets/styles/build/lt-ie8.css': [
+						'<%= paths.dev %>/assets/styles/src/lt-ie8.scss'
 					]
 				}
 			}

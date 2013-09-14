@@ -1,22 +1,26 @@
 jQuery(function ($) {
 	'use strict';
 
-	// use chosen for form inputs
-	$('select.chosen').chosen();
+	if ( !$('body').hasClass('lt-ie8') ) {
 
-	// placeholders for older browsers
-	$('input, textarea').placeholder();
+		// use chosen for form inputs
+		$('select.chosen').chosen();
 
-	// fitvids for responsive videos
-	$('.article-content').handleFitVids();
+		// placeholders for older browsers
+		$('input, textarea').placeholder();
 
-	// single faculty member tabs
-	$('#member-tab-nav').memberTabs();
+		// fitvids for responsive videos
+		$('.article-content').handleFitVids();
 
-	// banner image reveals
-	$('.banner-wrapper').bannerReveals();
+		// single faculty member tabs
+		$('#member-tab-nav').memberTabs();
 
-	// add modals here
+		// banner image reveals
+		$('.banner-wrapper').bannerReveals();
+
+		// add modals here
+
+	}
 
 });
 
