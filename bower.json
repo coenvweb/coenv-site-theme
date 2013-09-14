@@ -16,11 +16,12 @@
     "fastclick": "~0.6.7",
     "selectivizr": "~1.0.2",
     "jquery.lazyload": "~1.8.4",
-    "jquery.fitvids": "~1.0.2",
     "jquery-fast-click": "https://github.com/dave1010/jquery-fast-click.git#~1.0.0",
     "hammerjs": "~1.0.5",
     "get-size": "https://github.com/desandro/get-size.git#~1.1.2",
-    "masonry": "~3.0.0"
+    "masonry": "~3.0.0",
+    "fitvids": "~1.0.3",
+    "jquery-placeholder": "https://github.com/mathiasbynens/jquery-placeholder.git#~2.0.7"
   },
   "devDependencies": {}
 }

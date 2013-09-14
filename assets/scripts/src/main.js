@@ -4,6 +4,9 @@ jQuery(function ($) {
 	// use chosen for form inputs
 	$('select.chosen').chosen();
 
+	// placeholders for older browsers
+	$('input, textarea').placeholder();
+
 	// fitvids for responsive videos
 	$('.article-content').handleFitVids();
 
