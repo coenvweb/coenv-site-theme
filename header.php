@@ -27,10 +27,10 @@
         <script>try{Typekit.load();}catch(e){}</script>
 
         <!--[if lt IE 8]>
-            <link rel='stylesheet' id='screen-css'  href='http://coenv.dev/wp-content/themes/coenv-wordpress-theme/assets/styles/build/lt-ie8.css' type='text/css' media='all' />
+            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/styles/build/lt-ie8.css' type='text/css' media='all' />
         <![endif]-->
         <!--[if gte IE 8]><!--> 
-            <link rel='stylesheet' id='screen-css'  href='http://coenv.dev/wp-content/themes/coenv-wordpress-theme/assets/styles/build/screen.css' type='text/css' media='all' />
+            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/screen.css' type='text/css' media='all' />
         <!--<![endif]-->
 
         <?php wp_head() ?>
