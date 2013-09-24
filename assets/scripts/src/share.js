@@ -1,3 +1,7 @@
+/**
+ * Share modals
+ * for blog posts
+ */
 (function ($, window, document, undefined) {
 
 	'use strict';
@@ -93,14 +97,13 @@
 			_this._launchModal();
 		} );
 
-		this.$modal.find('.share-modal-content').on('click', function ( ev ) {
-			ev.stopPropagation();
-		});
-
 		// clicking outside of modal
-		$('body').on('click', function () {
+		$('body').on('click', function ( ev ) {
 			if ( _this.modalIsActive === true ) {
-				_this._hideModal();
+
+				if ( !$(ev.target).is('.share-modal-content') ) {
+					_this._hideModal();
+				}
 			}
 		});
 
