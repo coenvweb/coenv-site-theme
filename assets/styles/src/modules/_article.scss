@@ -4,6 +4,7 @@
 		======================================================================== */
 
 .article {
+	position: relative;
 	@include rem('padding', 1);
 
 	@include min-width ( $iPadPortrait ) {
@@ -17,6 +18,13 @@
 } // .article
 
 .article__header {
+
+	.share {
+		position: absolute;
+		top: 0;
+		right: 0;
+		@include rem('padding', 1);
+	}
 
 	.article__title {
 		margin-top: 0;

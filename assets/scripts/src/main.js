@@ -18,7 +18,8 @@ jQuery(function ($) {
 		// banner image reveals
 		$('.banner-wrapper').bannerReveals();
 
-		// add modals here
+		// share buttons
+		$('.share').coenvshare();
 
 	}
 

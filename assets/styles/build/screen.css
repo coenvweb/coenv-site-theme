@@ -1660,8 +1660,10 @@ you can use the generic selector below, but it's slower:
 .icon-link,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-web,
 .icon-twitter,
+.share-modal .share-modal-inner .share-modal-content .share-twitter,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-twitter,
 .icon-facebook,
+.share-modal .share-modal-inner .share-modal-content .share-facebook,
 .icon-vimeo,
 .icon-googleplus,
 .icon-pinterest,
@@ -1746,11 +1748,13 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-twitter:before,
+.share-modal .share-modal-inner .share-modal-content .share-twitter:before,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-twitter:before {
   content: "\e016";
 }
 
-.icon-facebook:before {
+.icon-facebook:before,
+.share-modal .share-modal-inner .share-modal-content .share-facebook:before {
   content: "\e017";
 }
 
@@ -3481,6 +3485,7 @@ section[role="main"],
 
 .article,
 .single-faculty .page-area .member-tabs .member-tab {
+  position: relative;
   padding: 14px;
   padding: 1rem;
 }
@@ -3498,6 +3503,14 @@ section[role="main"],
   .single-faculty .page-area .member-tabs .member-tab {
     padding: 0;
   }
+}
+
+.article__header .share {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 14px;
+  padding: 1rem;
 }
 
 .article__header .article__title {
@@ -3949,6 +3962,91 @@ img[class*="align"],
 .widget-events .event footer p.date i {
   padding-right: 3.5px;
   padding-right: 0.25rem;
+}
+
+/* 	==========================================================================
+		Share button for articles
+		========================================================================== */
+
+.share {
+  display: none;
+  font-size: 12px;
+  font-size: 0.85714rem;
+  text-decoration: none;
+  color: #666666;
+}
+
+.share.active {
+  display: block;
+}
+
+.share span {
+  display: inline-block;
+  margin-right: 3.5px;
+  margin-right: 0.25rem;
+}
+
+.share i {
+  position: relative;
+  top: 0.1em;
+}
+
+.share-modal {
+  position: fixed;
+  z-index: -99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.share-modal.active {
+  z-index: 9999;
+}
+
+.share-modal.active-visible {
+  opacity: 1;
+}
+
+.share-modal .share-modal-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.share-modal .share-modal-inner .share-modal-content {
+  margin: 0 auto;
+  padding: 28px;
+  padding: 2rem;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.share-modal .share-modal-inner .share-modal-content a {
+  display: block;
+  margin-bottom: 14px;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  font-size: 1.14286rem;
+  text-decoration: none;
+}
+
+.share-modal .share-modal-inner .share-modal-content a:last-child {
+  margin-bottom: 0;
+}
+
+.share-modal .share-modal-inner .share-modal-content span {
+  margin-left: 3.5px;
+  margin-left: 0.25rem;
+  font-family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /*	Templates

@@ -7,6 +7,10 @@
 
 	<header class="article__header">
 
+		<?php if ( !is_page() ) : ?>
+			<a class="share" data-article-id="<?php the_ID() ?>" data-article-title="<?php the_title() ?>" data-article-permalink="<?php the_permalink() ?>" data-article-shortlink="<?php echo wp_get_shortlink() ?>" href="#"><span>Share</span><i class="icon-share"></i></a>
+		<?php endif ?>
+
 		<?php if ( is_page() || is_single() ) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>

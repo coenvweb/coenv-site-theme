@@ -43,10 +43,11 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>/assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
 						'<%= paths.dev %>/assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
-						'<%= paths.dev %>/assets/scripts/src/main.js',
 						'<%= paths.dev %>/assets/scripts/src/menu.js',
 						'<%= paths.dev %>/assets/scripts/src/features.js',
-						'<%= paths.dev %>/assets/scripts/src/blog.js'
+						'<%= paths.dev %>/assets/scripts/src/blog.js',
+						'<%= paths.dev %>/assets/scripts/src/share.js',
+						'<%= paths.dev %>/assets/scripts/src/main.js'
 					],
 					'<%= paths.dev %>/assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>/bower_components/get-style-property/get-style-property.js',
