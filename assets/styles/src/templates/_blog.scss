@@ -44,9 +44,14 @@
 
 		form,
 		.input-item {
-			float: left;
+			float: none;
 			@include rem('padding', 1);
-			width: 33.3333%;
+
+			@include min-width ( $iPadPortrait ) {
+				float: left;
+				width: 33.3333%;
+			}
+
 		}
 
 		.field-wrap,
