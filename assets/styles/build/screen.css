@@ -588,6 +588,7 @@ body {
 form .field-wrap label,
 form .field-wrap button[type="submit"] span,
 .site-header #logo a span,
+.article__header .sharing span,
 #features .features-nav a span {
   border: 0;
   clip: rect(0 0 0 0);
@@ -608,11 +609,13 @@ form .field-wrap button[type="submit"] span,
 form .field-wrap label.focusable:active,
 form .field-wrap button[type="submit"] span.focusable:active,
 .site-header #logo a span.focusable:active,
+.article__header .sharing span.focusable:active,
 #features .features-nav a span.focusable:active,
 .visuallyhidden.focusable:focus,
 form .field-wrap label.focusable:focus,
 form .field-wrap button[type="submit"] span.focusable:focus,
 .site-header #logo a span.focusable:focus,
+.article__header .sharing span.focusable:focus,
 #features .features-nav a span.focusable:focus {
   clip: auto;
   height: auto;
@@ -1660,10 +1663,8 @@ you can use the generic selector below, but it's slower:
 .icon-link,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-web,
 .icon-twitter,
-.share-modal .share-modal-inner .share-modal-content .share-twitter,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-twitter,
 .icon-facebook,
-.share-modal .share-modal-inner .share-modal-content .share-facebook,
 .icon-vimeo,
 .icon-googleplus,
 .icon-pinterest,
@@ -1748,13 +1749,11 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-twitter:before,
-.share-modal .share-modal-inner .share-modal-content .share-twitter:before,
 .single-faculty .page-area .member-contact-links i.icon-contact-link-twitter:before {
   content: "\e016";
 }
 
-.icon-facebook:before,
-.share-modal .share-modal-inner .share-modal-content .share-facebook:before {
+.icon-facebook:before {
   content: "\e017";
 }
 
@@ -3505,12 +3504,33 @@ section[role="main"],
   }
 }
 
-.article__header .share {
+.article__header .sharing {
   position: absolute;
   top: 0;
   right: 0;
   padding: 14px;
   padding: 1rem;
+}
+
+.article__header .sharing ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article__header .sharing li {
+  display: inline-block;
+}
+
+.article__header .sharing a {
+  text-decoration: none;
+  color: #bbb;
+}
+
+.article__header .sharing i {
+  font-size: 16px;
+  font-size: 1.14286rem;
 }
 
 .article__header .article__title {
@@ -3962,91 +3982,6 @@ img[class*="align"],
 .widget-events .event footer p.date i {
   padding-right: 3.5px;
   padding-right: 0.25rem;
-}
-
-/* 	==========================================================================
-		Share button for articles
-		========================================================================== */
-
-.share {
-  display: none;
-  font-size: 12px;
-  font-size: 0.85714rem;
-  text-decoration: none;
-  color: #666666;
-}
-
-.share.active {
-  display: block;
-}
-
-.share span {
-  display: inline-block;
-  margin-right: 3.5px;
-  margin-right: 0.25rem;
-}
-
-.share i {
-  position: relative;
-  top: 0.1em;
-}
-
-.share-modal {
-  position: fixed;
-  z-index: -99999;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: table;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  opacity: 0;
-  -webkit-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
-}
-
-.share-modal.active {
-  z-index: 9999;
-}
-
-.share-modal.active-visible {
-  opacity: 1;
-}
-
-.share-modal .share-modal-inner {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.share-modal .share-modal-inner .share-modal-content {
-  margin: 0 auto;
-  padding: 28px;
-  padding: 2rem;
-  max-width: 300px;
-  background: #fff;
-  border-radius: 4px;
-}
-
-.share-modal .share-modal-inner .share-modal-content a {
-  display: block;
-  margin-bottom: 14px;
-  margin-bottom: 1rem;
-  font-size: 16px;
-  font-size: 1.14286rem;
-  text-decoration: none;
-}
-
-.share-modal .share-modal-inner .share-modal-content a:last-child {
-  margin-bottom: 0;
-}
-
-.share-modal .share-modal-inner .share-modal-content span {
-  margin-left: 3.5px;
-  margin-left: 0.25rem;
-  font-family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /*	Templates

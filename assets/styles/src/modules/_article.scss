@@ -19,12 +19,37 @@
 
 .article__header {
 
-	.share {
+	.sharing {
 		position: absolute;
 		top: 0;
 		right: 0;
 		@include rem('padding', 1);
-	}
+		
+		ul {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		li {
+			display: inline-block;
+		}
+
+		a {
+			text-decoration: none;
+			color: #bbb;
+		}
+
+		i {
+			@include font-size(16);
+		}
+
+		span {
+			@extend .visuallyhidden;
+		}
+
+	} // .sharing
 
 	.article__title {
 		margin-top: 0;
@@ -241,6 +266,7 @@
 		}
 
 	} // .article__categories
+
 
 } // .article__meta
 

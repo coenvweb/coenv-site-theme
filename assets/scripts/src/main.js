@@ -19,7 +19,7 @@ jQuery(function ($) {
 		$('.banner-wrapper').bannerReveals();
 
 		// share buttons
-		$('.share').coenvshare();
+		//$('.share').coenvshare();
 
 	}
 
