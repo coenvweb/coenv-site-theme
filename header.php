@@ -23,8 +23,8 @@
 
         <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
 
-        <script src="//use.typekit.net/ymr3xiv.js"></script>
-        <script>try{Typekit.load();}catch(e){}</script>
+        <script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
         <!--[if lt IE 8]>
             <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/styles/build/lt-ie8.css' type='text/css' media='all' />
