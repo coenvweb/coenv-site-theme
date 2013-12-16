@@ -17,22 +17,18 @@ function coenv_styles_and_scripts() {
 		return false;
 	}
 
-//	// main theme stylesheet (now in header to prevent serving to < ie8)
-//	wp_register_style( 'screen', get_template_directory_uri() . '/assets/styles/build/screen.css' );
-//	wp_enqueue_style( 'screen' );
-
-	// include jQuery, using CDN version first
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', 'http://code.jquery.com/jquery-1.9.1.min.js', array(), '1.9.1', false );
+	wp_register_script( 'jquery', get_template_directory_uri() . '/bower_components/jquery/jquery.min.js', array(), '1.9.1', false );
+	//wp_register_script( 'jquery', 'http://code.jquery.com/jquery-1.9.1.min.js', array(), '1.9.1', false );
 	wp_enqueue_script( 'jquery' );
 
 	// should CDN jQuery be unavailable, include local copy
-	wp_register_script( 'jquery-fallback', get_template_directory_uri() . '/assets/scripts/build/jquery-fallback.min.js' );
-	wp_enqueue_script( 'jquery-fallback' );
+	//wp_register_script( 'jquery-fallback', get_template_directory_uri() . '/assets/scripts/build/jquery-fallback.min.js' );
+	//wp_enqueue_script( 'jquery-fallback' );
 
 	// include jQuery migrate plugin
-	//wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/components/jquery/jquery-migrate.min.js', array( 'jquery' ), '1.1.0', false );
-	//wp_enqueue_script( 'jquery-migrate' );
+	wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/bower_components/jquery/jquery-migrate.min.js', array( 'jquery' ), '1.1.0', false );
+	wp_enqueue_script( 'jquery-migrate' );
 
 	// include theme scripts in footer
 	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', array( 'jquery' ), null, true );
@@ -1142,8 +1138,6 @@ function coenv_print_breadcrumbs() {
 	$output = get_bloginfo('url');
 	echo $output;
 }
-
-
 
 
 

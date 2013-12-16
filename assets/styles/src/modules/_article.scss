@@ -126,6 +126,12 @@
 		text-transform: uppercase;
 	}
 
+	hr {
+		height: 2px;
+		border: none;
+		background: $border;
+	}
+
 	blockquote {
 		@include rem('margin', 1, 2);
 

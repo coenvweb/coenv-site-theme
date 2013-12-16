@@ -8,7 +8,7 @@ $feature_type = $feature_type['choices'][get_field('feature_type')];
 $content_link = get_field('content_link');
 $content_link = $content_link[0];
 
-$feature_image = wp_get_attachment_image_src( get_field('feature_image'), 'medium' );
+$feature_image = wp_get_attachment_image_src( get_field('feature_image'), 'large' );
 $feature_caption = get_post( get_field('feature_image') );
 
 $unit = get_field('unit');

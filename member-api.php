@@ -233,6 +233,7 @@ class CoEnvMemberAPI {
 			'has_archive' => true,
 			'hierarchical' => false,
 			'capability_type' => 'page',
+			'exclude_from_search' => true,
 			'rewrite' => array(
 				'slug' => 'faculty',
 				'with_front' => false

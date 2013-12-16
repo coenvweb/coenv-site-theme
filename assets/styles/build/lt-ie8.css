@@ -1,3 +1,14 @@
+body {
+  padding-top: 50px; }
+
+.browsehappy {
+  position: absolute;
+  top: 0;
+  background: red;
+  color: #fff;
+  font-size: 18px;
+  line-height: 24px; }
+
 /*	Top nav
 		======================================================================== */
 #top-nav form {
@@ -15,6 +26,9 @@
 #show-menu {
   display: none; }
 
+.mobile-menu {
+  display: none !important; }
+
 /*	Logo
 		======================================================================== */
 #logo {
@@ -28,3 +42,10 @@
   background: none !important; }
   .banner-wrapper .banner-caption {
     display: none; }
+
+/*	Footer
+	======================================================================== */
+#footer {
+  display: none; }
+
+/*# sourceMappingURL=lt-ie8.css.map */
