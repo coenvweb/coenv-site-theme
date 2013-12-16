@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		paths: {
-			dev: '.'
+			dev: './'
 		},
 
 		jshint: {
@@ -74,15 +74,15 @@ module.exports = function(grunt) {
 		},
 
 		/**
-		 * Process sass
+		 * Process SASS into temp directory
 		 */
 		sass: {
 			dist: {
 				files: {
-					'<%= paths.dev %>/assets/styles/build/screen.css': [
+					'<%= paths.dev %>.tmp/assets/styles/build/screen.css': [
 						'<%= paths.dev %>/assets/styles/src/screen.scss'
 					],
-					'<%= paths.dev %>/assets/styles/build/lt-ie8.css': [
+					'<%= paths.dev %>.tmp/assets/styles/build/lt-ie8.css': [
 						'<%= paths.dev %>/assets/styles/src/lt-ie8.scss'
 					]
 				}
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
 		},
 
 		/**
-		 * Auto-prefix built css file
+		 * Auto-prefix temporary CSS file
 		 */
 		autoprefixer: {
 			dist: {
@@ -98,21 +98,21 @@ module.exports = function(grunt) {
 					browsers: ['last 2 versions']
 				},
 				files: {
-					'<%= paths.dev %>/assets/styles/build/screen.css' : [
-						'<%= paths.dev %>/assets/styles/build/screen.css'
+					'<%= paths.dev %>.tmp/assets/styles/build/screen.css' : [
+						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
 					]
 				}
 			}
 		},
 
 		/**
-		 * Minify css after auto-prefixing
+		 * Minify css after auto-prefixing and output to build
 		 */
 		cssmin: {
 			dist: {
 				files: {
 					'<%= paths.dev %>/assets/styles/build/screen.css' : [
-						'<%= paths.dev %>/assets/styles/build/screen.css'
+						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
 					]
 				}
 			}
