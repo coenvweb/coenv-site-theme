@@ -20,6 +20,9 @@ module.exports = function(grunt) {
 			]
 		},
 
+		/**
+		 * Concat and minify all scripts and plugins
+		 */
 		uglify: {
 			dist: {
 				options: {
@@ -29,6 +32,7 @@ module.exports = function(grunt) {
 					sourceMapPrefix: '3'
 				},
 				files: {
+					// The main script file
 					'<%= paths.dev %>/assets/scripts/build/main.min.js': [
 						'<%= paths.dev %>/bower_components/jquery/jquery-migrate.min.js',
 						'<%= paths.dev %>/bower_components/jquery-fast-click/jQuery.fastClick.js',
@@ -46,6 +50,8 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/assets/scripts/src/blog.js',
 						'<%= paths.dev %>/assets/scripts/src/main.js'
 					],
+					// Faculty specific scripts–we'll probably only load this for
+					// faculty directory pages.
 					'<%= paths.dev %>/assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>/bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>/bower_components/get-size/get-size.js',
@@ -53,9 +59,13 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>/assets/scripts/src/plugins/procession/jquery.procession.js',
 						'<%= paths.dev %>/assets/scripts/src/faculty.js'
 					],
+
+					// jQuery fallback. Load this if CDN version is not available (user is offline)
 					'<%= paths.dev %>/assets/scripts/build/jquery-fallback.min.js': [
 						'<%= paths.dev %>/assets/scripts/src/jquery-fallback.js'
 					],
+
+					// Admin specific-scripts
 					'<%= paths.dev %>/assets/scripts/build/admin.min.js': [
 						'<%= paths.dev %>/assets/scripts/src/customNavSubheadCheckboxes.js'
 					]
@@ -63,6 +73,9 @@ module.exports = function(grunt) {
 			}
 		},
 
+		/**
+		 * Process sass
+		 */
 		sass: {
 			dist: {
 				files: {
@@ -76,11 +89,27 @@ module.exports = function(grunt) {
 			}
 		},
 
+		/**
+		 * Auto-prefix built css file
+		 */
 		autoprefixer: {
 			dist: {
 				options: {
 					browsers: ['last 2 versions']
 				},
+				files: {
+					'<%= paths.dev %>/assets/styles/build/screen.css' : [
+						'<%= paths.dev %>/assets/styles/build/screen.css'
+					]
+				}
+			}
+		},
+
+		/**
+		 * Minify css after auto-prefixing
+		 */
+		cssmin: {
+			dist: {
 				files: {
 					'<%= paths.dev %>/assets/styles/build/screen.css' : [
 						'<%= paths.dev %>/assets/styles/build/screen.css'
@@ -123,9 +152,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('server', [
+	grunt.registerTask('dev', [
 		'default',
 		'watch'
 	]);
@@ -134,7 +164,8 @@ module.exports = function(grunt) {
 		'jshint',
 		'uglify',
 		'sass',
-		'autoprefixer'
+		'autoprefixer',
+		'cssmin'
 	]);
 
 };

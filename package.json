@@ -9,6 +9,7 @@
     "grunt-contrib-watch": "~0.5.1",
     "grunt-autoprefixer": "~0.2.20130806",
     "grunt-contrib-sass": "~0.4.1",
-    "grunt-rsync": "~0.2.0"
+    "grunt-rsync": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.7.0"
   }
 }
