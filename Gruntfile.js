@@ -1,7 +1,5 @@
 'use strict';
 
-var rsyncConfig = require('./rsync-config.json');
-
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -67,9 +65,6 @@ module.exports = function(grunt) {
 
 		sass: {
 			dist: {
-				options: {
-					sourcemap: true
-				},
 				files: {
 					'<%= paths.dev %>/assets/styles/build/screen.css': [
 						'<%= paths.dev %>/assets/styles/src/screen.scss'
@@ -113,28 +108,6 @@ module.exports = function(grunt) {
 					'<%= paths.dev %>/**/*.{html,php}'
 				]
 			}
-		},
-
-		rsync: {
-			options: {},
-			stage: {
-				options: {
-					src: './',
-					dest: rsyncConfig.staging.dest,
-					host: rsyncConfig.staging.host,
-					recursive: true,
-					syncDest: false
-				}
-			},
-			deploy: {
-				options: {
-					src: './',
-					dest: rsyncConfig.deployment.dest,
-					host: rsyncConfig.deployment.host,
-					recursive: true,
-					syncDest: false
-				}
-			}
 		}
 	});
 
@@ -143,21 +116,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-rsync');
 
 	grunt.registerTask('server', [
 		'default',
 		'watch'
-	]);
-
-	grunt.registerTask('stage', [
-		'default',
-		'rsync:stage'
-	]);
-
-	grunt.registerTask('deploy', [
-		'default',
-		'rsync:deploy'
 	]);
 
 	grunt.registerTask('default', [
