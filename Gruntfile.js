@@ -89,6 +89,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		/**
+		 * Watching files for changes
+		 * https://github.com/gruntjs/grunt-contrib-watch
+		 *
+		 * To enable live reloading, you'll need:
+		 * LiveReload: http://livereload.com/
+		 * LiveReload browser extension: http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
+		 */
 		watch: {
 			css: {
 				files: ['<%= paths.dev %>/assets/styles/src/**/*.scss'],
