@@ -311,6 +311,7 @@
 		} // .member-tabs
 
 		.member-pullquote {
+			@include font-size(36);
 
 		} // .member-pullquote
 
@@ -325,7 +326,7 @@
 
 		} // .member-bio
 
-	} // .page-area
+	} // .profile-bottom
 
 } // .single-faculty
 

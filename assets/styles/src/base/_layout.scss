@@ -81,7 +81,7 @@ $layout-wrapper-translateX: 80%;
 	@extend .clearfix;
 	margin: 0 auto;
 	@include rem('padding', 0, 0.5);
-	max-width: ( $max-width / 1px ) + ( 2 * ( $base-font-size / 1px ) ) + px;
+	max-width: ( $max-width / 1px ) + ( 2 * ( $base-font-size / 1 ) ) + px;
 
 	@include min-width ( $iPadPortrait ) {
 		@include rem('padding', 0, 1);

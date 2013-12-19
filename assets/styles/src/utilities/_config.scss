@@ -1,13 +1,13 @@
 /*	Base font size and rounded corners
 		======================================================================== */
-$base-font-size: 14px;
+$base-font-size: 14;
 $radius: 2px;
 
 /*  Maximum width
     ======================================================================== */
 
 $max-width: 1060px;
-$maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2 ) / 1px );
+$maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2px ) / 1px );
 
 /*	Asset paths
 		======================================================================== */
