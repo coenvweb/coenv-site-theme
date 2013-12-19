@@ -311,7 +311,10 @@
 		} // .member-tabs
 
 		.member-pullquote {
-			@include font-size(36);
+			margin: 0;
+			padding: 0;
+			@include font-size(20);
+			line-height: 1.5;
 
 		} // .member-pullquote
 

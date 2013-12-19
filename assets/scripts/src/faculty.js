@@ -4,7 +4,6 @@ jQuery(function ($) {
 	// initialize CoEnvFaculty plugin
 	// on faculty archive page
 	$('#faculty-archive').coenvfaculty();
-
 });
 
 (function ($, window, document, undefined) {

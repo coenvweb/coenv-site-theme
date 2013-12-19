@@ -133,16 +133,20 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: ['<%= paths.dev %>.tmp/assets/styles/build/**/*.css'],
-				tasks: [ 'cssmin' ]
+				tasks: [ 'cssmin' ],
+				options: {
+					livereload: true
+				}
 			},
 			scripts: {
 				files: ['<%= paths.dev %>assets/scripts/src/**/*.js'],
-				tasks: [ 'jshint', 'uglify' ]
+				tasks: [ 'jshint', 'uglify' ],
+				options: {
+					livereload: true
+				}
 			},
-			livereload: {
+			files: {
 				files: [
-					'<%= paths.dev %>assets/styles/build/**/*.css',
-					'<%= paths.dev %>assets/scripts/build/**/*.js',
 					'<%= paths.dev %>**/*.{html,php}'
 				],
 				options: {
