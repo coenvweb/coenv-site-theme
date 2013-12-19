@@ -214,14 +214,14 @@ class CoEnvMemberAPI {
 		// Restrict to admins (for development only?)
 		$capabilities = array(
 			'publish_posts' => 'manage_options',
-      'edit_posts' => 'manage_options',
-      'edit_others_posts' => 'manage_options',
-      'delete_posts' => 'manage_options',
-      'delete_others_posts' => 'manage_options',
-      'read_private_posts' => 'manage_options',
-      'edit_post' => 'manage_options',
-      'delete_post' => 'manage_options',
-      'read_post' => 'manage_options',
+			'edit_posts' => 'manage_options',
+			'edit_others_posts' => 'manage_options',
+			'delete_posts' => 'manage_options',
+			'delete_others_posts' => 'manage_options',
+			'read_private_posts' => 'manage_options',
+			'edit_post' => 'manage_options',
+			'delete_post' => 'manage_options',
+			'read_post' => 'manage_options',
 		);
 
 		$args = array(

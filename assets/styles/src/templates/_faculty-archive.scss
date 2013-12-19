@@ -1,6 +1,6 @@
 
 /*	Faculty toolbox
-		======================================================================== */
+	======================================================================== */
 
 .faculty-toolbox {
 	z-index: 9999999 !important;
@@ -99,47 +99,6 @@
 		&:focus {
 			outline: none;
 		}
-
-		// positioned on top of roller to act as interface for clicks/touches
-		.faculty-toolbox-interaction-layer {
-			position: absolute;
-display: none;
-			background: red;
-			z-index: 999;
-			@include rem('top', 0.75);
-			@include rem('right', 0.75);
-			@include rem('bottom', 0.75);
-			@include rem('left', 0.75);
-			cursor: pointer;
-
-			// gradients
-			&:before,
-			&:after {
-				display: block;
-display: none;
-				content: "";
-				position: absolute;
-				z-index: 9999;
-				right: 0;
-				left: 0;
-				height: 60px;
-				//outline: 1px solid red;
-				background: url(../../img/faculty-tools-gradient-555.png) no-repeat;
-			}
-
-			&:before {
-				top: 0;
-				background-position: 0 bottom;
-				border-radius: 4px 4px 0 0;
-			}
-
-			&:after {
-				bottom: 0;
-				background-position: 0 top;
-				border-radius: 0 0 4px 4px;
-			}
-
-		} // .faculty-toolbox-interaction-layer
 
 		.faculty-toolbox-theme-roller-inner {
 			position: absolute !important;

@@ -127,23 +127,27 @@ module.exports = function(grunt) {
 		 * LiveReload browser extension: http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
 		 */
 		watch: {
-			css: {
+			sass: {
 				files: ['<%= paths.dev %>assets/styles/src/**/*.scss'],
 				tasks: [ 'sass', 'autoprefixer' ]
 			},
+			css: {
+				files: ['<%= paths.dev %>.tmp/assets/styles/build/**/*.css'],
+				tasks: [ 'cssmin' ]
+			},
 			scripts: {
 				files: ['<%= paths.dev %>assets/scripts/src/**/*.js'],
-				tasks: ['jshint', 'uglify']
+				tasks: [ 'jshint', 'uglify' ]
 			},
-			livereload: {
-				options: {
-					livereload: true
-				},
+			files: {
 				files: [
 					'<%= paths.dev %>assets/styles/build/**/*.css',
 					'<%= paths.dev %>assets/scripts/build/**/*.js',
 					'<%= paths.dev %>**/*.{html,php}'
-				]
+				],
+				options: {
+					livereload: true
+				}
 			}
 		}
 	});
