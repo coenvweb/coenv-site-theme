@@ -139,7 +139,7 @@ module.exports = function(grunt) {
 				files: ['<%= paths.dev %>assets/scripts/src/**/*.js'],
 				tasks: [ 'jshint', 'uglify' ]
 			},
-			files: {
+			livereload: {
 				files: [
 					'<%= paths.dev %>assets/styles/build/**/*.css',
 					'<%= paths.dev %>assets/scripts/build/**/*.js',
