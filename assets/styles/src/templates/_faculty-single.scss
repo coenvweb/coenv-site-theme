@@ -313,12 +313,14 @@
 		.member-pullquote {
 			margin: 0;
 			padding: 0;
+			max-width: 600px;
 			@include font-size(20);
 			line-height: 1.5;
 
 		} // .member-pullquote
 
 		.member-bio {
+			max-width: 600px;
 
 			em {
 				font-style: normal;

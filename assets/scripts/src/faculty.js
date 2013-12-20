@@ -170,7 +170,7 @@ jQuery(function ($) {
 			orientation: 'vertical',
 			origin: 'center',
 			transitionDuration: 300,
-		//	keyNav: true
+			keyNav: false
 		});
 	};
 
