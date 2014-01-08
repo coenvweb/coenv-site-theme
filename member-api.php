@@ -1,10 +1,7 @@
 <?php
-/*
-Plugin Name: CoEnv Member API
-Description: Registers post types and taxonomies for faculty, provides an endpoint API to access faculty attributes. Depends on <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a> plugin.
-Version: 0.1
-Author: <a href="http://elcontraption.com/">Darin Reid</a>
-*/
+/**
+ * CoEnv Member (Faculty) API
+ */
 
 /*
  * TODO/ISSUES:

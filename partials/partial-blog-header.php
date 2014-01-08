@@ -1,6 +1,6 @@
 <div id="blog-header" class="blog-header">
 
-	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+	<form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url( '/' ); ?>">
 	  <div class="field-wrap">
 	  	<input type="hidden" name="post_type" value="post" />
 	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search news" />
