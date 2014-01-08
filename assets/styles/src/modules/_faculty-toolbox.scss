@@ -1,0 +1,25 @@
+/*	==========================================================================
+	Faculty toolbox
+
+	Only for wider screens
+	========================================================================== */
+
+.Faculty-toolbox {
+	display: none;
+
+	@include min-width ( $iPadLandscape ) {
+		display: block;
+	}
+}
+
+.Faculty-toolbox-header {
+
+}
+
+.Faculty-toolbox-content {
+
+}
+
+.Faculty-toolbox-footer {
+
+}

@@ -10,7 +10,6 @@
     "jquery-throttle-debounce": "latest",
     "jquery-hoverIntent": "https://github.com/briancherne/jquery-hoverIntent.git",
     "isotope": "~1.5.25",
-    "isotope-perfectmasonry": "https://github.com/zonear/isotope-perfectmasonry.git",
     "fastclick": "~0.6.7",
     "selectivizr": "~1.0.2",
     "jquery.lazyload": "~1.8.4",

@@ -1,0 +1,21 @@
+/*	==========================================================================
+	Faculty selector
+
+	Only for small screens
+	========================================================================== */
+
+.Faculty-selector {
+	width: 100%;
+	@include rem('padding', 1, 0, 2);
+	@include font-size(18);
+	line-height: 1.5;
+	text-align: center;
+
+	select {
+		width: 100%;
+
+		@include min-width ( $iPadPortrait ) {
+			width: auto;
+		}
+	}
+}

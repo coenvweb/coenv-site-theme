@@ -1,0 +1,71 @@
+/*	==========================================================================
+	Faculty list
+
+	Images sizes:
+		Small: 129px
+		Large: 262px
+	========================================================================== */
+
+// max width of container
+$faculty-list-width: 1060;
+$faculty-item-height-multiplier: 1.32;
+
+.Faculty-list {
+}
+
+.Faculty-list-header {
+}
+
+.Faculty-list-content {
+	@extend .clearfix;
+	margin-right: -4px; // lines up grid to full width of container
+}
+
+/**
+ * To adjust the ratio at any given media query,
+ * change the divisor for $faculty-list width
+ */
+.Faculty-list-item {
+	position: relative;
+	float: left;
+	padding-top: percentage( ( ( $faculty-list-width * (1/4) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
+	width: percentage( ( $faculty-list-width * (1/4) ) / $faculty-list-width );
+
+	@include min-width ( $iPadPortrait ) {
+		padding-top: percentage( ( ( $faculty-list-width * (1/6) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
+		width: percentage( ( $faculty-list-width * (1/6) ) / $faculty-list-width );
+	}
+
+	@include min-width ( $iPadLandscape ) {
+		padding-top: percentage( ( ( $faculty-list-width * (1/8) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
+		width: percentage( ( $faculty-list-width * (1/8) ) / $faculty-list-width );
+	}
+}
+
+.Faculty-list-item-inner {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 4px;
+	bottom: 4px;
+	left: 0;
+	text-decoration: none;
+}
+
+.Faculty-list-item-image {
+
+	img {
+		display: block;
+		//width: 100%;
+	}
+}
+
+.Faculty-list-item-header {
+	display: none;
+}
+
+.Faculty-list-item-title {
+}
+
+.Faculty-list-item-subtitle {
+}
