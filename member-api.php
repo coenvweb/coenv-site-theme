@@ -570,7 +570,9 @@ class CoEnvMemberAPI {
 
 				$atts = array(
 					'term_id' => $term->term_id,
-					'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
+					// deprecating in favor of query string
+					//'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
+					'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
 					'name' => $term->name,
 					'slug' => $term->slug,
 					'count' => $term->count
@@ -699,8 +701,9 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$unit = array(
 				'term_id' => $term->term_id,
-				//'url' => get_term_link( $term, $taxonomy ),
-				'url' => get_bloginfo('url') . '/faculty/#unit-' . $term->slug,
+				// deprecating in favor of query string
+				//'url' => get_bloginfo('url') . '/faculty/#unit-' . $term->slug,
+				'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count,
@@ -732,8 +735,9 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$theme = array(
 				'term_id' => $term->term_id,
-				//'url' => get_term_link( $term, $taxonomy ),
-				'url' => get_bloginfo('url') . '/faculty/#theme-' . $term->slug,
+				// deprecating in favor of query string
+				//'url' => get_bloginfo('url') . '/faculty/#theme-' . $term->slug,
+				'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count

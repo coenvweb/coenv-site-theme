@@ -28,8 +28,8 @@ $faculty-item-height-multiplier: 1.32;
 .Faculty-list-item {
 	position: relative;
 	float: left;
-	padding-top: percentage( ( ( $faculty-list-width * (1/4) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
-	width: percentage( ( $faculty-list-width * (1/4) ) / $faculty-list-width );
+	padding-top: percentage( ( ( $faculty-list-width * (1/3) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
+	width: percentage( ( $faculty-list-width * (1/3) ) / $faculty-list-width );
 
 	@include min-width ( $iPadPortrait ) {
 		padding-top: percentage( ( ( $faculty-list-width * (1/6) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
@@ -56,16 +56,38 @@ $faculty-item-height-multiplier: 1.32;
 
 	img {
 		display: block;
-		//width: 100%;
 	}
 }
 
 .Faculty-list-item-header {
-	display: none;
+	@extend .antialiased;
+	@include rem('padding', 0.15, 0.25);
+
+	@include min-width ( $iPhoneLandscape ) {
+		@include rem('padding', 0.5);
+	}
+
+	@include min-width ( $iPadPortrait ) {
+		@include rem('padding', 0.5);
+	}
 }
 
 .Faculty-list-item-title {
+	margin: 0;
+	@include font-size(11);
+	line-height: 1.2;
+	font-weight: 600;
+	color: #fff;
+
+	@include min-width ( $iPhoneLandscape ) {
+		@include font-size(12);
+	}
+
+	@include min-width ( $iPadPortrait ) {
+		@include font-size(12);
+	}
 }
 
 .Faculty-list-item-subtitle {
+	@extend .visuallyhidden;
 }
