@@ -3,8 +3,17 @@
 $base-font-size: 14;
 $radius: 2px;
 
-/*  Maximum width
+/*  Maximum width and breakpoints
     ======================================================================== */
+
+$iPhoneLandscape: 321;
+$iPadPortrait: 768;
+$iPadLandscape: 1000;
+
+// moving away from apple-specific names
+$bp-1: $iPhoneLandscape; // 321
+$bp-2: $iPadPortrait; // 768
+$bp-3: $iPadLandscape; // 1000
 
 $max-width: 1060px;
 $maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2px ) / 1px );

@@ -63,10 +63,6 @@ $base-font-size: 14 !default;
 /*  Media queries
     ======================================================================== */
 
-$iPhoneLandscape: 321;
-$iPadPortrait: 768;
-$iPadLandscape: 1000;
-
 @mixin min-width( $point ) {
   @media ( min-width: $point + px ) { @content; }
 }

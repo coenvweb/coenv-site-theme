@@ -41,10 +41,16 @@ if ( in_array( $count, $featured ) ) {
 	
 	<a href="<?php the_permalink() ?>" class="Faculty-list-item-inner jsIsotopeItemInner" title="<?php the_title() ?>"<?php echo $unit_style ?>>
 
-		<div class="Faculty-list-item-image" data-image="<?php echo $image[0] ?>">
-			<img src="<?php echo $image[0] ?>" alt="<?php the_title() ?>" />
-			<noscript><img src="<?php echo $image ?>" alt="<?php the_title() ?>" /></noscript>
-		</div>
+		<span class="Faculty-list-item-image" data-alt="<?php the_title() ?>">
+			<span data-src="<?php echo $image[0] ?>"></span>
+			<!-- 
+			Use this with picturefill for High DPI images
+			<span data-src="<?php echo $image[0] ?>-2x" data-media="(min-device-pixel-ratio: 2.0) and (min-width: 768px), (-webkit-min-device-pixel-ratio: 2.0) and (min-width: 768px), (min-width: 768px)"></span>
+			-->
+			<noscript>
+				<img src="<?php echo $image[0] ?>" alt="<?php the_title() ?>">
+			</noscript>
+		</span>
 
 		<header class="Faculty-list-item-header">
 			<h2 class="Faculty-list-item-title"><?php the_title() ?></h2>

@@ -1,4 +1,9 @@
 <?php
+/**
+ * The faculty directory home page
+ *
+ * Lists faculty
+ */
 
 // Redirect to /coenv-faculty/ if not logged in
 if ( !is_user_logged_in() ) {
