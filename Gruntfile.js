@@ -37,7 +37,6 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/jquery/jquery-migrate.min.js',
 						'<%= paths.dev %>bower_components/jquery-fast-click/jQuery.fastClick.js',
 						'<%= paths.dev %>bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
-						'<%= paths.dev %>bower_components/jquery.lazyload/jquery.lazyload.js',
 						'<%= paths.dev %>bower_components/chosen/chosen/chosen.jquery.js',
 						'<%= paths.dev %>bower_components/fitvids/jquery.fitvids.js',
 						'<%= paths.dev %>bower_components/jquery-placeholder/jquery.placeholder.js',
