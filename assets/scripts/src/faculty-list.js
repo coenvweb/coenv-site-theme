@@ -42,8 +42,8 @@
 		// lazy load images
 		this.lazyloader();
 
-		// initialize isotope
-		this.isoInit();
+		// toggle isotope on or off based on screen width
+		this.isoToggle();
 	};
 
 	/**
@@ -150,8 +150,9 @@
 	 * TODO: only initialize when window is at least iPadPortrait
 	 * var currentBreakpoint = window.getComputedStyle( document.body, ':after' ).getPropertyValue( 'content' );
 	 */
-	CoEnvFacultyList.prototype.isoInit = function () {
-		var _this = this;
+	CoEnvFacultyList.prototype.isoToggle = function () {
+		var _this = this,
+			isotopeActive = false;
 
 		var isoOpts = {
 			itemSelector: this.itemSelector,
@@ -161,11 +162,10 @@
 		};
 
 		this.$itemContainer.isotope( isoOpts );
-
 		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
-			// trigger isoLayoutComplete
 			_this.$itemContainer.trigger( 'isoLayoutComplete' );
 		} );
+
 	};
 
 	new CoEnvFacultyList();

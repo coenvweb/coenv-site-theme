@@ -2,33 +2,6 @@
 /*  Sensible/opinionated defaults
     ======================================================================== */
 
-
-/**
- * Breakpoints
- */
-// responsive breakpoints in js
-// http://tech.particulate.me/javascript/2013/10/10/how-to-conveniently-check-for-responsive-breakpoints-in-javascript/
-body:after {
-  display: none;
-  content: 'bp-1';
-
-  @include max-width ( $bp-1 - 1 ) {
-    content: 'bp-0';
-  }
-
-  @include min-width ( $bp-1 ) {
-    content: 'bp-2';
-  }
-
-  @include min-width ( $bp-2 ) {
-    content: 'bp-3';
-  }
-
-  @include min-width ( $bp-3 ) {
-    content: 'desktop';
-  }
-}
-
 /*  Apply a natural box layout model to all elements
     http://paulirish.com/2012/box-sizing-border-box-ftw/
     ======================================================================== */

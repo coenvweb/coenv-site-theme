@@ -24,6 +24,7 @@
         "define": true,
         "themeVars": true,
         "FastClick": true,
-        "getSize": true
+        "getSize": true,
+        "enquire": true
 	}	
 }
