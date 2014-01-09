@@ -35,7 +35,7 @@ $ordered_themes = $themes;
 
 							<?php foreach ( $ordered_themes as $theme ) : ?>		
 
-								<li class="Faculty-toolbox-roller-item"><a href="#"><?php echo $theme->name ?></a></li>
+								<li class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme->slug ?>"><?php echo $theme->name ?></a></li>
 
 							<?php endforeach ?>
 

@@ -27,7 +27,7 @@ if ( !empty( $unit ) ) {
 
 $image_id = get_field( 'image' );
 if ( in_array( $count, $featured ) ) {
-	$member_classes .= ' featured';
+	$member_classes .= ' Faculty-list-item--featured';
 	// TODO: update these sizes for retina images
 	$image = wp_get_attachment_image_src( $image_id, 'small' );
 } else {

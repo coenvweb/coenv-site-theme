@@ -13,21 +13,33 @@
 	};
 
 	CoEnvFacultyToolbox.prototype = {
-		// General container for the faculty list page
-		$facultyList: $('.Faculty-list'),
 
 		// Container for faculty items (members)
 		// Isotope acts on this
-		$itemContainer: $('.Faculty-list-content'),
+		$isoContainer: $('.Faculty-list-content'),
 
 		// The toolbox
-		$toolbox: $('.Faculty-toolbox')
+		$toolbox: $('.Faculty-toolbox'),
+
+		// Roller and roller items
+		$roller: $('.Faculty-toolbox-roller'),
+		$rollerItems: $('.Faculty-toolbox-roller-item')
+
 	};
 
 	/**
 	 * Initialize
 	 */
 	CoEnvFacultyToolbox.prototype.init = function () {
+		var _this = this;
+
+		this.scrollList();
+	};
+
+	/**
+	 * 
+	 */
+	CoEnvFacultyToolbox.prototype.scrollList = function () {
 		var _this = this;
 	};
 

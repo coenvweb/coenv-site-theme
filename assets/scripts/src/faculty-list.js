@@ -156,15 +156,19 @@
 
 		var isoOpts = {
 			itemSelector: this.itemSelector,
+			isInitLayout: false,
 			masonry: {
 				columnWidth: '.grid-sizer'
 			}
 		};
 
-		this.$itemContainer.isotope( isoOpts );
+		this.$itemContainer.isotope(isoOpts);
+
 		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
 			_this.$itemContainer.trigger( 'isoLayoutComplete' );
 		} );
+
+		this.$itemContainer.isotope('layout');
 
 	};
 
