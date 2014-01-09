@@ -5,11 +5,10 @@
 	========================================================================== */
 
 .Faculty-toolbox {
-	display: none;
+}
 
-	@include min-width ( $iPadLandscape ) {
-		display: block;
-	}
+.Faculty-toolbox-inner {
+	background: #303030;
 }
 
 .Faculty-toolbox-header {

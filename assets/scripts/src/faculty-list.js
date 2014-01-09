@@ -97,8 +97,7 @@
 		var _this = this;
 
 		var lazyload = function() {
-			//var $items = _this.$items.not('[data-loaded]');
-			var $items = _this.$items;
+			var $items = _this.$items.not('[data-loaded]');
 
 			if ( $items.length === 0 ) {
 				return;
@@ -155,7 +154,10 @@
 		var _this = this;
 
 		var isoOpts = {
-			itemSelector: this.itemSelector
+			itemSelector: this.itemSelector,
+			masonry: {
+				columnWidth: '.grid-sizer'
+			}
 		};
 
 		this.$itemContainer.isotope( isoOpts );

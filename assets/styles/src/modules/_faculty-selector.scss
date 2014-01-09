@@ -11,6 +11,15 @@
 	line-height: 1.5;
 	text-align: center;
 
+	@include min-width ( $bp-2 ) {
+
+		// hide for wider screens (but only if javascript is on)
+		.js & {
+			display: none;
+		}
+
+	}
+
 	select {
 		width: 100%;
 

@@ -78,6 +78,8 @@ $featured = array_slice($featured, 0, 20);
 
 					<?php $count = 0; ?>
 
+					<?php get_template_part( 'partials/partial', 'faculty-toolbox' ); ?>
+
 					<?php while ( $faculty->have_posts() ) : $faculty->the_post() ?>
 
 						<?php get_template_part( 'partials/partial', 'faculty-list-item' ); ?>
