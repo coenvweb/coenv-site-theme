@@ -171,7 +171,7 @@
 		this.$itemContainer.isotope(isoOpts);
 
 		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
-			//_this.$itemContainer.trigger( 'isoLayoutComplete' );
+			_this.$itemContainer.trigger( 'isoLayoutComplete' );
 		} );
 
 		this.$itemContainer.isotope('layout');
