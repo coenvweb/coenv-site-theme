@@ -167,11 +167,20 @@
 		this.$itemContainer.isotope({
 			//isInitLayout: false,
 			itemSelector: this.itemSelector,
+			isResizeBound: false,
 			masonry: {
-				columnWidth: $('.grid-sizer')[0]
-				//columnWidth: 133
+				columnWidth: $('.grid-sizer').width()
 			}
 		});
+
+		// listen for window resize to update columnWidth
+		$(window).on( 'debouncedresize', function () {
+			_this.$itemContainer.isotope({
+				masonry: {
+					columnWidth: $('.grid-sizer').width()
+				}
+			});
+		} );
 
 		// register layoutComplete listener
 		// this will not fire on initialization,
@@ -193,10 +202,11 @@
 
 		// listen for 'filter' event on item container
 		this.$itemContainer.on( 'filter', function ( event, data ) {
-
-			if ( data.options === undefined ) {
-				data.options = {};
-			}
+			var isoOpts = {
+				masonry: {
+					columnWidth: $('.grid-sizer').width()
+				}
+			};
 
 			// check if filters were passed
 			if ( data.filters !== undefined ) {
@@ -215,10 +225,10 @@
 
 			// add filters to data.options
 			// toolbox should *not* be filtered out
-			data.options.filter = filters + ', ' + _this.toolboxSelector;
+			isoOpts.filter = filters + ', ' + _this.toolboxSelector;
 
 			// filter isotope
-			_this.$itemContainer.isotope( data.options );
+			_this.$itemContainer.isotope( isoOpts );
 		} );
 	};
 
