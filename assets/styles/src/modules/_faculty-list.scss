@@ -38,11 +38,17 @@ $faculty-item-height-ratio: 1.33;
 	background: hsla(60,60,60,0.5);
 }
 
-//padding-top: percentage( ( ( $faculty-list-width * (2/8) ) / $faculty-list-width ) * $faculty-item-height-multiplier );
-//width: percentage( ( $faculty-list-width * (2/8) ) / $faculty-list-width );
-
 .Faculty-list-item--featured {
-	//width: percentage( $faculty-featured-width / $faculty-width );
+
+	@include min-width ( $bp-2 ) {
+	
+		.js & {
+			padding-top: percentage( ( 1/8 ) * $faculty-item-height-ratio ) + percentage( $faculty-margin );
+			padding-bottom: percentage( ( 1/8 ) * $faculty-item-height-ratio );
+			width: percentage( $faculty-featured-width / $faculty-width );
+		}
+
+	}
 }
 
 .Faculty-list-item-inner {

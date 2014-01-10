@@ -42,8 +42,8 @@
 		// lazy load images
 		this.lazyloader();
 
-		// toggle isotope on or off based on screen width
-		this.isoToggle();
+		// initialize isotope
+		this.isoInit();
 	};
 
 	/**
@@ -147,29 +147,34 @@
 	/**
 	 * Initialize Isotope
 	 *
-	 * TODO: only initialize when window is at least iPadPortrait
-	 * var currentBreakpoint = window.getComputedStyle( document.body, ':after' ).getPropertyValue( 'content' );
+	 * - initialize isotope
+	 * - relayout with new gutter width on resize
 	 */
-	CoEnvFacultyList.prototype.isoToggle = function () {
+	CoEnvFacultyList.prototype.isoInit = function () {
 		var _this = this,
 			isotopeActive = false;
+
+		// get gutter
 
 		var isoOpts = {
 			itemSelector: this.itemSelector,
 			isInitLayout: false,
 			masonry: {
 				columnWidth: '.grid-sizer',
-				gutter: 4
+				//gutter: 4
 			}
 		};
 
-//		this.$itemContainer.isotope(isoOpts);
-//
-//		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
-//			//_this.$itemContainer.trigger( 'isoLayoutComplete' );
-//		} );
-//
-//		this.$itemContainer.isotope('layout');
+		// on resize, do this.$itemContainer.isotope(isoOpts);
+		// with new gutter width so that gutter updates
+
+		this.$itemContainer.isotope(isoOpts);
+
+		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
+			//_this.$itemContainer.trigger( 'isoLayoutComplete' );
+		} );
+
+		this.$itemContainer.isotope('layout');
 
 	};
 
