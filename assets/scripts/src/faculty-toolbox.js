@@ -33,14 +33,35 @@
 	CoEnvFacultyToolbox.prototype.init = function () {
 		var _this = this;
 
-		this.scrollList();
+		// item selection
+		this.itemSelection();
 	};
 
 	/**
-	 * 
+	 * Handle item selection
+	 *
+	 * Triggers isotope filter
 	 */
-	CoEnvFacultyToolbox.prototype.scrollList = function () {
+	CoEnvFacultyToolbox.prototype.itemSelection = function () {
 		var _this = this;
+
+		this.$rollerItems.on( 'click', 'a', function ( event ) {
+			event.preventDefault();
+
+			var $item = $(this),
+				data = {};
+
+			data.filters = {
+				theme: {
+					name: $item.text(),
+					slug: $item.data('theme'),
+					url: $item.attr('href')
+				}
+			};
+
+			// trigger isotope
+			_this.$isoContainer.trigger( 'filter', [ data ] );
+		} );
 	};
 
 	new CoEnvFacultyToolbox();

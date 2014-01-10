@@ -6,10 +6,10 @@
 
 .Faculty-toolbox {
 	@extend .antialiased;
-	display: none;
+	//display: none;
 
 	@include min-width ( $bp-2 ) {
-		//display: block;
+		display: block;
 	}
 }
 

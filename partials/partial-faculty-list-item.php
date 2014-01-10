@@ -31,13 +31,15 @@ if ( in_array( $count, $featured ) ) {
 	// TODO: update these sizes for retina images
 	$image = wp_get_attachment_image_src( $image_id, 'small' );
 } else {
+	$member_classes .= ' grid-sizer';
+
 	// TODO: update these sizes for retina images
 	$image = wp_get_attachment_image_src( $image_id, 'small' );
 }
 
 ?>
 
-<article class="Faculty-list-item Faculty-list-item--<?php the_ID() ?> grid-sizer jsIsotopeItem<?php echo $member_classes ?>" id="<?php the_ID() ?>">
+<article class="Faculty-list-item Faculty-list-item--<?php the_ID() ?> jsIsotopeItem<?php echo $member_classes ?>" id="<?php the_ID() ?>">
 	
 	<a href="<?php the_permalink() ?>" class="Faculty-list-item-inner jsIsotopeItemInner" title="<?php the_title() ?>"<?php echo $unit_style ?>>
 

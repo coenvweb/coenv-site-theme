@@ -14,16 +14,25 @@
 	};
 
 	CoEnvFacultyList.prototype = {
-		// General container for the faculty list page
+		// general container for the faculty list page
 		$facultyList: $('.Faculty-list'),
 
-		// Container for faculty items (members)
-		// Isotope acts on this
+		// container for faculty items (members)
+		// isotope acts on this
 		$itemContainer: $('.Faculty-list-content'),
 
-		// Individual items (members)
+		// individual items (members)
 		$items: $('.Faculty-list-item'),
-		itemSelector: '.Faculty-list-item'
+		itemSelector: '.Faculty-list-item',
+
+		// item image selector
+		itemImageSelector: '.Faculty-list-item-image',
+
+		// toolbox selector
+		toolboxSelector: '.Faculty-toolbox',
+
+		// isotope filter queue
+		isoFilterQueue: {}
 	};
 
 	/**
@@ -32,18 +41,22 @@
 	 * Kick-off everything that happens on initialization here.
 	 */
 	CoEnvFacultyList.prototype.init = function () {
+		var _this = this;
 
 		// keep track of window height and scrolltop
 		this.trackWindow();
 
 		// save item offsets
-		this.itemOffsets();
+		//this.itemOffsets();
 
 		// lazy load images
-		this.lazyloader();
+		//this.lazyloader();
 
 		// initialize isotope
 		this.isoInit();
+
+		// handle isotope filtering when layout is complete
+		this.isoFilter();
 	};
 
 	/**
@@ -112,7 +125,7 @@
 
 				// add data-picture attribute
 				// which will flag this element for picturefill
-				$(el).find('.Faculty-list-item-image').attr('data-picture', '');
+				$(el).find( _this.itemImageSelector ).attr('data-picture', '');
 
 				// add data-loaded attribute so
 				// we don't have to loop over this item again
@@ -146,36 +159,67 @@
 
 	/**
 	 * Initialize Isotope
-	 *
-	 * - initialize isotope
-	 * - relayout with new gutter width on resize
 	 */
 	CoEnvFacultyList.prototype.isoInit = function () {
-		var _this = this,
-			isotopeActive = false;
+		var _this = this;
 
-		// get gutter
-
-		var isoOpts = {
+		// initialize isotope without layout
+		this.$itemContainer.isotope({
+			//isInitLayout: false,
 			itemSelector: this.itemSelector,
-			isInitLayout: false,
 			masonry: {
-				columnWidth: '.grid-sizer',
-				//gutter: 4
+				columnWidth: $('.grid-sizer')[0]
+				//columnWidth: 133
 			}
-		};
+		});
 
-		// on resize, do this.$itemContainer.isotope(isoOpts);
-		// with new gutter width so that gutter updates
-
-		this.$itemContainer.isotope(isoOpts);
-
+		// register layoutComplete listener
+		// this will not fire on initialization,
+		// only on subsequent layouts
 		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
 			_this.$itemContainer.trigger( 'isoLayoutComplete' );
 		} );
 
+		// layout isotope
 		this.$itemContainer.isotope('layout');
+	};
 
+	/**
+	 * Isotope filtering
+	 */
+	CoEnvFacultyList.prototype.isoFilter = function () {
+		var _this = this,
+			filters;
+
+		// listen for 'filter' event on item container
+		this.$itemContainer.on( 'filter', function ( event, data ) {
+
+			if ( data.options === undefined ) {
+				data.options = {};
+			}
+
+			// check if filters were passed
+			if ( data.filters !== undefined ) {
+
+				// add filters to filter queue
+				for ( var prop in data.filters ) {
+					_this.isoFilterQueue[ prop ] = data.filters[ prop ];
+				}
+			}
+
+			// combine filters from filter queue
+			filters = $.map( _this.isoFilterQueue, function ( value ) {
+				return '.' + value.slug;
+			} ).join('');
+
+
+			// add filters to data.options
+			// toolbox should *not* be filtered out
+			data.options.filter = filters + ', ' + _this.toolboxSelector;
+
+			// filter isotope
+			_this.$itemContainer.isotope( data.options );
+		} );
 	};
 
 	new CoEnvFacultyList();
