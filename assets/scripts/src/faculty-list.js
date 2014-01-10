@@ -158,17 +158,18 @@
 			itemSelector: this.itemSelector,
 			isInitLayout: false,
 			masonry: {
-				columnWidth: '.grid-sizer'
+				columnWidth: '.grid-sizer',
+				gutter: 4
 			}
 		};
 
-		this.$itemContainer.isotope(isoOpts);
-
-		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
-			_this.$itemContainer.trigger( 'isoLayoutComplete' );
-		} );
-
-		this.$itemContainer.isotope('layout');
+//		this.$itemContainer.isotope(isoOpts);
+//
+//		this.$itemContainer.isotope( 'on', 'layoutComplete', function () {
+//			//_this.$itemContainer.trigger( 'isoLayoutComplete' );
+//		} );
+//
+//		this.$itemContainer.isotope('layout');
 
 	};
 
