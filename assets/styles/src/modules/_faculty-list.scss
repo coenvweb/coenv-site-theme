@@ -8,9 +8,6 @@
 
 $faculty-width: 1064;
 $faculty-items-per-row: 8;
-$faculty-item-width: ( $faculty-width / $faculty-items-per-row );
-$faculty-featured-width: ( ( $faculty-width / $faculty-items-per-row ) * 2 );
-
 $faculty-item-height-ratio: 1.33;
 
 .Faculty-list {
@@ -24,9 +21,11 @@ $faculty-item-height-ratio: 1.33;
 .Faculty-list-content {
 	@extend .clearfix;
 	margin-right: -4px;
+	background: rgba(0,0,0,0.2);
 }
 
 .Faculty-list-item {
+outline: 1px solid red;
 	position: relative;
 	float: left;
 	padding-bottom: percentage( ( 1/4 ) * $faculty-item-height-ratio );
@@ -64,6 +63,7 @@ $faculty-item-height-ratio: 1.33;
 	bottom: 4px;
 	left: 0;
 	text-decoration: none;
+	background-color: rgba(0,0,0,0.2) !important;
 }
 
 .Faculty-list-item-image {
