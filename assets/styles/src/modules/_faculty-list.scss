@@ -1,0 +1,124 @@
+/*	==========================================================================
+	Faculty list
+
+	Images sizes:
+		Small: 129px
+		Large: 262px
+	========================================================================== */
+
+$faculty-width: 1064;
+$faculty-items-per-row: 8;
+$faculty-item-height-ratio: 1.33;
+
+.Faculty-list {
+}
+
+.Faculty-filter {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.Faculty-toolbox-test {
+	.Faculty-list-item-inner {
+		background: #222;
+	}
+}
+
+.Faculty-list-header {
+
+}
+
+.Faculty-list-content {
+	@extend .clearfix;
+	margin-right: -4px;
+}
+
+.Faculty-list-item,
+.Faculty-toolbox {
+	position: relative;
+	float: left;
+	padding-bottom: percentage( ( 1/4 ) * $faculty-item-height-ratio );
+	width: percentage( 1/4 );
+
+	@include min-width ( $bp-2 ) {
+		padding-bottom: percentage( ( 1/6 ) * $faculty-item-height-ratio );
+		width: percentage( 1/6 );
+	}
+
+	@include min-width ( $bp-3 ) {
+		padding-bottom: percentage( ( 1/8 ) * $faculty-item-height-ratio );
+		width: percentage( 1/8 );
+	}
+}
+
+.js .Faculty-list-item--featured,
+.js .Faculty-toolbox {
+
+	@include min-width ( $bp-2 ) {
+		padding-bottom: percentage( ( 2/6 ) * $faculty-item-height-ratio );
+		width: percentage( 2/6 );
+	}
+
+	@include min-width ( $bp-3 ) {
+		padding-bottom: percentage( ( 2/8 ) * $faculty-item-height-ratio );
+		width: percentage( 2/8 );
+	}
+}
+
+.Faculty-list-item-inner {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 4px;
+	bottom: 4px;
+	left: 0;
+	text-decoration: none;
+
+	.Faculty-toolbox & {
+		display: block;
+	}
+}
+
+.Faculty-list-item-image {
+
+	img {
+		display: block;
+width: 100%;
+	}
+}
+
+.Faculty-list-item-header {
+	@extend .antialiased;
+	@include rem('padding', 0.15, 0.25);
+
+	@include min-width ( $iPhoneLandscape ) {
+		@include rem('padding', 0.5);
+	}
+
+	@include min-width ( $iPadPortrait ) {
+		@include rem('padding', 0.5);
+	}
+}
+
+
+.Faculty-list-item-title {
+
+	margin: 0;
+	@include font-size(11);
+	line-height: 1.2;
+	font-weight: 600;
+	color: #fff;
+
+	@include min-width ( $iPhoneLandscape ) {
+		@include font-size(12);
+	}
+
+	@include min-width ( $iPadPortrait ) {
+		@include font-size(12);
+	}
+}
+
+.Faculty-list-item-subtitle {
+	@extend .visuallyhidden;
+}

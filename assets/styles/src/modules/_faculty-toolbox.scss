@@ -1,0 +1,139 @@
+/*	==========================================================================
+	Faculty toolbox
+
+	Only for wider screens
+	========================================================================== */
+
+.Faculty-toolbox {
+	@extend .antialiased;
+	display: none;
+
+	@include min-width ( $bp-2 ) {
+		display: block;
+		margin-right: -1px;
+	}
+}
+
+.Faculty-toolbox-inner {
+	background: #303030;
+}
+
+.Faculty-toolbox-header {
+}
+
+.Faculty-toolbox-title {
+	margin: 0;
+	@include serif;
+	@include font-size(36);
+	font-weight: 200;
+	color: #fff;
+
+	a {
+		display: block;
+		@include rem('padding', 0.5, 1);
+		text-decoration: none;
+		color: #fff;
+		border-bottom: 1px solid $border-dk;
+
+		&:hover {
+			background: $accent;
+			color: #fff !important;
+		}
+	}
+}
+
+.Faculty-toolbox-content {
+	position: relative;
+	padding-top: 80%;
+	border-top: 1px solid $border-dk-accent;
+	border-bottom: 1px solid $border-dk;
+}
+
+.Faculty-toolbox-roller {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	@include rem('padding', 1);
+}
+
+.Faculty-toolbox-roller-header {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 20%;
+}
+
+.Faculty-toolbox-roller-header-inner {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.Faculty-toolbox-roller-header-title {
+	display: table-cell;
+	vertical-align: middle;
+	@include rem('padding', 0, 1);
+
+	span {
+		display: block;
+		@include font-size(11);
+		line-height: 1;
+		text-transform: uppercase;
+		font-weight: 800;
+		color: #999;
+	}
+}
+
+.Faculty-toolbox-roller-content {
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 80%;
+}
+
+.Faculty-toolbox-roller-items {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	@include rem('margin', 0, 1, 1);
+	padding: 0;
+	list-style: none;
+	overflow-y: scroll;
+	border-radius: 4px;
+	background: #555;
+}
+
+.Faculty-toolbox-roller-item {
+	@include font-size(16);
+	line-height: 2;
+	font-weight: 400;
+	white-space: nowrap;
+	border-bottom: 1px solid rgba(0,0,0,0.075);
+
+	li:last-child  {
+		border-radius: 4px;
+	}
+
+	a {
+		display: block;
+		@include rem('padding', 0, 1);
+		text-decoration: none;
+		color: #fff;
+	}
+
+	a:hover {
+		background: #888;
+		color: #fff !important;
+	}
+}
+
+.Faculty-toolbox-footer {
+	background: red;
+	border-top: 1px solid $border-dk-accent;
+}

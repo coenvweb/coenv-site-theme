@@ -37,11 +37,12 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/jquery/jquery-migrate.min.js',
 						'<%= paths.dev %>bower_components/jquery-fast-click/jQuery.fastClick.js',
 						'<%= paths.dev %>bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
-						'<%= paths.dev %>bower_components/jquery.lazyload/jquery.lazyload.js',
 						'<%= paths.dev %>bower_components/chosen/chosen/chosen.jquery.js',
 						'<%= paths.dev %>bower_components/fitvids/jquery.fitvids.js',
 						'<%= paths.dev %>bower_components/jquery-placeholder/jquery.placeholder.js',
 						'<%= paths.dev %>bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
+						'<%= paths.dev %>bower_components/picturefill/picturefill.js',
+						'<%= paths.dev %>bower_components/enquire/dist/enquire.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
@@ -55,9 +56,11 @@ module.exports = function(grunt) {
 					'<%= paths.dev %>assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>bower_components/get-size/get-size.js',
-						'<%= paths.dev %>bower_components/isotope/jquery.isotope.js',
+						//'<%= paths.dev %>bower_components/isotope/jquery.isotope.js',
+						'<%= paths.dev %>assets/scripts/src/plugins/isotope2.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/procession/jquery.procession.js',
-						'<%= paths.dev %>assets/scripts/src/faculty.js'
+						'<%= paths.dev %>assets/scripts/src/faculty-list.js',
+						'<%= paths.dev %>assets/scripts/src/faculty-toolbox.js'
 					],
 
 					// jQuery fallback. Load this if CDN version is not available (user is offline)
