@@ -30,10 +30,7 @@
 		itemImageSelector: '.Faculty-list-item-image',
 
 		// toolbox selector
-		toolboxSelector: '.Faculty-toolbox',
-
-		// isotope filter queue
-		isoFilterQueue: {}
+		toolboxSelector: '.Faculty-toolbox'
 	};
 
 	/**
@@ -58,6 +55,9 @@
 
 		// handle isotope filtering when layout is complete
 		this.isoFilter();
+
+		// update url hash after filtering
+		this.updateHash();
 	};
 
 	/**
@@ -160,19 +160,37 @@
 
 	/**
 	 * Initialize Isotope
+	 *
+	 * TODO: is there a way to register a layoutComplete event
+	 * on the isotope container without initializing .isotope first?
+	 * Right now we're initializing isotope twice.
 	 */
 	CoEnvFacultyList.prototype.isoInit = function () {
-		var _this = this;
+		var _this = this,
+			isoOpts,
+			$firstItem;
 
-		// initialize isotope without layout
-		this.$itemContainer.isotope({
+		// set up isotope options
+		isoOpts = {
 			isInitLayout: false,
 			itemSelector: this.itemSelector,
 			stamp: this.toolboxSelector,
 			masonry: {
 				columnWidth: '.grid-sizer'
 			}
-		});
+		};
+
+		// check for url hash
+		if ( window.location.hash ) {
+			isoOpts.filter = this.filterFromHash();
+
+			// the first item in a filtered set should never be featured (i.e. big)
+			// otherwise the layout will break.
+			$firstItem = _this.$items.filter( filters ).first().removeClass( _this.itemFeaturedClass );
+		}
+
+		// initialize isotope without layout
+		this.$itemContainer.isotope( isoOpts );
 
 		// register layoutComplete listener
 		// this will not fire on initialization,
@@ -182,49 +200,73 @@
 		} );
 
 		// layout isotope
-		this.$itemContainer.isotope('layout');
+		this.$itemContainer.isotope( isoOpts );
 	};
 
 	/**
 	 * Isotope filtering
+	 *
+	 * Listens for 'filter' event on item container
 	 */
 	CoEnvFacultyList.prototype.isoFilter = function () {
 		var _this = this,
-			$firstItem,
-			filters;
+			filters = '',
+			$firstItem;
 
 		// listen for 'filter' event on item container
 		this.$itemContainer.on( 'filter', function ( event, data ) {
-			var isoOpts = {
-				//masonry: {
-					//columnWidth: '.grid-sizer'
-				//}
-			};
 
-			// check if filters were passed
-			if ( data.filters !== undefined ) {
-
-				// add filters to filter queue
-				for ( var prop in data.filters ) {
-					_this.isoFilterQueue[ prop ] = data.filters[ prop ];
-				}
-			}
-
-			// combine filters from filter queue
-			filters = $.map( _this.isoFilterQueue, function ( value ) {
+			// combine filters into filter string
+			filters = $.map( data.filters, function ( value ) {
 				return '.' + value.slug;
 			} ).join('');
 
-			// the first item in a filtered set must not be featured,
-			// otherwise the layout will break!
-			// check filtered items
+			// the first item in a filtered set should never be featured (i.e. big)
+			// otherwise the layout will break.
 			$firstItem = _this.$items.filter( filters ).first().removeClass( _this.itemFeaturedClass );
 
-			// add filters to data.options
-			isoOpts.filter = filters;
 			// filter isotope
-			_this.$itemContainer.isotope( isoOpts );
+			_this.$itemContainer.isotope({ filter: filters });
 		} );
+	};
+
+	/**
+	 * Update URL hash after filtering
+	 *
+	 * Listens for 'filter' event on item container
+	 */
+	CoEnvFacultyList.prototype.updateHash = function () {
+		var _this = this,
+			hash = '';
+
+		this.$itemContainer.on( 'filter', function ( event, data ) {
+
+			// build hash
+			hash = $.map( data.filters, function ( value ) {
+				return value.slug;
+			} ).join('&');
+
+			window.location.hash = hash;
+
+		} );
+	};
+
+	/**
+	 * Parse URL hash for isotope filters
+	 */
+	CoEnvFacultyList.prototype.filterFromHash = function () {
+		var _this = this,
+			hashes,
+			filters;
+
+		hashes = window.location.hash.replace( '#', '' ).split('&');
+
+		// combine filters into filter string
+		filters = $.map( hashes, function ( value ) {
+			return '.' + value;
+		} ).join('');
+
+		return filters;
 	};
 
 	new CoEnvFacultyList();
