@@ -48,7 +48,7 @@ $layout-wrapper-translateX: 80%;
 	// this is here to help out decorative pseudo elements
 	// that have negative right positions on single faculty pages
 	// might have to remove if this causes negative effects anywhere else.
-	overflow-x: hidden;
+	//overflow-x: hidden;
 	background: url( $images-path + 'bg-wave-cut.png' ) top center;
 
 	//@include transition( transform 0.2s ease );

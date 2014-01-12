@@ -61,9 +61,13 @@ if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
 $faculty = new WP_Query( $query );
 
 // randomize featured (large) faculty members
-$featured = range(9, 199);
-shuffle($featured);
-$featured = array_slice($featured, 0, 20);
+// TODO: Make featured items always appear in the same
+// space. Might fix the problem of the layout breaking
+//$featured = range(9, 199);
+//shuffle($featured);
+//$featured = array_slice($featured, 0, 20);
+
+$featured = array(6,14,29,38,42,56,64,77,85,93,103,115,124,139,144,156,161,172,188,198,200);
 ?>
 
 	<section class="Faculty-list" id="faculty-archive">
@@ -87,6 +91,8 @@ $featured = array_slice($featured, 0, 20);
 						<?php $count++ ?>
 
 					<?php endwhile ?>
+
+					<div class="gutter-sizer"></div>
 
 				</div><!-- .Faculty-list-content -->
 

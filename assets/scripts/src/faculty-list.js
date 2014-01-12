@@ -24,6 +24,7 @@
 		// individual items (members)
 		$items: $('.Faculty-list-item'),
 		itemSelector: '.Faculty-list-item',
+		itemFeaturedClass: 'Faculty-list-item--featured',
 
 		// item image selector
 		itemImageSelector: '.Faculty-list-item-image',
@@ -47,10 +48,10 @@
 		this.trackWindow();
 
 		// save item offsets
-		//this.itemOffsets();
+		this.itemOffsets();
 
 		// lazy load images
-		//this.lazyloader();
+		this.lazyloader();
 
 		// initialize isotope
 		this.isoInit();
@@ -165,22 +166,13 @@
 
 		// initialize isotope without layout
 		this.$itemContainer.isotope({
-			//isInitLayout: false,
+			isInitLayout: false,
 			itemSelector: this.itemSelector,
-			isResizeBound: false,
+			stamp: this.toolboxSelector,
 			masonry: {
-				columnWidth: $('.grid-sizer').width()
+				columnWidth: '.grid-sizer'
 			}
 		});
-
-		// listen for window resize to update columnWidth
-		$(window).on( 'debouncedresize', function () {
-			_this.$itemContainer.isotope({
-				masonry: {
-					columnWidth: $('.grid-sizer').width()
-				}
-			});
-		} );
 
 		// register layoutComplete listener
 		// this will not fire on initialization,
@@ -198,14 +190,15 @@
 	 */
 	CoEnvFacultyList.prototype.isoFilter = function () {
 		var _this = this,
+			$firstItem,
 			filters;
 
 		// listen for 'filter' event on item container
 		this.$itemContainer.on( 'filter', function ( event, data ) {
 			var isoOpts = {
-				masonry: {
-					columnWidth: $('.grid-sizer').width()
-				}
+				//masonry: {
+					//columnWidth: '.grid-sizer'
+				//}
 			};
 
 			// check if filters were passed
@@ -222,11 +215,13 @@
 				return '.' + value.slug;
 			} ).join('');
 
+			// the first item in a filtered set must not be featured,
+			// otherwise the layout will break!
+			// check filtered items
+			$firstItem = _this.$items.filter( filters ).first().removeClass( _this.itemFeaturedClass );
 
 			// add filters to data.options
-			// toolbox should *not* be filtered out
-			isoOpts.filter = filters + ', ' + _this.toolboxSelector;
-
+			isoOpts.filter = filters;
 			// filter isotope
 			_this.$itemContainer.isotope( isoOpts );
 		} );

@@ -11,7 +11,18 @@ $faculty-items-per-row: 8;
 $faculty-item-height-ratio: 1.33;
 
 .Faculty-list {
+}
 
+.Faculty-filter {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.Faculty-toolbox-test {
+	.Faculty-list-item-inner {
+		background: #222;
+	}
 }
 
 .Faculty-list-header {
@@ -21,11 +32,10 @@ $faculty-item-height-ratio: 1.33;
 .Faculty-list-content {
 	@extend .clearfix;
 	margin-right: -4px;
-	background: rgba(0,0,0,0.2);
 }
 
-.Faculty-list-item {
-outline: 1px solid red;
+.Faculty-list-item,
+.Faculty-toolbox {
 	position: relative;
 	float: left;
 	padding-bottom: percentage( ( 1/4 ) * $faculty-item-height-ratio );
@@ -42,7 +52,8 @@ outline: 1px solid red;
 	}
 }
 
-.js .Faculty-list-item--featured {
+.js .Faculty-list-item--featured,
+.js .Faculty-toolbox {
 
 	@include min-width ( $bp-2 ) {
 		padding-bottom: percentage( ( 2/6 ) * $faculty-item-height-ratio );
@@ -63,7 +74,10 @@ outline: 1px solid red;
 	bottom: 4px;
 	left: 0;
 	text-decoration: none;
-	background-color: rgba(0,0,0,0.2) !important;
+
+	.Faculty-toolbox & {
+		display: block;
+	}
 }
 
 .Faculty-list-item-image {

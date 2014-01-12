@@ -7,7 +7,7 @@ global $themes, $units, $faculty;
 $ordered_themes = $themes;
 ?>
 
-<header class="Faculty-toolbox Faculty-list-item Faculty-list-item--featured">
+<header class="Faculty-toolbox">
 
 	<div class="Faculty-toolbox-inner Faculty-list-item-inner">
 
