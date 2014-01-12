@@ -44,11 +44,6 @@ $layout-wrapper-translateX: 80%;
 	//overflow-y: scroll;
 	//@include transition( background .25s ease );
 	//transition: background .25s ease;
-
-	// this is here to help out decorative pseudo elements
-	// that have negative right positions on single faculty pages
-	// might have to remove if this causes negative effects anywhere else.
-	//overflow-x: hidden;
 	background: url( $images-path + 'bg-wave-cut.png' ) top center;
 
 	//@include transition( transform 0.2s ease );
@@ -56,6 +51,13 @@ $layout-wrapper-translateX: 80%;
 	//@include transform-style( preserve-3d );
 	//@include backface-visibility( hidden );
 	//@include transform( translate3d(0,0,0) );
+
+	// this is here to help out decorative pseudo elements
+	// that have negative right positions on single faculty pages
+	// might have to remove if this causes negative effects anywhere else.=
+	.single-faculty & {
+		overflow-x: hidden;
+	}
 
 	.lt-ie9 & {
 		width: auto;
