@@ -186,7 +186,7 @@
 
 			// the first item in a filtered set should never be featured (i.e. big)
 			// otherwise the layout will break.
-			$firstItem = _this.$items.filter( filters ).first().removeClass( _this.itemFeaturedClass );
+			$firstItem = _this.$items.filter( isoOpts.filters ).first().removeClass( _this.itemFeaturedClass );
 		}
 
 		// initialize isotope without layout
