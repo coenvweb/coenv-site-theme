@@ -6,6 +6,8 @@
 
 .Faculty-toolbox {
 	@extend .antialiased;
+	position: relative;
+	z-index: 9999;
 	display: none;
 
 	@include min-width ( $bp-2 ) {
@@ -107,6 +109,23 @@
 	overflow-y: scroll;
 	border-radius: 4px;
 	background: #555;
+
+	.js & {
+		overflow: hidden;
+	}
+}
+
+.js .Faculty-toolbox-roller-items-inner {
+	position: relative;
+	transition: transform 0.1s ease-in-out;
+background: rgba(0,0,0,0.8);
+}
+
+.js .Faculty-toolbox-roller-items-set {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
 }
 
 .Faculty-toolbox-roller-item {
@@ -130,6 +149,14 @@
 	a:hover {
 		background: #888;
 		color: #fff !important;
+	}
+}
+
+.Faculty-toolbox-roller-item--active a {
+	background: $accent;
+
+	&:hover {
+		background: $accent;
 	}
 }
 

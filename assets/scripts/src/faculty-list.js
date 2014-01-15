@@ -218,6 +218,9 @@
 
 			// combine filters into filter string
 			filters = $.map( data.filters, function ( value ) {
+				if ( value.slug === '*' ) {
+					return value.slug;
+				}
 				return '.' + value.slug;
 			} ).join('');
 
@@ -243,7 +246,11 @@
 
 			// build hash
 			hash = $.map( data.filters, function ( value ) {
-				return value.slug;
+				if ( value.slug === '*' ) {
+					return 'theme-all';
+				} else {
+					return value.slug;
+				}
 			} ).join('&');
 
 			window.location.hash = hash;

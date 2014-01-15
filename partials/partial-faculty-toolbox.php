@@ -29,19 +29,29 @@ $ordered_themes = $themes;
 
 				<div class="Faculty-toolbox-roller-content">
 					
-					<ul class="Faculty-toolbox-roller-items">
-						
-						<?php if ( !empty( $ordered_themes ) ) : ?>				
+					<div class="Faculty-toolbox-roller-items">
+							
+						<div class="Faculty-toolbox-roller-items-inner">
 
-							<?php foreach ( $ordered_themes as $theme ) : ?>		
+							<div class="Faculty-toolbox-roller-items-set">
+								
+								<div class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/" data-theme="*">All Research Themes</a></div>
+								
+								<?php if ( !empty( $ordered_themes ) ) : ?>
 
-								<li class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme->slug ?>" data-theme="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></a></li>
+									<?php foreach ( $ordered_themes as $theme ) : ?>		
 
-							<?php endforeach ?>
+										<div class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme->slug ?>" data-theme="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></a></div>
 
-						<?php endif ?>
+									<?php endforeach ?>
 
-					</ul><!-- .Faculty-toolbox-roller-items -->
+								<?php endif ?>
+
+							</div><!-- .Faculty-toolbox-roller-items-set -->
+
+						</div><!-- .Faculty-toolbox-roller-items-inner -->
+
+					</div><!-- .Faculty-toolbox-roller-items -->
 
 				</div><!-- .Faculty-toolbox-roller-content -->
 

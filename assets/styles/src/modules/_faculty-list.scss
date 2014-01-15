@@ -99,7 +99,7 @@ $faculty-item-height-ratio: 1.33;
 	.Faculty-list-item--featured & {
 
 		@include min-width ( $bp-2 ) {
-			@include rem('padding', 1, 0.5);
+			@include rem('padding', 1);
 		}
 
 	}
