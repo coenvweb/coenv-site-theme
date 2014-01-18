@@ -1139,7 +1139,7 @@ function coenv_print_breadcrumbs() {
 	echo $output;
 }
 /**
- * Remove content RSS
+ * Remove comment RSS
  */
   remove_action( 'wp_head','feed_links', 2 );
   remove_action( 'wp_head','feed_links_extra', 3 );
