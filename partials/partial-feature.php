@@ -70,7 +70,7 @@ $feature = array(
 					<?php if ( !empty( $feature['image']['caption'] ) ) : ?>
 						<p class="feature-caption"><?php echo $feature['image']['caption'] ?></p>
 					<?php endif ?>
-
+                
 				<?php  endif ?>
 
 			</div><!-- .feature-content -->
