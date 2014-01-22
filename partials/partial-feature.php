@@ -19,7 +19,7 @@ $feature = array(
 	'label' => get_field('feature_label'),
 	'content_link' => array(
 		'title' => $content_link['title'],
-		'url' => get_permalink($content_link['content_link']->ID)
+		'url' => $content_link['content_link']
 	),
 	'image' => array(
 		'url' => $feature_image[0],
