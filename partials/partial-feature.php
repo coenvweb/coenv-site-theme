@@ -7,6 +7,12 @@ $feature_type = $feature_type['choices'][get_field('feature_type')];
 
 $content_link = get_field('link');
 
+if (!strpos($content_link,'coenv.washington')) {
+	$content_target = ' target="_blank" ';
+} else {
+	$content_target = '';
+}
+
 $feature_image = wp_get_attachment_image_src( get_field('feature_image'), 'large' );
 $feature_caption = get_post( get_field('feature_image') );
 
@@ -56,14 +62,14 @@ $feature = array(
 
 				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
 
-					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"><?php the_title() ?></a></h1>
+					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $content_target ?>><?php the_title() ?></a></h1>
 
 					<?php if ( get_field('teaser') ) : ?>
 						<p><?php the_field('teaser') ?></p>
 					<?php endif ?>
 
 					<?php if ( !empty( $feature['content_link'] ) ) : ?>
-						<a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"><?php echo $feature['content_link']['title'] ?></a>
+						<a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $content_target ?>><?php echo $feature['content_link']['title'] ?></a>
 					<?php endif ?>
 
 					<?php if ( !empty( $feature['image']['caption'] ) ) : ?>
