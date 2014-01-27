@@ -1148,3 +1148,15 @@ function coenv_print_breadcrumbs() {
   function reinsert_rss_feed() {
       echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
   }
+ /**
+ * Manually sorting posts by date on news index
+ * because Simple Post Order Pugin allows manual 
+ * reordering of posts.
+ */
+	function coenv_modify_query_order( $query ) {
+    	if ( $query->is_main_query() ) {
+        	$query->set( 'orderby', 'date' );
+        	$query->set( 'order', 'DESC' );
+    	}	
+	}
+add_action( 'pre_get_posts', 'coenv_modify_query_order' );
