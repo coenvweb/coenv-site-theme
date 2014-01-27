@@ -193,7 +193,7 @@
 		position: relative;
 		display: table-cell;
 		margin: 0;
-		width: 85%;
+		width: 100%;
 
 		@include min-width ( 580 ) {
 			float: left;

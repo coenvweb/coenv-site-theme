@@ -191,6 +191,7 @@ body.home {
 
 					a {
 						color: #fff;
+                        text-decoration: none;
 					}
 
 					a:hover {
@@ -276,6 +277,8 @@ body.home {
 .story {
 	@extend %media;
 
+    overflow: visible; //fixes shadow on homepage?
+    
 	@include min-width( $iPadPortrait ) {
 		float: left;
 		@include rem('padding', 0, 0.5);
@@ -323,6 +326,18 @@ body.home {
 			}
 
 		} // p
+        
+        .button {
+                @include rem('margin-top', .66);
+                color: $text;
+                background: #e5e5e5;
+                background: rgba(0,0,0,.1);
+            
+            &:hover {
+                background: $bg-dk;
+            }
+            
+        } //button
 
 	} // .content
 
