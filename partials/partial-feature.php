@@ -5,20 +5,27 @@
 $feature_type = get_field_object('feature_type');
 $feature_type = $feature_type['choices'][get_field('feature_type')];
 
-$content_link = get_field('link');
+$content_link = get_field('content_link');
+$content_url  = $content_link[0]['link'];
+
+if (strpos($content_url,'coenv.washington') || substr($content_url,0,1) == '/') {
+	$content_target = '';
+} else {
+	$content_target = ' target="_blank" ';
+}
 
 $feature_image = wp_get_attachment_image_src( get_field('feature_image'), 'large' );
 $feature_caption = get_post( get_field('feature_image') );
 
 $unit = get_field('unit');
 $unit_color = coenv_unit_color($unit);
-
 $feature = array(
 	'type' => $feature_type,
 	'label' => get_field('feature_label'),
 	'content_link' => array(
-		'title' => get_field('link_text'),
-		'url' => $content_link
+		'title' => $content_link[0]['link_text'],
+		'url' => $content_url,
+		'target' => $content_target
 	),
 	'image' => array(
 		'url' => $feature_image[0],
@@ -26,7 +33,6 @@ $feature = array(
 	),
 	'color' => $unit_color != '' ? $unit_color : get_field('color_picker')
 );
-
 ?>
 <article class="feature loading">
 
@@ -56,20 +62,21 @@ $feature = array(
 
 				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
 
-					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"><?php the_title() ?></a></h1>
+					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
+
 
 					<?php if ( get_field('teaser') ) : ?>
 						<p><?php the_field('teaser') ?></p>
 					<?php endif ?>
 
 					<?php if ( !empty( $feature['content_link'] ) ) : ?>
-						<a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"><?php echo $feature['content_link']['title'] ?></a>
+						<a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 					<?php endif ?>
 
 					<?php if ( !empty( $feature['image']['caption'] ) ) : ?>
 						<p class="feature-caption"><?php echo $feature['image']['caption'] ?></p>
 					<?php endif ?>
-                
+
 				<?php  endif ?>
 
 			</div><!-- .feature-content -->
