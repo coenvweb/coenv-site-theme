@@ -1148,3 +1148,12 @@ function coenv_print_breadcrumbs() {
   function reinsert_rss_feed() {
       echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
   }
+  add_action( 'pre_get_posts', 'my_change_sort_order'); 
+    function my_change_sort_order($query){
+        if(is_home()):
+           $query->set( 'order', 'DESC' );
+       	   $query->set( 'orderby', 'date' );
+        endif;    
+    };
+
+  
