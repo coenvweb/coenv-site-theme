@@ -8,7 +8,10 @@ $feature_type = $feature_type['choices'][get_field('feature_type')];
 $content_link = get_field('content_link');
 $content_url  = $content_link[0]['link'];
 
-if (strpos($content_url,'coenv.washington') || substr($content_url,0,1) == '/') {
+/**
+ * Set target for external links
+ */
+if (strpos($content_url,'coenv.') || substr($content_url,0,1) == '/') {
 	$content_target = '';
 } else {
 	$content_target = ' target="_blank" ';
@@ -62,8 +65,7 @@ $feature = array(
 
 				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
 
-					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
-
+					<h1><?php echo $_SERVER['HTTP_HOST']; ?><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
 
 					<?php if ( get_field('teaser') ) : ?>
 						<p><?php the_field('teaser') ?></p>
