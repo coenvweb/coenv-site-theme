@@ -10,7 +10,7 @@
                         <div class="footer__info">
                             <?php get_search_form() ?>
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'top-links', 
+                                'theme_location' => 'footer-top-links', 
                                 'depth' => 1,
                                 'menu_class' => 'top-links',
                                 'container' => false, 
