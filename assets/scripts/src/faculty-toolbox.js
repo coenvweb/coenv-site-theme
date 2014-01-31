@@ -49,14 +49,14 @@
 		// keep track of roller measurements
 		this.rollerMeasurements();
 
-		// handle item selection
-		this.rollerItemSelection();
-
 		// handle adding sets when roller rolls
 		this.addItemSets();
 
 		// slide to first item
 		this.slideToItem( this.$roller.find( this.rollerItemSelector ).first() );
+
+		// handle item selection
+		this.rollerItemSelection();
 
 //		// get roller items
 //		this.getRollerItems();
@@ -132,7 +132,6 @@
 
 		this.$roller.on( 'click', this.rollerItemSelector, function ( event ) {
 			event.preventDefault();
-
 			_this.slideToItem( $(this) );
 		} );
 	};
