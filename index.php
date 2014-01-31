@@ -26,7 +26,7 @@ $banner = coenv_banner();
 
 					<ul id="menu-secondary" class="menu">
 						<li class="pagenav">
-							<a href="#">News</a>
+							<a href="<?php echo home_url("/news"); ?>">News</a>
 						</li>
           </ul>
 
