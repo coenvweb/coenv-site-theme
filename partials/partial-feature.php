@@ -65,7 +65,7 @@ $feature = array(
 
 				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
 
-					<h1><?php echo $_SERVER['HTTP_HOST']; ?><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
+					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
 
 					<?php if ( get_field('teaser') ) : ?>
 						<p><?php the_field('teaser') ?></p>
