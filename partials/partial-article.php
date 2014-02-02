@@ -36,12 +36,6 @@
 			<div class="article__meta">
 				<div>
 				Posted <time class="article__time" datetime="<?php get_the_date( 'c' ) ?>"><?php echo get_the_date() ?></time>
-				<?php $categories = get_the_category_list() ?>
-				<?php if ( $categories ) : ?>
-					<div class="article__categories">
-					in: <?php echo $categories ?>
-					</div>
-				<?php endif ?> 
 				</div>
 			</div>
 		<?php endif ?>
