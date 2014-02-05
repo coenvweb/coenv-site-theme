@@ -12,7 +12,10 @@ $ordered_themes = $themes;
 	<div class="Faculty-toolbox-inner Faculty-list-item-inner">
 
 		<div class="Faculty-toolbox-header">
-			<h1 class="Faculty-toolbox-title"><a href="<?php bloginfo('url') ?>/faculty/">Faculty</a></h1>
+			<h1 class="Faculty-toolbox-title">
+				<a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Faculty</a>
+				<a href="#" class="Faculty-toolbox-search-button"><i class="icon-search"></i> <span>Search</span></a>
+			</h1>
 		</div>
 
 		<div class="Faculty-toolbox-content">
@@ -101,9 +104,9 @@ $ordered_themes = $themes;
 
 			</div>
 
-			<div class="Faculty-search-tools-toggle">
+			<div class="Faculty-toolbox-toggle">
 
-				<div class="Faculty-search-tools-toggle-inner">
+				<div class="Faculty-toolbox-toggle-inner">
 					
 					<a href="#"><i class="icon-search"></i> More search tools</a>
 

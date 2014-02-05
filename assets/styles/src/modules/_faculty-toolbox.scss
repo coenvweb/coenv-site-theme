@@ -21,25 +21,49 @@
 }
 
 .Faculty-toolbox-header {
+
 }
 
 .Faculty-toolbox-title {
+	display: table;
 	margin: 0;
-	@include serif;
-	@include font-size(36);
-	font-weight: 200;
-	color: #fff;
+	width: 100%;
+	border-bottom: 1px solid $border-dk;
 
 	a {
-		display: block;
-		@include rem('padding', 0.5, 1);
-		text-decoration: none;
+		display: table-cell;
+		@include serif;
+		@include font-size(36);
+		line-height: 1.5;
+		font-weight: 200;
 		color: #fff;
-		border-bottom: 1px solid $border-dk;
 
 		&:hover {
 			background: $accent;
 			color: #fff !important;
+		}
+	}
+
+	.Faculty-toolbox-title-link {
+		@include rem('padding-left', 1);
+		text-decoration: none;
+		color: #fff;
+		border-right: 1px solid $border-dk;
+	}
+
+	.Faculty-toolbox-search-button {
+		@include rem('padding', 0, 0.25);
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		border-left: 1px solid $border-dk-accent;
+
+		i {
+			@include font-size(24);
+		}
+
+		span {
+			@extend .visuallyhidden;
 		}
 	}
 }
@@ -123,8 +147,7 @@
 
 .js .Faculty-toolbox-roller-items-inner {
 	position: relative;
-	transition: transform 0.1s ease-in-out;
-background: rgba(0,0,0,0.8);
+	transition: transform 0.25s ease-in-out;
 }
 
 .js .Faculty-toolbox-roller-items-set {
@@ -189,9 +212,8 @@ background: rgba(0,0,0,0.8);
 
 .Faculty-toolbox-feedback {
 	display: table;
-	@include rem('padding', 0.3, 0, 0.3, 1);
+	@include rem('padding', 0.3, 1);
 	width: 100%;
-	border-bottom: 1px solid $border-dk;
 }
 
 .Faculty-toolbox-feedback-number {
@@ -216,30 +238,45 @@ background: rgba(0,0,0,0.8);
 		font-style: italic;
 		color: #fff;
 	}
+
+	a:hover {
+		color: #fff !important;
+		text-decoration: underline;
+	}
 }
 
-.Faculty-search-tools-toggle {
-	display: table;
-	width: 100%;
-	border-top: 1px solid $border-dk-accent;
-	@include font-size(12);
-	line-height: 1;
-	font-weight: 600;
+.Faculty-toolbox-toggle {
+display: none;
+//	position: absolute;
+//	right: 0;
+//	bottom: 0;
+//	left: 0;
+//	display: table;
+//	width: 100%;
+//	height: 10%;
+	border-top: 1px solid $border-dk;
+//	overflow: hidden;
 }
 
-.Faculty-search-tools-toggle-inner {
+.Faculty-toolbox-toggle-inner {
 	display: table-cell;
 	vertical-align: middle;
+	border-top: 1px solid $border-dk-accent;
 
 	a {
-		display: block;
-		@include rem('padding', 0.5, 1);
+		display: inline-block;
+		@include rem('padding', 1, 1);
+		width: 100%;
+		@include font-size(12);
+		line-height: 1;
+		font-weight: 600;
+		color: #fff;
 		text-decoration: none;
-		color: #aaa;
 	}
 
 	a:hover {
-		background: $accent;
 		color: #fff !important;
+		background: $accent;
 	}
+
 }

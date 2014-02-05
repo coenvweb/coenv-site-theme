@@ -53,7 +53,7 @@
 		$unitSelect: $('.Faculty-toolbox-unit-select'),
 
 		// Toggle between roller and form
-		$formToggle: $('.Faculty-search-tools-toggle'),
+		$formToggle: $('.Faculty-toolbox-search-button'),
 		formViewClass: 'Faculty-toolbox--show-form'
 	};
 
