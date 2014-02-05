@@ -57,7 +57,7 @@
 		this.isoFilter();
 
 		// update url hash after filtering
-		this.updateHash();
+//		this.updateHash();
 	};
 
 	/**
@@ -217,7 +217,7 @@
 		this.$itemContainer.on( 'filter', function ( event, data ) {
 
 			// combine filters into filter string
-			filters = $.map( data.filters, function ( value ) {
+			filters = $.map( data, function ( value ) {
 				if ( value.slug === '*' ) {
 					return value.slug;
 				}

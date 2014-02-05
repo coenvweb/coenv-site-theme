@@ -57,10 +57,60 @@ $ordered_themes = $themes;
 
 			</div><!-- .Faculty-toolbox-roller -->
 
+			<div class="Faculty-toolbox-form">
+				
+				<form action="">
+					
+					<select name="theme" class="Faculty-toolbox-theme-select">
+						
+						<option value="theme-all"></option>
+	
+						<?php foreach ( $themes as $theme ) : ?>
+
+							<option value="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></option>
+
+						<?php endforeach ?>
+
+					</select>
+
+					<select name="unit" class="Faculty-toolbox-unit-select">
+						
+						<option value="unit-all"></option>
+	
+						<?php foreach ( $units as $unit ) : ?>
+
+							<option value="unit-<?php echo $unit->slug ?>"><?php echo $unit->name ?></option>
+
+						<?php endforeach ?>
+
+					</select>
+
+				</form>
+
+			</div><!-- .Faculty-toolbox-form -->
+
 		</div><!-- .Faculty-toolbox-content -->
 
 		<div class="Faculty-toolbox-footer">
 			
+			<div class="Faculty-toolbox-feedback">
+
+				<span class="Faculty-toolbox-feedback-number"><?php echo $faculty->post_count ?></span>
+
+				<p class="Faculty-toolbox-feedback-message">College of the Environment Faculty Profiles</p>
+
+			</div>
+
+			<div class="Faculty-search-tools-toggle">
+
+				<div class="Faculty-search-tools-toggle-inner">
+					
+					<a href="#"><i class="icon-search"></i> More search tools</a>
+
+				</div>
+
+			</div>
+
 		</div><!-- .Faculty-toolbox-footer -->
 
 	</div>

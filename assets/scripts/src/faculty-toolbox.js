@@ -35,9 +35,26 @@
 		rollerSetPrependPos: 0,
 		rollerSetAppendPos: 0,
 
+		// Roller items
 		rollerItemSelector: '.Faculty-toolbox-roller-item',
 		rollerItemActiveClass: 'Faculty-toolbox-roller-item--active',
-		activeRollerItem: ''
+		activeRollerItem: '',
+
+		// Feedback
+		$feedback: $('.Faculty-toolbox-feedback'),
+		$feedbackNumber: $('.Faculty-toolbox-feedback-number'),
+		$feedbackMessage: $('.Faculty-toolbox-feedback-message'),
+		feedbackMessageInclusive: $('.Faculty-toolbox-feedback-message').text(),
+		feedbackMessage: 'Faculty members are working',
+		feedbackMessageSingular: 'Faculty member is working',
+
+		// Theme and unit selectors
+		$themeSelect: $('.Faculty-toolbox-theme-select'),
+		$unitSelect: $('.Faculty-toolbox-unit-select'),
+
+		// Toggle between roller and form
+		$formToggle: $('.Faculty-search-tools-toggle'),
+		formViewClass: 'Faculty-toolbox--show-form'
 	};
 
 	/**
@@ -55,8 +72,17 @@
 		// slide to first item
 		this.slideToItem( this.$roller.find( this.rollerItemSelector ).first() );
 
+		// initialize activeFilters
+		this.activeFilters = this.resetActiveFilters();
+
 		// handle item selection
 		this.rollerItemSelection();
+
+		// handle feedback messages
+		this.feedback();
+
+		// toggle between roller and form
+		this.formToggle();
 	};
 
 	/**
@@ -122,11 +148,13 @@
 
 			_this.slideToItem( $(this) );
 
-			_this.isoFilter({
+			_this.activeFilters.theme = {
 				name: $item.text(),
 				slug: $item.data('theme'),
 				url: $item.attr('href')
-			});
+			};
+
+			_this.isoFilter();
 		} );
 	};
 
@@ -199,15 +227,113 @@
 
 	/**
 	 * Triggers isotope filter
+	 * on active filters
 	 */
-	CoEnvFacultyToolbox.prototype.isoFilter = function ( filter ) {
-		var _this = this,
-			data = {};
-
-		data.filters = { theme: filter };
+	CoEnvFacultyToolbox.prototype.isoFilter = function () {
 
 		// trigger isotope
-		_this.$isoContainer.trigger( 'filter', [ data ] );
+		this.$isoContainer.trigger( 'filter', [ this.activeFilters ] );
+	};
+
+	/**
+	 * Handle feedback messages
+	 */
+	CoEnvFacultyToolbox.prototype.feedback = function () {
+		var _this = this,
+			number,
+			message,
+			themeLink,
+			unitLink;
+
+		var doFeedback = function ( data ) {
+
+			// data must be an object
+			if ( data === undefined ) {
+				data = {};
+			}
+
+			themeLink = '<a href="' + _this.activeFilters.theme.url + '">' + _this.activeFilters.theme.name + '</a>';
+			unitLink = '<a href="' + _this.activeFilters.unit.url + '">' + _this.activeFilters.unit.name + '</a>';
+
+			// get number of filtered items
+			number = _this.$isoContainer.data('isotope').filteredItems.length;
+
+			// singular or plural message?
+			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
+
+			// is 'all themes' selected?
+			if ( _this.activeFilters.theme.slug === '*' ) {
+
+				// is the form view active?
+				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
+
+
+
+				} else {
+
+					// we're in the theme roller view
+					message = _this.feedbackMessageInclusive;
+				}
+
+			} else {
+
+				// single theme is selected
+				message += ' on ' + themeLink;
+
+				// is the form view active?
+				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
+
+				}
+			}
+
+			// update feedback message
+			_this.$feedbackMessage.html( message );
+
+		};
+
+		doFeedback();
+
+		this.$isoContainer.on( 'filter', function ( event, data ) {
+			doFeedback( data );
+		} );
+	};
+
+	/**
+	 * Reset filter queue
+	 */
+	CoEnvFacultyToolbox.prototype.resetActiveFilters = function () {
+
+		var $themeOpt,
+			$unitOpt;
+
+		$themeOpt = this.$themeSelect.find('option').first();
+		$unitOpt = this.$unitSelect.find('option').first();
+
+		var activeFilters = {
+			theme: {
+				name: $themeOpt.text(),
+				slug: '*',
+				url: '#'
+			},
+			unit: {
+				name: $unitOpt.text(),
+				slug: '*',
+				url: '#'
+			}
+		};
+
+		return activeFilters;
+	};
+
+	/**
+	 * Toggle between roller and form
+	 */
+	CoEnvFacultyToolbox.prototype.formToggle = function () {
+		var _this = this;
+
+		this.$formToggle.on( 'click', function ( event ) {
+			_this.$toolbox.addClass( _this.formViewClass );
+		} );
 	};
 
 	new CoEnvFacultyToolbox();
