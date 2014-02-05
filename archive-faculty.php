@@ -36,7 +36,7 @@ $query = array(
 	'post_type' => 'faculty',
 	'posts_per_page' => -1,
 	'orderby' => 'rand',
-	//'tax_query' => array()
+	'tax_query' => array()
 );
 
 //// add theme
