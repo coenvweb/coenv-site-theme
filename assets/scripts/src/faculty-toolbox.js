@@ -57,20 +57,6 @@
 
 		// handle item selection
 		this.rollerItemSelection();
-
-//		// get roller items
-//		this.getRollerItems();
-//
-//		this.$rollerItemsClone = this.$rollerItemsWrap.clone(true);
-//
-//		// keep track of roller measurements
-//		this.rollerMeasurements();
-//
-//		// handle roller scrolling
-//		this.rollerScroller();
-//
-//		// handle roller item selection
-//		this.itemSelection();
 	};
 
 	/**
@@ -132,7 +118,15 @@
 
 		this.$roller.on( 'click', this.rollerItemSelector, function ( event ) {
 			event.preventDefault();
+			var $item = $(this).find('a');
+
 			_this.slideToItem( $(this) );
+
+			_this.isoFilter({
+				name: $item.text(),
+				slug: $item.data('theme'),
+				url: $item.attr('href')
+			});
 		} );
 	};
 
@@ -154,6 +148,12 @@
 
 		var newInnerPos = ( -itemPos + ( rollerCenter - rollerOffset ) ) - ( itemHeight / 2 );
 
+		// deactivate active items
+		this.$roller.find( '.' + this.rollerItemActiveClass ).removeClass( this.rollerItemActiveClass );
+
+		// make item active
+		$item.addClass( this.rollerItemActiveClass );
+
 		// trigger roller 'preroll' event
 		// need to pass change
 		this.$roller.trigger( 'preroll', [{
@@ -166,8 +166,7 @@
 		this.rollerInnerPos = newInnerPos;
 
 		// trigger roller 'postroll'
-		this.$roller.trigger( 'postroll', [{
-		}] );
+		this.$roller.trigger( 'postroll', [{}] );
 	};
 
 	/**
@@ -198,129 +197,18 @@
 		} );
 	};
 
-//	/**
-//	 * Handle roller scrolling
-//	 */
-//	CoEnvFacultyToolbox.prototype.rollerScroller = function () {
-//		var _this = this,
-//			firstItemOffsetTop,
-//			lastItemOffsetTop;
-//
-//		this.prependRollerItems();
-//
-//		this.$roller.on( 'scroll', function () {
-//			firstItemOffsetTop = _this.$firstRollerItem.offset().top;
-//			lastItemOffsetTop = _this.$lastRollerItem.offset().top;
-//
-//			// append items?
-//			if ( lastItemOffsetTop < _this.rollerOffsetTop + _this.rollerHeight ) {
-//				_this.appendRollerItems();
-//			}
-//
-//			// prepend items?
-//			if ( firstItemOffsetTop === _this.rollerOffsetTop ) {
-//				_this.prependRollerItems();
-//			}
-//
-//		} );
-//	};
+	/**
+	 * Triggers isotope filter
+	 */
+	CoEnvFacultyToolbox.prototype.isoFilter = function ( filter ) {
+		var _this = this,
+			data = {};
 
-//	/**
-//	 * Prepend new list items
-//	 */
-//	CoEnvFacultyToolbox.prototype.prependRollerItems = function () {
-//		var _this = this,
-//			$newItems = this.$rollerItemsClone.clone(true);
-//
-//		$newItems.find( this.rollerItemSelector ).filter( function () {
-//			if ( $(this).find('a').attr('href') === _this.activeRollerItem ) {
-//				return true;
-//			}
-//		} ).addClass( this.rollerItemActiveClass );
-//
-//		this.$roller.prepend( $newItems );
-//
-//		this.$roller.scrollTop( $newItems.height() );
-//
-//		// update items
-//		this.getRollerItems();
-//	};
+		data.filters = { theme: filter };
 
-//	/**
-//	 * Get roller items
-//	 */
-//	CoEnvFacultyToolbox.prototype.getRollerItems = function () {
-//		this.$rollerItems = this.$roller.find( this.rollerItemSelector );
-//		this.$firstRollerItem = this.$rollerItems.first();
-//		this.$lastRollerItem = this.$rollerItems.last();
-//	};
-//
-//	/**
-//	 * Append new list items
-//	 */
-//	CoEnvFacultyToolbox.prototype.appendRollerItems = function () {
-//		var _this = this,
-//			$newItems = this.$rollerItemsClone.clone(true);
-//
-//		$newItems.find( this.rollerItemSelector ).filter( function () {
-//			if ( $(this).find('a').attr('href') === _this.activeRollerItem ) {
-//				return true;
-//			}
-//		} ).addClass( this.rollerItemActiveClass );
-//
-//		this.$roller.append( $newItems );
-//
-//		// update items
-//		this.getRollerItems();
-//	};
-//
-//	/**
-//	 * Handle item selection
-//	 *
-//	 * Triggers isotope filter
-//	 */
-//	CoEnvFacultyToolbox.prototype.itemSelection = function () {
-//		var _this = this;
-//
-//		this.$roller.on( 'click', this.rollerItemSelector, function ( event ) {
-//			event.preventDefault();
-//
-//			var $item = $(this),
-//				$itemLink = $item.find('a'),
-//				data = {};
-//
-//			if ( $item.hasClass( _this.rollerItemActiveClass ) ) {
-//				return;
-//			}
-//
-//			// deactivate other items
-//			_this.$rollerItems.filter( '.' + _this.rollerItemActiveClass ).removeClass( _this.rollerItemActiveClass );
-//			
-//			_this.$rollerItems.filter( function () {
-//				if ( $(this).find('a').attr('href') === $itemLink.attr('href') ) {
-//					return true;
-//				}
-//			} ).addClass( _this.rollerItemActiveClass );
-//
-//			_this.activeRollerItem = $itemLink.attr('href');
-//
-//			// scroll to active roller item
-//			_this.$roller.scrollTo( _this.$roller.scrollTop() + ( $(this).offset().top - _this.rollerOffsetTop ), {
-//				duration: 250
-//			} );
-//
-//			data.filters = {
-//				theme: {
-//					name: $itemLink.text(),
-//					slug: $itemLink.data('theme'),
-//					url: $itemLink.attr('href')
-//				}
-//			};
-//
-//			// trigger isotope
-//			_this.$isoContainer.trigger( 'filter', [ data ] );
-//		} );
-//	};
+		// trigger isotope
+		_this.$isoContainer.trigger( 'filter', [ data ] );
+	};
 
 	new CoEnvFacultyToolbox();
 
