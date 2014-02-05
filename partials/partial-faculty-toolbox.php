@@ -14,7 +14,16 @@ $ordered_themes = $themes;
 		<div class="Faculty-toolbox-header">
 			<h1 class="Faculty-toolbox-title">
 				<a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Faculty</a>
-				<a href="#" class="Faculty-toolbox-search-button"><i class="icon-search"></i> <span>Search</span></a>
+				<a href="#" class="Faculty-toolbox-toggle">
+					
+					<div class="Faculty-toolbox-toggle-search">
+						<i class="icon-search"></i> <span>Search</span>
+					</div>
+
+					<div class="Faculty-toolbox-toggle-roller">
+						<i class="icon-list"></i> <span>Themes</span>
+					</div>
+				</a>
 			</h1>
 		</div>
 
