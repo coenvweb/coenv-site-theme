@@ -57,7 +57,10 @@
 		this.isoFilter();
 
 		// update url hash after filtering
-//		this.updateHash();
+		this.updateHash();
+
+		// filter isotope based on url hash
+		this.hashFilter();
 	};
 
 	/**
@@ -167,8 +170,7 @@
 	 */
 	CoEnvFacultyList.prototype.isoInit = function () {
 		var _this = this,
-			isoOpts,
-			$firstItem;
+			isoOpts;
 
 		// set up isotope options
 		isoOpts = {
@@ -179,15 +181,6 @@
 				columnWidth: '.grid-sizer'
 			}
 		};
-
-		// check for url hash
-		if ( window.location.hash ) {
-			isoOpts.filter = this.filterFromHash();
-
-			// the first item in a filtered set should never be featured (i.e. big)
-			// otherwise the layout will break.
-			$firstItem = _this.$items.filter( isoOpts.filters ).first().removeClass( _this.itemFeaturedClass );
-		}
 
 		// initialize isotope without layout
 		this.$itemContainer.isotope( isoOpts );
@@ -201,6 +194,30 @@
 
 		// layout isotope
 		this.$itemContainer.isotope( isoOpts );
+	};
+
+	/**
+	 * Filters isotope based on URL hash
+	 */
+	CoEnvFacultyList.prototype.hashFilter = function () {
+		var filters = {},
+			hashes;
+
+		// check for url hash
+		if ( window.location.hash ) {
+
+			hashes = window.location.hash.replace( '#', '' ).split('&');
+
+			filters.theme = {
+				slug: hashes[0]
+			};
+
+			filters.unit = {
+				slug: hashes[1]
+			};
+
+			this.$itemContainer.trigger( 'filter', [ filters ] );
+		}
 	};
 
 	/**
@@ -245,16 +262,11 @@
 		this.$itemContainer.on( 'filter', function ( event, data ) {
 
 			// build hash
-			hash = $.map( data.filters, function ( value ) {
-				if ( value.slug === '*' ) {
-					return 'theme-all';
-				} else {
-					return value.slug;
-				}
+			hash = $.map( data, function ( value ) {
+				return value.slug;
 			} ).join('&');
 
 			window.location.hash = hash;
-
 		} );
 	};
 

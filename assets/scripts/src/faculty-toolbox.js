@@ -256,8 +256,6 @@
 			// singular or plural message?
 			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
 
-			console.log(_this.activeFilters.theme.slug);
-
 			// is 'all themes' selected?
 			if ( _this.activeFilters.theme.slug === 'theme-all' ) {
 
@@ -314,7 +312,7 @@
 			},
 			unit: {
 				name: $unitOpt.text(),
-				slug: 'theme-all',
+				slug: 'unit-all',
 				url: '#'
 			}
 		};
