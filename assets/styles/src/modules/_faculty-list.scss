@@ -32,6 +32,7 @@ $faculty-item-height-ratio: 1.33;
 .Faculty-list-content {
 	@extend .clearfix;
 	margin-right: -4px;
+	transition: all 0.3s ease-in-out;
 }
 
 .Faculty-list-item,
