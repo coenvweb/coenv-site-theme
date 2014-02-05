@@ -150,7 +150,7 @@
 
 			_this.activeFilters.theme = {
 				name: $item.text(),
-				slug: $item.data('theme'),
+				slug: $item.data('theme') === '*' ? 'theme-all' : $item.data('theme'),
 				url: $item.attr('href')
 			};
 
@@ -245,12 +245,7 @@
 			themeLink,
 			unitLink;
 
-		var doFeedback = function ( data ) {
-
-			// data must be an object
-			if ( data === undefined ) {
-				data = {};
-			}
+		var doFeedback = function () {
 
 			themeLink = '<a href="' + _this.activeFilters.theme.url + '">' + _this.activeFilters.theme.name + '</a>';
 			unitLink = '<a href="' + _this.activeFilters.unit.url + '">' + _this.activeFilters.unit.name + '</a>';
@@ -261,8 +256,10 @@
 			// singular or plural message?
 			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
 
+			console.log(_this.activeFilters.theme.slug);
+
 			// is 'all themes' selected?
-			if ( _this.activeFilters.theme.slug === '*' ) {
+			if ( _this.activeFilters.theme.slug === 'theme-all' ) {
 
 				// is the form view active?
 				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
@@ -312,12 +309,12 @@
 		var activeFilters = {
 			theme: {
 				name: $themeOpt.text(),
-				slug: '*',
+				slug: 'theme-all',
 				url: '#'
 			},
 			unit: {
 				name: $unitOpt.text(),
-				slug: '*',
+				slug: 'theme-all',
 				url: '#'
 			}
 		};
