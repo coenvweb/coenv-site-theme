@@ -10,6 +10,9 @@
 		// isotope item container
 		$isoContainer: $('.Faculty-list-content'),
 
+		// toolbox
+		toolboxSelector: '.Faculty-toolbox',
+
 		// Roller container
 		$roller: $('.Faculty-toolbox-roller-items'),
 
@@ -25,6 +28,12 @@
 		// Roller items
 		rollerItemSelector: '.Faculty-toolbox-roller-item',
 		rollerItemActiveClass: 'Faculty-toolbox-roller-item--active',
+
+		// isotope items
+		$isoItems: $('.Faculty-list-item'),
+		isoItemSelector: '.Faculty-list-item',
+		isoItemFeaturedClass: 'Faculty-list-item--featured',
+		isoItemImageSelector: '.Faculty-list-item-image',
 
 		// Filter queue
 		filterQ: {
@@ -53,8 +62,8 @@
 	 */
 	CoEnvFaculty.prototype.rollerInit = function () {
 
-		// track roller measurements
-		this.rollerMeasure();
+		// track measurements
+		this.measurements();
 
 		// add roller item sets on roll
 		this.rollerAddSets();
@@ -69,10 +78,11 @@
 	/**
 	 * Track Roller measurements
 	 */
-	CoEnvFaculty.prototype.rollerMeasure = function () {
+	CoEnvFaculty.prototype.measurements = function () {
 		var _this = this;
 
 		var onResize = function () {
+			_this.windowHeight = $(window).height();
 			_this.rollerHeight = _this.$roller.height();
 			_this.rollerOffsetTop = _this.$roller.offset().top;
 			_this.rollerCenter = _this.rollerOffsetTop + ( _this.rollerHeight / 2 );
@@ -81,6 +91,13 @@
 
 		onResize();
 		$(window).one( 'debouncedresize', onResize );
+
+		var onScroll = function () {
+			_this.scrollTop = $(window).scrollTop();
+		};
+
+		onScroll();
+		$(window).on( 'scroll', onScroll );
 	};
 
 	/**
@@ -240,9 +257,126 @@
 	 * Initialize Isotope
 	 */
 	CoEnvFaculty.prototype.isoInit = function () {
+		var _this = this,
+			isoOpts;
 
-		
+		// set up isotope options
+		isoOpts = {
+			isInitLayout: false,
+			itemSelector: this.isoItemSelector,
+			stamp: this.toolboxSelector,
+			masonry: {
+				columnWidth: '.grid-sizer'
+			}
+		};
 
+		// initialize isotope without layout
+		this.$isoContainer.isotope( isoOpts );
+
+		// register layoutComplete listener
+		// this will not fire on initialization,
+		// only on subsequent layouts
+		this.$isoContainer.isotope( 'on', 'layoutComplete', function () {
+			_this.$isoContainer.trigger( 'isoLayoutComplete' );
+		} );
+
+		// layout isotope
+		this.$isoContainer.isotope( isoOpts );
+
+		// handle isotope filtering
+		this.isoFilter();
+
+		// save item offsets
+		this.isoItemOffsets();
+
+		// isotope image lazy loader
+		this.isoLazyLoader();
+	};
+
+	/**
+	 * Save isotope item offsets
+	 */
+	CoEnvFaculty.prototype.isoItemOffsets = function () {
+		var _this = this;
+
+		var saveOffset = function () {
+			$.each( _this.$isoItems, function ( index, el ) {
+				$(this).data( 'offset', $(this).offset().top );
+			} );
+		};
+
+		saveOffset();
+		$(window).on( 'debouncedresize', saveOffset );
+		this.$isoContainer.on( 'isoLayoutComplete', saveOffset );
+	};
+
+	/**
+	 * Isotope image lazy loader
+	 */
+	CoEnvFaculty.prototype.isoLazyLoader = function () {
+		var _this = this,
+			$items;
+
+		var lazyload = function () {
+			$items = _this.$isoItems.not('[data-loaded]');
+
+			if ( $items.length === 0 ) {
+				return;
+			}
+
+			$.each( $items, function ( index, el ) {
+
+				// return if item is visible
+				if ( !_this.isoItemVisible( el ) ) {
+					return;
+				}
+
+				// add data-picture attribute
+				// which will flag this element for picturefill
+				$(el).find( _this.isoItemImageSelector ).attr('data-picture', '');
+
+				// add data-loaded attribute so
+				// we don't have to loop over this item again
+				$(el).attr('data-loaded', '');
+			} );
+
+			// run picturefill
+			window.picturefill();
+		};
+
+		lazyload();
+		$(window).on( 'scroll', lazyload );
+		this.$isoContainer.on( 'isoLayoutComplete', lazyload );
+	};
+
+	/**
+	 * Check if an isotope item is visible
+	 */
+	CoEnvFaculty.prototype.isoItemVisible = function ( el ) {
+		return ( $(el).data('offset') < ( this.windowHeight + this.scrollTop ) );
+	};
+
+	/**
+	 * Isotope filtering
+	 */
+	CoEnvFaculty.prototype.isoFilter = function () {
+		var _this = this,
+			filterString,
+			$firstItem;
+
+		// listen for filter event
+		this.$isoContainer.on( 'filter', function ( event, data ) {
+
+			filterString = _this.buildIsoFilterString( data.filters );
+
+			// the first item in a filtered set should never be featured
+			// (i.e. big), otherwise the layout will break
+			$firstItem = _this.$isoItems.filter( filterString ).first().removeClass( _this.isoItemFeaturedClass );
+
+			// filter isotope
+			_this.$isoContainer.isotope( { filter: filterString } );
+
+		} );
 	};
 
 	/**
@@ -316,6 +450,15 @@
 		this.filterQ.$rollerItem = data.$rollerItem;
 
 		this.$isoContainer.trigger( 'filter', [ this.filterQ ] );
+	};
+
+	/**
+	 * Build an isotope filter string
+	 */
+	CoEnvFaculty.prototype.buildIsoFilterString = function ( filters ) {
+		return $.map( filters, function ( val ) {
+			return '.' + val.slug;
+		} ).join('');
 	};
 
 	new CoEnvFaculty();
