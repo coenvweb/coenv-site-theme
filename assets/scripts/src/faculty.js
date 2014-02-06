@@ -77,6 +77,9 @@
 		// handle feedback
 		this.feedback();
 
+		// handle clicking on feedback link
+		this.feedbackLinks();
+
 		// initialize isotope
 		this.isoInit();
 
@@ -278,7 +281,8 @@
 				filters: {
 					theme: {
 						name: $item.text(),
-						slug: $item.data('theme')
+						slug: $item.data('theme'),
+						url: $item.attr('href')
 					}
 				}
 			});
@@ -422,24 +426,28 @@
 			theme,
 			unit,
 			$selectOpt,
-			$item;
+			$item,
+			$optAllThemes,
+			$optAllUnits;
+
+		$optAllThemes = this.$themeSelect.find('option[value="theme-all"]');
+		$optAllUnits = this.$unitSelect.find('option[value="unit-all"]');
 
 		if (! hashFilters) {
 
 			// fill out filter defaults
 			data.filters = {
 				theme: {
-					name: 'All Research Themes',
-					slug: 'theme-all'
+					name: $optAllThemes.text(),
+					slug: $optAllThemes.val(),
+					url: $optAllThemes.data('url')
 				},
 				unit: {
-					name: 'All Schools/Departments',
-					slug: 'unit-all'
+					name: $optAllUnits.text(),
+					slug: $optAllUnits.val(),
+					url: $optAllUnits.data('url')
 				}
 			};
-
-			// go to first roller item
-			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).first();
 
 		} else {
 
@@ -457,13 +465,6 @@
 			if ( data.filters.unit.slug !== 'unit-all' ) {
 				this.formToggleOn();
 			}
-
-			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
-				if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
-					return true;
-				}
-			} );
-
 		}
 
 		this.doFilter( data );
@@ -500,6 +501,18 @@
 			}
 
 			this.filterQ.filters[ prop ] = data.filters[ prop ];
+		}
+
+		// if data.$rollerItem is not passed, find the roller item based on theme filter
+		if ( data.$rollerItem === undefined ) {
+
+			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
+				var theme = _this.filterQ.filters.theme.slug === 'theme-all' ? '*' : _this.filterQ.filters.theme.slug;
+
+				if ( $(this).find('a').data('theme') === theme ) {
+					return true;
+				}
+			} );
 		}
 
 		this.filterQ.$rollerItem = data.$rollerItem;
@@ -603,6 +616,7 @@
 
 	/**
 	 * Reset 'unit' filter to all
+	 * TODO: add default unit info
 	 */
 	CoEnvFaculty.prototype.resetUnits = function () {
 		this.doFilter({
@@ -612,6 +626,20 @@
 				}
 			}
 		});
+	};
+
+	/**
+	 * Reset either 'theme' or 'unit' filter
+	 */
+	CoEnvFaculty.prototype.resetFilter = function ( filter ) {
+		var data = { filters: {} };
+
+		data.filters[ filter ] = {
+			slug: filter + '-all'
+		};
+
+
+		this.doFilter( data );
 	};
 
 	/**
@@ -629,16 +657,19 @@
 			data.filters = {
 				theme: {
 					name: $opt.text(),
-					slug: $opt.val()
+					slug: $opt.val(),
+					url: $opt.data('url')
 				}
 			};
 
-			data.$rollerItem = _this.$roller.find( _this.rollerItemSelector ).filter( function () {
-				if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
-					console.log();
-					return true;
-				}
-			} );
+//			data.$rollerItem = _this.$roller.find( _this.rollerItemSelector ).filter( function () {
+//
+//				var theme = data.filters.theme.slug === 'theme-all' ? '*' : data.filters.theme.slug;
+//
+//				if ( $(this).find('a').data('theme') === theme ) {
+//					return true;
+//				}
+//			} );
 
 			_this.doFilter( data );
 		} );
@@ -651,7 +682,8 @@
 				filters: {
 					unit: {
 						name: $opt.text(),
-						slug: $opt.val()
+						slug: $opt.val(),
+						url: $opt.data('url')
 					}
 				}
 			});
@@ -670,13 +702,11 @@
 
 		var doFeedback = function ( data ) {
 
-			themeLink = '<a href="' + data.filters.theme.url + '">' + data.filters.theme.name + '</a>';
-			unitLink = '<a href="' + data.filters.unit.url + '">' + data.filters.unit.name + '</a>';
+			themeLink = '<a href="' + data.filters.theme.url + '" data-slug="' + data.filters.theme.slug + '">' + data.filters.theme.name + '</a>';
+			unitLink = '<a href="' + data.filters.unit.url + '" data-slug="' + data.filters.unit.slug + '">' + data.filters.unit.name + '</a>';
 
 			// get number of filtered items
 			number = _this.$isoContainer.data('isotope').filteredItems.length;
-
-			console.log(number);
 
 			// singular or plural message?
 			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
@@ -687,8 +717,16 @@
 				// is the form view active?
 				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
 
-					// show unit message
-					message += ' in ' + unitLink;
+					if ( data.filters.unit.slug === 'unit-all' ) {
+
+						message = _this.feedbackMessageInclusive;
+
+					} else {
+
+						// show unit message
+						message += ' in ' + unitLink;
+
+					}
 
 				} else {
 
@@ -704,8 +742,11 @@
 				// is the form view active?
 				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
 
-					message += ' in ' + unitLink;
+					if ( data.filters.unit.slug !== 'unit-all' ) {
 
+						message += ' in ' + unitLink;
+
+					}
 				}
 			}
 
@@ -726,7 +767,29 @@
 			} );
 
 		} );
+	};
 
+	/**
+	 * Handle clicking on feedback links
+	 */
+	CoEnvFaculty.prototype.feedbackLinks = function () {
+		var _this = this,
+			data = {};
+
+		this.$feedback.on( 'click', 'a', function ( event ) {
+			event.preventDefault();
+
+			if ( $(this).attr('href') === window.location ) {
+				return;
+			}
+
+			for ( var filter in _this.filterQ.filters ) {
+				if ( _this.filterQ.filters[ filter ].slug !== $(this).data('slug') ) {
+					_this.resetFilter( filter );
+				}
+			}
+
+		} );
 	};
 
 	new CoEnvFaculty();

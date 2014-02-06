@@ -15,19 +15,9 @@ if ( !is_user_logged_in() ) {
  */
 get_header();
 wp_enqueue_script( 'coenv-faculty' );
-//wp_enqueue_script( 'coenv-faculty-test' );
 
-// get all themes
-$themes = get_terms(
-	array( 'member_theme' ),
-	array( 'hide_empty' => false )
-);
-
-// get all units
-$units = get_terms(
-	array( 'member_unit' ),
-	array( 'hide_empty' => false )
-);
+$themes = $coenv_member_api->get_themes();
+$units = $coenv_member_api->get_units();
 
 $query_args = wp_parse_args( $_SERVER['QUERY_STRING'] );
 
@@ -61,8 +51,6 @@ $query = array(
 $faculty = new WP_Query( $query );
 
 // randomize featured (large) faculty members
-// TODO: Make featured items always appear in the same
-// space. Might fix the problem of the layout breaking
 //$featured = range(9, 199);
 //shuffle($featured);
 //$featured = array_slice($featured, 0, 20);

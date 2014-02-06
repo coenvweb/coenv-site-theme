@@ -26,10 +26,7 @@ module.exports = function(grunt) {
 		uglify: {
 			dist: {
 				options: {
-					sourceMap: '<%= paths.dev %>assets/scripts/maps/main.js.map',
-					sourceMapRoot: '../src/',
-					sourceMappingURL: '../maps/main.js.map',
-					sourceMapPrefix: '3'
+					sourceMap: true
 				},
 				files: {
 					// The main script file

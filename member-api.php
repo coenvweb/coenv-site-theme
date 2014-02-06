@@ -20,6 +20,8 @@ class CoEnvMemberAPI {
 
 		$this->directory = dirname( __FILE__ ) . '/';
 
+		$this->base_url = get_bloginfo('url') . '/faculty/';
+
 		// Plugin directory
 		if ( !defined('CMAPI_DIRNAME') ) define( 'CMAPI_DIRNAME', dirname(__FILE__) );
 
@@ -87,8 +89,6 @@ class CoEnvMemberAPI {
 		// ajax get/save units actions
 		add_action( 'wp_ajax_coenv_member_api_search', array( $this, 'ajax_search' ) );
 		add_action( 'wp_ajax_nopriv_coenv_member_api_search', array( $this, 'ajax_search' ) );
-
-
 	}
 
 	/**
@@ -570,9 +570,8 @@ class CoEnvMemberAPI {
 
 				$atts = array(
 					'term_id' => $term->term_id,
-					// deprecating in favor of query string
-					//'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
-					'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
+					'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
+					//'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
 					'name' => $term->name,
 					'slug' => $term->slug,
 					'count' => $term->count
@@ -701,9 +700,8 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$unit = array(
 				'term_id' => $term->term_id,
-				// deprecating in favor of query string
-				//'url' => get_bloginfo('url') . '/faculty/#unit-' . $term->slug,
-				'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
+				'url' => $this->base_url . '#theme-all&unit-' . $term->slug,
+				//'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count,
@@ -735,9 +733,8 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$theme = array(
 				'term_id' => $term->term_id,
-				// deprecating in favor of query string
-				//'url' => get_bloginfo('url') . '/faculty/#theme-' . $term->slug,
-				'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
+				'url' => $this->base_url . '#theme-' . $term->slug . '&unit-all',
+				//'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count

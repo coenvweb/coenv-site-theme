@@ -51,9 +51,9 @@ $ordered_themes = $themes;
 								
 								<?php if ( !empty( $ordered_themes ) ) : ?>
 
-									<?php foreach ( $ordered_themes as $theme ) : ?>		
+									<?php foreach ( $ordered_themes as $theme ) : ?>	
 
-										<div class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme->slug ?>" data-theme="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></a></div>
+										<div class="Faculty-toolbox-roller-item"><a href="<?php echo $theme['url'] ?>" data-theme="theme-<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></a></div>
 
 									<?php endforeach ?>
 
@@ -77,11 +77,11 @@ $ordered_themes = $themes;
 						
 						<select name="theme" class="Faculty-toolbox-theme-select">
 							
-							<option value="theme-all">All Research Themes</option>
+							<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#theme-all">All Research Themes</option>
 		
 							<?php foreach ( $themes as $theme ) : ?>
 
-								<option value="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></option>
+								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
 
 							<?php endforeach ?>
 
@@ -95,11 +95,11 @@ $ordered_themes = $themes;
 						
 						<select name="unit" class="Faculty-toolbox-unit-select">
 						
-							<option value="unit-all">All Schools/Departments</option>
+							<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
 		
 							<?php foreach ( $units as $unit ) : ?>
 
-								<option value="unit-<?php echo $unit->slug ?>"><?php echo $unit->name ?></option>
+								<option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
 
 							<?php endforeach ?>
 
