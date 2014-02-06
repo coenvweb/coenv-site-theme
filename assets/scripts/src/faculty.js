@@ -27,7 +27,10 @@
 		rollerItemActiveClass: 'Faculty-toolbox-roller-item--active',
 
 		// Filter queue
-		filterQ: {},
+		filterQ: {
+			$item: $(),
+			filters: {}
+		},
 
 		// Toolbox form
 		$toolboxForm: $('.Faculty-toolbox-form')
@@ -222,9 +225,11 @@
 			
 			_this.doFilter({
 				$rollerItem: $(this),
-				theme: {
-					name: $item.text(),
-					slug: $item.data('theme')
+				filters: {
+					theme: {
+						name: $item.text(),
+						slug: $item.data('theme')
+					}
 				}
 			});
 
@@ -246,10 +251,13 @@
 	CoEnvFaculty.prototype.filterInit = function () {
 		var _this = this,
 			hashFilters = this.hashFilters(),
-			filters = {},
+			data = {
+				filters: {}
+			},
 			theme,
 			unit,
-			$selectOpt;
+			$selectOpt,
+			$item;
 
 		if (! hashFilters) {
 			return;
@@ -258,13 +266,19 @@
 		$.each( hashFilters, function () {
 			$selectOpt = _this.$toolboxForm.find('option[value="' + this + '"]');
 
-			filters[ this.split('-')[0] ] = {
+			data.filters[ this.split('-')[0] ] = {
 				name: $selectOpt.text(),
 				slug: this
 			};
 		} );
 
-		this.doFilter( filters );
+		data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
+			if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
+				return true;
+			}
+		} );
+
+		this.doFilter( data );
 	};
 
 	/**
@@ -289,17 +303,17 @@
 	CoEnvFaculty.prototype.doFilter = function ( data ) {
 		var _this = this;
 
-		// update filter queue with data properties
-		// (theme or unit)
-		for ( var prop in data ) {
+		for ( var prop in data.filters ) {
 
 			// translate '*' to 'theme-all' or 'unit-all'
-			if ( data[ prop ].slug === '*' ) {
-				data[ prop ].slug = prop + '-all';
+			if ( data.filters[ prop ].slug === '*' ) {
+				data.filters[ prop ].slug = prop + '-all';
 			}
 
-			this.filterQ[ prop ] = data[ prop ];
+			this.filterQ.filters[ prop ] = data.filters[ prop ];
 		}
+
+		this.filterQ.$rollerItem = data.$rollerItem;
 
 		this.$isoContainer.trigger( 'filter', [ this.filterQ ] );
 	};
