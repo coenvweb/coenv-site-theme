@@ -56,12 +56,10 @@ module.exports = function(grunt) {
 					'<%= paths.dev %>assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>bower_components/get-size/get-size.js',
+						'<%= paths.dev %>bower_components/jquery-smartresize/jquery.debouncedresize.js',
 						'<%= paths.dev %>bower_components/jquery.scrollTo/jquery.scrollTo.js',
-						//'<%= paths.dev %>bower_components/isotope/jquery.isotope.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/isotope2.js',
-						//'<%= paths.dev %>assets/scripts/src/plugins/procession/jquery.procession.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-list.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-toolbox.js'
+						'<%= paths.dev %>assets/scripts/src/faculty.js'
 					],
 
 					// jQuery fallback. Load this if CDN version is not available (user is offline)

@@ -217,14 +217,29 @@
 	.Faculty-toolbox--show-form & {
 		left: 0;	
 	}
+
+	select {
+		display: block;
+		width: 100%;
+		@include font-size(18);
+	}
+
+	label {
+		@include font-size(11);
+		text-transform: uppercase;
+		font-weight: 800;
+		color: #aaa;
+	}
+}
+
+.Faculty-toolbox-form-group {
+	@include rem('margin-bottom', 1);
 }
 
 .Faculty-toolbox-theme-select {
-
 }
 
 .Faculty-toolbox-unit-select {
-
 }
 
 .Faculty-toolbox-footer {

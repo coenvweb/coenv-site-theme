@@ -35,8 +35,6 @@
 
 	/**
 	 * Initialization
-	 *
-	 * Kick-off everything that happens on initialization here.
 	 */
 	CoEnvFacultyList.prototype.init = function () {
 		var _this = this;

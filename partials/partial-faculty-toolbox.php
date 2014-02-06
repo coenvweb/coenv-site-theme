@@ -72,30 +72,53 @@ $ordered_themes = $themes;
 			<div class="Faculty-toolbox-form">
 				
 				<form action="">
-					
-					<select name="theme" class="Faculty-toolbox-theme-select">
+
+					<div class="Faculty-toolbox-form-group">
 						
-						<option value="theme-all"></option>
-	
-						<?php foreach ( $themes as $theme ) : ?>
+						<select name="theme" class="Faculty-toolbox-theme-select">
+							
+							<option value="theme-all">All Research Themes</option>
+		
+							<?php foreach ( $themes as $theme ) : ?>
 
-							<option value="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></option>
+								<option value="theme-<?php echo $theme->slug ?>"><?php echo $theme->name ?></option>
 
-						<?php endforeach ?>
+							<?php endforeach ?>
 
-					</select>
+						</select>
 
-					<select name="unit" class="Faculty-toolbox-unit-select">
+						<label for="theme">Research themes</label>
+
+					</div>
+
+					<div class="Faculty-toolbox-form-group">
 						
-						<option value="unit-all"></option>
-	
-						<?php foreach ( $units as $unit ) : ?>
+						<select name="unit" class="Faculty-toolbox-unit-select">
+						
+							<option value="unit-all">All Schools/Departments</option>
+		
+							<?php foreach ( $units as $unit ) : ?>
 
-							<option value="unit-<?php echo $unit->slug ?>"><?php echo $unit->name ?></option>
+								<option value="unit-<?php echo $unit->slug ?>"><?php echo $unit->name ?></option>
 
-						<?php endforeach ?>
+							<?php endforeach ?>
 
-					</select>
+						</select>
+
+						<label for="unit">School/department</label>
+
+					</div>
+
+					<div class="Faculty-toolbox-form-group">
+						
+						<div class="field-wrap">
+    						<input type="text" value="<?php echo get_search_query() ?>" name="search" placeholder="Search faculty" />
+    						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
+  						</div>
+
+						<label for="search">Search</label>
+
+					</div>
 
 				</form>
 

@@ -21,7 +21,9 @@
     "picturefill": "~1.2.1",
     "enquire": "~2.1.0",
     "infinite-scroll": "*",
-    "jquery.scrollTo": "~1.4.9"
+    "jquery.scrollTo": "~1.4.9",
+    "jquery-smartresize": "*",
+    "jquery-bbq": "https://github.com/cowboy/jquery-bbq.git#~1.2.1"
   },
   "devDependencies": {}
 }
