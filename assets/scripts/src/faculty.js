@@ -11,6 +11,7 @@
 		$isoContainer: $('.Faculty-list-content'),
 
 		// toolbox
+		$toolbox: $('.Faculty-toolbox'),
 		toolboxSelector: '.Faculty-toolbox',
 
 		// Roller container
@@ -35,9 +36,18 @@
 		isoItemFeaturedClass: 'Faculty-list-item--featured',
 		isoItemImageSelector: '.Faculty-list-item-image',
 
+		// Roller/form toggle
+		$formToggle: $('.Faculty-toolbox-toggle'),
+		formViewClass: 'Faculty-toolbox--show-form',
+
+		// Form selects
+		$form: $('.Faculty-toolbox-form'),
+		$themeSelect: $('.Faculty-toolbox-theme-select'),
+		$unitSelect: $('.Faculty-toolbox-unit-select'),
+
 		// Filter queue
 		filterQ: {
-			$item: $(),
+			$rollerItem: $(),
 			filters: {}
 		},
 
@@ -53,11 +63,20 @@
 		// update hash on 'filter' event
 		this.updateHash();
 
+		// sync form selects
+		this.selectSync();
+
 		// initialize isotope
 		this.isoInit();
 
 		// run filters passed through hash
 		this.filterInit();
+
+		// handle toggle between roller and form
+		this.formToggleButton();
+
+		// handle form selects
+		this.formSelects();
 	};
 
 	/**
@@ -383,14 +402,12 @@
 	};
 
 	/**
-	 * Run filters passed through hash
+	 * Run filters passed through hash on page load
 	 */
 	CoEnvFaculty.prototype.filterInit = function () {
 		var _this = this,
 			hashFilters = this.hashFilters(),
-			data = {
-				filters: {}
-			},
+			data = { filters: {} },
 			theme,
 			unit,
 			$selectOpt,
@@ -423,6 +440,12 @@
 					slug: this
 				};
 			} );
+
+			// if a unit is passed through the hash,
+			// show form view
+			if ( data.filters.unit.slug !== 'unit-all' ) {
+				this.formToggleOn();
+			}
 
 			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
 				if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
@@ -507,6 +530,121 @@
 		return $.map( filters, function ( val ) {
 			return val.slug;
 		} ).join('&');
+	};
+
+	/**
+	 * Handle toggling between form and roller in toolbox
+	 */
+	CoEnvFaculty.prototype.formToggleButton = function () {
+		var _this = this;
+
+		this.$formToggle.on( 'click', function ( event ) {
+			event.preventDefault();
+
+			if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
+				_this.formToggleOff();
+			} else {
+				_this.formToggleOn();
+			}
+		} );
+	};
+
+	/**
+	 * Toggle toolbox form view on
+	 */
+	CoEnvFaculty.prototype.formToggleOn = function () {
+
+		if ( ! this.$toolbox.hasClass( this.formViewClass ) ) {
+			this.$toolbox.addClass( this.formViewClass );
+		}
+	};
+
+	/**
+	 * Toggle toolbox form view off
+	 */
+	CoEnvFaculty.prototype.formToggleOff = function () {
+
+		if ( this.$toolbox.hasClass( this.formViewClass ) ) {
+			this.$toolbox.removeClass( this.formViewClass );
+
+			// clear units from filter
+			this.resetUnits();
+		}
+	};
+
+	/**
+	 * Sync form selects after 'filter' event
+	 */
+	CoEnvFaculty.prototype.selectSync = function () {
+		var _this = this,
+			$themeOpt,
+			$unitOpt;
+
+		this.$isoContainer.on( 'filter', function ( event, data ) {
+
+			$themeOpt = _this.$themeSelect.find('option[value="' + data.filters.theme.slug + '"]');
+			$themeOpt.attr( 'selected', 'selected' );
+
+			$unitOpt = _this.$unitSelect.find('option[value="' + data.filters.unit.slug + '"]');
+			$unitOpt.attr( 'selected', 'selected' );
+		} );
+	};
+
+	/**
+	 * Reset 'unit' filter to all
+	 */
+	CoEnvFaculty.prototype.resetUnits = function () {
+		this.doFilter({
+			filters: {
+				unit: {
+					slug: 'unit-all'
+				}
+			}
+		});
+	};
+
+	/**
+	 * Handle form selects
+	 */
+	CoEnvFaculty.prototype.formSelects = function () {
+		var _this = this,
+			data = {},
+			$opt;
+
+		this.$themeSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			data.filters = {
+				theme: {
+					name: $opt.text(),
+					slug: $opt.val()
+				}
+			};
+
+			data.$rollerItem = _this.$roller.find( _this.rollerItemSelector ).filter( function () {
+				if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
+					console.log();
+					return true;
+				}
+			} );
+
+			_this.doFilter( data );
+		} );
+
+		this.$unitSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			_this.doFilter({
+				filters: {
+					unit: {
+						name: $opt.text(),
+						slug: $opt.val()
+					}
+				}
+			});
+		} );
 	};
 
 	new CoEnvFaculty();
