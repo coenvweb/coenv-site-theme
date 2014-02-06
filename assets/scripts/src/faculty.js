@@ -50,6 +50,9 @@
 		// initialize roller
 		this.rollerInit();
 
+		// update hash on 'filter' event
+		this.updateHash();
+
 		// initialize isotope
 		this.isoInit();
 
@@ -394,23 +397,40 @@
 			$item;
 
 		if (! hashFilters) {
-			return;
-		}
 
-		$.each( hashFilters, function () {
-			$selectOpt = _this.$toolboxForm.find('option[value="' + this + '"]');
-
-			data.filters[ this.split('-')[0] ] = {
-				name: $selectOpt.text(),
-				slug: this
+			// fill out filter defaults
+			data.filters = {
+				theme: {
+					name: 'All Research Themes',
+					slug: 'theme-all'
+				},
+				unit: {
+					name: 'All Schools/Departments',
+					slug: 'unit-all'
+				}
 			};
-		} );
 
-		data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
-			if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
-				return true;
-			}
-		} );
+			// go to first roller item
+			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).first();
+
+		} else {
+
+			$.each( hashFilters, function () {
+				$selectOpt = _this.$toolboxForm.find('option[value="' + this + '"]');
+
+				data.filters[ this.split('-')[0] ] = {
+					name: $selectOpt.text(),
+					slug: this
+				};
+			} );
+
+			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
+				if ( $(this).find('a').data('theme') === data.filters.theme.slug ) {
+					return true;
+				}
+			} );
+
+		}
 
 		this.doFilter( data );
 	};
@@ -422,7 +442,8 @@
 		var hash = window.location.hash,
 			filters;
 
-		if ( hash === '' ) {
+		// return false if hash is blank or plain hash
+		if ( hash === '' || hash === '#' ) {
 			return false;
 		}
 
@@ -453,12 +474,39 @@
 	};
 
 	/**
+	 * Update hash on 'filter' event
+	 */
+	CoEnvFaculty.prototype.updateHash = function () {
+		var _this = this,
+			hash;
+
+		this.$isoContainer.on( 'filter', function ( event, data ) {
+			hash = _this.buildHashFromFilters( data.filters );
+
+			if ( hash === 'theme-all&unit-all' ) {
+				hash = '';
+			}
+
+			window.location.hash = hash;
+		} );
+	};
+
+	/**
 	 * Build an isotope filter string
 	 */
 	CoEnvFaculty.prototype.buildIsoFilterString = function ( filters ) {
 		return $.map( filters, function ( val ) {
 			return '.' + val.slug;
 		} ).join('');
+	};
+
+	/**
+	 * Build hash from isotope filters
+	 */
+	CoEnvFaculty.prototype.buildHashFromFilters = function ( filters ) {
+		return $.map( filters, function ( val ) {
+			return val.slug;
+		} ).join('&');
 	};
 
 	new CoEnvFaculty();
