@@ -57,6 +57,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>bower_components/get-size/get-size.js',
 						'<%= paths.dev %>bower_components/jquery-smartresize/jquery.debouncedresize.js',
+						//'<%= paths.dev %>bower_components/odometer/odometer.js',
 						'<%= paths.dev %>bower_components/jquery.scrollTo/jquery.scrollTo.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/isotope2.js',
 						'<%= paths.dev %>assets/scripts/src/faculty.js'

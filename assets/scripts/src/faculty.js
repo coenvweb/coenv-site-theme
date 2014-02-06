@@ -45,6 +45,14 @@
 		$themeSelect: $('.Faculty-toolbox-theme-select'),
 		$unitSelect: $('.Faculty-toolbox-unit-select'),
 
+		// Feedback messages
+		$feedback: $('.Faculty-toolbox-feedback'),
+        $feedbackNumber: $('.Faculty-toolbox-feedback-number'),
+        $feedbackMessage: $('.Faculty-toolbox-feedback-message'),
+        feedbackMessageInclusive: $('.Faculty-toolbox-feedback-message').text(),
+        feedbackMessage: 'Faculty members are working',
+        feedbackMessageSingular: 'Faculty member is working',
+
 		// Filter queue
 		filterQ: {
 			$rollerItem: $(),
@@ -65,6 +73,9 @@
 
 		// sync form selects
 		this.selectSync();
+
+		// handle feedback
+		this.feedback();
 
 		// initialize isotope
 		this.isoInit();
@@ -645,6 +656,77 @@
 				}
 			});
 		} );
+	};
+
+	/**
+	 * Handle feedback messages
+	 */
+	CoEnvFaculty.prototype.feedback = function () {
+		var _this = this,
+		number,
+		message,
+		themeLink,
+		unitLink;
+
+		var doFeedback = function ( data ) {
+
+			themeLink = '<a href="' + data.filters.theme.url + '">' + data.filters.theme.name + '</a>';
+			unitLink = '<a href="' + data.filters.unit.url + '">' + data.filters.unit.name + '</a>';
+
+			// get number of filtered items
+			number = _this.$isoContainer.data('isotope').filteredItems.length;
+
+			console.log(number);
+
+			// singular or plural message?
+			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
+
+			if ( data.filters.theme.slug === 'theme-all' ) {
+
+				// all themes are selected
+				// is the form view active?
+				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
+
+					// show unit message
+					message += ' in ' + unitLink;
+
+				} else {
+
+					// we're in the theme roller view
+					message = _this.feedbackMessageInclusive;
+				}
+
+			} else {
+
+				// single theme is selected
+				message += ' on ' + themeLink;
+
+				// is the form view active?
+				if ( _this.$toolbox.hasClass( _this.formViewClass ) ) {
+
+					message += ' in ' + unitLink;
+
+				}
+			}
+
+			// update feedback number
+			_this.$feedbackNumber.text( number );
+
+			// update feedback message
+			_this.$feedbackMessage.html( message );
+
+		};
+
+		this.$isoContainer.on( 'filter', function ( event, data ) {
+
+			_this.$isoContainer.one( 'isoLayoutComplete', function () {
+
+				doFeedback( data );
+
+			} );
+
+		} );
+
 	};
 
 	new CoEnvFaculty();

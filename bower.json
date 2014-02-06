@@ -23,7 +23,8 @@
     "infinite-scroll": "*",
     "jquery.scrollTo": "~1.4.9",
     "jquery-smartresize": "*",
-    "jquery-bbq": "https://github.com/cowboy/jquery-bbq.git#~1.2.1"
+    "jquery-bbq": "https://github.com/cowboy/jquery-bbq.git#~1.2.1",
+    "odometer": "~0.4.6"
   },
   "devDependencies": {}
 }
