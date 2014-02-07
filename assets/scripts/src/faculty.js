@@ -45,6 +45,7 @@
 		$themeSelect: $('.Faculty-toolbox-theme-select'),
 		$unitSelect: $('.Faculty-toolbox-unit-select'),
 		$searchField: $('.Faculty-toolbox-search'),
+		$searchFeedback: $('.Faculty-toolbox-search-feedback'),
 
 		// Feedback messages
 		$feedback: $('.Faculty-toolbox-feedback'),
@@ -466,7 +467,7 @@
 
 			// if a unit is passed through the hash,
 			// show form view
-			if ( data.filters.unit.slug !== 'unit-all' ) {
+			if ( data.filters.unit !== undefined && data.filters.unit.slug !== 'unit-all' ) {
 				this.formToggleOn();
 			}
 		}
@@ -508,7 +509,7 @@
 		}
 
 		// if data.$rollerItem is not passed, find the roller item based on theme filter
-		if ( data.$rollerItem === undefined ) {
+		if ( data.$rollerItem === undefined && data.filters !== undefined && data.filters.theme !== undefined ) {
 
 			data.$rollerItem = this.$roller.find( this.rollerItemSelector ).filter( function () {
 				var theme = _this.filterQ.filters.theme.slug === 'theme-all' ? '*' : _this.filterQ.filters.theme.slug;
@@ -532,6 +533,9 @@
 				}
 			};
 		}
+
+		// pass through feedback or overwrite if undefined
+		this.filterQ.feedback = data.feedback;
 
 		this.filterQ.$rollerItem = data.$rollerItem;
 
@@ -637,11 +641,15 @@
 
 		this.$isoContainer.on( 'filter', function ( event, data ) {
 
-			$themeOpt = _this.$themeSelect.find('option[value="' + data.filters.theme.slug + '"]');
-			$themeOpt.attr( 'selected', 'selected' );
+			if ( data.filters.theme !== undefined ) {
+				$themeOpt = _this.$themeSelect.find('option[value="' + data.filters.theme.slug + '"]');
+				$themeOpt.attr( 'selected', 'selected' );
+			}
 
-			$unitOpt = _this.$unitSelect.find('option[value="' + data.filters.unit.slug + '"]');
-			$unitOpt.attr( 'selected', 'selected' );
+			if ( data.filters.unit !== undefined ) {
+				$unitOpt = _this.$unitSelect.find('option[value="' + data.filters.unit.slug + '"]');
+				$unitOpt.attr( 'selected', 'selected' );
+			}
 		} );
 	};
 
@@ -713,8 +721,13 @@
 
 		var doFeedback = function ( data ) {
 
-			themeLink = '<a href="' + data.filters.theme.url + '" data-slug="' + data.filters.theme.slug + '">' + data.filters.theme.name + '</a>';
-			unitLink = '<a href="' + data.filters.unit.url + '" data-slug="' + data.filters.unit.slug + '">' + data.filters.unit.name + '</a>';
+			if ( data.filters.theme !== undefined ) {
+				themeLink = '<a href="' + data.filters.theme.url + '" data-slug="' + data.filters.theme.slug + '">' + data.filters.theme.name + '</a>';
+			}
+
+			if ( data.filters.unit !== undefined ) {
+				unitLink = '<a href="' + data.filters.unit.url + '" data-slug="' + data.filters.unit.slug + '">' + data.filters.unit.name + '</a>';
+			}
 
 			// get number of filtered items
 			number = _this.$isoContainer.data('isotope').filteredItems.length;
@@ -722,7 +735,7 @@
 			// singular or plural message?
 			message = number === 1 ? _this.feedbackMessageSingular : _this.feedbackMessage;
 
-			if ( data.filters.theme.slug === 'theme-all' ) {
+			if ( data.filters.theme !== undefined && data.filters.theme.slug === 'theme-all' ) {
 
 				// all themes are selected
 				// is the form view active?
@@ -761,12 +774,21 @@
 				}
 			}
 
+			// search
+			if ( data.search !== undefined ) {
+				message = 'searching';
+			}
+
+			// data.feedback overrides the above
+			if ( data.feedback !== undefined ) {
+				message = data.feedback;
+			}
+
 			// update feedback number
 			_this.$feedbackNumber.text( number );
 
 			// update feedback message
 			_this.$feedbackMessage.html( message );
-
 		};
 
 		this.$isoContainer.on( 'filter', function ( event, data ) {
@@ -805,13 +827,14 @@
 
 	/**
 	 * Handle search
+	 * Sanitization/validation is handled by member-api
 	 */
 	CoEnvFaculty.prototype.handleSearch = function () {
 		var _this = this,
 			searchData,
 			searchResponse,
 			memberIDs,
-			data;
+			data = {};
 
 		this.$form.on( 'submit', function ( event ) {
 			event.preventDefault();
@@ -824,7 +847,7 @@
 			$.post( themeVars.ajaxurl, searchData, function ( response ) {
 				searchResponse = $.parseJSON( response );
 
-				if ( ! searchResponse.results.length ) {
+				if ( searchResponse.number === 0 ) {
 
 					memberIDs = [ 'Faculty-list-item--*' ];
 				} else {
@@ -835,13 +858,15 @@
 					} );
 				}
 
+				data.feedback = searchResponse.message;
+
+				data.search = {
+					ids: memberIDs,
+					keywords: searchResponse.message
+				};
+
 				// filter isotope by member ids
-				_this.doFilter({
-					search: {
-						ids: memberIDs,
-						keywords: searchResponse.message
-					}
-				});
+				_this.doFilter( data );
 			} );
 
 		} );

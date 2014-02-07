@@ -781,7 +781,7 @@ class CoEnvMemberAPI {
 function ajax_search () {
 	global $wpdb;
 
-	$querystring = $_POST['data'];
+	$querystring = sanitize_text_field( $_POST['data'] );
 
 	// querystring should be more than two characters
 	if ( strlen($querystring) <= 2 ) {
@@ -821,6 +821,19 @@ function ajax_search () {
 	));
 
 	$results = array_merge( $query_search, $query_meta );
+	$results_count = count($results);
+
+	$message = $results_count == 1 ? ' Faculty member' : ' Faculty members';
+	$message .= ' were found matching "' . $querystring . '"';
+
+	if ( count( $results ) == 0 ) {
+		echo json_encode(array(
+			'results' => '',
+			'number' => 0,
+			'message' => $message
+		));
+		die();
+	}
 
 	// this produces duplicate results,
 	// which doesn't really matter since isotope filtering
@@ -829,7 +842,7 @@ function ajax_search () {
 	echo json_encode(array(
 		'results' => $results,
 		'number' => count($results),
-		'message' => sanitize_text_field( $querystring )
+		'message' => $message
 	));
 
 	die();
