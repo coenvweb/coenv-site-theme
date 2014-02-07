@@ -62,7 +62,12 @@
 		},
 
 		// Toolbox form
-		$toolboxForm: $('.Faculty-toolbox-form')
+		$toolboxForm: $('.Faculty-toolbox-form'),
+
+		// Mobile view select form
+		$mobileForm: $('.Faculty-selector'),
+		$mobileThemeSelect: $('.Faculty-selector-theme'),
+		$mobileUnitSelect: $('.Faculty-selector-unit'),
 	};
 
 	CoEnvFaculty.prototype.init = function () {
@@ -96,6 +101,9 @@
 
 		// handle search
 		this.handleSearch();
+
+		// handle mobile form
+		this.mobileForm();
 	};
 
 	/**
@@ -191,7 +199,7 @@
 
 		function doRoll ( $item ) {
 
-			if ( $item === undefined ) {
+			if ( $item === undefined || $item.length === 0 ) {
 				return;
 			}
 	        
@@ -636,19 +644,23 @@
 	 */
 	CoEnvFaculty.prototype.selectSync = function () {
 		var _this = this,
-			$themeOpt,
-			$unitOpt;
+			themeOptSelector,
+			unitOptSelector;
 
 		this.$isoContainer.on( 'filter', function ( event, data ) {
 
 			if ( data.filters.theme !== undefined ) {
-				$themeOpt = _this.$themeSelect.find('option[value="' + data.filters.theme.slug + '"]');
-				$themeOpt.attr( 'selected', 'selected' );
+
+				themeOptSelector = 'option[value="' + data.filters.theme.slug + '"]';
+				_this.$themeSelect.find( themeOptSelector ).attr( 'selected', 'selected' );
+				_this.$mobileThemeSelect.find( themeOptSelector ).attr( 'selected', 'selected' );
 			}
 
 			if ( data.filters.unit !== undefined ) {
-				$unitOpt = _this.$unitSelect.find('option[value="' + data.filters.unit.slug + '"]');
-				$unitOpt.attr( 'selected', 'selected' );
+
+				unitOptSelector = 'option[value="' + data.filters.unit.slug + '"]';
+				_this.$unitSelect.find( unitOptSelector ).attr( 'selected', 'selected' );
+				_this.$mobileUnitSelect.find( unitOptSelector ).attr( 'selected', 'selected' );
 			}
 		} );
 	};
@@ -878,6 +890,91 @@
 	CoEnvFaculty.prototype.clearSearch = function () {
 		this.$searchField.val('');
 		delete this.filterQ.filters.search;
+	};
+
+	/**
+	 * this.$themeSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			data.filters = {
+				theme: {
+					name: $opt.text(),
+					slug: $opt.val(),
+					url: $opt.data('url')
+				}
+			};
+
+			_this.clearSearch();
+
+			_this.doFilter( data );
+		} );
+
+		this.$unitSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			_this.clearSearch();
+
+			_this.doFilter({
+				filters: {
+					unit: {
+						name: $opt.text(),
+						slug: $opt.val(),
+						url: $opt.data('url')
+					}
+				}
+			});
+		} );
+	 */
+
+	/**
+	 * Handle mobile form
+	 * This only shows for smaller viewports instead of the toolbox
+	 */
+	CoEnvFaculty.prototype.mobileForm = function () {
+		var _this = this,
+			$opt;
+
+		this.$mobileForm.on( 'submit', function ( event ) {
+			event.preventDefault();
+		} );
+
+		this.$mobileThemeSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			_this.clearSearch();
+
+			_this.doFilter({
+				filters: {
+					theme: {
+						name: $opt.text(),
+						slug: $opt.val(),
+						url: $opt.data('url')
+					}
+				}
+			});
+		} );
+
+		this.$mobileUnitSelect.on( 'change', function () {
+
+			$opt = $(this).find('option:selected');
+
+			_this.clearSearch();
+
+			_this.doFilter({
+				filters: {
+					unit: {
+						name: $opt.text(),
+						slug: $opt.val(),
+						url: $opt.data('url')
+					}
+				}
+			});
+		} );
+
+		// reset selects
 	};
 
 	new CoEnvFaculty();

@@ -6,13 +6,18 @@
 
 .Faculty-toolbox {
 	@extend .antialiased;
+	display: none;
 	position: relative;
 	z-index: 9999;
 	display: none;
 
-	@include min-width ( $bp-2 ) {
-		display: block;
-		margin-right: -1px;
+	.js & {
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+			margin-right: -1px;
+		}	
+
 	}
 }
 
