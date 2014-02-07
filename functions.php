@@ -1149,16 +1149,3 @@ add_action( 'wp_head', 'reinsert_rss_feed', 1 );
 function reinsert_rss_feed() {
 	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
 }
-
-/*
- * Manually order index posts to counteract
- * post order plugin used for home page.
-
-add_action( 'pre_get_posts', 'index_sort_order');
-
-function index_sort_order($query){
-    if(is_home()):
-       $query->set( 'order', 'DESC' );
-   	   $query->set( 'orderby', 'date' );
-    endif;    
-};
