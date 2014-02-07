@@ -21,3 +21,9 @@
 *components
 rsync-config.json
 .tmp
+
+# built styles and scripts
+assets/styles/build/*.css
+assets/styles/build/*.map
+assets/scripts/build/*.js
+assets/scripts/build/*.map
