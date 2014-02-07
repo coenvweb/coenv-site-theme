@@ -78,14 +78,18 @@ module.exports = function(grunt) {
 		 */
 		sass: {
 			dist: {
-				files: {
-					'<%= paths.dev %>.tmp/assets/styles/build/screen.css': [
-						'<%= paths.dev %>assets/styles/src/screen.scss'
-					],
-					'<%= paths.dev %>.tmp/assets/styles/build/lt-ie8.css': [
-						'<%= paths.dev %>assets/styles/src/lt-ie8.scss'
-					]
-				}
+				options: {
+					sourcemap: true
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= paths.dev %>assets/styles/src/*.scss'],
+						dest:  '<%= paths.dev %>.tmp/styles/build',
+						ext: '.css'
+					}
+				]
 			}
 		},
 
@@ -97,11 +101,14 @@ module.exports = function(grunt) {
 				options: {
 					browsers: ['last 2 versions']
 				},
-				files: {
-					'<%= paths.dev %>.tmp/assets/styles/build/screen.css' : [
-						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
-					]
-				}
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= paths.dev %>.tmp/styles/build/*.css'],
+						dest: '<%= paths.dev %>.tmp/styles/build'
+					}
+				]
 			}
 		},
 
@@ -110,11 +117,53 @@ module.exports = function(grunt) {
 		 */
 		cssmin: {
 			dist: {
-				files: {
-					'<%= paths.dev %>assets/styles/build/screen.css' : [
-						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
-					]
-				}
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= paths.dev %>.tmp/styles/build/*.css'],
+						dest: '<%= paths.dev %>assets/styles/build'
+					}
+				]
+			}
+		},
+
+		/**
+		 * Copying files
+		 */
+		copy: {
+			css: {
+				files: [
+					// copy css source maps
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= paths.dev %>.tmp/styles/build/*.map'],
+						dest: '<%= paths.dev %>assets/styles/build/'
+					}
+				]
+			}
+		},
+
+		/**
+		 * Concatenating files
+		 */
+		concat: {
+			css: {
+				options: {
+					process: function (src, filepath) {
+						var filename = filepath.replace(/^.*[\\\/]/, '');
+						return src + '\n\n' + '/*# sourceMappingURL=' + filename + '.map */';
+					}
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['<%= paths.dev %>assets/styles/build/*.css'],
+						dest: '<%= paths.dev %>assets/styles/build'
+					}
+				]
 			}
 		},
 
@@ -132,8 +181,8 @@ module.exports = function(grunt) {
 				tasks: [ 'sass', 'autoprefixer' ]
 			},
 			css: {
-				files: ['<%= paths.dev %>.tmp/assets/styles/build/**/*.css'],
-				tasks: [ 'cssmin' ],
+				files: ['<%= paths.dev %>.tmp/styles/build/**/*.css'],
+				tasks: [ 'cssmin', 'copy:css' ],
 				options: {
 					livereload: true
 				}
@@ -159,6 +208,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -173,7 +224,9 @@ module.exports = function(grunt) {
 		'uglify',
 		'sass',
 		'autoprefixer',
-		'cssmin'
+		'cssmin',
+		'copy:css',
+		'concat:css'
 	]);
 
 };
