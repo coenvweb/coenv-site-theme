@@ -99,7 +99,8 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			dist: {
 				options: {
-					browsers: ['last 2 versions']
+					browsers: ['last 2 versions'],
+					map: true
 				},
 				files: [
 					{
