@@ -28,6 +28,16 @@
 				.page-area & {
 					background: #fff;
 				}
+                
+                a {
+                        float: left;
+                        text-transform: none;
+                        padding-left: 0;
+                        @include font-size(16);
+                        @include line-height(24);
+                        font-weight: 400;
+                    
+                } // a
 
 			} // span
 

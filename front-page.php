@@ -47,7 +47,7 @@ $stories = new WP_Query( array(
             <section class="widget featured-stories">
 
                 <header>
-                    <h1><span>News from the College</span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
+                    <h1><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
                 </header>
 
                 <div class="stories-container">
@@ -67,7 +67,7 @@ $stories = new WP_Query( array(
         <?php wp_reset_postdata() ?>
 
         <?php get_sidebar() ?>
-
+        
     </div><!-- .container -->
 
 <?php get_footer() ?>
