@@ -29,23 +29,23 @@ $query = array(
 	'tax_query' => array()
 );
 
-//// add theme
-//if ( isset( $query_args['theme'] ) && !empty( $query_args['theme'] ) ) {
-//	$query['tax_query'][] = array(
-//		'taxonomy' => 'member_theme',
-//		'field' => 'slug',
-//		'terms' => $query_args['theme']
-// 	);
-//}
-//
-//// add unit
-//if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
-//	$query['tax_query'][] = array(
-//		'taxonomy' => 'member_unit',
-//		'field' => 'slug',
-//		'terms' => $query_args['unit']
-// 	);
-//}
+// add theme
+if ( isset( $query_args['theme'] ) && !empty( $query_args['theme'] ) ) {
+	$query['tax_query'][] = array(
+		'taxonomy' => 'member_theme',
+		'field' => 'slug',
+		'terms' => $query_args['theme']
+ 	);
+}
+
+// add unit
+if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
+	$query['tax_query'][] = array(
+		'taxonomy' => 'member_unit',
+		'field' => 'slug',
+		'terms' => $query_args['unit']
+ 	);
+}
 
 // Make query
 $faculty = new WP_Query( $query );

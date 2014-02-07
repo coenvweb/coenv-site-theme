@@ -260,6 +260,10 @@ class CoEnvMemberApiImporter {
 
 			$term = wp_insert_term( $unit, 'member_unit' );
 
+			if ( is_wp_error( $term ) ) {
+				continue;
+			}
+
 			// add unit color
 			switch ( $unit ) {
 				case 'Aquatic & Fishery Sciences':
@@ -371,6 +375,7 @@ class CoEnvMemberApiImporter {
 			// set first and last name
 			update_field( 'first_name', ucwords( strtolower( $first_name ) ), $id );
 			update_field( 'last_name', ucwords( strtolower( $f['Last'] ) ), $id );
+			update_field( 'academic_title', ucwords( strtolower( $f['Title'] ) ), $id );
 
 		}
 

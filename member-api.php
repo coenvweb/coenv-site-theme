@@ -556,6 +556,7 @@ class CoEnvMemberAPI {
 		$results = array();
 
 		$member_terms = get_the_terms( $ID, $taxonomy );
+
 		if ( !empty( $member_terms ) ) {
 			foreach ( $member_terms as $term ) {
 
@@ -570,7 +571,8 @@ class CoEnvMemberAPI {
 
 				$atts = array(
 					'term_id' => $term->term_id,
-					'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
+					'url' => $this->term_url( $term ),
+					//'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
 					//'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
 					'name' => $term->name,
 					'slug' => $term->slug,
@@ -719,6 +721,25 @@ class CoEnvMemberAPI {
 		}
 
 		return $units;
+	}
+
+	/**
+	 * Get term URL
+	 */
+	function term_url( $term ) {
+
+		$url = $this->base_url . '#theme-';
+
+		switch ( $term->taxonomy ) {
+			case 'member_unit':
+				$url .= 'all&unit-' . $term->slug;
+				break;
+			case 'member_theme':
+				$url .= $term->slug . '&unit-all';
+				break;
+		}
+
+		return $url;
 	}
 
 	/**

@@ -1,5 +1,7 @@
 'use strict';
 
+var rsyncConfig = require('./rsync-config.json');
+
 module.exports = function(grunt) {
 
 	grunt.initConfig({
@@ -153,6 +155,22 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			}
+		},
+
+		/**
+		 * Rsync for deploying to dev server for testing
+		 */
+		rsync: {
+			options: {},
+			stage: {
+				options: {
+					src: './',
+					dest: rsyncConfig.staging.dest,
+					host: rsyncConfig.staging.host,
+					recursive: true,
+					syncDest: false
+				}
+			}
 		}
 	});
 
@@ -162,6 +180,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-rsync');
+
+	grunt.registerTask('stage', [
+		'rsync:stage'
+	]);
 
 	grunt.registerTask('dev', [
 		'default',

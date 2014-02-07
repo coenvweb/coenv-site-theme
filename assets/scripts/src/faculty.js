@@ -44,6 +44,7 @@
 		$form: $('.Faculty-toolbox-form'),
 		$themeSelect: $('.Faculty-toolbox-theme-select'),
 		$unitSelect: $('.Faculty-toolbox-unit-select'),
+		$searchField: $('.Faculty-toolbox-search'),
 
 		// Feedback messages
 		$feedback: $('.Faculty-toolbox-feedback'),
@@ -91,6 +92,9 @@
 
 		// handle form selects
 		this.formSelects();
+
+		// handle search
+		this.handleSearch();
 	};
 
 	/**
@@ -515,6 +519,20 @@
 			} );
 		}
 
+		// check if search was passed (overrides filters)
+		if ( data.search !== undefined ) {
+
+			this.filterQ.filters = {
+				search: data.search,
+				theme: {
+					slug: 'theme-all'
+				},
+				unit: {
+					slug: 'unit-all'
+				}
+			};
+		}
+
 		this.filterQ.$rollerItem = data.$rollerItem;
 
 		this.$isoContainer.trigger( 'filter', [ this.filterQ ] );
@@ -542,9 +560,19 @@
 	 * Build an isotope filter string
 	 */
 	CoEnvFaculty.prototype.buildIsoFilterString = function ( filters ) {
-		return $.map( filters, function ( val ) {
-			return '.' + val.slug;
+		var filterString;
+
+		filterString = $.map( filters, function ( val ) {
+			if ( val.slug !== undefined ) {
+				return '.' + val.slug;
+			}
 		} ).join('');
+
+		if ( filters.search !== undefined ) {
+			filterString = '.' + filters.search.ids.join(',.');
+		}
+
+		return filterString;
 	};
 
 	/**
@@ -591,8 +619,11 @@
 		if ( this.$toolbox.hasClass( this.formViewClass ) ) {
 			this.$toolbox.removeClass( this.formViewClass );
 
+			// clear search
+			this.clearSearch();
+
 			// clear units from filter
-			this.resetUnits();
+			this.resetFilter('unit');
 		}
 	};
 
@@ -615,20 +646,6 @@
 	};
 
 	/**
-	 * Reset 'unit' filter to all
-	 * TODO: add default unit info
-	 */
-	CoEnvFaculty.prototype.resetUnits = function () {
-		this.doFilter({
-			filters: {
-				unit: {
-					slug: 'unit-all'
-				}
-			}
-		});
-	};
-
-	/**
 	 * Reset either 'theme' or 'unit' filter
 	 */
 	CoEnvFaculty.prototype.resetFilter = function ( filter ) {
@@ -637,7 +654,6 @@
 		data.filters[ filter ] = {
 			slug: filter + '-all'
 		};
-
 
 		this.doFilter( data );
 	};
@@ -662,14 +678,7 @@
 				}
 			};
 
-//			data.$rollerItem = _this.$roller.find( _this.rollerItemSelector ).filter( function () {
-//
-//				var theme = data.filters.theme.slug === 'theme-all' ? '*' : data.filters.theme.slug;
-//
-//				if ( $(this).find('a').data('theme') === theme ) {
-//					return true;
-//				}
-//			} );
+			_this.clearSearch();
 
 			_this.doFilter( data );
 		} );
@@ -677,6 +686,8 @@
 		this.$unitSelect.on( 'change', function () {
 
 			$opt = $(this).find('option:selected');
+
+			_this.clearSearch();
 
 			_this.doFilter({
 				filters: {
@@ -790,6 +801,58 @@
 			}
 
 		} );
+	};
+
+	/**
+	 * Handle search
+	 */
+	CoEnvFaculty.prototype.handleSearch = function () {
+		var _this = this,
+			searchData,
+			searchResponse,
+			memberIDs,
+			data;
+
+		this.$form.on( 'submit', function ( event ) {
+			event.preventDefault();
+
+			searchData = {
+				action: 'coenv_member_api_search',
+				data: _this.$searchField.val()
+			};
+
+			$.post( themeVars.ajaxurl, searchData, function ( response ) {
+				searchResponse = $.parseJSON( response );
+
+				if ( ! searchResponse.results.length ) {
+
+					memberIDs = [ 'Faculty-list-item--*' ];
+				} else {
+
+					// map memberIDs
+					memberIDs = $.map( searchResponse.results, function ( val ) {
+						return 'Faculty-list-item--' + val.ID;
+					} );
+				}
+
+				// filter isotope by member ids
+				_this.doFilter({
+					search: {
+						ids: memberIDs,
+						keywords: searchResponse.message
+					}
+				});
+			} );
+
+		} );
+	};
+
+	/**
+	 * Clear search
+	 */
+	CoEnvFaculty.prototype.clearSearch = function () {
+		this.$searchField.val('');
+		delete this.filterQ.filters.search;
 	};
 
 	new CoEnvFaculty();
