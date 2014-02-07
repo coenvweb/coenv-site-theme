@@ -5,11 +5,3 @@ Description: A custom WordPress theme for the UW College of the Environment
 Version: 0.1.1
 Text Domain: coenv
 */
-
-form #password {
-border: 1px;
-}
-
-.story, .stories-container, .story .inner, .faculty-toolbox .faculty-toolbox-feedback, .faculty-toolbox .faculty-toolbox-feedback {
-overflow: visible!important;
-}

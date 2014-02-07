@@ -232,6 +232,7 @@ function coenv_theme_setup() {
 		'uw-links' => 'UW links',
 		'top-links' => 'Top links',
 		'top-buttons' => 'Top buttons',
+        'footer-top-links' => 'Footer Top Links',
 		'footer-links' => 'Footer links',
 		'footer-units' => 'Footer academic units'
 	));
@@ -1138,7 +1139,13 @@ function coenv_print_breadcrumbs() {
 	$output = get_bloginfo('url');
 	echo $output;
 }
+/**
+ * Remove comment RSS
+ */
+remove_action( 'wp_head','feed_links', 2 );
+remove_action( 'wp_head','feed_links_extra', 3 );
+add_action( 'wp_head', 'reinsert_rss_feed', 1 );
 
-
-
-
+function reinsert_rss_feed() {
+	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
+}
