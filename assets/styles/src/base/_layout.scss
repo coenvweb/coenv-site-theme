@@ -55,7 +55,7 @@ $layout-wrapper-translateX: 80%;
 	// this is here to help out decorative pseudo elements
 	// that have negative right positions on single faculty pages
 	// might have to remove if this causes negative effects anywhere else.=
-	.single-faculty & {
+	.Faculty-single & {
 		overflow-x: hidden;
 	}
 

@@ -6,24 +6,37 @@
 
 }
 
+// sits inside of .container
+.Faculty-single-container {
+	margin-right: -4px;
+}
+
 .Faculty-header {
 	position: relative;
-	float: left;
-	padding-bottom: percentage( 2/8 );
-	width: percentage( 2/8 );
+	margin: 0 4px 4px 0;
+
+	@include min-width ( $bp-2 ) {
+		float: left;
+		margin: 0;
+		padding-bottom: percentage( 2/8 );
+		width: percentage( 2/8 );
+	}
 }
 
 .Faculty-header-inner {
-	position: absolute;
-	top: 0;
-	right: 4px;
-	bottom: 4px;
-	left: 0;
 	background: #303030;
 
-	// decorative black
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		bottom: 4px;
+		left: 0;
+	}
+
+	// decorative block
 	&:after {
-		display: block;
+		display: none;
 		content: "";
 		position: absolute;
 		top: 0;
@@ -31,16 +44,23 @@
 		margin-left: 4px;
 		width: 100%;
 		height: 100%;
-		background: #b4b4b4;	
+		background: #b4b4b4;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
 	}
 }
 
 .Faculty-header-top {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
 	border-bottom: 1px solid #3d3d3d;
+
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+	}
 }
 
 .Faculty-header-link {
@@ -62,10 +82,13 @@
 }
 
 .Faculty-header-bottom {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
+
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 }
 
 .Faculty-header-title {
@@ -84,33 +107,96 @@
 
 .Faculty-member-image {
 	position: relative;
-	float: right;
-	padding-bottom: percentage( 4/8 );
-	width: percentage( 4/8 );
+	padding-bottom: percentage( 8/8 );
+	width: percentage( 8/8 );
 
-	.Faculty-member-image-inner {
+	@include min-width ( $bp-1 ) {
+		float: right;
+		padding-bottom: percentage( 4/8 );
+		width: percentage( 4/8 );
+	}
+
+	@include min-width ( $bp-2 ) {
+
+	}
+}
+
+.Faculty-member-image-inner {
+	position: absolute;
+	top: 0;
+	right: 4px;
+	bottom: 4px;
+	left: 0;
+
+	@include min-width ( $bp-2 ) {
+		right: 4px;
+		bottom: 4px;
+	}
+}
+
+.Faculty-member-vcard {
+	position: relative;
+	margin: 0 4px 4px 0;
+
+	@include min-width ( $bp-1 ) {
+		clear: left;
+		float: left;
+		margin: 0;
+		padding-bottom: percentage( 4/8 );
+		width: percentage( 4/8 );
+	}
+
+	@include min-width ( $bp-2 ) {
+		padding-bottom: percentage( 2/8 );
+	}
+}
+
+.Faculty-member-vcard-inner {
+
+	@include min-width ( $bp-1 ) {
 		position: absolute;
 		top: 0;
 		right: 4px;
 		bottom: 4px;
 		left: 0;
 	}
-}
 
-.Faculty-member-vcard {
-	position: relative;
-	clear: left;
-	float: left;
-	padding-bottom: percentage( 2/8 );
-	width: percentage( 4/8 );
-}
+	@include min-width ( $bp-2 ) {
 
-.Faculty-member-vcard-inner {
-	position: absolute;
-	top: 0;
-	right: 4px;
-	bottom: 4px;
-	left: 0;
+	}
+
+	// decorative block, left
+	&:before {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 100%;
+		width: 100%;
+		height: 100%;
+		background: inherit;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
+	}
+
+	// decorative block, right
+	&:after {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 200%;
+		margin-left: 8px;
+		width: 100%;
+		height: 100%;
+		background: inherit;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
+	}
 }
 
 .Faculty-member-vcard-content {
