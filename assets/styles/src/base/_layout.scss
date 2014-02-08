@@ -52,13 +52,6 @@ $layout-wrapper-translateX: 80%;
 	//@include backface-visibility( hidden );
 	//@include transform( translate3d(0,0,0) );
 
-	// this is here to help out decorative pseudo elements
-	// that have negative right positions on single faculty pages
-	// might have to remove if this causes negative effects anywhere else.=
-	.Faculty-single & {
-		overflow-x: hidden;
-	}
-
 	.lt-ie9 & {
 		width: auto;
 		overflow: auto;
