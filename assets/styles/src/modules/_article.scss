@@ -79,7 +79,8 @@
 } // .article__header
 
 .article__content {
-	@extend .clearfix;
+	min-height: 450px;
+    @extend .clearfix;
 
 	h1 {
 		@include serif;
