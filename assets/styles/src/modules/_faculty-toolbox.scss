@@ -241,6 +241,19 @@
 		@include font-size(11);
 		color: #aaa;
 	}
+
+	.field-wrap {
+		width: 100%;
+
+		input[type="text"] {
+			border: none !important;
+		}
+
+		input[type="submit"] {
+			border: none !important;
+			background: none;
+		}
+	}
 }
 
 .Faculty-toolbox-form-group {
