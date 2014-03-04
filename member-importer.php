@@ -151,8 +151,10 @@ class CoEnvMemberApiImporter {
 		// pass file to CSV parser
 		$message = $this->parse_csv( $file_location );
 
-		return $message;
+		// delete file
+		wp_delete_attachment( $attachment_id, true );
 
+		return $message;
 	}
 
 	/**
@@ -163,7 +165,8 @@ class CoEnvMemberApiImporter {
 		// get all faculty
 		$faculty = get_posts( array(
 			'post_type' => 'faculty',
-			'numberposts' => -1
+			'numberposts' => -1,
+			'post_status' => 'any'
 		));
 
 		if ( !empty( $faculty ) ) {
@@ -203,7 +206,7 @@ class CoEnvMemberApiImporter {
 	 */
 	function parse_csv( $file ) {
 
-		set_time_limit(3000);
+		set_time_limit(30000);
 
 		$data = array_map( 'str_getcsv', file( $file ) );
 
@@ -212,7 +215,13 @@ class CoEnvMemberApiImporter {
 		// convert csv into associative array
 		$rows = array();
 		foreach ( $data as $row ) {
-			$rows[] = array_combine( $header, $row );
+			$this_row = array_combine( $header, $row );
+
+			if ( ! empty($this_row) ) {
+				$rows[] = $this_row;
+			}
+
+			//$rows[] = array_combine( $header, $row );
 		}
 
 		// get all attachments
@@ -299,7 +308,27 @@ class CoEnvMemberApiImporter {
 	 */
 	function insert_themes( $rows ) {
 
-		$non_theme_cols = array( 'Name', 'First', 'Last', 'Filename', 'Title', 'Department' );
+		$non_theme_cols = array(
+			'Name', 
+			'First', 
+			'Last', 
+			'Filename', 
+			'Approved Bio',
+			'Title', 
+			'Department', 
+			'Catalyst Survey Complete',
+			'Endowed Professorship or Chair',
+			'Email',
+			'Website',
+			'Phone',
+			'Twitter',
+			'Facebook',
+			'SciVal',
+			'Biography',
+			'Pull Quote',
+			'Publications',
+			'Notes'
+		);
 
 		$themes = array();
 
@@ -368,14 +397,13 @@ class CoEnvMemberApiImporter {
 			// attach portrait file by filename
 			$this->attach_faculty_portrait( $id, $f['Filename'] );
 
-			// super basic first name extraction (first word from string)
-			$first_name = explode( ' ', trim( $f['First'] ) );
-			$first_name = $first_name[0];
-
 			// set first and last name
-			update_field( 'first_name', ucwords( strtolower( $first_name ) ), $id );
-			update_field( 'last_name', ucwords( strtolower( $f['Last'] ) ), $id );
-			update_field( 'academic_title', ucwords( strtolower( $f['Title'] ) ), $id );
+			update_post_meta( $id, 'first_name', $f['First'] );
+			update_post_meta( $id, 'last_name', $f['Last'] );
+			update_post_meta( $id, 'academic_title', $f['Title'] );
+			update_post_meta( $id, 'endowments_chairs', $f['Endowed Professorship or Chair'] );
+			update_post_meta( $id, 'biography', $f['Biography'] );
+			update_post_meta( $id, 'pullquote', $f['Pull Quote'] );
 
 		}
 
