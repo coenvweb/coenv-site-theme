@@ -214,27 +214,40 @@
 .Faculty-member-name {
 	@extend .antialiased;
 	margin: 0;
-	@include font-size(30);
+	@include font-size(24);
+	line-height: 1.25;
 	font-weight: 400;
 	color: #fff;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(30);
+	}
 }
 
 .Faculty-member-academic-title {
 	@extend .antialiased;
 	margin: 0;
-	@include font-size(18);
+	@include font-size(16);
 	font-weight: 600;
 	color: #fff;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(18);
+	}
 }
 
 .Faculty-member-unit {
 	@extend .antialiased;
 	margin: 0;
-	@include font-size(14);
+	@include font-size(12);
 	font-weight: 600;
 	text-transform: uppercase; 
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(14);
+	}
 
 	a {
 		text-decoration: none;
@@ -267,4 +280,115 @@
 		font-weight: 400;
 		background: rgba(0,0,0,0.25);
 	}
+}
+
+.Faculty-member-content {
+	@extend .clearfix;
+	@include rem('padding', 2, 0);
+	background: #fff;
+}
+
+.Faculty-member-contact-list {
+	margin: 0;
+	@include rem('padding', 1);
+	list-style: none;
+	background: #eee;
+	color: $text;
+
+	li {
+		@include font-size(13);
+	}
+
+	a {
+		text-decoration: none;
+		color: $text;
+	}
+
+	i {
+		@include rem('margin-right', 0.5);
+	}
+
+	i.icon-contact-link-email {
+		@extend .icon-mail;
+	}
+
+	i.icon-contact-link-web {
+		@extend .icon-link;
+	}
+
+	i.icon-contact-link-phone {
+		@extend .icon-phone;
+	}
+
+	i.icon-contact-link-scival {
+		@extend .icon-bars;
+	}
+
+	i.icon-contact-link-twitter {
+		@extend .icon-twitter;
+	}
+}
+
+.Faculty-member-tab-nav {
+	margin: 4px 0 0;
+	background: #b4b4b4;
+	color: $text-md;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		display: block;
+		//@include rem('padding', 1);
+	}
+
+	a:hover {
+		background: #999;
+		border-color: #999;
+	}
+
+	.active-tab a {
+		color: #fff !important;
+		background: $accent;
+		border-color: $accent;
+		//background: #444;
+		//border-color: #444;
+	}
+}
+
+.Faculty-member-tabs {
+	list-style: none;
+
+	.Faculty-member-tab {
+		display: none;
+		@extend .article;
+
+		&.active-tab {
+			display: block;
+		}
+	}
+
+}
+
+.Faculty-member-pullquote {
+	margin: 0;
+	padding: 0;
+	max-width: 600px;
+	@include font-size(20);
+	line-height: 1.5;
+}
+
+.Faculty-member-bio {
+	max-width: 600px;
+
+	em {
+		font-style: normal;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
 }

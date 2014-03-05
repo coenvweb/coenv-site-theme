@@ -404,6 +404,14 @@ class CoEnvMemberApiImporter {
 			update_post_meta( $id, 'endowments_chairs', $f['Endowed Professorship or Chair'] );
 			update_post_meta( $id, 'biography', $f['Biography'] );
 			update_post_meta( $id, 'pullquote', $f['Pull Quote'] );
+			update_post_meta( $id, 'email', $f['Email'] );
+			update_post_meta( $id, 'phone', $f['Phone'] );
+			update_post_meta( $id, 'website', $f['Website'] );
+			update_post_meta( $id, 'twitter', $f['Twitter'] );
+			update_post_meta( $id, 'facebook', $f['Facebook'] );
+			//update_post_meta( $id, 'scival', $f['SciVal'] );
+			update_post_meta( $id, 'publications', $f['Publications'] );
+
 
 		}
 

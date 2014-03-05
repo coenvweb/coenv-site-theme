@@ -536,13 +536,16 @@ class CoEnvMemberAPI {
 		// heavier query (currently used on single faculty profile)
 		if ( $heavy ) {
 			$member['academic_title'] = get_field( 'academic_title', $f->ID );
-			$member['contact_links'] = get_field( 'contact_links', $f->ID );
+			$member['email'] = get_field( 'email', $f->ID );
+			$member['phone'] = get_field( 'phone', $f->ID );
+			$member['website'] = get_field( 'website', $f->ID );
+			$member['twitter'] = get_field( 'twitter', $f->ID );
+			$member['facebook'] = get_field( 'facebook', $f->ID );
 			$member['endowments_chairs'] = get_field( 'endowments_chairs', $f->ID );
 			$member['degree_institutions'] = get_field( 'degree_institutions', $f->ID );
 			$member['biography'] = get_field( 'biography', $f->ID );
 			$member['pullquote'] = get_field( 'pullquote', $f->ID );
 			$member['publications'] = get_field( 'publications', $f->ID );
-			$member['stories'] = get_field( 'related_stories', $f->ID );
 			$member['tags'] = $this->get_member_terms( $f->ID, 'member_tag' );
 		}
 

@@ -14,16 +14,11 @@ $obj = get_queried_object();
 
 $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 
-print '<pre>';
-print_r($member);
-print '</pre>';
-
-
 // set up member tab nav
 $member_tabs = array();
 if ( !empty( $member['pullquote'] ) || !empty( $member['biography'] ) ) {
 	$member_tabs[] = array(
-		'data-tab' => 'member-tab-bio',
+		'data-tab' => 'Faculty-member-tab--bio',
 		'title' => 'About ' . $member['full_name'],
 		'active' => true
 	);
@@ -31,17 +26,17 @@ if ( !empty( $member['pullquote'] ) || !empty( $member['biography'] ) ) {
 
 if ( !empty( $member['publications'] ) ) {
 	$member_tabs[] = array(
-		'data-tab' => 'member-tab-publications',
+		'data-tab' => 'Faculty-member-tab--publications',
 		'title' => 'Publications'
 	);
 }
 
-if ( !empty( $member['stories'] ) ) {
-	$member_tabs[] = array(
-		'data-tab' => 'member-tab-stories',
-		'title' => 'Stories from CoEnv Currents'
-	);
-}
+//if ( !empty( $member['stories'] ) ) {
+//	$member_tabs[] = array(
+//		'data-tab' => 'member-tab-stories',
+//		'title' => 'Stories from CoEnv Currents'
+//	);
+//}
 
 ?>
 
@@ -131,132 +126,118 @@ if ( !empty( $member['stories'] ) ) {
 
 			</header><!-- .Faculty-member-header -->
 
-			<div class="Faculty-member-content">
-				
-				<div class="side-col">
-
-					<?php if ( count( $member_tabs ) > 1 ) : ?>
-
-						<nav id="secondary-nav">
-							<ul id="member-tab-nav">
-								<li class="pagenav">
-									<ul>
-										<?php foreach ( $member_tabs as $tab ) : ?>
-											<li<?php if ( $tab['active'] ) echo ' class="active-tab"' ?>><a data-tab="<?php echo $tab['data-tab'] ?>" href="#"><?php echo $tab['title'] ?></a></li>
-										<?php endforeach ?>
-									</ul>
-								</li>
-										
-							</ul>
-						</nav><!-- #secondary-nav -->
-
-					<?php endif ?>
-
-				</div><!-- .side-col -->
-
-				<div class="main-col">
-
-					<section class="member-tabs">
-
-						<article class="member-tab member-tab-bio active-tab">
-
-							<div class="entry-content">
-
-								<?php if ( !empty( $member['pullquote'] ) ) : ?>
-
-									<blockquote class="member-pullquote">
-
-										<p><?php echo $member['pullquote'] ?></p>
-
-									</blockquote>
-
-								<?php endif ?>
-
-								<?php if ( !empty( $member['biography'] ) ) : ?>
-
-									<div class="member-bio">
-										<?php echo $member['biography'] ?>
-									</div>
-
-								<?php endif ?>
-
-							</div><!-- .entry-content -->
-						</article>
-
-						<?php if ( !empty( $member['publications'] ) ) : ?>
-
-							<article class="member-tab member-tab-publications">
-
-								<div class="entry-content">
-
-									<h2>Publications</h2>
-
-									<table class="publications-table">
-
-										<tr>
-											<th class="title">Title</th>
-											<th class="source">Source</th>
-										</tr>
-
-										<?php foreach ( $member['publications'] as $pub ) : ?>
-
-											<tr>
-												<td class="title">
-													<?php if ( isset( $pub['link'] ) ) : ?>
-														<a href="<?php echo $pub['link'] ?>"><?php echo $pub['title'] ?></a>
-													<?php else : ?>
-														<?php echo $pub['title'] ?>
-													<?php endif ?>
-												</td>
-												<td class="source">
-													<?php echo $pub['source'] ?>
-												</td>
-											</tr>
-
-										<?php endforeach ?>
-
-									</table>
-
-								</div><!-- .entry-content -->
-
-							</article>
-
-						<?php endif ?>
-
-						<?php if ( !empty( $member['stories'] ) ) : ?>
-
-							<article class="member-tab member-tab-stories">
-
-								<header class="entry-header">
-
-									<h1>Stories</h1>
-
-								</header><!-- .entry-header -->
-
-								<div class="entry-content">
-
-								</div><!-- .entry-content -->
-
-							</article>
-
-						<?php endif ?>
-
-					</ul><!-- .member-tabs -->
-
-				</div><!-- .main-col -->
-
-			</div><!-- .Faculty-member-content -->
-
 		</div><!-- .Faculty-single-container -->
 
 	</div><!-- .container -->
 
+	<div class="Faculty-member-content">
+		
+		<div class="container">
+
+			<div class="side-col">
+
+				<?php if ( count( $member_tabs ) > 1 ) : ?>
+
+					<nav id="secondary-nav">
+						<ul class="Faculty-member-tab-nav">
+							<li class="pagenav">
+								<ul>
+									<?php foreach ( $member_tabs as $tab ) : ?>
+										<li<?php if ( $tab['active'] ) echo ' class="active-tab"' ?>><a data-tab="<?php echo $tab['data-tab'] ?>" href="#"><?php echo $tab['title'] ?></a></li>
+									<?php endforeach ?>
+								</ul>
+							</li>
+									
+						</ul>
+					</nav><!-- #secondary-nav -->
+
+				<?php endif ?>
+
+				<ul class="Faculty-member-contact-list">
+					
+					<?php if ( ! empty( $member['email'] ) ) : ?>
+						<li><a href="mailto:<?php echo $member['email'] ?>"><i class="icon-contact-link-email"></i> <?php echo $member['email'] ?></a></li>
+					<?php endif ?>
+
+					<?php if ( ! empty( $member['phone'] ) ) : ?>
+						<li><a href="tel:<?php echo $member['phone'] ?>"><i class="icon-contact-link-phone"></i> <?php echo $member['phone'] ?></a></li>
+					<?php endif ?>
+
+					<?php if ( ! empty( $member['website'] ) ) : ?>
+						<li><a href="<?php echo $member['website'] ?>"><i class="icon-contact-link-web"></i> Website</a></li>
+					<?php endif ?>
+
+					<?php if ( ! empty( $member['scival'] ) ) : ?>
+						<li><a href="<?php echo $member['scival'] ?>"><i class="icon-contact-link-scival"></i> SciVal</a></li>
+					<?php endif ?>
+
+					<?php if ( ! empty( $member['twitter'] ) ) : ?>
+						<li><a href="<?php echo $member['twitter'] ?>"><i class="icon-contact-link-twitter"></i> Twitter</a></li>
+					<?php endif ?>
+
+					<?php if ( ! empty( $member['facebook'] ) ) : ?>
+						<li><a href="<?php echo $member['facebook'] ?>"><i class="icon-contact-link-facebook"></i> Facebook</a></li>
+					<?php endif ?>
+
+
+
+				</ul>
+
+			</div><!-- .side-col -->
+
+			<div class="main-col">
+
+				<section class="Faculty-member-tabs">
+
+					<article class="Faculty-member-tab Faculty-member-tab--bio active-tab">
+
+						<div class="entry-content">
+
+							<?php if ( !empty( $member['pullquote'] ) ) : ?>
+
+								<blockquote class="Faculty-member-pullquote">
+
+									<p><?php echo $member['pullquote'] ?></p>
+
+								</blockquote>
+
+							<?php endif ?>
+
+							<?php if ( !empty( $member['biography'] ) ) : ?>
+
+								<div class="Faculty-member-bio">
+									<?php echo $member['biography'] ?>
+								</div>
+
+							<?php endif ?>
+
+						</div><!-- .entry-content -->
+					</article>
+
+					<?php if ( !empty( $member['publications'] ) ) : ?>
+
+						<article class="Faculty-member-tab Faculty-member-tab--publications">
+
+							<div class="entry-content">
+
+								<h2>Publications</h2>
+
+								<?php echo $member['publications'] ?>
+
+							</div><!-- .entry-content -->
+
+						</article>
+
+					<?php endif ?>
+
+				</ul><!-- .Faculty-member-tabs -->
+
+			</div><!-- .main-col -->
+
+		</div><!-- .container -->
+
+	</div><!-- .Faculty-member-content -->
+
 </section><!-- .Faculty-single -->
-
-
-
-
-
-
 
 <?php get_footer() ?>
