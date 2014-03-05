@@ -234,6 +234,19 @@ if ( !empty( $member['publications'] ) ) {
 
 			</div><!-- .main-col -->
 
+			<div class="side-col">
+
+				<?php 
+					the_widget( 'CoEnv_Widget_Faculty', array(
+						//'location' => 'external', 
+						'id' => 'coenv_faculty_widget-' . str_replace( ' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $member['full_name'] ) ),
+						'theme' => $member['themes'][0]['slug'],
+						'unit' => 'all'
+					) ) 
+				?>
+
+			</div><!-- .side-col -->
+
 		</div><!-- .container -->
 
 	</div><!-- .Faculty-member-content -->
