@@ -2,6 +2,10 @@
 /**
  * Template to show single faculty member
  */
+// Redirect to /coenv-faculty/ if not logged in
+if ( !is_user_logged_in() ) {
+	wp_redirect( get_bloginfo('url') . '/coenv-faculty/' );
+}
 
 
 get_header();
