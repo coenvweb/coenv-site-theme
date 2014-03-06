@@ -6,6 +6,14 @@
 .template-page {
 	background: #fff;
     min-height: 550px;
+    
+    .error { 
+        padding-left: 0em;
+        
+        form.Form--inline input {
+            background: #ddd;
+        }
+    }
 
 } // .template-page
 
