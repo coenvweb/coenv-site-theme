@@ -6,7 +6,6 @@
 		Large: 262px
 	========================================================================== */
 
-$faculty-width: 1064;
 $faculty-items-per-row: 8;
 $faculty-item-height-ratio: 1.33;
 
@@ -32,6 +31,7 @@ $faculty-item-height-ratio: 1.33;
 .Faculty-list-content {
 	@extend .clearfix;
 	margin-right: -4px;
+	transition: all 0.3s ease-in-out;
 }
 
 .Faculty-list-item,
@@ -96,7 +96,7 @@ $faculty-item-height-ratio: 1.33;
 		@include rem('padding', 0.5);
 	}
 
-	.Faculty-list-item--featured & {
+	.js .Faculty-list-item--featured & {
 
 		@include min-width ( $bp-2 ) {
 			@include rem('padding', 1);
@@ -121,7 +121,7 @@ $faculty-item-height-ratio: 1.33;
 		@include font-size(12);
 	}
 
-	.Faculty-list-item--featured & {
+	.js .Faculty-list-item--featured & {
 
 		@include min-width ( $bp-2 ) {
 			@include font-size(18);
@@ -140,7 +140,7 @@ $faculty-item-height-ratio: 1.33;
 	font-weight: 900;
 	color: #fff;
 
-	.Faculty-list-item--featured & {
+	.js .Faculty-list-item--featured & {
 
 		@include min-width ( $bp-2 ) {
 			display: block;

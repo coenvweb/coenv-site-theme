@@ -23,6 +23,7 @@
 		"jQuery": true,
         "define": true,
         "themeVars": true,
+        "facultyData": true,
         "FastClick": true,
         "getSize": true,
         "enquire": true
