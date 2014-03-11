@@ -215,6 +215,79 @@ class CoEnv_Widget_Events extends WP_Widget {
 	}
 
 }
+
+/**
+ * Insider Newsletter Widget
+ */
+register_widget( 'CoEnv_Widget_Newsletter' );
+
+class CoEnv_Widget_Newsletter extends WP_Widget {
+ 
+  public function __construct() {
+		$args = array(
+			'classname' => 'widget-link',
+			'description' => __( 'Display a link to the Insider Newsletter archive page.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'newsletter_link', // base ID
+			'Insider Newsletter Link', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( '<em>The Insider</em> Newsletter Archive', 'coenv' );
+		}
+        $newsletter_url = $instance['newsletter_url'];
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+            <p>
+				<label for="<?php echo $this->get_field_name( 'newsletter_url' ) ?>"><?php _e( 'Newsletter Link (URL):' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'newsletter_url' ) ?>" name="<?php echo $this->get_field_name( 'newsletter_url' ) ?>" value="<?php echo esc_attr( $newsletter_url ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+        $instance['newsletter_url'] = strip_tags( $new_instance['newsletter_url'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+        $newsletter_url = apply_filters( 'newsletter_url', $instance['newsletter_url'] );
+        
+        if ( !isset( $newsletter_url ) || empty( $newsletter_url ) ) {
+			return;
+		}
+ 
+		echo $before_widget;
+		?>
+			
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+ 
+			<ul class='link'>
+				<li><a href="<?php echo $newsletter_url; ?>" title="The Insider Newsletter Archive"><i class="icon-mail"> </i><?php echo $title ?></a></li>
+			</ul>
+ 
+		<?php
+		echo $after_widget;
+	}
+ 
+}
  
 /**
  * Related Posts Widget
