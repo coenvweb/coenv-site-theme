@@ -46,20 +46,6 @@
 
 		} // header
 
-		footer {
-			@include font-size(13);
+	} // .link 
 
-			p.date {
-				margin: 0;
-
-				i {
-					@include rem('padding-right', 0.25);
-				}
-
-			} // p.date 
-
-		} // footer
-
-	} // .event 
-
-} // .widget-events
+} // .widget-link
