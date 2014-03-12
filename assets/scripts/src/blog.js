@@ -13,10 +13,6 @@ $.fn.blogHeader = function () {
 			$selectCategory = $header.find('.select-category select'),
 			$selectMonth = $header.find('.select-month select');
 
-	// use chosen for selects
-	$selectCategory.chosen();
-	$selectMonth.chosen();
-
 	$selectCategory.on( 'change', function () {
 		var term_id = $(this).val(),
 				url = $(this).parent('div').attr('data-url');
