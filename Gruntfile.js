@@ -181,7 +181,7 @@ module.exports = function(grunt) {
 		'jshint',
 		'uglify',
 		'sass',
-		'autoprefixer',
+		'autoprefixer'
 		//'cssmin'
 	]);
 		
