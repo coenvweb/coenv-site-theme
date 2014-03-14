@@ -82,11 +82,16 @@ module.exports = function(grunt) {
 		 */
 		sass: {
 			dist: {
+				options: {
+                    style: 'expanded',
+                    debugInfo: true,
+                    sourcemap: true
+                },
 				files: {
-					'<%= paths.dev %>.tmp/assets/styles/build/screen.css': [
+					'<%= paths.dev %>assets/styles/build/screen.css': [
 						'<%= paths.dev %>assets/styles/src/screen.scss'
 					],
-					'<%= paths.dev %>.tmp/assets/styles/build/lt-ie8.css': [
+					'<%= paths.dev %>assets/styles/build/lt-ie8.css': [
 						'<%= paths.dev %>assets/styles/src/lt-ie8.scss'
 					]
 				}
@@ -102,9 +107,9 @@ module.exports = function(grunt) {
 					browsers: ['last 2 versions']
 				},
 				files: {
-					'<%= paths.dev %>.tmp/assets/styles/build/screen.css' : [
+					'<%= paths.dev %>assets/styles/build/screen.css' : [
 						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
-					]
+					],
 				}
 			}
 		},
@@ -116,8 +121,8 @@ module.exports = function(grunt) {
 			dist: {
 				files: {
 					'<%= paths.dev %>assets/styles/build/screen.css' : [
-						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
-					]
+						'<%= paths.dev %>assets/styles/build/screen.css'
+					],
 				}
 			}
 		},
@@ -137,7 +142,7 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: ['<%= paths.dev %>.tmp/assets/styles/build/**/*.css'],
-				tasks: [ 'cssmin' ],
+				//tasks: [ 'cssmin' ],
 				options: {
 					livereload: true
 				}
@@ -177,6 +182,11 @@ module.exports = function(grunt) {
 		'uglify',
 		'sass',
 		'autoprefixer',
+		//'cssmin'
+	]);
+		
+	grunt.registerTask('prod', [
+		'default',
 		'cssmin'
 	]);
 
