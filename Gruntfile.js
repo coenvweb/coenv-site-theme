@@ -109,7 +109,7 @@ module.exports = function(grunt) {
 				files: {
 					'<%= paths.dev %>assets/styles/build/screen.css' : [
 						'<%= paths.dev %>.tmp/assets/styles/build/screen.css'
-					],
+					]
 				}
 			}
 		},
@@ -122,7 +122,7 @@ module.exports = function(grunt) {
 				files: {
 					'<%= paths.dev %>assets/styles/build/screen.css' : [
 						'<%= paths.dev %>assets/styles/build/screen.css'
-					],
+					]
 				}
 			}
 		},
