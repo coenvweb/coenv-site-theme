@@ -12,12 +12,6 @@ $features = new WP_Query( array(
     'order' => 'ASC'
 ) );
 
-// Get all posts
-$stories = new WP_Query( array(
-    'post_type' => 'post',
-    'posts_per_page' => 3
-) );
-
 ?>
 
     <?php if ( $features->have_posts() ) : ?>
@@ -42,7 +36,7 @@ $stories = new WP_Query( array(
 
     <div class="container">
 
-        <?php if ( $stories->have_posts() ) : $count = 0; ?>
+        <?php //if ( $stories->have_posts() ) : $count = 0; ?>
 
             <section class="widget featured-stories">
 
@@ -52,17 +46,40 @@ $stories = new WP_Query( array(
 
                 <div class="stories-container">
 
-                    <?php while ( $stories->have_posts() && $count < 3 ) : $stories->the_post(); $count++; ?>
+                    <?php
+                    $args = array(
+              'posts_per_page' => 3,
+              'post_type' => 'post',
+              'orderby'   => 'menu_order',
+              'order'     => 'ASC'
+            );
 
-                        <?php get_template_part( 'partials/partial', 'story' ) ?>
+            $my_query = new WP_Query($args);
+while ($my_query->have_posts())
+    {
+        $my_query->the_post();
+        get_template_part( 'partials/partial', 'story' );        
+    }
+    ?>
 
-                    <?php endwhile ?>
+
+
+
+
+
+
+
+                    <?php //while ( $stories->have_posts() && $count < 3 ) : $stories->the_post(); $count++; ?>
+
+                        <?php //get_template_part( 'partials/partial', 'story' ) ?>
+
+                    <?php //endwhile ?>
 
                 </div><!-- .stories-container -->
 
             </section><!-- #featured-stories -->
 
-        <?php endif ?>
+        <?php //endif ?>
 
         <?php wp_reset_postdata() ?>
 
