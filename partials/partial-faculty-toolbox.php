@@ -15,7 +15,7 @@ $ordered_themes = $themes;
 			<h1 class="Faculty-toolbox-title">
 				<a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Faculty</a>
 				<a href="#" class="Faculty-toolbox-toggle">
-					
+
 					<div class="Faculty-toolbox-toggle-search">
 						<i class="icon-search"></i> <span>Search</span>
 					</div>
@@ -28,9 +28,9 @@ $ordered_themes = $themes;
 		</div>
 
 		<div class="Faculty-toolbox-content">
-			
+
 			<div class="Faculty-toolbox-roller">
-				
+
 				<div class="Faculty-toolbox-roller-header">
 					<div class="Faculty-toolbox-roller-header-inner">
 						<h2 class="Faculty-toolbox-roller-header-title">
@@ -40,18 +40,18 @@ $ordered_themes = $themes;
 				</div>
 
 				<div class="Faculty-toolbox-roller-content">
-					
+
 					<div class="Faculty-toolbox-roller-items">
-							
+
 						<div class="Faculty-toolbox-roller-items-inner">
 
 							<div class="Faculty-toolbox-roller-items-set">
-								
+
 								<div class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/" data-theme="*">All Research Themes</a></div>
-								
+
 								<?php if ( !empty( $ordered_themes ) ) : ?>
 
-									<?php foreach ( $ordered_themes as $theme ) : ?>	
+									<?php foreach ( $ordered_themes as $theme ) : ?>
 
 										<div class="Faculty-toolbox-roller-item"><a href="<?php echo $theme['url'] ?>" data-theme="theme-<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></a></div>
 
@@ -70,15 +70,15 @@ $ordered_themes = $themes;
 			</div><!-- .Faculty-toolbox-roller -->
 
 			<div class="Faculty-toolbox-form">
-				
+
 				<form action="">
 
 					<div class="Faculty-toolbox-form-group">
-						
+
 						<select name="theme" class="Faculty-toolbox-theme-select">
-							
+
 							<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#theme-all">All Research Themes</option>
-		
+
 							<?php foreach ( $themes as $theme ) : ?>
 
 								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
@@ -92,11 +92,11 @@ $ordered_themes = $themes;
 					</div>
 
 					<div class="Faculty-toolbox-form-group">
-						
+
 						<select name="unit" class="Faculty-toolbox-unit-select">
-						
+
 							<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
-		
+
 							<?php foreach ( $units as $unit ) : ?>
 
 								<option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
@@ -110,7 +110,7 @@ $ordered_themes = $themes;
 					</div>
 
 					<div class="Faculty-toolbox-form-group">
-						
+
 						<div class="field-wrap">
     						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" />
     						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
@@ -127,7 +127,7 @@ $ordered_themes = $themes;
 		</div><!-- .Faculty-toolbox-content -->
 
 		<div class="Faculty-toolbox-footer">
-			
+
 			<div class="Faculty-toolbox-feedback">
 
 				<span class="Faculty-toolbox-feedback-number"><?php echo $faculty->post_count ?></span>
@@ -139,7 +139,7 @@ $ordered_themes = $themes;
 			<div class="Faculty-toolbox-toggle">
 
 				<div class="Faculty-toolbox-toggle-inner">
-					
+
 					<a href="#"><i class="icon-search"></i> More search tools</a>
 
 				</div>

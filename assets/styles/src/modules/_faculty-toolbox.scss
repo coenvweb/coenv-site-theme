@@ -16,7 +16,7 @@
 		@include min-width ( $bp-2 ) {
 			display: block;
 			margin-right: -1px;
-		}	
+		}
 
 	}
 }
@@ -75,7 +75,7 @@
 	.Faculty-toolbox-toggle-search {
 
 		.Faculty-toolbox--show-form & {
-			display: none;	
+			display: none;
 		}
 
 	}
@@ -84,7 +84,7 @@
 		display: none;
 
 		.Faculty-toolbox--show-form & {
-			display: block;	
+			display: block;
 		}
 	}
 }
@@ -107,7 +107,7 @@
 	transition: left 0.25s ease-in-out;
 
 	.Faculty-toolbox--show-form & {
-		left: -100%;	
+		left: -100%;
 	}
 }
 
@@ -220,7 +220,7 @@
 	transition: left 0.25s ease-in-out;
 
 	.Faculty-toolbox--show-form & {
-		left: 0;	
+		left: 0;
 	}
 
 	select {
@@ -247,11 +247,14 @@
 
 		input[type="text"] {
 			border: none !important;
+			background: #666;
+			color: #fff;
 		}
 
-		input[type="submit"] {
+		button[type="submit"] {
 			border: none !important;
-			background: none;
+			background: #666;
+			color: #eee;
 		}
 	}
 }
