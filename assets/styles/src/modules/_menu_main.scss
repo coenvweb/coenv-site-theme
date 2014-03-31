@@ -424,7 +424,7 @@
 						content: "";
 						display: block;
 						position: absolute;
-						top: 100%;
+						bottom: -10px;
 						right: 0;
 						left: 50%;
 						margin-left: -14px;
@@ -432,7 +432,7 @@
 						height: 0;
 						border-left: 14px solid transparent;
 						border-right: 14px solid transparent;
-						border-top: 10px solid $accent;
+						border-top: 14px solid $accent;
 					}
 
 				} // min-width: $iPadLandscape
@@ -455,7 +455,7 @@
 
 .main-menu.normal-menu .page-depth-0  {
 	position: relative;
-	
+
 	.submenu-container {
 		position: relative;
 	}
@@ -578,24 +578,3 @@
 	} // .children
 
 } // .main-menu.normal-menu .page-depth-0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
