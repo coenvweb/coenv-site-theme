@@ -96,7 +96,7 @@ $faculty-item-height-ratio: 1.33;
 	padding: 0;
 	@include rem('padding', 0.25);
 
-	@include min-width ( $bp-1 ) {
+	@include min-width ( $bp-1 + 150 ) {
 		@include rem('padding', 0.25);
 	}
 

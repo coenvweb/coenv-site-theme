@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/jquery-placeholder/jquery.placeholder.js',
 						'<%= paths.dev %>bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
 						'<%= paths.dev %>bower_components/picturefill/picturefill.js',
+						'<%= paths.dev %>bower_components/matchmedia/matchMedia.js',
 						'<%= paths.dev %>bower_components/enquire/dist/enquire.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
