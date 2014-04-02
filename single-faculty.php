@@ -26,14 +26,6 @@ if ( !empty( $member['publications'] ) ) {
 		'title' => 'Publications'
 	);
 }
-
-//if ( !empty( $member['stories'] ) ) {
-//	$member_tabs[] = array(
-//		'data-tab' => 'member-tab-stories',
-//		'title' => 'Stories from CoEnv Currents'
-//	);
-//}
-
 ?>
 
 <section class="Faculty-single" role="main">
