@@ -12,13 +12,12 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 
 // set up member tab nav
 $member_tabs = array();
-if ( !empty( $member['pullquote'] ) || !empty( $member['biography'] ) ) {
-	$member_tabs[] = array(
-		'data-tab' => 'Faculty-member-tab--bio',
-		'title' => 'About ' . $member['full_name'],
-		'active' => true
-	);
-}
+
+$member_tabs[] = array(
+	'data-tab' => 'Faculty-member-tab--bio',
+	'title' => 'About ' . $member['full_name'],
+	'active' => true
+);
 
 if ( !empty( $member['publications'] ) ) {
 	$member_tabs[] = array(
