@@ -368,20 +368,21 @@
 
 	a {
 		display: block;
-		//@include rem('padding', 1);
 	}
 
 	a:hover {
 		background: #999;
 		border-color: #999;
+		color: #fff !important;
 	}
 
-	.active-tab a {
+	.active-tab a,
+	.active-tab a:hover,
+	.active-tab a:visited,
+	.active-tab a:active {
 		color: #fff !important;
 		background: $accent;
 		border-color: $accent;
-		//background: #444;
-		//border-color: #444;
 	}
 }
 

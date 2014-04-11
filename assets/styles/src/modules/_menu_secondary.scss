@@ -83,7 +83,8 @@
 				}
 
 				> a:hover {
-					color: $text !important;
+					color: #fff !important;
+					//color: $text !important;
 
 					.no-touch & {
 						color: #fff !important;
