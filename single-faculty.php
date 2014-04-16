@@ -207,8 +207,6 @@ if ( !empty( $member['publications'] ) ) {
 
 							<div class="entry-content">
 
-								<h2>Publications</h2>
-
 								<?php echo $member['publications'] ?>
 
 							</div><!-- .entry-content -->
