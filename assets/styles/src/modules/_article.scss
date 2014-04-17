@@ -256,7 +256,8 @@
 .article__meta {
 	@include font-size(12);
 	color: $text-lt;
-	padding-top: 2rem;
+	
+	text-align: right;
 
 	.article__categories {
 		display: inline-block;

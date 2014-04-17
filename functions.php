@@ -1153,7 +1153,7 @@ function reinsert_rss_feed() {
 
 function coenv_filter_pre_get_posts( $query ) {
     if ( is_home() ) {
-        $query->set( 'ignore_sticky_posts', true );
+        $query->set('ignore_sticky_posts', true );
     }
     return $query;
 }
