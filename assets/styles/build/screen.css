@@ -9153,7 +9153,7 @@ img[class*="align"],
   }
 }
 
-.widget-social li:last-child a {
+.widget-social li:nth-last-child(-n+2) a {
   border-bottom: none;
 }
 

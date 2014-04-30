@@ -21,7 +21,7 @@
 		border-right: none;
 	}
 
-	li:last-child a {
+	li:nth-last-child(-n+2) a {
 		border-bottom: none;
 	}
 
