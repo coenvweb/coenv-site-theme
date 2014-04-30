@@ -4758,7 +4758,7 @@ form.Form--inline button {
   display: inline-block;
   background: #fff;
   border: none;
-  color: #666666;
+  color: #333333;
 }
 
 @media -sass-debug-info {
@@ -4772,7 +4772,7 @@ form.Form--inline button {
 }
 
 form.Form--inline input[type="text"]::-webkit-input-placeholder {
-  color: #666666;
+  color: #333333;
 }
 
 @media -sass-debug-info {
@@ -4786,7 +4786,7 @@ form.Form--inline input[type="text"]::-webkit-input-placeholder {
 }
 
 form.Form--inline input[type="text"]:-moz-placeholder {
-  color: #666666;
+  color: #333333;
 }
 
 @media -sass-debug-info {
@@ -4800,7 +4800,7 @@ form.Form--inline input[type="text"]:-moz-placeholder {
 }
 
 form.Form--inline input[type="text"]::-moz-placeholder {
-  color: #666666;
+  color: #333333;
 }
 
 @media -sass-debug-info {
@@ -4814,7 +4814,7 @@ form.Form--inline input[type="text"]::-moz-placeholder {
 }
 
 form.Form--inline input[type="text"]:-ms-input-placeholder {
-  color: #666666;
+  color: #333333;
 }
 
 @media -sass-debug-info {
@@ -11533,7 +11533,7 @@ img[class*="align"],
 .template-blog .blog-header .input-item select {
   border: none;
   width: 100%;
-  color: #666666;
+  color: #333333;
   background-color: #ddd;
   padding: 7px;
   padding: 0.5rem;

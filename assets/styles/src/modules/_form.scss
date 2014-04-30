@@ -17,14 +17,14 @@ form {
 			display: inline-block;
 			background: #fff;
 			border: none;
-			color: $text-lt;
+			color: $text;
 
 		} // input, button
 
 		input[type="text"] {
 
 			@include placeholder() {
-				color: $text-lt;
+				color: $text;
 			}
 
 		} // input[type="text"]

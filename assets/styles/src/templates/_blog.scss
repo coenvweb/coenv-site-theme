@@ -54,7 +54,7 @@
 		select {
 			border: none;
 			width: 100%;
-			color: $text-lt;
+			color: $text;
 			// background-color: $text-very-lt;
 			background-color: #ddd;
 			@include rem('padding', 0.5);
