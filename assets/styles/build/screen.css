@@ -11368,6 +11368,72 @@ img[class*="align"],
   min-height: 450px;
 }
 
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/templates\/_page\.scss;
+  }
+
+  line {
+    font-family: \0000328;
+  }
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  _overflow: auto;
+  margin: 0 0 1em;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/templates\/_page\.scss;
+  }
+
+  line {
+    font-family: \0000335;
+  }
+}
+
+.table-container ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/templates\/_page\.scss;
+  }
+
+  line {
+    font-family: \0000341;
+  }
+}
+
+.table-container ::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/templates\/_page\.scss;
+  }
+
+  line {
+    font-family: \0000348;
+  }
+}
+
+.table-container
+.table-container::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 /*	Template: blog
 		Customizations specific to the blog section
 		======================================================================== */
