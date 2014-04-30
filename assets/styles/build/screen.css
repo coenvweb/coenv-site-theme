@@ -8979,6 +8979,7 @@ img[class*="align"],
   line-height: 24px;
   line-height: 1.71429rem;
   font-weight: 400;
+  color: #666666;
 }
 
 @media -sass-debug-info {
@@ -8987,7 +8988,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000324;
+    font-family: \0000325;
   }
 }
 
@@ -9003,7 +9004,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000328;
+    font-family: \0000329;
   }
 }
 
@@ -9017,7 +9018,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000332;
+    font-family: \0000333;
   }
 }
 
@@ -9038,7 +9039,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000344;
+    font-family: \0000345;
   }
 }
 
@@ -9053,7 +9054,7 @@ img[class*="align"],
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  color: #666;
+  color: #666666;
   background: url("../../img/bg-wave-cut.png");
 }
 
@@ -9063,7 +9064,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000356;
+    font-family: \0000357;
   }
 }
 
@@ -9077,7 +9078,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000362;
+    font-family: \0000363;
   }
 }
 

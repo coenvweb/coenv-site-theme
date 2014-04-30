@@ -20,6 +20,7 @@
 			@include font-size(16);
 			@include line-height(24);
 			font-weight: 400;
+			color: $text-lt;
 
 			span {
 				@include rem('padding-right', 0.5);
@@ -50,7 +51,7 @@
 				text-transform: uppercase;
 				//letter-spacing: 0.1em;
 				text-decoration: none;
-				color: #666;
+				color: $text-lt;
 				background: url( $images-path + 'bg-wave-cut.png' );
 
 				.page-area & {
