@@ -151,19 +151,19 @@ if ( !empty( $member['publications'] ) ) {
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['website'] ) ) : ?>
-						<li><a href="<?php echo $member['website'] ?>"><i class="icon-contact-link-web"></i> Website</a></li>
+						<li><a href="<?php echo $member['website'] ?>" target="_blank"><i class="icon-contact-link-web"></i> Website</a></li>
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['scival'] ) ) : ?>
-						<li><a href="<?php echo $member['scival'] ?>"><i class="icon-contact-link-scival"></i> SciVal</a></li>
+						<li><a href="<?php echo $member['scival'] ?>" target="_blank"><i class="icon-contact-link-scival"></i> SciVal</a></li>
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['twitter'] ) ) : ?>
-						<li><a href="<?php echo $member['twitter'] ?>"><i class="icon-contact-link-twitter"></i> Twitter</a></li>
+						<li><a href="<?php echo $member['twitter'] ?>" target="_blank"><i class="icon-contact-link-twitter"></i> Twitter</a></li>
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['facebook'] ) ) : ?>
-						<li><a href="<?php echo $member['facebook'] ?>"><i class="icon-contact-link-facebook"></i> Facebook</a></li>
+						<li><a href="<?php echo $member['facebook'] ?>" target="_blank"><i class="icon-contact-link-facebook"></i> Facebook</a></li>
 					<?php endif ?>
 
 
