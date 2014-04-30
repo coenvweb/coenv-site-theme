@@ -240,8 +240,8 @@ body.home {
 			display: block;
 			@include rem('width', 1);
 			@include rem('height', 1);
-			background: #bbb;
-			background: rgba(0,0,0,0.2);
+			background: #858585;
+			background: rgba(0,0,0,0.45);
 			border-radius: 50%;
 			cursor: pointer;
 

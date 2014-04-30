@@ -10859,8 +10859,8 @@ img[class*="align"],
   width: 1rem;
   height: 14px;
   height: 1rem;
-  background: #bbb;
-  background: rgba(0, 0, 0, 0.2);
+  background: #858585;
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 50%;
   cursor: pointer;
 }
