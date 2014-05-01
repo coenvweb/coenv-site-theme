@@ -25,6 +25,7 @@
 		@extend .button;
 		text-decoration: none;
 		color: $text;
+		background-color: $white-button;
 	}
 
 } // .pagination

@@ -330,8 +330,7 @@ body.home {
         .button {
                 @include rem('margin-top', .66);
                 color: $text;
-                background: #e5e5e5;
-                background: rgba(0,0,0,.1);
+                background: $white-button;
             
             &:hover {
                 background: $bg-dk;

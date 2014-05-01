@@ -56,7 +56,7 @@
 			width: 100%;
 			color: $text;
 			// background-color: $text-very-lt;
-			background-color: #ddd;
+			background-color: $white-button;
 			@include rem('padding', 0.5);
 			@include rem('height', 2);
 			@include font-size(12);

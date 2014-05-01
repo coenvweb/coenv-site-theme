@@ -22,3 +22,18 @@
 	}
 
 } // .button
+
+.article__content {
+	
+	.button {
+		background: $white-button;
+		text-decoration: none;
+		color: $text;
+		
+		&:hover {
+                background: $bg-dk;
+            }
+		
+	} // .button
+	
+} // .post-type-post
