@@ -236,11 +236,14 @@
 		margin: 0;
 		padding: 0;
 		width: auto !important;
+		color: #fff;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+		background-color: $bg-dk;
 
 		.wp-caption-text {
-			margin: 0;
+			@include rem('margin', 0.25, 1, 0.5, 1);
 			@include font-size(12);
-			color: $text-lt;
+			color: $text-very-lt;
 			text-align: left;
 		}
 
