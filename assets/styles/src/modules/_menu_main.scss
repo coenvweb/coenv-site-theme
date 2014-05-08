@@ -83,7 +83,7 @@
 	.search-form {
 		display: block;
 		width: 100%;
-		@include rem('padding', 1);
+		@include rem('padding', 1.5, 1, 1.5, 1);
 		border-bottom: 1px solid #3d3d3d;
 
 		.field-wrap {
@@ -114,25 +114,53 @@
 	#menu-main {
 		border-top: 1px solid #222;
 		border-bottom: 1px solid #3d3d3d;
+        @include rem('padding', 1, 0, 1, 0);
 	}
 
 	// top menu (appended via menu.js)
 	.top-menu.mobile-top-menu {
 		border-top: 1px solid #222;
+        @include rem('padding', 1, 0, 1, 0);
+        
+		
+        #menu-buttons {
+            li.give a {
+                background: $accent-red;
+                border-radius: $radius;
+                color: #fff;
+                @include rem('margin', 1, 1, 0, 1);
+                @include rem('padding', 0.5, 1, 0.5, 1);
+                
+                i {
+                    position: absolute;
+                    margin-top: 0.1em;
+                    @include rem('right', 1.5);
+                    @include rem('margin-right', 0.2);
+                    @include rem('margin-left', -1);
+                }
 
-		li {
+            } // li.give a
+
+            li.give a:hover {
+                background: darken( $accent-red, 10% );
+            }
+
+        } // #menu-buttons
+        
+        li {
 			@include font-size(12);
 			@include line-height(14);
 		}
-
+        
+        a {
+            @include rem('padding', 0.5, 2, 0.5, 2);
+        }
+            
 		.search-form {
 			display: none;
 		}
 
-		.give a i {
-			@include rem('margin-right', 0.25);
-			color: $accent-red;
-		}
+
 
 	} // .top-menu.mobile-top-menu
 

@@ -11,13 +11,13 @@ $features = new WP_Query( array(
     'orderby' => 'menu_order',
     'order' => 'ASC'
 ) );
-
-// Get all posts
-$stories = new WP_Query( array(
+// Get all home page news items
+$news_home = new WP_Query( array(
     'post_type' => 'post',
-    'posts_per_page' => 3
+    'posts_per_page' => 3,
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
 ) );
-
 ?>
 
     <?php if ( $features->have_posts() ) : ?>
@@ -42,8 +42,6 @@ $stories = new WP_Query( array(
 
     <div class="container">
 
-        <?php if ( $stories->have_posts() ) : $count = 0; ?>
-
             <section class="widget featured-stories">
 
                 <header>
@@ -52,19 +50,15 @@ $stories = new WP_Query( array(
 
                 <div class="stories-container">
 
-                    <?php while ( $stories->have_posts() && $count < 3 ) : $stories->the_post(); $count++; ?>
+                    <?php while ( $news_home->have_posts() ) : $news_home->the_post() ?>
 
                         <?php get_template_part( 'partials/partial', 'story' ) ?>
 
-                    <?php endwhile ?>
+                    <?php endwhile  ?>
 
                 </div><!-- .stories-container -->
 
-            </section><!-- #featured-stories -->
-
-        <?php endif ?>
-
-        <?php wp_reset_postdata() ?>
+            </section><!-- #featured-stories --> 
 
         <?php get_sidebar() ?>
         

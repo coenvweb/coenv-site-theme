@@ -787,3 +787,16 @@ add_action( 'wp_head', 'reinsert_rss_feed', 1 );
 function reinsert_rss_feed() {
 	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
 }
+
+
+function coenv_filter_pre_get_posts( $query ) {
+    if ( is_home() ) {
+        $query->set('ignore_sticky_posts', true );
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'coenv_filter_pre_get_posts' );
+
+
+
+
