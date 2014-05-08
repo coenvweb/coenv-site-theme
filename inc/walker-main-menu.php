@@ -168,8 +168,6 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		}
 
 		return $output;
-
-		//parent::walk( $elements, $max_depth );
 	}
 
 	/**
@@ -236,8 +234,19 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 				$css_class[] = 'current_page_parent';
 			}
 		
-		} elseif ( $page->ID == $this->page_for_posts ) {
-			$css_class[] = 'current_page_parent';
+		}
+
+		// If we're on the 'faculty' item
+		if ( $page->post_name == 'faculty' ) {
+
+			if ( is_archive( 'faculty' ) ) {
+				$css_class[] = 'current_page_item';
+			}
+
+			if ( get_post_type() == 'faculty' ) {
+				$css_class[] = 'current_page_parent';
+			}
+
 		}
 
 		// Prepare CSS classes
