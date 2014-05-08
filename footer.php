@@ -56,6 +56,14 @@
         
         <?php wp_footer() ?>
 
+        <script>
+            // Menu Quick Fix 2014-05-08
+            var facultyLoc = window.location.pathname.indexOf('faculty');
+            if ( facultyLoc === 1 ) {
+                $('.main-menu .page-item-18773').addClass('current_page_item');
+            }
+        </script>
+
         <?php if (!WP_LOCAL_DEV): ?>
             <script>
                 var _gaq=[['_setAccount','UA-42374937-1'],['_trackPageview']];
