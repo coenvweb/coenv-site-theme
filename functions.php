@@ -5,6 +5,7 @@
  */
 require_once locate_template( '/inc/walker-main-menu.php' );
 require_once locate_template( '/inc/walker-secondary-menu.php' );
+require_once locate_template( '/inc/walker-top-menu.php' );
 
 /**
  * Print styles and scripts in header and footer
@@ -267,18 +268,6 @@ function coenv_theme_setup() {
   // large: 750x750
   update_option( 'large_size_w', 794 );
   update_option( 'large_size_h', 794 );
-}
-
-class CoEnv_Top_Menu_Walker extends Walker_Nav_Menu {
-
-//	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
-
-	//}
-
-	function start_el( &$output, $item, $depth = 0, $args = array() ) {
-		parent::start_el( $output, $item, $depth, $args );
-	}
-
 }
 
 /**
