@@ -26,10 +26,7 @@ module.exports = function(grunt) {
 		uglify: {
 			prod: {
 				options: {
-					sourceMap: '<%= paths.dev %>assets/scripts/maps/main.js.map',
-					sourceMapRoot: '../src/',
-					sourceMappingURL: '../maps/main.js.map',
-					sourceMapPrefix: '3'
+					sourceMap: true
 				},
 				files: {
 					// The main script file
@@ -42,6 +39,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/jquery-placeholder/jquery.placeholder.js',
 						'<%= paths.dev %>bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
 						'<%= paths.dev %>bower_components/picturefill/picturefill.js',
+						'<%= paths.dev %>bower_components/matchmedia/matchMedia.js',
 						'<%= paths.dev %>bower_components/enquire/dist/enquire.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
@@ -56,12 +54,11 @@ module.exports = function(grunt) {
 					'<%= paths.dev %>assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>bower_components/get-size/get-size.js',
+						'<%= paths.dev %>bower_components/jquery-smartresize/jquery.debouncedresize.js',
+						//'<%= paths.dev %>bower_components/odometer/odometer.js',
 						'<%= paths.dev %>bower_components/jquery.scrollTo/jquery.scrollTo.js',
-						//'<%= paths.dev %>bower_components/isotope/jquery.isotope.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/isotope2.js',
-						//'<%= paths.dev %>assets/scripts/src/plugins/procession/jquery.procession.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-list.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-toolbox.js'
+						'<%= paths.dev %>assets/scripts/src/faculty.js'
 					],
 
 					// jQuery fallback. Load this if CDN version is not available (user is offline)
@@ -97,6 +94,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/jquery-placeholder/jquery.placeholder.js',
 						'<%= paths.dev %>bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
 						'<%= paths.dev %>bower_components/picturefill/picturefill.js',
+						'<%= paths.dev %>bower_components/matchmedia/matchMedia.js',
 						'<%= paths.dev %>bower_components/enquire/dist/enquire.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
@@ -111,12 +109,11 @@ module.exports = function(grunt) {
 					'<%= paths.dev %>assets/scripts/build/faculty.min.js': [
 						'<%= paths.dev %>bower_components/get-style-property/get-style-property.js',
 						'<%= paths.dev %>bower_components/get-size/get-size.js',
+						'<%= paths.dev %>bower_components/jquery-smartresize/jquery.debouncedresize.js',
+						//'<%= paths.dev %>bower_components/odometer/odometer.js',
 						'<%= paths.dev %>bower_components/jquery.scrollTo/jquery.scrollTo.js',
-						//'<%= paths.dev %>bower_components/isotope/jquery.isotope.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/isotope2.js',
-						//'<%= paths.dev %>assets/scripts/src/plugins/procession/jquery.procession.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-list.js',
-						'<%= paths.dev %>assets/scripts/src/faculty-toolbox.js'
+						'<%= paths.dev %>assets/scripts/src/faculty.js'
 					],
 
 					// jQuery fallback. Load this if CDN version is not available (user is offline)
@@ -159,7 +156,8 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			dist: {
 				options: {
-					browsers: ['last 2 versions']
+					browsers: ['last 2 versions'],
+					map: true
 				},
 				files: {
 					'<%= paths.dev %>assets/styles/build/screen.css' : [
