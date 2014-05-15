@@ -6,13 +6,18 @@
 
 .Faculty-toolbox {
 	@extend .antialiased;
+	display: none;
 	position: relative;
 	z-index: 9999;
 	display: none;
 
-	@include min-width ( $bp-2 ) {
-		display: block;
-		margin-right: -1px;
+	.js & {
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+			margin-right: -1px;
+		}
+
 	}
 }
 
@@ -21,25 +26,65 @@
 }
 
 .Faculty-toolbox-header {
+
 }
 
 .Faculty-toolbox-title {
+	display: table;
 	margin: 0;
-	@include serif;
-	@include font-size(36);
-	font-weight: 200;
-	color: #fff;
+	width: 100%;
+	border-bottom: 1px solid $border-dk;
 
 	a {
-		display: block;
-		@include rem('padding', 0.5, 1);
-		text-decoration: none;
+		display: table-cell;
+		@include serif;
+		@include font-size(36);
+		line-height: 1.5;
+		font-weight: 200;
 		color: #fff;
-		border-bottom: 1px solid $border-dk;
 
 		&:hover {
 			background: $accent;
 			color: #fff !important;
+		}
+	}
+
+	.Faculty-toolbox-title-link {
+		@include rem('padding-left', 1);
+		text-decoration: none;
+		color: #fff;
+		border-right: 1px solid $border-dk;
+	}
+
+	.Faculty-toolbox-toggle {
+		@include rem('padding', 0, 0.25);
+		text-decoration: none;
+		text-align: center;
+		color: #fff;
+		border-left: 1px solid $border-dk-accent;
+
+		i {
+			@include font-size(24);
+		}
+
+		span {
+			@extend .visuallyhidden;
+		}
+	}
+
+	.Faculty-toolbox-toggle-search {
+
+		.Faculty-toolbox--show-form & {
+			display: none;
+		}
+
+	}
+
+	.Faculty-toolbox-toggle-roller {
+		display: none;
+
+		.Faculty-toolbox--show-form & {
+			display: block;
 		}
 	}
 }
@@ -49,15 +94,21 @@
 	padding-top: 80%;
 	border-top: 1px solid $border-dk-accent;
 	border-bottom: 1px solid $border-dk;
+	overflow: hidden;
 }
 
 .Faculty-toolbox-roller {
 	position: absolute;
 	top: 0;
-	right: 0;
 	bottom: 0;
 	left: 0;
 	@include rem('padding', 1);
+	width: 100%;
+	transition: left 0.25s ease-in-out;
+
+	.Faculty-toolbox--show-form & {
+		left: -100%;
+	}
 }
 
 .Faculty-toolbox-roller-header {
@@ -65,7 +116,7 @@
 	top: 0;
 	right: 0;
 	left: 0;
-	height: 20%;
+	height: 15%;
 }
 
 .Faculty-toolbox-roller-header-inner {
@@ -94,7 +145,7 @@
 	right: 0;
 	left: 0;
 	bottom: 0;
-	height: 80%;
+	height: 85%;
 }
 
 .Faculty-toolbox-roller-items {
@@ -117,8 +168,7 @@
 
 .js .Faculty-toolbox-roller-items-inner {
 	position: relative;
-	transition: transform 0.1s ease-in-out;
-background: rgba(0,0,0,0.8);
+	transition: transform 0.25s ease-in-out;
 }
 
 .js .Faculty-toolbox-roller-items-set {
@@ -133,7 +183,7 @@ background: rgba(0,0,0,0.8);
 	line-height: 2;
 	font-weight: 400;
 	white-space: nowrap;
-	border-bottom: 1px solid rgba(0,0,0,0.075);
+	//border-bottom: 1px solid rgba(0,0,0,0.075);
 
 	li:last-child  {
 		border-radius: 4px;
@@ -160,7 +210,137 @@ background: rgba(0,0,0,0.8);
 	}
 }
 
+.Faculty-toolbox-form {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	@include rem('padding', 1);
+	left: 100%;
+	width: 100%;
+	transition: left 0.25s ease-in-out;
+
+	.Faculty-toolbox--show-form & {
+		left: 0;
+	}
+
+	select {
+		display: block;
+		width: 100%;
+		@include font-size(18);
+	}
+
+	label {
+		display: block;
+		@include font-size(11);
+		text-transform: uppercase;
+		font-weight: 800;
+		color: #aaa;
+	}
+
+	.Faculty-toolbox-search-feedback {
+		@include font-size(11);
+		color: #aaa;
+	}
+
+	.field-wrap {
+		width: 100%;
+
+		input[type="text"] {
+			border: none !important;
+			background: #666;
+			color: #fff;
+		}
+
+		button[type="submit"] {
+			border: none !important;
+			background: #666;
+			color: #eee;
+		}
+	}
+}
+
+.Faculty-toolbox-form-group {
+	@include rem('margin-bottom', 1);
+}
+
+.Faculty-toolbox-theme-select {
+}
+
+.Faculty-toolbox-unit-select {
+}
+
 .Faculty-toolbox-footer {
-	background: red;
 	border-top: 1px solid $border-dk-accent;
+	color: #fff;
+}
+
+.Faculty-toolbox-feedback {
+	display: table;
+	@include rem('padding', 0.3, 1);
+	width: 100%;
+}
+
+.Faculty-toolbox-feedback-number {
+	display: table-cell;
+	vertical-align: top;
+	@include font-size(36);
+	line-height: 1;
+	font-weight: 600;
+}
+
+.Faculty-toolbox-feedback-message {
+	display: table-cell;
+	@include rem('padding-left', 0.5);
+	vertical-align: top;
+	@include font-size(12);
+	line-height: 1.5;
+	font-weight: 600;
+	color: #aaa;
+
+	a {
+		text-decoration: none;
+		font-style: italic;
+		color: #fff;
+	}
+
+	a:hover {
+		color: #fff !important;
+		text-decoration: underline;
+	}
+}
+
+.Faculty-toolbox-toggle {
+display: none;
+//	position: absolute;
+//	right: 0;
+//	bottom: 0;
+//	left: 0;
+//	display: table;
+//	width: 100%;
+//	height: 10%;
+	border-top: 1px solid $border-dk;
+//	overflow: hidden;
+}
+
+.Faculty-toolbox-toggle-inner {
+	display: table-cell;
+	vertical-align: middle;
+	border-top: 1px solid $border-dk-accent;
+
+	a {
+		display: inline-block;
+		@include rem('padding', 1, 1);
+		width: 100%;
+		@include font-size(12);
+		line-height: 1;
+		font-weight: 600;
+		color: #fff;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #fff !important;
+		background: $accent;
+	}
+
 }

@@ -1,0 +1,421 @@
+/*	==========================================================================
+	Single faculty member
+	========================================================================== */
+
+.Faculty-single {
+	overflow: hidden;
+}
+
+// sits inside of .container
+.Faculty-single-container {
+	margin-right: -4px;
+}
+
+.Faculty-header {
+	position: relative;
+	margin: 0 4px 4px 0;
+
+	@include min-width ( $bp-2 ) {
+		float: left;
+		margin: 0;
+		padding-bottom: percentage( 2/8 );
+		width: percentage( 2/8 );
+	}
+}
+
+.Faculty-header-inner {
+	background: #303030;
+
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		bottom: 4px;
+		left: 0;
+	}
+
+	// decorative block
+	&:after {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 100%;
+		margin-left: 4px;
+		width: 100%;
+		height: 100%;
+		background: #b4b4b4;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
+	}
+}
+
+.Faculty-header-top {
+	border-bottom: 1px solid #3d3d3d;
+
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+	}
+}
+
+.Faculty-header-link {
+	display: block;
+	@include rem('padding', 0.5, 1);
+	@include font-size(12);
+	color: #ddd;
+	text-decoration: none;
+	border-bottom: 1px solid #222;	
+
+	&:hover {
+		background: $accent;
+		color: #fff !important;
+	}
+
+	i {
+		@include rem('margin-right', 0.5);
+	}
+}
+
+.Faculty-header-bottom {
+
+	@include min-width ( $bp-2 ) {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+.Faculty-header-title {
+	@extend .antialiased;
+	margin: 0;
+	@include rem('padding', 0.5, 1);
+	@include serif;
+	@include font-size(36);
+	font-weight: 200;
+	color: #fff;
+}
+
+.Faculty-member-header {
+	@extend .clearfix;
+}
+
+.Faculty-member-image {
+	position: relative;
+	padding-bottom: percentage( 8/8 );
+	width: percentage( 8/8 );
+
+	@include min-width ( 600 ) {
+		float: right;
+		padding-bottom: percentage( 4/8 );
+		width: percentage( 4/8 );
+	}
+}
+
+.Faculty-member-image-inner {
+	position: absolute;
+	top: 0;
+	right: 4px;
+	bottom: 4px;
+	left: 0;
+
+	img {
+		width: 100%;
+	}
+
+	@include min-width ( 600 ) {
+		right: 4px;
+		bottom: 4px;
+	}
+}
+
+.Faculty-member-vcard {
+	position: relative;
+	margin: 0 4px 4px 0;
+
+	@include min-width ( 600 ) {
+		clear: left;
+		float: left;
+		margin: 0;
+		padding-bottom: percentage( 4/8 );
+		width: percentage( 4/8 );
+	}
+
+	@include min-width ( $bp-2 ) {
+		padding-bottom: percentage( 2/8 );
+	}
+}
+
+.Faculty-member-vcard-inner {
+
+	@include min-width ( 600 ) {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		bottom: 4px;
+		left: 0;
+	}
+
+	@include min-width ( $bp-2 ) {
+
+	}
+
+	// decorative block, left
+	&:before {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 100%;
+		width: 100%;
+		height: 100%;
+		background: inherit;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
+	}
+
+	// decorative block, right
+	&:after {
+		display: none;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 200%;
+		margin-left: 8px;
+		width: 100%;
+		height: 100%;
+		background: inherit;
+
+		@include min-width ( $bp-2 ) {
+			display: block;
+		}
+	}
+}
+
+.Faculty-member-vcard-content {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.Faculty-member-vcard-content-inner {
+	display: table-cell;
+	@include rem('padding', 1);
+	vertical-align: bottom;
+}
+
+.Faculty-member-name {
+	@extend .antialiased;
+	margin: 0;
+	@include font-size(24);
+	line-height: 1.25;
+	font-weight: 400;
+	color: #fff;
+
+//	@include min-width ( 500 ) {
+//		@include font-size(24);
+//	}
+//
+	@include min-width ( $bp-2 ) {
+		@include font-size(30);
+	}
+//
+//	@include min-width ( $bp-2 ) {
+//		@include font-size(30);
+//	}
+}
+
+.Faculty-member-academic-title {
+	@extend .antialiased;
+	margin: 0;
+	@include font-size(14);
+	line-height: 1.428571429;
+	font-weight: 600;
+	color: #fff;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(18);
+	}
+}
+
+.Faculty-member-unit {
+	@extend .antialiased;
+	margin: 0;
+	@include font-size(12);
+	line-height: 1.666666667;
+	font-weight: 600;
+	text-transform: uppercase; 
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(14);
+	}
+
+	a {
+		text-decoration: none;
+		color: #fff;
+	}
+
+	a:hover {
+		color: #fff !important;
+	}
+}
+
+.Faculty-member-themes {
+	//@include rem('margin-top', 1);
+	@include font-size(12);
+	color: #fff;
+
+	@include min-width ( $bp-2 ) {
+		@include font-size(14);
+	}
+
+	ul {
+		@extend .clearfix;
+		//display: inline-block;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		float: left;
+		@include rem('margin', 0.25, 0.25, 0, 0);
+		//display: inline-block;
+	}
+
+	a {
+		@extend .button;
+		padding-right: 1em;
+		padding-left: 1em;
+		font-style: italic;
+		font-weight: 400;
+		background: rgba(0,0,0,0.25);
+	}
+}
+
+.Faculty-member-content {
+	@extend .clearfix;
+	@include rem('padding', 1, 0);
+	background: #fff;
+
+	@include min-width ( $bp-2 ) {}
+}
+
+.Faculty-member-contact-list {
+	margin: 0;
+	@include rem('padding', 1);
+	list-style: none;
+	background: #eee;
+	color: $text;
+
+	li {
+		@include font-size(13);
+	}
+
+	a {
+		text-decoration: none;
+		color: $text;
+	}
+
+	i {
+		@include rem('margin-right', 0.5);
+	}
+
+	i.icon-contact-link-email {
+		@extend .icon-mail;
+	}
+
+	i.icon-contact-link-web {
+		@extend .icon-link;
+	}
+
+	i.icon-contact-link-phone {
+		@extend .icon-phone;
+	}
+
+	i.icon-contact-link-scival {
+		@extend .icon-bars;
+	}
+
+	i.icon-contact-link-twitter {
+		@extend .icon-twitter;
+	}
+
+	i.icon-contact-link-facebook {
+		@extend .icon-facebook;
+	}
+}
+
+.Faculty-member-tab-nav {
+	margin: 4px 0 0;
+	background: #b4b4b4;
+	color: $text-md;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		display: block;
+	}
+
+	a:hover {
+		background: #999;
+		border-color: #999;
+		color: #fff !important;
+	}
+
+	.active-tab a,
+	.active-tab a:hover,
+	.active-tab a:visited,
+	.active-tab a:active {
+		color: #fff !important;
+		background: $accent;
+		border-color: $accent;
+	}
+}
+
+.Faculty-member-tabs {
+	list-style: none;
+
+	.Faculty-member-tab {
+		display: none;
+		@extend .article;
+
+		&.active-tab {
+			display: block;
+		}
+	}
+
+}
+
+.Faculty-member-pullquote {
+	margin: 0;
+	padding: 0;
+	max-width: 600px;
+	@include font-size(20);
+	line-height: 1.5;
+}
+
+.Faculty-member-bio {
+	max-width: 600px;
+
+	em {
+		font-style: normal;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+}

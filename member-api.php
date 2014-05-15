@@ -20,6 +20,8 @@ class CoEnvMemberAPI {
 
 		$this->directory = dirname( __FILE__ ) . '/';
 
+		$this->base_url = get_bloginfo('url') . '/faculty/';
+
 		// Plugin directory
 		if ( !defined('CMAPI_DIRNAME') ) define( 'CMAPI_DIRNAME', dirname(__FILE__) );
 
@@ -87,8 +89,6 @@ class CoEnvMemberAPI {
 		// ajax get/save units actions
 		add_action( 'wp_ajax_coenv_member_api_search', array( $this, 'ajax_search' ) );
 		add_action( 'wp_ajax_nopriv_coenv_member_api_search', array( $this, 'ajax_search' ) );
-
-
 	}
 
 	/**
@@ -536,13 +536,17 @@ class CoEnvMemberAPI {
 		// heavier query (currently used on single faculty profile)
 		if ( $heavy ) {
 			$member['academic_title'] = get_field( 'academic_title', $f->ID );
-			$member['contact_links'] = get_field( 'contact_links', $f->ID );
+			$member['email'] = get_field( 'email', $f->ID );
+			$member['phone'] = get_field( 'phone', $f->ID );
+			$member['website'] = get_field( 'website', $f->ID );
+			$member['scival'] = get_field( 'scival', $f->ID );
+			$member['twitter'] = get_field( 'twitter', $f->ID );
+			$member['facebook'] = get_field( 'facebook', $f->ID );
 			$member['endowments_chairs'] = get_field( 'endowments_chairs', $f->ID );
 			$member['degree_institutions'] = get_field( 'degree_institutions', $f->ID );
 			$member['biography'] = get_field( 'biography', $f->ID );
 			$member['pullquote'] = get_field( 'pullquote', $f->ID );
 			$member['publications'] = get_field( 'publications', $f->ID );
-			$member['stories'] = get_field( 'related_stories', $f->ID );
 			$member['tags'] = $this->get_member_terms( $f->ID, 'member_tag' );
 		}
 
@@ -556,6 +560,7 @@ class CoEnvMemberAPI {
 		$results = array();
 
 		$member_terms = get_the_terms( $ID, $taxonomy );
+
 		if ( !empty( $member_terms ) ) {
 			foreach ( $member_terms as $term ) {
 
@@ -570,9 +575,9 @@ class CoEnvMemberAPI {
 
 				$atts = array(
 					'term_id' => $term->term_id,
-					// deprecating in favor of query string
+					'url' => $this->term_url( $term ),
 					//'url' => get_bloginfo('url') . '/faculty/#' . $term_prefix . '-' . $term->slug,
-					'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
+					//'url' => get_bloginfo('url') . '/faculty/?' . $term_prefix . '=' . $term->slug,
 					'name' => $term->name,
 					'slug' => $term->slug,
 					'count' => $term->count
@@ -701,9 +706,8 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$unit = array(
 				'term_id' => $term->term_id,
-				// deprecating in favor of query string
-				//'url' => get_bloginfo('url') . '/faculty/#unit-' . $term->slug,
-				'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
+				'url' => $this->base_url . '#theme-all&unit-' . $term->slug,
+				//'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count,
@@ -724,6 +728,25 @@ class CoEnvMemberAPI {
 	}
 
 	/**
+	 * Get term URL
+	 */
+	function term_url( $term ) {
+
+		$url = $this->base_url . '#theme-';
+
+		switch ( $term->taxonomy ) {
+			case 'member_unit':
+				$url .= 'all&unit-' . $term->slug;
+				break;
+			case 'member_theme':
+				$url .= $term->slug . '&unit-all';
+				break;
+		}
+
+		return $url;
+	}
+
+	/**
 	 * Get all themes
 	 */
 	function get_themes( $args = array() ) {
@@ -735,9 +758,8 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$theme = array(
 				'term_id' => $term->term_id,
-				// deprecating in favor of query string
-				//'url' => get_bloginfo('url') . '/faculty/#theme-' . $term->slug,
-				'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
+				'url' => $this->base_url . '#theme-' . $term->slug . '&unit-all',
+				//'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count
@@ -763,7 +785,7 @@ class CoEnvMemberAPI {
 function ajax_search () {
 	global $wpdb;
 
-	$querystring = $_POST['data'];
+	$querystring = sanitize_text_field( $_POST['data'] );
 
 	// querystring should be more than two characters
 	if ( strlen($querystring) <= 2 ) {
@@ -803,6 +825,19 @@ function ajax_search () {
 	));
 
 	$results = array_merge( $query_search, $query_meta );
+	$results_count = count($results);
+
+	$message = $results_count == 1 ? ' Faculty member' : ' Faculty members';
+	$message .= ' were found matching "' . $querystring . '"';
+
+	if ( count( $results ) == 0 ) {
+		echo json_encode(array(
+			'results' => '',
+			'number' => 0,
+			'message' => $message
+		));
+		die();
+	}
 
 	// this produces duplicate results,
 	// which doesn't really matter since isotope filtering
@@ -811,7 +846,7 @@ function ajax_search () {
 	echo json_encode(array(
 		'results' => $results,
 		'number' => count($results),
-		'message' => sanitize_text_field( $querystring )
+		'message' => $message
 	));
 
 	die();

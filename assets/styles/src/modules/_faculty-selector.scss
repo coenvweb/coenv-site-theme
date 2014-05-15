@@ -27,4 +27,11 @@
 			width: auto;
 		}
 	}
+
+	input[type="submit"] {
+
+		.js & {
+			display: none;
+		}
+	}
 }

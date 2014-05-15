@@ -1,5 +1,7 @@
 
 /*	Single faculty profile
+
+REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 		======================================================================== */
 
 .single-faculty {
@@ -374,19 +376,8 @@
 
 } // .publications-table
 
+// Bug fix easthamj May 8, 2014
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#secondary-nav ul.Faculty-member-tab-nav li ul li.active-tab a{
+	color: #fff!important;
+}

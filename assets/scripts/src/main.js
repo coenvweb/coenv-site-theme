@@ -13,7 +13,7 @@ jQuery(function ($) {
 		$('.article-content').handleFitVids();
 
 		// single faculty member tabs
-		$('#member-tab-nav').memberTabs();
+		$('.Faculty-member-tab-nav').memberTabs();
 
 		// banner image reveals
 		$('.banner-wrapper').bannerReveals();
@@ -79,8 +79,8 @@ $.fn.memberTabs = function () {
 	'use strict';
 
 	var $nav = $(this),
-			$tabs = $('.member-tabs'),
-			activeClass = 'active-tab';
+		$tabs = $('.Faculty-member-tabs'),
+		activeClass = 'active-tab';
 
 	$nav.find('a').click( function (e) {
 		e.preventDefault();

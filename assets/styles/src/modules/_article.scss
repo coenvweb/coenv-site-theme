@@ -235,10 +235,7 @@
 	.wp-caption {
 		margin: 0;
 		padding: 0;
-		width: auto !important;
-		color: #fff;
-		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-		background-color: $bg-dk;
+		// width: auto !important;
 
 		.wp-caption-text {
 			@include rem('margin', 0.25, 1, 0.5, 1);
