@@ -92,13 +92,21 @@ add_action( 'wp_head', 'coenv_meta_tags' );
 function coenv_meta_tags() {
 	$post = get_queried_object();
 	if (is_post_type_archive( 'faculty' )) {
-		$post_title = 'Faculty';
+		$post_title = 'Faculty | College of the Environment';
 		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment. They provide innovative research, novel ideas and engaging education.';
 		$post_link = 'http://coenv.washington.edu/faculty/';
 	} elseif (is_home()) {
-		$post_title = 'News';
+		$post_title = 'News | College of the Environment';
 		$post_description = get_option('meta_description');
 		$post_link = 'http://coenv.washington.edu/news/';
+	} elseif(is_front_page()) {
+		$post_title = 'College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_the_permalink();
+	} else {
+		$post_title = get_the_title() . ' | College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_the_permalink();	
 	}
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
@@ -107,7 +115,7 @@ function coenv_meta_tags() {
 		$thumbnail = get_template_directory_uri() . '/assets/img/apple-touch-icon-114x114-precomposed.png';
 	}
 	?>
-	<meta property="og:title" content="<?php echo $post_title ?> | College of the Environment" />
+	<meta property="og:title" content="<?php echo $post_title ?>" />
 	<meta property="og:description" content="<?php echo $post_description ?>" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="<?php echo $post_link ?>" />
