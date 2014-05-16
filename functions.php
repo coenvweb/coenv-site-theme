@@ -88,8 +88,6 @@ function coenv_language_attributes( $output ) {
  * Add meta tags to head
  * May 16, 2014 - easthamj - Added a quick fix for Facebook sharing/Open graph meta tags. This is worth revisiting at some point. 
  */
-
-
 add_action( 'wp_head', 'coenv_meta_tags' );
 function coenv_meta_tags() {
 	$post = get_queried_object();
@@ -102,16 +100,12 @@ function coenv_meta_tags() {
 		$post_description = get_option('meta_description');
 		$post_link = 'http://coenv.washington.edu/news/';
 	}
-
-
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
 		$thumbnail = $thumb_src[0];
 	} else {
 		$thumbnail = get_template_directory_uri() . '/assets/img/apple-touch-icon-114x114-precomposed.png';
 	}
-
-
 	?>
 	<meta property="og:title" content="<?php echo $post_title ?> | College of the Environment" />
 	<meta property="og:description" content="<?php echo $post_description ?>" />
@@ -121,13 +115,6 @@ function coenv_meta_tags() {
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<?php
 }
-
-/* 
-<?php ; ?> 
-
-
-
-*/
 
 /**
  * Admin settings
