@@ -86,24 +86,41 @@ function coenv_language_attributes( $output ) {
 
 /**
  * Add meta tags to head
+ * May 16, 2014 - easthamj - Added a quick fix for Facebook sharing/Open graph meta tags. This is worth revisiting at some point. 
  */
 add_action( 'wp_head', 'coenv_meta_tags' );
 function coenv_meta_tags() {
 	$post = get_queried_object();
-
+	if (is_post_type_archive( 'faculty' )) {
+		$post_title = 'Faculty | College of the Environment';
+		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment. They provide innovative research, novel ideas and engaging education.';
+		$post_link = 'http://coenv.washington.edu/faculty/';
+	} elseif (is_home()) {
+		$post_title = 'News | College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = 'http://coenv.washington.edu/news/';
+	} elseif(is_front_page()) {
+		$post_title = 'College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_the_permalink();
+	} else {
+		$post_title = get_the_title() . ' | College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_the_permalink();	
+	}
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
 		$thumbnail = $thumb_src[0];
 	} else {
 		$thumbnail = get_template_directory_uri() . '/assets/img/apple-touch-icon-114x114-precomposed.png';
 	}
-
 	?>
-	<meta property="og:title" content="<?php echo coenv_title() ?>" />
+	<meta property="og:title" content="<?php echo $post_title ?>" />
+	<meta property="og:description" content="<?php echo $post_description ?>" />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="<?php echo get_permalink() ?>" />
+	<meta property="og:url" content="<?php echo $post_link ?>" />
 	<meta property="og:image" content="<?php echo $thumbnail ?>" />
-	<meta property="og:site_name" content="<?php	bloginfo('name') ?>" />
+	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<?php
 }
 
@@ -788,6 +805,21 @@ function coenv_print_breadcrumbs() {
 	$output = get_bloginfo('url');
 	echo $output;
 }
+
+/**
+ * Add Read More button links to RSS
+ */
+
+function fields_in_feed($content) {  
+    if(is_feed()) {  
+        $post_id = get_the_ID();  
+        $output = '<a href="' . get_field('story_link_url', $post_id) . '" name="' . get_field('story_source_name', $post_id) . '">' . get_field('story_source_name', $post_id) . '</a>';  
+        $content = $content.$output;  
+    }  
+    return $content;  
+}  
+add_filter('the_content','fields_in_feed');
+
 /**
  * Remove comment RSS
  */
@@ -807,7 +839,3 @@ function coenv_filter_pre_get_posts( $query ) {
     return $query;
 }
 add_filter( 'pre_get_posts', 'coenv_filter_pre_get_posts' );
-
-
-
-
