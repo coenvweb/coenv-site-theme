@@ -91,35 +91,30 @@ function coenv_language_attributes( $output ) {
 add_action( 'wp_head', 'coenv_meta_tags' );
 function coenv_meta_tags() {
 	$post = get_queried_object();
-	if (is_post_type_archive( 'faculty' )) {
-		$post_title = 'Faculty | College of the Environment';
-		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment. They provide innovative research, novel ideas and engaging education.';
-		$post_link = 'http://coenv.washington.edu/faculty/';
-	} elseif (is_home()) {
-		$post_title = 'News | College of the Environment';
-		$post_description = get_option('meta_description');
-		$post_link = 'http://coenv.washington.edu/news/';
-	} elseif(is_front_page()) {
-		$post_title = 'College of the Environment';
-		$post_description = get_option('meta_description');
-		$post_link = get_the_permalink();
-	} else {
-		$post_title = get_the_title() . ' | College of the Environment';
-		$post_description = get_option('meta_description');
-		$post_link = get_the_permalink();	
-	}
 	if ( has_post_thumbnail( $post->ID ) ) {
 		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-		$thumbnail = $thumb_src[0];
+		$post_title = get_the_title().' | College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_permalink();
+		$post_image = $thumb_src[0];
+	} elseif (is_post_type_archive( 'faculty' )) {
+		$post_title = 'Faculty | College of the Environment';
+		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
+		$post_link = 'http://beta.coenv.washington.edu/faculty/';
+		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
 	} else {
-		$thumbnail = get_template_directory_uri() . '/assets/img/apple-touch-icon-114x114-precomposed.png';
+		$post_title = get_the_title().' | College of the Environment';
+		$post_description = get_option('meta_description');
+		$post_link = get_the_permalink();
+		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
 	}
+	
 	?>
 	<meta property="og:title" content="<?php echo $post_title ?>" />
 	<meta property="og:description" content="<?php echo $post_description ?>" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="<?php echo $post_link ?>" />
-	<meta property="og:image" content="<?php echo $thumbnail ?>" />
+	<meta property="og:image" content="<?php echo $post_image ?>" />
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<?php
 }
@@ -815,16 +810,5 @@ add_action( 'wp_head', 'reinsert_rss_feed', 1 );
 function reinsert_rss_feed() {
 	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
 }
-
-
-function coenv_filter_pre_get_posts( $query ) {
-    if ( is_home() ) {
-        $query->set('ignore_sticky_posts', true );
-    }
-    return $query;
-}
-add_filter( 'pre_get_posts', 'coenv_filter_pre_get_posts' );
-
-
 
 
