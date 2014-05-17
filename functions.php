@@ -800,6 +800,21 @@ function coenv_print_breadcrumbs() {
 	$output = get_bloginfo('url');
 	echo $output;
 }
+
+/**
+ * Add Read More button links to RSS
+ */
+
+function fields_in_feed($content) {  
+    if(is_feed()) {  
+        $post_id = get_the_ID();  
+        $output = '<a href="' . get_field('story_link_url', $post_id) . '" name="' . get_field('story_source_name', $post_id) . '">' . get_field('story_source_name', $post_id) . '</a>';  
+        $content = $content.$output;  
+    }  
+    return $content;  
+}  
+add_filter('the_content','fields_in_feed');
+
 /**
  * Remove comment RSS
  */
