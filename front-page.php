@@ -4,15 +4,15 @@
  */
 get_header();
 
-// Get all home page features
+// Get all home page features and sort posts using post-types-order
 $features = new WP_Query( array(
     'post_type' => 'feature',
     'posts_per_page' => -1,
     'orderby' => 'menu_order',
     'order' => 'ASC'
 ) );
-// Get all home page news items
-$news_home = new WP_Query( array(
+// Get posts and sort using post-types-order
+$post_sort = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 3,
     'orderby' => 'menu_order',
@@ -41,7 +41,7 @@ $news_home = new WP_Query( array(
     <?php wp_reset_postdata() ?>
 
     <div class="container">
-
+        <?php if ( $post_sort->have_posts() ) : ?>
             <section class="widget featured-stories">
 
                 <header>
@@ -50,7 +50,7 @@ $news_home = new WP_Query( array(
 
                 <div class="stories-container">
 
-                    <?php while ( $news_home->have_posts() ) : $news_home->the_post() ?>
+                    <?php while ( $post_sort->have_posts() ) : $post_sort->the_post() ?>
 
                         <?php get_template_part( 'partials/partial', 'story' ) ?>
 
@@ -59,6 +59,7 @@ $news_home = new WP_Query( array(
                 </div><!-- .stories-container -->
 
             </section><!-- #featured-stories --> 
+        <?php endif ?>
 
         <?php get_sidebar() ?>
         
