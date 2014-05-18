@@ -100,7 +100,7 @@ function coenv_meta_tags() {
 	} elseif (is_post_type_archive( 'faculty' )) {
 		$post_title = 'Faculty | College of the Environment';
 		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
-		$post_link = 'http://beta.coenv.washington.edu/faculty/';
+		$post_link = 'http://coenv.washington.edu/faculty/';
 		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
 	} else {
 		$post_title = get_the_title().' | College of the Environment';
