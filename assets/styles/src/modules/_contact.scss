@@ -15,19 +15,28 @@
 		}
 .contact-info {
 	margin-left: 130px;
-	@include max-width ( $iPadLandscape ) {
+	@include max-width ( $iPhoneLandscape ) {
 		@include rem('padding-right', .6);
+		h3 {
+			font-size: 90%!important;
+		}
 	}
 	
 	.contact-title {
 		position: absolute;
 		bottom: 60%;
 		@include rem('padding-left', 1);
+		@include max-width ( $iPadLandscape ) {
+			bottom: 50%!important;
+		}
 	}
 	
 	h4 {
 		font-size: 70%!important;
 		line-height: normal!important;
+		@include max-width ( $iPhoneLandscape ) {
+			font-size: 60%!important;
+		}
 	}
 	
 	ul {
@@ -36,6 +45,11 @@
 		width: 100%;
 		@include max-width ( $iPadLandscape ) {
 			bottom: 0!important;
+			@include rem ('padding', .5, 0, .5, 1);
+			
+			li {
+				font-size: 80%!important;
+			}
 		}
 	}
 }

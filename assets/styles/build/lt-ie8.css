@@ -45,4 +45,10 @@
   display: none;
 }
 
+/* contact */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/lt-ie8\.scss}line{font-family:\0000361}}
+.contact-info .contact-title {
+  bottom: 65% !important;
+}
+
 /*# sourceMappingURL=lt-ie8.css.map */
