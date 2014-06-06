@@ -26,7 +26,7 @@ if ( get_query_var('post_type') == 'post' ) {
 				</ul>
 			</nav><!-- #secondary-nav.side-col -->
 
-			<div class="main-col">
+			<main id="main-col" class="main-col">
 
 				<section class="article search-header">
 					<header class="article__header">
@@ -60,7 +60,7 @@ if ( get_query_var('post_type') == 'post' ) {
 					<?php coenv_paginate() ?>
 				</footer>
 
-			</div><!-- .main-col -->
+			</main><!-- .main-col -->
 
 		</div><!-- .layout-container -->
 

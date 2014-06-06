@@ -38,7 +38,7 @@ $ancestor = array(
 
 			<?php endif ?>
 
-			<div class="main-col">
+			<main id="main-col" class="main-col">
 
 				<?php if ( have_posts() ) : ?>
 
@@ -50,7 +50,7 @@ $ancestor = array(
 
 				<?php endif ?>
 
-			</div><!-- .main-col -->
+			</main><!-- .main-col -->
 
 			<div class="side-col">
 				<?php get_sidebar() ?>

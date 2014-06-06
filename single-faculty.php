@@ -49,7 +49,7 @@ if ( !empty( $member['publications'] ) ) {
 
 			</nav><!-- .Faculty-header -->
 
-			<header class="Faculty-member-header">
+			<header id="main-col" class="Faculty-member-header">
 				
 				<div class="Faculty-member-image">
 

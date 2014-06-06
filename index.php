@@ -46,7 +46,7 @@ $banner = coenv_banner();
 
 			</nav><!-- #secondary-nav.side-col -->
 
-			<div class="main-col">
+			<main id="main-col" class="main-col">
 
 				<?php get_template_part( 'partials/partial', 'blog-header' ) ?>
 
@@ -64,7 +64,7 @@ $banner = coenv_banner();
 					<?php coenv_paginate() ?>
 				</footer>
 
-			</div><!-- .main-col -->
+			</main><!-- .main-col -->
 
 			<div class="side-col">
 				<?php get_sidebar() ?>

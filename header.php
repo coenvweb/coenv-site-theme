@@ -47,6 +47,7 @@
         ?>
     </head>
     <body <?php body_class( $banner_class ) ?>>
+		  <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
 
         <div id="outer" class="layout-outer">
 
@@ -101,10 +102,10 @@
                                 <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
                                     <span><?php bloginfo('name') ?></span>
                                     <!--[if lt IE 9]>
-                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" />
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="UW College of the Environment Logo" />
                                     <![endif]-->
                                     <!--[if gt IE 8]><!-->
-                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" />
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="UW College of the Environment Logo" />
                                     <!--<![endif]-->
                                 </a>
                             </h1>

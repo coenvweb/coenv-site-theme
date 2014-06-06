@@ -24,6 +24,8 @@ $post_sort = new WP_Query( array(
 
     <?php if ( $features->have_posts() ) : ?>
 
+		<main id="main-col">
+
         <section id="features">
 
             <div class="features-container">
@@ -66,5 +68,7 @@ $post_sort = new WP_Query( array(
         <?php get_sidebar() ?>
         
     </div><!-- .container -->
+			
+</main><!-- main-col -->
 
 <?php get_footer() ?>
