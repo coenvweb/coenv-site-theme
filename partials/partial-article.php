@@ -7,7 +7,7 @@
 
 	<header class="article__header">
         <div class="article__meta">
-            <div class="share-button align-right" style="float:right">
+            <div class="share align-right" style="float:right">
             </div>
 		<?php if ( !is_page() ) : ?>
             <time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
@@ -38,7 +38,7 @@
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
     <script>
-		new Share(".share-button", {
+		new Share(".share", {
 		  networks: {
 			facebook: {
 			  app_id: "602752456409826",
