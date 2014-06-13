@@ -7,15 +7,17 @@
 
 	<header class="article__header">
         <div class="article__meta">
-            <div class="share align-right" style="float:right">
+            <div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php the_field('story_link_url'); ?>" data-article-permalink="<?php the_field('story_link_url'); ?>"><a href="#" class="button">SHARE</a>
             </div>
 		<?php if ( !is_page() ) : ?>
-            <time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
-            <?php $categories = get_the_category_list(' ') ?>
-                <?php if ( $categories ) : ?>
- 					<div class="article__categories">
- 					<?php echo $categories ?>
- 					</div>
+			<div class="post-info"
+				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
+				<?php $categories = get_the_category_list(' ') ?>
+					<?php if ( $categories ) : ?>
+						<div class="article__categories">
+							<?php echo $categories ?>
+						</div>
+				</div>
  				<?php endif ?> 
             </div>
 		<?php endif ?>
@@ -37,14 +39,5 @@
 	</section>
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
-    <script>
-		new Share(".share", {
-		  networks: {
-			facebook: {
-			  app_id: "602752456409826",
-			}
-		  }
-		});
-	</script>
 
 </article><!-- .article -->

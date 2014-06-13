@@ -1,19 +1,16 @@
-
-/* 	==========================================================================
-		Share button for articles
-		To be used with share.js coenv plugin
-		========================================================================== */
-
 .share {
 	display: none;
 	// positioned in _article.scss
 	@include font-size(12);
 	text-decoration: none;
 	color: $text-lt;
+	float: right;
+	@include rem('margin-top', -0.2);
 
 	// only show if js is enabled
 	&.active {
 		display: block;
+		text-align: right;
 	}
 
 	span {
