@@ -7,7 +7,7 @@
 
 	<header class="article__header">
         <div class="article__meta">
-            <div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php the_field('story_link_url'); ?>" data-article-permalink="<?php the_field('story_link_url'); ?>"><a href="#" class="button">SHARE</a>
+            <div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php the_field('story_link_url'); ?>" data-article-permalink="<?php the_field('story_link_url'); ?>"><a href="#" class="button">Share</a>
             </div>
 		<?php if ( !is_page() ) : ?>
 			<div class="post-info"

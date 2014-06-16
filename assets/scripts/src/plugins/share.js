@@ -80,7 +80,7 @@
 		this.$modal.append('<div class="share-modal-inner"><div class="share-modal-content"></div></div>');
 
 		for ( var i = 0, len = services.length; i < len; i++ ) {
-			this.$modal.find('.share-modal-content').append('<a class="share-' + services[ i ].className + '" href="' + services[ i ].url + '"><span>Share on ' + services[ i ].name + '</span></a>');
+			this.$modal.find('.share-modal-content').append('<a class="share-' + services[ i ].className + '" href="' + services[ i ].url + '"></a>');
 		}
 	};
 
