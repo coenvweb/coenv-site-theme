@@ -1078,6 +1078,7 @@ body {
 form .field-wrap label,
 form .field-wrap button[type="submit"] span,
 .site-header #logo a span,
+.share-modal span,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span,
 #features .features-nav a span {
   border: 0;
@@ -1109,12 +1110,14 @@ form .field-wrap button[type="submit"] span,
 form .field-wrap label.focusable:active,
 form .field-wrap button[type="submit"] span.focusable:active,
 .site-header #logo a span.focusable:active,
+.share-modal span.focusable:active,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span.focusable:active,
 #features .features-nav a span.focusable:active,
 .visuallyhidden.focusable:focus,
 form .field-wrap label.focusable:focus,
 form .field-wrap button[type="submit"] span.focusable:focus,
 .site-header #logo a span.focusable:focus,
+.share-modal span.focusable:focus,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span.focusable:focus,
 #features .features-nav a span.focusable:focus {
   clip: auto;
@@ -3456,15 +3459,16 @@ you can use the generic selector below, but it's slower:
 .site-header #show-menu button,
 .icon-icon-uw,
 .icon-mail,
+.share-modal ul .share-email,
 .Faculty-member-contact-list i.icon-contact-link-email,
 .icon-search,
 .icon-link,
 .Faculty-member-contact-list i.icon-contact-link-web,
 .icon-twitter,
-.share-modal .share-modal-inner .share-modal-content .share-twitter,
+.share-modal ul .share-twitter,
 .Faculty-member-contact-list i.icon-contact-link-twitter,
 .icon-facebook,
-.share-modal .share-modal-inner .share-modal-content .share-facebook,
+.share-modal ul .share-facebook,
 .Faculty-member-contact-list i.icon-contact-link-facebook,
 .icon-vimeo,
 .icon-googleplus,
@@ -3606,6 +3610,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-mail:before,
+.share-modal ul .share-email:before,
 .Faculty-member-contact-list i.icon-contact-link-email:before {
   content: "\e012";
 }
@@ -3650,7 +3655,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-twitter:before,
-.share-modal .share-modal-inner .share-modal-content .share-twitter:before,
+.share-modal ul .share-twitter:before,
 .Faculty-member-contact-list i.icon-contact-link-twitter:before {
   content: "\e016";
 }
@@ -3666,7 +3671,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-facebook:before,
-.share-modal .share-modal-inner .share-modal-content .share-facebook:before,
+.share-modal ul .share-facebook:before,
 .Faculty-member-contact-list i.icon-contact-link-facebook:before {
   content: "\e017";
 }
@@ -9213,19 +9218,20 @@ img[class*="align"],
 }
 
 .share-modal {
-  position: fixed;
+  position: absolute;
   z-index: -99999;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: table;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  opacity: 0;
+  right: 29px;
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  opacity: 0;
+  -webkit-transform: scale(1) translateY(-60px);
+  -ms-transform: scale(1) translateY(-60px);
+  transform: scale(1) translateY(-60px);
+  width: 180px;
+  height: 46px;
 }
 
 @media -sass-debug-info {
@@ -9234,12 +9240,12 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000342;
+    font-family: \0000344;
   }
 }
 
 .share-modal.active {
-  z-index: 9999;
+  z-index: 2;
 }
 
 @media -sass-debug-info {
@@ -9248,7 +9254,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000346;
+    font-family: \0000348;
   }
 }
 
@@ -9262,66 +9268,48 @@ img[class*="align"],
   }
 
   line {
-    font-family: \0000350;
+    font-family: \0000352;
   }
 }
 
-.share-modal .share-modal-inner {
-  display: table-cell;
-  vertical-align: middle;
+.share-modal ul {
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 180px;
+  height: 46px;
+  color: #fff;
+  background: #3b5998;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000364;
+  }
+}
+
+.share-modal ul li {
+  font-size: 20px;
+  cursor: pointer;
+  width: 60px;
+  margin: 0;
+  padding: 12px 0;
   text-align: center;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
-  }
-
-  line {
-    font-family: \0000355;
-  }
-}
-
-.share-modal .share-modal-inner .share-modal-content {
-  margin: 0 auto;
-  padding: 28px;
-  padding: 2rem;
-  max-width: 300px;
-  background: #fff;
-  border-radius: 4px;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
-  }
-
-  line {
-    font-family: \0000362;
-  }
-}
-
-.share-modal .share-modal-inner .share-modal-content a {
+  float: left;
   display: block;
-  margin-bottom: 14px;
-  margin-bottom: 1rem;
-  font-size: 16px;
-  font-size: 1.14286rem;
-  text-decoration: none;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
-  }
-
-  line {
-    font-family: \0000369;
-  }
-}
-
-.share-modal .share-modal-inner .share-modal-content a:last-child {
-  margin-bottom: 0;
+  height: 22px;
+  position: relative;
+  z-index: 2;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  color: white;
 }
 
 @media -sass-debug-info {
@@ -9334,10 +9322,90 @@ img[class*="align"],
   }
 }
 
-.share-modal .share-modal-inner .share-modal-content span {
-  margin-left: 3.5px;
-  margin-left: 0.25rem;
-  font-family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.share-modal ul li:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000399;
+  }
+}
+
+.share-modal ul:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003112;
+  }
+}
+
+.share-modal li[class*=share-twitter] {
+  background: #6cdfea;
+  padding: 12px 0;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003117;
+  }
+}
+
+.share-modal li[class*=share-email] {
+  background: #e34429;
+  padding: 12px 0;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003123;
+  }
+}
+
+.share-modal a {
+  text-decoration: none;
+  color: #888888;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003128;
+  }
+}
+
+.share-modal i {
+  font-size: 16px;
+  font-size: 1.14286rem;
 }
 
 /*	Widgets

@@ -7,9 +7,21 @@
 
 	<header class="article__header">
         <div class="article__meta">
-            <div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>" data-article-shortlink="<?php the_field('story_link_url'); ?>" data-article-permalink="<?php the_field('story_link_url'); ?>"><a href="#" class="button">Share</a>
+   		<?php if ( !is_page() ) : ?>
+			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="
+				<?php if ( get_field('story_link_url') ): ?> 
+					<?php the_field('story_link_url'); ?>
+				<?php else : ?>
+					<?php echo wp_get_shortlink(); ?>
+				<?php endif ?>"
+			data-article-permalink="
+				<?php if ( get_field('story_link_url') ): ?> 
+					<?php the_field('story_link_url'); ?>
+				<?php else : ?>
+					<?php echo the_permalink(); ?>
+				<?php endif ?>"><a href="#" class="button">Share</a>
             </div>
-		<?php if ( !is_page() ) : ?>
 			<div class="post-info"
 				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
 				<?php $categories = get_the_category_list(' ') ?>

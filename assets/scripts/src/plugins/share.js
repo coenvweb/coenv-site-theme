@@ -67,20 +67,25 @@
 			{
 				name: 'Twitter',
 				className: 'twitter',
-				url: 'http://twitter.com/home?status=' + this.articleTitle + '-' + this.articleShortLink
+				url: 'http://twitter.com/home?status=' + this.articleTitle + '-' + this.articleShortLink + '" target="_blank'
 			},
 			{
 				name: 'Facebook',
 				className: 'facebook',
-				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle
+				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + '" target="_blank'
+			},
+			{
+				name: 'Email',
+				className: 'email',
+				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article:%20' + this.articleShortLink
 			}
 		];
 
 		this.$modal = $('<div class="share-modal" role="dialog" aria-labelledby="shareModal" aria-hidden="true"></div>');
-		this.$modal.append('<div class="share-modal-inner"><div class="share-modal-content"></div></div>');
+		this.$modal.append('<div class="share-modal-inner"><ul class="share-modal-content"></ul></div>');
 
 		for ( var i = 0, len = services.length; i < len; i++ ) {
-			this.$modal.find('.share-modal-content').append('<a class="share-' + services[ i ].className + '" href="' + services[ i ].url + '"></a>');
+			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"></li></a>');
 		}
 	};
 
@@ -91,17 +96,19 @@
 		var _this = this;
 
 		// clicking on link
-		this.element.on( 'click', function ( ev ) {
-			ev.preventDefault();
-			ev.stopPropagation();
-			_this._launchModal();
-		} );
+		if ( _this.modalIsActive === true ) {
+			this.element.on( 'click', function ( ev ) {
+				ev.preventDefault();
+				ev.stopPropagation();
+				_this._launchModal();
+			} );
+		} 
 
 		// clicking outside of modal
 		$('body').on( 'click', function ( ev ) {
 			if ( _this.modalIsActive === true ) {
 
-				if ( !$(ev.target).is('.share-modal-content') ) {
+				if ( !$(ev.target).is('.social-link') ) {
 					_this._hideModal();
 				}
 			}
@@ -116,7 +123,7 @@
 		var _this = this;
 
 		// append modal
-		$('body').append( this.$modal );
+		$('.post-' + this.articleID).prepend( this.$modal );
 
 		// show modal
 		this.$modal.addClass('active');

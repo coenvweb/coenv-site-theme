@@ -26,65 +26,111 @@
 } // .share
 
 .share-modal {
-	position: fixed;
+	position: absolute;
 	z-index: -99999;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: table;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.75);
-	opacity: 0;
+	right: 29px;
+	-webkit-transition: opacity 0.25s ease;
 	transition: opacity 0.25s ease;
-
+	-webkit-transform-origin: 50% 0;
+	-ms-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	opacity: 0;
+	-webkit-transform: scale(1)translateY(-60px);
+	-ms-transform: scale(1)translateY(-60px);
+	transform: scale(1)translateY(-60px);
+	width: 180px;
+	height: 46px;
+	
 	&.active {
-		z-index: 9999;
+		z-index: 2;
 	}
 
 	&.active-visible {
 		opacity: 1;
 	}
 
-	.share-modal-inner {
-		display: table-cell;
-		vertical-align: middle;
-		text-align: center;
+	ul {
+		position: relative;
+		left: 0;
+		right: 0;
+		width: 180px;
+		height: 46px;
+		color: #fff;
+		background: #3b5998;
+		margin: auto;
+		padding: 0;
+		list-style: none;
 
-		.share-modal-content {
-			margin: 0 auto;
-			@include rem('padding', 2);
-			max-width: 300px;
-			background: #fff;
-			border-radius: 4px;
+		li {
+			font-size: 20px;
+			cursor: pointer;
+			width: 60px;
+			margin: 0;
+			padding: 12px 0;
+			text-align: center;
+			float: left;
+			display: block;
+			height: 22px;
+			position: relative;
+			z-index: 2;
+			-webkit-box-sizing: content-box;
+			-moz-box-sizing: content-box;
+			box-sizing: content-box;
+			color: white;
 
-			a {
-				display: block;
-				@include rem('margin-bottom', 1);
-				@include font-size(16);
-				text-decoration: none;
+			&:hover {
+				color: rgba(0,0,0,.5);
 			}
 
-			a:last-child {
-				margin-bottom: 0;
-			}
-
-			.share-twitter {
+		}
+		
+		.share-twitter {
 				@extend .icon-twitter;
-			}
+		}
 
-			.share-facebook {
-				@extend .icon-facebook;
-			}
+		.share-facebook {
+			@extend .icon-facebook;
+		}
+		
+		.share-email {
+			@extend .icon-mail;
+		}
+		
+		&:after {
+            content:'';
+            display:block;
+            width:0;
+            height:0;
+            position:absolute;
+            left:0;
+            right:0;
+            border-left:20px solid transparent;
+            border-right:20px solid transparent;
+        }
+	}
 
-			span {
-				@include rem('margin-left', 0.25);
-				@include sans;
-			}
+		li[class*=share-twitter] {
+		    background: #6cdfea;
+            padding: 12px 0;
+	    }
+	
+			li[class*=share-email] {
+		    background: #e34429;
+            padding: 12px 0;
+	    }
 
-		} // .share-modal-content
 
-	} // .share-modal-inner
+		a {
+			text-decoration: none;
+			color: $dark-widget;
+		}
 
-} // .share-modal
+		i {
+			@include font-size(16);
+		}
+
+		span {
+			@extend .visuallyhidden;
+		}
+
+} // .sharing
