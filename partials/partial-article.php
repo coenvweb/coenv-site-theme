@@ -20,7 +20,7 @@
 					<?php the_field('story_link_url'); ?>
 				<?php else : ?>
 					<?php echo the_permalink(); ?>
-				<?php endif ?>"><a href="#" class="button">Share</a>
+				<?php endif ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info"
 				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 

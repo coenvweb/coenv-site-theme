@@ -96,13 +96,11 @@
 		var _this = this;
 
 		// clicking on link
-		if ( _this.modalIsActive === true ) {
-			this.element.on( 'click', function ( ev ) {
-				ev.preventDefault();
-				ev.stopPropagation();
-				_this._launchModal();
-			} );
-		} 
+		this.element.on( 'click', function ( ev ) {
+			ev.preventDefault();
+			ev.stopPropagation();
+			_this._launchModal();
+		} );
 
 		// clicking outside of modal
 		$('body').on( 'click', function ( ev ) {
