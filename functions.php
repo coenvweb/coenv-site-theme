@@ -826,4 +826,14 @@ function reinsert_rss_feed() {
 	echo '<link rel="alternate" type="application/rss+xml" title="' . get_bloginfo('sitename') . ' &raquo; RSS Feed" href="' . get_bloginfo('rss2_url') . '" />';
 }
 
-
+/**
+ * Blank search searches for ' ' instead.
+ **/
+if(!is_admin()){
+	add_action('init', 'search_query_fix');
+	function search_query_fix(){
+		if(isset($_GET['s']) && $_GET['s']==''){
+			$_GET['s']=' ';
+		}
+	}
+}
