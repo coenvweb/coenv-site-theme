@@ -56,6 +56,10 @@
 			@include rem('margin', 0, 0, .5, 0);
 			color: $text-lt;
 		}
+		
+		a:hover {
+		color: #8458BE!important;
+		}
 
 		.article__categories {
 			display: inline-block;

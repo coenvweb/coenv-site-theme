@@ -67,7 +67,7 @@
 			{
 				name: 'Twitter',
 				className: 'twitter',
-				url: 'http://twitter.com/home?status=' + this.articleTitle + '-' + this.articleShortLink + '" target="_blank'
+				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + '" target="_blank'
 			},
 			{
 				name: 'Facebook',
