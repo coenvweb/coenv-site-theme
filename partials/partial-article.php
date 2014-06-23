@@ -9,18 +9,8 @@
         <div class="article__meta">
    		<?php if ( !is_page() ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="
-				<?php if ( get_field('story_link_url') ): ?> 
-					<?php the_field('story_link_url'); ?>
-				<?php else : ?>
-					<?php echo wp_get_shortlink(); ?>
-				<?php endif ?>"
-			data-article-permalink="
-				<?php if ( get_field('story_link_url') ): ?> 
-					<?php the_field('story_link_url'); ?>
-				<?php else : ?>
-					<?php echo the_permalink(); ?>
-				<?php endif ?>"><a href="#"><i class="icon-share"></i>Share</a>
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info"
 				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 

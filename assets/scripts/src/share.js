@@ -67,17 +67,17 @@
 			{
 				name: 'Twitter',
 				className: 'twitter',
-				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + '" target="_blank'
+				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + ' from @UW_CoEnv" target="_blank'
 			},
 			{
 				name: 'Facebook',
 				className: 'facebook',
-				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + '" target="_blank'
+				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + ' from UW College of the Environment" target="_blank'
 			},
 			{
 				name: 'Email',
 				className: 'email',
-				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article:%20' + this.articleShortLink
+				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article%20from%20the%20UW%20College%20of%20the%20Environment:%20' + this.articleShortLink
 			}
 		];
 
