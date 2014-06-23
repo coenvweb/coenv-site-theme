@@ -47,6 +47,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>assets/scripts/src/menu.js',
 						'<%= paths.dev %>assets/scripts/src/features.js',
 						'<%= paths.dev %>assets/scripts/src/blog.js',
+						'<%= paths.dev %>assets/scripts/src/share.js',
 						'<%= paths.dev %>assets/scripts/src/main.js'
 					],
 					// Faculty specific scripts–we'll probably only load this for
@@ -102,6 +103,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>assets/scripts/src/menu.js',
 						'<%= paths.dev %>assets/scripts/src/features.js',
 						'<%= paths.dev %>assets/scripts/src/blog.js',
+						'<%= paths.dev %>assets/scripts/src/share.js',
 						'<%= paths.dev %>assets/scripts/src/main.js'
 					],
 					// Faculty specific scripts–we'll probably only load this for
