@@ -17,9 +17,12 @@ jQuery(function ($) {
 
 		// banner image reveals
 		$('.banner-wrapper').bannerReveals();
-
-	  // share buttons
+		
+		// share buttons
 		$('.share').coenvshare();
+		
+		// lightbox
+		$('a').nivoLightbox();
 
 	}
 
