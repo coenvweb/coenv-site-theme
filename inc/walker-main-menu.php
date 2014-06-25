@@ -239,7 +239,7 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		// If we're on the 'faculty' item
 		if ( $page->post_name == 'faculty' ) {
 
-			if ( is_archive( 'faculty' ) ) {
+			if ( is_post_type_archive( 'faculty' ) ) {
 				$css_class[] = 'current_page_item';
 			}
 

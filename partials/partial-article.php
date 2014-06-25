@@ -6,14 +6,22 @@
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
 	<header class="article__header">
-
-		<?php if ( !is_page() ) : ?>
-			<div class="sharing align-right">
-				<ul>
-					<li><a href="http://twitter.com/home?status=<?php echo wp_get_shortlink() ?> - <?php the_title() ?>"><i class="icon-twitter"></i><span>Twitter</span></a></li>
-					<li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=<?php echo wp_get_shortlink() ?>&p[images][0]=&p[title]=<?php the_title() ?>"><i class="icon-facebook"></i><span>Facebook</span></a></li>
-				</ul>
-			</div>
+        <div class="article__meta">
+   		<?php if ( !is_page() ) : ?>
+			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
+            </div>
+			<div class="post-info"
+				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
+				<?php $categories = get_the_category_list(' ') ?>
+					<?php if ( $categories ) : ?>
+						<div class="article__categories">
+							<?php echo $categories ?>
+						</div>
+				</div>
+ 				<?php endif ?> 
+            </div>
 		<?php endif ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
@@ -31,17 +39,7 @@
 	 		<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
 		<?php endif; ?>
 	</section>
-
-	<footer class="article__footer">
-
-		<?php if ( !is_page() ) : ?>
-			<div class="article__meta">
-				<div>
-				Posted <time class="article__time" datetime="<?php get_the_date( 'c' ) ?>"><?php echo get_the_date() ?></time>
-				</div>
-			</div>
-		<?php endif ?>
-
-	</footer>
+    <?php remove_filter( 'the_title', 'wptexturize' );
+    remove_filter( 'the_excerpt', 'wptexturize' ); ?>
 
 </article><!-- .article -->
