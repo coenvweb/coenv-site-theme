@@ -18,8 +18,8 @@ jQuery(function ($) {
 		// banner image reveals
 		$('.banner-wrapper').bannerReveals();
 
-		// share buttons
-		//$('.share').coenvshare();
+	  // share buttons
+		$('.share').coenvshare();
 
 	}
 

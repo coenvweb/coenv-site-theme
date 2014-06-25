@@ -1078,7 +1078,6 @@ body {
 form .field-wrap label,
 form .field-wrap button[type="submit"] span,
 .site-header #logo a span,
-.article__header .sharing span,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span,
 #features .features-nav a span {
   border: 0;
@@ -1110,14 +1109,12 @@ form .field-wrap button[type="submit"] span,
 form .field-wrap label.focusable:active,
 form .field-wrap button[type="submit"] span.focusable:active,
 .site-header #logo a span.focusable:active,
-.article__header .sharing span.focusable:active,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span.focusable:active,
 #features .features-nav a span.focusable:active,
 .visuallyhidden.focusable:focus,
 form .field-wrap label.focusable:focus,
 form .field-wrap button[type="submit"] span.focusable:focus,
 .site-header #logo a span.focusable:focus,
-.article__header .sharing span.focusable:focus,
 .Faculty-toolbox-title .Faculty-toolbox-toggle span.focusable:focus,
 #features .features-nav a span.focusable:focus {
   clip: auto;
@@ -3459,13 +3456,16 @@ you can use the generic selector below, but it's slower:
 .site-header #show-menu button,
 .icon-icon-uw,
 .icon-mail,
+.share-modal ul .share-email,
 .Faculty-member-contact-list i.icon-contact-link-email,
 .icon-search,
 .icon-link,
 .Faculty-member-contact-list i.icon-contact-link-web,
 .icon-twitter,
+.share-modal ul .share-twitter,
 .Faculty-member-contact-list i.icon-contact-link-twitter,
 .icon-facebook,
+.share-modal ul .share-facebook,
 .Faculty-member-contact-list i.icon-contact-link-facebook,
 .icon-vimeo,
 .icon-googleplus,
@@ -3607,6 +3607,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-mail:before,
+.share-modal ul .share-email:before,
 .Faculty-member-contact-list i.icon-contact-link-email:before {
   content: "\e012";
 }
@@ -3651,6 +3652,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-twitter:before,
+.share-modal ul .share-twitter:before,
 .Faculty-member-contact-list i.icon-contact-link-twitter:before {
   content: "\e016";
 }
@@ -3666,6 +3668,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .icon-facebook:before,
+.share-modal ul .share-facebook:before,
 .Faculty-member-contact-list i.icon-contact-link-facebook:before {
   content: "\e017";
 }
@@ -4676,13 +4679,20 @@ a:hover {
   }
 }
 
-.article__content .button,
-.article__content .pagination li .current,
-.pagination li .article__content .current,
-.article__content .pagination a,
-.pagination .article__content a,
-.article__content .Faculty-member-themes a,
-.Faculty-member-themes .article__content a {
+.article .button,
+.Faculty-member-tabs .Faculty-member-tab .button,
+.article .pagination li .current,
+.pagination li .article .current,
+.Faculty-member-tabs .Faculty-member-tab .pagination li .current,
+.pagination li .Faculty-member-tabs .Faculty-member-tab .current,
+.article .pagination a,
+.pagination .article a,
+.Faculty-member-tabs .Faculty-member-tab .pagination a,
+.pagination .Faculty-member-tabs .Faculty-member-tab a,
+.article .Faculty-member-themes a,
+.Faculty-member-themes .article a,
+.Faculty-member-tabs .Faculty-member-tab .Faculty-member-themes a,
+.Faculty-member-themes .Faculty-member-tabs .Faculty-member-tab a {
   background: #dddddd;
   text-decoration: none;
   color: #333333;
@@ -4698,13 +4708,20 @@ a:hover {
   }
 }
 
-.article__content .button:hover,
-.article__content .pagination li .current:hover,
-.pagination li .article__content .current:hover,
-.article__content .pagination a:hover,
-.pagination .article__content a:hover,
-.article__content .Faculty-member-themes a:hover,
-.Faculty-member-themes .article__content a:hover {
+.article .button:hover,
+.Faculty-member-tabs .Faculty-member-tab .button:hover,
+.article .pagination li .current:hover,
+.pagination li .article .current:hover,
+.Faculty-member-tabs .Faculty-member-tab .pagination li .current:hover,
+.pagination li .Faculty-member-tabs .Faculty-member-tab .current:hover,
+.article .pagination a:hover,
+.pagination .article a:hover,
+.Faculty-member-tabs .Faculty-member-tab .pagination a:hover,
+.pagination .Faculty-member-tabs .Faculty-member-tab a:hover,
+.article .Faculty-member-themes a:hover,
+.Faculty-member-themes .article a:hover,
+.Faculty-member-tabs .Faculty-member-tab .Faculty-member-themes a:hover,
+.Faculty-member-themes .Faculty-member-tabs .Faculty-member-tab a:hover {
   background: #363533;
 }
 
@@ -8401,85 +8418,6 @@ section[role="main"],
   }
 }
 
-.article__header .sharing {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 14px;
-  padding: 1rem;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \0000328;
-  }
-}
-
-.article__header .sharing ul {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \0000335;
-  }
-}
-
-.article__header .sharing li {
-  display: inline-block;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \0000339;
-  }
-}
-
-.article__header .sharing a {
-  text-decoration: none;
-  color: #888888;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \0000344;
-  }
-}
-
-.article__header .sharing i {
-  font-size: 16px;
-  font-size: 1.14286rem;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \0000354;
-  }
-}
-
 .article__header .article__title {
   margin-top: 0;
   padding-bottom: 14px;
@@ -8500,7 +8438,7 @@ section[role="main"],
     }
 
     line {
-      font-family: \0000354;
+      font-family: \0000322;
     }
 }
 
@@ -8518,7 +8456,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \0000368;
+    font-family: \0000336;
   }
 }
 
@@ -8533,7 +8471,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \0000373;
+    font-family: \0000341;
   }
 }
 
@@ -8547,7 +8485,90 @@ section[role="main"],
   }
 
   line {
-    font-family: \0000384;
+    font-family: \0000348;
+  }
+}
+
+.article__header .article__meta .post-info {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+  color: #888;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 11px;
+  font-size: 0.78571rem;
+  margin: 0 0 7px 0;
+  margin: 0 0 0.5rem 0;
+  color: #666666;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
+  }
+
+  line {
+    font-family: \0000360;
+  }
+}
+
+.article__header .article__meta a:hover {
+  color: #8458be !important;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
+  }
+
+  line {
+    font-family: \0000364;
+  }
+}
+
+.article__header .article__meta .article__categories {
+  display: inline-block;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
+  }
+
+  line {
+    font-family: \0000367;
+  }
+}
+
+.article__header .article__meta .article__categories ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
+  }
+
+  line {
+    font-family: \0000374;
+  }
+}
+
+.article__header .article__meta .article__categories li {
+  display: inline-block;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
+  }
+
+  line {
+    font-family: \0000388;
   }
 }
 
@@ -8567,7 +8588,7 @@ section[role="main"],
     }
 
     line {
-      font-family: \0000384;
+      font-family: \0000388;
     }
 }
 
@@ -8585,7 +8606,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \0000397;
+    font-family: \00003101;
   }
 }
 
@@ -8605,7 +8626,7 @@ section[role="main"],
     }
 
     line {
-      font-family: \0000397;
+      font-family: \00003101;
     }
 }
 
@@ -8623,7 +8644,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003110;
+    font-family: \00003114;
   }
 }
 
@@ -8643,7 +8664,7 @@ section[role="main"],
     }
 
     line {
-      font-family: \00003110;
+      font-family: \00003114;
     }
 }
 
@@ -8661,7 +8682,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003123;
+    font-family: \00003127;
   }
 }
 
@@ -8679,7 +8700,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003129;
+    font-family: \00003133;
   }
 }
 
@@ -8695,7 +8716,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003135;
+    font-family: \00003139;
   }
 }
 
@@ -8710,7 +8731,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003141;
+    font-family: \00003145;
   }
 }
 
@@ -8724,7 +8745,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003144;
+    font-family: \00003148;
   }
 }
 
@@ -8741,7 +8762,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003150;
+    font-family: \00003154;
   }
 }
 
@@ -8756,7 +8777,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003155;
+    font-family: \00003159;
   }
 }
 
@@ -8772,7 +8793,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003166;
+    font-family: \00003170;
   }
 }
 
@@ -8786,7 +8807,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003170;
+    font-family: \00003174;
   }
 }
 
@@ -8801,7 +8822,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003177;
+    font-family: \00003181;
   }
 }
 
@@ -8818,7 +8839,7 @@ section[role="main"],
   }
 
   line {
-    font-family: \00003186;
+    font-family: \00003190;
   }
 }
 
@@ -8843,7 +8864,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003201;
+    font-family: \00003205;
   }
 }
 
@@ -8860,7 +8881,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003209;
+    font-family: \00003213;
   }
 }
 
@@ -8874,7 +8895,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003213;
+    font-family: \00003217;
   }
 }
 
@@ -8888,7 +8909,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003217;
+    font-family: \00003221;
   }
 }
 
@@ -8904,7 +8925,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003224;
+    font-family: \00003228;
   }
 }
 
@@ -8920,7 +8941,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003229;
+    font-family: \00003233;
   }
 }
 
@@ -8936,7 +8957,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003235;
+    font-family: \00003239;
   }
 }
 
@@ -8954,7 +8975,7 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003243;
+    font-family: \00003247;
   }
 }
 
@@ -8973,75 +8994,13 @@ img[class*="align"],
   }
 
   line {
-    font-family: \00003250;
+    font-family: \00003254;
   }
 }
 
 .article__content .wp-caption img {
   margin: 0;
   padding: 0;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \00003259;
-  }
-}
-
-.article__meta {
-  font-size: 12px;
-  font-size: 0.85714rem;
-  color: #666666;
-  text-align: right;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \00003265;
-  }
-}
-
-.article__meta .article__categories {
-  display: inline-block;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \00003268;
-  }
-}
-
-.article__meta .article__categories ul {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_article\.scss;
-  }
-
-  line {
-    font-family: \00003275;
-  }
-}
-
-.article__meta .article__categories li {
-  display: inline-block;
 }
 
 /*	Pagination
@@ -9190,6 +9149,253 @@ img[class*="align"],
 
 .breadcrumbs .breadcrumbs__list a {
   text-decoration: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \000031;
+  }
+}
+
+.share {
+  display: none;
+  margin-right: 7px;
+  margin-right: 0.5rem;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \000035;
+  }
+}
+
+.share a {
+  font-size: 11px;
+  font-size: 0.78571rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #666666;
+  float: right;
+  letter-spacing: .1em;
+  font-weight: 600;
+  margin-top: 1.4px;
+  margin-top: 0.1rem;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000317;
+  }
+}
+
+.share.active {
+  display: block;
+  text-align: right;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000322;
+  }
+}
+
+.share i {
+  position: relative;
+  top: 0.05em;
+  left: -0.3em;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000330;
+  }
+}
+
+.share-modal {
+  position: absolute;
+  z-index: -99999;
+  right: 30px;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+  -webkit-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  opacity: 0;
+  -webkit-transform: scale(1) translateY(-60px);
+  -ms-transform: scale(1) translateY(-60px);
+  transform: scale(1) translateY(-60px);
+  width: 180px;
+  height: 46px;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000346;
+  }
+}
+
+.share-modal.active {
+  z-index: 2;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000350;
+  }
+}
+
+.share-modal.active-visible {
+  opacity: 1;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000354;
+  }
+}
+
+.share-modal ul {
+  height: 46px;
+  background: #3b5998;
+  padding: 0;
+  list-style: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000360;
+  }
+}
+
+.share-modal ul li {
+  font-size: 20px;
+  cursor: pointer;
+  width: 60px;
+  padding: 12px 0;
+  text-align: center;
+  float: left;
+  height: 22px;
+  z-index: 2;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  color: white;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000374;
+  }
+}
+
+.share-modal ul li:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \0000392;
+  }
+}
+
+.share-modal ul:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 120px;
+  right: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #e34429;
+  margin: 35px auto;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003107;
+  }
+}
+
+.share-modal li[class*=share-twitter] {
+  background: #6cdfea;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003111;
+  }
+}
+
+.share-modal li[class*=share-email] {
+  background: #e34429;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/drewcoll\/Sites\/coenv-main\/wp-content\/themes\/coenv-wordpress-theme\/assets\/styles\/src\/modules\/_share\.scss;
+  }
+
+  line {
+    font-family: \00003115;
+  }
+}
+
+.share-modal i {
+  font-size: 16px;
+  font-size: 1.14286rem;
 }
 
 /*	Widgets
