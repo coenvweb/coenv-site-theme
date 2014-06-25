@@ -1,1 +1,1 @@
-{"version":3,"file":"jquery-fallback.min.js","sources":["../src/jquery-fallback.js"],"names":["themeVars","window","jQuery","document","write","unescape","themeurl"],"mappings":";AACA,IAAIA,YAAYA,aAAa;;CAC5BC,OAAOC,UAAUC,SAASC,MAAOC,SAAU,oBAAoBL,UAAUM,WAAW"}
+{"version":3,"file":"jquery-fallback.min.js","sources":["../src/jquery-fallback.js"],"names":["themeVars","window","jQuery","document","write","unescape","themeurl"],"mappings":"AACA,GAAIA,WAAYA,YAAa,GAC5BC,OAAOC,QAAUC,SAASC,MAAOC,SAAU,kBAAoBL,UAAUM,SAAW"}
