@@ -13,14 +13,14 @@
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info"
-				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j') ?></time> | 
-				<?php $categories = get_the_category_list(' ') ?>
-					<?php if ( $categories ) : ?>
-						<div class="article__categories">
-							<?php echo $categories ?>
+				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j, Y') ?></time>
+				<?php //$categories = get_the_category_list(' ') ?>
+					<?php //if ( $categories ) : ?>
+						<!--<div class="article__categories">
+							 | <?php //echo $categories ?>
 						</div>
-				</div>
- 				<?php endif ?> 
+				</div>-->
+ 				<?php //endif ?> 
             </div>
 		<?php endif ?>
 
