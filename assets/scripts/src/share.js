@@ -99,7 +99,11 @@
 		this.element.on( 'click', function ( ev ) {
 			ev.preventDefault();
 			ev.stopPropagation();
-			_this._launchModal();
+			if ( _this.modalIsActive !== true ) {
+				_this._launchModal();
+			} else {
+				_this._hideModal();
+			}
 		} );
 
 		// clicking outside of modal
