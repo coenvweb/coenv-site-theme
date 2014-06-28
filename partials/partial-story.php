@@ -59,9 +59,10 @@
 			<?php the_excerpt(); ?>
 			<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
 		<?php endif; ?>
-	<?php endif; ?>
+
 	</section>
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
 
 </article><!-- .article -->
+<?php endif; ?>
