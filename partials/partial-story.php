@@ -47,16 +47,19 @@
 		<?php endif ?>
 
 	</header>
-
 	<section class="article__content">
 		<div class="coenv-thumb"><a style="float: right;" href="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>"><?php the_post_thumbnail( 'small' ) ?></a></div>
 		<?php if ( get_field('story_link_url') ): ?>
-			<?php $trimmed_content = strip_tags(get_the_content(),'<a>'); ?>
+			<?php $trimmed_content = breezer_addDivToImage(get_the_content()); ?>
+			<?php $trimmed_content = strip_tags($trimmed_content,'<a>'); ?>
 			<?php $trimmed_content = strip_shortcodes ($trimmed_content); ?>
 			<?php echo '<p>' . $trimmed_content . '</p>'; ?>
 			<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
 		<?php else: ?>
-			<?php the_excerpt(); ?>
+			<?php $trimmed_content = breezer_addDivToImage(get_the_excerpt()); ?>
+			<?php $trimmed_content = strip_tags($trimmed_content,'<a>'); ?>
+			<?php $trimmed_content = strip_shortcodes ($trimmed_content); ?>
+			<?php echo '<p>' . $trimmed_content . '</p>'; ?>
 			<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
 		<?php endif; ?>
 
