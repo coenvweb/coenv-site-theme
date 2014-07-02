@@ -837,3 +837,19 @@ if(!is_admin()){
 		}
 	}
 }
+function breezer_addDivToImage( $content ) {
+
+   // A regular expression of what to look for.
+   $pattern = '/(<img([^>]*)>)/i';
+   // What to replace it with. $1 refers to the content in the first 'capture group', in parentheses above
+   $replacement = '<div class="myphoto">$1</div>';
+
+   // run preg_replace() on the $content
+   $content = preg_replace( $pattern, $replacement, $content );
+
+   // return the processed content
+   return $content;
+}
+if (is_archive()):
+	add_filter( 'the_content', 'breezer_addDivToImage' );
+endif;

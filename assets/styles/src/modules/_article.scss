@@ -258,6 +258,18 @@
 
 	} // .wp-caption
 
+
+	// news index thumbnails
+
+	.coenv-thumb {
+		@include min-width ( $iPadPortrait ) {
+			float: right;
+			margin: 0 0 1rem 1rem;
+		}
+		padding: 0;
+		width: auto;
+	} // .coenv-thumb
+
 } // .article__content
 
 
