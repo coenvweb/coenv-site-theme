@@ -8,21 +8,21 @@
 
 	// Plugin definition
 	// =========================================================================
-	$.CoEnvShare = function ( options, element ) {
+	$.coenvshare = function ( options, element ) {
 		this.options = options;
 		this.element = $(element);
 
 		this._create( options );
 	};
 
-	$.CoEnvShare.settings = {};
+	$.coenvshare.settings = {};
 
 	// Create
 	// =========================================================================
-	$.CoEnvShare.prototype._create = function ( options ) {
+	$.coenvshare.prototype._create = function ( options ) {
 
 		// set options
-		this.options = $.extend(true, {}, $.CoEnvShare.settings, options);
+		this.options = $.extend(true, {}, $.coenvshare.settings, options);
 
 		// initialize
 		this._init();
@@ -31,7 +31,7 @@
 
 	// Initialize
 	// =========================================================================
-	$.CoEnvShare.prototype._init = function () {
+	$.coenvshare.prototype._init = function () {
 
 		this.articleID = this.element.attr('data-article-id');
 		this.articleTitle = this.element.attr('data-article-title');
@@ -61,47 +61,56 @@
 	 * Build modal
 	 * Building DOM elements here to keep things quick and simple, but this should really be in a template
 	 */
-	$.CoEnvShare.prototype._buildModal = function () {
+	$.coenvshare.prototype._buildModal = function () {
 
 		var services = [
 			{
 				name: 'Twitter',
 				className: 'twitter',
-				url: 'http://twitter.com/home?status=' + this.articleTitle + '-' + this.articleShortLink
+				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + ' from @UW_CoEnv" target="_blank'
 			},
 			{
 				name: 'Facebook',
 				className: 'facebook',
-				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle
+				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + ' from UW College of the Environment" target="_blank'
+			},
+			{
+				name: 'Email',
+				className: 'email',
+				url: 'mailto:?subject=' + this.articleTitle + '&body=Check%20out%20this%20article%20from%20the%20UW%20College%20of%20the%20Environment:%20' + this.articleShortLink
 			}
 		];
 
 		this.$modal = $('<div class="share-modal" role="dialog" aria-labelledby="shareModal" aria-hidden="true"></div>');
-		this.$modal.append('<div class="share-modal-inner"><div class="share-modal-content"></div></div>');
+		this.$modal.append('<div class="share-modal-inner"><ul class="share-modal-content"></ul></div>');
 
 		for ( var i = 0, len = services.length; i < len; i++ ) {
-			this.$modal.find('.share-modal-content').append('<a class="share-' + services[ i ].className + '" href="' + services[ i ].url + '"><span>Share on ' + services[ i ].name + '</span></a>');
+			this.$modal.find('.share-modal-content').append('<a href="' + services[ i ].url + '" ><li class="social-link share-' + services[ i ].className + '"></li></a>');
 		}
 	};
 
 	/**
 	 * Handle interactions
 	 */
-	$.CoEnvShare.prototype._interactions = function () {
+	$.coenvshare.prototype._interactions = function () {
 		var _this = this;
 
 		// clicking on link
 		this.element.on( 'click', function ( ev ) {
 			ev.preventDefault();
 			ev.stopPropagation();
-			_this._launchModal();
+			if ( _this.modalIsActive !== true ) {
+				_this._launchModal();
+			} else {
+				_this._hideModal();
+			}
 		} );
 
 		// clicking outside of modal
 		$('body').on( 'click', function ( ev ) {
 			if ( _this.modalIsActive === true ) {
 
-				if ( !$(ev.target).is('.share-modal-content') ) {
+				if ( !$(ev.target).is('.social-link') ) {
 					_this._hideModal();
 				}
 			}
@@ -112,11 +121,11 @@
 	/**
 	 * Launch share modal
 	 */
-	$.CoEnvShare.prototype._launchModal = function () {
+	$.coenvshare.prototype._launchModal = function () {
 		var _this = this;
 
 		// append modal
-		$('body').append( this.$modal );
+		$('.post-' + this.articleID).prepend( this.$modal );
 
 		// show modal
 		this.$modal.addClass('active');
@@ -131,7 +140,7 @@
 	/**
 	 * Hide modal
 	 */
-	$.CoEnvShare.prototype._hideModal = function () {
+	$.coenvshare.prototype._hideModal = function () {
 		var _this = this;
 
 		this.$modal.removeClass('active-visible');
@@ -155,7 +164,7 @@
 	// And a bit from jcarousel
 	//		https://github.com/jsor/jcarousel/blob/master/lib/jquery.jcarousel.js
 
-	$.CoEnvShare.prototype.option = function( key ){
+	$.coenvshare.prototype.option = function( key ){
 		if ( $.isPlainObject( key ) ){
 			this.options = $.extend(true, this.options, key);
 		}
@@ -190,7 +199,7 @@
 					instance._init();
 				} else {
 					// initialize new instance
-					$.data( this, 'coenvshare', new $.CoEnvShare( options, this ) );
+					$.data( this, 'coenvshare', new $.coenvshare( options, this ) );
 				}
 			});
 		}

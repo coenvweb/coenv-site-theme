@@ -23,17 +23,21 @@
 		======================================================================== */
 
 // RoyalSlider for home page features
-@import 'vendor/royalslider.scss';
+@import 'plugins/royalslider.scss';
 
 // Chosen for styling form elements
-@import 'vendor/chosen.scss';
-@import 'vendor/chosen-theme.scss';
+@import 'plugins/chosen.scss';
+@import 'plugins/chosen-theme.scss';
 
 // Isotope for faculty grid
-@import 'vendor/isotope.scss';
+@import 'plugins/isotope.scss';
 
 // Icomoon for icons
-@import 'vendor/icomoon.scss';
+@import 'plugins/icomoon.scss';
+
+// Nivo-Ligbox for lightboxes
+@import 'plugins/nivo-lightbox.scss';
+@import 'plugins/nivo-default.scss';
 
 /*	Base styles
 		======================================================================== */
@@ -54,6 +58,7 @@
 @import 'modules/article.scss';
 @import 'modules/pagination.scss';
 @import 'modules/breadcrumbs.scss';
+@import 'modules/share.scss';
 @import 'modules/widget.scss';
 @import 'modules/widget_social.scss';
 @import 'modules/widget_events.scss';
