@@ -243,6 +243,20 @@
 		color: #fff;
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 		background-color: $bg-dk;
+		
+		.source {
+			background-color: rgba(0,0,0,.5);
+			color: #fff;
+			text-align: right;
+			//font-style: italic;
+			text-transform: uppercase;
+			letter-spacing: .1em;
+			width: 100%;
+			position: relative;
+			@include font-size(8);
+			@include rem('margin-top', -1.8);
+			@include rem('padding', 0, 1);
+		}
 
 		.wp-caption-text {
 			@include rem('margin', 0.25, 1, 0.5, 1);
