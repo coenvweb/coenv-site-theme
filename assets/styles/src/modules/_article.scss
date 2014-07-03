@@ -256,6 +256,11 @@
 			@include font-size(8);
 			@include rem('margin-top', -1.8);
 			@include rem('padding', 0, 1);
+			
+			a {
+				color: white;
+				text-decoration: none;
+			}
 		}
 
 		.wp-caption-text {

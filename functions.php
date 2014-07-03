@@ -934,14 +934,21 @@ function jk_img_caption_shortcode_filter($val, $attr, $content = null)
 	if ( $id )
 		$id = esc_attr( $id );
 		$attach_id = str_replace('attachment_', '', $id);
-		$source = get_post_meta( $attach_id, '_credit_text', true );
+		$photo_source = get_post_meta( $attach_id, '_credit_text', true );
+		$photo_source_url = get_post_meta( $attach_id, '_credit_link', true );
 	
-	if ( $source )
+		if ( $photo_source )
+		if (!empty($photo_source_url)) {
+			$photo_source_div = "<div class=\"source\"><a href=\"$photo_source_url\">$photo_source</a></div>";
+		}
+		else 
+			$photo_source_div = "<div class=\"source\">$photo_source</div>";
+		
+	
 
-	return '<figure title="' . $caption . '" id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px">' . do_shortcode( $content ) .  '<div class="source">' . $source . '</div>' . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
+
+	return '<figure title="' . $caption . '" id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px">' . do_shortcode( $content ) . $photo_source_div . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
 	
-	else	
-	return '<figure title="' . $caption . '" id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px">' . do_shortcode( $content ) . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
 }
 add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
 
