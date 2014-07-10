@@ -59,7 +59,7 @@
 				//background: $accent;
 			}
 
-			@include min-width ( $iPadPortrait ) {
+			@include min-width ( $iPadLandscape ) {
 				@include font-size(36);
 				@include line-height(36);
 			}

@@ -5,7 +5,7 @@
 .pagination {
 
 	ul {
-		@include rem('margin', 1);
+		@include rem('margin', 1, 0, 1, 1);
 		@include rem('padding', 1);
 		background: #fff;
 		list-style: none;
