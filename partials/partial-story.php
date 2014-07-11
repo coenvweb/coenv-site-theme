@@ -28,8 +28,8 @@
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
-			<div class="post-info"
-				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j, Y') ?></time> 
+			<div class="post-info">
+				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
 				<?php //$categories = get_the_category_list(' ') ?>
 					<?php //if ( $categories ) : ?>
 						<!--<div class="article__categories">
@@ -39,6 +39,7 @@
  				<?php //endif ?> 
             </div>
 		<?php endif ?>
+		</div>
 
 		<?php if ( is_page() || is_single() ) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
