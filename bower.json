@@ -25,7 +25,7 @@
     "jquery-smartresize": "*",
     "jquery-bbq": "https://github.com/cowboy/jquery-bbq.git#~1.2.1",
     "odometer": "~0.4.6",
-    "matchmedia": "~0.2.0"
+    "matchmedia": "~0.2.0",
 	"nivo-lightbox" : "~1.2.0"
   },
   "devDependencies": {}
