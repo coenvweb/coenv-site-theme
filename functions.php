@@ -989,7 +989,7 @@ function taxonomy_unit() {
 
 }
 
-add_action( 'init', 'taxonomy_audience', 0 );
+add_action( 'init', 'taxonomy_unit', 0 );
 
 function taxonomy_audience() {
 
@@ -1025,7 +1025,7 @@ function taxonomy_audience() {
 
 add_action( 'init', 'taxonomy_audience', 0 );
 
-function taxonomy_research_themes() {
+function taxonomy_research_theme() {
 
 	$labels = array(
 		'name'                       => _x( 'Research Themes', 'Taxonomy General Name', 'text_domain' ),
@@ -1053,11 +1053,11 @@ function taxonomy_research_themes() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'research_themes', array( 'post', 'page', 'faculty' ), $args );
+	register_taxonomy( 'research_theme', array( 'post', 'page', 'faculty' ), $args );
 
 }
 
-add_action( 'init', 'taxonomy_research_themes', 0 );
+add_action( 'init', 'taxonomy_research_theme', 0 );
 
 function taxonomy_location() {
 
@@ -1126,80 +1126,204 @@ function taxonomy_story_type() {
 }
 add_action( 'init', 'taxonomy_story_type', 0 );
 
+function taxonomy_topic() {
+
+	$labels = array(
+		'name'                       => _x( 'Topics', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Topic', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Topics', 'text_domain' ),
+		'all_items'                  => __( 'All Items', 'text_domain' ),
+		'parent_item'                => __( 'Parent Item', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
+		'new_item_name'              => __( 'New Item Name', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Item', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Item', 'text_domain' ),
+		'update_item'                => __( 'Update Item', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
+		'search_items'               => __( 'Search Items', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most used items', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'topic', array( 'post', 'page' ), $args );
+
+}
+add_action( 'init', 'taxonomy_topic', 0 );
+
+/**
+ * Add default post categories. As long as the slug is included, this wont create dupes.
+ * Comment this out after categories are added.
+ **/
+	/*
 function add_cats() {
-wp_insert_term('Aquatic and Fishery Sciences','unit',$args=array('slug' => 'aquatic_and_fishery_sciences'));
-wp_insert_term('Atmopheric Sciences','unit',$args=array('slug' => 'atmopheric_sciences'));
-wp_insert_term('Climate Impacts Group','unit',$args=array('slug' => 'climate_impacts_group'));
-wp_insert_term('College of the Environment','unit',$args=array('slug' => 'college_of_the_environment'));
-wp_insert_term('Earth and Space Sciences','unit',$args=array('slug' => 'earth_and_space_sciences'));
-wp_insert_term('Environmental and Forest Sciences','unit',$args=array('slug' => 'environmental_and_forest_sciences'));
-wp_insert_term('Friday Harbor Laboratories','unit',$args=array('slug' => 'friday_harbor_laboratories'));
-wp_insert_term('Joint Insitute for the Study of the Atmosphere and Ocean ','unit',$args=array('slug' => 'joint_insitute_for_the_study_of_the_atmosphere_and_ocean'));
-wp_insert_term('Marine and Environmental Affairs','unit',$args=array('slug' => 'marine_and_environmental_affairs'));
-wp_insert_term('Oceanography','unit',$args=array('slug' => 'oceanography'));
-wp_insert_term('Program on the Environment','unit',$args=array('slug' => 'program_on_the_environment'));
-wp_insert_term('UW Botanic Gardens','unit',$args=array('slug' => 'uw_botanic_gardens'));
-wp_insert_term('Washington NASA Space Grant','unit',$args=array('slug' => 'washington_nasa_space_grant'));
-wp_insert_term('Washington Sea Grant','unit',$args=array('slug' => 'washington_sea_grant'));
-wp_insert_term('Students','audience',$args=array('slug' => 'students'));
-wp_insert_term('Faculty','audience',$args=array('slug' => 'faculty'));
-wp_insert_term('Staff','audience',$args=array('slug' => 'staff'));
-wp_insert_term('Donors','audience',$args=array('slug' => 'donors'));
-wp_insert_term('Alumni','audience',$args=array('slug' => 'alumni'));
-wp_insert_term('Climate','research_themes',$args=array('slug' => 'climate'));
-wp_insert_term('Conservation','research_themes',$args=array('slug' => 'conservation'));
-wp_insert_term('Ecology','research_themes',$args=array('slug' => 'ecology'));
-wp_insert_term('Engineering','research_themes',$args=array('slug' => 'engineering'));
-wp_insert_term('Environmental Chemistry','research_themes',$args=array('slug' => 'environmental_chemistry'));
-wp_insert_term('Extreme Environments','research_themes',$args=array('slug' => 'extreme_environments'));
-wp_insert_term('Freshwater','research_themes',$args=array('slug' => 'freshwater'));
-wp_insert_term('Geophysical Sciences','research_themes',$args=array('slug' => 'geophysical_sciences'));
-wp_insert_term('Genetics/Genomics','research_themes',$args=array('slug' => 'genetics_genomics'));
-wp_insert_term('Marine Science','research_themes',$args=array('slug' => 'marine_science'));
-wp_insert_term('Natural Hazards','research_themes',$args=array('slug' => 'natural_hazards'));
-wp_insert_term('Ocean Acidification','research_themes',$args=array('slug' => 'ocean_acidification'));
-wp_insert_term('Polar Science','research_themes',$args=array('slug' => 'polar_science'));
-wp_insert_term('Resource Management','research_themes',$args=array('slug' => 'resource_management'));
-wp_insert_term('Social Sciences','research_themes',$args=array('slug' => 'social_sciences'));
-wp_insert_term('Puget Sound','location',$args=array('slug' => 'puget_sound'));
-wp_insert_term('Washington','location',$args=array('slug' => 'washington'));
-wp_insert_term('Pacific Northwest','location',$args=array('slug' => 'pacific_northwest'));
-wp_insert_term('West Coast','location',$args=array('slug' => 'west_coast'));
-wp_insert_term('United States','location',$args=array('slug' => 'united_states'));
-wp_insert_term('Canada','location',$args=array('slug' => 'canada'));
-wp_insert_term('North America','location',$args=array('slug' => 'north_america'));
-wp_insert_term('South America','location',$args=array('slug' => 'south_america'));
-wp_insert_term('Africa','location',$args=array('slug' => 'africa'));
-wp_insert_term('Asia','location',$args=array('slug' => 'asia'));
-wp_insert_term('Australia','location',$args=array('slug' => 'australia'));
-wp_insert_term('Europe','location',$args=array('slug' => 'europe'));
-wp_insert_term('Antarctica','location',$args=array('slug' => 'antarctica'));
-wp_insert_term('Global/Earth','location',$args=array('slug' => 'global_earth'));
-wp_insert_term('South Pacific','location',$args=array('slug' => 'south_pacific'));
-wp_insert_term('Tropics','location',$args=array('slug' => 'tropics'));
-wp_insert_term('Temperate Regions','location',$args=array('slug' => 'temperate_regions'));
-wp_insert_term('Polar Regions','location',$args=array('slug' => 'polar_regions'));
-wp_insert_term('Pacific Ocean','location',$args=array('slug' => 'pacific_ocean'));
-wp_insert_term('Atlantic Ocean','location',$args=array('slug' => 'atlantic_ocean'));
-wp_insert_term('Indian Ocean','location',$args=array('slug' => 'indian_ocean'));
-wp_insert_term('Arctic Ocean','location',$args=array('slug' => 'arctic_ocean'));
-wp_insert_term('Southern Ocean ','location',$args=array('slug' => 'southern_ocean'));
-wp_insert_term('Space','location',$args=array('slug' => 'space'));
-wp_insert_term('News','story_type',$args=array('slug' => '_news'));
-wp_insert_term('Event','story_type',$args=array('slug' => 'event'));
-wp_insert_term('Dean\'s Letter','story_type',$args=array('slug' => 'deans_letter'));
-wp_insert_term('Education','story_type',$args=array('slug' => 'education'));
-wp_insert_term('Newsletter','story_type',$args=array('slug' => 'newsletter'));
-wp_insert_term('Publications','story_type',$args=array('slug' => 'publications'));
-wp_insert_term('Research','story_type',$args=array('slug' => 'research'));
-wp_insert_term('Spotlight','story_type',$args=array('slug' => 'spotlight'));
-wp_insert_term('Funding Opportunity','story_type',$args=array('slug' => 'funding_opportunity'));
-wp_insert_term('Nature/Beauty','story_type',$args=array('slug' => 'nature_beauty'));
+
+	wp_insert_term('Aquatic and Fishery Sciences','unit',$args=array('slug' => 'aquatic_and_fishery_sciences'));
+	wp_insert_term('Atmopheric Sciences','unit',$args=array('slug' => 'atmopheric_sciences'));
+	wp_insert_term('Climate Impacts Group','unit',$args=array('slug' => 'climate_impacts_group'));
+	wp_insert_term('College of the Environment','unit',$args=array('slug' => 'college_of_the_environment'));
+	wp_insert_term('Earth and Space Sciences','unit',$args=array('slug' => 'earth_and_space_sciences'));
+	wp_insert_term('Environmental and Forest Sciences','unit',$args=array('slug' => 'environmental_and_forest_sciences'));
+	wp_insert_term('Friday Harbor Laboratories','unit',$args=array('slug' => 'friday_harbor_laboratories'));
+	wp_insert_term('Joint Insitute for the Study of the Atmosphere and Ocean ','unit',$args=array('slug' => 'joint_insitute_for_the_study_of_the_atmosphere_and_ocean'));
+	wp_insert_term('Marine and Environmental Affairs','unit',$args=array('slug' => 'marine_and_environmental_affairs'));
+	wp_insert_term('Oceanography','unit',$args=array('slug' => 'oceanography'));
+	wp_insert_term('Program on the Environment','unit',$args=array('slug' => 'program_on_the_environment'));
+	wp_insert_term('UW Botanic Gardens','unit',$args=array('slug' => 'uw_botanic_gardens'));
+	wp_insert_term('Washington NASA Space Grant','unit',$args=array('slug' => 'washington_nasa_space_grant'));
+	wp_insert_term('Washington Sea Grant','unit',$args=array('slug' => 'washington_sea_grant'));
+	wp_insert_term('Students','audience',$args=array('slug' => 'students'));
+	wp_insert_term('Faculty','audience',$args=array('slug' => 'faculty'));
+	wp_insert_term('Staff','audience',$args=array('slug' => 'staff'));
+	wp_insert_term('Donors','audience',$args=array('slug' => 'donors'));
+	wp_insert_term('Alumni','audience',$args=array('slug' => 'alumni'));
+	wp_insert_term('Climate','research_themes',$args=array('slug' => 'climate'));
+	wp_insert_term('Conservation','research_themes',$args=array('slug' => 'conservation'));
+	wp_insert_term('Ecology','research_themes',$args=array('slug' => 'ecology'));
+	wp_insert_term('Engineering','research_themes',$args=array('slug' => 'engineering'));
+	wp_insert_term('Environmental Chemistry','research_themes',$args=array('slug' => 'environmental_chemistry'));
+	wp_insert_term('Extreme Environments','research_themes',$args=array('slug' => 'extreme_environments'));
+	wp_insert_term('Freshwater','research_themes',$args=array('slug' => 'freshwater'));
+	wp_insert_term('Geophysical Sciences','research_themes',$args=array('slug' => 'geophysical_sciences'));
+	wp_insert_term('Genetics/Genomics','research_themes',$args=array('slug' => 'genetics_genomics'));
+	wp_insert_term('Marine Science','research_themes',$args=array('slug' => 'marine_science'));
+	wp_insert_term('Natural Hazards','research_themes',$args=array('slug' => 'natural_hazards'));
+	wp_insert_term('Ocean Acidification','research_themes',$args=array('slug' => 'ocean_acidification'));
+	wp_insert_term('Polar Science','research_themes',$args=array('slug' => 'polar_science'));
+	wp_insert_term('Resource Management','research_themes',$args=array('slug' => 'resource_management'));
+	wp_insert_term('Social Sciences','research_themes',$args=array('slug' => 'social_sciences'));
+	wp_insert_term('Puget Sound','location',$args=array('slug' => 'puget_sound'));
+	wp_insert_term('Washington','location',$args=array('slug' => 'washington'));
+	wp_insert_term('Pacific Northwest','location',$args=array('slug' => 'pacific_northwest'));
+	wp_insert_term('West Coast','location',$args=array('slug' => 'west_coast'));
+	wp_insert_term('United States','location',$args=array('slug' => 'united_states'));
+	wp_insert_term('Canada','location',$args=array('slug' => 'canada'));
+	wp_insert_term('North America','location',$args=array('slug' => 'north_america'));
+	wp_insert_term('South America','location',$args=array('slug' => 'south_america'));
+	wp_insert_term('Africa','location',$args=array('slug' => 'africa'));
+	wp_insert_term('Asia','location',$args=array('slug' => 'asia'));
+	wp_insert_term('Australia','location',$args=array('slug' => 'australia'));
+	wp_insert_term('Europe','location',$args=array('slug' => 'europe'));
+	wp_insert_term('Antarctica','location',$args=array('slug' => 'antarctica'));
+	wp_insert_term('Global/Earth','location',$args=array('slug' => 'global_earth'));
+	wp_insert_term('South Pacific','location',$args=array('slug' => 'south_pacific'));
+	wp_insert_term('Tropics','location',$args=array('slug' => 'tropics'));
+	wp_insert_term('Temperate Regions','location',$args=array('slug' => 'temperate_regions'));
+	wp_insert_term('Polar Regions','location',$args=array('slug' => 'polar_regions'));
+	wp_insert_term('Pacific Ocean','location',$args=array('slug' => 'pacific_ocean'));
+	wp_insert_term('Atlantic Ocean','location',$args=array('slug' => 'atlantic_ocean'));
+	wp_insert_term('Indian Ocean','location',$args=array('slug' => 'indian_ocean'));
+	wp_insert_term('Arctic Ocean','location',$args=array('slug' => 'arctic_ocean'));
+	wp_insert_term('Southern Ocean ','location',$args=array('slug' => 'southern_ocean'));
+	wp_insert_term('Space','location',$args=array('slug' => 'space'));
+	wp_insert_term('News','story_type',$args=array('slug' => '_news'));
+	wp_insert_term('Event','story_type',$args=array('slug' => 'event'));
+	wp_insert_term('Dean\'s Letter','story_type',$args=array('slug' => 'deans_letter'));
+	wp_insert_term('Education','story_type',$args=array('slug' => 'education'));
+	wp_insert_term('Newsletter','story_type',$args=array('slug' => 'newsletter'));
+	wp_insert_term('Publications','story_type',$args=array('slug' => 'publications'));
+	wp_insert_term('Research','story_type',$args=array('slug' => 'research'));
+	wp_insert_term('Spotlight','story_type',$args=array('slug' => 'spotlight'));
+	wp_insert_term('Funding Opportunity','story_type',$args=array('slug' => 'funding_opportunity'));
+	wp_insert_term('Nature/Beauty','story_type',$args=array('slug' => 'nature_beauty'));
+	wp_insert_term('Climate','topic', $args=array('slug' => 'climate'));
+	wp_insert_term('Conservation','topic', $args=array('slug' => 'conservation'));
+	wp_insert_term('Ecology','topic', $args=array('slug' => 'ecology'));
+	wp_insert_term('Education','topic', $args=array('slug' => 'education'));
+	wp_insert_term('Engineering','topic', $args=array('slug' => 'engineering'));
+	wp_insert_term('Environmental Chemistry','topic', $args=array('slug' => 'environmental_chemistry'));
+	wp_insert_term('Events','topic', $args=array('slug' => '_events'));
+	wp_insert_term('Extreme Environments','topic', $args=array('slug' => 'extreme_environments'));
+	wp_insert_term('Freshwater','topic', $args=array('slug' => 'freshwater'));
+	wp_insert_term('Geophysical Sciences','topic', $args=array('slug' => 'geophysical_sciences'));
+	wp_insert_term('Genetics/Genomics','topic', $args=array('slug' => 'genetics_genomics'));
+	wp_insert_term('Marine Science','topic', $args=array('slug' => 'marine_science'));
+	wp_insert_term('Natural Hazards','topic', $args=array('slug' => 'natural_hazards'));
+	wp_insert_term('Ocean Acidification','topic', $args=array('slug' => 'ocean_acidification'));
+	wp_insert_term('Polar Science','topic', $args=array('slug' => 'polar_science'));
+	wp_insert_term('Resource Management','topic', $args=array('slug' => 'resource_management'));
+	wp_insert_term('Social Sciences','topic', $args=array('slug' => 'social_sciences'));
+	wp_insert_term('Sustainability','topic', $args=array('slug' => '_sustainability'));
+	wp_insert_term('Students','topic', $args=array('slug' => 'students'));
+	wp_insert_term('Weekly Research','topic', $args=array('slug' => 'weekly_research'));
+	wp_insert_term('Science Communication','topic', $args=array('slug' => '_science_communication'));
+
+
+
+
 }
 add_action( 'init', 'add_cats', 0 );
+*/
+function coenv_related_news ($id) {
 
+	$_coenv_terms = get_the_terms( $id, 'topic' );
+	$coenv_terms = array();
 
+	foreach ( $_coenv_terms as $term) {
+		$coenv_terms[] = $term->slug;
+	}
 
+	$args = array (
 
+		'post_type' => 'post',
+		'posts_per_page' => '2',
+		'post__not_in' => array($id),
+		'tax_query' => array(
+		'relation' => 'AND',
+			array(
+			'taxonomy' => 'topic',
+			'field' => 'slug',
+			'terms' => $coenv_terms,
+			'operator' => 'IN'
+			)
+		)
 
+    );
 
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ) {
+		echo '<h3 style="margin-bottom: 2rem;">Related News</h3>';
+		echo '<ul class="related_news">';
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			echo '<li>';
+			echo '<p>' . '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">' . the_post_thumbnail('small') . '</a></p>';
+			echo '<p>' . the_title( '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a>' ) . '</p>';
+			echo '</li>';
+		}
+		echo '</ul>';
+
+	} else {
+		// no posts found
+	}
+
+	wp_reset_postdata();
+
+}
+add_action( 'add_meta_boxes', 'default_metabox_loc', 0 );
+
+function default_metabox_loc(){
+
+	remove_meta_box('topicdiv', 'post', 'side');
+	remove_meta_box('story_typediv', 'post', 'side');
+	remove_meta_box('locationdiv', 'post', 'side');
+	remove_meta_box('audiencediv', 'post', 'side');
+	remove_meta_box('unitdiv', 'post', 'side');
+	remove_meta_box('research_themediv', 'post', 'side');
+	add_meta_box( 'topicdiv', 'Topic', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'topic' ));
+	add_meta_box( 'story_typediv', 'Story Type', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'story_type' ));
+	add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'location' ));
+	add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'audience' ));
+	add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'unit' ));
+	add_meta_box( 'research_themediv', 'Research Themes', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'research_theme' ));
+
+}
