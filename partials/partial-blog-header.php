@@ -7,27 +7,27 @@
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
 	</form>
-
-	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url') . '/news/category/' ?>">
+	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url'); ?>/news">
 		<?php
+			$queried_object = get_queried_object();  
+			$archive_term_id = $queried_object->term_id;
 			$cats = get_categories(array(
 				'type' => 'post',
-				'taxonomy' => 'category'
+				'taxonomy' => array('topic','story_type')
 			));
 
 			if ( !empty( $cats ) ) {
 				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Select category</option>';
+				$output .= '<option value="">Choose a topic</option>';
 				foreach ( $cats as $cat ) {
-					$selected = get_query_var('cat') == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';
+					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
+					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
 				}
 				$output .= '</select>';
 				echo $output;
 			}
 		?>
 	</div>
-
 	<div class="input-item select-month">
 			<select name="archive-dropdown">
 				<option value="">Select month</option>
@@ -37,5 +37,9 @@
 				)) ?>
 			</select>
 	</div>
-	
 </div><!-- #blog-header -->
+<?php if (is_tax()): ?>
+<div id="blog-header" class="blog-header">
+<h4 style="padding: 1rem;">News about <?php echo single_cat_title( '', true ); ?></h3>
+</div>
+<?php endif; ?>
