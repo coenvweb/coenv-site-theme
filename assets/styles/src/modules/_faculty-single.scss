@@ -154,15 +154,19 @@
 		margin: 0;
 		padding-bottom: percentage( 4/8 );
 		width: percentage( 4/8 );
+		@media print {
+			padding-bottom: 0;
+			@include rem('margin-bottom', 18);
+		}
 	}
 
 	@include min-width ( $bp-2 ) {
-		padding-bottom: percentage( 2/8 );
-	}
-	
-	@media print {
-		float: left;
-		width: 60%;
+		@media print {
+			padding-bottom: 0;
+			float: left;
+			width: 60%;
+			@include rem('margin-bottom', 15);
+		}
 	}
 }
 
@@ -220,6 +224,7 @@
 	height: 100%;
 	@media print {
 		height: auto;
+		width: 70%;
 	}
 }
 
@@ -229,7 +234,7 @@
 	vertical-align: bottom;
 	
 	@media print {
-		padding: 0;
+		@include rem('padding', .5, 0);
 	}
 }
 
@@ -288,6 +293,9 @@
 
 	a:hover {
 		color: #fff !important;
+	}
+	@media print{
+		@include rem('padding-bottom', 1);
 	}
 }
 
