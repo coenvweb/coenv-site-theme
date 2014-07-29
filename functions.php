@@ -1025,40 +1025,6 @@ function taxonomy_audience() {
 
 add_action( 'init', 'taxonomy_audience', 0 );
 
-function taxonomy_research_theme() {
-
-	$labels = array(
-		'name'                       => _x( 'Research Themes', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'Research Theme', 'Taxonomy Singular Name', 'text_domain' ),
-		'menu_name'                  => __( 'Research Themes', 'text_domain' ),
-		'all_items'                  => __( 'All Items', 'text_domain' ),
-		'parent_item'                => __( 'Parent Item', 'text_domain' ),
-		'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
-		'new_item_name'              => __( 'New Item Name', 'text_domain' ),
-		'add_new_item'               => __( 'Add New Item', 'text_domain' ),
-		'edit_item'                  => __( 'Edit Item', 'text_domain' ),
-		'update_item'                => __( 'Update Item', 'text_domain' ),
-		'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
-		'search_items'               => __( 'Search Items', 'text_domain' ),
-		'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
-		'choose_from_most_used'      => __( 'Choose from the most used items', 'text_domain' ),
-		'not_found'                  => __( 'Not Found', 'text_domain' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-	);
-	register_taxonomy( 'research_theme', array( 'post', 'page', 'faculty' ), $args );
-
-}
-
-add_action( 'init', 'taxonomy_research_theme', 0 );
-
 function taxonomy_location() {
 
 	$labels = array(
@@ -1318,12 +1284,19 @@ function default_metabox_loc(){
 	remove_meta_box('locationdiv', 'post', 'side');
 	remove_meta_box('audiencediv', 'post', 'side');
 	remove_meta_box('unitdiv', 'post', 'side');
-	remove_meta_box('research_themediv', 'post', 'side');
 	add_meta_box( 'topicdiv', 'Topic', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'topic' ));
 	add_meta_box( 'story_typediv', 'Story Type', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'story_type' ));
-	add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'location' ));
-	add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'audience' ));
-	add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'unit' ));
-	add_meta_box( 'research_themediv', 'Research Themes', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'research_theme' ));
+	//add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'location' ));
+	//add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'audience' ));
+	//add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'unit' ));
 
+}
+function coenv_post_cats($id) {
+	$coenv_categories = get_the_terms($id, array('topic'/*,'story_type'*/));
+	if ( $coenv_categories ) {
+		foreach ($coenv_categories as $category) {
+			$coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'.$category->name.'</a></li>';
+		}
+		echo '<ul class="article__categories">'. $coenv_cats . '</ul>';
+	}	
 }

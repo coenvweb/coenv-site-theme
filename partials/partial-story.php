@@ -30,13 +30,7 @@
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
-						</div>
-				</div>-->
- 				<?php //endif ?> 
+				<?php coenv_post_cats($post->ID); ?>
             </div>
 		<?php endif ?>
 		</div>

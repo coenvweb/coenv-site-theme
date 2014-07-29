@@ -12,16 +12,10 @@
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
-			<div class="post-info"
-				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j, Y') ?></time>
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
-						</div>
-				</div>-->
- 				<?php //endif ?> 
-            </div>
+			<div class="post-info">
+				<time class="article__time" datetime="<?php get_the_date( '' ); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+				<?php coenv_post_cats($post->ID); ?>
+			</div>
 		<?php endif ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
@@ -46,7 +40,7 @@
 			coenv_related_news( $post->ID );
 		} elseif ( $coenv_choice == 'choose' && $posts) {
 			$coenv_chosen = get_field('related_posts_post');
-			echo '<h3 style="margin-bottom: 2rem;">Related News</h3>';
+			echo '<h3 style="margin: 2rem 0;">Related News</h3>';
 			echo '<ul>';
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
