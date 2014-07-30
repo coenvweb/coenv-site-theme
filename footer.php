@@ -69,22 +69,19 @@
 
 						</script>
 						<script type="text/javascript">
-						try{
-						(function() {
-						var afterPrint = function() {
-						_gaq.push(['_trackEvent', 'Print Intent', document.location.pathname]); //for classic GA
-						ga('send', 'event', 'Print Intent', document.location.pathname); //for Universal GA
-						};
-						if (window.matchMedia) {
-						var mediaQueryList = window.matchMedia('print');
-						mediaQueryList.addListener(function(mql) {
-						if (!mql.matches)
-						afterPrint();
-						});
-						}
-						window.onafterprint = afterPrint;
-						}());
-						} catch(e) {}
+							try{
+							(function() {
+							var afterPrint = function() { ga('send', 'event', 'Print Intent', document.location.pathname); };
+							if (window.matchMedia) {
+							var mediaQueryList = window.matchMedia('print');
+							mediaQueryList.addListener(function(mql) {
+							if (!mql.matches)
+							afterPrint();
+							});
+							}
+							window.onafterprint = afterPrint;
+							}());
+							} catch(e) {}
 						</script>
         <?php endif; ?>
     </body>
