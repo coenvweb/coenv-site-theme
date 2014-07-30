@@ -30,7 +30,7 @@
 	</div>
 	<div class="input-item select-month">
 			<select name="archive-dropdown">
-				<option value="/news/">Select month</option>
+				<option value="/news/">Choose a month</option>
 				<?php wp_get_archives(array(
 					'type' => 'monthly',
 					'format' => 'option'
