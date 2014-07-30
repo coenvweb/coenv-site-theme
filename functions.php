@@ -1300,3 +1300,18 @@ function coenv_post_cats($id) {
 		echo '<ul class="article__categories">'. $coenv_cats . '</ul>';
 	}	
 }
+function coenv_get_archives_link ( $link_html ) {
+    global $wp;
+    static $current_url;
+    if ( empty( $current_url ) ) {
+        $current_url = add_query_arg( $_SERVER['QUERY_STRING'], '', home_url( $wp->request ) );
+    }
+    if ( stristr( $current_url, 'page' ) !== false ) {
+		$current_url = substr($current_url, 0, strrpos($current_url, 'page'));
+    }
+    if ( stristr( $link_html, $current_url ) !== false ) {
+        $link_html = preg_replace( '/(<[^\s>]+)/', '\1 selected="selected"', $link_html, 1 );
+    }
+    return $link_html;
+}
+add_filter('get_archives_link', 'coenv_get_archives_link');
