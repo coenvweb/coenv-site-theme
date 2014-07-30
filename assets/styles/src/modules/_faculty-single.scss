@@ -161,7 +161,8 @@
 	}
 
 	@include min-width ( $bp-2 ) {
-		@media print {
+		padding-bottom: percentage( 2/8 );
+ 		@media print {
 			padding-bottom: 0;
 			float: left;
 			width: 60%;
