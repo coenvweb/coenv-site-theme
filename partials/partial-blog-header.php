@@ -37,14 +37,17 @@
 				)) ?>
 			</select>
 	</div>
-	<?php if (is_tax()) { ?>
+	<?php if (is_tax() || is_date()) { ?>
 		<div class="results-text">
 			<?php $coenv_post_count = $GLOBALS['wp_query']->found_posts;  ?>
 			<?php if ($queried_object->taxonomy == 'topic') { ?>
 				<p><?php echo $coenv_post_count; ?> news posts related to <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
 				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
-			<?php } else { ?>
+			<?php } elseif ($queried_object->taxonomy == 'story_type') { ?>
 				<p><?php echo $coenv_post_count; ?> posts of type: <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
+				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
+			<?php } elseif (is_date()) { ?>
+				<p><?php echo $coenv_post_count; ?> posts from <span class="term-name"><?php echo single_month_title(' '); ?></span></p>
 				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
 			<?php } ?>
 		</div>
