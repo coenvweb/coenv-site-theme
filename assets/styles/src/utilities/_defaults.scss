@@ -204,7 +204,7 @@ $clearfix-method: overflow !default;
         text-decoration: underline;
     }
 
-    a[href]:after {
+    .button:after, .print a:after {
         content: " (" attr(href) ")";
     }
 
@@ -216,7 +216,7 @@ $clearfix-method: overflow !default;
      * Don't show links for images, or javascript/internal links
      */
 
-    .ir a:after,
+    .ir a:after, .wp-caption a:after, .img:after,
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
         content: "";

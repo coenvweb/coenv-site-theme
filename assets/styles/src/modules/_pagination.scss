@@ -27,5 +27,9 @@
 		color: $text;
 		background-color: $white-button;
 	}
+	
+	@media print {
+			display: none;
+	}
 
 } // .pagination

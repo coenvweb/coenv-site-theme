@@ -27,8 +27,12 @@ body.home {
 		&:first-child {
 			display: block;
 		}
-
+		
 	} // .no-js &
+	
+	@media print {
+			margin-bottom: -200px;
+	}
 
 	.feature {
 		@extend .clearfix;
