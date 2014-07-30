@@ -104,7 +104,15 @@
 				float: right;
 				@include rem('padding', 0, 0, 0, 0);
 				a.button {
+					background-color: #ddd;
+					color: #333;
 					@include font-size(11);
+				}
+				a.button:hover {
+					background-color: #363533;
+					color: #fff;
+					@include font-size(11);
+					letter-spacing: 0.1em;
 				}
 			}
 
