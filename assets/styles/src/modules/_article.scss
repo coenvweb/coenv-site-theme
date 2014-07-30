@@ -265,6 +265,11 @@
 			a:hover {
 				color: #8458BE!important;
 			}
+			
+			@media print{
+				@include rem('margin-top', .5);
+				text-align: left;
+			}
 		}
 
 		.wp-caption-text {

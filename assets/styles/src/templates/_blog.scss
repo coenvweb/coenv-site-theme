@@ -10,9 +10,16 @@
 		@include rem('margin', 1);
 		@include rem('padding', 2);
 		background: #fff;
+		@media print {
+			margin: 0;
+			padding: 0;
+		}
 
 		@include min-width ( $iPadPortrait ) {
 			@include rem('margin', 1, 0, 1, 1);
+			@media print {
+				margin: 0;
+			}
 		}
 
 		.article_header {
@@ -76,6 +83,10 @@
 
 		} // form
 
+		@media print{
+			display: none;
+		}
+		
 	} // .blog-header
 
 	.pagination ul {
