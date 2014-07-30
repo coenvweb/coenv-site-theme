@@ -1192,10 +1192,13 @@ function default_metabox_loc(){
  *  Add new categories to user facing topic filter <select>.
  */
 function coenv_post_cats($id) {
-	$coenv_categories = get_the_terms($id, array('topic'/*,'story_type'*/));
+	$coenv_categories = get_the_terms($id, array('topic'));
 	if ( $coenv_categories ) {
+		$i = 0;
 		foreach ($coenv_categories as $category) {
-			$coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'.$category->name.'</a></li>';
+			if ($i==4) break;
+			$coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
+			$i++;
 		}
 		echo '<ul class="article__categories">'. $coenv_cats . '</ul>';
 	}	

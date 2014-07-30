@@ -13,7 +13,7 @@
 			$archive_term_id = $queried_object->term_id;
 			$cats = get_categories(array(
 				'type' => 'post',
-				'taxonomy' => array('topic','story_type')
+				'taxonomy' => array('topic')
 			));
 
 			if ( !empty( $cats ) ) {
@@ -47,7 +47,7 @@
 				<p><?php echo $coenv_post_count; ?> posts of type: <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
 				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
 			<?php } elseif (is_date()) { ?>
-				<p><?php echo $coenv_post_count; ?> posts from <span class="term-name"><?php echo single_month_title(' '); ?></span></p>
+				<p><?php echo $coenv_post_count; ?> news posts from <span class="term-name"><?php echo single_month_title(' '); ?></span></p>
 				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
 			<?php } ?>
 		</div>
