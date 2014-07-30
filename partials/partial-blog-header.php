@@ -30,21 +30,23 @@
 	</div>
 	<div class="input-item select-month">
 			<select name="archive-dropdown">
-				<option value="">Select month</option>
+				<option value="/news/">Select month</option>
 				<?php wp_get_archives(array(
 					'type' => 'monthly',
 					'format' => 'option'
 				)) ?>
 			</select>
 	</div>
-	<?php if (is_tax()): ?>
-	<div class="results-text">
-		<?php $coenv_post_count = $GLOBALS['wp_query']->found_posts;  ?>
-		<?php if ($queried_object->taxonomy == 'topic'): ?>
-		<div><a href="/news/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/cancel-circle.svg" style="display: inline-block; height: .8rem; width: .8rem; verticle-align: middle;line-height: 14px;" /></a> <p style="display: inline-block; vertical-align: middle; margin: 0; line-height: 14px; padding-bottom: .25rem;"><?php echo $coenv_post_count; ?> news posts related to <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p></div>
-		<?php else: ?>
-		<div style="height: .8rem; width: .8rem; verticle-align: middle;"><a href="/news"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/cancel-circle.svg" style="height: .9rem; width: .9rem;" /></a> <p><?php echo $coenv_post_count; ?> posts of type: <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p></div>
-		<?php endif; ?>
-	</div>
-	<?php endif; ?>
+	<?php if (is_tax()) { ?>
+		<div class="results-text">
+			<?php $coenv_post_count = $GLOBALS['wp_query']->found_posts;  ?>
+			<?php if ($queried_object->taxonomy == 'topic') { ?>
+				<p><?php echo $coenv_post_count; ?> news posts related to <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
+				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
+			<?php } else { ?>
+				<p><?php echo $coenv_post_count; ?> posts of type: <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
+				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
+			<?php } ?>
+		</div>
+	<?php } ?>
 </div><!-- #blog-header -->
