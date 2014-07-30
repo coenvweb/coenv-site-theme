@@ -8,7 +8,17 @@
 
 $faculty-item-height-ratio: 1.33;
 
+.print{
+	display: none;
+	@media print {
+		display: block;
+	}
+}
+
 .Faculty-list {
+	@media print{
+		display: none;
+	}
 }
 
 .Faculty-filter {
