@@ -16,16 +16,16 @@
 				'taxonomy' => array('topic')
 			));
 
-			if ( !empty( $cats ) ) {
 				$output .= '<select name="category-dropdown">';
 				$output .= '<option value="">Choose a topic</option>';
+				if ( !empty( $cats ) ) {	
 				foreach ( $cats as $cat ) {
 					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
 					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
 				}
+				}	
 				$output .= '</select>';
 				echo $output;
-			}
 		?>
 	</div>
 	<div class="input-item select-month">
