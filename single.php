@@ -60,7 +60,7 @@ $banner = coenv_banner();
 
 				<?php endif ?>
 				
-				<footer class="related-news">
+				<footer class="related">
 					<?php get_template_part( 'partials/partial', 'related-news' ) ?>
 				</footer>
 
