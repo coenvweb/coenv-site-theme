@@ -10,21 +10,6 @@ $obj = get_queried_object();
 
 $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 
-// set up member tab nav
-$member_tabs = array();
-
-$member_tabs[] = array(
-	'data-tab' => 'Faculty-member-tab--bio',
-	'title' => 'About ' . $member['full_name'],
-	'active' => true
-);
-
-if ( !empty( $member['publications'] ) ) {
-	$member_tabs[] = array(
-		'data-tab' => 'Faculty-member-tab--publications',
-		'title' => 'Publications'
-	);
-}
 ?>
 
 <section class="Faculty-single" role="main">
@@ -123,23 +108,6 @@ if ( !empty( $member['publications'] ) ) {
 
 			<div class="side-col">
 
-				<?php if ( count( $member_tabs ) > 1 ) : ?>
-
-					<nav id="secondary-nav">
-						<ul class="Faculty-member-tab-nav">
-							<li class="pagenav">
-								<ul>
-									<?php foreach ( $member_tabs as $tab ) : ?>
-										<li<?php if ( $tab['active'] ) echo ' class="active-tab"' ?>><a data-tab="<?php echo $tab['data-tab'] ?>" href="#"><?php echo $tab['title'] ?></a></li>
-									<?php endforeach ?>
-								</ul>
-							</li>
-									
-						</ul>
-					</nav><!-- #secondary-nav -->
-
-				<?php endif ?>
-
 				<ul class="Faculty-member-contact-list">
 					
 					<?php if ( ! empty( $member['email'] ) ) : ?>
@@ -198,22 +166,20 @@ if ( !empty( $member['publications'] ) ) {
 
 							<?php endif ?>
 
-						</div><!-- .entry-content -->
-					</article>
-
 					<?php if ( !empty( $member['publications'] ) ) : ?>
 
-						<article class="Faculty-member-tab Faculty-member-tab--publications">
-
-							<div class="entry-content">
+							<div class="Faculty-member-publications">
+								
+								<h3>Publications</h3>
 
 								<?php echo $member['publications'] ?>
 
 							</div><!-- .entry-content -->
 
-						</article>
-
 					<?php endif ?>
+						
+					</div><!-- .entry-content -->
+					</article>
 
 				</ul><!-- .Faculty-member-tabs -->
 
