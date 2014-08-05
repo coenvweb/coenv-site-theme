@@ -27,7 +27,11 @@
 		}
 	
 	.related-article-title {
-		@include rem('padding', 1);
+		@include rem('padding', 1, 2);
+		z-index: 20;
+		position: relative;
+		top: 20rem;
+		
 		h3 {
 			@include serif;
 			font-weight: 400;
@@ -35,10 +39,31 @@
 		
 	}
 	
+	.related-thumb {
+		overflow: hidden;
+		height: 60%;		
+	}
+	
 	ul {
+		margin: 0;
+		padding: 0;
 
 		li {
 			display: inline-block;
+			width: 50%;
+			
+			.related-container{
+				&:hover {
+				z-index: 100;
+				top: -25%;
+				left: -25%;
+				height: 150%;
+				}
+			}
+		}
+			
+		li:nth-child(odd) {
+			border-right: 1px solid $border;
 		}
 
 		a {

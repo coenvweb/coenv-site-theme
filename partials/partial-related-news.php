@@ -14,10 +14,15 @@
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
         		echo '<li>';
-        		echo '<div class="related-thumb">' . '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a>' . the_post_thumbnail('small') . '</a></div>';
-        		echo '<div class="related-article-title"><h3>';
-						echo the_title( '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a>' ) . '</h3>';
-        		echo '</div></li>';
+        		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark" class="related-container">';
+						echo '<div class="related-thumb">';
+						echo the_post_thumbnail('medium');
+						echo '</div>';
+        		echo '<div class="related-article-title">';
+						echo '<h3>';
+						echo the_title();
+						echo '</h3>';
+        		echo '</div></a></li>';
     		endforeach;
     		echo '</ul>';
 			echo '</div>';
