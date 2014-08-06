@@ -22,7 +22,7 @@
 			font-weight: 600;
 			line-height: 0;
 			@include font-size(11);
-			@include rem('margin', 1, 1, 0.5, 1);
+			@include rem('margin', .9, 1, 0.5, 1);
 		}
 	
 		.more {
