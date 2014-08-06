@@ -9,22 +9,23 @@
 			$coenv_chosen = get_field('related_posts_post');
 			echo '<div class="related-news"><div class="related-heading">';
 			echo '<h2 class="title">Related News</h2>';
-			echo '<p class="more">More »</p></div>';
-			echo '<ul>';
+			echo '<a href="/news" name="See all College news">';
+			echo '<p class="more">All News »</p></a></div>';
+			echo '<div class="related-posts">';
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
-        		echo '<li class="related-container">';
+        		echo '<div class="related-container">';
         		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
 			      echo '<div class="related-thumb">';
-						echo the_post_thumbnail('medium');
+						echo the_post_thumbnail('large');
 			      echo '</div>';
         		echo '<div class="related-article-title">';
 						echo '<h3>';
 						echo the_title();
 						echo '</h3>';
-        		echo '</div></a></li>';
+        		echo '</div></a></div>';
     		endforeach;
-    		echo '</ul>';
+				echo '<br style="clear:both" />';
 			echo '</div>';
    			wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
 
