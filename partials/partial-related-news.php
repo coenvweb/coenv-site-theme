@@ -13,11 +13,11 @@
 			echo '<ul>';
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
-        		echo '<li>';
-        		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark" class="related-container">';
-						echo '<div class="related-thumb">';
+        		echo '<li class="related-container">';
+        		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+			      echo '<div class="related-thumb">';
 						echo the_post_thumbnail('medium');
-						echo '</div>';
+			      echo '</div>';
         		echo '<div class="related-article-title">';
 						echo '<h3>';
 						echo the_title();

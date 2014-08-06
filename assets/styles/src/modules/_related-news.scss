@@ -28,9 +28,9 @@
 	
 	.related-article-title {
 		@include rem('padding', 1, 2);
-		z-index: 20;
 		position: relative;
-		top: 20rem;
+		bottom: 0;
+		background: $white;
 		
 		h3 {
 			@include serif;
@@ -41,7 +41,9 @@
 	
 	.related-thumb {
 		overflow: hidden;
-		height: 60%;		
+		position: relative;
+		top:0;
+		@include rem('height', 10);	
 	}
 	
 	ul {
@@ -52,14 +54,6 @@
 			display: inline-block;
 			width: 50%;
 			
-			.related-container{
-				&:hover {
-				z-index: 100;
-				top: -25%;
-				left: -25%;
-				height: 150%;
-				}
-			}
 		}
 			
 		li:nth-child(odd) {
