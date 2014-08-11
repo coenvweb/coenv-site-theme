@@ -18,6 +18,9 @@
 			@include rem('padding', 1);
 			text-decoration: none;
 			color: $text;
+			@media print {
+			 	padding: 0;
+			}
 		}
 
 		header {

@@ -6,7 +6,7 @@
 body.home {
 	p {
 		@media print {
-		 font-size: 16px;
+		 font-size: 16px!important;
 		}
 	
 }
@@ -36,7 +36,7 @@ body.home {
 	} // .no-js &
 	
 	@media print {
-			margin-bottom: -200px;
+			margin-bottom: -250px;
 	}
 
 	.feature {
