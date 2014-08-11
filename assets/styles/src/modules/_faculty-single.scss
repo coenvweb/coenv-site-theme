@@ -166,7 +166,7 @@
 			padding-bottom: 0;
 			float: left;
 			width: 60%;
-			@include rem('margin-bottom', 15);
+			@include rem('margin-bottom', 13);
 		}
 	}
 }
@@ -296,6 +296,8 @@
 		color: #fff !important;
 	}
 	@media print{
+		text-transform: capitalize;
+		letter-spacing: 0;
 		@include rem('padding-bottom', 1);
 	}
 }
@@ -417,6 +419,8 @@
 }
 	
 .Faculty-member-publications {
+	
+	max-width: 600px;
 	
 	h3 {
 		@include rem('margin', 3, 0, 1, 0);

@@ -70,6 +70,10 @@
 				height: 1px;
 				background: #fff;
 				border-top: 1px solid $border;
+				
+				@media print {
+					display: none;
+				}
 			}
 
 		} // h1
