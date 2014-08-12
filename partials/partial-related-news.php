@@ -8,9 +8,7 @@
 		} elseif ( $coenv_choice == 'choose' && $posts) {
 			$coenv_chosen = get_field('related_posts_post');
 			echo '<div class="related-news"><div class="related-heading">';
-			echo '<h2 class="title">Related News</h2>';
-			echo '<a href="/news" name="See all College news">';
-			echo '<p class="more">All News »</p></a></div>';
+			echo '<h2 class="title">Related News</h2></div>';
 			echo '<div class="related-posts">';
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
