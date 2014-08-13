@@ -5,7 +5,7 @@
 		position: relative;
 		top:0;
 	  	@include min-width ( $iPhoneLandscape) {
-				@include rem('margin', 1);
+			@include rem('margin', 1);
 		}
 	
 	.related-heading {
@@ -52,6 +52,20 @@
 	.related-thumb {
 		@include rem('height', 12);
 		overflow: hidden;
+		
+		background: {
+			image: url(../../../assets/img/uw-flag.png);
+			size: cover;
+    		repeat: no-repeat;
+			position: 50%;
+			color: $accent;
+		}
+
+		
+		.wp-post-image {
+			display: block;
+			margin: auto;
+		}
 	}
 	
 	.related-container {
@@ -65,13 +79,13 @@
 			}
 		}
 		
-		@include max-width ( 700 ) {
+		@include max-width ( 600 ) {
 			&:nth-child(odd) {
 				border-bottom: 1px solid $border;
 			}
 		}
 
-		@include min-width ( 700 ) {
+		@include min-width ( 600 ) {
 			width: 50%;
 			float: left;
 			padding-bottom: 500em;

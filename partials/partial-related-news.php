@@ -15,7 +15,9 @@
         		echo '<div class="related-container">';
         		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
 			      echo '<div class="related-thumb">';
-						echo the_post_thumbnail('large');
+					if ( has_post_thumbnail() ) {
+						echo the_post_thumbnail('medium');
+					}
 			      echo '</div>';
         		echo '<div class="related-article-title">';
 						echo '<h3>';
