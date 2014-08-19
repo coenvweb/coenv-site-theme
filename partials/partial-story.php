@@ -8,6 +8,17 @@
 					<?php the_post_thumbnail( 'medium' ) ?>
 				</a>
 			<?php endif ?>
+			
+			<?php if ( has_term( 'weekly_research', 'topic' ) ): ?> 
+				<div class="story-series">
+					<a href="<?php echo get_term_link( 'weekly_research', 'topic' ); ?>" name="View all Weekly Research Posts">This Week's Publications</a>
+				</div>
+			<?php endif ?>
+			<?php if ( has_term( 'deans_letter', 'type' ) ): ?> 
+				<div class="story-series">
+					<a href="<?php echo get_term_link( 'deans_letter', 'type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
+				</div>
+			<?php endif ?>
 
 			<div class="content">
 				<h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
@@ -30,13 +41,7 @@
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
-						</div>
-				</div>-->
- 				<?php //endif ?> 
+				<?php coenv_post_cats($post->ID); ?>
             </div>
 		<?php endif ?>
 		</div>

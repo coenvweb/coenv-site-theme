@@ -1,0 +1,105 @@
+.related-news {
+		padding: 0!important;
+		@extend .article;
+		overflow: hidden;
+		position: relative;
+		top:0;
+	  	@include min-width ( $iPhoneLandscape) {
+			@include rem('margin', 1);
+		}
+	
+	.related-heading {
+		display: block;
+		width: 100%;
+		border-bottom: 1px solid $border;
+		@include rem('padding', 1);
+	}
+	
+		.title {
+			display: inline;
+			text-transform: uppercase;
+			letter-spacing: .1em;
+			font-weight: 600;
+			line-height: 0;
+			@include font-size(11);
+			@include rem('margin', .9, 1, 0.5, 1);
+		}
+	
+		.more {
+			@extend .title;
+			float: right;
+		}
+		a {
+				color: $text;
+			&:hover{
+				color: #8458be!important;
+			}
+		}
+	
+	.related-article-title {
+		@include rem('padding', 1, 2);
+		position: relative;
+		bottom: 0;
+		
+		h3 {
+			@include serif;
+			font-weight: 400;
+			@extend .antialiased;
+		}	
+		
+	} //.related-article-title
+	
+	.related-thumb {
+		@include rem('height', 12);
+		overflow: hidden;
+		
+		background: {
+			image: url(../../../assets/img/uw-flag.png);
+			size: cover;
+    		repeat: no-repeat;
+			position: 50%;
+			color: $accent;
+		}
+
+		
+		.wp-post-image {
+			display: block;
+			margin: auto;
+		}
+	}
+	
+	.related-container {
+		display: inline-block;
+		width: 100%;
+		
+		&:hover {
+			background-color: $accent;
+			a {
+				color: $white!important;
+			}
+		}
+		
+		@include max-width ( 600 ) {
+			&:nth-child(odd) {
+				border-bottom: 1px solid $border;
+			}
+		}
+
+		@include min-width ( 600 ) {
+			width: 50%;
+			float: left;
+			padding-bottom: 500em;
+			margin-bottom: -500em;
+			&:nth-child(odd) {
+				border-right: 1px solid $border;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: $text;
+		}
+		
+	} //.related-container
+	
+} // .related-news
