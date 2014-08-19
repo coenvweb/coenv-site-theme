@@ -1150,16 +1150,33 @@ function coenv_related_news ($id) {
 	$query = new WP_Query( $args );
 
 	if ( $query->have_posts() ) {
-		echo '<h3 style="margin-bottom: 2rem;">Related News</h3>';
-		echo '<ul class="related_news">';
+		echo '<div class="related-news">';
+		echo '<div class="related-heading">';
+		echo '<h2 class="title">Related News</h2>';
+		echo '</div>';
+		echo '<div class="related-posts">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			echo '<li>';
-			echo '<p>' . '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">' . the_post_thumbnail('small') . '</a></p>';
-			echo '<p>' . the_title( '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a>' ) . '</p>';
-			echo '</li>';
+			echo '<div class="related-container">';
+			if ( has_post_thumbnail() ) {
+				echo '<div class="related-thumb">';
+				echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+				echo the_post_thumbnail('medium');
+				echo '</a>';
+				echo '</div>';
+			}	
+			echo '<div class="related-article-title">';
+			echo '<h3>';
+			echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+			echo the_title();
+			echo '</a>';
+			echo '</h3>';
+			
+		echo '</div>';
+		echo '<br style="clear:both" />';
+		echo '</div>';
+		echo '</div>';
 		}
-		echo '</ul>';
 
 	} else {
 		// no posts found

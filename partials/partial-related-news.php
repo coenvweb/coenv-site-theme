@@ -13,17 +13,21 @@
     		foreach( $coenv_chosen as $post):
         		setup_postdata($post);
         		echo '<div class="related-container">';
-        		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+        		
 			      echo '<div class="related-thumb">';
 					if ( has_post_thumbnail() ) {
+						echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
 						echo the_post_thumbnail('medium');
+						echo '</a>';
 					}
 			      echo '</div>';
         		echo '<div class="related-article-title">';
 						echo '<h3>';
+						echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
 						echo the_title();
+						echo '</a>';
 						echo '</h3>';
-        		echo '</div></a></div>';
+        		echo '</div></div>';
     		endforeach;
 				echo '<br style="clear:both" />';
 			echo '</div>';
