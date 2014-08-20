@@ -11,7 +11,7 @@
 			
 			<?php if ( has_term( 'weekly_research', 'topic' ) ): ?> 
 				<div class="story-series">
-					<a href="<?php echo get_term_link( 'weekly_research', 'topic' ); ?>" name="View all Weekly Research Posts">This Week's Publications</a>
+					<a href="<?php echo get_term_link( 'weekly_research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
 				</div>
 			<?php endif ?>
 			<?php if ( has_term( 'deans_letter', 'type' ) ): ?> 
