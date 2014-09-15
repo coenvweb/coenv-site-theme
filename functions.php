@@ -1111,7 +1111,7 @@ function taxonomy_topic() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
+		'show_tagcloud'              => true
 	);
 	register_taxonomy( 'topic', array( 'post', 'page' ), $args );
 
@@ -1199,9 +1199,9 @@ function default_metabox_loc(){
 	remove_meta_box('unitdiv', 'post', 'side');
 	add_meta_box( 'topicdiv', 'Topic', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'topic' ));
 	add_meta_box( 'story_typediv', 'Story Type', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'story_type' ));
-	//add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'location' ));
-	//add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'audience' ));
-	//add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'low', array( 'taxonomy' => 'unit' ));
+	add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'location' ));
+	add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'audience' ));
+	add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'unit' ));
 
 }
 
