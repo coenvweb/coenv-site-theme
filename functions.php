@@ -932,12 +932,13 @@ function jk_img_caption_shortcode_filter($val, $attr, $content = null)
 		$photo_source = get_post_meta( $attach_id, '_credit_text', true );
 		$photo_source_url = get_post_meta( $attach_id, '_credit_link', true );
 	
-		if ( $photo_source )
+		if ( $photo_source ) {
 		if (!empty($photo_source_url)) {
 			$photo_source_div = "<div class=\"source\"><a href=\"$photo_source_url\" target=\"blank\">$photo_source</a></div>";
-		}
-		else 
+		} else 
 			$photo_source_div = "<div class=\"source\">$photo_source</div>";
+		} else
+			$photo_source_div= " ";
 		
 	
 
