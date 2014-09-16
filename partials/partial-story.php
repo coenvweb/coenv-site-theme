@@ -9,14 +9,14 @@
 				</a>
 			<?php endif ?>
 			
-			<?php if ( has_term( 'weekly_research', 'topic' ) ): ?> 
+			<?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
 				<div class="story-series">
-					<a href="<?php echo get_term_link( 'weekly_research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
+					<a href="<?php echo get_term_link( 'weekly-research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
 				</div>
 			<?php endif ?>
-			<?php if ( has_term( 'deans_letter', 'type' ) ): ?> 
+			<?php if ( has_term( 'deans-letter', 'type' ) ): ?> 
 				<div class="story-series">
-					<a href="<?php echo get_term_link( 'deans_letter', 'type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
+					<a href="<?php echo get_term_link( 'deans-letter', 'type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
 				</div>
 			<?php endif ?>
 
