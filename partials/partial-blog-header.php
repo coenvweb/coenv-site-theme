@@ -7,7 +7,7 @@
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
 	</form>
-	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url'); ?>/news">
+	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url'); ?>">
 		<?php
 			$queried_object = get_queried_object();  
 			$archive_term_id = $queried_object->term_id;
