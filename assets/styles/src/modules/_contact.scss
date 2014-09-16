@@ -6,6 +6,10 @@
 	@include rem('margin-bottom', 1.6);
 	overflow: hidden;
 	
+	@media print {
+		page-break-inside: avoid;
+	}
+	
 	@include min-width ( $iPadLandscape ) {
 		display: inline-block;
 		width: 49%;

@@ -21,6 +21,9 @@
 		padding-bottom: percentage( 2/8 );
 		width: percentage( 2/8 );
 	}
+	@media print {
+		display: none;
+	}
 }
 
 .Faculty-header-inner {
@@ -115,6 +118,13 @@
 		padding-bottom: percentage( 4/8 );
 		width: percentage( 4/8 );
 	}
+	
+	@media print {
+		float: right;
+		width: percentage( 2/8 );
+		padding-bottom: 0;
+	}
+	
 }
 
 .Faculty-member-image-inner {
@@ -144,10 +154,20 @@
 		margin: 0;
 		padding-bottom: percentage( 4/8 );
 		width: percentage( 4/8 );
+		@media print {
+			padding-bottom: 0;
+			@include rem('margin-bottom', 18);
+		}
 	}
 
 	@include min-width ( $bp-2 ) {
 		padding-bottom: percentage( 2/8 );
+ 		@media print {
+			padding-bottom: 0;
+			float: left;
+			width: 60%;
+			@include rem('margin-bottom', 13);
+		}
 	}
 }
 
@@ -160,9 +180,9 @@
 		bottom: 4px;
 		left: 0;
 	}
-
-	@include min-width ( $bp-2 ) {
-
+	
+	@media print {
+		float: right;
 	}
 
 	// decorative block, left
@@ -203,12 +223,20 @@
 	display: table;
 	width: 100%;
 	height: 100%;
+	@media print {
+		height: auto;
+		width: 70%;
+	}
 }
 
 .Faculty-member-vcard-content-inner {
 	display: table-cell;
 	@include rem('padding', 1);
 	vertical-align: bottom;
+	
+	@media print {
+		@include rem('padding', .5, 0);
+	}
 }
 
 .Faculty-member-name {
@@ -267,6 +295,11 @@
 	a:hover {
 		color: #fff !important;
 	}
+	@media print{
+		text-transform: capitalize;
+		letter-spacing: 0;
+		@include rem('padding-bottom', 1);
+	}
 }
 
 .Faculty-member-themes {
@@ -290,6 +323,9 @@
 		float: left;
 		@include rem('margin', 0.25, 0.25, 0, 0);
 		//display: inline-block;
+		@media print {
+			margin: 0;
+		}
 	}
 
 	a {
@@ -299,6 +335,10 @@
 		font-style: italic;
 		font-weight: 400;
 		background: rgba(0,0,0,0.25);
+		@media print {
+			padding: 0;
+			vertical-align: top;
+		}
 	}
 }
 
@@ -355,49 +395,8 @@
 	}
 }
 
-.Faculty-member-tab-nav {
-	margin: 4px 0 0;
-	background: #b4b4b4;
-	color: $text-md;
-
-	ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	a {
-		display: block;
-	}
-
-	a:hover {
-		background: #999;
-		border-color: #999;
-		color: #fff !important;
-	}
-
-	.active-tab a,
-	.active-tab a:hover,
-	.active-tab a:visited,
-	.active-tab a:active {
-		color: #fff !important;
-		background: $accent;
-		border-color: $accent;
-	}
-}
-
-.Faculty-member-tabs {
-	list-style: none;
-
-	.Faculty-member-tab {
-		display: none;
-		@extend .article;
-
-		&.active-tab {
-			display: block;
-		}
-	}
-
+.Faculty-member-tab {
+	@extend .article;
 }
 
 .Faculty-member-pullquote {
@@ -417,5 +416,16 @@
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 	}
-
+}
+	
+.Faculty-member-publications {
+	
+	max-width: 600px;
+	
+	h3 {
+		@include rem('margin', 3, 0, 1, 0);
+		@include serif;
+		font-weight: 400;
+	}
+	
 }

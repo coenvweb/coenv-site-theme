@@ -12,16 +12,10 @@
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
-			<div class="post-info"
-				<time class="article__time" datetime="<?php get_the_date( '' ) ?>"><?php echo get_the_date('M j, Y') ?></time>
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
-						</div>
-				</div>-->
- 				<?php //endif ?> 
-            </div>
+			<div class="post-info">
+				<time class="article__time" datetime="<?php get_the_date( '' ); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+				<?php coenv_post_cats($post->ID); ?>
+			</div>
 		<?php endif ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
@@ -39,6 +33,7 @@
 	 		<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
 		<?php endif; ?>
 	</section>
+		
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
 

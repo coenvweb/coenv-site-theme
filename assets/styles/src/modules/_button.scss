@@ -21,6 +21,12 @@
 		color: #fff !important;
 	}
 
+	@media print {
+			a[href]:after {
+        content: " (" attr(href) ")";
+    	}
+		}
+
 } // .button
 
 .article {

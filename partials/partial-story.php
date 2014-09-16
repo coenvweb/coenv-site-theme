@@ -8,6 +8,17 @@
 					<?php the_post_thumbnail( 'medium' ) ?>
 				</a>
 			<?php endif ?>
+			
+			<?php if ( has_term( 'weekly_research', 'topic' ) ): ?> 
+				<div class="story-series">
+					<a href="<?php echo get_term_link( 'weekly_research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
+				</div>
+			<?php endif ?>
+			<?php if ( has_term( 'deans_letter', 'type' ) ): ?> 
+				<div class="story-series">
+					<a href="<?php echo get_term_link( 'deans_letter', 'type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
+				</div>
+			<?php endif ?>
 
 			<div class="content">
 				<h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
@@ -30,13 +41,7 @@
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
-				<?php //$categories = get_the_category_list(' ') ?>
-					<?php //if ( $categories ) : ?>
-						<!--<div class="article__categories">
-							 | <?php //echo $categories ?>
-						</div>
-				</div>-->
- 				<?php //endif ?> 
+				<?php coenv_post_cats($post->ID); ?>
             </div>
 		<?php endif ?>
 		</div>
@@ -49,7 +54,7 @@
 
 	</header>
 	<section class="article__content">
-		<div class="coenv-thumb"><a style="float: right;" href="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>"><?php the_post_thumbnail( 'small' ) ?></a></div>
+		<div class="coenv-thumb"><a style="float: right;" href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail( 'small' ) ?></a></div>
 		<?php if ( get_field('story_link_url') ): ?>
 			<?php $trimmed_content = breezer_addDivToImage(get_the_content()); ?>
 			<?php $trimmed_content = strip_tags($trimmed_content,'<a>'); ?>

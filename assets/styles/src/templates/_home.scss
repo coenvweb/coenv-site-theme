@@ -4,7 +4,12 @@
 		======================================================================== */
 
 body.home {
-
+	p {
+		@media print {
+		 font-size: 16px!important;
+		}
+	
+}
 
 } // body.home
 
@@ -27,8 +32,12 @@ body.home {
 		&:first-child {
 			display: block;
 		}
-
+		
 	} // .no-js &
+	
+	@media print {
+			margin-bottom: -250px;
+	}
 
 	.feature {
 		@extend .clearfix;
@@ -339,6 +348,28 @@ body.home {
         } //button
 
 	} // .content
+	
+	.story-series {
+	background-color: $accent;
+	@include rem('padding', .3, 1, .4, 1);
+		
+		a {
+			color: white;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-weight: 600;
+			@include font-size(11);
+			letter-spacing: .1em;
+			
+			&:hover {
+				color: rgba(255,255,255,0.45)!important;
+			}
+			
+			@include max-width( $iPadPortrait ) {
+				@include rem('margin-left', 1);
+			}
+		}
+	} // .story-series
 
 	.img {
 		width: 25%;
