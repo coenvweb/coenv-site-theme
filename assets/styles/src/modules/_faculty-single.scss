@@ -417,15 +417,3 @@
 		text-transform: uppercase;
 	}
 }
-	
-.Faculty-member-publications {
-	
-	max-width: 600px;
-	
-	h3 {
-		@include rem('margin', 3, 0, 1, 0);
-		@include serif;
-		font-weight: 400;
-	}
-	
-}

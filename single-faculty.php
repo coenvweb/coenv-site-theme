@@ -165,18 +165,6 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 								</div>
 
 							<?php endif ?>
-
-					<?php if ( !empty( $member['publications'] ) ) : ?>
-
-							<div class="Faculty-member-publications">
-								
-								<h3>Publications</h3>
-
-								<?php echo $member['publications'] ?>
-
-							</div><!-- .entry-content -->
-
-					<?php endif ?>
 						
 					</div><!-- .entry-content -->
 					</article>
