@@ -22,7 +22,8 @@
 
 			<div class="content">
 				<h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
-				<?php the_excerpt() ?>
+				<?php the_advanced_excerpt('length=60&no_shortcode=1&finish_sentence=1&ellipsis=%26nbsp;') ?>
+	            
 	            <a href="<?php the_permalink() ?>" class="button">Read more »</a>
 			</div>
 
