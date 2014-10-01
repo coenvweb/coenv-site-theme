@@ -16,7 +16,7 @@
 			<?php endif ?>
 			<?php if ( has_term( 'deans-letter', 'type' ) ): ?> 
 				<div class="story-series">
-					<a href="<?php echo get_term_link( 'deans-letter', 'type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
+					<a href="<?php echo get_term_link( 'deans-letter', 'story_type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
 				</div>
 			<?php endif ?>
 
