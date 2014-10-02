@@ -11,7 +11,16 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="title" content="<?php bloginfo('name'); ?>">
-        <meta name="description" content="<?php echo get_option('meta_description'); ?>">
+        <meta name="description" content="<?php
+		wp_reset_query();   
+			if (have_posts()) : while(have_posts()) the_post();
+				if (is_singular()&&is_front_page()==false ) {
+					$advancedExcerpt = strip_tags(get_the_excerpt());
+				} else {
+					$advancedExcerpt = get_option('meta_description');
+				}
+			endif;
+		echo $advancedExcerpt ?>">
 
         <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon.ico">  
 
@@ -34,6 +43,34 @@
         <!--<![endif]-->
 
         <?php wp_head() ?>
+		
+<?php
+		$post = get_queried_object();
+	if ( has_post_thumbnail( $post->ID ) ) {
+		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+		$post_title = get_the_title().' | College of the Environment';
+		$post_description = $advancedExcerpt;
+		$post_link = get_permalink();
+		$post_image = $thumb_src[0];
+	} elseif (is_post_type_archive( 'faculty' )) {
+		$post_title = 'Faculty | College of the Environment';
+		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
+		$post_link = 'http://coenv.washington.edu/faculty/';
+		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+	} else {
+		$post_title = get_the_title().' | College of the Environment';
+		$post_description = $advancedExcerpt;
+		$post_link = get_the_permalink();
+		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+	}
+	
+	?>
+	<meta property="og:title" content="<?php echo $post_title ?>" />
+	<meta property="og:description" content="<?php echo $post_description ?>" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="<?php echo $post_link ?>" />
+	<meta property="og:image" content="<?php echo $post_image ?>" />
+	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
         
         <!--[if lt IE 9]>
             <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js"></script>
