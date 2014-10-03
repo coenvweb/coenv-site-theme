@@ -14,7 +14,9 @@
         <meta name="description" content="<?php
 		wp_reset_query();   
 			if (have_posts()) : while(have_posts()) the_post();
-				if (is_singular()&&is_front_page()==false ) {
+				if (is_singular('faculty')) {
+					$advancedExcerpt = get_field('biography');
+				} elseif (is_singular()&&is_front_page()==false ) {
 					$advancedExcerpt = strip_tags(get_the_excerpt());
 				} else {
 					$advancedExcerpt = get_option('meta_description');
