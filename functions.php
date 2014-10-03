@@ -80,41 +80,6 @@ function coenv_language_attributes( $output ) {
 }
 
 /**
- * Add meta tags to head
- * May 16, 2014 - easthamj - Added a quick fix for Facebook sharing/Open graph meta tags. This is worth revisiting at some point. 
- */
-add_action( 'wp_head', 'coenv_meta_tags' );
-function coenv_meta_tags() {
-	$post = get_queried_object();
-	if ( has_post_thumbnail( $post->ID ) ) {
-		$thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-		$post_title = get_the_title().' | College of the Environment';
-		$post_description = get_option('meta_description');
-		$post_link = get_permalink();
-		$post_image = $thumb_src[0];
-	} elseif (is_post_type_archive( 'faculty' )) {
-		$post_title = 'Faculty | College of the Environment';
-		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
-		$post_link = 'http://coenv.washington.edu/faculty/';
-		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
-	} else {
-		$post_title = get_the_title().' | College of the Environment';
-		$post_description = get_option('meta_description');
-		$post_link = get_the_permalink();
-		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
-	}
-	
-	?>
-	<meta property="og:title" content="<?php echo $post_title ?>" />
-	<meta property="og:description" content="<?php echo $post_description ?>" />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="<?php echo $post_link ?>" />
-	<meta property="og:image" content="<?php echo $post_image ?>" />
-	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
-	<?php
-}
-
-/**
  * Admin settings
  */
 add_action( 'admin_init', 'coenv_admin_settings' );
