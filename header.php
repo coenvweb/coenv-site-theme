@@ -16,6 +16,8 @@
 			if (have_posts()) : while(have_posts()) the_post();
 				if (is_singular('faculty')) {
 					$advancedExcerpt = get_field('biography');
+				} elseif (is_post_type_archive( 'faculty' )) {
+					$advancedExcerpt = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
 				} elseif (is_singular()&&is_front_page()==false ) {
 					$advancedExcerpt = strip_tags(get_the_excerpt());
 				} else {
@@ -54,13 +56,12 @@
 		$post_description = $advancedExcerpt;
 		$post_link = get_permalink();
 		$post_image = $thumb_src[0];
-	} elseif (is_post_type_archive( 'faculty' )) {
-		$post_title = 'Faculty | College of the Environment';
-		$post_description = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
-		$post_link = 'http://coenv.washington.edu/faculty/';
-		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
 	} else {
-		$post_title = get_the_title().' | College of the Environment';
+		if (is_post_type_archive( 'faculty' )) {
+			$post_title = 'Faculty | College of the Environment';
+		} else {
+			$post_title = get_the_title().' | College of the Environment';
+		}
 		$post_description = $advancedExcerpt;
 		$post_link = get_the_permalink();
 		$post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
