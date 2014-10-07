@@ -72,7 +72,7 @@
 			{
 				name: 'Facebook',
 				className: 'facebook',
-				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '&p[images][0]=&p[title]=' + this.articleTitle + ' from UW College of the Environment" target="_blank'
+				url: 'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + this.articleShortLink + '" target="_blank'
 			},
 			{
 				name: 'Email',
