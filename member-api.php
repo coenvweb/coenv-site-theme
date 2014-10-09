@@ -229,6 +229,7 @@ class CoEnvMemberAPI {
 			'public' => true,
 			'has_archive' => true,
 			'hierarchical' => false,
+			'menu_icon' => 'dashicons-id',
 			'capability_type' => 'page',
 			'exclude_from_search' => true,
 			'rewrite' => array(

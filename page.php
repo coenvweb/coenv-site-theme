@@ -23,7 +23,7 @@ $ancestor = array(
 
 				<nav id="secondary-nav" class="side-col">
 
-						<ul id="menu-secondary" class="menu">
+			<ul id="menu-secondary" class="menu">
 	              <?php wp_list_pages( array(
 	              		'child_of' => $ancestor['id'],
 	                  'depth' => 3,
