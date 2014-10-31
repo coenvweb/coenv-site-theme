@@ -53,7 +53,7 @@ $careers = new WP_Query( $query );
 
 				<?php while ( $careers->have_posts() ) : $careers->the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'story' ); ?>
+						<?php get_template_part( 'partials/partial', 'career' ); ?>
 
 						<?php $count++ ?>
 
