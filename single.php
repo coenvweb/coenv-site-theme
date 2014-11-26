@@ -57,15 +57,17 @@ $banner = coenv_banner();
 						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
-
-				<?php endif ?>
-				<footer class="related">
+                
+                <footer class="related">
 					<?php get_template_part( 'partials/partial', 'related-news' ) ?>
 				</footer>
 				<footer class="pagination">
 					<?php coenv_paginate() ?>
 				</footer>
 
+
+				<?php endif ?>
+                
 			</main><!-- .main-col -->
 
 			<div class="side-col">
