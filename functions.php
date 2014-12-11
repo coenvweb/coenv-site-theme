@@ -1100,6 +1100,7 @@ function coenv_related_news ($id) {
 
 		'post_type' => 'post',
 		'posts_per_page' => '2',
+		'meta_key' => '_thumbnail_id',
 		'post__not_in' => array($id),
 		'tax_query' => array(
 		'relation' => 'AND',
