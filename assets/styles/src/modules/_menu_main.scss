@@ -290,23 +290,22 @@
 	// all <li>s
 	li {
 		@include font-size(14);
+        
+        .current_page_item > a {
+			background: $accent;
+			color: #fff;
+        }
     }
 
-    &.page-item-18773 { // faculty link
+    .page-item-18773 { // faculty link
         
         &.menu-item-active {
 
             .children {
-                display: none;
                 border-top: 0!important;
             }
         }
         
-        span > a {
-            &:after {
-				display: none !important;
-            }
-        }
     }
 
 
@@ -451,7 +450,7 @@
             
             &:first-child {
                 span > a:before {
-                    left: 80%; // arrow for about
+                    left: 80%!important; // arrow for about
                 }
             }
 
