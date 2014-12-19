@@ -194,12 +194,12 @@
 		display: table-cell;
 		margin: 0;
 		width: 100%;
-        @include rem('margin', 0, -8, 0, 0);
+        @include rem('margin', 0, -12, 0, 0);
 
 		@include min-width ( 580 ) {
 			float: left;
 			display: block;
-			width: 504px;
+			width: 502px;
             max-height: 99px;
 		}
 
@@ -219,18 +219,29 @@
 			position: relative;
 			z-index: 100;
 			display: block;
-			padding-top: 19.9%;
-			width: 100%;
+			padding-top: 19.7%;
+			width: 93%;
 			background: {
                 image: url(../../../assets/img/boundless_logo.png);
 				repeat: no-repeat;
+                color: $accent;
 			}
+            @include max-width ( 1000 ) {
+                background-color: #fff!important;
+                width: 100%!important;
+            }  
 
 			.svg & {
                 background: {
-                    image: url(../../../assets/img/web_logo_transparent_r3.svg);
+                    image: url(../../../assets/img/boundless_logo.svg);
                     repeat: no-repeat;
                 }
+                @include min-width ( $iPadLandscape ) {
+					   background: {
+                           image: url(../../../assets/img/boundless_logo_left.svg);
+                           repeat: no-repeat;
+                       }
+				}
 			}
 
 			@media print {

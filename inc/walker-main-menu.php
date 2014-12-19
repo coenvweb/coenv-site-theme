@@ -252,19 +252,8 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		// Prepare CSS classes
 		$css_class = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
 
-		// Split top-level items into columns
-		if ( $depth == 0 ) {
-
-			if ( $this->top_level_counter % 3 == 0 ) {
-				$output .= "\n" . '<li class="column">' . "\n";
-				$output .= '<ul>' . "\n";
-			}
-
-			$this->top_level_counter++;
-		}
-
 		$output .= '<li class="' . $css_class . '">';
-
+        
 		$alt_title = '';
 
 		// Wrap top-level items in <span>
@@ -279,6 +268,12 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		}
 
 		// Build link
+        // If we're on the 'about' item
+		//if ( $page->post_name == 'about' ) {
+        //    $about_link = '<div class="fifteen-degrees"></div><div class="about-text">';
+
+		//}
+        
 		$output .= '<a' . $alt_title . ' href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
 
 		// Wrap top-level item in <span>
@@ -299,10 +294,6 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 			return;
 		}
 
-		if ( ( $this->top_level_counter % 3 == 0 ) || ( $this->top_level_counter == count( $this->top_level_items ) ) ) {
-			$output .= '</ul>' . "\n";
-			$output .= '</li><!-- .column -->' . "\n";
-		}
 	}
 
 }

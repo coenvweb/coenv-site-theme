@@ -290,20 +290,24 @@
 	// all <li>s
 	li {
 		@include font-size(14);
-        
-        .page-item-122 { // about link
-            width: 130px!important;
-            span > a {
-                text-align: right;
-            }
+    }
+
+    &.page-item-18773 { // faculty link
+        .submenu-container {
+            display: none;
+        }
+        .children {
+            display: none;
+            border-top: 0!important;
         }
         
-        &.page-item-18773 { // faculty link
-            .submenu-container {
-                display: none;
+        span > a {
+            &:after {
+				display: none !important;
             }
         }
-	}
+    }
+
 
 	// all <a>s
 	a {
@@ -333,34 +337,6 @@
 			width: auto; // tweak for more nav room
 		}
 
-		// columns
-		.column {
-			float: left;
-			width: 50%;
-
-			@include min-width ( $iPadLandscape ) {
-				display: inline;
-				width: auto;
-			}
-
-			li {
-
-				@include min-width ( $iPadLandscape ) {
-					border: none;
-				}
-
-				&:nth-child(0n+3) a {
-					border: none;
-				}
-
-			} // li
-
-			&:last-child li:last-child a:after {
-				display: none;
-			}
-
-		} // .column
-
 		// top level items
 		.page-depth-0 {
 			position: relative;
@@ -384,9 +360,34 @@
 				width: auto;
 				height: auto;
 			}
+            
+            &.page-item-122 { // about link
+                width: 200px!important;
+                span > a {
+                    text-align: right;
+                    padding-left: 0!important;
+                    background: {
+                        image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                        repeat: no-repeat;
+                        position: 125%;
+                        size: 235%!important;
+                    }
+
+                    &:hover {
+                        background: {
+                            image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                            repeat: no-repeat;
+                            position: 125%;
+                            size: 235%;
+                            color: $accent-lt;
+                        }
+                    }
+                }
+
+            }
 
 			&:hover span > a {
-				background: $accent-dk;
+				background: $accent-lt;
 				color: #fff;
 				border-color: transparent;
 			}
@@ -512,7 +513,26 @@
 	} // &.menu-item-active .children
 
 	&.menu-item-active > span > a {
-		background: $accent-lt !important;
+		background-color: $accent-lt!important;
+	}
+    
+    &.menu-item-active.page-item-122 > span > a {
+		background: {
+            image: url(../../../assets/img/boundless_logo_right.svg)!important;
+            repeat: no-repeat!important;
+            position: 125%!important;
+            size: 235%!important;
+        }
+
+        &:hover {
+            background: {
+                image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                repeat: no-repeat;
+                position: 125%;
+                size: 235%;
+                color: $accent-lt;
+            }
+        }
 	}
 
 	// assistive triangle elements to enable moving cursor at an
@@ -534,7 +554,7 @@
 		position: absolute;
 		z-index: 999;
 		right: 0;
-		min-width: 350px;
+		min-width: 225px;
 		background: #222;
 		background: rgba(0,0,0,0.9);
         border-top: 14px solid $accent-lt;
@@ -546,14 +566,7 @@
 		@include min-width ( $iPadLandscape ) {
 			right: 0;
 		}
-
-		// sub menu item columns
-		.col-left,
-		.col-right {
-			float: left;
-			width: 50%;
-		}
-
+        
 		// top level page titles
 		.pagenav {
             display: none;
@@ -570,13 +583,7 @@
 
 		.children {
 			position: relative;
-			width: 50%;
 			background: none;
-		}
-
-		.children li {
-			width: 50%;
-			//width: 50%;
 		}
 
 		li.menu-item-subheader {

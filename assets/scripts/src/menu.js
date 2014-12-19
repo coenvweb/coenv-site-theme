@@ -102,18 +102,6 @@ jQuery(function ($) {
 
 		var $submenuContainer = $('<div class="submenu-container"></div>');
 
-		// divide each submenu's items into two columns
-		$submenu.each( function () {
-
-			var $items = $(this).find('> li'),
-					itemsLength = $items.length,
-					colBreak = Math.round( itemsLength / 2 );
-
-			// wrap items in left and right columns
-			$items.slice( 0, colBreak ).wrapAll('<li class="col-left"><ul></ul></li>');
-			$items.slice( colBreak, itemsLength ).wrapAll('<li class="col-right"><ul></ul></li>');
-		} );
-
 		// for each top level nav item
 		$navItem.each( function () {
 
