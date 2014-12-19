@@ -266,13 +266,6 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 
 			$output .= '<span>';
 		}
-
-		// Build link
-        // If we're on the 'about' item
-		//if ( $page->post_name == 'about' ) {
-        //    $about_link = '<div class="fifteen-degrees"></div><div class="about-text">';
-
-		//}
         
 		$output .= '<a' . $alt_title . ' href="' . get_permalink($page->ID) . '">' . $link_before . apply_filters( 'the_title', $page->post_title, $page->ID ) . $link_after . '</a>';
 

@@ -293,12 +293,13 @@
     }
 
     &.page-item-18773 { // faculty link
-        .submenu-container {
-            display: none;
-        }
-        .children {
-            display: none;
-            border-top: 0!important;
+        
+        &.menu-item-active {
+
+            .children {
+                display: none;
+                border-top: 0!important;
+            }
         }
         
         span > a {
@@ -370,7 +371,7 @@
                         image: url(../../../assets/img/boundless_logo_right.svg)!important;
                         repeat: no-repeat;
                         position: 125%;
-                        size: 235%!important;
+                        size: 240%!important;
                     }
 
                     &:hover {
@@ -378,7 +379,7 @@
                             image: url(../../../assets/img/boundless_logo_right.svg)!important;
                             repeat: no-repeat;
                             position: 125%;
-                            size: 235%;
+                            size: 240%;
                             color: $accent-lt;
                         }
                     }
@@ -445,14 +446,34 @@
 			}
 
 			&:last-child a:after {
-			//	display: none;
+				display: none;
 			}
+            
+            &:first-child {
+                span > a:before {
+                    left: 80%; // arrow for about
+                }
+            }
 
 			&.current_page_ancestor span > a,
 			&.current_page_item span > a,
 			&.current_page_parent span > a,
 			&.current-menu-item span > a {
-				background: $accent-dk;
+                
+                &.page-item-122 {
+                    background: {
+                        image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                        repeat: no-repeat!important;
+                        position: 125%!important;
+                        size: 240%!important;
+                        color: $accent-lt;
+                    }
+                    &:before {
+                            left: 80%!important;
+                    }
+                }
+
+                background-color: $accent-lt;
 				color: #fff;
 
 				&:after {
@@ -464,19 +485,19 @@
 					// arrow
 					&:before {
 						content: "";
-						display: block;
-						position: absolute;
-						bottom: -14px;
-						right: 0;
-						left: 50%;
-						margin-left: -14px;
-						width: 0;
-						height: 0;
-						border-left: 14px solid transparent;
-						border-right: 14px solid transparent;
-						border-top: 14px solid $accent-dk;
-					}
-
+                        display: block;
+                        left: 50%;
+                        position: absolute;
+                        bottom: -14px;
+                        right: 0;
+                        margin-left: -14px;
+                        width: 0;
+                        height: 0;
+                        border-left: 14px solid transparent;
+                        border-right: 14px solid transparent;
+                        border-top: 14px solid $accent-lt;
+                    }
+    
 				} // min-width: $iPadLandscape
 
 			} // &.current-page-ancestor a
@@ -521,7 +542,7 @@
             image: url(../../../assets/img/boundless_logo_right.svg)!important;
             repeat: no-repeat!important;
             position: 125%!important;
-            size: 235%!important;
+            size: 240%!important;
         }
 
         &:hover {
@@ -529,7 +550,7 @@
                 image: url(../../../assets/img/boundless_logo_right.svg)!important;
                 repeat: no-repeat;
                 position: 125%;
-                size: 235%;
+                size: 240%;
                 color: $accent-lt;
             }
         }
