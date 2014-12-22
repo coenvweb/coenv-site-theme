@@ -226,7 +226,7 @@
 				repeat: no-repeat;
                 color: $accent;
 			}
-            @include max-width ( 1000 ) {
+            @include max-width ( 999 ) {
                 background-color: #fff!important;
                 width: 100%!important;
             }  
