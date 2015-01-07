@@ -194,7 +194,10 @@
 		display: table-cell;
 		margin: 0;
 		width: 100%;
-        @include rem('margin', 0, -12, 0, 0);
+        
+        @include min-width ( $iPadPortrait ) {
+            @include rem('margin', 0, -12, 0, 0);
+		}
 
 		@include min-width ( 580 ) {
 			float: left;
