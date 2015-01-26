@@ -246,8 +246,12 @@
                        }
 				}
                 
+                @include max-width ( $iPadLandscape ) {
+				    margin-left: -1px; //fine tuning for ipad
+				}
+                
                 @include max-width ( $iPhoneLandscape ) {
-				    margin-left: -2px;
+				    margin-left: -2px; //fine tuning for iphone
 				}
 			}
 
