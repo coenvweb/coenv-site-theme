@@ -244,7 +244,10 @@
                            image: url(../../../assets/img/boundless_logo_left.svg);
                            repeat: no-repeat;
                        }
-                    margin-left: -.3%;
+				}
+                
+                @include max-width ( $iPadLandscape ) {
+				    margin-left: -0.4%;
 				}
 			}
 
