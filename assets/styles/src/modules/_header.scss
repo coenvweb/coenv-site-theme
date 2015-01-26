@@ -238,6 +238,7 @@
                 background: {
                     image: url(../../../assets/img/boundless_logo.svg);
                     repeat: no-repeat;
+                    size: cover;
                 }
                 @include min-width ( $iPadLandscape ) {
 					   background: {
