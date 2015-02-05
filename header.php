@@ -35,9 +35,16 @@
         <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-touch-icon.png">
 
         <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
-        <script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
 		<script src="//www.washington.edu/static/alert.js" type="text/javascript"></script>
-        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script>
+          (function(d) {
+            var config = {
+              kitId: 'dyq8fxo',
+              scriptTimeout: 3000
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+          })(document);
+        </script>
 
         <!--[if lt IE 8]>
             <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/lt-ie8.css?20130930' type='text/css' media='all' />
