@@ -27,9 +27,10 @@ $fonts-path: '../../fonts/';
 		======================================================================== */
 
 $white: #fff;
-$accent: #3B2559;
+$accent: #4b2e83;
 $accent-purple: $accent;
-$accent-lt: lighten( $accent, 15% );
+$accent-lt: lighten( $accent, 10% );
+$accent-dk: darken( $accent, 10% );
 $accent-blue: #006ca2;
 $accent-red: #b82828;
 $accent-hover: $accent-lt;

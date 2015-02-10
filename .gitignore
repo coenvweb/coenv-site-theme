@@ -18,6 +18,5 @@
 # development
 *config.rb
 *node_modules
-*components
 rsync-config.json
 .tmp
