@@ -7,7 +7,13 @@
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info">
-				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
+                Posted: 
+				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>
+                | Deadline: 
+                <?php $timestamp = strtotime(do_shortcode('[postexpirator type="full"]')) ?>
+                <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timestamp) ?></time>
+                
+                
 				<?php coenv_post_cats($post->ID); ?>
             </div>
 		</div>
@@ -27,7 +33,6 @@
 			<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
 		<?php else: ?>
 			<?php echo '<p>' . get_the_content() . '</p>'; ?>
-			<p class="expiration">Deadline: <?php echo do_shortcode('[postexpirator]') ?></p>
 			<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
 		<?php endif; ?>
 

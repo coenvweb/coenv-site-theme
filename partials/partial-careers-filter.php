@@ -7,152 +7,27 @@
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
 	</form>
-	<div class="input-item select-degree-level" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('degree_level')
-			));
+	<div class="input-item select-category" data-url="<?php echo get_bloginfo('url'); ?>">
+        
+        <?php 
+        $customPostTaxonomies = get_object_taxonomies('careers');
 
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the degree level</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-location" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('location_careers')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the location</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-time-commitments" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('time_commitments')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the time commitment</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-organization" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('organization')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the organziation type</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-work-type" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('work_type')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the work type</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-educational-funding" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('educational_funding')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the funding type</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
-	</div>
-	<div class="input-item select-units" data-url="<?php echo get_bloginfo('url'); ?>">
-		<?php
-			$queried_object = get_queried_object();  
-			$archive_term_id = $queried_object->term_id;
-			$cats = get_categories(array(
-				'type' => 'careers',
-				'taxonomy' => array('units')
-			));
-				$output = null;
-				$output .= '<select name="category-dropdown">';
-				$output .= '<option value="">Choose the degree</option>';
-				if ( !empty( $cats ) ) {	
-				foreach ( $cats as $cat ) {
-					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
-				}
-				}	
-				$output .= '</select>';
-				echo $output;
-		?>
+        if(count($customPostTaxonomies) > 0) {
+            foreach($customPostTaxonomies as $tax) {
+                $args = array(
+                    'show_option_all'    => 'All Categories',
+                    'orderby' => 'name',
+                    'show_count' => 0,
+                    'pad_counts' => 0,
+                    'child_of' => 1,
+                    'hierarchical' => 1,
+                    'taxonomy' => 'category',
+                    'title_li' => ''
+                );
+                wp_list_categories( $args );
+             }
+        } ?>
+        
 	</div>
 	<div class="input-item select-month">
 			<select name="archive-dropdown">
