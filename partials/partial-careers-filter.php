@@ -2,7 +2,7 @@
 
 	<form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url( '/' ); ?>">
 	  <div class="field-wrap">
-	  	<input type="hidden" name="post_type" value="post" />
+	  	<input type="hidden" name="post_type" value="careers" />
 	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search careers and funding" />
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
@@ -14,6 +14,7 @@
 
         if(count($customPostTaxonomies) > 0) {
             foreach($customPostTaxonomies as $tax) {
+                echo $tax;
                 $args = array(
                     'show_option_all'    => 'All Categories',
                     'orderby' => 'name',
@@ -21,7 +22,7 @@
                     'pad_counts' => 0,
                     'child_of' => 1,
                     'hierarchical' => 1,
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'career_category',
                     'title_li' => ''
                 );
                 wp_list_categories( $args );
