@@ -22,7 +22,7 @@
                     'pad_counts' => 0,
                     'child_of' => 1,
                     'hierarchical' => 1,
-                    'taxonomy' => 'career_category',
+                    'taxonomy' => $tax,
                     'title_li' => ''
                 );
                 wp_list_categories( $args );
@@ -35,6 +35,7 @@
 				<option value="/careers/">Choose a month</option>
 				<?php wp_get_archives(array(
 					'type' => 'monthly',
+                    'post_type' => 'careers',
 					'format' => 'option'
 				)) ?>
 			</select>
