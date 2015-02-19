@@ -21,7 +21,7 @@
                     'show_count' => 0,
                     'pad_counts' => 0,
                     'child_of' => 1,
-                    'hierarchical' => 1,
+                    'hierarchical' => 0,
                     'taxonomy' => $tax,
                     'title_li' => ''
                 );
