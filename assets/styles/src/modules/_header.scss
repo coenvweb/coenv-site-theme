@@ -184,7 +184,7 @@
 	@extend .shadow;
 	@extend .hide-on-banner-reveal;
 
-	@include min-width ( $iPadPortrait ) {
+	@include min-width ( $iPadLandscape ) {
 		display: block;
 		height: 99px;
 	}
@@ -193,18 +193,22 @@
 		position: relative;
 		display: table-cell;
 		margin: 0;
-		width: 85%;
+		width: 100%;
+        
+        @include min-width ( $iPadPortrait ) {
+            @include rem('margin', 0, -12, 0, 0);
+		}
 
 		@include min-width ( 580 ) {
 			float: left;
 			display: block;
-			width: 446px;
+			width: 502px;
+            max-height: 99px;
 		}
 
 		// take care of ~1px white space to the right of the logo
 		&:before {
 			display: block;
-			content: "";
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -218,21 +222,44 @@
 			position: relative;
 			z-index: 100;
 			display: block;
-			padding-top: 22.4%;
-			width: 100%;
+			padding-top: 19.7%;
+			width: 93%;
 			background: {
-				image: url(../../../assets/img/logo.png);
+                image: url(../../../assets/img/boundless_logo.png);
 				repeat: no-repeat;
+                color: $accent;
 			}
+            @include max-width ( 999 ) {
+                background-color: #fff!important;
+                width: 100%!important;
+            }  
 
 			.svg & {
-				background-image: url(../../../assets/img/logo.svg);
+                background: {
+                    image: url(../../../assets/img/boundless_logo.svg);
+                    repeat: no-repeat;
+                    size: cover;
+                }
+                @include min-width ( $iPadLandscape ) {
+					   background: {
+                           image: url(../../../assets/img/boundless_logo_left.svg);
+                           repeat: no-repeat;
+                       }
+				}
+                
+                @include max-width ( $iPadLandscape ) {
+				    margin-left: -1px; //fine tuning for ipad
+				}
+                
+                @include max-width ( $iPhoneLandscape ) {
+				    margin-left: -2px; //fine tuning for iphone
+				}
 			}
 
 			@media print {
 				position: relative;
 				display: block;
-				padding-top: 22.4%;
+				padding-top: 19.9%;
 				width: 100%;
 				background: none !important;
 
@@ -276,7 +303,7 @@
 			display: none;
 		}
 
-		@include min-width ( $iPadPortrait ) {
+		@include min-width ( $iPadLandscape ) {
 			display: none;
 		}
 

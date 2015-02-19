@@ -17,7 +17,7 @@
 	background: #303030;
 	//transition: all 0.25s ease;
 
-	@include min-width ( $iPadPortrait ) {
+	@include min-width ( $iPadLandscape ) {
 		display: none !important;
 	}
 
@@ -50,7 +50,7 @@
 		text-decoration: none;
 
 		&:hover {
-			background: $accent;
+			background: $accent-dk;
 			color: $white !important;
 		}
 
@@ -65,7 +65,7 @@
 		font-weight: 600;
 
 		&:hover span > a {
-			background: $accent;
+			background: $accent-dk;
 			color: #fff;
 		}
 
@@ -207,12 +207,7 @@
 		} // .children
 
 	} // current or ancestor
-
-	&.current_page_item .pagenav a {
-		background: $accent;
-		color: #fff;
-	}
-
+    
 	.children {
 		display: none;
 
@@ -225,9 +220,6 @@
 			@include rem('padding-left', 1);
 
 		} // li.menu-item-subheader .children
-
-		.pagenav {
-		}
 
 		li {
 			@include font-size(13);
@@ -280,7 +272,7 @@
 	position: relative;
 	display: none;
 
-	@include min-width ( $iPadPortrait ) {
+	@include min-width ( $iPadLandscape ) {
 		display: block;
 	}
 
@@ -298,7 +290,24 @@
 	// all <li>s
 	li {
 		@include font-size(14);
-	}
+        
+        .current_page_item > a {
+			background: $accent;
+			color: #fff;
+        }
+    }
+
+    .page-item-18773 { // faculty link
+        
+        &.menu-item-active {
+
+            .children {
+                border-top: 0!important;
+            }
+        }
+        
+    }
+
 
 	// all <a>s
 	a {
@@ -307,7 +316,7 @@
 		text-decoration: none;
 
 		&:hover {
-			background: $accent;
+			background: $accent-dk;
 			color: #fff !important;
 		}
 
@@ -328,45 +337,21 @@
 			width: auto; // tweak for more nav room
 		}
 
-		// columns
-		.column {
-			float: left;
-			width: 50%;
-
-			@include min-width ( $iPadLandscape ) {
-				display: inline;
-				width: auto;
-			}
-
-			li {
-
-				@include min-width ( $iPadPortrait ) {
-					border: none;
-				}
-
-				&:nth-child(0n+3) a {
-					border: none;
-				}
-
-			} // li
-
-			&:last-child li:last-child a:after {
-				display: none;
-			}
-
-		} // .column
-
 		// top level items
 		.page-depth-0 {
 			position: relative;
 			@include rem('padding', 0, 0, 0, 0.5);
 			width: 100%;
 			height: 33px;
-			@include font-size(12);
+			@include font-size(11);
 			@include line-height(13);
 			text-transform: uppercase;
 			letter-spacing: 0.1em;
 			font-weight: 600;
+            
+            @include min-width ( 1080 ) {
+                @include font-size(13);
+            }
 
 			@include min-width ( $iPadLandscape ) {
 				float: none;
@@ -375,12 +360,38 @@
 				width: auto;
 				height: auto;
 			}
+            
+            &.page-item-122 { // about link
+                width: 200px!important;
+                span > a {
+                    text-align: right;
+                    padding-left: 0!important;
+                    background: {
+                        image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                        repeat: no-repeat;
+                        position: 121%;
+                        size: 243%!important;
+                    }
+
+                    &:hover {
+                        background: {
+                            image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                            repeat: no-repeat;
+                            position: 121%;
+                            size: 243%;
+                            color: $accent-lt;
+                        }
+                    }
+                }
+
+            }
 
 			&:hover span > a {
-				background: $accent;
+				background: $accent-lt;
 				color: #fff;
 				border-color: transparent;
 			}
+            
 
 			// injected with Main_Nav_Walker class
 			// helps with item borders and vertical centering
@@ -400,14 +411,17 @@
 			span > a {
 				position: relative;
 				display: table-cell;
-				@include rem('padding', 0, 0.5);
 				vertical-align: middle;
 				height: 33px;
 				color: $text;
-				border-bottom: 1px solid $border;
+                @include rem('padding', 0, 0.5);
+                border-bottom: 1px solid $border;
+                
+                @include min-width ( 1020 ) {
+                	@include rem('padding', 0, 0.8);
+                } 
 
 				@include min-width ( $iPadLandscape ) {
-					@include rem('padding', 0, 0.8);
 					border-bottom: none;
 
 					&:after {
@@ -431,14 +445,34 @@
 			}
 
 			&:last-child a:after {
-			//	display: none;
+				display: none;
 			}
+            
+            &:first-child {
+                span > a:before {
+                    left: 80%!important; // arrow for about
+                }
+            }
 
 			&.current_page_ancestor span > a,
 			&.current_page_item span > a,
 			&.current_page_parent span > a,
 			&.current-menu-item span > a {
-				background: $accent;
+                
+                &.page-item-122 {
+                    background: {
+                        image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                        repeat: no-repeat!important;
+                        position: 121%!important;
+                        size: 243%!important;
+                        color: $accent-lt;
+                    }
+                    &:before {
+                            left: 80%!important;
+                    }
+                }
+
+                background-color: $accent-lt;
 				color: #fff;
 
 				&:after {
@@ -450,19 +484,19 @@
 					// arrow
 					&:before {
 						content: "";
-						display: block;
-						position: absolute;
-						bottom: -14px;
-						right: 0;
-						left: 50%;
-						margin-left: -14px;
-						width: 0;
-						height: 0;
-						border-left: 14px solid transparent;
-						border-right: 14px solid transparent;
-						border-top: 14px solid $accent;
-					}
-
+                        display: block;
+                        left: 50%;
+                        position: absolute;
+                        bottom: -14px;
+                        right: 0;
+                        margin-left: -14px;
+                        width: 0;
+                        height: 0;
+                        border-left: 14px solid transparent;
+                        border-right: 14px solid transparent;
+                        border-top: 14px solid $accent-lt;
+                    }
+    
 				} // min-width: $iPadLandscape
 
 			} // &.current-page-ancestor a
@@ -486,6 +520,7 @@
 
 	.submenu-container {
 		position: relative;
+        
 	}
 
 	&.menu-item-active .children {
@@ -498,7 +533,26 @@
 	} // &.menu-item-active .children
 
 	&.menu-item-active > span > a {
-		background: $accent-lt !important;
+		background-color: $accent-lt!important;
+	}
+    
+    &.menu-item-active.page-item-122 > span > a {
+		background: {
+            image: url(../../../assets/img/boundless_logo_right.svg)!important;
+            repeat: no-repeat!important;
+            position: 121%!important;
+            size: 243%!important;
+        }
+
+        &:hover {
+            background: {
+                image: url(../../../assets/img/boundless_logo_right.svg)!important;
+                repeat: no-repeat;
+                position: 121%;
+                size: 243%;
+                color: $accent-lt;
+            }
+        }
 	}
 
 	// assistive triangle elements to enable moving cursor at an
@@ -520,37 +574,22 @@
 		position: absolute;
 		z-index: 999;
 		right: 0;
-		min-width: 350px;
+		min-width: 225px;
 		background: #222;
 		background: rgba(0,0,0,0.9);
+        border-top: 14px solid $accent-lt;
+        
+        ul {
+            border-top: 0px;
+        }
 
 		@include min-width ( $iPadLandscape ) {
 			right: 0;
 		}
-
-		// sub menu item columns
-		.col-left,
-		.col-right {
-			float: left;
-			width: 50%;
-		}
-
+        
 		// top level page titles
 		.pagenav {
-			@extend .antialiased;
-
-			a {
-				@include rem('padding', 1);
-				@include serif;
-				@include font-size(24);
-				@include line-height(24);
-				font-weight: 400;
-				text-transform: none;
-				letter-spacing: 0;
-				background: $accent-lt;
-				color: #fff;
-			}
-
+            display: none;
 		} // .pagenav
 
 		li {
@@ -564,13 +603,7 @@
 
 		.children {
 			position: relative;
-			width: 50%;
 			background: none;
-		}
-
-		.children li {
-			width: 50%;
-			//width: 50%;
 		}
 
 		li.menu-item-subheader {
@@ -598,10 +631,6 @@
 			}
 
 		} // a
-
-		li.current_page_item > a {
-			background: $accent;
-		}
 
 	} // .children
 

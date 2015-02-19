@@ -247,13 +247,10 @@
 	font-weight: 400;
 	color: #fff;
 
-//	@include min-width ( 500 ) {
-//		@include font-size(24);
-//	}
-//
-	@include min-width ( $bp-2 ) {
+	@include min-width ( 830 ) {
 		@include font-size(30);
 	}
+	
 //
 //	@include min-width ( $bp-2 ) {
 //		@include font-size(30);
@@ -268,7 +265,7 @@
 	font-weight: 600;
 	color: #fff;
 
-	@include min-width ( $bp-2 ) {
+	@include min-width ( 830 ) {
 		@include font-size(18);
 	}
 }
@@ -283,7 +280,7 @@
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 
-	@include min-width ( $bp-2 ) {
+	@include min-width ( 830 ) {
 		@include font-size(14);
 	}
 
@@ -307,7 +304,7 @@
 	@include font-size(12);
 	color: #fff;
 
-	@include min-width ( $bp-2 ) {
+	@include min-width ( 830 ) {
 		@include font-size(14);
 	}
 
