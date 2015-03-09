@@ -7,6 +7,11 @@
 	  	@include min-width ( $iPhoneLandscape) {
 			@include rem('margin', 1);
 		}
+		ul {
+			margin-left: 0;
+			padding-left: 0;
+
+		}
 	
 	.related-heading {
 		display: block;
@@ -102,5 +107,73 @@
 		}
 		
 	} //.related-container
+
 	
+	
+} // .related-news
+
+
+// Inline related news
+.article__content .related-news {
+	float: left;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	border-bottom: 1px solid #ccc;
+
+	@include min-width ( $iPhoneLandscape) {
+			@include rem('margin-bottom', 1.5);
+		}
+
+	h2,
+	.related-news-more {
+		@include sans;
+		text-transform: uppercase;
+		@include font-size(11);
+
+		a {
+			text-decoration: none;
+		}
+	}
+	ul {
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	
+	.related-container {
+		margin-bottom: 0;
+		padding-bottom: 0;
+
+		&:first-child {
+			border-left: 1px solid #ccc;
+		}
+		&:last-child {
+			border-right: 1px solid #ccc;
+		}
+	}
+	.related-heading {
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: rem-calc(1);
+		padding-top: 0;
+		width: 100%;
+		float: left;
+
+		h2.title {
+		float: left;
+		margin-left: 0;
+		width: 70%;
+		}
+
+		.related-news-more {
+		float: right;
+		text-align: right;
+		width: 20%;
+		}
+
+	}
+	.related-article-title {
+		min-height: 90px;
+		overflow: hidden;
+	}
 } // .related-news
