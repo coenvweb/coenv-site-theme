@@ -231,6 +231,8 @@ function coenv_theme_setup() {
 		add_image_size( 'tiny', 129, 129, true );
 		add_image_size( 'small', 262, 262 );
 		add_image_size( 'banner', 1680 );
+		add_image_size( 'half', 375 );
+		add_image_size( 'one-third', 250 );
 	}
 
   // medium: 528x528
@@ -241,6 +243,28 @@ function coenv_theme_setup() {
   update_option( 'large_size_w', 794 );
   update_option( 'large_size_h', 794 );
 }
+
+if ( function_exists( 'add_image_size' ) ) {
+
+}
+add_filter('image_size_names_choose', 'my_image_sizes');
+function my_image_sizes($sizes) {
+$addsizes = array(
+"half" => __( "50% of column"),
+"one-third" => __( "33% of column")
+);
+$newsizes = array_merge($sizes, $addsizes);
+return $newsizes;
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * Register features

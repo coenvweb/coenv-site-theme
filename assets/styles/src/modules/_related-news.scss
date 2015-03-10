@@ -118,8 +118,9 @@
 	float: left;
 	margin-left: 0;
 	margin-right: 0;
-	margin-top: 0;
-	border-bottom: 1px solid #ccc;
+	margin-top: 1rem;
+	padding-top: 1rem;
+	border-top: 2px solid #ccc;
 	width: 100%;
 
 	@include min-width ( $iPhoneLandscape) {
@@ -142,34 +143,63 @@
 	}
 	
 	.related-container {
+		background-color: #363533;
 		margin-bottom: 0;
 		padding-bottom: 0;
 
-		&:first-child {
-			border-left: 1px solid #ccc;
+		&:hover {
+			background-color: $accent;
+			a {
+				color: $white!important;
+			}
 		}
-		&:last-child {
-			border-right: 1px solid #ccc;
+
+
+		a {
+			color: $white;
 		}
+
+		@include min-width ( 600 ) {
+			width: 50%;
+			float: left;
+			padding-bottom: 500em;
+			margin-bottom: -500em;
+			&:nth-child(odd) {
+				border-right: 1px solid #222;
+			}
+		}
+
+
+
 	}
 	.related-heading {
 		padding-left: 0;
 		padding-right: 0;
-		padding-bottom: rem-calc(1);
-		padding-top: 0;
+		padding-bottom: 1rem;
+		padding-top: .5rem;
 		width: 100%;
 		float: left;
 
 		h2.title {
 		float: left;
+		@include font-size(14);
+		font-weight: bold;
 		margin-left: 0;
+		padding-left: .25rem;
 		width: 70%;
 		}
 
 		.related-news-more {
 		float: right;
+		font-weight: bold;
+		margin-right: .25rem;
 		text-align: right;
 		width: 20%;
+
+			a:hover {
+				color: $accent;
+				text-decoration: underline;
+			}
 		}
 
 	}
