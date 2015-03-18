@@ -116,6 +116,7 @@
 // Inline related news
 .article__content .related-news {
 	float: left;
+	display: block;
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 1rem;
@@ -144,8 +145,11 @@
 	
 	.related-container {
 		background-color: #363533;
+		float: left;
+		display: block;
 		margin-bottom: 0;
 		padding-bottom: 0;
+		
 
 		&:hover {
 			background-color: $accent;
@@ -204,7 +208,6 @@
 
 	}
 	.related-article-title {
-		min-height: 90px;
-		overflow: hidden;
+		@include rem('padding', 1, 2);
 	}
 } // .related-news
