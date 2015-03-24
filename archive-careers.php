@@ -1,13 +1,8 @@
 <?php
 /**
- * The careers page
+ * page.php
  *
- * Lists careers
- */
-
-
-/**
- * The career archive page
+ * The main page template
  */
 get_header();
 
@@ -17,7 +12,7 @@ $ancestor = array(
 	'id' => $ancestor_id,
 	'permalink' => get_permalink( $ancestor_id ),
 	'title' => get_the_title( $ancestor_id )
-); 
+);
 
 $query_args = wp_parse_args( $_SERVER['QUERY_STRING'] );
 
@@ -34,24 +29,24 @@ $wp_query = new WP_Query( $query );
 
 ?>
 
-	<section id="blog" role="main" class="template-blog">
+	<section id="page" role="main" class="template-page">
 
 		<div class="container">
-			
+
 			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
 				<nav id="secondary-nav" class="side-col">
 
-					<ul id="menu-secondary" class="menu">
-						  <?php wp_list_pages( array(
-								'child_of' => $ancestor['id'],
-							  'depth' => 0,
-							  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-							  'link_after' => '<i class="icon-arrow-right"></i>',
-							  'walker' => new CoEnv_Secondary_Menu_Walker,
-							  'sort_column' => 'menu_order'
-						  ) ) ?>
-					  </ul>
+			<ul id="menu-secondary" class="menu">
+	              <?php wp_list_pages( array(
+	              		'child_of' => $ancestor['id'],
+	                  'depth' => 3,
+	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+	                  'link_after' => '<i class="icon-arrow-right"></i>',
+	                  'walker' => new CoEnv_Secondary_Menu_Walker,
+	                  'sort_column' => 'menu_order'
+	              ) ) ?>
+	          </ul>
 
 				</nav><!-- #secondary-nav.side-col -->
 
@@ -76,7 +71,6 @@ $wp_query = new WP_Query( $query );
 
 			</main><!-- .main-col -->
 
-
 			<div class="side-col">
 				<?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
 				<?php get_sidebar() ?>
@@ -84,6 +78,6 @@ $wp_query = new WP_Query( $query );
 
 		</div><!-- .container -->
 
-	</section><!-- #blog -->
+	</section><!-- #page -->
 
 <?php get_footer() ?>

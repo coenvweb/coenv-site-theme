@@ -6,6 +6,7 @@
 require_once locate_template( '/inc/walker-main-menu.php' );
 require_once locate_template( '/inc/walker-secondary-menu.php' );
 require_once locate_template( '/inc/walker-top-menu.php' );
+require_once locate_template( '/inc/walker-career-cat.php' );
 
 /**
  * Print styles and scripts in header and footer
@@ -883,3 +884,32 @@ add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
  */
 
 require_once locate_template( '/inc/news.php' );
+
+function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
+	$counter = 0;
+	$ref_month = '';
+	$monthly = new WP_Query(array('posts_per_page' => -1, 'post_type'	=> $post_type));
+	echo '<select name="select-category" class="select-category">';
+	echo '<option value="' . strtok($_SERVER['REQUEST_URI'],'?') . '">By Date</option>';
+	if( $monthly->have_posts() ) :
+		while( $monthly->have_posts() ) : $monthly->the_post();
+		    if( get_the_date('mY') != $ref_month ) {
+		    	$month_num = get_the_date('m');
+		    	$month_str = get_the_date('F');
+		    	$year_num = get_the_date('Y');
+		    	if ($year_num == $coenv_year && $month_num == $coenv_month) {
+		    	 $selected = ' selected="selected"';
+		    	} else {
+		    		$selected = '';
+		    	}
+		    	echo '<option value="page/1/?coenv-year=' . $year_num . '&coenv-month=' . $month_num  . '"' . $selected . '>' . $month_str . ' ' . $year_num . '</option>';
+		       // echo "\n".get_the_date('F Y');
+		        $ref_month = get_the_date('mY');
+		        $counter = 0;
+		    }
+		endwhile; 
+	endif;
+	echo '</select>';
+	wp_reset_postdata();
+	wp_reset_query();
+}

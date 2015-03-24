@@ -47,8 +47,10 @@ $post_sort = new WP_Query( array(
     <div class="container">
         <?php if ( $post_sort->have_posts() ) : ?>
             <section class="widget featured-stories">
+                <p><a href="<?php echo get_post_type_archive_link( careers ); ?>">Careers</a></p>
 
                 <header>
+
                     <h1><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
                 </header>
 

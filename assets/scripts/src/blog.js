@@ -3,6 +3,7 @@ jQuery(function ($) {
 
 	// handle blog header form
 	$('#blog-header').blogHeader();
+	$('#careers-filter').blogHeader();
 
 });
 

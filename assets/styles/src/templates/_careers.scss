@@ -1,16 +1,39 @@
-.template-blog {
+.page-template-careers {
+h1.article__title {
+	margin-bottom: 0;
+	border-bottom: solid 1px #ccc;
+}
+
+	a.button {
+				margin-bottom: .5rem;
+				margin-left: .25rem;
+				font-size: .9rem;
+				 text-transform: capitalize;
+
+				 &:hover {
+				 	color: #fff !important;
+				 }
+				 .right & {
+				 	margin-bottom: 0;
+				 }
+			}
+			.career-terms {
+			padding: 1rem 0 1.25rem 0;
+			}
 
 	.careers {
-		@extend .shadow;
 		@include rem('margin', 1);
 		@include rem('padding', 2);
 		background: #fff;
+		border-bottom: solid 1px #ddd;
+		margin: 0 0 1.75rem;;
+		padding: 0;
 		@media print {
 			margin: 0;
 			padding: 0;
 		}
 
-		@include min-width ( $iPadPortrait ) {
+		@include max-width ( $iPadPortrait ) {
 			@include rem('margin', 1, 0, 1, 1);
 			@media print {
 				margin: 0;
@@ -31,80 +54,70 @@
 		} // .career_title
 
 	} // .article
+	div.article header {
+	margin-bottom: 2rem;
 
-	.career-header {
+	}
+article header.article__header {
+	@media (min-width: 768px) {
+	margin-bottom: 0;
+	}
+	}
+	.article__header {
 		@extend .clearfix;
-		@extend .shadow;
-		@include rem('margin', 1);
-		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, 0, 1, 1);
+			@include rem('margin', 0, 0, 0m, 0);
 		}
 
-		form,
-		.input-item {
-			float: none;
-			@include rem('padding', 1);
-			@include min-width ( $iPadPortrait ) {
-				float: left;
-				width: 33.3333%;
-			}
+		h2 {
+		float: left;
+		font-size: 1.75rem;
+		line-height: 2.5rem;
+		width: 100%;
+		margin-bottom: .5rem;
+		margin-top: .5rem;
+			a {
+			  color: #000;
+			  
+			  font-weight: normal;
+			  text-decoration: none;
 
-		select {
-			border: none;
-			width: 100%;
-			color: $text;
-			// background-color: $text-very-lt;
-			background-color: $white-button;
-			@include rem('padding', 0.5);
-			@include rem('height', 2);
-			@include font-size(12);
+			  &:hover {
+			  color: #000 !important;
+			  text-decoration: underline;
+
+
+			  }
 			}
- 
 		}
-
-		.field-wrap {
-			width: 100% !important;
-		}
-
-		form {
-
-			input[type="text"] {
-				background: #ddd;
-			}
-
-		} // form
 		.results-text {
-			border-top: solid 1px #dfdfdf;
 			float: left;
 			text-transform: uppercase;
-			@include rem('padding', 1, 1.25);
+			@include rem('padding', 0);
 			width: 100%;
+			margin-top: .5rem;
+			border-bottom: solid 1px #ccc;
+
+
 
 			p {
 				color: #666;
 				@include font-size(11);
 				float: left;
 				font-weight: 600;
-				letter-spacing: .1em;
+
 				@include rem('margin', 0);
-				@include rem('padding', .25, 0, 0, 0);
+				@include rem('padding', 0);
 			}
-			p.all-news {
+			p.left {
+								letter-spacing: .1em;	
+								line-height: 2rem;	
+			}
+			p.right {
 				float: right;
 				@include rem('padding', 0, 0, 0, 0);
-				a.button {
-					background-color: #ddd;
-					color: #333;
-					@include font-size(11);
-				}
-				a.button:hover {
-					background-color: #363533;
-					color: #fff;
-					@include font-size(11);
-					letter-spacing: 0.1em;
-				}
+
 			}
 
 		}
@@ -116,7 +129,71 @@
 	} // .career-header
 
 	.pagination ul {
-		@extend .shadow;
+		//@extend .shadow;
 	}
 
 } // .template-career
+
+// Filters
+
+#careers-filter {
+	background-color: rgb(238, 238, 238);
+	h3.title {
+		  //background-color: #222;
+		  color: #000;
+		  border-bottom: solid 1px rgb(208, 208, 208);
+
+		  font-size: 1.25rem;
+		  font-weight: normal;
+		  letter-spacing: .05rem;
+		  margin-top: 1rem;
+		  padding: 1rem;
+
+	}
+	.filters {
+	padding: 1rem;
+
+	form .field-wrap,
+	.select-category {
+	margin-bottom: 1rem;
+	}
+
+	 form .field-wrap input,
+	 .select-category {
+	 	font-size: 14px;
+
+	 }
+
+	.field-wrap, form.Form--inline, .select-category {
+		width: 100%;
+		display: block !important;
+		font-size: 14px;
+	}
+	select.select-category {
+		font-size: 18px;
+	}
+	ul {
+		margin-left: 0;
+		padding-left: 0;
+		li {
+			list-style: none;
+			&.cat-item {
+			margin-bottom: 1rem;
+			}
+
+			ul {
+			margin-left: 1rem;
+			&.children {
+				margin-bottom: 0;
+			}
+				li.cat-item	 {
+				margin-bottom: 0;
+				}
+			}
+
+		}
+	
+
+	}
+	}
+}

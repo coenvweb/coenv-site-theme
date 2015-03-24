@@ -3,40 +3,45 @@
 	<header class="article__header">
         <div class="article__meta">
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+			data-article-shortlink="<?php echo the_permalink(); ?>"
 			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info">
                 Posted: 
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>
-                | Deadline: 
-                <?php $timestamp = strtotime(do_shortcode('[postexpirator type="full"]')) ?>
-                <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timestamp) ?></time>
-                
-                
-				<?php coenv_post_cats($post->ID); ?>
+                <?php 
+                $timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
+                $timestamp = time();
+                $expired = $timeexpired < $timestamp ? 'expired' : 'current';
+                ?>
+                <span class="deadline <?php echo $expired; ?>"> | 
+                <?php if ($expired == 'current') { ?>
+                	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
+                <?php } else { ?>
+                	Deadline passed (<time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
+                <?php } ?>                	
+            	</span>
             </div>
 		</div>
 
 		<?php if ( is_single() ) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>
-			<h3 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h3>
-		<?php endif ?>
-
-	</header>
-	<section class="career__content">
-		<div class="coenv-thumb"><a style="float: right;" href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail( 'small' ) ?></a></div>
-		<?php if ( get_field('story_link_url') ): ?>
-			<?php echo '<p>' . get_the_content() . '</p>'; ?>
-			<p class="expiration">Deadline: <?php echo do_shortcode('[postexpirator]') ?></p>
-			<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
-		<?php else: ?>
-			<?php echo '<p>' . get_the_content() . '</p>'; ?>
-			<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
+			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
+		<?php endif;
+		$career_tags = get_the_terms($post->ID,'career_post_tag');
+		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
+		foreach ( $career_tags as $tag ) {
+			$career_tag_links .= '<a href="/students/career-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+		}
+		?>
+		<div class="career-terms" style="float: left; clear: both;">
+		<?php echo rtrim($career_tag_links,', '); ?>
+		</div>
 		<?php endif; ?>
 
-	</section>
+	</header>
+	
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
 
