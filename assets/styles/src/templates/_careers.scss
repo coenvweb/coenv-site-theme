@@ -3,6 +3,9 @@ h1.article__title {
 	margin-bottom: 0;
 	border-bottom: solid 1px #ccc;
 }
+a {
+				color: #5a2baa;
+			}
 
 	a.button {
 				margin-bottom: .5rem;
@@ -139,15 +142,15 @@ article header.article__header {
 #careers-filter {
 	background-color: rgb(238, 238, 238);
 	h3.title {
-		  //background-color: #222;
-		  color: #000;
+		  background-color: #000;
+		  color: #fff;
 		  border-bottom: solid 1px rgb(208, 208, 208);
 
-		  font-size: 1.25rem;
+		  font-size: 1rem;
 		  font-weight: normal;
 		  letter-spacing: .05rem;
 		  margin-top: 1rem;
-		  padding: 1rem;
+		  padding: .5rem 1rem;
 
 	}
 	.filters {
@@ -156,6 +159,12 @@ article header.article__header {
 	form .field-wrap,
 	.select-category {
 	margin-bottom: 1rem;
+	border: solid 1px #999;
+
+	button[type=submit] {
+	margin-left: solid 1px #999;
+		width: auto !important;
+	}
 	}
 
 	 form .field-wrap input,
@@ -165,12 +174,11 @@ article header.article__header {
 	 }
 
 	.field-wrap, form.Form--inline, .select-category {
+	font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: .75rem;
 		width: 100%;
 		display: block !important;
 		font-size: 14px;
-	}
-	select.select-category {
-		font-size: 18px;
 	}
 	ul {
 		margin-left: 0;
@@ -179,6 +187,10 @@ article header.article__header {
 			list-style: none;
 			&.cat-item {
 			margin-bottom: 1rem;
+
+			a {
+				color: #5a2baa;
+			}
 			}
 
 			ul {
