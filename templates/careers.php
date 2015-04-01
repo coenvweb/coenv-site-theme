@@ -103,7 +103,7 @@ $wp_query = new WP_Query( $query_args );
 				<div class="article">
 					<header class="article__header">
 						<div class="article__meta">
-							<h1 class="article__title">Career Opportunities</h1>
+							<h1 class="article__title">Career Opportunities - <?php wp_get_post_parent_id( $post->id ); ?></h1>
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
