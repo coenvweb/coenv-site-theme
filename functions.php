@@ -227,7 +227,10 @@ function coenv_theme_setup() {
   update_option( 'thumbnail_size_h', 200 );
   update_option( 'thumbnail_crop', 1 );
 
-	if ( function_exists( 'add_image_size' ) ) { 
+	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'tiny', 129, 129, true );
+		add_image_size( 'small', 262, 262 );
+		add_image_size( 'banner', 1680 );
 		add_image_size( 'half', 375 );
 		add_image_size( 'one-third', 250 );
 	}
