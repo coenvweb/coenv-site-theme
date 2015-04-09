@@ -171,7 +171,7 @@
                                         'depth' => 3,
                                         'walker' => new CoEnv_Main_Menu_Walker(),
                                         'title_li' => false,
-                                        'sort_column' => 'menu_order, post_title'
+                                        'sort_column' => 'menu_order'
                                     ) );
                                     ?>
                                 </ul>
