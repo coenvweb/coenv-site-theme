@@ -14,11 +14,11 @@
                 $timestamp = time();
                 $expired = $timeexpired < $timestamp ? 'expired' : 'current';
                 ?>
-                <span class="deadline <?php echo $expired; ?>"> | 
+                 | <span class="deadline <?php echo $expired; ?>"> 
                 <?php if ($expired == 'current') { ?>
                 	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
                 <?php } else { ?>
-                	Deadline passed (<time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
+                	Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
                 <?php } ?>                	
             	</span>
             </div>
@@ -32,7 +32,7 @@
 		$career_tags = get_the_terms($post->ID,'career_post_tag');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= '<a href="/students/career-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+			$career_tag_links .= '<a href="/students/career-resources/career-funding-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
 		}
 		?>
 		<div class="career-terms" style="float: left; clear: both;">

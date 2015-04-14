@@ -19,17 +19,23 @@ $args = array(
 );
 ?>
 <div id="careers-filter" class="careers-filter">
-	<h3 class="title">Show Results</h3>
+	<h3 class="title">Filter</h3>
 	<div class="filters">
-	
+	<ul>
+		<li>Sort by
+			<ul>
+				<li><a href="/students/career-resources/career-funding-opportunities/?sort=post_date">Post date</a></li>
+				<li><a href="/students/career-resources/career-funding-opportunities/?sort=deadline">Deadline</a></li>
+			</ul>
+		</li>
 	<ul>
 		<?php wp_list_categories( $args ); ?>
 	</ul>
 	
-	<div data-url="/students/career-opportunities/" data-cat="blog_category" class="select-month">
+	<div data-url="/students/career-resources/career-funding-opportunities/" data-cat="blog_category" class="select-month">
 		<?php coenv_base_date_filter('careers',$coenv_month,$coenv_year); // Date filter ?>
 	</div>
-	<form role="search" method="get" class="search-form Form--inline" action="/students/career-opportunities/">
+	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-funding-opportunities/">
 	  <div class="field-wrap">
 	    <input type="text" name="st" id="st" placeholder="Search" />
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>

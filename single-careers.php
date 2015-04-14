@@ -1,7 +1,4 @@
 <?php
-/*
-Template Name: Careers & Funding Blog
-*/
 /**
  * page.php
  *
@@ -12,87 +9,17 @@ get_header();
 $ancestor_id = coenv_get_ancestor();
 
 $ancestor = array(
-	'id' => $ancestor_id,
+	'id' => 32,
 	'permalink' => get_permalink( $ancestor_id ),
 	'title' => get_the_title( $ancestor_id )
 );
-
-// Dates
-$coenv_year = urlencode(htmlentities($_GET['coenv-year']));
-$coenv_month = urlencode(htmlentities($_GET['coenv-month']));
-$coenv_date = $coenv_month . '/' . $coenv_year;
-
-//Categories
-$coenv_cat_term_1 = urlencode(htmlentities($_GET['term']));
-$coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,'career_category');
-$coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
-
-//Tags
-$coenv_cat_tag_1 = urlencode(htmlentities($_GET['tag']));
-$coenv_cat_tag_1_arr = get_term_by('slug',$coenv_cat_tag_1,'career_post_tag');
-$coenv_cat_tag_1_val = $coenv_cat_tag_1_arr->name;
-
-
-//Search terms
-$coenv_search_terms = urlencode(htmlentities($_GET['st']));
-
-//Sort
-$coenv_sort = urlencode(htmlentities($_GET['sort']));
-
-
-// build the query based on $query_args
-$query_args = array(
-
-	'post_type' => 'careers',
-	'post_status' => 'publish',
-	'posts_per_page' => 20,
-    'paged' => $paged,
-);
-
-// Category filter
-if($coenv_cat_term_1) :
-	$query_args['taxonomy'] = 'career_category';
-	$query_args['term'] = $coenv_cat_term_1;
-endif;
-
-// Tag filter
-if($coenv_cat_tag_1) :
-	$query_args['taxonomy'] = 'career_post_tag';
-	$query_args['term'] = $coenv_cat_tag_1 ;
-endif;
-
-// Date filters
-if ($coenv_year) :
-	$query_args['year'] = $coenv_year;
-endif; 
-if($coenv_month) :
-	$query_args['monthnum'] = $coenv_month;
-endif;
-
-// Search filters
-if ($coenv_search_terms) :
-	$query_args['s'] = $coenv_search_terms;
-endif;
-
-//Sort/*
-	if ($coenv_sort == 'deadline') {
-		$query_args['meta_key'] = '_expiration-date';
-		$query_args['orderby'] = 'meta_value';
-		$query_args['order'] = 'ASC';
-	} else {
-		$query_args['orderby'] = 'date';
-		$query_args['order'] = 'DESC';
-	}
-// Make query
-$wp_query = new WP_Query( $query_args ); 
 ?>
+
 	<section id="page" role="main" class="template-page">
 
 		<div class="container">
 
-			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
-
-								<nav id="secondary-nav" class="side-col">
+				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
 	              <li class="pagenav"><a href="http://beta.coenv.washington.edu/students/">Students</a><ul><li class="page_item page-item-25988"><a href="http://beta.coenv.washington.edu/students/meet-students/">Why Study Here?</a></li>
@@ -148,66 +75,57 @@ $wp_query = new WP_Query( $query_args );
 
 			<?php //endif ?>
 
-			<?php endif ?>
 
 			<main id="main-col" class="main-col">
-				<div class="article">
-					<header class="article__header">
-						<div class="article__meta">
-							<h1 class="article__title">Career Opportunities</h1>
-							<div class="intro">
-							<?php the_content(); ?>
-							</div>
-							<?php if ($coenv_cat_term_1): // Category filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_cat_tag_1): // Tag filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts tagged <strong>"<?php echo $coenv_cat_tag_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_year && $coenv_month): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_search_terms): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-						</div>
-					</header>
 
+				<?php if ( have_posts() ) : ?>
 
-				<?php if ( $wp_query->have_posts() ) : ?>
+					<?php while ( have_posts() ) : the_post() ?>
 
-					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post() ?>
+						<article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-						<?php get_template_part( 'partials/partial', 'career' ); ?>
+							<header class="article__header">
+						        <div class="article__meta">
+						   		<?php if ( !is_page() ) : ?>
+									<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
+									data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
+									data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
+						            </div>
+									<div class="post-info">
+										<time class="article__time" datetime="<?php get_the_date( '' ); ?>"><?php echo get_the_date('M j, Y'); ?></time>
+										<?php coenv_post_cats($post->ID); ?>
+									</div>
+								<?php endif ?>
+
+								<?php if ( is_page() || is_single() ) : ?>
+									<h1 class="article__title">Career Opportunities</h1>
+								<?php else : ?>
+									<h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>
+								<?php endif ?>
+
+							</header>
+
+							<section class="article__content">
+								<h2><?php the_title() ?></h2>
+
+								<?php the_content() ?>
+								<?php if ( get_field('story_link_url') ): ?> 
+							 		<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
+								<?php endif; ?>
+							</section>
+								
+						    <?php remove_filter( 'the_title', 'wptexturize' );
+						    remove_filter( 'the_excerpt', 'wptexturize' ); ?>
+
+						</article><!-- .article -->
 
 					<?php endwhile ?>
-				<?php else: ?>
-					<div class="no-results">
-						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-funding-opportunities/">Please try your search again</a>.</p>
-					</div>
-				<?php endif ?>
 
-				<footer class="pagination">
-					<?php coenv_paginate() ?>
-				</footer>
-			</div>
+				<?php endif ?>
 
 			</main><!-- .main-col -->
 
 			<div class="side-col">
-				<?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
 				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 
