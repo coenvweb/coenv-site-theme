@@ -44,8 +44,8 @@
                         <div class="layout-container">
                             
                             <div class="be-boundless">
-                                <a href="http://washington.edu/" rel="home" title="University of Washington" target="_blank"><img alt="University of Washington" src="<?php echo get_template_directory_uri() ?>/assets/img/university-of-washington.svg"></a><br />
-                                <a href="http://www.washington.edu/boundless/" rel="home" title="University of Washington - Be Boundless" target="_blank"><img alt="Be Boundless" src="<?php echo get_template_directory_uri() ?>/assets/img/be-boundless-gold.svg" width="200"></a>
+                                <a href="http://washington.edu/" rel="home" title="University of Washington" target="_blank"><?php include('assets/img/university-of-washington.svg'); ?></a><br />
+                                <a href="http://www.washington.edu/boundless/" rel="home" title="University of Washington - Be Boundless" target="_blank"><?php include('assets/img/be-boundless-gold.svg'); ?></a>
                             </div>
                             
                             <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/" title="University of Washington" target="_blank">University of Washington</a></p></div>
