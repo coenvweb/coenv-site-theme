@@ -3,53 +3,62 @@
 
 .site-footer {
 	@extend .clearfix;
-	@include rem('padding', 2, 0);
+	@include rem('padding', 2, 0, 2, 0);
 	background: $bg-dk;
 	@include font-size(12);
 
 	a:hover {
 		color: #fff !important;
 	}
+    
+    .right-college {
+        @include min-width ( $iPadPortrait ) {
+            @include col-2;
+            float: right;
+            @include rem('padding-left', 2.85);
+        }
+    }
+    
+    .left-college {
+        @include min-width ( $iPadPortrait ) {
+            @include col-2;
+        }
+        @include rem('margin-bottom', 1);
+    }
+    
+    .logo-headers {
+        border-bottom: 1px solid darken( $bg-dk, 5% );
+        @include rem('margin-bottom', 1);
+        &:after {
+            content: "";
+            display: block;
+            z-index: -1;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: lighten( $bg-dk, 5% );
 
-	@include min-width ( $iPadPortrait ) {
-	}
-
-	.site-footer__header {
-		@include rem('margin-bottom', 1);
+        }
+    }
+	
+    .site-footer__header {
 
 		@media print {
 			display: none;
-		}
+		}        
 
 		h1 {
-			display: none;
+            display: none;
 			position: relative;
 			z-index: 0;
 			margin: 0;
 			@include font-size(18);
 			font-weight: 400;
 			color: #ccc;
-
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				z-index: -1;
-				top: 50%;
-				width: 100%;
-				height: 1px;
-				background: lighten( $bg-dk, 5% );
-				border-top: 1px solid darken( $bg-dk, 5% );
-			}
-
-			span {
-				@include rem('padding-right', 0.5);
-				background: $bg-dk;
-			}
-
-			@include min-width ( $iPadPortrait ) {
-				display: block;
-			}
+            
+            @include min-width ( $iPadPortrait ) {
+                display: block;
+            }
 
 		} // h1
 
@@ -59,7 +68,7 @@
 
 		@include min-width ( $iPadPortrait ) {
 			float: right;
-			@include col-3;
+			@include col-2;
 			@include rem('padding-left', 3);
 		}
 
@@ -72,20 +81,39 @@
 		}
 
 		.menu-footer-units {
-			margin: 0;
+			@include rem('margin-top', 2);
 			padding: 0;
 			list-style: none;
 			columns: 2;
 
 
 			@include min-width ( $iPadPortrait ) {
-				columns: 3;
+                margin: -3px;
+				columns: 2;
 			}
 
 			li {
-			//	@include rem('margin', 0, 0, 0.5);
-			}
-
+                @include rem('line-height', 2);
+                border-bottom: #292827 1px solid;
+                border-top: #43423f 1px solid;
+                &:nth-child(1) {
+                    border-top: none;
+                }
+                &:nth-child(11) {
+                    @include rem('line-height', 1.4);
+                    padding: .7rem 0;
+                }
+                &:nth-child(15) {
+                    border-bottom: none;
+                }
+                &:nth-child(8) {
+                	border-bottom: none !important;
+                }
+                 &:nth-child(9) {
+                	border-top: none !important;
+                }
+            }
+            
 			a {
 				display: inline-block;
 				text-decoration: none;
@@ -102,6 +130,15 @@
 
 	.footer__info {
 		color: $text-very-lt;
+        
+        a {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        p:first-of-type {
+            margin: 0;
+        }
 
 		@include min-width ( $iPadPortrait ) {
 			float: left;
@@ -156,65 +193,90 @@
 			}
 
 		} // .top-links
-
+        
 	} // .footer__info
 
-	.uw-footer {
-		clear: both;
-		@extend .clearfix;
-		@include font-size(10);
-		@include rem('padding', 2, 0, 0);
-		background: none;
-		color: #bbb;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-
-		a {
-			color: #bbb;
-			text-decoration: none;
-		}
-
-		.copyright {
-
-			@include min-width ( $iPadPortrait ) {
-				float: left;
-				display: inline-block;
-			}
-
-		} // .copyright
-
-		.menu-footer-links {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-
-			@include min-width ( $iPadPortrait ) {
-				display: inline-block;
-				float: right;
-			}
-
-			@media print {
-				display: none;
-			}
-
-			li {
-				display: inline-block;
-
-				@include min-width ( $iPadPortrait ) {
-					@include rem('margin', 0, 0, 0, 1);
-				}
-
-			} // li
-
-			a {
-				text-decoration: none;
-			}
-
-		} // .menu-footer-links
-
-	} // .uw-footer
-
 } // .site-footer
+
+.uw-footer {
+    background-image: url("../../img/black-white-suz.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include rem('padding', 1.5, 0, 1, 0);
+    clear: both;
+    @extend .clearfix;
+    width: 100%;
+    @include font-size(10.5);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #bbb;
+    letter-spacing: 0.1em;
+
+    a {
+        color: #bbb;
+        text-decoration: none;
+        &:hover {
+		  color: #fff !important;
+        }
+    }
+    
+    .be-boundless {
+        text-align: center;
+        height: 150px;
+        @include rem('padding', 3, 0);
+        
+        img:first-of-type {
+            @include rem('padding-bottom', 1.3);
+        }
+        
+        a:hover {
+            opacity: .7;
+        }
+    }
+
+    .copyright {
+
+        @include min-width ( $iPadPortrait ) {
+            float: left;
+            display: inline-block;
+            @include col-2;
+        }
+
+    } // .copyright
+
+    .menu-footer-links {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        @include min-width ( $iPadPortrait ) {
+            display: inline-block;
+            float: right;
+            text-align: right;
+            @include col-2;
+            @include rem('padding-left', 2);
+        }
+
+        @media print {
+            display: none;
+        }
+
+        li {
+            display: inline-block;
+
+            @include min-width ( $iPadPortrait ) {
+                @include rem('margin', 0, 0, 0, 1);
+            }
+
+        } // li
+
+        a {
+            text-decoration: none;
+        }
+
+    } // .menu-footer-links
+
+} // .uw-footer
 
 

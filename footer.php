@@ -2,12 +2,20 @@
                 <footer id="footer" role="contentinfo" class="site-footer">
 
                     <div class="layout-container">
-
-                        <header class="site-footer__header">
-                            <h1><span>University of Washington College of the Environment</span></h1>
-                        </header>
-
+                        <div class="logo-headers">
+                            <div class="right-college">
+                                <a href="http://coenv.washington.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350"></a>
+                            </div>
+                        
+                            <div class="left-college">
+                               <header class="site-footer__header">
+                                    <h1><span>College of the Environment</span></h1>
+                                </header>
+                            </div>
+                        </div>
                         <div class="footer__info">
+                            <p><a href="http://maps.google.com/?q=1492+NE+Boat+St" title="Google Maps link">1492 NE Boat St., Seattle, WA 98105</a></p>
+                            <p><a href="mailto:coenv@uw.edu" title="Send us an Email">coenv@uw.edu</a></p>
                             <?php get_search_form() ?>
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'footer-top-links', 
@@ -30,9 +38,18 @@
                             ) ) ?>
                         </nav>
 
-                        <div class="uw-footer">
-                            <p class="copyright">&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p>
+                </footer><!-- #footer -->
 
+                    <div class="uw-footer">
+                        <div class="layout-container">
+                            
+                            <div class="be-boundless">
+                                <a href="http://washington.edu/" rel="home" title="University of Washington"><img alt="University of Washington" src="<?php echo get_template_directory_uri() ?>/assets/img/university-of-washington.svg"></a><br />
+                                <a href="http://www.washington.edu/boundless/" rel="home" title="University of Washington - Be Boundless"><img alt="Be Boundless" src="<?php echo get_template_directory_uri() ?>/assets/img/be-boundless-gold.svg" width="200"></a>
+                            </div>
+                            
+                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/">University of Washington</a></p></div>
+                            
                             <?php wp_nav_menu( array(
                                 'theme_location' => 'footer-links',
                                 'depth' => 1,
@@ -41,11 +58,8 @@
                                 'fallback_cb' => false
                             ) ) ?>
                         </div>
-
-                    </div><!-- .container -->
-
-                </footer><!-- #footer -->
-
+                    </div>
+                    
             </div><!-- #wrapper -->
 
         </div><!-- #outer -->
