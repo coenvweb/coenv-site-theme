@@ -1,0 +1,251 @@
+.page-template-careers {
+
+.deadline.expired {
+	color: #ac0059;
+	font-weight: bold;
+}
+h1.article__title {
+	margin-bottom: 0;
+	border-bottom: solid 1px #ccc;
+}
+a {
+				color: #5a2baa;
+			}
+
+	
+			.career-terms {
+			padding: 1rem 0 1.25rem 0;
+			}
+
+	.careers {
+		@include rem('margin', 1);
+		@include rem('padding', 2);
+		background: #fff;
+		border-bottom: solid 1px #ddd;
+		margin: 0 0 1.75rem;;
+		padding: 0;
+		@media print {
+			margin: 0;
+			padding: 0;
+		}
+
+		@include max-width ( $iPadPortrait ) {
+			@include rem('margin', 1, 0, 1, 1);
+			@media print {
+				margin: 0;
+			}
+		}
+
+		.career__title {
+			@include font-size(30);
+			@include line-height(36);
+			@include rem('margin', 2, 0, 0, 0);
+
+			@include min-width ( $iPadPortrait ) {
+				@include font-size(36);
+				@include line-height(48);
+
+			}
+
+		} // .career_title
+
+	} // .article
+	div.article header {
+	margin-bottom: 2rem;
+
+	}
+article header.article__header {
+	@media (min-width: 768px) {
+	margin-bottom: 0;
+	}
+	}
+	.article__header {
+		@extend .clearfix;
+
+		@include min-width ( $iPadPortrait ) {
+			@include rem('margin', 0, 0, 0m, 0);
+		}
+
+		h2 {
+		float: left;
+		font-size: 1.75rem;
+		line-height: 2.5rem;
+		width: 100%;
+		margin-bottom: .5rem;
+		margin-top: .5rem;
+			a {
+			  color: #000;
+			  
+			  font-weight: normal;
+			  text-decoration: none;
+
+			  &:hover {
+			  color: #000 !important;
+			  text-decoration: underline;
+
+
+			  }
+			}
+		}
+		.results-text {
+			background-color: #eee;
+			border: solid 1px #c5c5c5;
+			float: left;
+			margin-top: .5rem;
+			padding: 8px 12px;
+			text-transform: uppercase;
+			width: 100%;
+
+			a.button {
+		background-color: #613ba9;
+		color: #fff;
+				margin-bottom: 0;
+				margin-left: .25rem;
+				font-size: .9rem;
+				 text-transform: capitalize;
+
+				 &:hover {
+				 	color: #fff !important;
+				 }
+				 .right & {
+				 	margin-bottom: 0;
+				 }
+			}
+			
+			
+
+
+
+			p {
+				color: #474747;
+				@include font-size(11);
+				float: left;
+				font-weight: 600;
+
+				@include rem('margin', 0);
+				@include rem('padding', 0);
+			}
+			p.left {
+								letter-spacing: .1em;	
+								line-height: 2rem;	
+			}
+			p.right {
+				float: right;
+				@include rem('padding', 0, 0, 0, 0);
+
+			}
+
+		}
+
+		@media print{
+			display: none;
+		}
+		
+	} // .career-header
+
+	.pagination ul {
+		//@extend .shadow;
+	}
+
+} // .template-career
+
+// Filters
+
+#careers-filter {
+	background-color: rgb(238, 238, 238);
+	h3.title {
+		  background-color: #000;
+		  color: #fff;
+		  border-bottom: solid 1px rgb(208, 208, 208);
+
+		  font-size: 1rem;
+		  font-weight: normal;
+		  letter-spacing: .05rem;
+		  margin-top: 1rem;
+		  padding: .5rem 1rem;
+
+	}
+	.filters {
+	padding: 1rem;
+
+	form .field-wrap,
+	.select-category {
+	margin-bottom: 1rem;
+	border: solid 1px #999;
+
+	button[type=submit] {
+	margin-left: solid 1px #999;
+		width: auto !important;
+	}
+	}
+
+	 form .field-wrap input,
+	 .select-category {
+	 	font-size: 14px;
+
+	 }
+
+	.field-wrap, form.Form--inline, .select-category {
+	font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: .75rem;
+		width: 100%;
+		display: block !important;
+		font-size: 14px;
+	}
+	ul {
+		margin-left: 0;
+		padding-left: 0;
+		li {
+			list-style: none;
+			&.cat-item {
+			margin-bottom: 1rem;
+
+			a {
+				color: #5a2baa;
+			}
+			}
+
+			ul {
+			margin-left: 1rem;
+			&.children {
+				margin-bottom: 0;
+			}
+				li.cat-item	 {
+				margin-bottom: 0;
+				}
+			}
+
+		}
+	
+
+	}
+	}
+}
+// Hacking nav to highlight students on careers single
+body.single-careers #menu-main .page-item-32 span>a {
+	background-color: #613ba9;
+  	color: #fff !important;
+}
+body.single-careers #menu-main .page-item-32 span>a:before {
+	content: "";
+	display: block;
+	left: 50%;
+	position: absolute;
+	bottom: -14px;
+	right: 0;
+	margin-left: -14px;
+	width: 0;
+	height: 0;
+	border-left: 14px solid transparent;
+	border-right: 14px solid transparent;
+	border-top: 14px solid #613ba9;
+ }
+ body.single-careers #menu-main .page-item-32 span>a:after {
+ 	content: none !important;
+
+ }
+ body.page-template-careers .intro {
+ 	margin-top: 1.5rem;
+ }
+
+
