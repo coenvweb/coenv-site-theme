@@ -39,7 +39,7 @@
 		<?php echo rtrim($career_tag_links,', '); ?>
 		</div>
 		<?php endif; ?>
-
+		<?php if (current_user_can( 'edit_careers_pubs', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	</header>
 	
     <?php remove_filter( 'the_title', 'wptexturize' );

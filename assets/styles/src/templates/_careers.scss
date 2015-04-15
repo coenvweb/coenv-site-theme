@@ -60,6 +60,27 @@ article header.article__header {
 	}
 	}
 	.article__header {
+
+		a.button {
+		background-color: #613ba9;
+		color: #fff;
+				margin-bottom: 1rem;
+				margin-left: .25rem;
+				float: right;
+				font-size: .9rem;
+				 text-transform: capitalize;
+
+				 &:hover {
+				 	color: #fff !important;
+				 }
+				 .right & {
+				 	margin-bottom: 0;
+				 }
+			}
+
+
+
+
 		@extend .clearfix;
 
 		@include min-width ( $iPadPortrait ) {
