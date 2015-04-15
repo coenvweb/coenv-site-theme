@@ -76,11 +76,11 @@
 @import 'templates/page.scss';
 @import 'templates/blog.scss';
 @import 'templates/search.scss';
-<<<<<<< HEAD
 @import 'templates/footer.scss';
-=======
-@import 'templates/footer.scss';
+<<<<<<< Updated upstream
 @import 'templates/careers.scss';
 
 
->>>>>>> careers
+=======
+@import 'templates/ocean-acid.scss';
+>>>>>>> Stashed changes

@@ -468,10 +468,13 @@ function coenv_banner() {
 	$page_id = false;
 	$banner = false;
 
-	$ancestor_id = coenv_get_ancestor('ID');
-	if ( has_post_thumbnail( $ancestor_id ) ) {
-		$page_id = $ancestor_id;
-	}
+	if ( has_post_thumbnail( $obj->ID ) && !is_single() ) {
+		$page_id = $obj->ID;
+
+	} else if ( has_post_thumbnail( coenv_get_ancestor() ) ) {
+
+		$page_id = coenv_get_ancestor();
+    }
 
 	if ( $page_id == false ) {
 		return false;

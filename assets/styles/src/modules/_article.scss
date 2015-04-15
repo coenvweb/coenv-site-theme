@@ -261,7 +261,7 @@
 	// captions
 	.wp-caption {
 		margin: 0;
-		padding: 0;
+		@include rem('padding-bottom', .1);
 		//width: auto !important;
 		color: #fff;
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

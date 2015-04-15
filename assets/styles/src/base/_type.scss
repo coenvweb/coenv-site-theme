@@ -61,6 +61,12 @@ p, ul, ol {
 	@include rem('margin', 0, 0, 1.5);
 }
 
+.intro {
+    @include serif;
+    @include rem('line-height', 2); // 32
+    @include rem('font-size', 1.5); // 24
+}
+
 
 
 
