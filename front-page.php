@@ -47,7 +47,6 @@ $post_sort = new WP_Query( array(
     <div class="container">
         <?php if ( $post_sort->have_posts() ) : ?>
             <section class="widget featured-stories">
-                <p><a href="<?php echo get_post_type_archive_link( careers ); ?>">Careers</a></p>
 
                 <header>
 
