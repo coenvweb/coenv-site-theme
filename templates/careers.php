@@ -155,7 +155,7 @@ $wp_query = new WP_Query( $query_args );
 					<header class="article__header">
 						<div class="article__meta">
 							<h1 class="article__title">Career Opportunities</h1>
-							<div class="intro">
+							<div class="career-intro">
 							<?php the_content(); ?>
 							</div>
 							<?php if ($coenv_cat_term_1): // Category filter ?>
