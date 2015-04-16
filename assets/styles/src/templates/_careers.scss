@@ -90,7 +90,7 @@ article header.article__header {
 		h2 {
 		float: left;
 		font-size: 1.75rem;
-		line-height: 2.5rem;
+		line-height: 2.4rem;
 		width: 100%;
 		margin-bottom: .5rem;
 		margin-top: .5rem;
@@ -267,6 +267,54 @@ body.single-careers #menu-main .page-item-32 span>a:before {
  }
  body.page-template-careers .career-intro {
  	margin-top: 1.5rem;
+ }
+ .single-careers {
+
+ 	.banner-wrapper {
+
+ 	  background-image: url('/wp-content/uploads/2013/03/coenv-student-banner.jpg');
+ 	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-position: center;
+
+ 	}
+
+
+
+ 	.article__content {
+
+ 		h2 {
+ 			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+ 		}
+ 		a.button {
+			background-color: #613ba9;
+			color: #fff;
+		}
+ 	}
+ 	.post-info {
+  		text-transform: uppercase;
+  		letter-spacing: .1em;
+  		font-weight: 600;
+  		vertical-align: middle;
+  		text-decoration: none;
+  		font-size: .8rem;
+  		font-size: .78571rem;
+  		line-height: 1;
+  		margin: 0 0 7px;
+  		margin: 0 0 .5rem;
+  		color: #666;
+ 	}
+ 	.post-info span {
+ 		margin: 0;
+ 		padding: 0;
+ 		float: left;
+ 	}
+	 .post-info .deadline {
+	 	border-left: solid 1px #666;
+	 	margin-left: .8rem;
+	 	padding-left: .8rem;
+
+	 }
  }
 
 
