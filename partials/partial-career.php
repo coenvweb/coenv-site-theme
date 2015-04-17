@@ -9,17 +9,36 @@
 			<div class="post-info">
                 Posted: 
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>
-                <?php 
-                $timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
-                $timestamp = time();
-                $expired = $timeexpired < $timestamp ? 'expired' : 'current';
+
+                <?php
+
+				$deadline = get_post_meta( get_the_ID(), '_expiration-date', true );
+				$timestamp = time();
+				$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
+				
+				if ( $timeexpired < $timestamp ) {
+
+					$expired = 'expired';
+
+				} elseif ( $deadline > ($timestamp + 63072000) ) {
+
+					$expired = 'openuntilfilled';
+
+				} else {
+
+					$expired = 'current';
+				}
+                
                 ?>
-                 | <span class="deadline <?php echo $expired; ?>"> 
+                 | <span class="deadline <?php echo $expired; ?>">
+
                 <?php if ($expired == 'current') { ?>
                 	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
+                <?php } elseif ($expired == 'openuntilfilled') { ?>
+                	Deadline: Open Until Filled
                 <?php } else { ?>
                 	Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
-                <?php } ?>                	
+                <?php } ?>               	
             	</span>
             </div>
 		</div>
@@ -46,3 +65,11 @@
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
 
 </article><!-- .article -->
+
+<!--
+
+
+
+ 
+
+-->

@@ -82,9 +82,22 @@ $ancestor = array(
 
 					<?php while ( have_posts() ) : the_post() ?>
 					<?php 
-                	$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
-                	$timestamp = time();
-                	$expired = $timeexpired < $timestamp ? 'expired' : 'current';
+                	$deadline = get_post_meta( get_the_ID(), '_expiration-date', true );
+					$timestamp = time();
+					$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
+					
+					if ( $timeexpired < $timestamp ) {
+
+						$expired = 'expired';
+
+					} elseif ( $deadline > ($timestamp + 63072000) ) {
+
+						$expired = 'openuntilfilled';
+
+					} else {
+
+						$expired = 'current';
+					}
                 	?>
 
 						<article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
@@ -110,17 +123,34 @@ $ancestor = array(
 							<section class="article__content">
 								<div class="post-info">
 									<span class="posted">Posted: <time class="article__time" datetime="<?php get_the_date( '' ); ?>"><?php echo get_the_date('M j, Y'); ?></time></span>
-									<span class="deadline">Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time></span>
-									<?php coenv_post_cats($post->ID); ?>
+									<span class="deadline">
+									<?php if ($expired == 'current') { ?>
+					                	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
+					                <?php } elseif ($expired == 'openuntilfilled') { ?>
+					                	Deadline: Open Until Filled
+					                <?php } else { ?>
+					                	Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
+					                <?php } ?>
+					                </span>            	
+									<h2><?php the_title() ?></h2>
 								</div>
-								<h2><?php the_title() ?></h2>
-
-
+								
+								<p class="back"><a class="button" href="/students/career-resources/career-funding-opportunities/">Back to Career Opportunities</a></p>
+								<section class="career__content">
 								<?php the_content() ?>
-								<?php if ( get_field('story_link_url') ): ?> 
-							 		<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
+								</section>
+								<?php $career_tags = get_the_terms(get_the_ID(),'career_post_tag'); ?>
+								<?php if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
+									foreach ( $career_tags as $tag ) {
+										$career_tag_links .= '<a href="/students/career-resources/career-funding-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+									}
+								?>
+								<div class="career-terms">
+									<?php echo rtrim($career_tag_links,', '); ?>
+								</div>
 								<?php endif; ?>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">Back to Career Opportunities</a></p>
+								
+									
 							</section>
 								
 						    <?php remove_filter( 'the_title', 'wptexturize' );
