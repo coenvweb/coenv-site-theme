@@ -1,9 +1,6 @@
 .page-template-careers {
 
-.deadline.expired {
-	color: #ac0059;
-	font-weight: bold;
-}
+
 h1.article__title {
 	margin-bottom: 0;
 	border-bottom: solid 1px #ccc;
@@ -23,7 +20,7 @@ h1.article__title {
 		background: #fff;
 		border-bottom: solid 1px #ddd;
 		margin: 0 0 1.75rem;;
-		padding: 0;
+		padding: 0 .75rem 0 0;
 		@media print {
 			margin: 0;
 			padding: 0;
@@ -62,12 +59,11 @@ article header.article__header {
 	.article__header {
 
 		a.button {
-		background-color: #613ba9;
-		color: #fff;
+		color: #000;
 				margin-bottom: 1rem;
 				margin-left: .25rem;
 				float: right;
-				font-size: .9rem;
+				font-size: .75rem;
 				 text-transform: capitalize;
 
 				 &:hover {
@@ -93,16 +89,16 @@ article header.article__header {
 		line-height: 2.4rem;
 		width: 100%;
 		margin-bottom: .5rem;
-		margin-top: .5rem;
+		margin-top: 0;
 			a {
-			  color: #000;
+			  color: #333;
 			  
-			  font-weight: normal;
+			  font-weight: bold;
 			  text-decoration: none;
 
 			  &:hover {
-			  color: #000 !important;
-			  text-decoration: underline;
+			  color: #333 !important;
+			  text-decoration: none;
 
 
 			  }
@@ -286,6 +282,7 @@ body.single-careers #menu-main .page-item-32 span>a:before {
 
  		h2 {
  			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
  		}
  		a.button {
 			background-color: #613ba9;
@@ -298,12 +295,14 @@ body.single-careers #menu-main .page-item-32 span>a:before {
   		font-weight: 600;
   		vertical-align: middle;
   		text-decoration: none;
+  		float: left;
   		font-size: .8rem;
   		font-size: .78571rem;
   		line-height: 1;
   		margin: 0 0 7px;
   		margin: 0 0 .5rem;
   		color: #666;
+  		width: 70%;
  	}
  	.post-info span {
  		margin: 0;
@@ -316,6 +315,33 @@ body.single-careers #menu-main .page-item-32 span>a:before {
 	 	padding-left: .8rem;
 
 	 }
+	 .post-info h2 {
+	 	color: rgb(51, 51, 51);
+	 	font-weight: 700;
+	 	text-transform: none;
+	 }
+	 p.back {
+	 	float: right;
+	 	text-align: right;
+	 	width: 30%;
+
+
+	 }
+	 .career-terms {
+	 float: left;
+ 	width: 100%;
+
+ 	a {
+
+ 		color: #5a2baa;
+ 	}
+
+	 }
+	 .career__content {
+ 	float: left;
+ 	width: 100%;
  }
+ }
+
 
 
