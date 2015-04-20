@@ -31,10 +31,6 @@ $args = array(
 	<ul>
 		<?php wp_list_categories( $args ); ?>
 	</ul>
-	
-	<div data-url="/students/career-resources/career-funding-opportunities/" data-cat="blog_category" class="select-month">
-		<?php coenv_base_date_filter('careers',$coenv_month,$coenv_year); // Date filter ?>
-	</div>
 	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-funding-opportunities/">
 	  <div class="field-wrap">
 	    <input type="text" name="st" id="st" placeholder="Search" />
