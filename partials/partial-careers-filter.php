@@ -18,6 +18,7 @@ $args = array(
   'walker' 		 => $walker
 );
 ?>
+<a name="filters" id="filters" />
 <div id="careers-filter" class="careers-filter">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
