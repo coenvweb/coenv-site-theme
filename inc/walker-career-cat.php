@@ -15,7 +15,7 @@ class CoEnv_Career_Category extends Walker_Category{
         $cat_slug = esc_attr( $category->slug);
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
-            $link = '<a href="/students/career-resources/career-funding-opportunities?term=' . $cat_slug . '" ';
+            $link = '<a href="/students/career-resources/career-opportunities?term=' . $cat_slug . '" ';
             if ( $use_desc_for_title == 0 || empty($category->description) )
                 $link .= 'title="' . esc_attr( sprintf(__( 'View all posts filed under %s' ), $cat_name) ) . '"';
             else
