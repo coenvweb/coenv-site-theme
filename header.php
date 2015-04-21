@@ -36,7 +36,7 @@
             
 			endif;
 		 ?>
-        <meta name="description" content="text"><?php echo $advancedExcerpt ?></meta>
+        <meta name="description" content="<?php echo $advancedExcerpt ?>"></meta>
         
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-60x60.png">
