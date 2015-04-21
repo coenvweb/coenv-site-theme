@@ -181,25 +181,25 @@ $wp_query = new WP_Query( $query_args );
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_cat_tag_1): // Tag filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts tagged <strong>"<?php echo $coenv_cat_tag_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_year && $coenv_month): // Date filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_search_terms): // Date filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 						</div>
@@ -215,7 +215,7 @@ $wp_query = new WP_Query( $query_args );
 					<?php endwhile ?>
 				<?php else: ?>
 					<div class="no-results">
-						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-funding-opportunities/">Please try your search again</a>.</p>
+						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
 					</div>
 				<?php endif ?>
 

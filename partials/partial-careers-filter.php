@@ -24,8 +24,8 @@ $args = array(
 	<ul>
 		<li>Sort by
 			<ul>
-				<li><a href="/students/career-resources/career-funding-opportunities/?sort=post_date">Post date</a></li>
-				<li><a href="/students/career-resources/career-funding-opportunities/?sort=deadline">Deadline</a></li>
+				<li><a href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
+				<li><a href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
 			</ul>
 		</li>
 	<ul>
@@ -37,7 +37,7 @@ $args = array(
 		<li><a href="http://depts.washington.edu/coenv/careers-blog/subscribe-via-rss/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
 		<li><a href="http://depts.washington.edu/coenv/careers-blog/subscribe-via-listservemail/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
 	</ul>
-	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-funding-opportunities/">
+	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-opportunities/">
 	  <div class="field-wrap">
 	    <input type="text" name="st" id="st" placeholder="Search" />
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>

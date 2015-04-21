@@ -51,7 +51,7 @@
 		$career_tags = get_the_terms($post->ID,'career_post_tag');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= '<a href="/students/career-resources/career-funding-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+			$career_tag_links .= '<a href="/students/career-resources/career-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
 		}
 		?>
 		<div class="career-terms" style="float: left; clear: both;">
