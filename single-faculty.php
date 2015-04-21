@@ -111,7 +111,7 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 				<ul class="Faculty-member-contact-list">
 					
 					<?php if ( ! empty( $member['email'] ) ) : ?>
-						<li><a href="mailto:<?php echo $member['email'] ?>"><i class="icon-contact-link-email"></i> <?php echo $member['email'] ?></a></li>
+						<li><a href="mailto:<?php echo eae_encode_emails($member['email']) ?>"><i class="icon-contact-link-email"></i> <?php echo eae_encode_emails($member['email']) ?></a></li>
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['phone'] ) ) : ?>
