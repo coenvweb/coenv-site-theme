@@ -34,8 +34,8 @@ $args = array(
 	
 	<h4>Subscribe</h4>
 	<ul class="subscribe">
-		<li><a href="/feed/?post_type=careers"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
-		<li><a href="#"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
+		<li><a href="http://depts.washington.edu/coenv/careers-blog/subscribe-via-rss/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
+		<li><a href="http://depts.washington.edu/coenv/careers-blog/subscribe-via-listservemail/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
 	</ul>
 	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-funding-opportunities/">
 	  <div class="field-wrap">
