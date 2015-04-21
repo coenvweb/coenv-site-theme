@@ -11,38 +11,50 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="title" content="<?php bloginfo('name'); ?>">
-        <meta name="description" content="<?php
+        <?php
 		wp_reset_query();   
 		if (have_posts()) : while(have_posts()) the_post();
 			if (is_singular('faculty')) {
-				$advancedExcerpt = strip_tags(get_field('biography'));
+				$advancedExcerpt = strip_tags(substr(get_field('biography'),0,500));
 			} elseif (is_post_type_archive( 'faculty' )) {		
 				$advancedExcerpt = 'Our world-class faculty are at the center of our work at The UW College of the Environment.';
+            } elseif (is_page( 357 ) ) {
+                $advancedExcerpt = 'The events calendar shows happenings across the UW College of the Environment.';
 			} elseif (is_singular()&&is_front_page()==false ) {
-				$advancedExcerpt = strip_tags(get_the_excerpt());
+                $excerpt = get_the_excerpt();
+                if (strlen($excerpt) > 500 ) {
+                    $length = strpos($excerpt, ' ', 500);
+                } else {
+                    $length = 500;
+                }
+				$advancedExcerpt = substr($excerpt,0, $length);
 			} else {
 				$advancedExcerpt = get_option('meta_description');
 			}
+            $advancedExcerpt = strip_tags($advancedExcerpt);
+            $advancedExcerpt = preg_replace( "/\r|\n/", " ", $advancedExcerpt );
+            
 			endif;
-		echo $advancedExcerpt ?>">
+		 ?>
+        <meta name="description" content="<?php echo $advancedExcerpt ?>"></meta>
         
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_template_directory_uri() ?>/assets/img/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-16x16.png">
-<link rel="manifest" href="<?php echo get_template_directory_uri() ?>/assets/img/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri() ?>/assets/img/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_template_directory_uri() ?>/assets/img/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon-16x16.png">
+        <link rel="manifest" href="<?php echo get_template_directory_uri() ?>/assets/img/manifest.json">
+        <meta name="msapplication-TileColor" content="#613ba9">
+        <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
+        <meta name="theme-color" content="#613ba9">
 
         <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
         <script type="text/javascript" src="//use.typekit.net/dyq8fxo.js"></script>
@@ -58,7 +70,7 @@
 
         <?php wp_head() ?>
         
-<?php
+    <?php
         $post = get_queried_object();
     if ( has_post_thumbnail( $post->ID ) ) {
         $thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
