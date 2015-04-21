@@ -11,7 +11,7 @@
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>
 
                 <?php
-
+                date_default_timezone_set('America/Los_Angeles');
 				$deadline = get_post_meta( get_the_ID(), '_expiration-date', true );
 				$timestamp = time();
 				$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
@@ -58,7 +58,7 @@
 		<?php echo rtrim($career_tag_links,', '); ?>
 		</div>
 		<?php endif; ?>
-		<?php if (current_user_can( 'edit_careers_pubs', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
+		<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	</header>
 	
     <?php remove_filter( 'the_title', 'wptexturize' );

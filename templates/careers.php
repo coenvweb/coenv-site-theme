@@ -47,6 +47,26 @@ $query_args = array(
 	'post_status' => 'publish',
 	'posts_per_page' => 20,
     'paged' => $paged,
+    'meta_query' => array(
+    	'relation'    => 'OR',
+        array(
+            'key' => 'deadline',
+            'value' => date('Ymd'),
+    		'type' => 'date',
+    		'compare' => '>='
+        ),
+        array(
+            'key' => '_expiration-date',
+            'value' => time(),
+            'type' => 'char',
+            'compare' => '>='
+        ),
+
+
+
+
+
+    )
 );
 
 // Category filter
