@@ -47,6 +47,26 @@ $query_args = array(
 	'post_status' => 'publish',
 	'posts_per_page' => 20,
     'paged' => $paged,
+    'meta_query' => array(
+    	'relation'    => 'OR',
+        array(
+            'key' => 'deadline',
+            'value' => date('Ymd'),
+    		'type' => 'date',
+    		'compare' => '>='
+        ),
+        array(
+            'key' => '_expiration-date',
+            'value' => time(),
+            'type' => 'char',
+            'compare' => '>='
+        ),
+
+
+
+
+
+    )
 );
 
 // Category filter
@@ -132,10 +152,10 @@ $wp_query = new WP_Query( $query_args );
 </li>
 <li class="page_item page-item-26005 current_page_ancestor current_page_parent"><a href="/students/career-resources/">Career Resources</a>
 <ul class='children'>
-<li class="page_item page-item-26053 current_page_item"><a href="/students/career-resources/career-funding-opportunities/">Career Opportunities</a>
+<li class="page_item page-item-26053 current_page_item"><a href="/students/career-resources/career-opportunities/">Career Opportunities</a>
 	<ul class='children'>
-<li class="page_item page-item-29490"><a href="/students/career-resources/career-funding-opportunities/for-employers/">For Employers</a></li>
-<li class="page_item page-item-29492"><a href="/students/career-resources/career-funding-opportunities/tips-for-jobinternship-seekers/">Tips for Job/Internship Seekers</a></li>
+<li class="page_item page-item-29490"><a href="/students/career-resources/career-opportunities/for-employers/">For Employers</a></li>
+<li class="page_item page-item-29492"><a href="/students/career-resources/career-opportunities/tips-for-jobinternship-seekers/">Tips for Job/Internship Seekers</a></li>
 	</ul>
 </li>
 <li class="page_item page-item-26154"><a href="/students/career-resources/uw-environmental-career-fair/">UW Environmental Career Fair</a></li>
@@ -161,25 +181,25 @@ $wp_query = new WP_Query( $query_args );
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_cat_tag_1): // Tag filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts tagged <strong>"<?php echo $coenv_cat_tag_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_year && $coenv_month): // Date filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_search_terms): // Date filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-funding-opportunities/">all posts</a></p>
+									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 						</div>
@@ -195,7 +215,7 @@ $wp_query = new WP_Query( $query_args );
 					<?php endwhile ?>
 				<?php else: ?>
 					<div class="no-results">
-						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-funding-opportunities/">Please try your search again</a>.</p>
+						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
 					</div>
 				<?php endif ?>
 

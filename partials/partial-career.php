@@ -11,7 +11,7 @@
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>
 
                 <?php
-
+                date_default_timezone_set('America/Los_Angeles');
 				$deadline = get_post_meta( get_the_ID(), '_expiration-date', true );
 				$timestamp = time();
 				$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
@@ -51,14 +51,14 @@
 		$career_tags = get_the_terms($post->ID,'career_post_tag');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= '<a href="/students/career-resources/career-funding-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+			$career_tag_links .= '<a href="/students/career-resources/career-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
 		}
 		?>
 		<div class="career-terms" style="float: left; clear: both;">
 		<?php echo rtrim($career_tag_links,', '); ?>
 		</div>
 		<?php endif; ?>
-		<?php if (current_user_can( 'edit_careers_pubs', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
+		<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	</header>
 	
     <?php remove_filter( 'the_title', 'wptexturize' );

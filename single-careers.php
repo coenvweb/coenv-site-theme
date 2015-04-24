@@ -19,7 +19,7 @@ $ancestor = array(
 
 		<div class="container">
 
-				<nav id="secondary-nav" class="side-col">
+												<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
 	              <li class="pagenav"><a href="/students/">Students</a><ul><li class="page_item page-item-25988"><a href="/students/meet-students/">Why Study Here?</a></li>
@@ -59,10 +59,10 @@ $ancestor = array(
 </li>
 <li class="page_item page-item-26005 current_page_ancestor current_page_parent"><a href="/students/career-resources/">Career Resources</a>
 <ul class='children'>
-<li class="page_item page-item-26053 current_page_item"><a href="/students/career-resources/career-funding-opportunities/">Career Opportunities</a>
+<li class="page_item page-item-26053 current_page_item"><a href="/students/career-resources/career-opportunities/">Career Opportunities</a>
 	<ul class='children'>
-<li class="page_item page-item-29490"><a href="/students/career-resources/career-funding-opportunities/for-employers/">For Employers</a></li>
-<li class="page_item page-item-29492"><a href="/students/career-resources/career-funding-opportunities/tips-for-jobinternship-seekers/">Tips for Job/Internship Seekers</a></li>
+<li class="page_item page-item-29490"><a href="/students/career-resources/career-opportunities/for-employers/">For Employers</a></li>
+<li class="page_item page-item-29492"><a href="/students/career-resources/career-opportunities/tips-for-jobinternship-seekers/">Tips for Job/Internship Seekers</a></li>
 	</ul>
 </li>
 <li class="page_item page-item-26154"><a href="/students/career-resources/uw-environmental-career-fair/">UW Environmental Career Fair</a></li>
