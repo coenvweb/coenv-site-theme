@@ -23,7 +23,7 @@ $args = array(
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-		<li>Sort by
+		<li>Sort By
 			<ul>
 				<li><a href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
 				<li><a href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
