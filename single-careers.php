@@ -38,23 +38,23 @@ $ancestor = array(
 <li class="page_item page-item-26036"><a href="/students/degrees-programs-and-courses/doris-duke-conservation-scholars/">Doris Duke Conservation Scholars</a></li>
 </ul>
 </li>
-<li class="page_item page-item-26003"><a href="/students/students-resources/">Student Resources</a>
+<li class="page_item page-item-26003"><a href="/students/student-resources/">Student Resources</a>
 <ul class='children'>
-<li class="page_item page-item-26044"><a href="/students/students-resources/financing-funding/">Funding</a>
+<li class="page_item page-item-26044"><a href="/students/student-resources/financing-funding/">Funding</a>
 	<ul class='children'>
-<li class="page_item page-item-26112"><a href="/students/students-resources/financing-funding/scholarships/">Scholarships</a></li>
-<li class="page_item page-item-26114"><a href="/students/students-resources/financing-funding/student-meeting-travel-fund/">Student Travel &#038; Meeting Fund</a></li>
+<li class="page_item page-item-26112"><a href="/students/student-resources/financing-funding/scholarships/">Scholarships</a></li>
+<li class="page_item page-item-26114"><a href="/students/student-resources/financing-funding/student-meeting-travel-fund/">Student Travel &#038; Meeting Fund</a></li>
 	</ul>
 </li>
-<li class="page_item page-item-26046"><a href="/students/students-resources/student-policies-help/">Student Policies &#038; Help</a></li>
-<li class="page_item page-item-26048"><a href="/students/students-resources/get-involved/">Get Involved</a>
+<li class="page_item page-item-26046"><a href="/students/student-resources/student-policies-help/">Student Policies &#038; Help</a></li>
+<li class="page_item page-item-26048"><a href="/students/student-resources/get-involved/">Get Involved</a>
 	<ul class='children'>
-<li class="page_item page-item-26128"><a href="/students/students-resources/get-involved/student-advisory-council/">Student Advisory Council</a></li>
-<li class="page_item page-item-26132"><a href="/students/students-resources/get-involved/student-groups/">Student Groups</a></li>
-<li class="page_item page-item-26149"><a href="/students/students-resources/get-involved/study-abroad/">Study Abroad</a></li>
+<li class="page_item page-item-26128"><a href="/students/student-resources/get-involved/student-advisory-council/">Student Advisory Council</a></li>
+<li class="page_item page-item-26132"><a href="/students/student-resources/get-involved/student-groups/">Student Groups</a></li>
+<li class="page_item page-item-26149"><a href="/students/student-resources/get-involved/study-abroad/">Study Abroad</a></li>
 	</ul>
 </li>
-<li class="page_item page-item-26050"><a href="/students/students-resources/diversity-resources/">Diversity Resources</a></li>
+<li class="page_item page-item-26050"><a href="/students/student-resources/diversity-resources/">Diversity Resources</a></li>
 </ul>
 </li>
 <li class="page_item page-item-26005 current_page_ancestor current_page_parent"><a href="/students/career-resources/">Career Resources</a>
