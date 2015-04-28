@@ -253,6 +253,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        text-align: center;
 
         @include min-width ( $iPadPortrait ) {
             display: inline-block;
@@ -272,6 +273,10 @@
             @include min-width ( $iPadPortrait ) {
                 @include rem('margin', 0, 0, 0, 1);
             }
+            
+
+
+             
 
         } // li
 
@@ -282,5 +287,13 @@
     } // .menu-footer-links
 
 } // .uw-footer
+@media (max-width: 600px) {
+    .copyright {
+        text-align: center;
+    }
+.menu-footer-links a {
+    padding: 0 .5rem;
+    }
+}
 
 
