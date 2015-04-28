@@ -245,6 +245,7 @@
             float: left;
             display: inline-block;
             @include col-2;
+            text-align: left;
         }
 
     } // .copyright
@@ -253,7 +254,6 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        text-align: center;
 
         @include min-width ( $iPadPortrait ) {
             display: inline-block;
@@ -287,12 +287,15 @@
     } // .menu-footer-links
 
 } // .uw-footer
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .copyright {
         text-align: center;
     }
-.menu-footer-links a {
-    padding: 0 .5rem;
+    .menu-footer-links {
+        text-align: center;
+    }
+    .menu-footer-links a {
+        padding: 0 .5rem;
     }
 }
 
