@@ -17,11 +17,11 @@ $ordered_themes = $themes;
 				<a href="#" class="Faculty-toolbox-toggle">
 
 					<div class="Faculty-toolbox-toggle-search">
-						<i class="icon-search"></i> <span>Search</span>
+						<i class="icon-search"></i> <p>Search</p>
 					</div>
 
 					<div class="Faculty-toolbox-toggle-roller">
-						<i class="icon-list"></i> <span>Themes</span>
+						<i class="icon-arrow-left-2"></i> <span>Themes</span>
 					</div>
 				</a>
 			</h1>
@@ -41,11 +41,7 @@ $ordered_themes = $themes;
 
 				<div class="Faculty-toolbox-roller-content">
 
-					<div class="Faculty-toolbox-roller-items">
-
-						<div class="Faculty-toolbox-roller-items-inner">
-
-							<div class="Faculty-toolbox-roller-items-set">
+					<div class="Faculty-toolbox-roller-items mCustomScrollbar Faculty-toolbox-roller-items-inner Faculty-toolbox-roller-items-set" >
 
 								<div class="Faculty-toolbox-roller-item"><a href="<?php bloginfo('url') ?>/faculty/" data-theme="*">All Research Themes</a></div>
 
@@ -58,10 +54,6 @@ $ordered_themes = $themes;
 									<?php endforeach ?>
 
 								<?php endif ?>
-
-							</div><!-- .Faculty-toolbox-roller-items-set -->
-
-						</div><!-- .Faculty-toolbox-roller-items-inner -->
 
 					</div><!-- .Faculty-toolbox-roller-items -->
 

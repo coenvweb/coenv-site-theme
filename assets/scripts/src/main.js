@@ -23,6 +23,21 @@ jQuery(function ($) {
 		
 		// lightbox
 		$('a').nivoLightbox();
+        
+        if ( $('body').hasClass('post-type-archive-faculty') ) {
+        
+            // custom scrollbar
+            $('.js .faculty-toolbox-roller-items').mCustomScrollbar({
+                setHeight:175,
+                theme: 'minimal-dark',
+                scrollInteria: 1
+            });
+
+            // scroll to selection
+            $('.js .faculty-toolbox-roller-items').mCustomScrollbar(
+                'scrollTo', '.Faculty-toolbox-roller-item--active'
+            );
+        }
 
 	}
 
