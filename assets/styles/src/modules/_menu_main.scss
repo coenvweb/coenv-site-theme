@@ -4,6 +4,36 @@
 		This element is a cloned version of .main-menu.normal-menu (via menu.js)
 		======================================================================== */
 
+#show-menu button {
+    outline: none;
+    min-width: 50px;
+    height: 110%;
+}
+
+.mobile-menu-active {
+    #show-menu, #logo, .site-header #logo a, .site-header {
+        background-color: $accent-lt!important;
+    }
+    #show-menu button {
+        color: $white;
+        
+        &:hover {
+            color: $white-button!important;
+        }
+        
+        &:before {
+            content: "\e028";
+            @include font-size(24);
+            color: $white;
+        }
+        
+        span {
+            @extend .visuallyhidden;
+            display: none;
+        }
+    }
+}
+
 .main-menu.mobile-menu {
 	display: block;
 	position: fixed;
