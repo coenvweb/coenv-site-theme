@@ -133,10 +133,10 @@ $wp_query = new WP_Query( $query_args );
 </li>
 <li class="page_item page-item-26003"><a href="/students/student-resources/">Student Resources</a>
 <ul class='children'>
-<li class="page_item page-item-26044"><a href="/students/student-resources/financing-funding/">Funding</a>
+<li class="page_item page-item-26044"><a href="/students/student-resources/funding/">Funding</a>
 	<ul class='children'>
 <li class="page_item page-item-26112"><a href="/students/student-resources/financing-funding/scholarships/">Scholarships</a></li>
-<li class="page_item page-item-26114"><a href="/students/student-resources/financing-funding/student-meeting-travel-fund/">Student Travel &#038; Meeting Fund</a></li>
+<li class="page_item page-item-26114"><a href="/students/student-resources/funding/student-travel-meeting-fund/">Student Travel &#038; Meeting Fund</a></li>
 	</ul>
 </li>
 <li class="page_item page-item-26046"><a href="/students/student-resources/student-policies-help/">Student Policies &#038; Help</a></li>
