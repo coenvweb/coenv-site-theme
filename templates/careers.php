@@ -115,7 +115,7 @@ $wp_query = new WP_Query( $query_args );
 								<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
-	              <li class="pagenav"><a href="/students/">Students</a><ul><li class="page_item page-item-25988"><a href="/students/meet-students/">Why Study Here?</a></li>
+	              <li class="pagenav"><a href="/students/">Students</a><ul><li class="page_item page-item-25988"><a href="/students/why-study-here/">Why Study Here?</a></li>
 <li class="page_item page-item-25999"><a href="/students/meet-our-students/">Meet Our Students</a>
 <ul class='children'>
 <li class="page_item page-item-26122"><a href="/students/meet-our-students/undergraduates/">Undergraduates</a></li>
