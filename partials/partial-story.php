@@ -56,19 +56,28 @@
 	</header>
 	<section class="article__content">
 		<div class="coenv-thumb"><a style="float: right;" href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail( 'small' ) ?></a></div>
-		<?php if ( get_field('story_link_url') ): ?>
+
+		<?php if ( is_single() ) { ?>
 			<?php $trimmed_content = breezer_addDivToImage(get_the_content()); ?>
 			<?php $trimmed_content = strip_tags($trimmed_content,'<a>'); ?>
 			<?php $trimmed_content = strip_shortcodes ($trimmed_content); ?>
 			<?php echo '<p>' . $trimmed_content . '</p>'; ?>
-			<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
-		<?php else: ?>
+
+			
+
+		<?php } else { ?>
 			<?php $trimmed_content = breezer_addDivToImage(get_the_excerpt()); ?>
 			<?php $trimmed_content = strip_tags($trimmed_content,'<a>'); ?>
 			<?php $trimmed_content = strip_shortcodes ($trimmed_content); ?>
 			<?php echo '<p>' . $trimmed_content . '</p>'; ?>
-			<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
-		<?php endif; ?>
+
+				<?php if ( get_field('story_link_url') ) { ?>
+					<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a>
+				<?php } else { ?>
+					<a href="<?php echo the_permalink(); ?>" class="button">Read more »</a>
+				<?php } ?>
+
+		<?php } ?>
 
 	</section>
     <?php remove_filter( 'the_title', 'wptexturize' );

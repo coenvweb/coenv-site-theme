@@ -29,9 +29,15 @@
 	<section class="article__content">
 
 		<?php the_content() ?>
-		<?php if ( !is_page() && get_field('story_link_url') ): ?> 
-	 		<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a> 
-		<?php endif; ?>
+
+		<?php if ( get_field('story_link_url') ) { ?>
+
+				<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a>
+
+		<?php } ?>
+
+
+
 	</section>
 		
     <?php remove_filter( 'the_title', 'wptexturize' );
