@@ -10,7 +10,7 @@ jQuery(function ($) {
 		$('input, textarea').placeholder();
 
 		// fitvids for responsive videos
-		$('.article-content').handleFitVids();
+		$('article').fitVids();
 
 		// single faculty member tabs
 		$('.Faculty-member-tab-nav').memberTabs();
