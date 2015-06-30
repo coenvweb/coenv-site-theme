@@ -19,6 +19,10 @@
 		}
 
 	}
+    
+    a {
+        outline: 0;
+    }
 }
 
 .Faculty-toolbox-inner {
@@ -57,19 +61,26 @@
 	}
 
 	.Faculty-toolbox-toggle {
-		@include rem('padding', 0, 0.25);
 		text-decoration: none;
 		text-align: center;
+        @include rem('padding', 0, 0.25);
 		color: #fff;
 		border-left: 1px solid $border-dk-accent;
+        line-height: 1rem;
+        
+        .icon-arrow-left-2 {
+            @include font-size(28);
+        }
+        
+        .icon-search {
+            @include font-size(24);
+            @include rem('padding', 0, 0.14);
+        }
+        
+        span {
+            @extend .visuallyhidden;
+        }
 
-		i {
-			@include font-size(24);
-		}
-
-		span {
-			@extend .visuallyhidden;
-		}
 	}
 
 	.Faculty-toolbox-toggle-search {
@@ -157,7 +168,6 @@
 	@include rem('margin', 0, 1, 1);
 	padding: 0;
 	list-style: none;
-	overflow-y: scroll;
 	border-radius: 4px;
 	background: #555;
 

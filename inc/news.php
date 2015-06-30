@@ -232,9 +232,17 @@ add_filter('get_archives_link', 'coenv_get_archives_link');
  *  Display related news based on admin selection or auto based on category.
  */
 function coenv_related_news ($id) {
-
-	$_coenv_terms = get_the_terms( $id, 'topic' );
-	$coenv_terms = array();
+    
+    if (is_singular('post')) {
+        $post_tax = 'topic';        
+    }
+    
+    if (is_singular('faculty')) {
+        $post_tax = 'member_theme';        
+    }
+    
+    $_coenv_terms = get_the_terms( $id, $post_tax );
+    $coenv_terms = array();
 
 	foreach ( $_coenv_terms as $term) {
 		$coenv_terms[] = $term->slug;
@@ -283,10 +291,11 @@ function coenv_related_news ($id) {
 			echo '</h3>';
 			
 		echo '</div>';
-		echo '<br style="clear:both" />';
-		echo '</div>';
-		echo '</div>';
+        echo '</div>';
 		}
+        echo '<br style="clear:both" />';
+		echo '</div>';
+        echo '</div>';
 
 	} else {
 		// no posts found

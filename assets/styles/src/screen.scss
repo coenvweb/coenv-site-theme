@@ -39,6 +39,9 @@
 @import 'plugins/nivo-lightbox.scss';
 @import 'plugins/nivo-default.scss';
 
+// Scrollbar for scrollbar on faculty page
+@import 'plugins/scrollbar.scss';
+
 /*	Base styles
 		======================================================================== */
 @import 'base/type.scss';
@@ -68,6 +71,7 @@
 @import 'modules/faculty-toolbox.scss';
 @import 'modules/faculty-single.scss';
 @import 'modules/related-news.scss';
+@import 'modules/related-faculty.scss';
 
 /*	Templates
 		Specific pages and page areas that further extend modules and components

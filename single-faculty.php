@@ -163,14 +163,11 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 								<div class="Faculty-member-bio">
 									<?php echo $member['biography'] ?>
 								</div>
+                            </ul><!-- .Faculty-member-tabs -->
+                    </div><!-- .entry-content -->
 
-							<?php endif ?>
-						
-					</div><!-- .entry-content -->
-					</article>
-
-				</ul><!-- .Faculty-member-tabs -->
-
+                    <?php endif ?>
+                    
 			</div><!-- .main-col -->
 
 			<div class="side-col">
@@ -185,11 +182,24 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 				?>
 
 			</div><!-- .side-col -->
-
-		</div><!-- .container -->
+                
+        </div><!-- .container -->
 
 	</div><!-- .Faculty-member-content -->
+    <div class="container">
+            
+            <div class="main-col">
+        
+                <footer class="related">
+                    <?php get_template_part( 'partials/partial', 'related-faculty' ) ?>
+                    <?php get_template_part( 'partials/partial', 'related-news' ) ?>
+                </footer>
+                </article>
+            
+            </div><!-- .main-col -->
 
+    </div><!-- .container -->
+    
 </section><!-- .Faculty-single -->
 
 <?php get_footer() ?>

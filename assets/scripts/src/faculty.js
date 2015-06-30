@@ -191,11 +191,11 @@
 	 */
 	CoEnvFaculty.prototype.rollerSlider = function () {
 		var _this = this,
-			$item,
-			itemOffset,
-			itemPos,
-			itemHeight,
-			newInnerPos;
+			$item;
+			//itemOffset,
+			//itemPos,
+			//itemHeight,
+			//newInnerPos;
 
 		function doRoll ( $item ) {
 
@@ -203,33 +203,37 @@
 				return;
 			}
 	        
-	        var innerOffset = _this.$rollerInner.offset().top;
-	        var itemOffset = $item.offset().top;
+	        //var innerOffset = _this.$rollerInner.offset().top;
+	        //var itemOffset = $item.offset().top;
 
-	        var itemPos = itemOffset - innerOffset;
-	        var itemHeight = $item.outerHeight();
+	        //var itemPos = itemOffset - innerOffset;
+	        //var itemHeight = $item.outerHeight();
 
-	        var newInnerPos = ( -itemPos + ( _this.rollerCenter - _this.rollerOffsetTop ) ) - ( itemHeight / 2 );
+	        //var newInnerPos = ( -itemPos + ( _this.rollerCenter - _this.rollerOffsetTop ) ) - ( itemHeight / 2 );
 
 	        // deactivate active items
 	        _this.$roller.find( '.' + _this.rollerItemActiveClass ).removeClass( _this.rollerItemActiveClass );
+            
+            $item.eq(2).addClass( 'scroll-here' );
 
 	        // make item active
 	        $item.addClass( _this.rollerItemActiveClass );
 
 	        // trigger roller 'preroll' event
 	        // need to pass change
-	        _this.$roller.trigger( 'preroll', [{
-	            change: newInnerPos - _this.rollerInnerPos
-	        }] );
+	        // _this.$roller.trigger( 'preroll', [{
+	        //     change: newInnerPos - _this.rollerInnerPos
+	        //}] );
 
-	        _this.$rollerInner.css( 'transform', 'translateY(' + newInnerPos + 'px)' );
+	        //_this.$rollerInner.css( 'transform', 'translateY(' + newInnerPos + 'px)' );
 
 	        // update rollerInnerPos
-	        _this.rollerInnerPos = newInnerPos;
+	        //_this.rollerInnerPos = newInnerPos;
 
 	        // trigger roller 'postroll'
-	        _this.$roller.trigger( 'postroll', [{}] );
+	        //_this.$roller.trigger( 'postroll', [{
+            //    change: _this.rollerInnerPos
+            //}] );
 		}
 
 		this.$isoContainer.on( 'filter', function ( event, data ) {
