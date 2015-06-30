@@ -17,8 +17,9 @@
 
         }
     }
+}
 
-
+.related-news, .related-faculty {
     .related-heading {
         display: block;
         width: 100%;
@@ -47,18 +48,19 @@
         }
     }
 
-.related-article-title {
-    @include rem('padding', 1, 2);
-    position: relative;
-    bottom: 0;
+    .related-article-title {
+        @include rem('padding', 1, 2);
+        position: relative;
+        bottom: 0;
 
-    h3 {
-        @include serif;
-        font-weight: 400;
-        @extend .antialiased;
-    }	
+        h3 {
+            @include serif;
+            font-weight: 400;
+            @extend .antialiased;
+        }	
 
-} //.related-article-title
+    } //.related-article-title
+}
 
 .related-news {
     .related-thumb {
@@ -151,6 +153,16 @@
 
 // Inline related news
 .article__content .related-news {
+    padding: 0!important;
+    @extend .article;
+    overflow: hidden;
+    position: relative;
+    top:0;
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+
+    }
     float: left;
     display: block;
     margin-left: 0;
@@ -247,4 +259,3 @@
         @include rem('padding', 1, 2);
     }
 } // .related-news
-}
