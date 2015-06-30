@@ -22,10 +22,10 @@
 	}
 
 	@media print {
-			a[href]:after {
-        content: " (" attr(href) ")";
+        a[href]:after {
+            content: " (" attr(href) ")";
     	}
-		}
+}
 
 } // .button
 

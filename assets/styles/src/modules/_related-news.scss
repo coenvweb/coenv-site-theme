@@ -1,213 +1,250 @@
+.related {
+    .related-news, .related-faculty {
+        padding: 0!important;
+        overflow: hidden;
+        @extend .article;
+        position: relative;
+        top:0;
+        background-color: $white;
+        @extend .shadow;
+        @include rem('margin', 1, 0, 1, 0);
+        @include min-width ($bp-2) {
+            @include rem('margin', 1);
+        }
+        ul {
+            margin-left: 0;
+            padding-left: 0;
+
+        }
+    }
+
+
+    .related-heading {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid $border;
+        @include rem('padding', 1);
+    }
+
+    .title {
+        display: inline;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-weight: 600;
+        line-height: 0;
+        @include font-size(11);
+        @include rem('margin', .9, 1, 0.5, 1);
+    }
+
+    .more {
+        @extend .title;
+        float: right;
+    }
+    a {
+        color: $text;
+        &:hover{
+            color: #8458be!important;
+        }
+    }
+
+.related-article-title {
+    @include rem('padding', 1, 2);
+    position: relative;
+    bottom: 0;
+
+    h3 {
+        @include serif;
+        font-weight: 400;
+        @extend .antialiased;
+    }	
+
+} //.related-article-title
+
 .related-news {
-		padding: 0!important;
-		@extend .article;
-		overflow: hidden;
-		position: relative;
-		top:0;
-	  	@include min-width ( $iPhoneLandscape) {
-			@include rem('margin', 1);
-		}
-		ul {
-			margin-left: 0;
-			padding-left: 0;
+    .related-thumb {
+        overflow: hidden;
+        @include rem('height', 12);
 
-		}
-	
-	.related-heading {
-		display: block;
-		width: 100%;
-		border-bottom: 1px solid $border;
-		@include rem('padding', 1);
-	}
-	
-		.title {
-			display: inline;
-			text-transform: uppercase;
-			letter-spacing: .1em;
-			font-weight: 600;
-			line-height: 0;
-			@include font-size(11);
-			@include rem('margin', .9, 1, 0.5, 1);
-		}
-	
-		.more {
-			@extend .title;
-			float: right;
-		}
-		a {
-				color: $text;
-			&:hover{
-				color: #8458be!important;
-			}
-		}
-	
-	.related-article-title {
-		@include rem('padding', 1, 2);
-		position: relative;
-		bottom: 0;
-		
-		h3 {
-			@include serif;
-			font-weight: 400;
-			@extend .antialiased;
-		}	
-		
-	} //.related-article-title
-	
-	.related-thumb {
-		@include rem('height', 12);
-		overflow: hidden;
-		
-		background: {
-			image: url(../../../assets/img/uw-flag.png);
-			size: cover;
-    		repeat: no-repeat;
-			position: 50%;
-			color: $accent;
-		}
+        background: {
+            image: url(../../../assets/img/uw-flag.png);
+            size: cover;
+            repeat: no-repeat;
+            position: 50%;
+            color: $accent;
+        }
 
-		
-		.wp-post-image {
-			display: block;
-			margin: auto;
+
+        .wp-post-image {
+            display: block;
+            margin: auto;
             min-width: 100%;
-		}
-	}
-	
-	.related-container {
-		display: inline-block;
-		width: 100%;
-		
-		&:hover {
-			background-color: $accent;
-			a {
-				color: $white!important;
-			}
-		}
-		
-		@include max-width ( 600 ) {
-			&:nth-child(odd) {
-				border-bottom: 1px solid $border;
-			}
-		}
+        }
+    }
+    
+    .related-posts {
+        position: relative;
+        z-index: 1;
+    }
 
-		@include min-width ( 600 ) {
-			width: 50%;
-			float: left;
-			padding-bottom: 500em;
-			margin-bottom: -500em;
-			&:nth-child(odd) {
-				border-right: 1px solid $border;
-			}
-		}
+    .related-container {
+        display: inline-block;
+        width: 100%;
+        background-color: $white;
+        
+        &:hover {
+            background-color: $accent;
+            /* or 
+            margin-top: -4rem;
+            */
+            /* or
+            transform: scale(1.2);
+            transition: .3s;
+            z-index: 3;
+            */
+            a {
+                color: $white!important;
+            }
+            .related-article-title {
+                background-color: $accent;
+            }
+            .related-thumb {
+                /* or
+                height: auto;
+                overflow: visible;
+                position: relative;
+                z-index: 1;
+                */
+                /* or 
+                height: 16rem;
+                transition: .3s;
+                */
+            }
+        }
 
-		a {
-			text-decoration: none;
-			color: $text;
-		}
-		
-	} //.related-container
+        @include max-width ( 600 ) {
+            &:nth-child(odd) {
+                border-bottom: 1px solid $border;
+            }
+        }
 
-	
-	
+        @include min-width ( 600 ) {
+            width: 50%;
+            float: left;
+            padding-bottom: 50em;
+            margin-bottom: -50em;
+            &:nth-child(odd) {
+                border-right: 1px solid $border;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: $text;
+        }
+
+    } //.related-container
+
+
+
 } // .related-news
 
 
 // Inline related news
 .article__content .related-news {
-	float: left;
-	display: block;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 1rem;
-	padding-top: 1rem;
-	border-top: 2px solid #ddd;
-	width: 100%;
+    float: left;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #ddd;
+    width: 100%;
 
-	@include min-width ( $iPhoneLandscape) {
-			@include rem('margin-bottom', 1.5);
-		}
+    @include min-width ( $iPhoneLandscape) {
+        @include rem('margin-bottom', 1.5);
+    }
 
-	h2,
-	.related-news-more {
-		@include sans;
-		text-transform: uppercase;
-		@include font-size(11);
+    h2,
+    .related-news-more {
+        @include sans;
+        text-transform: uppercase;
+        @include font-size(11);
 
-		a {
-			text-decoration: none;
-		}
-	}
-	ul {
-		padding-bottom: 0;
-		margin-bottom: 0;
-	}
-	
-	.related-container {
-		background-color: #363533;
-		float: left;
-		display: block;
-		margin-bottom: 0;
-		padding-bottom: 0;
-		
+        a {
+            text-decoration: none;
+        }
+    }
+    ul {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
 
-		&:hover {
-			background-color: $accent;
-			a {
-				color: $white!important;
-			}
-		}
+    .related-container {
+        background-color: #363533;
+        float: left;
+        display: block;
+        margin-bottom: 0;
+        padding-bottom: 0;
 
 
-		a {
-			color: $white;
-		}
-
-		@include min-width ( 600 ) {
-			width: 50%;
-			float: left;
-			padding-bottom: 500em;
-			margin-bottom: -500em;
-			&:nth-child(odd) {
-				border-right: 1px solid #222;
-			}
-		}
+        &:hover {
+            background-color: $accent;
+            a {
+                color: $white!important;
+            }
+        }
 
 
+        a {
+            color: $white;
+        }
 
-	}
-	.related-heading {
-		padding-left: 0;
-		padding-right: 0;
-		padding-bottom: 1rem;
-		padding-top: .5rem;
-		width: 100%;
-		float: left;
+        @include min-width ( 600 ) {
+            width: 50%;
+            float: left;
+            padding-bottom: 500em;
+            margin-bottom: -500em;
+            &:nth-child(odd) {
+                border-right: 1px solid #222;
+            }
+        }
 
-		h2.title {
-		float: left;
-		@include font-size(14);
-		font-weight: bold;
-		margin-left: 0;
-		padding-left: .25rem;
-		width: 70%;
-		}
 
-		.related-news-more {
-		float: right;
-		font-weight: bold;
-		margin-right: .25rem;
-		text-align: right;
-		width: 20%;
 
-			a:hover {
-				color: $accent;
-				text-decoration: underline;
-			}
-		}
+    }
+    .related-heading {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 1rem;
+        padding-top: .5rem;
+        width: 100%;
+        float: left;
 
-	}
-	.related-article-title {
-		@include rem('padding', 1, 2);
-	}
+        h2.title {
+            float: left;
+            @include font-size(14);
+            font-weight: bold;
+            margin-left: 0;
+            padding-left: .25rem;
+            width: 70%;
+        }
+
+        .related-news-more {
+            float: right;
+            font-weight: bold;
+            margin-right: .25rem;
+            text-align: right;
+            width: 20%;
+
+            a:hover {
+                color: $accent;
+                text-decoration: underline;
+            }
+        }
+
+    }
+    .related-article-title {
+        @include rem('padding', 1, 2);
+    }
 } // .related-news
+}

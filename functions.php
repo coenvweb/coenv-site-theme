@@ -38,6 +38,8 @@ function coenv_styles_and_scripts() {
 	wp_localize_script( 'coenv-main', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
 }
 
+require_once locate_template( '/inc/faculty.php' );
+
 /**
  * Incorporate CoEnv Member API into the theme
  * this used to be a separate plugin, but it makes more sense to include it in the theme

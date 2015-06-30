@@ -17,7 +17,7 @@ $ordered_themes = $themes;
 				<a href="#" class="Faculty-toolbox-toggle">
 
 					<div class="Faculty-toolbox-toggle-search">
-						<i class="icon-search"></i> <p>Search</p>
+						<i class="icon-search"></i> <span>Search</span>
 					</div>
 
 					<div class="Faculty-toolbox-toggle-roller">

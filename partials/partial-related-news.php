@@ -27,10 +27,13 @@
 						echo the_title();
 						echo '</a>';
 						echo '</h3>';
-        		echo '</div></div>';
+        		echo '</div>';
+            echo '</div>';
     		endforeach;
 				echo '<br style="clear:both" />';
 			echo '</div>';
+            echo '</div>';
+            
    			wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
 
 		} else {

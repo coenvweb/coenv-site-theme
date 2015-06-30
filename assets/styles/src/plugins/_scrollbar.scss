@@ -339,9 +339,6 @@ yx-axis
 
 	.mCSB_scrollTools{ opacity: 0.75; filter: "alpha(opacity=75)"; -ms-filter: "alpha(opacity=75)"; }
 	
-	.mCS-autoHide > .mCustomScrollBox > .mCSB_scrollTools,
-	.mCS-autoHide > .mCustomScrollBox ~ .mCSB_scrollTools{ opacity: 0; filter: "alpha(opacity=0)"; -ms-filter: "alpha(opacity=0)"; }
-	
 	.mCustomScrollbar > .mCustomScrollBox > .mCSB_scrollTools.mCSB_scrollTools_onDrag,
 	.mCustomScrollbar > .mCustomScrollBox ~ .mCSB_scrollTools.mCSB_scrollTools_onDrag,
 	.mCustomScrollBox:hover > .mCSB_scrollTools,
@@ -1030,7 +1027,7 @@ yx-axis
 	
 	.mCS-minimal.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
 		background-color: #fff; background-color: rgba(255,255,255,0.2);
-		filter: "alpha(opacity=20)"; -ms-filter: "alpha(opacity=20)"; 
+		filter: "alpha(opacity=35)"; -ms-filter: "alpha(opacity=20)"; 
 	}
 	
 	.mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
@@ -1043,8 +1040,8 @@ yx-axis
 	/* theme: "minimal-dark" */
 	
 	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
-		background-color: #000; background-color: rgba(0,0,0,0.2);
-		filter: "alpha(opacity=20)"; -ms-filter: "alpha(opacity=20)"; 
+		background-color: #000; background-color: rgba(0,0,0,0.35);
+		filter: "alpha(opacity=35)"; -ms-filter: "alpha(opacity=35)"; 
 	}
 	
 	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
