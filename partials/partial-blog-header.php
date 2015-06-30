@@ -21,7 +21,7 @@
 				if ( !empty( $cats ) ) {	
 				foreach ( $cats as $cat ) {
 					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
+					$output .= '<option value="/news/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
 				}
 				}	
 				$output .= '</select>';
