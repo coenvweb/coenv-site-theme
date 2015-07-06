@@ -21,7 +21,11 @@
 		border-right: none;
 	}
 
-	li:nth-last-child(-n+2) a {
+	.youtube:nth-last-child(-n+2) a {
+		border-bottom: none;
+	}
+    
+    li:last-child a {
 		border-bottom: none;
 	}
 

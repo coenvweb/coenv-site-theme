@@ -107,6 +107,11 @@ function coenv_admin_settings() {
 	add_option( 'youtube' );
 	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
 	register_setting( 'general', 'youtube' );
+    
+    add_option( 'instagram' );
+	add_settings_field( 'instagram', 'Instagram', 'coenv_setting_instagram', 'general' );
+	register_setting( 'general', 'instagram' );
+
 
 //	add_option( 'feeds' );
 //	add_settings_field( 'feeds', 'Feeds', 'coenv_setting_feeds', 'general' );
@@ -174,6 +179,18 @@ function coenv_setting_youtube() {
 	?>	
 		<input name="youtube" type="text" id="youtube" value="<?php echo $value; ?>" class="regular-text">
 		<p class="description">Full URL to your YouTube Channel.</p>
+	<?php
+}
+
+/**
+ * YouTube setting
+ */
+function coenv_setting_instagram() {
+	$value = get_option('instagram');
+
+	?>	
+		<input name="instagram" type="text" id="instagram" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to your Instagram profile.</p>
 	<?php
 }
 
