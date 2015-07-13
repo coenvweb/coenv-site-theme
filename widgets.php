@@ -58,13 +58,14 @@ class CoEnv_Widget_Social extends WP_Widget {
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
  
 			<ul>
-				<?php if (get_option('facebook')) { ?><li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="icon-facebook"> </i> Facebook</a></li><?php } ?>
-				<?php if (get_option('twitter')) { ?><li class="twitter"><a href="<?php echo get_option('twitter'); ?>" title="Follow <?php bloginfo('name'); ?> on Twitter" target="_blank" rel="nofollow"><i class="icon-twitter"> </i> Twitter</a></li><?php } ?>
+				<?php if (get_option('facebook')) { ?><li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="icon-facebook"> </i>Facebook</a></li><?php } ?>
+				<?php if (get_option('twitter')) { ?><li class="twitter"><a href="<?php echo get_option('twitter'); ?>" title="Follow <?php bloginfo('name'); ?> on Twitter" target="_blank" rel="nofollow"><i class="icon-twitter"> </i>Twitter</a></li><?php } ?>
 				<?php if (get_option('google_plus')) { ?><li class="facebook"><a href="<?php echo get_option('google_plus'); ?>" title="View <?php bloginfo('name'); ?> Google+ profile" target="_blank" rel="nofollow"><i class="icon-googleplus"> </i> Google+</a></li><?php } ?>
-				<?php if (get_option('youtube')) { ?><li class="youtube"><a href="<?php echo get_option('youtube'); ?>" title="<?php bloginfo('name'); ?> You Tube Channel" target="_blank" rel="nofollow"><i class="icon-youtube"> </i> YouTube</a></li><?php } ?>
-                <?php if (get_option('instagram')) { ?><li class="instagram"><a href="<?php echo get_option('instagram'); ?>" title="Follow <?php bloginfo('name'); ?> on Instagram" target="_blank" rel="nofollow"><i class="icon-instagram"> </i> Instagram</a></li><?php } ?>
-				<li class="feeds"><a href="<?php echo (get_option('feeds')) ? get_option('feeds') : get_bloginfo('url').'/feeds'; ?>" title="<?php bloginfo('name'); ?> RSS Feed"><i class="icon-rss"> </i> Feed</a></li>
-				<?php if (get_option('uw_social')) { ?><li class="uw-social"><a href="<?php echo get_option('uw_social'); ?>" title="<?php bloginfo('name'); ?> on UW Social" target="_blank" rel="nofollow"><i class="icon-icon-uw"> </i> UW Social</a></li><?php } ?>
+                <?php if (get_option('instagram')) { ?><li class="instagram"><a href="<?php echo get_option('instagram'); ?>" title="Follow <?php bloginfo('name'); ?> on Instagram" target="_blank" rel="nofollow"><i class="icon-instagram"> </i>Instagram</a></li><?php } ?>
+				<?php if (get_option('youtube')) { ?><li class="youtube"><a href="<?php echo get_option('youtube'); ?>" title="<?php bloginfo('name'); ?> You Tube Channel" target="_blank" rel="nofollow"><i class="icon-youtube"> </i>YouTube</a></li><?php } ?>
+                <li class="email"><a href="/alumni-and-community/stay-connected" title="Subscribe to our email newsletter."><i class="icon-mail"> </i>Newsletter</a></li>
+				<li class="feeds"><a href="/news/feed" title="<?php bloginfo('name'); ?> RSS Feed"><i class="icon-rss"> </i> Feed</a></li>
+				<?php if (get_option('uw_social')) { ?><li class="uw-social"><a href="<?php echo get_option('uw_social'); ?>" title="<?php bloginfo('name'); ?> on UW Social" target="_blank" rel="nofollow"><i class="icon-icon-uw"> </i>UW Social</a></li><?php } ?>
 			</ul>
  
 		<?php
