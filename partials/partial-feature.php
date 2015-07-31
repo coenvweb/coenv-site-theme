@@ -11,7 +11,7 @@ $content_url  = $content_link[0]['link'];
 /**
  * Set target for external links
  */
-if (strpos($content_url,'coenv.') || substr($content_url,0,1) == '/') {
+if ( strpos( $content_url,'environment.' ) || substr( $content_url,0,1 ) == '/' ) {
 	$content_target = '';
 } else {
 	$content_target = ' target="_blank" ';
