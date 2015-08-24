@@ -10,7 +10,7 @@ global $coenv_member_api;
         $coenv_chosen = get_field('related_faculty_post');
         echo '<div class="related-faculty">';
             echo '<div class="related-heading">';
-                echo '<h3 class="title">Related Faculty</h3>';
+                echo '<h3 class="title">' . get_field('related_faculty_label') . '</h3>';
             echo '</div>';
             echo '<div class="related-people">';
                 foreach( $coenv_chosen as $post):

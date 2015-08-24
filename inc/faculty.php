@@ -39,7 +39,7 @@ function coenv_related_faculty ($id) {
 	if ( $query->have_posts() ) {
 		echo '<div class="related-faculty">';
             echo '<div class="related-heading">';
-                echo '<h2 class="title">Related Faculty</h2>';
+                echo '<h2 class="title">' . get_field('related_faculty_label') . '</h2>';
             echo '</div>';
             echo '<div class="related-people">';
             while ( $query->have_posts() ) {
