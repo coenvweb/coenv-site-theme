@@ -274,30 +274,57 @@ body.home {
 		Currently only on home page
 		======================================================================== */
 
+.home .container {
+    @include max-width( 470 ) {
+        padding: 0 .7rem;
+    }
+}
+
 .stories-container {
 	@include clearfix;
-
-	@include min-width ( $iPadPortrait ) {
-		@include rem('margin', 0, -0.5); // counteract .story padding below
-	}
+    @include rem('margin', 0, -0.5); // counteract .story padding below
 
 } // .stories-container
 
-.story {
+.story, .story-sizer {
 	@extend %media;
 
     overflow: visible; //fixes shadow on homepage?
     
-	@include min-width( $iPadPortrait ) {
-		float: left;
-		@include rem('padding', 0, 0.5);
-		width: 33.3333%;
-	}
+    float: left;
+    @include rem('padding', 0, 0.5);
+    width: 33.3%;
+    display: block;
 
+    @include max-width( $iPadPortrait ) {
+        width: 50%;
+    }
+    
+    @include max-width( 470 ) {
+        width: 100%;
+    }
+    
+    a {
+        text-decoration: none;
+        color: $text;
+        -webkit-font-smoothing: antialiased;
+    }
+    
 	.inner {
 		@include clearfix;
 		@include shadow();
 		background: #fff;
+        &:hover {
+            background-color: $accent;
+            a {
+                color: $white!important;
+            }
+            .related-article-title {
+                background-color: $accent;
+            }
+            .related-thumb {
+            }
+        }
 	}
 
 	.content {
@@ -311,14 +338,9 @@ body.home {
 			font-weight: 400;
 
 			@include min-width( $iPadPortrait ) {
-				@include rem('margin-bottom', 1);
+				@include rem('margin-bottom', .2);
 				@include font-size(20);
 				@include line-height(24);
-			}
-
-			a {
-				text-decoration: none;
-				color: $text;
 			}
 
 		} // h1
@@ -372,15 +394,10 @@ body.home {
 	} // .story-series
 
 	.img {
-		width: 25%;
-
+        float: none;
 		img {
 			width: 100%;
-		}
-
-		@include min-width ( $iPadPortrait ) {
-			float: none;
-			width: 100%;
+            float: none;
 		}
 
 	} // .img

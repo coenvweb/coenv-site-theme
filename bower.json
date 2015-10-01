@@ -27,7 +27,12 @@
     "odometer": "~0.4.6",
     "matchmedia": "~0.2.0",
     "nivo-lightbox": "~1.2.0",
-    "malihu-custom-scrollbar-plugin": "~3.0.9"
+    "malihu-custom-scrollbar-plugin": "~3.0.9",
+    "masonry": "~3.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "get-size": "~1.2.2",
+    "masonry": "~3.3.2"
+  }
 }

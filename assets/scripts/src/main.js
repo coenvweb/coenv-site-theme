@@ -39,6 +39,17 @@ jQuery(function ($) {
                 'scrollTo', '.Faculty-toolbox-roller-item--active'
             );
         }
+        
+        if ( $('body').hasClass('home') ) {
+        
+            $('.stories-container').masonry({
+                // options
+                itemSelector: '.story',
+                columnWidth: '.story-sizer',
+                percentPosition: true
+            });
+            
+        }
 
 	}
     
