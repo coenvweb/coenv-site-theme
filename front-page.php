@@ -27,6 +27,7 @@ $post_sort = new WP_Query( array(
 		<main id="main-col">
 
         <section id="features">
+            <button id="toggleAutoPlayBtn">Pause</button>
 
             <div class="features-container">
 

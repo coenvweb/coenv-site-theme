@@ -232,7 +232,11 @@ body.home {
             border-radius: 50%;
             @extend .shadow;
             @include min-width ( $iPadPortrait ) {
-                bottom: 50%;
+                bottom: 55%;
+            }
+            &:hover {
+                background: $accent;
+                color: white;
             }
             &.rsArrowLeft {
                 float: left;
@@ -308,6 +312,7 @@ body.home {
 			@include rem('height', 1);
 			background: #858585;
 			background: rgba(0,0,0,0.45);
+            @extend .shadow;
 			border-radius: 50%;
 			cursor: pointer;
 
