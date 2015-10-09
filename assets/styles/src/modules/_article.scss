@@ -140,6 +140,7 @@
 		@include font-size(18);
 		@include line-height(24);
 		font-weight: 400;
+        margin-bottom: 1rem;
 
 		@include min-width ( $iPadPortrait ) {
 			@include font-size(24);
@@ -152,6 +153,7 @@
 		@include serif;
 		@include font-size(16);
 		@include line-height(24);
+        margin-bottom: 1rem;
 		font-weight: 400;
 
 		@include min-width ( $iPadPortrait ) {
