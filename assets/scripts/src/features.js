@@ -29,6 +29,7 @@ $.fn.homeFeatures = function() {
 	$rsContainer.royalSlider({
 		loop: true,
 		fadeInLoadedSlide: false,
+        arrowsNav: true,
 		autoHeight: true,
 		navigateByClick: false,
 		autoPlay: {
