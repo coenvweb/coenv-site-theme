@@ -76,7 +76,6 @@
         <!--<![endif]-->
 
         <?php wp_head() ?>
-        <script src="<?php echo get_template_directory_uri() ?>/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
     <?php
         $post = get_queried_object();
     if ( has_post_thumbnail( $post->ID ) ) {

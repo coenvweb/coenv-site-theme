@@ -470,5 +470,9 @@ body.home {
 		@include col-1;
 		@include rem('padding-left', 0.5);
 	}
+    
+    @include max-width ( $maxWidthBreakpoint ) {
+		@include rem('padding-bottom', 2);
+	}
 
 } // .home .widget-social
