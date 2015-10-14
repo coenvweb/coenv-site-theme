@@ -328,6 +328,31 @@ body.home {
 		} // a
 
 	} // .features-nav
+    .pause {
+        position: relative;
+    }
+    #toggleAutoPlayBtn {
+        position: absolute;
+        float: right;
+        right: 76px;
+        top: 464px;
+    
+        .icon-play, .icon-pause {
+            display: block;
+            text-indent: -9999px;
+            width: 14px;
+            height: 14px;
+            background-size: 14px 14px;
+        }
+
+        .icon-play {
+            background: url(../../img/icon-play.svg); 
+        }
+
+        .icon-pause {
+            background: url(../../img/icon-pause.svg);
+        }
+    }
 
 } // #features
 

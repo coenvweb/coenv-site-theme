@@ -92,9 +92,9 @@ $.fn.homeFeatures = function() {
     $('#toggleAutoPlayBtn').click(function() {
         // optionally change button text, style e.t.c.
         if(autoStart) {
-            $(this).html('<i class="fi-play">play</i>');
+            $(this).html('<i class="icon-play">play</i>');
         } else {
-            $(this).html('<i class="fi-pause">pause</i>');
+            $(this).html('<i class="icon-pause">pause</i>');
         }
         autoStart = !autoStart;
 
