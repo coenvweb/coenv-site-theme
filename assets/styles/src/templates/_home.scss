@@ -328,31 +328,6 @@ body.home {
 		} // a
 
 	} // .features-nav
-    .pause {
-        position: relative;
-    }
-    #toggleAutoPlayBtn {
-        position: absolute;
-        float: right;
-        right: 76px;
-        top: 464px;
-    
-        .icon-play, .icon-pause {
-            display: block;
-            text-indent: -9999px;
-            width: 14px;
-            height: 14px;
-            background-size: 14px 14px;
-        }
-
-        .icon-play {
-            background: url(../../img/icon-play.svg); 
-        }
-
-        .icon-pause {
-            background: url(../../img/icon-pause.svg);
-        }
-    }
 
 } // #features
 
@@ -494,7 +469,7 @@ body.home {
 /*	Events widget (currently only on home page)
 		======================================================================== */
 
-.widget-events{
+.widget-events {
 
 	.event {
 
@@ -547,6 +522,10 @@ body.home {
 		@include col-1;
 		@include rem('padding-left', 0.5);
 	}
+    
+    @include max-width( 1087 ) {
+        @include rem('padding-right', 0.5);
+    }
 
 } // .home .widget-events
 
@@ -561,5 +540,26 @@ body.home {
     @include max-width ( $maxWidthBreakpoint ) {
 		@include rem('padding-bottom', 2);
 	}
+    
+    @include max-width( 1087 ) {
+        @include rem('padding-left', 0.5);
+        float: right;
+    }
 
 } // .home .widget-social
+
+.home {
+    .widget-social, .widget-events {
+        @include max-width( 1087 ) {
+            @include col-2;
+            display: inline-block;
+        }
+        @include max-width( 500 ) {
+            @include rem('padding-left', 0);
+            @include rem('padding-right', 0);
+            width: 100%;
+            float: none;
+            
+        }
+    }
+}

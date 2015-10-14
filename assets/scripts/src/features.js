@@ -86,19 +86,5 @@ $.fn.homeFeatures = function() {
 		$nav.find('a').removeClass( 'active' );
 		$nav.find('a').eq( rsInstance.currSlideId ).addClass( 'active' );
 	} );
-    
-    // play-pause
-    var autoStart = true;
-    $('#toggleAutoPlayBtn').click(function() {
-        // optionally change button text, style e.t.c.
-        if(autoStart) {
-            $(this).html('<i class="icon-play">play</i>');
-        } else {
-            $(this).html('<i class="icon-pause">pause</i>');
-        }
-        autoStart = !autoStart;
-
-        $('#your-slider-id').royalSlider('toggleAutoPlay');
-    });
 
 };
