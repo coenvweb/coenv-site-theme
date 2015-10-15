@@ -513,10 +513,11 @@ function coenv_banner() {
 	return $banner;
 }
 
-/**
- * Prevent default gallery style
- */
-add_filter( 'use_default_gallery_style', '__return_false' );
+function my_gallery_default_type_set_link( $settings ) {
+    $settings['galleryDefaults']['link'] = 'file';
+    return $settings;
+}
+add_filter( 'media_view_settings', 'my_gallery_default_type_set_link');
 
 /**
  * Remove WordPress's default padding on images with captions
