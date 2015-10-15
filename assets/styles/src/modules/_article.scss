@@ -232,7 +232,6 @@
         border-left: 0px!important;
         background: #eee;
         border-top: 1px solid $border;
-        border-bottom: 1px solid $border;
         @include min-width ( $iPadPortrait ) {
             max-width: 40%;
             float: right;
