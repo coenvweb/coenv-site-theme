@@ -224,6 +224,29 @@
 	ol ul {
 		margin-bottom: 0;
 	}
+    
+    // blockquote
+    blockquote {
+        margin: -1rem .5rem .5rem .5rem;
+        padding: 1rem 2rem!important;
+        border-left: 0px!important;
+        background: #eee;
+        border-top: 1px solid $border;
+        border-bottom: 1px solid $border;
+        @include min-width ( $iPadPortrait ) {
+            max-width: 40%;
+            float: right;
+            margin: .5rem 0 .5rem 1rem!important;
+        }
+
+        p {
+            margin: 0!important;
+            text-transform: none;
+            color: #000000!important;
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+        }
+    }
 
 	// responsive elements
 	// make sure elements with WP-added height and width attributes are scaled correctly
