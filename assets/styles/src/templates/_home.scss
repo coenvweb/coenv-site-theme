@@ -42,22 +42,14 @@ body.home {
 	.feature {
 		@extend .clearfix;
 		position: relative;
-		@include rem('margin', 0, 0.5);
+		@include rem('margin', 0, 0.5, 0.5, 0.5);
 		max-width: $max_width;
 		background: #fff;
 		@extend .shadow;
 		text-align: left;
 
-		&.loading {
-
-			.js & {
-				@extend .invisible;
-			}
-
-		} // &.loading
-
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 0, 1);
+			@include rem('margin', 0, 1, 1, 1);
 			min-height: 450px;
 		}
 
