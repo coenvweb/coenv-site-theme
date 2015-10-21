@@ -57,14 +57,14 @@ jQuery(function ($) {
         }
         
         if ( $('body').hasClass('home') ) {
-        
-            $('.stories-container').masonry({
-                // options
-                itemSelector: '.story',
-                columnWidth: '.story-sizer',
-                percentPosition: true
+            $(window).load(function(){
+                $('.stories-container').masonry({
+                    // options
+                    itemSelector: '.story',
+                    columnWidth: '.story-sizer',
+                    percentPosition: true
+                });
             });
-            
         }
 
 	}
