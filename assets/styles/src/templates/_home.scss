@@ -340,6 +340,12 @@ body.home {
 
 } // .stories-container
 
+.story-sizer {
+    margin: 0;
+    height: 0
+        
+}
+
 .story, .story-sizer {
 	@extend %media;
 

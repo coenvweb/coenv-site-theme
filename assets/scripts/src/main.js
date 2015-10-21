@@ -57,7 +57,12 @@ jQuery(function ($) {
         }
         
         if ( $('body').hasClass('home') ) {
-            $(window).load(function(){
+            var $boxes = $('.story-thung');
+            $boxes.hide();
+
+            $('.stories-container').imagesLoaded( function() {
+                $boxes.fadeIn();
+
                 $('.stories-container').masonry({
                     // options
                     itemSelector: '.story',
@@ -65,6 +70,7 @@ jQuery(function ($) {
                     percentPosition: true
                 });
             });
+            
         }
 
 	}

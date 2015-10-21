@@ -42,6 +42,7 @@ module.exports = function(grunt) {
 						'<%= paths.dev %>bower_components/matchmedia/matchMedia.js',
 						'<%= paths.dev %>bower_components/enquire/dist/enquire.js',
                         '<%= paths.dev %>bower_components/masonry/dist/masonry.pkgd.min.js',
+                        '<%= paths.dev %>bower_components/imagesloaded/imagesloaded.pkgd.min.js',
 						'<%= paths.dev %>bower_components/nivo-lightbox/nivo-lightbox.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/jquery.royalslider.js',
 						'<%= paths.dev %>assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
