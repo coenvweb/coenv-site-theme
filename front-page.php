@@ -15,7 +15,7 @@ $features = new WP_Query( array(
 // Get posts and sort using post-types-order
 $post_sort = new WP_Query( array(
     'post_type' => 'post',
-    'posts_per_page' => 3,
+    'posts_per_page' => 9,
     'orderby' => 'menu_order',
     'order' => 'ASC',
     'ignore_sticky_posts' => 1
@@ -54,7 +54,7 @@ $post_sort = new WP_Query( array(
                 </header>
 
                 <div class="stories-container">
-
+                    <div class="story-sizer"></div>
                     <?php while ( $post_sort->have_posts() ) : $post_sort->the_post() ?>
 
                         <?php get_template_part( 'partials/partial', 'story' ) ?>

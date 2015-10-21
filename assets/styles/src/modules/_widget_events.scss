@@ -11,6 +11,10 @@
 		@include min-width( $iPadPortrait ) {
 			@include rem('margin-bottom', 1);
 		}
+        
+        &:hover {
+            background-color: $accent;
+        }
 
 		// wraps entire event contents
 		a {
@@ -21,6 +25,12 @@
 			@media print {
 			 	padding: 0;
 			}
+            &:hover {
+                color: white!important;
+                i {
+                    color: white;
+                }
+            }
 		}
 
 		header {

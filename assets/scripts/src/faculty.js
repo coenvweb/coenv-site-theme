@@ -29,7 +29,7 @@
 		// Roller items
 		rollerItemSelector: '.Faculty-toolbox-roller-item',
 		rollerItemActiveClass: 'Faculty-toolbox-roller-item--active',
-
+        
 		// isotope items
 		$isoItems: $('.Faculty-list-item'),
 		isoItemSelector: '.Faculty-list-item',

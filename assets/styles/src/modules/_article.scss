@@ -143,6 +143,7 @@
 		@include font-size(18);
 		@include line-height(24);
 		font-weight: 400;
+        margin-bottom: 1rem;
 
 		@include min-width ( $iPadPortrait ) {
 			@include font-size(24);
@@ -155,6 +156,7 @@
 		@include serif;
 		@include font-size(16);
 		@include line-height(24);
+        margin-bottom: 1rem;
 		font-weight: 400;
 
 		@include min-width ( $iPadPortrait ) {
@@ -225,6 +227,28 @@
 	ol ul {
 		margin-bottom: 0;
 	}
+    
+    // blockquote
+    blockquote {
+        margin: -1rem .5rem .5rem .5rem;
+        padding: 1rem 2rem!important;
+        border-left: 0px!important;
+        background: #eee;
+        border-top: 1px solid $border;
+        @include min-width ( $iPadPortrait ) {
+            max-width: 40%;
+            float: right;
+            margin: .5rem 0 .5rem 1rem!important;
+        }
+
+        p {
+            margin: 0!important;
+            text-transform: none;
+            color: #000000!important;
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+        }
+    }
 
 	// responsive elements
 	// make sure elements with WP-added height and width attributes are scaled correctly
@@ -242,6 +266,21 @@
 		max-width: 100% !important;
 		height: auto !important;
 	}
+    
+    .gallery {
+        margin-bottom: 2rem!important;
+        padding-top: 1rem;
+        background: #eee;
+        border-top: 1px solid $border;
+    }
+    
+    .gallery-item {
+        @include max-width ( $iPadPortrait ) {
+            .gallery-caption {
+                display: none;
+            }
+        }
+    }
 
 	embed,
 	object,

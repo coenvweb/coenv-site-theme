@@ -1,6 +1,5 @@
 <?php if (is_front_page()): ?>
 	<article class="story">
-
 		<div class="inner">
 
 			<?php if ( has_post_thumbnail() ) : ?>
@@ -20,12 +19,9 @@
 				</div>
 			<?php endif ?>
 
-			<div class="content">
-				<h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
-				<?php the_advanced_excerpt('length=60&no_shortcode=1&finish_sentence=1&ellipsis=%26nbsp;') ?>
-	            
-	            <a href="<?php the_permalink() ?>" class="button">Read more »</a>
-			</div>
+			<a class="content" href="<?php the_permalink() ?>">
+                <h1><?php the_title() ?></h1>
+			</a>
 
 		</div><!-- .inner -->
 

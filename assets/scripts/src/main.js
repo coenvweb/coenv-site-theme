@@ -24,6 +24,22 @@ jQuery(function ($) {
 		// lightbox
 		$('a').nivoLightbox();
         
+        $('figure a img').each(function () {
+            var $this = $(this);
+            $this.parent().attr('title', $this.attr('alt'));
+		});
+        
+        $('div.gallery img').each(function () {
+            var $this = $(this);
+            $this.parent().attr('title', $this.attr('alt'));
+		});
+
+        // split galleries using parent id 
+		$('div.gallery a').each(function () {
+            var $this = $(this);
+            $this.attr('data-lightbox-gallery', $this.closest('div').attr('id'));
+		});
+        
         if ( $('body').hasClass('post-type-archive-faculty') ) {
         
             // custom scrollbar
@@ -38,6 +54,17 @@ jQuery(function ($) {
             $('.js .faculty-toolbox-roller-items').mCustomScrollbar(
                 'scrollTo', '.Faculty-toolbox-roller-item--active'
             );
+        }
+        
+        if ( $('body').hasClass('home') ) {
+        
+            $('.stories-container').masonry({
+                // options
+                itemSelector: '.story',
+                columnWidth: '.story-sizer',
+                percentPosition: true
+            });
+            
         }
 
 	}

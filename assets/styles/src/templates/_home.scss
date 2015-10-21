@@ -42,22 +42,14 @@ body.home {
 	.feature {
 		@extend .clearfix;
 		position: relative;
-		@include rem('margin', 0, 0.5);
+		@include rem('margin', 0, 0.5, 0.5, 0.5);
 		max-width: $max_width;
 		background: #fff;
 		@extend .shadow;
 		text-align: left;
 
-		&.loading {
-
-			.js & {
-				@extend .invisible;
-			}
-
-		} // &.loading
-
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 0, 1);
+			@include rem('margin', 0, 1, 1, 1);
 			min-height: 450px;
 		}
 
@@ -220,6 +212,67 @@ body.home {
 
 	} //.feature
 
+    // nav arrows
+    .rsOverflow {
+        .rsArrow {
+            display: block;
+            height: 30px;
+            width: 30px;
+            bottom: 70%;
+            position: relative;
+            background-color: white;
+            border-radius: 50%;
+            @extend .shadow;
+            @include min-width ( $iPadPortrait ) {
+                bottom: 55%;
+            }
+            &:hover {
+                background: $accent;
+                color: white;
+            }
+            &.rsArrowLeft {
+                float: left;
+                left: -5px;
+                @include min-width ( $iPadPortrait ) {
+                    left: 1%;
+                }
+                @include min-width ( 1150 ) {
+                    left: 50%;
+                    transform: translate(-50%);
+                    margin-left: -570px;
+                }
+            }
+            &.rsArrowRight {
+                float: right;
+                transform: scaleX(-1);
+                filter: FlipH;
+                -ms-filter: "FlipH";
+                right: -5px;
+                @include min-width ( $iPadPortrait ) {
+                    right: 1%;
+                }
+                @include min-width ( 1150 ) {
+                    right: 50%;
+                    transform: translate(0,-50%), scaleX(-1);
+                    margin-right: -580px;
+                }
+            }
+            .rsArrowIcn:before {
+                font-family: icomoon;
+                speak: none;
+                font-style: normal;
+                font-size: 2rem;
+                font-weight: 400;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                -webkit-font-smoothing: antialiased;
+                content: "\e028";
+                padding-right: 4px;
+            }
+        }
+    }
+    
 	// nav buttons, added in home.js
 	.features-nav {
 		margin: 0 auto;
@@ -251,6 +304,7 @@ body.home {
 			@include rem('height', 1);
 			background: #858585;
 			background: rgba(0,0,0,0.45);
+            @extend .shadow;
 			border-radius: 50%;
 			cursor: pointer;
 
@@ -274,30 +328,57 @@ body.home {
 		Currently only on home page
 		======================================================================== */
 
+.home .container {
+    @include max-width( 470 ) {
+        padding: 0 .7rem;
+    }
+}
+
 .stories-container {
 	@include clearfix;
-
-	@include min-width ( $iPadPortrait ) {
-		@include rem('margin', 0, -0.5); // counteract .story padding below
-	}
+    @include rem('margin', 0, -0.5); // counteract .story padding below
 
 } // .stories-container
 
-.story {
+.story, .story-sizer {
 	@extend %media;
 
     overflow: visible; //fixes shadow on homepage?
     
-	@include min-width( $iPadPortrait ) {
-		float: left;
-		@include rem('padding', 0, 0.5);
-		width: 33.3333%;
-	}
+    float: left;
+    @include rem('padding', 0, 0.5);
+    width: 33.3%;
+    display: block;
 
+    @include max-width( $iPadPortrait ) {
+        width: 50%;
+    }
+    
+    @include max-width( 470 ) {
+        width: 100%;
+    }
+    
+    a {
+        text-decoration: none;
+        color: $text;
+        -webkit-font-smoothing: antialiased;
+    }
+    
 	.inner {
 		@include clearfix;
 		@include shadow();
 		background: #fff;
+        &:hover {
+            background-color: $accent;
+            a {
+                color: $white!important;
+            }
+            .related-article-title {
+                background-color: $accent;
+            }
+            .related-thumb {
+            }
+        }
 	}
 
 	.content {
@@ -311,14 +392,9 @@ body.home {
 			font-weight: 400;
 
 			@include min-width( $iPadPortrait ) {
-				@include rem('margin-bottom', 1);
+				@include rem('margin-bottom', .2);
 				@include font-size(20);
 				@include line-height(24);
-			}
-
-			a {
-				text-decoration: none;
-				color: $text;
 			}
 
 		} // h1
@@ -372,15 +448,10 @@ body.home {
 	} // .story-series
 
 	.img {
-		width: 25%;
-
+        float: none;
 		img {
 			width: 100%;
-		}
-
-		@include min-width ( $iPadPortrait ) {
-			float: none;
-			width: 100%;
+            float: none;
 		}
 
 	} // .img
@@ -390,7 +461,7 @@ body.home {
 /*	Events widget (currently only on home page)
 		======================================================================== */
 
-.widget-events{
+.widget-events {
 
 	.event {
 
@@ -421,6 +492,15 @@ body.home {
 /*	Home page widgets
 		======================================================================== */
 
+.home .widget h1 {
+    span a {
+        float: none;
+    }
+    & > a {
+        float: right;
+    }
+}
+
 .home .widget.featured-stories {
 
 	@include min-width ( $maxWidthBreakpoint ) {
@@ -443,6 +523,10 @@ body.home {
 		@include col-1;
 		@include rem('padding-left', 0.5);
 	}
+    
+    @include max-width( 1087 ) {
+        @include rem('padding-right', 0.5);
+    }
 
 } // .home .widget-events
 
@@ -453,5 +537,30 @@ body.home {
 		@include col-1;
 		@include rem('padding-left', 0.5);
 	}
+    
+    @include max-width ( $maxWidthBreakpoint ) {
+		@include rem('padding-bottom', 2);
+	}
+    
+    @include max-width( 1087 ) {
+        @include rem('padding-left', 0.5);
+        float: right;
+    }
 
 } // .home .widget-social
+
+.home {
+    .widget-social, .widget-events {
+        @include max-width( 1087 ) {
+            @include col-2;
+            display: inline-block;
+        }
+        @include max-width( 500 ) {
+            @include rem('padding-left', 0);
+            @include rem('padding-right', 0);
+            width: 100%;
+            float: none;
+            
+        }
+    }
+}

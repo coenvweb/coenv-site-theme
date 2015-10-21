@@ -37,6 +37,7 @@ $feature = array(
 	'color' => $unit_color != '' ? $unit_color : get_field('color_picker')
 );
 ?>
+
 <article class="feature loading">
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">

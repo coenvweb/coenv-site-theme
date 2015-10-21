@@ -76,7 +76,6 @@
         <!--<![endif]-->
 
         <?php wp_head() ?>
-        
     <?php
         $post = get_queried_object();
     if ( has_post_thumbnail( $post->ID ) ) {
