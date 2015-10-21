@@ -492,6 +492,15 @@ body.home {
 /*	Home page widgets
 		======================================================================== */
 
+.home .widget h1 {
+    span a {
+        float: none;
+    }
+    & > a {
+        float: right;
+    }
+}
+
 .home .widget.featured-stories {
 
 	@include min-width ( $maxWidthBreakpoint ) {
