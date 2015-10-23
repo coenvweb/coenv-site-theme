@@ -75,7 +75,7 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 		}
 
 		// continue with original start_el()
-		parent::start_el( $output, $page, $args, $depth, $current_page );
+		parent::start_el( $output, $page, $depth, $args,  $current_page );
 
 	}
 
