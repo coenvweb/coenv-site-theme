@@ -67,7 +67,7 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 	/**
 	 * Starts an element of a branch (<li>)
 	 */
-	function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 
 		// check that this page is set to appear in the main menu
 		if ( !$this->in_main_menu( $page, $depth ) ) {

@@ -196,7 +196,7 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 	/**
 	 * Displays the current element. In this case: <li>...
 	 */
-	public function start_el( &$output, $page, $depth, $args, $current_page = 0 ) {
+	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 
 		extract( $args, EXTR_SKIP );
 

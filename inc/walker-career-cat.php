@@ -7,7 +7,7 @@
  */
 
 class CoEnv_Career_Category extends Walker_Category{
-    function start_el(&$output, $category, $depth, $args) {
+    function start_el(&$output, $category, $depth = 0, $args = array(), $current_page = 0) {
         extract($args);
  
         $cat_name = esc_attr( $category->name );
