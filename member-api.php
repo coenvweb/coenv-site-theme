@@ -102,31 +102,6 @@ class CoEnvMemberAPI {
 	 */
 	function register_faculty_taxonomy() {
 
-		// Move this to functions.php? Is this more general than faculty?
-		register_taxonomy('member_unit', array('faculty'), 
-			array(
-				'hierarchical' => true,
-				'labels' => array(
-					'name' => _x( 'Faculty Units', 'taxonomy general name' ),
-					'singular_name' => _x( 'Faculty Unit', 'taxonomy singular name' ),
-					'search_items' =>  __( 'Search Faculty Units' ),
-					'popular_items' => __( 'Popular Faculty Units' ),
-					'all_items' => __( 'All Faculty Units' ),
-					'edit_item' => __( 'Edit Faculty Unit' ),
-					'update_item' => __( 'Update Faculty Unit' ),
-					'add_new_item' => __( 'Add New Faculty Unit' ),
-					'new_item_name' => __( 'New Faculty Unit Name' ),
-				),
-				'show_ui' => true,
-				'query_var' => true,
-                'show_admin_column' => true,
-				'rewrite' => array( 
-					'slug' => 'faculty/units', 
-					'with_front' => false
-				),
-			)
-		);
-
 		register_taxonomy('member_theme', array('faculty'), array(
 			'labels' => array(
 				'name' => _x( 'Research Themes', 'taxonomy general name' ),
@@ -692,7 +667,11 @@ class CoEnvMemberAPI {
 	 * Get unit color
 	 */
 	function unit_color( $unit_id ) {
-		return get_field( 'color', 'unit_' . $unit_id );
+        $color = get_field( 'color', 'unit_' . $unit_id );
+        if (!$color) {
+            $color = '#333333';
+        }
+        return $color;
 	}
 
 	/**
