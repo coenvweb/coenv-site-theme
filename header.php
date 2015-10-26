@@ -78,7 +78,7 @@
         <?php wp_head() ?>
     <?php
         $post = get_queried_object();
-    if ( has_post_thumbnail( $post->ID ) ) {
+    if ( has_post_thumbnail( ) ) {
         $thumb_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
         $post_title = get_the_title().' | College of the Environment';
         $post_description = $advancedExcerpt;
