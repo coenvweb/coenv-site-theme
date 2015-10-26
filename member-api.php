@@ -107,18 +107,19 @@ class CoEnvMemberAPI {
 			array(
 				'hierarchical' => true,
 				'labels' => array(
-					'name' => _x( 'Units', 'taxonomy general name' ),
-					'singular_name' => _x( 'Unit', 'taxonomy singular name' ),
-					'search_items' =>  __( 'Search Units' ),
-					'popular_items' => __( 'Popular Units' ),
-					'all_items' => __( 'All Units' ),
-					'edit_item' => __( 'Edit Unit' ),
-					'update_item' => __( 'Update Unit' ),
-					'add_new_item' => __( 'Add New Unit' ),
-					'new_item_name' => __( 'New Unit Name' ),
+					'name' => _x( 'Faculty Units', 'taxonomy general name' ),
+					'singular_name' => _x( 'Faculty Unit', 'taxonomy singular name' ),
+					'search_items' =>  __( 'Search Faculty Units' ),
+					'popular_items' => __( 'Popular Faculty Units' ),
+					'all_items' => __( 'All Faculty Units' ),
+					'edit_item' => __( 'Edit Faculty Unit' ),
+					'update_item' => __( 'Update Faculty Unit' ),
+					'add_new_item' => __( 'Add New Faculty Unit' ),
+					'new_item_name' => __( 'New Faculty Unit Name' ),
 				),
 				'show_ui' => true,
 				'query_var' => true,
+                'show_admin_column' => true,
 				'rewrite' => array( 
 					'slug' => 'faculty/units', 
 					'with_front' => false
@@ -459,7 +460,7 @@ class CoEnvMemberAPI {
 			// don't pass unit query if it contains 'all'
 			if ( !in_array( 'all', $args['units'] ) ) {
 				$default_params['tax_query'][] = array(
-					'taxonomy' => 'member_unit',
+					'taxonomy' => 'unit',
 					'field' => 'slug',
 					'terms' => $args['units']
 				);
@@ -529,7 +530,7 @@ class CoEnvMemberAPI {
 			'first_name' => get_field( 'first_name', $f->ID ),
 			'last_name' => get_field( 'last_name', $f->ID ),
 			'permalink' => get_permalink( $f->ID ),
-			'units' => $this->get_member_terms( $f->ID, 'member_unit' ),
+			'units' => $this->get_member_terms( $f->ID, 'unit' ),
 			'themes' => $this->get_member_terms( $f->ID, 'member_theme' ),
 			'images' => $this->get_member_images( $f->ID )
 		);
@@ -569,7 +570,7 @@ class CoEnvMemberAPI {
 					case 'member_theme':
 						$term_prefix = 'theme';
 						break;
-					case 'member_unit':
+					case 'unit':
 						$term_prefix = 'unit';
 						break;
 				}
@@ -585,7 +586,7 @@ class CoEnvMemberAPI {
 				);
 
 				// add 'color' attribute for units
-				if ( $taxonomy == 'member_unit' ) {
+				if ( $taxonomy == 'unit' ) {
 					$atts['color'] = $this->unit_color( $term->term_id );
 				}
 
@@ -667,7 +668,7 @@ class CoEnvMemberAPI {
 
 		if (
 			get_post_type( $obj ) == 'faculty' ||
-			$obj->taxonomy == 'member_unit' ||
+			$obj->taxonomy == 'unit' ||
 			$obj->taxonomy == 'member_theme' ||
 			$obj->taxonomy == 'member_tag'
 		) {
@@ -691,7 +692,7 @@ class CoEnvMemberAPI {
 	 * Get unit color
 	 */
 	function unit_color( $unit_id ) {
-		return get_field( 'color', 'member_unit_' . $unit_id );
+		return get_field( 'color', 'unit_' . $unit_id );
 	}
 
 	/**
@@ -702,7 +703,7 @@ class CoEnvMemberAPI {
 
 		$units = array();
 
-		$terms = get_terms( array('member_unit'), $args );
+		$terms = get_terms( array('unit'), $args );
 
 		foreach ( $terms as $term ) {
 			$unit = array(
@@ -736,7 +737,7 @@ class CoEnvMemberAPI {
 		$url = $this->base_url . '#theme-';
 
 		switch ( $term->taxonomy ) {
-			case 'member_unit':
+			case 'unit':
 				$url .= 'all&unit-' . $term->slug;
 				break;
 			case 'member_theme':

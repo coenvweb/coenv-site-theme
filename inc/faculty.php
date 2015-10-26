@@ -51,7 +51,7 @@ function coenv_related_faculty ($id) {
             while ( $query->have_posts() ) {
                 $query->the_post();
                 // set up unit color style
-                $units = get_the_terms( $post, 'member_unit' );
+                $units = get_the_terms( get_the_id(), 'unit' );
                 $unit = array_shift( $units );
                 $unit_color = $coenv_member_api->unit_color( $unit->term_id );
                 $unit_style = ' style="background-color: ' . $unit_color . ';"';

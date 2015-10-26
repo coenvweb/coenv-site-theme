@@ -6,8 +6,8 @@ get_header();
 
 // Get all home page features and sort posts using post-types-order
 $features = new WP_Query( array(
-    'post_type' => 'feature',
-    'posts_per_page' => -1,
+    'post_type' => 'post',
+    'posts_per_page' => 1,
     'orderby' => 'menu_order',
     'order' => 'ASC',
     'ignore_sticky_posts' => 1
@@ -16,6 +16,7 @@ $features = new WP_Query( array(
 $post_sort = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 9,
+    'offset' => 1,
     'orderby' => 'menu_order',
     'order' => 'ASC',
     'ignore_sticky_posts' => 1

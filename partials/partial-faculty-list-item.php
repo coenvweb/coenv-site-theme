@@ -14,7 +14,7 @@ if ( !empty( $themes ) ) {
 }
 
 // set up unit color style
-$units = get_the_terms( get_the_ID(), 'member_unit' );
+$units = get_the_terms( get_the_ID(), 'unit' );
 $unit = array_shift( $units );
 $unit_color = $coenv_member_api->unit_color( $unit->term_id );
 $unit_style = ' style="background-color: ' . $unit_color . ';"';

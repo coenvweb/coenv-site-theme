@@ -275,20 +275,6 @@ return $newsizes;
 }
 
 
-
-
-
-
-
-
-
-
-/**
- * Register features
- */
-
-require_once locate_template( '/inc/features.php' );
-
 /**
  * Register Careers
  */
@@ -306,13 +292,6 @@ function coenv_unit_color( $unit_id ) {
 	return $coenv_member_api->unit_color( $unit_id );
 }
 
-/**
- * Excerpt "more" link
- */
-add_filter( 'excerpt_more', 'coenv_excerpt_more' );
-function coenv_excerpt_more( $more ) {
-	return ' <a class="read-more" href="' . get_permalink() . '">[continue]</a>';
-}
 
 /**
  * Register sidebars for all pages, format widget HTML,

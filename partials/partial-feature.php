@@ -2,43 +2,45 @@
 /**
  * Home page feature
  */
-$feature_type = get_field_object('feature_type');
-$feature_type = $feature_type['choices'][get_field('feature_type')];
 
-$content_link = get_field('content_link');
-$content_url  = $content_link[0]['link'];
+//if ( get_field('story_link_url') && the_field('story_source_name') ) {
+//    $content_name = the_field('story_link_url');
+//    $content_url = the_field('story_source_name');
+//    $content_target = ' target="_blank" ';
+ //} else {
+    $content_name = "Read More »";
+    $content_url = get_the_permalink();
+    $content_target = '';
+//}
 
-/**
- * Set target for external links
- */
-if ( strpos( $content_url,'environment.' ) || substr( $content_url,0,1 ) == '/' ) {
-	$content_target = '';
-} else {
-	$content_target = ' target="_blank" ';
-}
+$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+$feature_caption = get_post_meta(get_post_thumbnail_id(), "_credit_text", true);
 
-$feature_image = wp_get_attachment_image_src( get_field('feature_image'), 'large' );
-$feature_caption = get_post( get_field('feature_image') );
+$units = get_the_terms( $post->ID, 'unit' );
+$unit = $units[0]->term_id;
 
-$unit = get_field('unit');
 $unit_color = coenv_unit_color($unit);
+if (!$unit_color){
+    $unit_color = '#333333';
+} 
 $feature = array(
-	'type' => $feature_type,
 	'label' => get_field('feature_label'),
 	'content_link' => array(
-		'title' => $content_link[0]['link_text'],
+		'title' => $content_name,
 		'url' => $content_url,
 		'target' => $content_target
 	),
 	'image' => array(
 		'url' => $feature_image[0],
-		'caption' => $feature_caption->post_excerpt
+		'caption' => $feature_caption
 	),
 	'color' => $unit_color != '' ? $unit_color : get_field('color_picker')
 );
 ?>
 
 <article class="feature loading">
+    
+    <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
 		<p class="feature-image-caption"><?php echo $feature['image']['caption'] ?></p>
@@ -50,42 +52,26 @@ $feature = array(
 
 			<div class="feature-type">
 
-				<?php if ( !empty( $feature['label'] ) ) : ?>
-
-					<?php echo $feature['label'] ?>
-
-				<?php else : ?>
-
-					<?php echo $feature['type'] ?>
-
-				<?php endif ?>
-
 			</div><!-- .feature-type -->
 
 			<div class="feature-content">
 
-				<?php if ( get_field('feature_type') == 'college-news' || get_field('feature_type') == 'basic' ) : ?>
+                <h1><?php the_title() ?></h1>
 
-					<h1><a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php the_title() ?></a></h1>
+                    <p><?php the_advanced_excerpt('length=20&length_type=words'); ?></p>
+                
+                    <a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 
-					<?php if ( get_field('teaser') ) : ?>
-						<p><?php the_field('teaser') ?></p>
-					<?php endif ?>
-
-					<?php if ( !empty( $feature['content_link'] ) ) : ?>
-						<a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
-					<?php endif ?>
-
-					<?php if ( !empty( $feature['image']['caption'] ) ) : ?>
-						<p class="feature-caption"><?php echo $feature['image']['caption'] ?></p>
-					<?php endif ?>
-
-				<?php  endif ?>
+                <?php if ( !empty( $feature['image']['caption'] ) ) : ?>
+                    <p class="feature-caption"><?php echo $feature['image']['caption'] ?></p>
+                <?php endif ?>
 
 			</div><!-- .feature-content -->
 
 		</div><!-- .feature-info -->
 
 	</div><!-- .feature-info-container -->
+        
+    </a>
 
 </article><!-- .feature -->

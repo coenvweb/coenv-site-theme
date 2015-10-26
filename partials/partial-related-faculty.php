@@ -20,9 +20,9 @@ global $coenv_member_api;
             echo '<div class="related-people">';
                 foreach( $coenv_chosen as $post):
                     setup_postdata($post);
-                    $units = get_the_terms( $post, 'member_unit' );
+                    $units = get_the_terms( get_the_id(), 'unit' );
                     $unit = array_shift( $units );
-                    $unit_color = $coenv_member_api->unit_color( $unit->term_id );
+                    $unit_color = $coenv_member_api->unit_color( $unit[0]->term_id );
                     $unit_style = ' style="background-color: ' . $unit_color . ';"';
                     echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' )  . '"' . $unit_style . '" rel="bookmark">';
                         echo '<div class="related-container">';
