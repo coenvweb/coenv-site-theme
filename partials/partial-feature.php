@@ -8,7 +8,7 @@
 //    $content_url = the_field('story_source_name');
 //    $content_target = ' target="_blank" ';
  //} else {
-    $content_name = "Read More »";
+    $content_name = "Read more »";
     $content_url = get_the_permalink();
     $content_target = '';
 //}
