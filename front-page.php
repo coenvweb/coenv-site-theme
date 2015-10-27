@@ -8,6 +8,7 @@ get_header();
 $features = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 1,
+    'post__in' => get_option('sticky_posts'),
     'orderby' => 'menu_order',
     'order' => 'ASC',
     'ignore_sticky_posts' => 1
