@@ -43,7 +43,6 @@ $feature = array(
     <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
-		<p class="feature-image-caption"><?php echo $feature['image']['caption'] ?></p>
 	</div>
 
 	<div class="feature-info-container">
@@ -63,7 +62,7 @@ $feature = array(
                     <a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 
                 <?php if ( !empty( $feature['image']['caption'] ) ) : ?>
-                    <p class="feature-caption"><?php echo $feature['image']['caption'] ?></p>
+                    <p class="feature-caption"><?php echo  'Photo: ' . $feature['image']['caption'] ?></p>
                 <?php endif ?>
 
 			</div><!-- .feature-content -->
