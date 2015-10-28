@@ -71,7 +71,7 @@ function coenv_related_faculty ($id) {
                 echo '</div>';
             echo '</a>';
 		}
-        echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . $term->count.' more faculty in ' . $term->name . '" class="count" >';
+        echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($term->count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
         echo '<div class="related-container">';
         echo '<div class="related-thumb">';
         echo '<i class="icon-faculty-grid-alt-2"></i>';
