@@ -9,11 +9,6 @@ require_once locate_template( '/inc/walker-top-menu.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
 /**
- * load more
- **/
-require_once locate_template( '/inc/loader.php' );
-
-/**
  * Print styles and scripts in header and footer
  */
 add_action( 'wp_enqueue_scripts', 'coenv_styles_and_scripts' );
