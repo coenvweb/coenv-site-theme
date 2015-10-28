@@ -9,6 +9,11 @@ require_once locate_template( '/inc/walker-top-menu.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
 /**
+ * load more
+ **/
+require_once locate_template( '/inc/loader.php' );
+
+/**
  * Print styles and scripts in header and footer
  */
 add_action( 'wp_enqueue_scripts', 'coenv_styles_and_scripts' );
@@ -326,14 +331,16 @@ function coenv_widgets_init() {
 	foreach( $pages as $page ) {
 		// remove specific pages
 		if( !in_array( $page->post_name, $pages_to_remove ) ) {
-			register_sidebar( array(
-				'name' 			=> $page->post_title,
-				'id'			=> 'sidebar-' . $page->ID,
-				'before_widget' => $before_widget,
-				'after_widget'	=> $after_widget,
-				'before_title' 	=> $before_title,
-				'after_title'	=> $after_title
-			) );
+            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID)){
+                register_sidebar( array(
+                    'name' 			=> $page->post_title,
+                    'id'			=> 'sidebar-' . $page->ID,
+                    'before_widget' => $before_widget,
+                    'after_widget'	=> $after_widget,
+                    'before_title' 	=> $before_title,
+                    'after_title'	=> $after_title
+                ) );
+            }
 		}
 	}
 
