@@ -369,6 +369,48 @@
 		}
 
 	} // .wp-caption
+    
+    // accordion
+    .accordion-title {
+       background: #eee;
+        padding: 1rem 2rem 1rem 1rem;
+        position: relative;
+        
+        &:hover {
+            cursor: pointer;
+            cursor: hand;
+            background: #d9d9d9;
+            &:after {
+                color: $accent;
+            }
+        }
+        &:after {
+            content: "\e028";
+            float: right;
+            font-family: "icomoon";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            font-size: 1.5rem;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            text-decoration: inherit;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        &.open:after {
+            content: "\e028";
+            transform: translateY(-50%) rotate(90deg);
+        }
+    }
+    
+    .accordion-content {
+        margin-bottom: 1.5rem;
+    }
 
 
 	// news index thumbnails
