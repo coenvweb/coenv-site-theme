@@ -22,7 +22,7 @@ jQuery(function ($) {
 		$('.share').coenvshare();
 		
 		// lightbox
-		$('a:not([href*=youtube]):not([href*=youtu.be]):not([href*=vimeo])').nivoLightbox();
+		$('a:not([href*=youtube]):not([href*=youtu]):not([href*=vimeo])').nivoLightbox();
         
         $('figure a img').each(function () {
             var $this = $(this);
