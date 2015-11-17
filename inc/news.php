@@ -198,6 +198,7 @@ function coenv_post_cats($id) {
 	$coenv_categories = get_the_terms($id, array('topic'));
 	if ( $coenv_categories ) {
 		$i = 0;
+        $coenv_cats = null;
 		foreach ($coenv_categories as $category) {
 			if ($i==4) break;
 			$coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
