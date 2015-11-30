@@ -18,26 +18,35 @@ $ancestor = array(
 );
 
 // Dates
-$coenv_year = urlencode(htmlentities($_GET['coenv-year']));
-$coenv_month = urlencode(htmlentities($_GET['coenv-month']));
+$coenv_year = isset($_GET['coenv-year']) ? $_GET['coenv-year'] : '';
+$coenv_month = isset($_GET['coenv-month']) ? $_GET['coenv-month'] : '';
+$coenv_year = urlencode(htmlentities($coenv_year));
+$coenv_month = urlencode(htmlentities($coenv_month));
 $coenv_date = $coenv_month . '/' . $coenv_year;
 
 //Categories
-$coenv_cat_term_1 = urlencode(htmlentities($_GET['term']));
+$coenv_cat_term_1 = isset($_GET['term']) ? $_GET['term'] : '';
+$coenv_cat_term_1 = urlencode(htmlentities($coenv_cat_term_1));
 $coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,'career_category');
-$coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
+if ($coenv_cat_term_1_arr) {
+    $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
+}
 
 //Tags
-$coenv_cat_tag_1 = urlencode(htmlentities($_GET['tag']));
+$coenv_cat_tag_1 = isset($_GET['tag']) ? $_GET['tag'] : '';
+$coenv_cat_tag_1 = urlencode(htmlentities($coenv_cat_tag_1));
 $coenv_cat_tag_1_arr = get_term_by('slug',$coenv_cat_tag_1,'career_post_tag');
-$coenv_cat_tag_1_val = $coenv_cat_tag_1_arr->name;
-
+if ($coenv_cat_tag_1_arr) {
+    $coenv_cat_tag_1_val = $coenv_cat_tag_1_arr->name;
+}
 
 //Search terms
-$coenv_search_terms = urlencode(htmlentities($_GET['st']));
+$coenv_search_terms = isset($_GET['st']) ? $_GET['st'] : '';
+$coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 
 //Sort
-$coenv_sort = urlencode(htmlentities($_GET['sort']));
+$coenv_sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+$coenv_sort = urlencode(htmlentities($coenv_sort));
 
 
 // build the query based on $query_args

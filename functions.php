@@ -386,6 +386,8 @@ function coenv_get_ancestor($attr = 'ID') {
 	if ( is_search() ) {
 		return false;
 	}
+    
+    if (isset($post)) {
 
 	if ( ($post->post_type == 'post' || is_archive() || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
 
@@ -444,6 +446,7 @@ function coenv_get_ancestor($attr = 'ID') {
 		$ancestor = get_post( array_pop( $ancestors ) );
 		return $ancestor->$attr;
 	}
+    }
 }
 
 /**
@@ -909,6 +912,7 @@ add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
  */
 
 require_once locate_template( '/inc/news.php' );
+require_once locate_template( '/inc/intranet.php' );
 
 function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	$counter = 0;

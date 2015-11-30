@@ -1,0 +1,18 @@
+.page-id-267 {
+    
+    .intranet-summary p {
+        margin-bottom: 0;
+    }
+    
+    .blog-header {
+        box-shadow: none;
+		@extend .clearfix;
+		@include rem('margin', 1, 0, 1, 0);
+		background: #fff;
+
+		@include min-width ( $iPadPortrait ) {
+			@include rem('margin', 1, -1, 0, 2);
+		}
+
+	} // .blog-header
+}

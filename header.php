@@ -85,10 +85,12 @@
         $post_link = get_permalink();
         $post_image = $thumb_src[0];
     } else {
+        if ( !is_404() ) {
         $post_title = get_the_title().' | College of the Environment';
         $post_description = $advancedExcerpt;
         $post_link = get_the_permalink();
         $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+        }
     }
     
     ?>
@@ -105,12 +107,14 @@
         <![endif]-->
 
         <?php 
-            $banner = coenv_banner();
-            $banner_class = $banner ? 'has-banner' : '';
-            $banner_class .= ' template-print';
+            if ( !is_404() ) {
+                $banner = coenv_banner();
+                $banner_class = $banner ? 'has-banner' : '';
+                $banner_class .= ' template-print';
+            }
         ?>
     </head>
-    <body <?php body_class( $banner_class ) ?>>
+    <body <?php if (isset( $banner_class )) { body_class( $banner_class ); } else { body_class(); }; ?>>
           <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
 
         <div id="outer" class="layout-outer">
@@ -156,7 +160,7 @@
 
                 </nav><!-- #top-nav -->
 
-                <div class="banner-wrapper"<?php if ( $banner ) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
+                <div class="banner-wrapper"<?php if (isset( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
 
                     <div class="layout-container layout-container--header">
 

@@ -640,15 +640,17 @@ class CoEnvMemberAPI {
 	function is_faculty_section () {
 
 		$obj = get_queried_object();
-
-		if (
-			get_post_type( $obj ) == 'faculty' ||
-			$obj->taxonomy == 'unit' ||
-			$obj->taxonomy == 'member_theme' ||
-			$obj->taxonomy == 'member_tag'
-		) {
-			return true;
-		}
+        
+        if (isset($obj)) {
+            if (
+                get_post_type( $obj ) == 'faculty' ||
+                $obj->taxonomy == 'unit' ||
+                $obj->taxonomy == 'member_theme' ||
+                $obj->taxonomy == 'member_tag'
+            ) {
+                return true;
+            }
+        }
 
 		return false;
 	}

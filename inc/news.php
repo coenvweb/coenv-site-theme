@@ -37,40 +37,6 @@ function taxonomy_unit() {
 
 add_action( 'init', 'taxonomy_unit', 0 );
 
-function taxonomy_audience() {
-
-	$labels = array(
-		'name'                       => _x( 'Audiences', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'Audience', 'Taxonomy Singular Name', 'text_domain' ),
-		'menu_name'                  => __( 'Audiences', 'text_domain' ),
-		'all_items'                  => __( 'All Items', 'text_domain' ),
-		'parent_item'                => __( 'Parent Item', 'text_domain' ),
-		'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
-		'new_item_name'              => __( 'New Item Name', 'text_domain' ),
-		'add_new_item'               => __( 'Add New Item', 'text_domain' ),
-		'edit_item'                  => __( 'Edit Item', 'text_domain' ),
-		'update_item'                => __( 'Update Item', 'text_domain' ),
-		'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
-		'search_items'               => __( 'Search Items', 'text_domain' ),
-		'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
-		'choose_from_most_used'      => __( 'Choose from the most used items', 'text_domain' ),
-		'not_found'                  => __( 'Not Found', 'text_domain' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-	);
-	register_taxonomy( 'audience', array( 'post', 'page' ), $args );
-
-}
-
-add_action( 'init', 'taxonomy_audience', 0 );
-
 function taxonomy_location() {
 
 	$labels = array(
@@ -166,7 +132,7 @@ function taxonomy_topic() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true
 	);
-	register_taxonomy( 'topic', array( 'post', 'page' ), $args );
+	register_taxonomy( 'topic', array( 'post', 'page', 'intranet' ), $args );
 
 }
 add_action( 'init', 'taxonomy_topic', 0 );
@@ -179,12 +145,10 @@ function default_metabox_loc(){
 	remove_meta_box('topicdiv', 'post', 'side');
 	remove_meta_box('story_typediv', 'post', 'side');
 	remove_meta_box('locationdiv', 'post', 'side');
-	remove_meta_box('audiencediv', 'post', 'side');
 	remove_meta_box('unitdiv', 'post', 'side');
 	add_meta_box( 'topicdiv', 'Topic', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'topic' ));
 	add_meta_box( 'story_typediv', 'Story Type', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'story_type' ));
 	add_meta_box( 'locationdiv', 'Location', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'location' ));
-	add_meta_box( 'audiencediv', 'Audience', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'audience' ));
 	add_meta_box( 'unitdiv', 'Unit', 'post_categories_meta_box', 'post', 'normal', 'high', array( 'taxonomy' => 'unit' ));
 
 }
@@ -195,14 +159,16 @@ add_action( 'add_meta_boxes', 'default_metabox_loc', 0 );
  *  Add new categories to user facing topic filter <select>.
  */
 function coenv_post_cats($id) {
-	$coenv_categories = get_the_terms($id, array('topic'));
+	$coenv_categories = get_the_terms($id, 'topic');
 	if ( $coenv_categories ) {
 		$i = 0;
         $coenv_cats = null;
 		foreach ($coenv_categories as $category) {
 			if ($i==4) break;
-			$coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
-			$i++;
+            if (!term_is_ancestor_of(1232, $category->term_id, 'topic') and ($category->term_id != 1232)){
+                $coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
+                $i++;
+            }
 		}
 		echo '<ul class="article__categories">'. $coenv_cats . '</ul>';
 	}	

@@ -20,8 +20,10 @@
 				$output .= '<option value="">Choose a topic</option>';
 				if ( !empty( $cats ) ) {	
 				foreach ( $cats as $cat ) {
+                    if (!term_is_ancestor_of(1232, $cat->term_id, 'topic') and ($cat->term_id != 1232)) {
 					$selected = $archive_term_id == $cat->term_id ? ' selected="selected"' : '';
-					$output .= '<option value="/news/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					
+					$output .= '<option value="/news/' . $cat->taxonomy . '/' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';	
+                    }
 				}
 				}	
 				$output .= '</select>';
