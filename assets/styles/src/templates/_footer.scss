@@ -6,6 +6,10 @@
 	@include rem('padding', 2, 0, 2, 0);
 	background: $bg-dk;
 	@include font-size(12);
+    
+    @media print {
+        padding-bottom: 0;
+    }
 
 	a:hover {
 		color: #fff !important;
@@ -16,6 +20,9 @@
             @include col-2;
             float: right;
             @include rem('padding-left', 2.85);
+        }
+        @media print {
+            display: none;
         }
     }
     
@@ -131,6 +138,12 @@
 	.footer__info {
 		color: $text-very-lt;
         
+        @media print {
+            p:first-of-type:before {
+                content: "College of the Environment | ";
+            }
+        }
+        
         a {
             color: #bbb;
             text-decoration: none;
@@ -212,6 +225,10 @@
     text-transform: uppercase;
     color: #bbb;
     letter-spacing: 0.1em;
+    
+    @media print {
+        padding-top: 0;
+    }
 
     a {
         color: #bbb;
@@ -236,6 +253,12 @@
         
         .be-boundless-svg-whole {
             width: 200px;
+        }
+        
+        @media print {
+            padding: 0;
+            height: auto;
+            text-align: left;
         }
     }
 
