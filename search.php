@@ -51,6 +51,19 @@ if ( get_query_var('post_type') == 'post' ) {
 							<?php endif ?>
 
 						<?php endwhile ?>
+                    
+                    <?php else : ?>
+                    
+                    <article class="article">
+
+                        <section class="article__content">
+                            
+                            <p>No results found. Please try searching with different terms.</p>
+                            <?php get_search_form() ?>
+                            
+                        </section>
+
+                    </article><!-- .article -->
 
 					<?php endif ?>
 

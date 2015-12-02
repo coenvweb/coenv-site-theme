@@ -30,5 +30,13 @@
 		}
 
 	} // .article
+    
+    form .field-wrap input[type=text] {
+        background: #eee;
+    }
+    
+    .field-wrap button[type=submit] {
+        width: 20%;
+    }
 
 } // .template-search 
