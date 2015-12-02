@@ -36,7 +36,7 @@ body.home {
 	} // .no-js &
 	
 	@media print {
-			margin-bottom: -250px;
+			margin-bottom: -150px;
 	}
 
 	.feature {
@@ -91,7 +91,7 @@ body.home {
 				left: 0;
 				bottom: 0;
 				padding: 0;
-				width: percentage( 675 / ( $max-width / 1px ) );
+				width: percentage( 680 / ( $max-width / 1px ) );
 			}
 
 			// TODO: display feature image caption

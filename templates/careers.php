@@ -237,7 +237,6 @@ $wp_query = new WP_Query( $query_args );
 
 			<div class="side-col">
 				<?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
-				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 
 		</div><!-- .container -->
