@@ -1,4 +1,4 @@
-.page-id-267 {
+.page-id-267, .single-intranet {
     
     .intranet-summary p {
         margin-bottom: 0;
@@ -15,4 +15,20 @@
 		}
 
 	} // .blog-header
+    
+    .results-text {
+        border-top: none;
+        .right {
+            margin-top: -.25rem;
+            float: right!important;
+            a {
+                background-color: #ddd;
+                color: #333;
+                &:hover {
+                    background-color: #363533;
+                    color: white;
+                }
+            }
+        }
+    }
 }

@@ -389,7 +389,7 @@ function coenv_get_ancestor($attr = 'ID') {
     
     if (isset($post)) {
 
-	if ( ($post->post_type == 'post' || is_archive() || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
+	if ( ($post->post_type == 'post' || $post->post_type == 'intranet' || is_archive() || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
 
 		$page_for_posts = get_option( 'page_for_posts' );
 
@@ -398,6 +398,11 @@ function coenv_get_ancestor($attr = 'ID') {
 		}
 
 		$ancestor = get_post( $page_for_posts );
+        
+        if ($post->post_type == 'intranet') {
+            unset ($ancestor);
+            $ancestor = get_post( 267 );
+        }
 		return $ancestor->$attr;
 	}
 

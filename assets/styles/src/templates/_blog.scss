@@ -51,7 +51,7 @@
     
 } // .template-blog
 
-.template-blog, .page-id-267 {
+.template-blog, .page-id-267, .single-intranet {
 
 	.blog-header {
 		@extend .clearfix;
@@ -96,45 +96,46 @@
 			}
 
 		} // form
-		.results-text {
-			border-top: solid 1px #dfdfdf;
-			float: left;
-			text-transform: uppercase;
-			@include rem('padding', 1, 1.25);
-			width: 100%;
-
-			p {
-				color: #666;
-				@include font-size(11);
-				float: left;
-				font-weight: 600;
-				letter-spacing: .1em;
-				@include rem('margin', 0);
-				@include rem('padding', .25, 0, 0, 0);
-			}
-			p.all-news {
-				float: right;
-				@include rem('padding', 0, 0, 0, 0);
-				a.button {
-					background-color: #ddd;
-					color: #333;
-					@include font-size(11);
-				}
-				a.button:hover {
-					background-color: #363533;
-					color: #fff;
-					@include font-size(11);
-					letter-spacing: 0.1em;
-				}
-			}
-
-		}
-
+        
 		@media print{
 			display: none;
 		}
 		
 	} // .blog-header
+    
+    .results-text {
+        border-top: solid 1px #dfdfdf;
+        float: left;
+        text-transform: uppercase;
+        @include rem('padding', 1, 1.25);
+        width: 100%;
+
+        p {
+            color: #666;
+            @include font-size(11);
+            float: left;
+            font-weight: 600;
+            letter-spacing: .1em;
+            @include rem('margin', 0);
+            @include rem('padding', .25, 0, 0, 0);
+        }
+        p.all-news {
+            float: right;
+            @include rem('padding', 0, 0, 0, 0);
+            a.button {
+                background-color: #ddd;
+                color: #333;
+                @include font-size(11);
+            }
+            a.button:hover {
+                background-color: #363533;
+                color: #fff;
+                @include font-size(11);
+                letter-spacing: 0.1em;
+            }
+        }
+
+    }
 
 	.pagination ul {
 		@extend .shadow;

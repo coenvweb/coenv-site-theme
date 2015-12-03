@@ -299,7 +299,7 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
 /**
  * Related Posts Widget
  */
-//register_widget( 'CoEnv_Widget_Related_Posts' );
+register_widget( 'CoEnv_Widget_Related_Posts' );
 
 class CoEnv_Widget_Related_Posts extends WP_Widget {
  

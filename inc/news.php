@@ -158,16 +158,25 @@ add_action( 'add_meta_boxes', 'default_metabox_loc', 0 );
 /**
  *  Add new categories to user facing topic filter <select>.
  */
-function coenv_post_cats($id) {
+function coenv_post_cats($id, $content_type = 'post') {
 	$coenv_categories = get_the_terms($id, 'topic');
 	if ( $coenv_categories ) {
 		$i = 0;
         $coenv_cats = null;
 		foreach ($coenv_categories as $category) {
 			if ($i==4) break;
-            if (!term_is_ancestor_of(1232, $category->term_id, 'topic') and ($category->term_id != 1232)){
+            if ($content_type == 'post'){
                 $coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
                 $i++;
+            } elseif (($content_type == 'intranet') && ($category->term_id != 1232)) {
+                if (term_is_ancestor_of(1232, $category->term_id, 'topic')) {
+                    $coenv_cats .= '<li><a href="/intranet/?term='.$category->slug.'">'. $category->name.'</a></li>';
+                    $i++;
+                } else {
+                    $coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
+                    $i++;
+                }
+                
             }
 		}
 		echo '<ul class="article__categories">'. $coenv_cats . '</ul>';

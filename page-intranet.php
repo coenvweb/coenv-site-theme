@@ -14,7 +14,6 @@ $ancestor = array(
 	'title' => get_the_title( $ancestor_id )
 );
 
-
 // Dates
 $coenv_year = isset($_GET['coenv-year']) ? $_GET['coenv-year'] : '';
 $coenv_month = isset($_GET['coenv-month']) ? $_GET['coenv-month'] : '';
@@ -43,11 +42,6 @@ if ($coenv_cat_tag_1_arr) {
 $coenv_search_terms = isset($_GET['st']) ? $_GET['st'] : '';
 $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 
-//Sort
-$coenv_sort = isset($_GET['sort']) ? $_GET['sort'] : '';
-
-$coenv_sort = urlencode(htmlentities($coenv_sort));
-
 ?>
 
 
@@ -61,7 +55,7 @@ $coenv_sort = urlencode(htmlentities($coenv_sort));
 
 			<ul id="menu-secondary" class="menu">
 	              <?php wp_list_pages( array(
-	              		'child_of' => $ancestor['id'],
+                      'child_of' => $ancestor['id'],
 	                  'depth' => 3,
 	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
 	                  'link_after' => '<i class="icon-arrow-right"></i>',
@@ -75,61 +69,16 @@ $coenv_sort = urlencode(htmlentities($coenv_sort));
 			<?php endif ?>
 
 			<main id="main-col" class="main-col">
-                <article>
-                    <div id="blog-header" class="blog-header">
-                        <form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url( '/intranet' ); ?>">
-                            <div class="field-wrap">
-                                <input type="hidden" name="post_type" value="post" />
-                                <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search news" />
-                                <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-                            </div>
-                        </form>
-                    <div class="input-item select-category" data-url="<?php echo get_bloginfo('url'); ?>">
-                        <?php
-                            $cats = get_categories(array(
-                                'type' => array('post', 'intranet'),
-                                'taxonomy' => array('topic')
-                            ));
-                                $output = '<select name="category-dropdown">';
-                                $output .= '<option value="/intranet/">Choose a topic</option>';
-                                if ( !empty( $cats ) ) {	
-                                foreach ( $cats as $cat ) {
-                                    if (term_is_ancestor_of(1232, $cat->term_id, 'topic')){
-                                    $selected = $coenv_cat_term_id == $cat->term_id ? ' selected="selected"' : '';
-                                    $output .= '<option value="/intranet/?term=' . $cat->slug . '" ' . $selected . '>' . $cat->name . '</option>';					                    }
-                                }
-                                }	
-                                $output .= '</select>';
-                                echo $output;
-                        ?>
-                    </div>
-                    <div class="input-item select-month">
-			<?php coenv_base_date_filter('intranet',$coenv_month,$coenv_year); // Date filter ?>
-                    </div>
-                    <?php if (is_tax() || is_date()) { ?>
-                        <div class="results-text">
-                            <?php $coenv_post_count = $GLOBALS['wp_query']->found_posts;  ?>
-                            <?php if ($queried_object->taxonomy == 'topic') { ?>
-                                <p><?php echo $coenv_post_count; ?> news posts related to <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
-                                <p class="all-news"><a href="/news/" class="button">Return to News</a></p>
-                            <?php } elseif ($queried_object->taxonomy == 'story_type') { ?>
-                                <p><?php echo $coenv_post_count; ?> posts of type: <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
-                                <p class="all-news"><a href="/news/" class="button">Return to News</a></p>
-                            <?php } elseif (is_date()) { ?>
-                                <p><?php echo $coenv_post_count; ?> news posts from <span class="term-name"><?php echo single_month_title(' '); ?></span></p>
-                                <p class="all-news"><a href="/news/" class="button">Return to News</a></p>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-                </div><!-- #blog-header -->
-                </article>
+                
+                <?php get_template_part( 'partials/partial', 'intranet-filter' ); ?>
+                
                 <?php
                 // build the query based on $query_args
                 $query_args = array(
 
                     'post_type' => array('post', 'intranet'),
                     'post_status' => 'publish',
-                    'posts_per_page' => 20,
+                    'posts_per_page' => 10,
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'topic',
@@ -166,7 +115,7 @@ $coenv_sort = urlencode(htmlentities($coenv_sort));
 
                 ?>
 
-                
+                <?php if (!$coenv_cat_term_1 && !$coenv_year && !$coenv_month && !$coenv_search_terms): ?>
                 <article <?php post_class( 'article' ) ?>>
                     <section class="article__content">
                         <div class="intranet-summary">
@@ -174,24 +123,27 @@ $coenv_sort = urlencode(htmlentities($coenv_sort));
                         </div>
                     </section>
                 </article>
+                <?php endif ?>
+                <div class="blog-header">
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> news posts related to <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
+									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts related to <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
 									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_year && $coenv_month): // Date filter ?>
 								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></p>
+									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts from <strong><?php echo $coenv_date; ?></strong></p>
 									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
 								</div>
 							<?php endif; ?>
 							<?php if($coenv_search_terms): // Date filter ?>
 								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
+									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
 									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
 								</div>
 							<?php endif; ?>
+                    </div>
 
 				<?php if ( $wp_query->have_posts() ) : ?>
 

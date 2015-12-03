@@ -34,7 +34,7 @@
    		<?php if ( !is_page() ) : ?>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
-				<?php coenv_post_cats($post->ID); ?>
+				<?php coenv_post_cats($post->ID, 'intranet'); ?>
             </div>
 		<?php endif ?>
 		</div>
