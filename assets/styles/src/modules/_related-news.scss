@@ -263,3 +263,27 @@
         @include rem('padding', 1, 2);
     }
 } // .related-news
+
+
+.related-posts-widget {
+    .section-header {
+        display: inline!important;
+        position: inherit!important;
+        h1 {
+            background: none!important;
+            color: $text!important;
+            font-size: 1.5rem;
+            &:after {
+                content: none;
+            }
+        }
+    }
+    background-color: #EEE;
+    ul {
+        list-style: none;
+        margin: 0 1rem 0 -2rem;
+    }
+    li {
+        margin-bottom: 1rem;
+    }
+}

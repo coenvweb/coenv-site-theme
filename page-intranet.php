@@ -161,6 +161,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                     </section>
                 </article>
 				<?php endif ?>
+                <?php wp_reset_query(); ?>
 
 				<footer class="pagination">
 					<?php coenv_paginate() ?>

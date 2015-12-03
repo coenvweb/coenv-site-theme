@@ -319,7 +319,10 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
  
 	public function form( $instance )
 	{
-		$cats = get_categories();
+		$cats = get_categories(array(
+				'type' => 'post',
+				'taxonomy' => array('topic')
+			));
  
 		if ( !isset( $cats ) || empty( $cats ) ) {
 			?>
@@ -358,6 +361,8 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 					<?php foreach ( $cats as $cat ) : ?>
 						<option value="<?php echo $cat->term_id ?>"<?php if ( $cat->term_id == $category_id ) echo ' selected' ?>><?php echo $cat->name ?></option>
 					<?php endforeach ?>
+                    
+                    <option value="intranet-section"<?php if ( $category_id == 'intranet-section' ) echo ' selected' ?>>Intranet Section News</option>
 				</select>
 			</p>
 		<?php
@@ -380,18 +385,44 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 		$posts_per_page = (int) $instance['posts_per_page'];
  
 		$category_id = $instance['category_id'];
+        
+        if ($category_id == 'intranet-section') {
+            $intranet_page = get_the_id();
+            $pages = array_reverse(get_post_ancestors($intranet_page));
+            if (count($pages) === 0) {
+                return;
+            } elseif (count($pages) === 1) {
+                $ancestor_page_id = $intranet_page;
+            } else {
+                $ancestor_page_id = $pages[1];
+            }
+            $page_name = sanitize_title_with_dashes(get_the_title($ancestor_page_id));
+            $category_id = get_term_by('slug', $page_name , 'topic');
+            $category_id = $category_id->term_id;
+            $related_post_type = array('post', 'intranet');
+        } else {
+            $related_post_type = 'post';
+        }
+        
+        
  
 		$related_posts = new WP_Query( array(
 			'posts_per_page' => $posts_per_page,
-			'post_type' => 'post',
-			'cat' => $category_id
+			'post_type' => $related_post_type,
+			'tax_query' => array(
+                array(
+                    'taxonomy' => 'topic',
+                    'terms' => $category_id
+                )
+            ),
 		) );
  
  
 		echo $before_widget;
 		?>
+            <?php $term = get_term($category_id, 'topic'); ?>
 			<?php echo $before_title ?>
-				<?php echo $title ?>
+				<?php echo $title . ' in ' . $term->name ?>
 			<?php echo $after_title ?>
  
 			<?php if ( $related_posts->have_posts() ) : ?>
