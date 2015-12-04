@@ -417,7 +417,7 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
             ),
 		) );
  
- 
+        if ( $related_posts->have_posts() ) :
 		echo $before_widget;
 		?>
             <?php $term = get_term($category_id, 'topic'); ?>
@@ -425,16 +425,15 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 				<?php echo $title . ' in ' . $term->name ?>
 			<?php echo $after_title ?>
  
-			<?php if ( $related_posts->have_posts() ) : ?>
+			
 				<ul>
 					<?php while ( $related_posts->have_posts() ) : $related_posts->the_post() ?>
 						<li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
 					<?php endwhile ?>
-				</ul>
-			<?php endif ?>
- 
+                </ul>
 		<?php
 		echo $after_widget;
+        endif;
  
 		wp_reset_postdata();
 	}

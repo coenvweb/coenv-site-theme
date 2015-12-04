@@ -16,7 +16,7 @@
 				'taxonomy' => array('topic')
 			));
 
-				$output .= '<select name="category-dropdown">';
+				$output = '<select name="category-dropdown">';
 				$output .= '<option value="">Choose a topic</option>';
 				if ( !empty( $cats ) ) {	
 				foreach ( $cats as $cat ) {

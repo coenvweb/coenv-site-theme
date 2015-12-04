@@ -643,13 +643,19 @@ class CoEnvMemberAPI {
         
         if (isset($obj)) {
             if (
-                get_post_type( $obj ) == 'faculty' ||
-                $obj->taxonomy == 'unit' ||
-                $obj->taxonomy == 'member_theme' ||
-                $obj->taxonomy == 'member_tag'
+                get_post_type( $obj ) == 'faculty'
             ) {
                 return true;
             }
+            if (isset ($obj->taxonomy)){
+                if (
+                    $obj->taxonomy == 'unit' ||
+                    $obj->taxonomy == 'member_theme' ||
+                    $obj->taxonomy == 'member_tag'
+                    ) {
+                        return true;
+                    }
+                }
         }
 
 		return false;

@@ -389,7 +389,7 @@ function coenv_get_ancestor($attr = 'ID') {
     
     if (isset($post)) {
 
-	if ( ($post->post_type == 'post' || $post->post_type == 'intranet' || is_archive() || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
+	if ( (is_archive() || $post->post_type == 'post' || $post->post_type == 'intranet' || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
 
 		$page_for_posts = get_option( 'page_for_posts' );
 
@@ -399,7 +399,8 @@ function coenv_get_ancestor($attr = 'ID') {
 
 		$ancestor = get_post( $page_for_posts );
         
-        if ($post->post_type == 'intranet') {
+        
+        if ((isset($post->post_type)) && $post->post_type == 'intranet') {
             unset ($ancestor);
             $ancestor = get_post( 267 );
         }
@@ -407,22 +408,22 @@ function coenv_get_ancestor($attr = 'ID') {
 	}
 
 	// test for pages
-	if ( $post->post_type == 'page' ) {
+    if ((isset($post->post_type)) && $post->post_type == 'page' ) {
 
-		// test for top-level pages
-		if ( $post->post_parent == 0 ) {
-			return $post->$attr;
-		}
+        // test for top-level pages
+        if ( $post->post_parent == 0 ) {
+            return $post->$attr;
+        }
 
-		// must be a child page
-		$ancestors = get_post_ancestors( $post->ID );
-		$ancestor = get_post( array_pop( $ancestors ) );
-		return $ancestor->$attr;
-	}
+        // must be a child page
+        $ancestors = get_post_ancestors( $post->ID );
+        $ancestor = get_post( array_pop( $ancestors ) );
+        return $ancestor->$attr;
+    }
 
 	// test for custom post types
 	$custom_post_types = get_post_types( array( '_builtin' => false ), 'object' );
-	if ( !empty( $custom_post_types ) && array_key_exists( $post->post_type, $custom_post_types ) ) {
+	if ( !empty( $custom_post_types ) && (isset($post->post_type)) && array_key_exists( $post->post_type, $custom_post_types ) ) {
 
 		// is parent_page slug defined?
 		if ( isset( $custom_post_types[ $post->post_type ]->parent_page ) ) {
@@ -476,7 +477,7 @@ function coenv_banner() {
 	$page_id = false;
 	$banner = false;
 
-	if ( has_post_thumbnail( $obj->ID ) && !is_single() ) {
+	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( coenv_get_ancestor() ) ) {
