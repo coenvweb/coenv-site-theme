@@ -387,7 +387,6 @@ function coenv_get_ancestor($attr = 'ID') {
 		return false;
 	}
     
-    if (isset($post)) {
 
 	if ( (is_archive() || $post->post_type == 'post' || $post->post_type == 'intranet' || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
 
@@ -452,7 +451,7 @@ function coenv_get_ancestor($attr = 'ID') {
 		$ancestor = get_post( array_pop( $ancestors ) );
 		return $ancestor->$attr;
 	}
-    }
+    
 }
 
 /**
