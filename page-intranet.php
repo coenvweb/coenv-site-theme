@@ -70,6 +70,16 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 
 			<main id="main-col" class="main-col">
                 
+                <?php if (!$coenv_cat_term_1 && !$coenv_year && !$coenv_month && !$coenv_search_terms): ?>
+                <article <?php post_class( 'article' ) ?>>
+                    <section class="article__content">
+                        <div class="intranet-summary">
+                            <?php the_content(); ?>
+                        </div>
+                    </section>
+                </article>
+                <?php endif ?>
+                
                 <?php get_template_part( 'partials/partial', 'intranet-filter' ); ?>
                 
                 <?php
@@ -114,16 +124,6 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                 $wp_query = new WP_Query( $query_args ); 
 
                 ?>
-
-                <?php if (!$coenv_cat_term_1 && !$coenv_year && !$coenv_month && !$coenv_search_terms): ?>
-                <article <?php post_class( 'article' ) ?>>
-                    <section class="article__content">
-                        <div class="intranet-summary">
-                            <?php the_content(); ?>
-                        </div>
-                    </section>
-                </article>
-                <?php endif ?>
                 <div class="blog-header">
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
@@ -144,12 +144,15 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 								</div>
 							<?php endif; ?>
                     </div>
+                <div class="blogtime">
 
 				<?php if ( $wp_query->have_posts() ) : ?>
 
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post() ?>
-
+                        
+                        
 						<?php get_template_part( 'partials/partial', 'intranet-story' ); ?>
+                        
 
 					<?php endwhile ?>
 				<?php else: ?>
@@ -160,12 +163,16 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                         </div>
                     </section>
                 </article>
+                    
 				<?php endif ?>
-                <?php wp_reset_query(); ?>
+                </div>
+            <?php wp_reset_query(); ?>
 
 				<footer class="pagination">
 					<?php coenv_paginate() ?>
 				</footer>
+                
+                <?php wp_reset_query(); ?>
 
 			</main><!-- .main-col -->
 

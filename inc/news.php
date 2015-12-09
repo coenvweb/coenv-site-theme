@@ -172,9 +172,6 @@ function coenv_post_cats($id, $content_type = 'post') {
                 if (term_is_ancestor_of(1232, $category->term_id, 'topic')) {
                     $coenv_cats .= '<li><a href="/intranet/?term='.$category->slug.'">'. $category->name.'</a></li>';
                     $i++;
-                } else {
-                    $coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
-                    $i++;
                 }
                 
             }

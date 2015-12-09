@@ -10,6 +10,8 @@ $classes = array( 'template-search' );
 
 if ( get_query_var('post_type') == 'post' ) {
 	$classes[] = 'template-blog';
+} elseif ( get_query_var('intranet') == 'intranet' ) {
+	$classes[] = 'template-page intranet';
 } else {
 	$classes[] = 'template-page';
 }

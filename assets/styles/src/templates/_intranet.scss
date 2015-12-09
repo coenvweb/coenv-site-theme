@@ -2,16 +2,27 @@
     
     .intranet-summary p {
         margin-bottom: 0;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #ddd;
+    }
+    
+    .filter-title {
+        margin-left: 1rem;
+        margin-bottom: -.25rem;
+        text-transform: uppercase;
+        font-size: .9rem;
+        letter-spacing: .1em;
+        font-weight: 600;
     }
     
     .blog-header {
         box-shadow: none;
 		@extend .clearfix;
-		@include rem('margin', 1, 0, 1, 0);
+		@include rem('padding', 0, 1, 1, 1);
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, -1, 0, 2);
+			@include rem('margin', 0, -2, 0, 1);
 		}
 
 	} // .blog-header
@@ -30,5 +41,21 @@
                 }
             }
         }
+    }
+    
+    .blogtime {
+        .topic-intranet:first-of-type{
+            padding-top: 0;
+            .article__header{
+                border-top: 2px solid #ddd;
+                padding-top: 3rem;
+            }   
+        }
+    }
+}
+
+.single-intranet {
+    .blog-header {
+        @include rem('padding', 1);
     }
 }

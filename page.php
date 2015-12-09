@@ -49,6 +49,10 @@ $ancestor = array(
 					<?php endwhile ?>
 
 				<?php endif ?>
+                
+            <div class="side-footer">
+                <?php get_sidebar('footer') ?>
+            </div>
 
 			</main><!-- .main-col -->
 

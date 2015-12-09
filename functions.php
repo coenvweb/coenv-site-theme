@@ -328,8 +328,16 @@ function coenv_widgets_init() {
 		if( !in_array( $page->post_name, $pages_to_remove ) ) {
             if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID)){
                 register_sidebar( array(
-                    'name' 			=> $page->post_title,
+                    'name' 			=> $page->post_title . ' / Sidebar',
                     'id'			=> 'sidebar-' . $page->ID,
+                    'before_widget' => $before_widget,
+                    'after_widget'	=> $after_widget,
+                    'before_title' 	=> $before_title,
+                    'after_title'	=> $after_title
+                ) );
+                register_sidebar( array(
+                    'name' 			=> $page->post_title . ' / Footer',
+                    'id'			=> 'sidebar-footer-' . $page->ID,
                     'before_widget' => $before_widget,
                     'after_widget'	=> $after_widget,
                     'before_title' 	=> $before_title,
