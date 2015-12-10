@@ -334,13 +334,13 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Related Posts', 'coenv' );
+			$title = __( 'Latest Posts', 'coenv' );
 		}
  
 		if ( isset( $instance['posts_per_page'] ) ) {
 			$posts_per_page = (int) $instance['posts_per_page'];
 		} else {
-			$posts_per_page = 5;
+			$posts_per_page = 2;
 		}
  
 		$category_id = $instance['category_id'];
@@ -385,6 +385,7 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 		$posts_per_page = (int) $instance['posts_per_page'];
  
 		$category_id = $instance['category_id'];
+        $section = $category_id;
         
         if ($category_id == 'intranet-section') {
             $intranet_page = get_the_id();
@@ -406,7 +407,7 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
         
         
  
-		$related_posts = new WP_Query( array(
+        $related_posts = new WP_Query( array(
 			'posts_per_page' => $posts_per_page,
 			'post_type' => $related_post_type,
 			'tax_query' => array(
@@ -416,21 +417,55 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
                 )
             ),
 		) );
- 
-        if ( $related_posts->have_posts() ) :
+
+		  if ( $related_posts->have_posts() ) :
 		echo $before_widget;
 		?>
             <?php $term = get_term($category_id, 'topic'); ?>
-			<?php echo $before_title ?>
-				<?php echo $title . ' in ' . $term->name ?>
-			<?php echo $after_title ?>
- 
-			
-				<ul>
-					<?php while ( $related_posts->have_posts() ) : $related_posts->the_post() ?>
-						<li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
-					<?php endwhile ?>
-                </ul>
+                <?php $coenv_chosen = wp_list_pluck( $related_posts->posts, 'ID' );
+
+                echo '<div class="related"><div class="related-news"><div class="related-heading">';
+                if ($section == 'intranet-section') {
+                echo '<div class="right"><a href="/intranet/?term=' . $term->slug . '">See More »</a></div>';
+                echo '<a href="/intranet/?term=' . $term->slug . '"><h2 class="title">' . $title . ' in ' . $term->name . '</h2></a></div>';
+                } else {
+                echo '<div class="right"><a href="/news/topic/' . $term->slug . '">See More »</a></div>';
+                echo '<a href="/news/topic/' . $term->slug . '"><h2 class="title">' . $title . ' in ' . $term->name . '</h2></a></div>';
+                }
+                echo '<div class="related-posts">';
+                foreach( $coenv_chosen as $post):
+                    setup_postdata($post);
+                    echo '<div class="related-container">';
+                        if ( has_post_thumbnail() ) {
+                            echo '<div class="related-thumb">';
+                            echo '<a href="' . get_permalink($post) . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+                            echo get_the_post_thumbnail($post, 'medium');
+                            echo '</a>';
+                            echo '</div>';
+                        }
+                    echo '<div class="related-article-title">';
+                            echo '<h3>';
+                            echo '<a href="' . get_permalink($post) . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">';
+                            echo get_the_title($post);
+                            echo '</a>';
+                            echo '</h3>';
+                    echo '</div>';
+                echo '</div>';
+                endforeach;
+                    echo '<br style="clear:both" />';
+                echo '</div>';
+                echo '</div></div>';
+
+                wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
+        ?>
+            <!-- <//?php $term = get_term($category_id, 'topic'); ?>
+			<//?php echo $before_title ?>
+				<//?php echo $title . ' in ' . $term->name ?>
+			<//?php echo $after_title ?>
+					<//?php while ( $related_posts->have_posts() ) : $related_posts->the_post() ?>
+						<li><a href="<//?php the_permalink() ?>"><//?php the_title() ?></a></li>
+					<//?php endwhile ?>
+                </ul> -->
 		<?php
 		echo $after_widget;
         endif;

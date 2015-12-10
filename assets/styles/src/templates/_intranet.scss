@@ -18,7 +18,7 @@
     .blog-header {
         box-shadow: none;
 		@extend .clearfix;
-		@include rem('padding', 0, 1, 1, 1);
+		@include rem('padding', 1);
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
@@ -57,5 +57,6 @@
 .single-intranet {
     .blog-header {
         @include rem('padding', 1);
+        margin-top: 2rem;
     }
 }

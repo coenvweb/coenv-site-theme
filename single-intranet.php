@@ -37,7 +37,7 @@ $ancestor = array(
             </nav><!-- #secondary-nav.side-col -->
 
 			<main id="main-col" class="main-col">
-                <?php get_template_part( 'partials/partial', 'intranet-filter' ); ?>
+                
                 <?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>

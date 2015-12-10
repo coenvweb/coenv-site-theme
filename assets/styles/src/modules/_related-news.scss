@@ -266,24 +266,65 @@
 
 
 .related-posts-widget {
-    .section-header {
-        display: inline!important;
-        position: inherit!important;
-        h1 {
-            background: none!important;
-            color: $text!important;
-            font-size: 1.5rem;
-            &:after {
-                content: none;
+    background-color: #EEE;
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+    @include min-width ( $iPadPortrait) {
+        margin-left: 3rem;
+    }
+    a {
+            text-decoration: none;
+        }
+    .right {
+        display: inline-block;
+        float: right;
+        padding-right: 1rem;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-weight: 600;
+        font-size: 11px;
+        a {
+            text-decoration: none;
+        }
+    }
+    .related {
+        .related-news {
+            box-shadow: none;
+            margin: 0!important;
+            background: none;
+        }
+        .related-container {
+            background: none;
+            &:nth-child(n+3) {
+                border-top: 1px #ddd solid;
             }
         }
     }
-    background-color: #EEE;
-    ul {
-        list-style: none;
-        margin: 0 1rem 0 -2rem;
-    }
-    li {
-        margin-bottom: 1rem;
+}
+
+.side-col {
+    .related-posts-widget{
+        margin-left: 0;
+        h3 {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+        }
+        .title {
+            margin: 0;
+        }
+        .related-article-title {
+            padding: 1rem;
+        }
+        .right {
+            display: none;
+        }
+        .related-container {
+            width: 100%;
+            border-top: 1px #ddd solid;
+            border-right: none;   
+        }
+        .related-thumb {
+            height: 6rem;
+        }
     }
 }
