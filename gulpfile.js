@@ -87,9 +87,9 @@ gulp.task('admin_js', function () {
     .src([  '.assets/scripts/build/admin.min.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish')) 
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(concat('customNavSubheadCheckboxes.js'))
-    .pipe(sourcemaps.write())
+    //.pipe(sourcemaps.write())
     .pipe(uglify())
     .pipe(rename('customNavSubheadCheckboxes.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
