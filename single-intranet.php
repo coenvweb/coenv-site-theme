@@ -42,7 +42,7 @@ $ancestor = array(
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'intranet-story' ) ?>
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
                 
