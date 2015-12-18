@@ -3,9 +3,6 @@ jQuery(function ($) {
 
 	if ( !$('body').hasClass('lt-ie8') ) {
 
-		// use chosen for form inputs
-		$('select.chosen').chosen();
-
 		// placeholders for older browsers
 		$('input, textarea').placeholder();
 
