@@ -125,25 +125,25 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 
                 ?>
                 <div class="blog-header">
-							<?php if ($coenv_cat_term_1): // Category filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts related to <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_year && $coenv_month): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts from <strong><?php echo $coenv_date; ?></strong></p>
-									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_search_terms): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> intranet posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
-									<p class="right"><a class="button" href="/intranet/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-                    </div>
+                    <?php if ($coenv_cat_term_1): // Category filter ?>
+                        <div class="panel results-text">
+                            <p class="left"><?php echo $wp_query->found_posts; ?> intranet posts related to <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
+                            <p class="right"><a class="button" href="/intranet/">all posts</a></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if($coenv_year && $coenv_month): // Date filter ?>
+                        <div class="panel results-text">
+                            <p class="left"><?php echo $wp_query->found_posts; ?> intranet posts from <strong><?php echo $coenv_date; ?></strong></p>
+                            <p class="right"><a class="button" href="/intranet/">all posts</a></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php if($coenv_search_terms): // Date filter ?>
+                        <div class="panel results-text">
+                            <p class="left"><?php echo $wp_query->found_posts; ?> intranet posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
+                            <p class="right"><a class="button" href="/intranet/">all posts</a></p>
+                        </div>
+                    <?php endif; ?>
+                </div>
                 <div class="blogtime">
 
 				<?php if ( $wp_query->have_posts() ) : ?>

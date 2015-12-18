@@ -1,9 +1,17 @@
 .page-id-267, .single-intranet {
     
-    .intranet-summary p {
-        margin-bottom: 0;
-        padding-bottom: 2rem;
+    .intranet-summary {
         border-bottom: 2px solid #ddd;
+        
+        h2 {
+            @extend h1;
+        }
+        
+        p {
+            margin-bottom: 0;
+            padding-bottom: 2rem;
+        }
+
     }
     
     .filter-title {
