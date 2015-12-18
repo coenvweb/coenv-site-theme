@@ -19,6 +19,7 @@
         box-shadow: none;
 		@extend .clearfix;
 		@include rem('padding', 1);
+        padding-bottom: .7rem;
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
