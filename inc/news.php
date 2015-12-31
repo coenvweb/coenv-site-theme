@@ -135,9 +135,9 @@ add_action('init', 'unregister_taxonomy');
 function custom_admin_columns() {
    echo '<style type="text/css">
        @media only screen and (min-width: 850px) {
-           #topicdiv{width: 32.5%; display: inline-block;}
-           #story_typediv{width: 32.5%; display: inline-block;}
-           #unitdiv{width: 32.5%; display: inline-block;}
+           #topicdiv{width: 32%; display: inline-block;}
+           #story_typediv{width: 32%; display: inline-block;}
+           #unitdiv{width: 32%; display: inline-block;}
        }
          </style>';
 }
