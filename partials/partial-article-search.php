@@ -7,7 +7,7 @@
 
 	<header class="article__header">
 
-		<?php coenv_breadcrumbs() ?>
+		<?php //coenv_breadcrumbs() ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
 			<h1 class="article__title"><?php the_title() ?></h1>
@@ -18,7 +18,7 @@
 	</header>
 
 	<section class="article__content">
-				<?php the_excerpt() ?>
+				<?php the_advanced_excerpt('length=20&length_type=words&no_custom=1&ellipsis=%26hellip;&exclude_tags=img,p,strong,table&no_shortcode=1'); ?>
 	</section>
 
-</article><!-- .article -->
+</article><!-- .article -->	
