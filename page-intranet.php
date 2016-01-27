@@ -92,7 +92,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'topic',
-                            'terms' => 1232
+                            'terms' => 1239
                         )
                     ),
                     'paged' => $paged,
