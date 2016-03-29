@@ -41,12 +41,18 @@ $feature = array(
 <article class="feature loading">
     
     <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
+        
+    <span class="visuallyhidden">Link to article</span>
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
 	</div>
-
+        
+    </a>
+    
 	<div class="feature-info-container">
-
+        
+        <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
+            
 		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
 
 			<div class="feature-type">
@@ -69,8 +75,8 @@ $feature = array(
 
 		</div><!-- .feature-info -->
 
+        </a>
+            
 	</div><!-- .feature-info-container -->
-        
-    </a>
 
 </article><!-- .feature -->
