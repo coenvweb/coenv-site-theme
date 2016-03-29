@@ -50,8 +50,6 @@ $feature = array(
     </a>
     
 	<div class="feature-info-container">
-        
-        <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
             
 		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
 
@@ -60,10 +58,13 @@ $feature = array(
 			</div><!-- .feature-type -->
 
 			<div class="feature-content">
+                <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
-                <h1><?php the_title() ?></h1>
+                    <h1><?php the_title() ?></h1>
 
                     <p><?php the_advanced_excerpt('length=20&length_type=words'); ?></p>
+                    
+                </a>
                 
                     <a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 
@@ -74,8 +75,6 @@ $feature = array(
 			</div><!-- .feature-content -->
 
 		</div><!-- .feature-info -->
-
-        </a>
             
 	</div><!-- .feature-info-container -->
 
