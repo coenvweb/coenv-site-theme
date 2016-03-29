@@ -1,27 +1,33 @@
 <?php if (is_front_page()): ?>
 	<article class="story">
 		<div class="inner">
+            <?php if ( has_term( 'weekly-research', 'topic' ) || ( has_term( 'deans-letter', 'story_type' ) ) ) : ?>
+                    <a href="<?php the_permalink() ?>" class="img">
+                        <?php the_post_thumbnail( 'medium' ) ?>
+                    </a>
 
-			<?php if ( has_post_thumbnail() ) : ?>
+                <?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
+                    <div class="story-series">
+                        <a href="<?php echo get_term_link( 'weekly-research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
+                    </div>
+                <?php endif ?>
+                <?php if ( has_term( 'deans-letter', 'story_type' ) ): ?> 
+                    <div class="story-series">
+                        <a href="<?php echo get_term_link( 'deans-letter', 'story_type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
+                    </div>
+                <?php endif ?>
+
+                <a class="content" href="<?php the_permalink() ?>">
+                    <h1><?php the_title() ?></h1>
+                </a>
+			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
 					<?php the_post_thumbnail( 'medium' ) ?>
-				</a>
-			<?php endif ?>
-			
-			<?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
-				<div class="story-series">
-					<a href="<?php echo get_term_link( 'weekly-research', 'topic' ); ?>" name="View all Weekly Research Posts">Weekly Published Research</a>
-				</div>
-			<?php endif ?>
-			<?php if ( has_term( 'deans-letter', 'story_type' ) ): ?> 
-				<div class="story-series">
-					<a href="<?php echo get_term_link( 'deans-letter', 'story_type' ); ?>" name="View all Letters from the Dean">Letter from the Dean</a>
-				</div>
-			<?php endif ?>
-
-			<a class="content" href="<?php the_permalink() ?>">
-                <h1><?php the_title() ?></h1>
-			</a>
+                    <div class="content">
+                        <h1><?php the_title() ?></h1>
+                    </div>
+                </a>
+            <?php endif ?>
 
 		</div><!-- .inner -->
 
