@@ -141,7 +141,7 @@
 
 	} // .search-form
 
-	#menu-main {
+	#nav-main__menu {
 		border-top: 1px solid #222;
 		border-bottom: 1px solid #3d3d3d;
         @include rem('padding', 1, 0, 1, 0);
@@ -152,30 +152,26 @@
 		border-top: 1px solid #222;
         @include rem('padding', 1, 0, 1, 0);
         
-		
-        #menu-buttons {
-            li.give a {
-                background: $accent-red;
-                border-radius: $radius;
-                color: #fff;
-                @include rem('margin', 1, 1, 0, 1);
-                @include rem('padding', 0.5, 1, 0.5, 1);
-                
-                i {
-                    position: absolute;
-                    margin-top: 0.1em;
-                    @include rem('right', 1.5);
-                    @include rem('margin-right', 0.2);
-                    @include rem('margin-left', -1);
-                }
+        li.give a {
+            background: $accent-red;
+            border-radius: $radius;
+            color: #fff;
+            @include rem('margin', 1, 1, 0, 1);
+            @include rem('padding', 0.5, 1, 0.5, 1);
 
-            } // li.give a
-
-            li.give a:hover {
-                background: darken( $accent-red, 10% );
+            i {
+                position: absolute;
+                margin-top: 0.1em;
+                @include rem('right', 1.5);
+                @include rem('margin-right', 0.2);
+                @include rem('margin-left', -1);
             }
 
-        } // #menu-buttons
+        } // li.give a
+
+        li.give a:hover {
+            background: darken( $accent-red, 10% );
+        }
         
         li {
 			@include font-size(12);
