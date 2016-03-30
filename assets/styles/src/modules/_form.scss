@@ -80,3 +80,9 @@ form {
 	} // .field-wrap
 
 } // form
+
+.select-category, .select-month {
+    label {
+        @extend .visuallyhidden;
+    }
+}

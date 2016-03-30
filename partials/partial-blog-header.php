@@ -3,7 +3,8 @@
 	<form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url( '/' ); ?>">
 	  <div class="field-wrap">
 	  	<input type="hidden" name="post_type" value="post" />
-	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search news" />
+        <label for="s">Search news</label>
+	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search news" aria-label="Search" title="Search" />
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
 	</form>
@@ -15,8 +16,9 @@
 				'type' => 'post',
 				'taxonomy' => array('topic')
 			));
-
-				$output = '<select name="category-dropdown">';
+                
+                $output = '<label for="category">Filter by Category</label>';
+				$output .= '<select name="category-dropdown" id="category">';
 				$output .= '<option value="">Choose a topic</option>';
 				if ( !empty( $cats ) ) {	
 				foreach ( $cats as $cat ) {
@@ -31,7 +33,8 @@
 		?>
 	</div>
 	<div class="input-item select-month">
-			<select name="archive-dropdown">
+        <label for="archive">Filter by Month</label>
+			<select name="archive-dropdown" id="archive">
 				<option value="/news/">Choose a month</option>
 				<?php wp_get_archives(array(
 					'type' => 'monthly',

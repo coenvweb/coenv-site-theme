@@ -67,7 +67,7 @@ $ordered_themes = $themes;
 
 					<div class="Faculty-toolbox-form-group">
 
-						<select name="theme" class="Faculty-toolbox-theme-select">
+						<select id="theme" name="theme" class="Faculty-toolbox-theme-select">
 
 							<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#theme-all">All Research Themes</option>
 
@@ -85,7 +85,7 @@ $ordered_themes = $themes;
 
 					<div class="Faculty-toolbox-form-group">
 
-						<select name="unit" class="Faculty-toolbox-unit-select">
+						<select id="unit" name="unit" class="Faculty-toolbox-unit-select">
 
 							<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
 
@@ -104,7 +104,7 @@ $ordered_themes = $themes;
 					<div class="Faculty-toolbox-form-group">
 
 						<div class="field-wrap">
-    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" />
+    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" aria-role="Faculty Search" />
     						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
   						</div>
 
