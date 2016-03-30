@@ -48,7 +48,7 @@
                                 <a href="http://www.washington.edu/boundless/" rel="home" title="University of Washington - Be Boundless" target="_blank"><?php include('assets/img/be-boundless-gold.svg'); ?><span class="visuallyhidden">Be Boundless</span></a>
                             </div>
                             
-                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://www.washington.edu/" target="_blank">University of Washington</a></p></div>
+                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://washington.edu/" target="_blank">University of Washington</a></p></div>
                             
                             <?php wp_nav_menu( array(
                                 'theme_location' => 'footer-links',
