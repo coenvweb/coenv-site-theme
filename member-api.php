@@ -207,7 +207,7 @@ class CoEnvMemberAPI {
 			'hierarchical' => false,
 			'menu_icon' => 'dashicons-id',
 			'capability_type' => 'page',
-			'exclude_from_search' => true,
+			'exclude_from_search' => false,
 			'rewrite' => array(
 				'slug' => 'faculty',
 				'with_front' => false

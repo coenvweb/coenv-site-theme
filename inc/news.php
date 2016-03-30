@@ -157,8 +157,8 @@ function coenv_post_cats($id, $content_type = 'post') {
             if ($content_type == 'post'){
                 $coenv_cats .= '<li><a href="/news/'. $category->taxonomy . '/'.$category->slug.'">'. $category->name.'</a></li>';
                 $i++;
-            } elseif (($content_type == 'intranet') && ($category->term_id != 1232)) {
-                if (term_is_ancestor_of(1232, $category->term_id, 'topic')) {
+            } elseif (($content_type == 'intranet') && ($category->term_id != 1239)) {
+                if (term_is_ancestor_of(1239, $category->term_id, 'topic')) {
                     $coenv_cats .= '<li><a href="/intranet/?term='.$category->slug.'">'. $category->name.'</a></li>';
                     $i++;
                 }

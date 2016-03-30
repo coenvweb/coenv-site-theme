@@ -44,7 +44,7 @@
 		background: #fff;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 0, -2, 0, 1);
+			@include rem('margin', 1, -2, 0, 1);
 		}
 
 	} // .blog-header
