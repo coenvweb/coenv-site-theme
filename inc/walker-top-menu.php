@@ -9,3 +9,8 @@ class CoEnv_Top_Menu_Walker extends Walker_Nav_Menu {
 	}
 
 }
+
+function my_nav_notitle( $menu ){
+  return $menu = preg_replace('/ title=\"(.*?)\"/', '', $menu );
+}
+add_filter( 'wp_nav_menu', 'my_nav_notitle' );
