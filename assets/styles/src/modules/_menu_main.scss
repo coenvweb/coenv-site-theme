@@ -141,7 +141,7 @@
 
 	} // .search-form
 
-	#nav-main__menu {
+	.nav-main__menu {
 		border-top: 1px solid #222;
 		border-bottom: 1px solid #3d3d3d;
         @include rem('padding', 1, 0, 1, 0);

@@ -165,6 +165,7 @@ jQuery(function ($) {
 		this.$mobileTopMenu = this.$topMenu.clone();
 		this.$mobileTopMenu.removeClass( this.options.normalTopMenuClass ).addClass( this.options.mobileTopMenuClass );
 		this.$mobileTopMenu.appendTo( this.$mobileMenu ).show();
+        this.$mobileMenu.find('div, ul, li, span, a').removeAttr('id');
 	};
 
 	// Handle menu button interactions
