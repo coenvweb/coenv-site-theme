@@ -57,7 +57,7 @@ $featured = array(6,14,29,38,42,56,64,77,85,93,103,115,124,139,144,156,161,172,1
 		 <div class="print">
 			<h1>Faculty</h1>
 				<p>The College of the Environment Faculty Profiles can be viewed on your computer or mobile device on the web at the <a href="/faculty" name="Faculty Profiles">College of the Environment website</a>.</p>
-<img src="<?php echo get_template_directory_uri() ?>/assets/img/faculty-slide-light.jpg" title="Faculty Profiles preview">
+<img src="<?php echo get_template_directory_uri() ?>/assets/img/faculty-slide-light.jpg" title="Faculty Profiles preview" alt="Preview of Faculty Profiles feature">
 			</div>
 </div>
 
