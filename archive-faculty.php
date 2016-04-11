@@ -69,7 +69,7 @@ $featured = array(6,14,29,38,42,56,64,77,85,93,103,115,124,139,144,156,161,172,1
 
 			<?php if ( $faculty->have_posts() ) : ?>
 
-				<div class="Faculty-list-content">
+				<div class="Faculty-list-content" id="main-col">
 
 					<?php $count = 0; ?>
 
