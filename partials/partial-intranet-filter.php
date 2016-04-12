@@ -45,7 +45,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                                 'type' => array('post', 'intranet'),
                                 'taxonomy' => array('topic')
                             ));
-                                $output = '<select name="category-dropdown">';
+                                $output = '<label for="intranet-topic-select">Topic select</label><select name="category-dropdown" id="intranet-topic-select">';
                                 $output .= '<option value="/intranet/">Choose a topic</option>';
                                 if ( !empty( $cats ) ) {	
                                 foreach ( $cats as $cat ) {
@@ -62,6 +62,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                         ?>
                     </div>
                     <div class="input-item select-month">
+                    <label for="date-filter">Date select</label>
 			<?php coenv_base_date_filter('intranet',$coenv_month,$coenv_year); // Date filter ?>
                     </div>
                 </div><!-- #blog-header -->
