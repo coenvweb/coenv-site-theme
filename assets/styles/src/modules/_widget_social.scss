@@ -38,16 +38,20 @@
 		text-align: center;
 		border-right: 1px solid $border;
 		border-bottom: 1px solid $border;
-		color: $dark-widget;
+		color: $text;
 		text-decoration: none;
 
 		&:hover {
 			color: #fff !important;
 			background: $accent;
+            i {
+                color: #fff !important;
+            }
 		}
 
 		i {
 			display: block;
+            color: $dark-widget;
 			@include font-size(30);
 			@include line-height(30);
 		}
