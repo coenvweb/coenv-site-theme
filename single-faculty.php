@@ -65,7 +65,7 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 								<?php endif ?>
 
 								<?php if ( !empty( $member['units'] ) ) : ?>
-									<h3 class="Faculty-member-unit"><a href="<?php echo $member['units'][0]['url'] ?>"><?php echo $member['units'][0]['name'] ?></a></h3>
+									<h3 class="Faculty-member-unit"><a href="<?php echo $member['units'][0]['url'] ?>" title="See all faculty members in <?php echo $member['units'][0]['name'] ?>"><?php echo $member['units'][0]['name'] ?></a></h3>
 								<?php endif ?>
 
 								<?php if ( !empty( $member['themes'] ) ) : ?>
@@ -78,7 +78,7 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 
 											<?php foreach ( $member['themes'] as $theme ) : ?>
 
-												<li><a href="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></a></li>
+												<li><a href="<?php echo $theme['url'] ?>" title="See all faculty members in <?php echo $theme['name'] ?>"><?php echo $theme['name'] ?></a></li>
 
 											<?php endforeach ?>
 
