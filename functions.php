@@ -931,7 +931,7 @@ function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	$counter = 0;
 	$ref_month = '';
 	$monthly = new WP_Query(array('posts_per_page' => -1, 'post_type'	=> $post_type));
-	echo '<select name="select-category" class="select-category" id="date-filter>';
+	echo '<select name="select-category" class="select-category" id="date-filter">';
 	echo '<option value="' . strtok($_SERVER['REQUEST_URI'],'?') . '">By Date</option>';
 	if( $monthly->have_posts() ) :
 		while( $monthly->have_posts() ) : $monthly->the_post();
