@@ -60,7 +60,8 @@ function coenv_related_faculty ($id) {
                     $image_id = get_field( 'image' );
                     if ( $image_id ) {
                         echo '<div class="related-thumb">';
-                        echo wp_get_attachment_image( $image_id, 'thumbnail' );
+                        $image_attributes = wp_get_attachment_image_src( $image_id, 'thumbnail' );
+                        echo '<img src=' . $image_attributes[0] . '>';
                         echo '</div>';
                     }	
                     echo '<div class="related-faculty-name">';
