@@ -124,11 +124,11 @@ add_action( 'add_meta_boxes', 'default_metabox_loc', 0 );
 
 //remove default tag and category taxonomies
 
-function unregister_taxonomy(){
+function coenv_unregister_taxonomy(){
     register_taxonomy('post_tag', array());
     register_taxonomy('category', array());
 }
-add_action('init', 'unregister_taxonomy');
+add_action('init', 'coenv_unregister_taxonomy');
 
 //clean up taxonomies with three columns
 
