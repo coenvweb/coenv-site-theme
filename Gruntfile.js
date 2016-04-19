@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 				//	sourceMap: true
+                    mangle: false,
 				},
 				files: {
 					// The main script file

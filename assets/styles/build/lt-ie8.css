@@ -1,3 +1,2 @@
-#top-nav form{display:inline-block}#top-nav ul{display:inline-block;margin:0;padding:0;list-style:none}#top-nav li{display:inline-block}#show-menu{display:none}#logo{width:400px}#logo span{display:none}.banner-wrapper{background:none!important}.banner-wrapper .banner-caption{display:none}.contact-info .contact-title{bottom:65%!important}
-
-/*# sourceMappingURL=lt-ie8.css.map */
+#top-nav form,#top-nav li,#top-nav ul{display:inline-block}#top-nav ul{margin:0;padding:0;list-style:none}#logo span,#show-menu,.banner-wrapper .banner-caption{display:none}#logo{width:400px}.banner-wrapper{background:0 0!important}.contact-info .contact-title{bottom:65%!important}
+/*# sourceMappingURL=maps/lt-ie8.css.map */
