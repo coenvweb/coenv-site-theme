@@ -92,8 +92,8 @@
     <meta property="og:site_name" content="<?php bloginfo('name') ?>" />
         
         <!--[if lt IE 9]>
-            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js" async></script>
-            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/respond/respond.min.js" async></script>
+            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js"></script>
+            <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/respond/respond.min.js"></script>
         <![endif]-->
 
         <?php 
@@ -103,8 +103,8 @@
                 $banner_class .= ' template-print';
             }
         ?>
-    <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js" async></script>
-            <script src="//www.washington.edu/static/alert.min.js" type="text/javascript" async></script>
+    <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
+            <script src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
     <script>
         (function(d) {
                 var config = {
