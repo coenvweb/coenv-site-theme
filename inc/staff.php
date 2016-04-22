@@ -67,6 +67,13 @@ function taxonomy_team() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true
+        
+        'capabilities' => array (
+            'manage_terms' => 'manage_teams', //by default only admin
+            'edit_terms' => 'edit_teams',
+            'delete_terms' => 'delete_teams',
+            'assign_terms' => 'assign_teams' 
+        ),
 	);
 	register_taxonomy( 'team', array( 'staff' ), $args );
 
