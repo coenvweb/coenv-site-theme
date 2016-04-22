@@ -66,7 +66,7 @@ function taxonomy_team() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true
+		'show_tagcloud'              => true,
         
         'capabilities' => array (
             'manage_terms' => 'manage_teams', //by default only admin
