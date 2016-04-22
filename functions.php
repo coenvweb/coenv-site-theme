@@ -282,6 +282,12 @@ return $newsizes;
 require_once locate_template( '/inc/careers.php' );
 
 /**
+ * Register Staff
+ */
+
+require_once locate_template( '/inc/staff.php' );
+
+/**
  * Returns a unit color (hex value)
  *
  * @param int Unit post ID
