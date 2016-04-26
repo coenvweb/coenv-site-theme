@@ -7,10 +7,20 @@ $image = get_field('photo');
 $email = get_field('email');
 $phone_number = get_field('phone_number');
 
+if( !empty($image) ) {
+
+	// vars
+	$alt = $image['alt'];
+
+	// thumbnail
+	$size = 'thumbnail';
+	$thumb = $image['sizes'][ $size ];
+}
+
 ?>
 <div class="contact">
 
-    <img class="alignleft" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" width="130" height="130" />
+    <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
     <div class="contact-info">
         <div class="contact-title">
