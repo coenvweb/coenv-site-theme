@@ -3,7 +3,7 @@
 		<div class="inner">
             <?php if ( has_term( 'weekly-research', 'topic' ) || ( has_term( 'deans-letter', 'story_type' ) ) ) : ?>
                     <a href="<?php the_permalink() ?>" class="img">
-                        <?php the_post_thumbnail( 'medium' ) ?>
+                        <?php the_post_thumbnail( 'homepage-column' ) ?>
                     </a>
 
                 <?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
@@ -22,7 +22,7 @@
                 </a>
 			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
-					<?php the_post_thumbnail( 'medium' ) ?>
+					<?php the_post_thumbnail( 'homepage-column' ) ?>
                     <div class="content">
                         <h1><?php the_title() ?></h1>
                     </div>

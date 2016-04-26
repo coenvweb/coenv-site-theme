@@ -251,6 +251,7 @@ function coenv_theme_setup() {
 		add_image_size( 'tiny', 129, 129, true );
 		add_image_size( 'small', 262, 262 );
 		add_image_size( 'banner', 1680 );
+        add_image_size( 'homepage-column', 528 );
 		add_image_size( 'half', 375 );
 		add_image_size( 'one-third', 250 );
 	}
