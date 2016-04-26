@@ -20,11 +20,11 @@ function coenv_styles_and_scripts() {
 	}
 
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', get_template_directory_uri() . '/bower_components/jquery/jquery.min.js', array(), '1.9.1', false );
+	wp_register_script( 'jquery', get_template_directory_uri() . '/bower_components/jquery/jquery.min.js', array(), null , false );
 	wp_enqueue_script( 'jquery' );
 
 	// include jQuery migrate plugin
-	wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/bower_components/jquery/jquery-migrate.min.js', array( 'jquery' ), '1.1.0', false );
+	wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/bower_components/jquery/jquery-migrate.min.js', array( 'jquery' ), null , false );
 	wp_enqueue_script( 'jquery-migrate' );
 
 	// include theme scripts in footer
