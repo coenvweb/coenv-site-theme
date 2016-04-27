@@ -24,6 +24,12 @@ function taxonomy_unit() {
 	);
 	$args = array(
 		'labels'                     => $labels,
+        'capabilities'               => array(
+            'manage_terms' => 'edit_posts',
+            'edit_terms' => 'edit_posts',
+            'delete_terms' => 'edit_posts',
+            'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
+        ),
 		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
@@ -58,6 +64,12 @@ function taxonomy_story_type() {
 	);
 	$args = array(
 		'labels'                     => $labels,
+        'capabilities'               => array(
+            'manage_terms' => 'edit_posts',
+            'edit_terms' => 'edit_posts',
+            'delete_terms' => 'edit_posts',
+            'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
+        ),
 		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
@@ -91,6 +103,12 @@ function taxonomy_topic() {
 	);
 	$args = array(
 		'labels'                     => $labels,
+        'capabilities'               => array(
+            'manage_terms' => 'edit_posts',
+            'edit_terms' => 'edit_posts',
+            'delete_terms' => 'edit_posts',
+            'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
+        ),
 		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
