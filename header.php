@@ -204,12 +204,4 @@
 
                     </div><!-- .container.header-container -->
 
-                    <?php if ( isset( $banner['caption'] ) && !empty( $banner['caption'] ) ) : ?>
-                        <div class="banner-info"><a href="<?php echo $banner['permalink'] ?>"><i class="icon-camera"></i>About the image</a></div>
-                        <div class="banner-caption">
-                            <h2><?php echo $banner['title'] ?></h2>
-                            <?php echo $banner['caption'] ?>
-                        </div>
-                    <?php endif ?>
-
                 </div><!-- .banner-wrapper -->

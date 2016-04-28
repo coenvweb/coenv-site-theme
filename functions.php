@@ -505,14 +505,12 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'homepage-column' );
 	$attachment_post_obj = get_post( $thumb_id );
 
 	$banner = array(
 		'url' => $image_src[0],
 		'permalink' => get_permalink( $attachment_post_obj->ID ),
-		'title' => $attachment_post_obj->post_title,
-		'caption' => $attachment_post_obj->post_excerpt
 	);
 
 	return $banner;
