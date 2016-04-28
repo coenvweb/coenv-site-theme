@@ -30,7 +30,7 @@ if( !empty($image) ) {
         <?php if (!empty($email) && !empty($phone_number)) : ?>
             <ul class="Faculty-member-contact-list">
                 <?php if (!empty($email)) : ?>
-                    <li><a href="mailto:<?php echo $email; ?>"><i class="icon-contact-link-email"></i><?php echo $email; ?></a></li>
+                    <li><a href="mailto:<?php echo antispambot($email); ?>"><i class="icon-contact-link-email"></i><?php echo antispambot($email); ?></a></li>
                 <?php endif; ?>
                 <?php if (!empty($phone_number)) : ?>
                     <li><a href="tel:<?php echo $phone_number; ?>"><i class="icon-contact-link-phone"></i><?php echo $phone_number; ?></a></li>

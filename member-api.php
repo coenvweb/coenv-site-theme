@@ -121,6 +121,12 @@ class CoEnvMemberAPI {
 				'choose_from_most_used' => ( 'Choose from the most used themes' ),
 				'not_found' => ( 'No themes found' )
 			),
+            'capabilities'               => array(
+                'manage_terms' => 'edit_posts',
+                'edit_terms' => 'edit_posts',
+                'delete_terms' => 'edit_posts',
+                'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
+            ),
 			'rewrite' => array(
 				'slug' => 'faculty/themes',
 				'with_front' => false
@@ -150,6 +156,12 @@ class CoEnvMemberAPI {
 				'choose_from_most_used' => ( 'Choose from the most used tags' ),
 				'not_found' => ( 'No tags found' )
 			),
+            'capabilities'               => array(
+                'manage_terms' => 'edit_posts',
+                'edit_terms' => 'edit_posts',
+                'delete_terms' => 'edit_posts',
+                'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
+            ),
 			'rewrite' => array(
 				'slug' => 'faculty/tags',
 				'with_front' => false

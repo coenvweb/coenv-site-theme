@@ -15,7 +15,7 @@
                         </div>
                         <div class="footer__info">
                             <p><a href="http://maps.google.com/?q=1492+NE+Boat+St" title="Google Maps link">1492 NE Boat St., Seattle, WA 98105</a></p>
-                            <p><a href="mailto:coenv@uw.edu" title="Send us an Email">coenv@uw.edu</a></p>
+                            <p><a href="mailto:<?=antispambot("coenv@uw.edu")?>" title="Send us an Email"><?php echo antispambot("coenv@uw.edu") ?></a></p>
                             <?php get_search_form() ?>
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'footer-top-links', 
