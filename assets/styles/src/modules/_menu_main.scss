@@ -11,6 +11,9 @@
 }
 
 .mobile-menu-active {
+    .main-menu.mobile-menu {
+        position: absolute!important;
+    }
     #show-menu, #logo, .site-header #logo a, .site-header {
         background-color: $accent-lt!important;
     }
@@ -36,7 +39,7 @@
 
 .main-menu.mobile-menu {
 	display: block;
-	position: absolute;
+	position: fixed;
 	z-index: 0;
 	right: 0;
 	//bottom: 0;
