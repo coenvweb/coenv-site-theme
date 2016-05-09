@@ -4,18 +4,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
     <head>
-        <!--prefetching-->
-        <link rel="dns-prefetch" href="//p.typekit.net">
-        <link rel="dns-prefetch" href="//use.typekit.net">
-        <link rel="dns-prefetch" href="//www.google-analytics.com">
-        <link rel="dns-prefetch" href="//www.washington.edu">
-        <?php if (is_front_page) {
-            $sticky = get_option( 'sticky_posts' );
-            $sticky_id = get_post_thumbnail_id($sticky[0]);
-            $sticky_src = wp_get_attachment_image_src( $sticky_id , 'large' );
-            echo '<link rel="prefetch" href="' . $sticky_src[0] . '">';
-        } ?>
-        <!--end prefectching-->
         
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -24,6 +12,31 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="title" content="<?php bloginfo('name'); ?>">
+        
+        <!--[if lt IE 8]>
+            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/lt-ie8.css?<?php echo time(); ?>' type='text/css' media='all' />
+        <![endif]-->
+        <!--[if gte IE 8]><!--> 
+            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/screen.css?<?php echo time(); ?>' type='text/css' media='all' />
+        <!--<![endif]-->
+        
+        <!--prefetching-->
+        <link rel="dns-prefetch" href="//p.typekit.net">
+        <link rel="dns-prefetch" href="//use.typekit.net">
+        <link rel="dns-prefetch" href="//www.google-analytics.com">
+        <link rel="dns-prefetch" href="//www.washington.edu">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/bg-wave-cut.png">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/black-white-suz.jpg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/boundless_logo.svg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/boundless_logo_left.svg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/boundless_logo_right.svg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg">
+        <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/fonts/icomoon.woff">
+        <!--end prefectching-->
+        
         <?php
 		wp_reset_query();   
 		if (have_posts()) : while(have_posts()) the_post();
@@ -81,13 +94,6 @@
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
     </script>
-
-        <!--[if lt IE 8]>
-            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/lt-ie8.css?<?php echo time(); ?>' type='text/css' media='all' />
-        <![endif]-->
-        <!--[if gte IE 8]><!--> 
-            <link rel='stylesheet' id='screen-css'  href='<?php echo get_template_directory_uri() ?>/assets/styles/build/screen.css?<?php echo time(); ?>' type='text/css' media='all' />
-        <!--<![endif]-->
 
         <?php wp_head() ?>
     <?php
