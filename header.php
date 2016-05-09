@@ -4,6 +4,19 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
     <head>
+        <!--prefetching-->
+        <link rel="dns-prefetch" href="//p.typekit.net">
+        <link rel="dns-prefetch" href="//use.typekit.net">
+        <link rel="dns-prefetch" href="//www.google-analytics.com">
+        <link rel="dns-prefetch" href="//www.washington.edu">
+        <?php if (is_front_page) {
+            $sticky = get_option( 'sticky_posts' );
+            $sticky_id = get_post_thumbnail_id($sticky[0]);
+            $sticky_src = wp_get_attachment_image_src( $sticky_id , 'large' );
+            echo '<link rel="prefetch" href="' . $sticky_src[0] . '">';
+        } ?>
+        <!--end prefectching-->
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -55,6 +68,7 @@
         <meta name="msapplication-TileColor" content="#613ba9">
         <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
         <meta name="theme-color" content="#613ba9">
+
 
         <script src="<?php echo get_template_directory_uri() ?>/assets/scripts/src/plugins/modernizr.custom.92408.js"></script>
 		<script src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
