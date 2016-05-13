@@ -19,20 +19,15 @@ function coenv_styles_and_scripts() {
 		return false;
 	}
 
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', get_template_directory_uri() . '/bower_components/jquery/jquery.min.js', array(), null , false );
-	wp_enqueue_script( 'jquery' );
-
-	// include jQuery migrate plugin
-	wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/bower_components/jquery/jquery-migrate.min.js', array( 'jquery' ), null , false );
-	wp_enqueue_script( 'jquery-migrate' );
-
 	// include theme scripts in footer
-	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', array( 'jquery' ), null, true );
+	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', null, true );
 	wp_enqueue_script( 'coenv-main' );
+    
+    if (is_post_type_archive('faculty') || is_singular('faculty')) {
 
-	// register faculty scripts, enqueued within template files
-	wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'jquery', 'coenv-main' ), null, true );
+        // register faculty scripts, enqueued within template files
+        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main' ), null, true );
+    }
 
 	// make variables available to theme scripts
 	wp_localize_script( 'coenv-main', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
@@ -51,7 +46,7 @@ require_once 'member-api.php';
  */
 add_action( 'admin_enqueue_scripts', 'coenv_admin_scripts' );
 function coenv_admin_scripts() {
-	wp_register_script( 'coenv_admin', get_template_directory_uri() . '/assets/scripts/build/admin.min.js', array( 'jquery' ) );
+	wp_register_script( 'coenv_admin', get_template_directory_uri() . '/assets/scripts/build/admin.min.js' );
 	wp_enqueue_script( 'coenv_admin' );
 }
 

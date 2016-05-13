@@ -13,10 +13,11 @@ var livereload = require('gulp-livereload');
 
 gulp.task('main_js', function () {
   return gulp
-    .src([  './bower_components/jquery/jquery-migrate.min.js',
+    .src([  './bower_components/jquery/jquery.min.js',
+            './bower_components/jquery/jquery-migrate.min.js',
             './bower_components/jquery-fast-click/jQuery.fastClick.js',
             './bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
-            './bower_components/chosen/chosen/chosen.jquery.js',
+            './assets/scripts/src/plugins/modernizr.custom.92408.js',
             './bower_components/fitvids/jquery.fitvids.js',
             './bower_components/jquery-placeholder/jquery.placeholder.js',
             './bower_components/jquery-hoverIntent/jquery.hoverIntent.js',
@@ -27,8 +28,8 @@ gulp.task('main_js', function () {
             './bower_components/imagesloaded/imagesloaded.pkgd.min.js',
             './bower_components/nivo-lightbox/nivo-lightbox.js',
             './assets/scripts/src/plugins/jquery.royalslider.js',
-            './assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
-            './assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
+            //'./assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
+            //'./assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
             './assets/scripts/src/menu.js',
             './assets/scripts/src/features.js',
             './assets/scripts/src/blog.js',
@@ -36,9 +37,9 @@ gulp.task('main_js', function () {
             './assets/scripts/src/main.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))
-    //.pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
-    //.pipe(sourcemaps.write())
+    .pipe(sourcemaps.write())
     .pipe(uglify())
     .pipe(rename('main.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))

@@ -55,7 +55,7 @@
 	button {
 		display: inline-block;
 		padding: 0;
-		@include font-size(10);
+		font-size: .68rem!important;
 		@include rem('line-height', 1.8);
 		@include rem('height', 1.8);
 		vertical-align: top;
