@@ -11,13 +11,10 @@ if ( get_query_var('post_type') == 'post') {
     $classes[] = 'template-page news-search';
 } elseif ( get_query_var('intranet') == 'intranet' ) {
 	$classes[] = 'template-page intranet';
-} elseif ( get_query_var('post_type') == 'faculty' ) {
-	$classes[] = 'template-page faculty';
 } else {
-	$classes[] = 'template-page';
+	$classes[] = 'template-page base_search';
 }
-
-if(!is_paged()) {
+if(!is_paged() ) {
     $search_query = explode(' ', get_search_query());
     $fac_meta_query = array(
         'relation' => 'OR',
@@ -59,43 +56,38 @@ if(!is_paged()) {
 
 				<div class="search-results">
 
-                    <?php if( !is_paged() ) : ?>
+                    <?php if ( $facSearch->have_posts() ) { ?>
 
-                        <?php if ( $facSearch->have_posts() ) : ?>
+                        <?php while ( $facSearch->have_posts() ) : $facSearch->the_post(); ?>
 
-                            <?php while ( $facSearch->have_posts() ) : $facSearch->the_post(); ?>
+                            <?php get_template_part( 'partials/partial', 'faculty-search' ) ?>
 
-                                <?php get_template_part( 'partials/partial', 'faculty-search' ) ?>
+                        <?php endwhile ?>
 
-                            <?php endwhile ?>
+                    <?php } ?>
 
-                        <?php endif ?>
-
-                    <?php endif ?>
-
-					<?php if ( have_posts() ) : ?>
+					<?php if ( have_posts() ) { ?>
 
 						<?php while ( have_posts() ) : the_post() ?>
 
 								<?php get_template_part( 'partials/partial', 'article-search' ) ?>
 
 						<?php endwhile ?>
-                    
-                    <?php endif ?>
-                    
-                    <?php if( !have_posts() && !$facSearch->have_posts() ) : ?>
-                    <article class="article">
 
-                        <section class="article__content">
-                            
-                            <p>No results found. Please try searching with different terms.</p>
-                            <?php get_search_form() ?>
-                            
-                        </section>
+                    <?php } else { ?>
 
-                    </article><!-- .article -->
+                        <article class="article">
 
-					<?php endif ?>
+                            <section class="article__content">
+
+                                <p>No results found. Please try searching with different terms.</p>
+                                <?php get_search_form() ?>
+
+                            </section>
+
+                        </article><!-- .article -->
+
+					<?php } ?>
 
 				</div><!-- .search-results -->
 
