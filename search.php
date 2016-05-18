@@ -7,9 +7,8 @@
 get_header();
 
 $classes = array( 'template-search' );
-
-if ( get_query_var('post_type') == 'post' ) {
-	$classes[] = 'template-blog';
+if ( get_query_var('post_type') == 'post') {
+    $classes[] = 'template-page news-search';
 } elseif ( get_query_var('intranet') == 'intranet' ) {
 	$classes[] = 'template-page intranet';
 } elseif ( get_query_var('post_type') == 'faculty' ) {
@@ -18,6 +17,26 @@ if ( get_query_var('post_type') == 'post' ) {
 	$classes[] = 'template-page';
 }
 
+if(!is_paged()) {
+    $search_query = explode(' ', get_search_query());
+    $fac_meta_query = array(
+        'relation' => 'OR',
+        'posts_per_page' => -1,
+    );
+    foreach($search_query as $keyword) {
+        $fn = array('key' => 'first_name', 'value' => $keyword);
+        $ln = array('key' => 'last_name', 'value' => $keyword);
+        $fac_meta_query[] = $fn;
+        $fac_meta_query[] = $ln;
+    }
+
+    $facArgs = array(
+        'post_type' => 'faculty',
+        'meta_query' => $fac_meta_query
+    );
+
+    $facSearch = new WP_Query($facArgs);
+}
 ?>
 
 	<section id="search" role="main" class="<?php echo implode( ' ', $classes ) ?>">
@@ -40,24 +59,31 @@ if ( get_query_var('post_type') == 'post' ) {
 
 				<div class="search-results">
 
+                    <?php if( !is_paged() ) : ?>
+
+                        <?php if ( $facSearch->have_posts() ) : ?>
+
+                            <?php while ( $facSearch->have_posts() ) : $facSearch->the_post(); ?>
+
+                                <?php get_template_part( 'partials/partial', 'faculty-search' ) ?>
+
+                            <?php endwhile ?>
+
+                        <?php endif ?>
+
+                    <?php endif ?>
+
 					<?php if ( have_posts() ) : ?>
 
 						<?php while ( have_posts() ) : the_post() ?>
 
-							<?php if ( in_array( 'template-blog', $classes ) ) : ?>
-
-								<?php get_template_part( 'partials/partial', 'article' ) ?>
-
-							<?php else : ?>
-
 								<?php get_template_part( 'partials/partial', 'article-search' ) ?>
-
-							<?php endif ?>
 
 						<?php endwhile ?>
                     
-                    <?php else : ?>
+                    <?php endif ?>
                     
+                    <?php if( !have_posts() && !$facSearch->have_posts() ) : ?>
                     <article class="article">
 
                         <section class="article__content">
@@ -78,6 +104,10 @@ if ( get_query_var('post_type') == 'post' ) {
 				</footer>
 
 			</main><!-- .main-col -->
+            
+            <div class="side-col">
+                <?php get_sidebar() ?>
+            </div>
 
 		</div><!-- .layout-container -->
 

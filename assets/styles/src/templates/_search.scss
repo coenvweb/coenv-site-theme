@@ -16,6 +16,7 @@
 
 	.article {
 		border-bottom: 1px solid $border;
+        padding: 0.5rem 1rem;
 
 		.breadcrumbs {
 			@include rem('margin-bottom', 1);
@@ -23,11 +24,17 @@
 
 		.article__title {
 			margin: 0;
-			padding: 0;
+			padding-bottom: 0.5rem;
 			@include font-size(24);
 			@include line-height(30);
 			border: none;
 		}
+
+        .fac_search_img {
+            float: left;
+            overflow: hidden;
+            padding-right: 0.5rem;
+        }
 
 	} // .article
     
