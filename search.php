@@ -56,7 +56,7 @@ if(!is_paged() ) {
 
 				<div class="search-results">
 
-                    <?php if ( $facSearch->have_posts() ) { ?>
+                    <?php if ( isset($facSearch) && $facSearch->have_posts() ) { ?>
 
                         <?php while ( $facSearch->have_posts() ) : $facSearch->the_post(); ?>
 
