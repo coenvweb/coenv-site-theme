@@ -25,7 +25,6 @@
         <link rel="dns-prefetch" href="//use.typekit.net">
         <link rel="dns-prefetch" href="//www.google-analytics.com">
         <link rel="dns-prefetch" href="//www.washington.edu">
-        <link rel="dns-prefetch" href="//fonts.googleapis.com">
         
         <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/bg-wave-cut.png">
         <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/black-white-suz.jpg">
