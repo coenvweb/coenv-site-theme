@@ -1,7 +1,5 @@
 <?php
-
 global $coenv_member_api;
-
 
 $search_query = explode(' ', get_search_query());
 $fac_meta_query = array(
@@ -22,15 +20,19 @@ $facArgs = array(
 
 $facSearch = new WP_Query($facArgs);
 
+$careerArgs = array(
+    's' => get_search_query(),
+    'post_type' => 'careers',
+    'posts_per_page' => get_option('posts_per_page')
+);
+
+$careerSearch = new WP_Query($careerArgs);
+
 if ($facSearch->have_posts() ) {
 ?>
-
-    <section class="coenv-faculty-search">
-
-        <div class="fac-search-feedback">
-
-            <p class="fac-sidebar-feedback-number"><?php echo $facSearch->found_posts ?> faculty result<?php echo ( $facSearch->found_posts > 1 ? 's' : '') ?> for "<?php the_search_query() ?>"</p>
-
+    <section class="coenv-sidebar-search">
+        <div class="search-feedback">
+            <p class="sidebar-feedback-number">FACULTY RESULTS</p>
         </div>
     <?php
         foreach($facSearch->posts as $post) {
@@ -39,7 +41,7 @@ if ($facSearch->have_posts() ) {
             $unit_style = ' style="background-color: ' . $unit_color . ';"';
             $image = get_field('image');
     ?>
-          <a href="<?php the_permalink() ?>" rel="bookmark">
+          <a class="fac-link" href="<?php the_permalink() ?>" rel="bookmark">
                 <div class="search-faculty" <?php echo $unit_style ?> >
                     <div class="faculty-info">
                         <div class="faculty-container">
@@ -58,9 +60,39 @@ if ($facSearch->have_posts() ) {
             <?php $remainder = $facSearch->found_posts - get_option('posts_per_page'); ?>
             <a href="<?php site_url() ?>faculty/" rel="bookmark">
                 <div class="search-faculty" style="background-color:#333" >
-                    <h3 class="more-faculty">+<?php echo $remainder ?> more</h3>
+                    <h3 class="more-sidebar">+<?php echo $remainder ?> more</h3>
                 </div>
             </a>  
         <?php } ?>
     </section>
+<?php } ?>
+
+<?php if($careerSearch->have_posts()) { ?>
+    <section class="coenv-sidebar-search">
+        <div class="search-feedback">
+            <p class="sidebar-feedback-number">CAREER OPPORTUNITY RESULTS</p>
+        </div>
+    <?php
+        foreach($careerSearch->posts as $post) {
+            setup_postdata($post);
+    ?>
+            <a href="<?php the_permalink(); ?>">
+                <article class="career-op">
+                    <h3 class="career__title"><?php the_title() ?></h3>
+                </article>
+            </a>
+            <?php wp_reset_postdata(); ?>
+    <?php
+        }
+    ?>
+        <?php if($careerSearch->found_posts > get_option('posts_per_page')) { ?>
+            <?php $remainder = $careerSearch->found_posts - get_option('posts_per_page'); ?>
+            <a href="<?php site_url() ?>students/career-resources/career-opportunities/?st=<?php echo get_search_query() ?>" rel="bookmark">
+                <div class="search-faculty" style="background-color:#333;">
+                    <h3 class="more-sidebar">+<?php echo $remainder ?> more</h3>
+                </div>
+            </a>  
+        <?php } ?>    
+    </section>
+
 <?php } ?>

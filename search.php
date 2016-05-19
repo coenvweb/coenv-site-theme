@@ -26,11 +26,11 @@ if ( get_query_var('post_type') == 'post') {
 				</ul>
 			</nav><!-- #secondary-nav.side-col -->
 
-			<main id="main-col" class="main-col">
+			<main id="main-col" class="main-col search-wrap">
 
 				<section class="article search-header">
 					<header class="article__header">
-						<h1 class="article__title">Search results for "<?php the_search_query() ?>"</h1>
+						<h1 class="article__title"><?php echo $wp_query->found_posts ?> search results for "<?php the_search_query() ?>"</h1>
 					</header>
 				</section>
 

@@ -1,6 +1,9 @@
 
 /*	Search page specific styles
 		======================================================================== */
+.search-wrap {
+    padding-left: 3rem;
+}
 
 .template-search {
 
@@ -30,12 +33,6 @@
 			border: none;
 		}
 
-        .fac_search_img {
-            float: left;
-            overflow: hidden;
-            padding-right: 0.5rem;
-        }
-
         .article__content {
             p {
                 margin: 0;
@@ -53,7 +50,9 @@
     }
 
 
-    .coenv-faculty-search {
+    // faculty side bar search styles
+
+    .coenv-sidebar-search {
 
         @include max-width($bp-2) {
             width: 70%;
@@ -65,12 +64,12 @@
             margin:auto;
         }
 
-        .fac-search-feedback {
+        .search-feedback {
             padding: 1rem;
         }
 
 
-        .fac-sidebar-feedback-number {
+        .sidebar-feedback-number {
             display: block;
             text-transform: uppercase;
             letter-spacing: .1em;
@@ -85,11 +84,23 @@
 
         a {
             text-decoration: none;
+            color: #333;
         }
 
-        .search-faculty {
+        .fac-link {
+            display: block;
+            &:hover {
+                transform: scale(1.1);
+                z-index: 99; 
+                transition-duration: .3s;
+                border-right: none;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+        }
 
-            margin: 0rem 1rem 0.25rem 1rem;
+        //facuty sidebar search
+        .search-faculty {
+            margin-bottom: 0.25rem;
             color: #fff;
 
             .faculty-img {
@@ -103,15 +114,27 @@
             }
 
             .faculty-info {
-                float: left;
-                width: 50%;
+                float: right;
+                width: 60%;
+
                 @include max-width($bp-2) {
-                    width: 60%;
+                    width: 65%;
                 }
 
                 .faculty-container {
-                    text-align:center;
                     padding: 0.5rem;
+
+                    .article__title {
+                        margin-bottom: 0.5rem;
+                        font-weight: 400;
+                    }
+
+                    .faculty-unit {
+                        line-height: 1.666666667;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                    }
 
                     @include min-width($bp-2) {
 
@@ -120,7 +143,7 @@
                         }
 
                         .faculty-unit {
-                            font-size: 0.8rem;
+                            font-size: 0.7rem;
                         }
 
                         @include max-width(1096) {
@@ -137,17 +160,27 @@
 
             }
 
-            .more-faculty {
-                padding: 0.5rem;
-                text-align: center;
-
-                @include min-width($bp-2) {
-                    font-size: 0.9rem;
-                }
-            }
-
         }
 
-    } // faculty search in sidebar
+        //career sidebar search
+        .career-op {
+            padding: 1rem 0rem;
+            border-bottom: 1px solid $border;
+
+            .career__title {
+                font-size: 0.9rem;
+            }
+        }
+
+        .more-sidebar{
+            padding: 0.5rem;
+            text-align: center;
+
+            @include min-width($bp-2) {
+                font-size: 0.9rem;
+            }
+        }
+
+    } // search in sidebar
 
 } // .template-search 
