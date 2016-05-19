@@ -8,7 +8,7 @@
 
 		.article__title {
 			margin: 0;
-			padding: 0;
+			padding-top: 1rem;
 			border: none;
 		}
 
@@ -16,7 +16,7 @@
 
 	.article {
 		border-bottom: 1px solid $border;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
 
 		.breadcrumbs {
 			@include rem('margin-bottom', 1);
@@ -36,6 +36,12 @@
             padding-right: 0.5rem;
         }
 
+        .article__content {
+            p {
+                margin: 0;
+            }
+        }
+
 	} // .article
     
     form .field-wrap input[type=text] {
@@ -45,5 +51,103 @@
     .field-wrap button[type=submit] {
         width: 20%;
     }
+
+
+    .coenv-faculty-search {
+
+        @include max-width($bp-2) {
+            width: 70%;
+            margin:auto;
+        }
+
+        @include max-width(550) {
+            width: 100%;
+            margin:auto;
+        }
+
+        .fac-search-feedback {
+            padding: 1rem;
+        }
+
+
+        .fac-sidebar-feedback-number {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            font-size: .78571rem;
+            text-align: center;
+            margin:0;
+            padding:0.5rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .search-faculty {
+
+            margin: 0rem 1rem 0.25rem 1rem;
+            color: #fff;
+
+            .faculty-img {
+                overflow: hidden;
+
+                .attachment-thumbnail {
+                    display: block;
+                    margin: auto;
+                }
+
+            }
+
+            .faculty-info {
+                float: left;
+                width: 50%;
+                @include max-width($bp-2) {
+                    width: 60%;
+                }
+
+                .faculty-container {
+                    text-align:center;
+                    padding: 0.5rem;
+
+                    @include min-width($bp-2) {
+
+                        .article__title {
+                            font-size: 0.9rem;
+                        }
+
+                        .faculty-unit {
+                            font-size: 0.8rem;
+                        }
+
+                        @include max-width(1096) {
+
+                            .faculty-unit {
+                                display: none;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .more-faculty {
+                padding: 0.5rem;
+                text-align: center;
+
+                @include min-width($bp-2) {
+                    font-size: 0.9rem;
+                }
+            }
+
+        }
+
+    } // faculty search in sidebar
 
 } // .template-search 

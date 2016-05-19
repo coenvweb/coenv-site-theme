@@ -14,26 +14,6 @@ if ( get_query_var('post_type') == 'post') {
 } else {
 	$classes[] = 'template-page base_search';
 }
-if(!is_paged() ) {
-    $search_query = explode(' ', get_search_query());
-    $fac_meta_query = array(
-        'relation' => 'OR',
-        'posts_per_page' => -1,
-    );
-    foreach($search_query as $keyword) {
-        $fn = array('key' => 'first_name', 'value' => $keyword);
-        $ln = array('key' => 'last_name', 'value' => $keyword);
-        $fac_meta_query[] = $fn;
-        $fac_meta_query[] = $ln;
-    }
-
-    $facArgs = array(
-        'post_type' => 'faculty',
-        'meta_query' => $fac_meta_query
-    );
-
-    $facSearch = new WP_Query($facArgs);
-}
 ?>
 
 	<section id="search" role="main" class="<?php echo implode( ' ', $classes ) ?>">
@@ -55,16 +35,6 @@ if(!is_paged() ) {
 				</section>
 
 				<div class="search-results">
-
-                    <?php if ( isset($facSearch) && $facSearch->have_posts() ) { ?>
-
-                        <?php while ( $facSearch->have_posts() ) : $facSearch->the_post(); ?>
-
-                            <?php get_template_part( 'partials/partial', 'faculty-search' ) ?>
-
-                        <?php endwhile ?>
-
-                    <?php } ?>
 
 					<?php if ( have_posts() ) { ?>
 
@@ -98,7 +68,7 @@ if(!is_paged() ) {
 			</main><!-- .main-col -->
             
             <div class="side-col">
-                <?php get_sidebar() ?>
+                <?php get_sidebar('search') ?>
             </div>
 
 		</div><!-- .layout-container -->

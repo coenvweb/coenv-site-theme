@@ -975,11 +975,11 @@ function remove_faculty_search( $query ) {
             $types = get_post_types(array('exclude_from_search'=>false));
             // remove faculty from post types to search
             unset($types['faculty']);
+            unset($types['careers']);
             $query->query_vars['post_type'] = $types;
         }
         $query->query_vars['posts_per_page'] = 10;
 
     }
 }
-// Hook my above function to the pre_get_posts action
 add_action( 'pre_get_posts', 'remove_faculty_search' );
