@@ -23,7 +23,10 @@ $facSearch = new WP_Query($facArgs);
 $careerArgs = array(
     's' => get_search_query(),
     'post_type' => 'careers',
-    'posts_per_page' => get_option('posts_per_page')
+    'posts_per_page' => get_option('posts_per_page'),
+    'order' => 'DESC',
+    'orderby' => 'date'
+
 );
 
 $careerSearch = new WP_Query($careerArgs);
