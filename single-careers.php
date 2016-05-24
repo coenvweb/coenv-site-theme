@@ -88,17 +88,19 @@ $ancestor = array(
 					
 					if ( $timeexpired < $timestamp ) {
 
-						$expired = 'expired';
-
-					} elseif ( $deadline > ($timestamp + 63072000) ) {
-
+					$expired = 'expired';
+                        
+                } elseif ( $deadline > ($timestamp + 63072000) ) {
+                        
 						$expired = 'openuntilfilled';
 
-					} else {
+				} else {
 
-						$expired = 'current';
-					}
-                	?>
+					$expired = 'current';
+				}
+                $open_until_filled = get_field('open_until_filled');
+                
+                ?>                
 
 						<article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
@@ -124,13 +126,16 @@ $ancestor = array(
 								<div class="post-info">
 									<span class="posted">Posted: <time class="article__time" datetime="<?php get_the_date( '' ); ?>"><?php echo get_the_date('M j, Y'); ?></time></span>
 									<span class="deadline">
-									<?php if ($expired == 'current') { ?>
-					                	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
-					                <?php } elseif ($expired == 'openuntilfilled') { ?>
-					                	Deadline: Open Until Filled
-					                <?php } else { ?>
-					                	Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
-					                <?php } ?>
+									<?php if (isset($open_until_filled[0])) { ?>
+                                        Deadline: Open Until Filled
+                                    <?php } elseif ($expired == 'current') { ?>
+                                        Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
+                                        
+                                    <?php } elseif ($expired == 'openuntilfilled') { ?>
+                                        Deadline: Open Until Filled
+                                    <?php } else { ?>
+                                        Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
+                                    <?php } ?>               	
 					                </span>            	
 									<h2><?php the_title() ?></h2>
 								</div>

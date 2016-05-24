@@ -93,4 +93,22 @@ function careers_permalink($permalink, $post_id, $leavename) {
     }
     return $permalink;
 }
-?>
+
+add_action( 'pre_get_posts', 'my_slice_orderby' );
+function my_slice_orderby( $query ) {
+    if( ! is_admin() )
+        return;
+ 
+    $orderby = $query->get( 'orderby');
+ 
+    if( 'expirationdate' == $orderby ) {
+        $query->set('meta_key','_expiration-date');
+        $query->set('orderby','meta_value_num');
+    }
+}
+
+function mbe_change_sortable_columns($columns){
+    $columns['expirationdate'] = 'expirationdate';
+    return $columns;
+}
+add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns');

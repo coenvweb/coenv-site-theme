@@ -19,20 +19,23 @@
 				if ( $timeexpired < $timestamp ) {
 
 					$expired = 'expired';
-
-				} elseif ( $deadline > ($timestamp + 63072000) ) {
-
-					$expired = 'openuntilfilled';
+                    
+                } elseif ( $deadline > ($timestamp + 63072000) ) {
+					
+                    $expired = 'openuntilfilled';
 
 				} else {
 
 					$expired = 'current';
 				}
+                $open_until_filled = get_field('open_until_filled');
                 
                 ?>
                  | <span class="deadline <?php echo $expired; ?>">
 
-                <?php if ($expired == 'current') { ?>
+                <?php if (isset($open_until_filled[0])) { ?>
+                    Deadline: Open Until Filled
+                <?php } elseif ($expired == 'current') { ?>
                 	Deadline: <time class="article__time" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>
                 <?php } elseif ($expired == 'openuntilfilled') { ?>
                 	Deadline: Open Until Filled
