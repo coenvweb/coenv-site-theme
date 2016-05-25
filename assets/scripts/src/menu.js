@@ -298,3 +298,7 @@ jQuery(function ($) {
 	};
 
 })(jQuery, window, document);
+
+$(document).ready(function(){
+	$('#secondary-nav li:has(li.current_page_item)').addClass('parent_page_item current_page_parent');
+});

@@ -415,6 +415,7 @@ function coenv_get_ancestor($attr = 'ID') {
             $ancestor = get_post( 267 );
         }
 		return $ancestor->$attr;
+        
 	}
 
 	// test for pages
@@ -486,13 +487,19 @@ function coenv_banner() {
 
 	$page_id = false;
 	$banner = false;
+    
+    $ancestor = coenv_get_ancestor();
+    if (is_singular('careers')) {
+        unset($ancestor);
+        $ancestor = 32;
+    }
 
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
 
-	} else if ( has_post_thumbnail( coenv_get_ancestor() ) ) {
+	} else if ( has_post_thumbnail( $ancestor ) ) {
 
-		$page_id = coenv_get_ancestor();
+		$page_id = $ancestor;
     }
 
 	if ( $page_id == false ) {
