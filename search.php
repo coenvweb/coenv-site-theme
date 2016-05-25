@@ -29,9 +29,12 @@ if ( get_query_var('post_type') == 'post') {
 			<main id="main-col" class="main-col search-wrap">
 
 				<section class="article search-header">
-					<header class="article__header">
+                    <div class="searchAgain">
+                        <?php get_search_form() ?>
+                    </div>
+					<div class="article__header">
 						<h1 class="article__title"><?php echo $wp_query->found_posts ?> search results for "<?php the_search_query() ?>"</h1>
-					</header>
+					</div>
 				</section>
 
 				<div class="search-results">
@@ -51,7 +54,6 @@ if ( get_query_var('post_type') == 'post') {
                             <section class="article__content">
 
                                 <p>No results found. Please try searching with different terms.</p>
-                                <?php get_search_form() ?>
 
                             </section>
 
