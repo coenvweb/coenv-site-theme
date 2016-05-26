@@ -32,9 +32,7 @@ if ( get_query_var('post_type') == 'post') {
                     <div class="searchAgain">
                         <?php get_search_form() ?>
                     </div>
-					<div class="article__header">
-						<h1 class="article__title"><?php echo $wp_query->found_posts ?> search results for "<?php the_search_query() ?>"</h1>
-					</div>
+                    <h1 class="results-text"><?php echo $wp_query->found_posts ?> search results for "<?php the_search_query() ?>"</h1>
 				</section>
 
 				<div class="search-results">
