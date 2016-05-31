@@ -50,7 +50,7 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 	 * Starts a branch of the tree (<ul>)
 	 */
 	function start_lvl ( &$output, $depth = 0, $args = array() ) {
-
+        
 		$indent = str_repeat("\t", $depth);
 		$output .= "\n$indent<ul class='children'>\n";
 	}
@@ -68,6 +68,8 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 	 * Starts an element of a branch (<li>)
 	 */
 	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+        
+        global $post;
 
 		// check that this page is set to appear in the main menu
 		if ( !$this->in_main_menu( $page, $depth ) ) {
@@ -95,3 +97,16 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 	}
 
 }
+
+
+function my_page_css_class( $css_class, $page ) {
+	global $post;
+	if ( $post->ID == $page->ID ) {
+		$css_class[] = 'current_page_item';
+	}
+    if (is_singular('careers') && $page->ID == 27023) {
+        $css_class[] = 'current_page_item';
+    }
+	return $css_class;
+}
+add_filter( 'page_css_class', 'my_page_css_class', 10, 2 );
