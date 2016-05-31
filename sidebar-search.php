@@ -79,11 +79,11 @@ if ($facSearch->have_posts() ) {
         foreach($careerSearch->posts as $post) {
             setup_postdata($post);
     ?>
-            <a href="<?php the_permalink(); ?>">
                 <article class="career-op">
-                    <h3 class="career__title"><?php the_title() ?></h3>
+                    <a href="<?php the_permalink(); ?>">
+                        <h3 class="career__title"><?php the_title() ?></h3>
+                    </a>
                 </article>
-            </a>
             <?php wp_reset_postdata(); ?>
     <?php
         }
