@@ -44,8 +44,9 @@ $feature = array(
         
     <span class="visuallyhidden">Link to article</span>
 
-	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
-	</div>
+    <div class="feature-image" style="background-color: <?php echo $feature['color'] ?>">
+        <?php the_post_thumbnail(); ?>
+    </div>
         
     </a>
     
