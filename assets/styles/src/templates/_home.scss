@@ -75,6 +75,12 @@ body.home {
             background-size: cover;
             background-position: center;
 
+            img {
+                @include min-width($iPadPortrait) {
+                    height: 100%;
+                }
+            }
+
 			@include max-width ( $iPadPortrait - 1 ) {
 				.lt-ie9 & {
 					-ms-behavior: url(/backgroundsize.min.htc);
@@ -102,7 +108,9 @@ body.home {
 			}
 
             .fluid-width-video-wrapper {
-                min-height: 382px;
+                @include min-width($iPadPortrait) {
+                    min-height: 382px;
+                }
             }
 
 		} // .feature-image

@@ -54,10 +54,6 @@ $feature = array(
             
 		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
 
-			<div class="feature-type">
-
-			</div><!-- .feature-type -->
-
 			<div class="feature-content">
                 <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
