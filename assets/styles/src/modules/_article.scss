@@ -422,6 +422,10 @@
 		}
 		padding: 0;
 		width: auto;
+        .featured-video-plus {
+            width: 20rem;
+            max-width: 262px;
+        }
 	} // .coenv-thumb
 
 } // .article__content
