@@ -44,10 +44,14 @@ $feature = array(
         
     <span class="visuallyhidden">Link to article</span>
 
-    <div class="feature-image" style="background-color: <?php echo $feature['color'] ?>">
-        <?php the_post_thumbnail(); ?>
-    </div>
-        
+        <?php if(get_the_post_video()) { ?>
+        <div class="feature-image" style="background-color: <?php echo $feature['color'] ?>">
+            <?php the_post_thumbnail(); ?>
+        </div>
+        <?php } else { ?>
+        <div class="feature-image non-video" style="background-image: url(<?php echo $feature['image']['url'] ?>); background-color: <?php echo $feature['color'] ?>">
+        </div>
+        <?php } ?>
     </a>
     
 	<div class="feature-info-container">

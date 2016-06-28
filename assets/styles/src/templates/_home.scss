@@ -70,6 +70,10 @@ body.home {
 			max-height: auto;
 		}
 
+        .non-video {
+            padding-top: 55%;
+        }
+
 		.feature-image {
 			position: relative;
 			width: 100%;
@@ -77,7 +81,8 @@ body.home {
             // background image is set inline
             background-repeat: no-repeat;
             background-size: cover;
-            background-position: center;
+            background-position: center;o
+
 
             img {
                 @include min-width($iPadPortrait) {
