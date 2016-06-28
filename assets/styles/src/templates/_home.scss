@@ -34,6 +34,10 @@ body.home {
 		}
 		
 	} // .no-js &
+    
+    .ytp-title {
+        display: none;
+    }
 	
 	@media print {
 			margin-bottom: -150px;
@@ -49,7 +53,7 @@ body.home {
 		text-align: left;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 0, 1, 1, 1);
+			@include rem('margin', 0, 1.5, 2, 1);
 		}
 
 		// when viewport is bigger than $max-width + side margins
@@ -95,7 +99,7 @@ body.home {
 				left: 0;
 				bottom: 0;
 				padding: 0;
-				width: percentage( 680 / ( $max-width / 1px ) );
+				width: percentage( 732 / ( $max-width / 1px ) );
 			}
 
 			// TODO: display feature image caption
@@ -121,8 +125,8 @@ body.home {
 			@include min-width ( $iPadPortrait ) {
 				display: table;
 				float: right;
-				width: percentage( 386 / ( $max-width / 1px ) );
-				height: 382px;
+				width: percentage( 328 / ( $max-width / 1px ) );
+				height: 412px;
 			}
 
 			@media print {
@@ -133,7 +137,7 @@ body.home {
 			}
 
 			.feature-info {
-				@include rem('padding', 1);
+				@include rem('padding', 1.5);
 				// background-color is set inline
 
 				@include min-width ( $iPadPortrait ) {
