@@ -113,7 +113,7 @@ body.home {
 
             .fluid-width-video-wrapper {
                 @include min-width($iPadPortrait) {
-                    min-height: 382px;
+                    min-height: 413px;
                 }
             }
 
@@ -126,7 +126,7 @@ body.home {
 				display: table;
 				float: right;
 				width: percentage( 328 / ( $max-width / 1px ) );
-				height: 412px;
+				height: 413px;
 			}
 
 			@media print {
@@ -142,9 +142,12 @@ body.home {
 
 				@include min-width ( $iPadPortrait ) {
 					display: table-cell;
-					@include rem('padding', 1.5);
+					@include rem('padding', 1.5, 1);
 					vertical-align: bottom;
 				}
+                @include min-width ( 1080 ) {
+                    @include rem('padding', 1.5);
+                }
 
 				.feature-type {
 					position: absolute;
