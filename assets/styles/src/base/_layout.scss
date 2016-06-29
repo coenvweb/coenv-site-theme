@@ -174,4 +174,17 @@ display: none;
 
 } // section[role="main"]
 
+//uw alert closer
 
+#uwalert-alert-message {
+   display: none;
+    &.please-unhide {
+        display: block!important;
+    }
+}
+
+div#closer {
+    position: relative;
+    float: right;
+    cursor: pointer;
+}

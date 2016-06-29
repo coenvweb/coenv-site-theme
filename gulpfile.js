@@ -118,13 +118,19 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('**/*.{html,php}', livereload.reload);
-    gulp.watch('assets/styles/src/**/*.scss', ['sass']);
-    gulp.watch('assets/scripts/src/**/*.js', ['js']);
+    gulp.watch('assets/styles/src/**/*.scss', ['sass', 'refresh']);
+    gulp.watch('assets/scripts/src/**/*.js', ['js', 'refresh']);
+});
+
+// Refresh task. Depends on Jade task completion
+gulp.task("refresh", function(){
+  livereload.changed();
+  console.log('LiveReload is triggered');
 });
 
 gulp.task('dev', ["default","watch"]);
 
 gulp.task('js', ["main_js","faculty_js","fallback_js","admin_js"]);
 
-gulp.task('default', ["js","sass"]);
+gulp.task('default', ["js","sass", "watch"]);
 
