@@ -1,0 +1,233 @@
+{
+    "key": "group_57584fe188741",
+    "title": "Home page feature custom fields",
+    "fields": [
+        {
+            "key": "field_3",
+            "label": "Feature type",
+            "name": "feature_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "basic": "Basic",
+                "college-news": "College News"
+            },
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "Basic",
+            "layout": "horizontal",
+            "allow_null": 0
+        },
+        {
+            "key": "field_41",
+            "label": "Feature label",
+            "name": "feature_label",
+            "type": "text",
+            "instructions": "This field will override the default label (e.g. \"College News\", \"Faculty Spotlight\"...). If the story doesn't come from us, we use it for the source of the story (e.g. UW Today, Seattle Times, etc).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "formatting": "none",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_40",
+            "label": "Unit color",
+            "name": "unit",
+            "type": "taxonomy",
+            "instructions": "Associate this feature with a unit by color. Choosing a color here will override color specified in the color picker. Choosing College of the Environment will turn the feature UW Purple.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "member_unit",
+            "field_type": "select",
+            "allow_null": 1,
+            "load_save_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "add_term": 1,
+            "load_terms": 0,
+            "save_terms": 0
+        },
+        {
+            "key": "field_4",
+            "label": "Feature image",
+            "name": "feature_image",
+            "type": "image",
+            "instructions": "Upload an image that is at least 1060px wide. Approximately 2:3.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "preview_size": "medium",
+            "library": "all",
+            "return_format": "id",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_11",
+            "label": "Teaser",
+            "name": "teaser",
+            "type": "textarea",
+            "instructions": "Keep it short!",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_3",
+                        "operator": "==",
+                        "value": "basic"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_3",
+                        "operator": "==",
+                        "value": "college-news"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0,
+            "rows": ""
+        },
+        {
+            "key": "field_34",
+            "label": "Content link",
+            "name": "content_link",
+            "type": "repeater",
+            "instructions": "\"Read more\" button to content with this site. Only one row is allowed on this table. (one link per feature)",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "row_min": "",
+            "row_limit": 1,
+            "layout": "table",
+            "button_label": "Add link",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_35",
+                    "label": "Title",
+                    "name": "link_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Read more \u00bb",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "formatting": "none",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_36",
+                    "label": "Content link",
+                    "name": "link",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "formatting": "html",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "custom_fields",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1467307928
+}
