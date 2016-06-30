@@ -26,7 +26,7 @@ function coenv_register_intranet() {
 	$args = array(
 		'labels' => $labels,
 		'menu_position' => null,
-		'supports' => array('title','editor','page-attributes'),
+		'supports' => array('title','editor','author','page-attributes'),
 		'public' => true,
 		'has_archive' => false,
 		'hierarchical' => false,
