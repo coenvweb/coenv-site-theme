@@ -16,7 +16,7 @@ $features = new WP_Query( array(
 // Get posts and sort using post-types-order
 $post_sort = new WP_Query( array(
     'post_type' => 'post',
-    'posts_per_page' => 9,
+    'posts_per_page' => 11,
     'post__not_in' => get_option('sticky_posts'),
     'orderby' => 'menu_order',
     'order' => 'ASC',
