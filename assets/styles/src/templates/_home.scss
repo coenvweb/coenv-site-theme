@@ -368,6 +368,12 @@ body.home {
         
 }
 
+.story {
+    &:first-of-type {
+        width: 66.6%;
+    }
+}
+
 .story, .story-sizer {
 	@extend %media;
 
