@@ -370,7 +370,7 @@ body.home {
 
 .story {
     &:first-of-type {
-        @include max-width( $iPadPortrait ) {
+        @include min-width( $iPadPortrait ) {
             width: 66.6%;
         }
     }
