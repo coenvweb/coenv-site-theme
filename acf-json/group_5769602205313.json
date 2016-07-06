@@ -1,0 +1,161 @@
+{
+    "key": "group_5769602205313",
+    "title": "Related Faculty",
+    "fields": [
+        {
+            "key": "field_557b0db807401",
+            "label": "",
+            "name": "related_faculty",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "related": "Show related faculty based on a research area",
+                "choose": "Choose related faculty manually"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55db53d458124",
+            "label": "Related Faculty Label",
+            "name": "related_faculty_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_557b0db807401",
+                        "operator": "==",
+                        "value": "related"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_557b0db807401",
+                        "operator": "==",
+                        "value": "choose"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "More Faculty Working in",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "formatting": "html",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_557b0dd407402",
+            "label": "Choose Related Faculty",
+            "name": "related_faculty_post",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_557b0db807401",
+                        "operator": "==",
+                        "value": "choose"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "post_type": [
+                "faculty"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "max": 7,
+            "min": 0,
+            "elements": [
+                "featured_image",
+                "post_type"
+            ]
+        },
+        {
+            "key": "field_55820075300d2",
+            "label": "Choose Related Research Area",
+            "name": "related_research_area",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_557b0db807401",
+                        "operator": "==",
+                        "value": "related"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "member_theme",
+            "field_type": "select",
+            "allow_null": 0,
+            "load_save_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "add_term": 1,
+            "load_terms": 0,
+            "save_terms": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "faculty"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1467816466
+}
