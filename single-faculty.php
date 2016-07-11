@@ -122,10 +122,6 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 						<li><a href="<?php echo $member['website'] ?>" target="_blank"><i class="icon-contact-link-web"></i> Website</a></li>
 					<?php endif ?>
 
-					<?php if ( ! empty( $member['scival'] ) ) : ?>
-						<li><a href="<?php echo $member['scival'] ?>" target="_blank"><i class="icon-contact-link-scival"></i> SciVal</a></li>
-					<?php endif ?>
-
 					<?php if ( ! empty( $member['twitter'] ) ) : ?>
 						<li><a href="<?php echo $member['twitter'] ?>" target="_blank"><i class="icon-contact-link-twitter"></i> Twitter</a></li>
 					<?php endif ?>
