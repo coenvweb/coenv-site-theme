@@ -10,6 +10,10 @@
     height: 110%;
 }
 
+.close-mobile {
+    display: none;
+}
+
 .mobile-menu-active {
     .main-menu.mobile-menu {
         position: absolute!important;
@@ -125,12 +129,14 @@
         float: right;
         border-bottom: 1px solid #3d3d3d;
         text-align: center;
+        display: block;
 
         i {
             font-size: 2.5rem;
             position: relative;
             top: 33%;
         }
+        
     }
 
 	.search-form {
