@@ -178,6 +178,10 @@ jQuery(function ($) {
 			e.preventDefault();
 			_this._toggleMobileMenu();
 		} );
+        $('.close-mobile').click (function() {
+            _this._toggleMobileMenu();
+            console.log('click');
+        });
 	};
 
 	// Show/hide mobile menu

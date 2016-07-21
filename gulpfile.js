@@ -103,7 +103,7 @@ gulp.task('sass', function () {
   return gulp
     .src('assets/styles/src/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['last 4 versions'],
         cascade: false
