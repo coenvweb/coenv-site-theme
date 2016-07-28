@@ -178,10 +178,6 @@ jQuery(function ($) {
 			e.preventDefault();
 			_this._toggleMobileMenu();
 		} );
-        $('.close-mobile').click (function() {
-            _this._toggleMobileMenu();
-            console.log('click');
-        });
 	};
 
 	// Show/hide mobile menu
@@ -207,6 +203,15 @@ jQuery(function ($) {
 		var _this = this;
 
 		this.$wrapper.on( 'click', function (e) {
+
+			if ( $('html').hasClass( _this.options.mobileMenuActiveClass ) ) {
+				e.preventDefault();
+				_this._toggleMobileMenu();
+			}
+
+		} );
+        
+        $('.close-mobile').on( 'click', function (e) {
 
 			if ( $('html').hasClass( _this.options.mobileMenuActiveClass ) ) {
 				e.preventDefault();
