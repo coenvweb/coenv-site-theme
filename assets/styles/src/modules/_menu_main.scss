@@ -12,6 +12,7 @@
 
 .close-mobile {
     display: none;
+    cursor: pointer;
 }
 
 .mobile-menu-active {
@@ -134,7 +135,7 @@
         i {
             font-size: 2.5rem;
             position: relative;
-            top: 33%;
+            top: 30%;
         }
         
     }
@@ -150,7 +151,7 @@
 		.field-wrap {
 			display: block;
 			width: 100%;
-            top: 37%;
+            top: 29%;
             position: relative;
 		}
 
@@ -158,6 +159,8 @@
 			width: 85%;
 			background: #666;
 			color: #eee;
+            height: 2.5rem;
+            font-size: 1rem;
 
 			@include placeholder {
 				color: #eee;
@@ -170,7 +173,12 @@
 			background: #666;
 			border-left: none;
 			color: #eee;
+            height: 2.5rem;
 		}
+        i {
+            font-size: 1.7rem;
+            margin-left: -1rem;
+        }
 
 	} // .search-form
 
@@ -179,7 +187,7 @@
 		border-bottom: 1px solid #3d3d3d;
         @include rem('padding', 1, 0, 1, 0);
 	}
-
+    
 	// top menu (appended via menu.js)
 	.top-menu.mobile-top-menu {
 		border-top: 1px solid #222;
@@ -194,10 +202,9 @@
 
             i {
                 position: absolute;
-                margin-top: 0.1em;
-                @include rem('right', 2.5);
-                @include rem('margin-right', 0.2);
-                @include rem('margin-left', -1);
+                margin-top: -4px;
+                right: 2rem;
+                font-size: 1.7rem;
             }
 
         } // li.give a
