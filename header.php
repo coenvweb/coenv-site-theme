@@ -204,6 +204,8 @@
                             <nav class="nav-main main-menu normal-menu" role="navigation">
 
                                 <?php get_search_form() ?>
+                                
+                                <div class="close-mobile"><i class="icon-cross"></i></div>
 
                                 <ul id="menu-main" class="nav-main__menu  menu">
                                     <?php 

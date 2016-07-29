@@ -210,6 +210,22 @@ jQuery(function ($) {
 			}
 
 		} );
+        
+        $('.close-mobile').on( 'touchend', function (e) {
+            e.preventDefault();
+			if ( $('html').hasClass( _this.options.mobileMenuActiveClass ) ) {
+				e.preventDefault();
+				_this._toggleMobileMenu();
+			}
+
+		} );
+        
+        $('.close-mobile').on( 'click', function (e) {
+			if ( $('html').hasClass( _this.options.mobileMenuActiveClass ) ) {
+				_this._toggleMobileMenu();
+			}
+
+		} );
 	};
 
 	// Handle menu interactions

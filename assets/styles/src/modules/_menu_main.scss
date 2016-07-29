@@ -10,6 +10,11 @@
     height: 110%;
 }
 
+.close-mobile {
+    display: none;
+    cursor: pointer;
+}
+
 .mobile-menu-active {
     .main-menu.mobile-menu {
         position: absolute!important;
@@ -71,17 +76,17 @@
 
 	// all <li>s
 	li {
-		@include font-size(14);
+		@include font-size(16);
 	}
 
 	// all <a>s
 	a {
 		display: block;
-		@include rem('padding', 0.5, 1);
+		@include rem('padding', 1);
 		color: #ddd;
 		text-decoration: none;
 
-		&:hover {
+		&:hover{
 			background: $accent-dk;
 			color: $white !important;
 		}
@@ -90,7 +95,7 @@
 
 	// top level items
 	.page-depth-0 {
-		@include font-size(12);
+		@include font-size(14);
 		@include line-height(13);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -105,28 +110,60 @@
 			@extend .icon-arrow-right;
 			color: #888;
 		}
+        
+        &.expanded > span > a {
+            background: $accent!important;
+			color: $white !important;   
+        }
 
 		&.expanded i {
 			@extend .icon-arrow-down;
 		}
 
 	} // .page-depth-0
+    
+    .close-mobile {
+        width: 23%;
+        height: calc(0.25rem + 19vw);
+        max-height: 110px;
+        color: $white;
+        float: right;
+        border-bottom: 1px solid #3d3d3d;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+
+        i {
+            font-size: 2.5rem;
+            position: relative;
+            margin-left: -1rem;
+            top: 30%;
+        }
+        
+    }
 
 	.search-form {
-		display: block;
-		width: 100%;
-		@include rem('padding', 1.5, 1, 1.5, 1);
+		display: inline-block;
+        vertical-align: top;
+		width: 75%;
+        height: calc(0.25rem + 19vw);
+        max-height: 110px;
 		border-bottom: 1px solid #3d3d3d;
-
+        padding: 0 1rem;
+        
 		.field-wrap {
 			display: block;
 			width: 100%;
+            top: 29%;
+            position: relative;
 		}
 
 		input[type="text"] {
 			width: 85%;
 			background: #666;
 			color: #eee;
+            height: 2.5rem;
+            font-size: 1rem;
 
 			@include placeholder {
 				color: #eee;
@@ -139,7 +176,12 @@
 			background: #666;
 			border-left: none;
 			color: #eee;
+            height: 2.5rem;
 		}
+        i {
+            font-size: 1.7rem;
+            margin-left: -1rem;
+        }
 
 	} // .search-form
 
@@ -148,7 +190,7 @@
 		border-bottom: 1px solid #3d3d3d;
         @include rem('padding', 1, 0, 1, 0);
 	}
-
+    
 	// top menu (appended via menu.js)
 	.top-menu.mobile-top-menu {
 		border-top: 1px solid #222;
@@ -159,14 +201,13 @@
             border-radius: $radius;
             color: #fff;
             @include rem('margin', 1, 1, 0, 1);
-            @include rem('padding', 0.5, 1, 0.5, 1);
+            @include rem('padding', 1, 1, 1, 1);
 
             i {
                 position: absolute;
-                margin-top: 0.1em;
-                @include rem('right', 1.5);
-                @include rem('margin-right', 0.2);
-                @include rem('margin-left', -1);
+                margin-top: -4px;
+                right: 2rem;
+                font-size: 1.7rem;
             }
 
         } // li.give a
@@ -181,7 +222,7 @@
 		}
         
         a {
-            @include rem('padding', 0.5, 2, 0.5, 2);
+            @include rem('padding', 1, 2, 1, 2);
         }
             
 		.search-form {
@@ -259,7 +300,7 @@
 
 		a {
 			display: block;
-			@include rem('padding', 0.5, 1, 0.5, 2.5);
+			@include rem('padding', 1, 1, 1, 2.5);
 			color: #ddd;
 		}
 
