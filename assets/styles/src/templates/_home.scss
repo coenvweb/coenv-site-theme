@@ -145,6 +145,7 @@ body.home {
 					color: #fff;
 					background: #363533;
 					background: rgba(0,0,0,0.6);
+                    display: none;
 
 					@include min-width ( $iPadPortrait ) {
 						position: relative;
