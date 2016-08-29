@@ -55,12 +55,19 @@ $ancestor = array(
                     ) );
 
                     foreach( $terms as $term ) {
-
-                        // Define the query
+                        
+                        // First Placement Query
                         $args = array(
                             'post_type'     =>  'staff',
                             'post_status'   =>  'publish',
                             'meta_key'		=>  'placement',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'placement',
+                                    'value' => 2,
+                                    'compare' => '<='
+                                )
+                            ),
                             'orderby'		=>  'meta_value_num',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
@@ -69,6 +76,31 @@ $ancestor = array(
                         $query = new WP_Query( $args );
 
                         echo '<h2>' . $term->name . '</h2>';
+                
+                        while ( $query->have_posts() ) : $query->the_post();
+                            get_template_part( 'partials/partial', 'staff' );
+                        endwhile;
+                        
+
+                        // Last Name Alpha Query
+                        $args = array(
+                            'post_type'     =>  'staff',
+                            'post_status'   =>  'publish',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'placement',
+                                    'value' => 3,
+                                    'compare' => '='
+                                )
+                            ),
+                            'orderby'		=>  'name',
+                            'order'			=>  'ASC',
+                            'posts_per_page' => -1,
+                            'team'          =>  $term->slug,
+                        );
+                        add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
+                        $query = new WP_Query( $args );
+                        remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
                 
                         while ( $query->have_posts() ) : $query->the_post(); ?>
 
