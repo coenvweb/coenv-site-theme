@@ -15,7 +15,23 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Add this story to the newsletter",
+            "message": "Add this story to the more news section of the newsletter",
+            "default_value": 0
+        },
+        {
+            "key": "field_57e9410e0cc3c",
+            "label": "",
+            "name": "newsletter_feature",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Make this story the newsletter featured story",
             "default_value": 0
         }
     ],
@@ -43,5 +59,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1467816460
+    "modified": 1474904524
 }
