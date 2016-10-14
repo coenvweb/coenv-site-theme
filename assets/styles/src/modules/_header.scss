@@ -228,6 +228,7 @@
                 image: url(../../../assets/img/boundless_logo.png);
 				repeat: no-repeat;
                 color: $accent;
+                position-x: -2px;
 			}
             @include max-width ( 999 ) {
                 background-color: #fff!important;
