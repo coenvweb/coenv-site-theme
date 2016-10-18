@@ -115,7 +115,11 @@ class CoEnv_Widget_Events extends WP_Widget {
                 )
             ));
             
-			$events_xml = file_get_contents( $feed_url, false, $ctx);
+			if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
+                
+            }else {
+                return;
+            };
 			set_transient( 'trumba_events_xml', $events_xml, 10 * MINUTE_IN_SECONDS );
 		}
 		
