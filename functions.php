@@ -990,3 +990,8 @@ function remove_faculty_search( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
+
+function cdn_upload_url() {
+    return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+}
+add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
