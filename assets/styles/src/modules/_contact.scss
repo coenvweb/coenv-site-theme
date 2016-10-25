@@ -35,11 +35,11 @@
             &:after {
                 letter-spacing: -1px;
                 padding-top: 3px;
-                height: 32px;
-                width: 33px;
-                font-size: 30px;
+                height: 16px;
+                width: 16px;
+                font-size: 20px;
                 margin-top: -4px;
-                right: 1.5rem;
+                right: 0.5rem;
                 top: 35%;
                 border: none;
                 color: #666;
@@ -64,11 +64,20 @@
                     height: 200px;
                 }
                 height: 200px;
+                &:after {
+                    height: 32px;
+                    width: 33px;
+                    font-size: 30px;
+                    right: 1.5rem;
+                }
             }
         }
 
         @media print {
             page-break-inside: avoid;
+            display: inline-block;
+            width: 49%;
+            @include rem('margin-right', .3)
         }
 
         @include min-width ( $iPadLandscape ) {
