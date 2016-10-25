@@ -24,7 +24,7 @@ if(!empty($description)) {
 }
 
 ?>
-<div id="accordion-1-t<?php echo $i ?>" class="contact <? if(!empty($description)) { ?>accordion-title read<? } ?>" role="tab">
+<div id="accordion-1-t<?php echo $i ?>" class="contact <?php if(!empty($description)) { ?>accordion-title read<?php } ?>" role="tab">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
