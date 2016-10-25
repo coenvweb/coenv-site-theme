@@ -69,7 +69,7 @@ jQuery(function ($) {
             });
             
         }
-        $('#ignore').click(function(event){
+        $('.Faculty-member-contact-list').click(function(event){
             event.stopPropagation();
         });
 
