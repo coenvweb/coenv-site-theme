@@ -41,6 +41,29 @@ if(!empty($description)) {
                 <?php if (!empty($phone_number)) : ?>
                     <li><a id="ignore" href="tel:<?php echo $phone_number; ?>"><i class="icon-contact-link-phone"></i><?php echo $phone_number; ?></a></li>
                 <?php endif; ?>
+                <?php  // check if the repeater field has rows of data
+                    if( have_rows('links') ) :
+                        echo '<div class="left">';
+
+                        // loop through the rows of data
+                        while ( have_rows('links') ) : the_row();
+
+                            // display a sub field value
+                            $link_text = get_sub_field('link_text');
+                            $link_url = get_sub_field('link_url');
+                            $link_icon = get_sub_field('link_icon');
+                            echo '<li><a class="left-link" href="' . $link_url . '"><i class=' . $link_icon . ' /></i>' . $link_text . '</a></li>';
+
+                        endwhile;
+
+                        echo '</div>';
+                    else :
+
+                        // no rows found
+
+                    endif;
+                ?>
+                
             </ul>
         <?php endif; ?>
     </div>
@@ -68,6 +91,6 @@ if(!empty($description)) {
 
     endif;
 
-    echo $description;    
+    echo $description;
 ?>
 <? } ?></div>

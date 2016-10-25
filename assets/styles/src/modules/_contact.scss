@@ -7,6 +7,9 @@
         overflow: hidden;
         transition-duration: .3s;
         position: relative;
+        .left {
+            display: none;
+        }
         &.accordion-title {
             padding: 0;
             background-color: white;
@@ -44,6 +47,7 @@
                 border: none;
                 color: #666;
             }
+
             @include min-width ( 600 ) {
                 h3 {
                     font-size: 1.7rem;
@@ -62,6 +66,22 @@
                 img {
                     width: 200px;
                     height: 200px;
+                }
+                .left {
+                    display: block;
+                    position: absolute;
+                    left: 40%;
+                    top: 1rem;
+                    @include max-width ( $iPadLandscape ) {
+                        top: 0;
+                        bottom: 0!important;
+                        @include rem ('padding', .5, 0, .5, 1);
+                        left: 30%;
+
+                        li {
+                            font-size: 80%!important;
+                        }
+                    }
                 }
                 height: 200px;
                 &:after {
@@ -122,8 +142,19 @@
             }
             
         }
+        .links {
+            margin: 0;
+            padding: 0 1rem 1rem 1rem;
+            a {
+                display: inline-block;
+                margin-right: .5rem;
+                white-space: nowrap;
+            }
+            
+        }
         p {
             padding: 1rem;
+            margin-bottom: 0;
         }
     }
     
