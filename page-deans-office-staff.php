@@ -137,7 +137,7 @@ $('ul#ignore').click(function(event){
 
 <?php get_footer() ?>
 
-<script type="text/javascript" src="http://environment.uw.dev/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+<script type="text/javascript" src="<?php echo content_url(); ?>/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 var accordionShortcodesSettings = [{"id":"accordion-1","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
