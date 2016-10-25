@@ -6,10 +6,10 @@
         margin-bottom: 1.6rem;
         overflow: hidden;
         transition-duration: .3s;
+        position: relative;
         &.accordion-title {
             padding: 0;
             background-color: white;
-            position: relative;
             z-index: 1;
              &:after {
                 content: "\e026";
@@ -57,6 +57,7 @@
                 }
                 .contact-info {
                     margin-left: 200px;
+                    font-size: 1.2rem;
                 }
                 img {
                     width: 200px;
@@ -85,11 +86,13 @@
     
     .accordion-content {
         background-color: #f7f7f7;
-        width: 368px;
         transition: .3s width;
         position: relative;
         bottom: 2rem;
         z-index: 0;
+        @include min-width ( $iPadLandscape ) {
+            width: 368px;
+        }
 
         .responsibilities {
             font-size: .9rem;
