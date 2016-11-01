@@ -240,7 +240,7 @@
     
     .be-boundless {
         text-align: center;
-        height: 150px;
+        height: 190px;
         @include rem('padding', 3, 0);
         
         img:first-of-type {
@@ -253,6 +253,11 @@
         
         .be-boundless-svg-whole {
             width: 200px;
+        }
+
+        .boundless-logo {
+            margin: 1.75rem 0;
+            width: 325px;
         }
         
         @media print {
