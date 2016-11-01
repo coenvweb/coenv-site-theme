@@ -18,14 +18,14 @@ $ancestor = array(
 );
 
 // Dates
-$coenv_year = isset($_GET['coenv-year']) ? $_GET['coenv-year'] : '';
-$coenv_month = isset($_GET['coenv-month']) ? $_GET['coenv-month'] : '';
+$coenv_year = isset($wp_query->query_vars['coenv-year']) ? $wp_query->query_vars['coenv-year'] : '';
+$coenv_month = isset($wp_query->query_vars['coenv-month']) ? $wp_query->query_vars['coenv-month'] : '';
 $coenv_year = urlencode(htmlentities($coenv_year));
 $coenv_month = urlencode(htmlentities($coenv_month));
 $coenv_date = $coenv_month . '/' . $coenv_year;
 
 //Categories
-$coenv_cat_term_1 = isset($_GET['term']) ? $_GET['term'] : '';
+$coenv_cat_term_1 = isset($wp_query->query_vars['career_category']) ? $wp_query->query_vars['career_category'] : '';
 $coenv_cat_term_1 = urlencode(htmlentities($coenv_cat_term_1));
 $coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,'career_category');
 if ($coenv_cat_term_1_arr) {
@@ -33,7 +33,7 @@ if ($coenv_cat_term_1_arr) {
 }
 
 //Tags
-$coenv_cat_tag_1 = isset($_GET['tag']) ? $_GET['tag'] : '';
+$coenv_cat_tag_1 = isset($wp_query->query_vars['career_post_tag']) ? $wp_query->query_vars['career_post_tag'] : '';
 $coenv_cat_tag_1 = urlencode(htmlentities($coenv_cat_tag_1));
 $coenv_cat_tag_1_arr = get_term_by('slug',$coenv_cat_tag_1,'career_post_tag');
 if ($coenv_cat_tag_1_arr) {
@@ -47,7 +47,6 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 //Sort
 $coenv_sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 $coenv_sort = urlencode(htmlentities($coenv_sort));
-
 
 // build the query based on $query_args
 $query_args = array(
@@ -140,6 +139,7 @@ $wp_query = new WP_Query( $query_args );
 							<h1 class="article__title">Career Opportunities</h1>
 							<div class="career-intro">
 							<?php the_content(); ?>
+                            <?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
 							</div>
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
@@ -190,7 +190,6 @@ $wp_query = new WP_Query( $query_args );
 			</main><!-- .main-col -->
 
 			<div class="side-col">
-				<?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
 			</div><!-- .side-col -->
 
 		</div><!-- .container -->

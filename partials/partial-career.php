@@ -51,17 +51,19 @@
 		<?php else : ?>
 			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
 		<?php endif;
-		$career_tags = get_the_terms($post->ID,'career_post_tag');
-		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
-		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= '<a href="/students/career-resources/career-opportunities/?tag=' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+		$my_career_tags = get_the_terms($post->ID,'career_category');
+		if ( $my_career_tags && ! is_wp_error( $my_career_tags ) ) : 
+
+       ksort($my_career_tags, SORT_NUMERIC);
+		foreach ( $my_career_tags as $tag ) {
+			$career_tag_links .= '<a class="button parent-' . $tag->parent . '" href="/students/career-resources/career-opportunities/career_category/' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a> ';
 		}
 		?>
 		<div class="career-terms" style="float: left; clear: both;">
-		<?php echo rtrim($career_tag_links,', '); ?>
+		<?php echo $career_tag_links; ?>
 		</div>
 		<?php endif; ?>
-		<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
+		<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button editor" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	</header>
 	
     <?php remove_filter( 'the_title', 'wptexturize' );

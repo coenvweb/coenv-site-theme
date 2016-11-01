@@ -16,7 +16,7 @@ $args = array(
   'hierarchical' => $hierarchical,
   'title_li'     => $title,
   'walker' 		 => $walker,
-  'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814'
+  'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
 ?>
 <a name="filters" id="filters"></a>

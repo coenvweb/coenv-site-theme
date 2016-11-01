@@ -18,19 +18,18 @@ body.page-template-careers {
 		padding: 1rem 0 1.25rem 0;
 	}
 	.careers {
-		@include rem('margin', 1);
 		@include rem('padding', 2);
 		background: #fff;
 		border-bottom: solid 1px #ddd;
-		margin: 0 0 0;
-		padding: 0 .75rem 0 0;
+		margin: 0;
+        padding: 0;
 		@media print {
 			margin: 0;
 			padding: 0;
 		}
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, 0, 1, 1);
+			@include rem('margin', 1, 0, 1, 0);
 			@media print {
 				margin: 0;
 			}
@@ -59,17 +58,42 @@ body.page-template-careers {
 		}
 		a.button {
 			color: #000;
-			margin-bottom: 1rem;
-			margin-left: .25rem;
-			float: right;
+			margin-bottom: .4rem;
+			margin-right: .25rem;
 			font-size: .75rem;
 			text-transform: capitalize;
 			&:hover {
 				color: #fff !important;
+                background: #363533!important;
 			}
+            &.editor {
+                float: right;
+                margin-bottom: 1rem;
+            }
 			.right & {
 				margin-bottom: 0;
 			}
+            &.parent-863 {
+                display: none;
+            }
+            &.parent-868 {
+                border-bottom: 3px solid lighten($accent-teal, 30%);
+            }
+            &.parent-867 {
+                border-bottom: 3px solid lighten($accent, 30%);
+            }
+            &.parent-869 {
+                display: none;
+            }
+            &.parent-1051 {
+                border-bottom: 3px solid lighten($accent-blue, 30%);
+            }
+            &.parent-1052 {
+                border-bottom: 3px solid lighten($accent-red, 20%);
+            }
+            &.parent-870 {
+                border-bottom: 3px solid lighten($accent-green, 30%);
+            }
 		}
 		@extend .clearfix;
 		@include min-width ( $iPadPortrait ) {

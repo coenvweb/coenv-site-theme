@@ -8,6 +8,9 @@ require_once locate_template( '/inc/walker-secondary-menu.php' );
 require_once locate_template( '/inc/walker-top-menu.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
+
+require_once locate_template( '/inc/rewrites.php' );
+
 /**
  * Print styles and scripts in header and footer
  */
