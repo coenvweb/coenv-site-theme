@@ -175,6 +175,24 @@ body.page-template-careers {
 
 #careers-filter {
 	background-color: rgb(238, 238, 238);
+    .sorter {
+        float: right;
+        li {
+            display: inline-block;
+            margin-right: -4px;
+            a {
+                border-radius: 0 4px 4px 0;
+            }
+            &:first-of-type a {
+                border-radius: 4px 0 0 4px!important;
+            }
+        }
+        li a {
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-right: 0;
+        }
+    }
 	h3.title {
 		background-color: #000;
 		color: #fff;

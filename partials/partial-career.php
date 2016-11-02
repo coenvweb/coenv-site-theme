@@ -51,11 +51,9 @@
 		<?php else : ?>
 			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
 		<?php endif;
-		$my_career_tags = get_the_terms($post->ID,'career_category');
-		if ( $my_career_tags && ! is_wp_error( $my_career_tags ) ) : 
-
-       ksort($my_career_tags, SORT_NUMERIC);
-		foreach ( $my_career_tags as $tag ) {
+		$career_tags = get_the_terms($post->ID,'career_category');
+		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
+		foreach ( $career_tags as $tag ) {
 			$career_tag_links .= '<a class="button parent-' . $tag->parent . '" href="/students/career-resources/career-opportunities/career_category/' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a> ';
 		}
 		?>

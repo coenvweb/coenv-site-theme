@@ -18,16 +18,18 @@ $args = array(
   'walker' 		 => $walker,
   'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
+
+echo $coenv_sort;
 ?>
 <a name="filters" id="filters"></a>
 <div id="careers-filter" class="careers-filter">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-		<li>Sort By
+		<li class="sorter right">Sort By
 			<ul>
-				<li><a href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-				<li><a href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
+				<li><a class="button <?php echo $sort_date ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
+				<li><a class="button <?php echo $sort_deadline ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
 			</ul>
 		</li>
 	<ul>
