@@ -139,7 +139,7 @@ $wp_query = new WP_Query( $query_args );
 							<h1 class="article__title">Career Opportunities</h1>
 							<div class="career-intro">
 							<?php the_content(); ?>
-                            <?php get_template_part( 'partials/partial', 'careers-filter' ) ?>
+                            <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
 							</div>
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">

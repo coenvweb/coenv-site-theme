@@ -16,23 +16,31 @@ $args = array(
   'hierarchical' => $hierarchical,
   'title_li'     => $title,
   'walker' 		 => $walker,
+  'hide_empty'   => 0,
   'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
 
-echo $coenv_sort;
+if ($coenv_sort == 'deadline') {
+    $deadline_class = 'active';
+} else {
+    $post_date_class = 'active';
+}
+
 ?>
 <a name="filters" id="filters"></a>
 <div id="careers-filter" class="careers-filter">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
+        <div class="sorter-row">
 		<li class="sorter right">Sort By
 			<ul>
-				<li><a class="button <?php echo $sort_date ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-				<li><a class="button <?php echo $sort_deadline ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
+				<li><a class="button <?php echo $post_date_class ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
+				<li><a class="button <?php echo $deadline_class ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
 			</ul>
 		</li>
-	<ul>
+        </div>
+	<ul class="cat-filters">
 		<?php wp_list_categories( $args ); ?>
 	</ul>
 	
