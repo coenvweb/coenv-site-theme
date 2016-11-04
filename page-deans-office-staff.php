@@ -16,12 +16,6 @@ $ancestor = array(
 
 
 ?>
-<script type="text/javascript">
-$('ul#ignore').click(function(event){
-   event.stopPropagation();
-});
-
-</script>
 
 	<section id="page" role="main" class="template-page">
 
