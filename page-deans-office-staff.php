@@ -54,7 +54,7 @@ $('ul#ignore').click(function(event){
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
 
-	               <section class="article__content accordion" id="accordion-1" role="tablist">
+	               <section class="article__content accordion" id="accordion-1">
                    <?php
                         $terms = get_terms( 'team', array(
                         'hide_empty' => 0

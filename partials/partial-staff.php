@@ -24,7 +24,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 }
 
 ?>
-<div id="accordion-1-t<?php echo $i ?>" class="contact <?php if(!empty($description) || have_rows('job_responsibilities')) { ?>accordion-title read<?php } ?>" role="tab">
+<div id="accordion-1-t<?php echo $i ?>" class="contact <?php if(!empty($description) || have_rows('job_responsibilities')) { ?>accordion-title read" tabindex="0"<?php } ?> aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
@@ -68,7 +68,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
         <?php endif; ?>
     </div>
 </div>
-<div id="accordion-1-c<?php echo $i ?>" class="accordion-content" role="tabpanel" aria-labelledby="accordion-1-t<? echo $i ?>" aria-hidden="true" style="display: none;">
+<div id="accordion-1-c<?php echo $i ?>" class="accordion-content" aria-labelledby="accordion-1-t<? echo $i ?>" aria-hidden="true" aria-controlled-by="accordion-1-t<? echo $i ?>" style="display: none;">
 <? if(!empty($description) || have_rows('job_responsibilities')) { ?>
 <?php
     // check if the repeater field has rows of data
