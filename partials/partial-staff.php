@@ -34,12 +34,12 @@ if(!empty($description) || have_rows('job_responsibilities')) {
             <h4><?php the_field('job_title'); ?></h4>
         </div>
         <?php if (!empty($email) && !empty($phone_number)) : ?>
-            <ul class="Faculty-member-contact-list" id="ignore">
+            <ul class="Faculty-member-contact-list">
                 <?php if (!empty($email)) : ?>
-                    <li><a id="ignore" href="mailto:<?php echo antispambot($email); ?>"><i class="icon-contact-link-email"></i><?php echo antispambot($email); ?></a></li>
+                    <li><a href="mailto:<?php echo antispambot($email); ?>"><i class="icon-contact-link-email"></i><?php echo antispambot($email); ?></a></li>
                 <?php endif; ?>
                 <?php if (!empty($phone_number)) : ?>
-                    <li><a id="ignore" href="tel:<?php echo $phone_number; ?>"><i class="icon-contact-link-phone"></i><?php echo $phone_number; ?></a></li>
+                    <li><a href="tel:<?php echo $phone_number; ?>"><i class="icon-contact-link-phone"></i><?php echo $phone_number; ?></a></li>
                 <?php endif; ?>
                 <?php  // check if the repeater field has rows of data
                     if( have_rows('links') ) :
