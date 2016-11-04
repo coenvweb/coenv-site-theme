@@ -24,7 +24,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 }
 
 ?>
-<div id="accordion-1-t<?php echo $i ?>" class="contact <?php if(!empty($description) || have_rows('job_responsibilities')) { ?>accordion-title read" tabindex="0<?php } ?>" aria-expanded="false">
+<div id="accordion-1-t<?php echo $i ?>" class="contact <?php if(!empty($description) || have_rows('job_responsibilities')) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
