@@ -32,6 +32,17 @@
                 top: 12.5%;
             }
         }
+        
+        @include max-width ( 380 ) {
+            .contact-info {
+                margin-left: 0!important;
+            }
+            img {
+                display: none!important;
+            }
+        }
+
+
         &.open {
             width: 100%;
             margin-bottom: 0rem;
