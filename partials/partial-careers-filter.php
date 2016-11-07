@@ -20,11 +20,7 @@ $args = array(
   'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
 
-if ($coenv_sort == 'deadline') {
-    $deadline_class = 'active';
-} else {
-    $post_date_class = 'active';
-}
+
 
 ?>
 <a name="filters" id="filters"></a>
@@ -32,14 +28,6 @@ if ($coenv_sort == 'deadline') {
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-        <div class="sorter-row">
-		<li class="sorter right">Sort By
-			<ul>
-				<li><a class="button <?php echo $post_date_class ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-				<li><a class="button <?php echo $deadline_class ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
-			</ul>
-		</li>
-        </div>
 	<ul class="cat-filters">
 		<?php wp_list_categories( $args ); ?>
 	</ul>
@@ -49,11 +37,5 @@ if ($coenv_sort == 'deadline') {
 		<li><a href="/students/career-resources/career-opportunities/subscribe-via-email/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
 		<li><a href="/feed/?post_type=careers"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
 	</ul>
-	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-opportunities/">
-	  <div class="field-wrap">
-	    <input type="text" name="st" id="st" placeholder="Search" />
-	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-	  </div>
-	</form>
 </div>
 </div><!-- #blog-header -->

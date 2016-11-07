@@ -102,10 +102,13 @@ endif;
 		$query_args['meta_key'] = '_expiration-date';
 		$query_args['orderby'] = 'meta_value';
 		$query_args['order'] = 'ASC';
+        $deadline_class = 'active';
 	} else {
 		$query_args['orderby'] = 'date';
 		$query_args['order'] = 'DESC';
+        $post_date_class = 'active';
 	}
+
 // Make query
 $wp_query = new WP_Query( $query_args ); 
 ?>
@@ -139,8 +142,21 @@ $wp_query = new WP_Query( $query_args );
 							<h1 class="article__title">Career Opportunities</h1>
 							<div class="career-intro">
 							<?php the_content(); ?>
-                            <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
 							</div>
+                            <div class="sorter-search-row">
+                                <form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-opportunities/">
+                                  <div class="field-wrap">
+                                    <input type="text" name="st" id="st" placeholder="Search" />
+                                    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+                                  </div>
+                                </form>
+                                <li class="sorter right">Sort By
+                                    <ul>
+                                        <li><a class="button <?php echo $post_date_class ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
+                                        <li><a class="button <?php echo $deadline_class ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
+                                    </ul>
+                                </li>
+                            </div>
 							<?php if ($coenv_cat_term_1): // Category filter ?>
 								<div class="panel results-text">
 									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
@@ -190,6 +206,7 @@ $wp_query = new WP_Query( $query_args );
 			</main><!-- .main-col -->
 
 			<div class="side-col">
+                <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
 			</div><!-- .side-col -->
 
 		</div><!-- .container -->
