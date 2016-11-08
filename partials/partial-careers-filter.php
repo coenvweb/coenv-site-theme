@@ -28,8 +28,8 @@ $args = array(
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-	<ul class="cat-filters">
-		<?php wp_list_categories( $args ); ?>
+	<ul class="cat-filters" id="career_filter">
+		<?php echo get_career_filters(); ?>
 	</ul>
 	
 	<h4>Subscribe</h4>

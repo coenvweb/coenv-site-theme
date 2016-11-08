@@ -112,3 +112,107 @@ function mbe_change_sortable_columns($columns){
     return $columns;
 }
 add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns');
+
+//Enqueue Ajax Scripts
+function enqueue_career_ajax_scripts() {
+    wp_register_script( 'career-ajax-js', get_bloginfo('template_url') . '/assets/scripts/build/ajax.js', array( 'jquery' ), '', true );
+    wp_localize_script( 'career-ajax-js', 'ajax_career_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+		wp_enqueue_script( 'career-ajax-js' );
+}
+add_action('wp_enqueue_scripts', 'enqueue_career_ajax_scripts');
+
+//Get career Filters
+function get_career_filters()
+{
+    $terms = get_terms('career_category');
+    $filters_html = false;
+ 
+    if( $terms ):
+        $filters_html = '<ul>';
+ 
+        foreach( $terms as $term )
+        {
+            $term_id = $term->term_id;
+            $term_name = $term->name;
+ 
+            $filters_html .= '<li class="term_id_'.$term_id.'"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
+        }
+        $filters_html .= '<li class="clear-all">Clear All</li>';
+        $filters_html .= '</ul>';
+ 
+        return $filters_html;
+    endif;
+}
+
+//Add Ajax Actions
+add_action('wp_ajax_careers_filter', 'ajax_careers_filter');
+add_action('wp_ajax_nopriv_careers_filter', 'ajax_careers_filter');
+
+//Construct Loop & Results
+function ajax_careers_filter()
+{
+    echo 'ajax_careers_filter';
+	$query_data = $_GET;
+    
+    print_r($query_data);
+	
+	$career_terms = ($query_data['career_category']) ? explode(',',$query_data['career_category']) : false;
+	
+	$tax_query = ($career_terms) ? array( array(
+		'taxonomy' => 'career_category',
+		'field' => 'id',
+		'terms' => $career_terms
+	) ) : false;
+	
+	$search_value = ($query_data['search']) ? $query_data['search'] : false;
+	
+	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
+    
+    // build the query based on $query_args
+    $career_args = array(
+
+        'post_type' => 'careers',
+        'post_status' => 'publish',
+        'posts_per_page' => 20,
+        'tax_query' => $tax_query,
+        's' => $search_value,
+        'paged' => $paged,
+        'meta_query' => array(
+            'relation'    => 'OR',
+            array(
+                'key' => 'deadline',
+                'value' => date('Ymd'),
+                'type' => 'date',
+                'compare' => '>='
+            ),
+            array(
+                'key' => '_expiration-date',
+                'value' => time(),
+                'type' => 'char',
+                'compare' => '>='
+            ),
+        )
+    );
+	$career_loop = new WP_Query($career_args);
+	
+	if( $career_loop->have_posts() ):
+		while( $career_loop->have_posts() ): $career_loop->the_post();
+			get_template_part( 'partials/partial', 'career' );
+		endwhile;
+		
+		echo '<div class="genre-filter-navigation">';
+		$big = 999999999;
+		echo paginate_links( array(
+			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format' => '?paged=%#%',
+			'current' => max( 1, $paged ),
+			'total' => $career_loop->max_num_pages
+		) );
+		echo '</div>';	
+	else:
+		get_template_part('content-none');
+	endif;
+	wp_reset_postdata();
+	
+	die();
+}

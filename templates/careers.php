@@ -17,102 +17,9 @@ $ancestor = array(
 	'title' => get_the_title( $ancestor_id )
 );
 
-// Dates
-$coenv_year = isset($wp_query->query_vars['coenv-year']) ? $wp_query->query_vars['coenv-year'] : '';
-$coenv_month = isset($wp_query->query_vars['coenv-month']) ? $wp_query->query_vars['coenv-month'] : '';
-$coenv_year = urlencode(htmlentities($coenv_year));
-$coenv_month = urlencode(htmlentities($coenv_month));
-$coenv_date = $coenv_month . '/' . $coenv_year;
-
-//Categories
-$coenv_cat_term_1 = isset($wp_query->query_vars['career_category']) ? $wp_query->query_vars['career_category'] : '';
-$coenv_cat_term_1 = urlencode(htmlentities($coenv_cat_term_1));
-$coenv_cat_term_1_arr = get_term_by('slug',$coenv_cat_term_1,'career_category');
-if ($coenv_cat_term_1_arr) {
-    $coenv_cat_term_1_val = $coenv_cat_term_1_arr->name;
-}
-
-//Tags
-$coenv_cat_tag_1 = isset($wp_query->query_vars['career_post_tag']) ? $wp_query->query_vars['career_post_tag'] : '';
-$coenv_cat_tag_1 = urlencode(htmlentities($coenv_cat_tag_1));
-$coenv_cat_tag_1_arr = get_term_by('slug',$coenv_cat_tag_1,'career_post_tag');
-if ($coenv_cat_tag_1_arr) {
-    $coenv_cat_tag_1_val = $coenv_cat_tag_1_arr->name;
-}
-
-//Search terms
-$coenv_search_terms = isset($_GET['st']) ? $_GET['st'] : '';
-$coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
-
-//Sort
-$coenv_sort = isset($_GET['sort']) ? $_GET['sort'] : '';
-$coenv_sort = urlencode(htmlentities($coenv_sort));
-
-// build the query based on $query_args
-$query_args = array(
-
-	'post_type' => 'careers',
-	'post_status' => 'publish',
-	'posts_per_page' => 20,
-    'paged' => $paged,
-    'meta_query' => array(
-    	'relation'    => 'OR',
-        array(
-            'key' => 'deadline',
-            'value' => date('Ymd'),
-    		'type' => 'date',
-    		'compare' => '>='
-        ),
-        array(
-            'key' => '_expiration-date',
-            'value' => time(),
-            'type' => 'char',
-            'compare' => '>='
-        ),
-    )
-);
-
-// Category filter
-if($coenv_cat_term_1) :
-	$query_args['taxonomy'] = 'career_category';
-	$query_args['term'] = $coenv_cat_term_1;
-endif;
-
-// Tag filter
-if($coenv_cat_tag_1) :
-	$query_args['taxonomy'] = 'career_post_tag';
-	$query_args['term'] = $coenv_cat_tag_1 ;
-endif;
-
-// Date filters
-if ($coenv_year) :
-	$query_args['year'] = $coenv_year;
-endif; 
-if($coenv_month) :
-	$query_args['monthnum'] = $coenv_month;
-endif;
-
-// Search filters
-if ($coenv_search_terms) :
-	$query_args['s'] = $coenv_search_terms;
-endif;
-
-//Sort/*
-	if ($coenv_sort == 'deadline') {
-		$query_args['meta_key'] = '_expiration-date';
-		$query_args['orderby'] = 'meta_value';
-		$query_args['order'] = 'ASC';
-        $deadline_class = 'active';
-	} else {
-		$query_args['orderby'] = 'date';
-		$query_args['order'] = 'DESC';
-        $post_date_class = 'active';
-	}
-
 // Make query
-$wp_query = new WP_Query( $query_args ); 
 ?>
-	<section id="page" role="main" class="template-page">
+	<section id="page primary" role="main" class="template-page content-area">
 
 		<div class="container">
 
@@ -135,7 +42,7 @@ $wp_query = new WP_Query( $query_args );
 
 			<?php endif ?>
 
-			<main id="main-col" class="main-col">
+			<main id="main-col content" class="main-col site-content">
 				<div class="article">
 					<header class="article__header">
 						<div class="article__meta">
@@ -144,10 +51,10 @@ $wp_query = new WP_Query( $query_args );
 							<?php the_content(); ?>
 							</div>
                             <div class="sorter-search-row">
-                                <form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-opportunities/">
+                                <form role="search" class="search-form Form--inline" id="career-search">
                                   <div class="field-wrap">
-                                    <input type="text" name="st" id="st" placeholder="Search" />
-                                    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+                                    <input type="text" name="st" id="st" placeholder="Search" class="text-search" />
+                                    <input type="submit" value="Search" id="submit-search" />
                                   </div>
                                 </form>
                                 <li class="sorter right">Sort By
@@ -157,37 +64,11 @@ $wp_query = new WP_Query( $query_args );
                                     </ul>
                                 </li>
                             </div>
-							<?php if ($coenv_cat_term_1): // Category filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> opportunities found in <strong>"<?php echo $coenv_cat_term_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_cat_tag_1): // Tag filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts tagged <strong>"<?php echo $coenv_cat_tag_1_val; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_year && $coenv_month): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts from <strong><?php echo $coenv_date; ?></strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-							<?php if($coenv_search_terms): // Date filter ?>
-								<div class="panel results-text">
-									<p class="left"><?php echo $wp_query->found_posts; ?> posts containing <strong>"<?php echo $coenv_search_terms; ?>"</strong></p>
-									<p class="right"><a class="button" href="/students/career-resources/career-opportunities/">all posts</a></p>
-								</div>
-							<?php endif; ?>
-						</div>
-					</header>
 
-
-				<?php if ( $wp_query->have_posts() ) : ?>
-
-					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post() ?>
+<div id="career-results">
+					<?php
+    if( have_posts() ):
+        while( have_posts() ): the_post(); ?>
 
 						<?php get_template_part( 'partials/partial', 'career' ); ?>
 
@@ -197,10 +78,8 @@ $wp_query = new WP_Query( $query_args );
 						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
 					</div>
 				<?php endif ?>
+    </div>
 
-				<footer class="pagination">
-					<?php coenv_paginate() ?>
-				</footer>
 			</div>
 
 			</main><!-- .main-col -->
