@@ -5,6 +5,7 @@
  * Shows for mobile views and no-js
  */
 global $themes, $units, $faculty, $query_args;
+
 ?>
 
 <header class="Faculty-list-header">
@@ -14,7 +15,9 @@ global $themes, $units, $faculty, $query_args;
 		<select class="Faculty-selector-theme" name="theme" id="theme-mobile">
 			<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All research themes</option>
 		  	<?php foreach ( $themes as $theme ) : ?>
+                
 		  		<option value="theme-<?php echo $theme['slug'] ?>"<?php if ( $query_args['theme'] == $theme['slug'] ) echo ' selected' ?> data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
+                
 		  	<?php endforeach ?>
 		</select>
         <label for="theme-mobile">Research themes</label>
