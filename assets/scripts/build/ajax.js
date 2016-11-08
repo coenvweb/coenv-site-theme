@@ -86,9 +86,9 @@ jQuery(function($)
  
         $.ajax({
             type: 'GET',
-            url: ajax_url,
+            url: ajax_career_params.ajax_url,
             data: {
-                action: 'career_category_filter',
+                action: 'careers_filter',
                 careers: getSelectedcareers, //Get array of values from previous function
                 search: getSearchValue(), //Retrieve search value using function
                 paged: paged_value //If paged value is being sent through with function call, store here

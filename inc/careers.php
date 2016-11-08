@@ -145,11 +145,11 @@ function get_career_filters()
 }
 
 //Add Ajax Actions
-add_action('wp_ajax_careers_filter', 'ajax_careers_filter');
-add_action('wp_ajax_nopriv_careers_filter', 'ajax_careers_filter');
+add_action('wp_ajax_careers_filter', 'careers_filter');
+add_action('wp_ajax_nopriv_careers_filter', 'careers_filter');
 
 //Construct Loop & Results
-function ajax_careers_filter()
+function careers_filter()
 {
     echo 'ajax_careers_filter';
 	$query_data = $_GET;
