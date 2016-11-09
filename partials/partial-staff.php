@@ -69,7 +69,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     </div>
 </div>
 <div id="accordion-1-c<?php echo $i ?>" class="accordion-content" aria-labelledby="accordion-1-t<? echo $i ?>" aria-hidden="true" aria-controlled-by="accordion-1-t<? echo $i ?>" style="display: none;">
-<? if(!empty($description) || !empty('job_responsibilities')) { ?>
+<? if(!empty($description) || have_rows('job_responsibilities')) { ?>
 <?php
     // check if the repeater field has rows of data
     if( have_rows('job_responsibilities') ):
