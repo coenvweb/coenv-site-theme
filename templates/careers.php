@@ -79,6 +79,9 @@ $ancestor = array(
 					</div>
 				<?php endif ?>
     </div>
+                <footer class="pagination">
+					<?php coenv_paginate() ?>
+				</footer>
 
 			</div>
 

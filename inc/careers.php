@@ -135,7 +135,7 @@ function get_career_filters()
             $term_id = $term->term_id;
             $term_name = $term->name;
  
-            $filters_html .= '<li class="term_id_'.$term_id.'"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
+            $filters_html .= '<li class="term_id_'.$term_id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
         }
         $filters_html .= '<li class="clear-all">Clear All</li>';
         $filters_html .= '</ul>';
@@ -151,18 +151,20 @@ add_action('wp_ajax_nopriv_careers_filter', 'careers_filter');
 //Construct Loop & Results
 function careers_filter()
 {
-    echo 'ajax_careers_filter';
 	$query_data = $_GET;
     
-    print_r($query_data);
+
 	
-	$career_terms = ($query_data['career_category']) ? explode(',',$query_data['career_category']) : false;
+	$career_terms = ($query_data['careers']) ? explode(',',$query_data['careers']) : false;
 	
 	$tax_query = ($career_terms) ? array( array(
 		'taxonomy' => 'career_category',
 		'field' => 'id',
 		'terms' => $career_terms
 	) ) : false;
+    
+    $comma_array = implode(',', $tax_query[0]['terms']);
+    echo($comma_array);
 	
 	$search_value = ($query_data['search']) ? $query_data['search'] : false;
 	
@@ -174,7 +176,13 @@ function careers_filter()
         'post_type' => 'careers',
         'post_status' => 'publish',
         'posts_per_page' => 20,
-        'tax_query' => $tax_query,
+        'tax_query' => array(
+          'relation' => 'AND',
+          array(
+              'taxonomy' => 'career_category',
+              'terms' => array($comma_array),
+          ),
+        ),
         's' => $search_value,
         'paged' => $paged,
         'meta_query' => array(
@@ -193,6 +201,7 @@ function careers_filter()
             ),
         )
     );
+
 	$career_loop = new WP_Query($career_args);
 	
 	if( $career_loop->have_posts() ):

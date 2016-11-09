@@ -28,7 +28,7 @@ $args = array(
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-	<ul class="cat-filters" id="career_filter">
+	<ul class="cat-filters" id="career-filter">
 		<?php echo get_career_filters(); ?>
 	</ul>
 	
