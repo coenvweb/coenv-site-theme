@@ -53,6 +53,7 @@ $banner = coenv_banner();
 			</main><!-- .main-col -->
 
 			<div class="side-col">
+                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Insider Newsletter Archive', 'newsletter_url' => 'https://environment.uw.edu/news/the-insider-newsletter')); ?>
 				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 

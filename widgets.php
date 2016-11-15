@@ -295,8 +295,6 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
 		echo $before_widget;
 		?>
 			
-			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
- 
 			<ul class='link'>
 				<li><a href="<?php echo $newsletter_url; ?>" title="The Insider Newsletter Archive"><i class="icon-mail"> </i><?php echo $title ?></a></li>
 			</ul>
