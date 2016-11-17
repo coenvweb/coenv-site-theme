@@ -854,18 +854,4 @@ function ajax_search () {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // class CoEnvMemberAPI

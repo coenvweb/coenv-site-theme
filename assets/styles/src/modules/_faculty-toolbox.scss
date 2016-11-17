@@ -27,6 +27,10 @@
 
 .Faculty-toolbox-inner {
 	background: #303030;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 3.25rem;
 }
 
 .Faculty-toolbox-header {
@@ -101,11 +105,16 @@
 }
 
 .Faculty-toolbox-content {
+    flex: 1 0 auto;
+    display: flex;
 	position: relative;
-	padding-top: 80%;
+	padding-top: 66%;
 	border-top: 1px solid $border-dk-accent;
 	border-bottom: 1px solid $border-dk;
 	overflow: hidden;
+    @include max-width ( 900 ) {
+        padding-top: 72%;
+    }
 }
 
 .Faculty-toolbox-roller {
@@ -120,14 +129,6 @@
 	.Faculty-toolbox--show-form & {
 		left: -100%;
 	}
-}
-
-.Faculty-toolbox-roller-header {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	height: 15%;
 }
 
 .Faculty-toolbox-roller-header-inner {
@@ -155,8 +156,11 @@
 	position: absolute;
 	right: 0;
 	left: 0;
-	bottom: 0;
-	height: 85%;
+	top: 1%;
+	height: 80%;
+    @include max-width ( 900 ) {
+        top: 0;
+    }
 }
 
 .Faculty-toolbox-roller-items {
@@ -286,8 +290,11 @@
 
 .Faculty-toolbox-feedback {
 	display: table;
-	@include rem('padding', 0.3, 1);
+	@include rem('padding', 0.75, 1);
 	width: 100%;
+    @include max-width ( 900 ) {
+        @include rem('padding', 0.5, 1);
+    }
 }
 
 .Faculty-toolbox-feedback-number {
@@ -296,13 +303,17 @@
 	@include font-size(36);
 	line-height: 1;
 	font-weight: 600;
+    @include max-width ( 900 ) {
+        @include font-size(26);
+    }
 }
 
 .Faculty-toolbox-feedback-message {
 	display: table-cell;
 	@include rem('padding-left', 0.5);
 	vertical-align: top;
-	@include font-size(12);
+	font-size: 75%;
+    vertical-align: middle;
 	line-height: 1.5;
 	font-weight: 600;
 	color: #aaa;
@@ -353,4 +364,33 @@ display: none;
 		background: $accent;
 	}
 
+}
+
+.Faculty-postdoc-button {
+    position: absolute;
+    bottom: .3rem;
+    height: 3rem;
+    display: table;
+    width: calc(100% - .25rem);
+        a {
+            display: table-cell;
+            height: 100%;
+            width: 100%;
+            padding: .75rem .75rem .75rem 1rem;
+            color: #fff;
+            @include serif();
+            text-decoration: none;
+            font-size: 1.5rem;
+            background: #555;
+            color: $white;
+            i {
+                position: relative;
+                left: 1rem;
+            }
+
+            &:hover {
+                color: white!important;
+                background-color: $accent;
+            }
+    }
 }

@@ -42,9 +42,9 @@ jQuery(function ($) {
             // custom scrollbar
             $('.js .faculty-toolbox-roller-items').mCustomScrollbar({
                 autoHideScrollbar: false,
-                setHeight:175,
+                setHeight:170,
                 theme: 'minimal-dark',
-                scrollInteria: 1,
+                scrollInteria: 0,
             });
 
             // scroll to selection

@@ -31,14 +31,6 @@ $ordered_themes = $themes;
 
 			<div class="Faculty-toolbox-roller">
 
-				<div class="Faculty-toolbox-roller-header">
-					<div class="Faculty-toolbox-roller-header-inner">
-						<h2 class="Faculty-toolbox-roller-header-title">
-							<span>Research themes:</span>
-						</h2>
-					</div>
-				</div>
-
 				<div class="Faculty-toolbox-roller-content">
 
 					<div class="Faculty-toolbox-roller-items mCustomScrollbar Faculty-toolbox-roller-items-inner Faculty-toolbox-roller-items-set" >
@@ -143,5 +135,9 @@ $ordered_themes = $themes;
 		</div><!-- .Faculty-toolbox-footer -->
 
 	</div>
+    
+    <div class="Faculty-postdoc-button">
+        <a href="postdocs">Postdocs<i class="icon-arrow-right-2 right"></i></a>
+    </div>
 
 </header>
