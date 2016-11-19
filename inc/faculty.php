@@ -2,7 +2,7 @@
 /**
  *  Display related faculty based on admin selection or auto based on category.
  */
-function coenv_related_faculty ($id) {
+function coenv_related_faculty ($id, $term) {
     
     global $coenv_member_api;
     
@@ -14,34 +14,52 @@ function coenv_related_faculty ($id) {
         $post_tax = 'member_theme';        
     }
     
-    $coenv_term = get_field('related_research_area', $id);
-    $term = get_term($coenv_term, 'member_theme');
+    if (empty($term)) {
+        $coenv_term = get_field('related_research_area', $id);
+        $term = get_term($coenv_term, 'member_theme');
+    }
+   
+    
+    if (empty($term)) {
+        $args = array (
+            'post_type' => 'faculty',
+            'posts_per_page' => '6',
+            'post__not_in' => array($id),
+            'orderby' => 'rand',
+        );
+        
+        $label = 'Faculty Profiles';
+     
+        
+    } else {
+        
+       $args = array (
 
-	$args = array (
+            'post_type' => 'faculty',
+            'posts_per_page' => '6',
+            'post__not_in' => array($id),
+            'orderby' => 'rand',
+            'tax_query' => array(
+            'relation' => 'AND',
+                array(
+                'taxonomy' => 'member_theme',
+                'terms' => $coenv_term,
+                'operator' => 'IN',
+                )
+            )
 
-		'post_type' => 'faculty',
-		'posts_per_page' => '6',
-		'post__not_in' => array($id),
-        'orderby' => 'rand',
-		'tax_query' => array(
-		'relation' => 'AND',
-			array(
-			'taxonomy' => 'member_theme',
-			'terms' => $coenv_term,
-			'operator' => 'IN',
-			)
-		)
-
-    );
+        );
+        
+        $label = get_field('related_faculty_label');
+    }
 
 	$query = new WP_Query( $args );
 
 	if ( $query->have_posts() ) {
 		echo '<div class="related-faculty">';
             echo '<div class="related-heading">';
-                $label = get_field('related_faculty_label');
                 if ($label) {
-                    echo '<h2 class="title">' . get_field('related_faculty_label') . '</h2>';
+                    echo '<h2 class="title">' . $label . '</h2>';
                 } else {
                     echo '<h2 class="title">Related Faculty</h2>';
                 }
@@ -72,12 +90,20 @@ function coenv_related_faculty ($id) {
                 echo '</div>';
             echo '</a>';
 		}
-        echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($term->count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
+        if (empty($term)) {
+            echo '<a href="/faculty/" title="Browse more faculty in the College of the Environment" class="count" >';
+        } else {
+            echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
+        }
         echo '<div class="related-container">';
         echo '<div class="related-thumb">';
         echo '<i class="icon-faculty-grid-alt-2"></i>';
         echo '</div>';
-        echo '<span class="number">+' . ($term->count - 6) . ' more';
+        if (empty($term)) {
+            echo '<span class="number">+' . ($term->count - 6) . ' more';
+        } else {
+            echo '<span class="number">All Faculty';
+        }
         echo '</span></div>';
         echo '</a>';
         echo '</div>';
