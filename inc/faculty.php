@@ -2,7 +2,7 @@
 /**
  *  Display related faculty based on admin selection or auto based on category.
  */
-function coenv_related_faculty ($id, $term) {
+function coenv_related_faculty ($id, $term = 0) {
     
     global $coenv_member_api;
     
@@ -16,7 +16,9 @@ function coenv_related_faculty ($id, $term) {
     
     if (empty($term)) {
         $coenv_term = get_field('related_research_area', $id);
-        $term = get_term($coenv_term, 'member_theme');
+        if (!empty($coenv_term)) {
+            $term = get_term($coenv_term, 'member_theme');
+        }
     }
    
     
