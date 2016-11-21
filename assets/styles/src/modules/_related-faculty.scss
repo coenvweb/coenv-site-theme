@@ -61,6 +61,10 @@
     }
     
     a {
+        text-decoration: none;
+    }
+    
+    .related-people a {
         position: relative;
         width: percentage( 1/3 );
         display: inline-block;
