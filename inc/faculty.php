@@ -60,11 +60,16 @@ function coenv_related_faculty ($id, $term = 0) {
 	if ( $query->have_posts() ) {
 		echo '<div class="related-faculty">';
             echo '<div class="related-heading">';
-                if ($label) {
-                    echo '<h2 class="title">' . $label . '</h2>';
-                } else {
-                    echo '<h2 class="title">Related Faculty</h2>';
-                }
+            if (empty($term)) {
+                echo '<a href="/faculty/" title="Browse more faculty in the College of the Environment">';
+            } else {
+                echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" >';
+            }
+            if ($label) {
+                echo '<h2 class="title">' . $label . '</h2></a>';
+            } else {
+                echo '<h2 class="title">Related Faculty</h2></a>';
+            }
                 
             echo '</div>';
             echo '<div class="related-people">';
@@ -102,9 +107,9 @@ function coenv_related_faculty ($id, $term = 0) {
         echo '<i class="icon-faculty-grid-alt-2"></i>';
         echo '</div>';
         if (empty($term)) {
-            echo '<span class="number">+' . ($term->count - 6) . ' more';
-        } else {
             echo '<span class="number">All Faculty';
+        } else {
+            echo '<span class="number">+' . ($term->count - 6) . ' more';
         }
         echo '</span></div>';
         echo '</a>';
