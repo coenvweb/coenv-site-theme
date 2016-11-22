@@ -214,5 +214,14 @@
             right: 0;
         }
     }
+    
+    .page-id-51037 & {
+        @include min-width ( $iPadPortrait ) {
+            margin-left: 3rem;
+        }
+        
+        margin-bottom: 3rem;
+    }
 
 } // .related-faculty
+
