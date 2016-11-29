@@ -18,7 +18,7 @@
         overflow: hidden!important;
     }
     
-	.related-faculty-name h3 {
+	.related-faculty-name p {
 		margin: 0;
         @include font-size(12);
         line-height: 1;
@@ -62,6 +62,7 @@
     
     a {
         text-decoration: none;
+        @include sans();
     }
     
     .related-people a {
@@ -78,13 +79,11 @@
         @include min-width ( 600 ) {
 			width: percentage( 1/7 );
 			float: left;
-		}
-        @include min-width ( 600 ) {
             &:hover {
                 transform: scale(1.1);
-                z-index: 99;
+                z-index: 99!important;
                 transition-duration: .3s;
-                border-right: none;
+                border: none!important;
                 box-shadow: 0 0 5px rgba(0,0,0,0.1);
             }
         }
@@ -215,13 +214,84 @@
         }
     }
     
-    .page-id-51037 & {
-        @include min-width ( $iPadPortrait ) {
-            margin-left: 3rem;
+    .faculty-sidebar & {
+        display: table;
+        margin: 2rem -1.5rem -.5rem -1.5rem;
+        overflow: hidden;
+        .related-heading {
+            display: none;
+        }
+        .related-people a {
+            position: relative;
+            width: calc(33.33% - .5px);
+            display: inline-block;
+            text-decoration: none;
+            color: $text;
+            z-index: 2;
+            border-right: 1px solid $white;
+            &:last-of-type {
+                border: none;
+            }
+            border-right: none;
+            margin-right: 1px;
+            &:nth-child(6n+4){
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+5){
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+6) {
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+7) {
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+3) {
+                margin-right: -2px;
+            }
+            &:nth-child(6n+6) {
+                margin-right: -2px;
+            }
+        }
+        .related-container {
+            height: 160px;
         }
         
-        margin-bottom: 3rem;
+        .count {
+            height: 3rem;
+            width: 100%!important;
+            .number {
+                line-height: 3rem!important;
+                &:before {
+                    font-family: icomoon;
+                    content: "\e00e";
+                    padding-right: .5rem;
+                }
+            }
+            &:hover {
+                background-color: $accent;
+                color: $white;
+                transform: none;
+                border-top: 1px $border solid!important;
+            }
+            .related-thumb {
+                display: none;
+            }
+        }
+        
     }
 
 } // .related-faculty
+
+.faculty-sidebar {
+    h2 i {
+        font-size: 1.3rem;
+        margin-right: .25rem;
+    }
+    
+    .faculty-sidebar-title {
+        color: $text;
+        text-decoration: none;
+    }
+}
 
