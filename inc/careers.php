@@ -143,7 +143,6 @@ function careers_filter()
 	) ) : false;
 	
 	$search_value = ($query_data['search']) ? $query_data['search'] : false;
-    echo($search_value);
 	
 	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
     

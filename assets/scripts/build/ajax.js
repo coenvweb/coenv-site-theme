@@ -5,29 +5,25 @@ jQuery(function($)
     careers_get_posts();
  
     //If list item is clicked, trigger input change and add css class
-    $('#career-filter li').live('click', function(){
-        var input = $(this).find('input');
- 
-                //Check if clear all was clicked
+    $('.cat-filters .button').live('click', function(){
+        var input = $(this).find('input'); //Check if clear all was clicked
         if ( $(this).attr('class') == 'clear-all' )
         {
-            $('#career-filter li').removeClass('selected').find('input').prop('checked',false); //Clear settings
+            $('.cat-filters .button').removeClass('selected').find('input').prop('checked',false); //Clear settings
             careers_get_posts(); //Load Posts
         }
-        else if (input.is(':checked'))
+        else if ($(this).hasClass('selected') )
         {
-            input.prop('checked', false);
             $(this).removeClass('selected');
         } else {
-            input.prop('checked', true);
             $(this).addClass('selected');
         }
- 
-        input.trigger("change");
+        
+        $(this).change();
     });
  
     //If input is changed, load posts
-    $('#career-filter input').live('change', function(){
+    $('.cat-filters').change( function(){
         careers_get_posts(); //Load Posts
     });
  
@@ -36,10 +32,12 @@ jQuery(function($)
     {
         var careers = []; //Setup empty array
  
-        $("#career-filter li input:checked").each(function() {
+        $(".cat-filters li .selected").each(function() {
             var val = $(this).val();
             careers.push(val); //Push value onto array
-        });  
+        });
+        
+        console.log(careers);
  
         return careers; //Return all of the selected careers in an array
     }
@@ -94,16 +92,20 @@ jQuery(function($)
             beforeSend: function ()
             {
                 //You could show a loader here
+                $("#results").html('<p>Loading results...</p>');
             },
             success: function(data)
             {
                 //Hide loader here
-                $('#career-results').html(data);
+                $('#results').html(data);
+                if(data == '') {
+                    $("#results").html('<p>No results found.</p>');
+                }
             },
             error: function()
             {
                                 //If an ajax error has occured, do something here...
-                $("#career-results").html('<p>There has been an error</p>');
+                $("#results").html('<p>There has been an error</p>');
             }
         });
     }

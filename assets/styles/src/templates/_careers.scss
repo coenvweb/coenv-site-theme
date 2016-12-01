@@ -305,11 +305,19 @@ body.page-template-careers {
 						margin-bottom: 0;
                         margin-top: .5rem;
 					}
-					& > li	 {
+					& > .button	 {
 						margin-bottom: 0 !important;
 						font-weight: normal;
+                        color: $text;
+                        background: $white-button;
+                        cursor: pointer;
+                        
+                        &:hover {
+                            background: #333;
+                            background: rgba(0,0,0,.3);
+                        }
 					}
-                    .current-cat a {
+                    .selected {
                         background-color: $accent!important;
                         color: white!important;
                     }

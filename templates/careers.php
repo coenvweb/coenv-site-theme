@@ -65,7 +65,7 @@ $ancestor = array(
                                 </li>
                             </div>
 
-<div id="career-results">
+<div id="results">
 					<?php
     if( have_posts() ):
         while( have_posts() ): the_post(); ?>

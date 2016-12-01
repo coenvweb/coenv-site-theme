@@ -38,7 +38,7 @@ class CoEnv_Career_Category extends Walker_Category{
         $cat_slug = esc_attr( $category->slug);
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
-            $link = '<li class="term_id_'.$category->id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">';
+            $link = '<li class="term_id_'.$category->term_id.' button"  name="filter_career[]" value="'.$category->term_id.'">';
         }
             $link .= $cat_name;
  
@@ -83,6 +83,7 @@ class CoEnv_Career_Category extends Walker_Category{
             $link .= ' ' . gmdate('Y-m-d', $category->last_update_timestamp);
  
         if ( 'list' == $args['style'] ) {
+            if ( $category->parent == 0 ) {
             $output .= "\t<li";
             $class = 'cat-item cat-item-' . $category->term_id;
             if ( !empty($current_category) ) {
@@ -92,8 +93,9 @@ class CoEnv_Career_Category extends Walker_Category{
                 elseif ( $category->term_id == $_current_category->parent )
                     $class .=  ' current-cat-parent';
             }
-            $output .=  ' class="' . $class . '"';
-            $output .= ">$link\n";
+            $output .=  ' class="' . $class . '">';
+            }
+            $output .= "$link\n";
         } else {
             $output .= "\t$link<br />\n";
         }
