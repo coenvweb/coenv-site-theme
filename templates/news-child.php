@@ -1,9 +1,9 @@
 <?php
 /**
- * index.php
+ Template Name: News Child Page
+ * news-child.php
  *
- * Main template
- * Used for blog posts
+ * Template page used for pages under news
  */
 get_header();
 
@@ -34,26 +34,19 @@ $banner = coenv_banner();
 
 			<main id="main-col" class="main-col">
 
-				<?php get_template_part( 'partials/partial', 'blog-header' ) ?>
-
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'story' ) ?>
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
 
 				<?php endif ?>
 
-				<footer class="pagination">
-					<?php coenv_paginate() ?>
-				</footer>
-
 			</main><!-- .main-col -->
 
 			<div class="side-col">
-                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter Archive', 'newsletter_url' => 'https://environment.uw.edu/news/the-insider-newsletter')); ?>
 				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 

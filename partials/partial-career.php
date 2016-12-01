@@ -45,11 +45,18 @@
             	</span>
             </div>
 		</div>
+        
+        <?php
+        $location = get_field('location');
+        if (isset($location)) {
+            $location= ' - '.$location;
+        }
+        ?>
 
 		<?php if ( is_single() ) : ?>
-			<h1 class="article__title"><?php the_title() ?></h1>
+			<h1 class="article__title"><?php the_title() . $location; ?></h1>
 		<?php else : ?>
-			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
+			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); echo $location; ?></a></h2>
 		<?php endif;
 		$career_tags = get_the_terms($post->ID,'career_category');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
