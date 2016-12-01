@@ -20,8 +20,6 @@ $args = array(
   'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
 
-
-
 ?>
 <a name="filters" id="filters"></a>
 <div id="careers-filter" class="careers-filter">
@@ -29,7 +27,7 @@ $args = array(
 	<div class="filters">
 	<ul>
 	<ul class="cat-filters" id="career-filter">
-		<?php echo get_career_filters(); ?>
+		<?php wp_list_categories($args); ?>
 	</ul>
 	
 	<h4>Subscribe</h4>

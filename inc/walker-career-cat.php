@@ -6,6 +6,29 @@
  *
  */
 
+//Get career Filters
+function get_career_filters()
+{
+    $terms = get_terms('career_category');
+    $filters_html = false;
+ 
+    if( $terms ):
+        $filters_html = '<ul>';
+ 
+        foreach( $terms as $term )
+        {
+            $term_id = $term->term_id;
+            $term_name = $term->name;
+ 
+            $filters_html .= '<li class="term_id_'.$term_id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
+        }
+        $filters_html .= '<li class="clear-all">Clear All</li>';
+        $filters_html .= '</ul>';
+ 
+        return $filters_html;
+    endif;
+}
+
 class CoEnv_Career_Category extends Walker_Category{
     function start_el(&$output, $category, $depth = 0, $args = array(), $current_page = 0) {
         extract($args);
@@ -15,17 +38,12 @@ class CoEnv_Career_Category extends Walker_Category{
         $cat_slug = esc_attr( $category->slug);
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
-            $link = '<a href="/students/career-resources/career-opportunities/career_category/' . $cat_slug . '" ';
-            if ( $use_desc_for_title == 0 || empty($category->description) )
-                $link .= 'title="' . esc_attr( sprintf(__( 'View all posts filed under %s' ), $cat_name) ) . '"';
-            else
-                $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
-            $link .= '>';
+            $link = '<li class="term_id_'.$category->id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">';
         }
             $link .= $cat_name;
  
         if ( $category->parent > 0 ) {
-            $link .= '</a>';
+            $link .= '</li>';
         }
  
         if ( !empty($feed_image) || !empty($feed) ) {

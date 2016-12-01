@@ -40,8 +40,6 @@ jQuery(function($)
             var val = $(this).val();
             careers.push(val); //Push value onto array
         });  
-        
-        console.log(careers);
  
         return careers; //Return all of the selected careers in an array
     }
@@ -90,7 +88,7 @@ jQuery(function($)
             data: {
                 action: 'careers_filter',
                 careers: getSelectedcareers, //Get array of values from previous function
-                search: getSearchValue(), //Retrieve search value using function
+                search: getSearchValue, //Retrieve search value using function
                 paged: paged_value //If paged value is being sent through with function call, store here
             },
             beforeSend: function ()

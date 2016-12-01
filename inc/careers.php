@@ -121,28 +121,6 @@ function enqueue_career_ajax_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_career_ajax_scripts');
 
-//Get career Filters
-function get_career_filters()
-{
-    $terms = get_terms('career_category');
-    $filters_html = false;
- 
-    if( $terms ):
-        $filters_html = '<ul>';
- 
-        foreach( $terms as $term )
-        {
-            $term_id = $term->term_id;
-            $term_name = $term->name;
- 
-            $filters_html .= '<li class="term_id_'.$term_id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
-        }
-        $filters_html .= '<li class="clear-all">Clear All</li>';
-        $filters_html .= '</ul>';
- 
-        return $filters_html;
-    endif;
-}
 
 //Add Ajax Actions
 add_action('wp_ajax_careers_filter', 'careers_filter');
@@ -160,13 +138,12 @@ function careers_filter()
 	$tax_query = ($career_terms) ? array( array(
 		'taxonomy' => 'career_category',
 		'field' => 'id',
-		'terms' => $career_terms
+		'terms' => $career_terms,
+        'operator' => 'AND'
 	) ) : false;
-    
-    $comma_array = implode(',', $tax_query[0]['terms']);
-    echo($comma_array);
 	
 	$search_value = ($query_data['search']) ? $query_data['search'] : false;
+    echo($search_value);
 	
 	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
     
@@ -176,14 +153,8 @@ function careers_filter()
         'post_type' => 'careers',
         'post_status' => 'publish',
         'posts_per_page' => 20,
-        'tax_query' => array(
-          'relation' => 'AND',
-          array(
-              'taxonomy' => 'career_category',
-              'terms' => array($comma_array),
-          ),
-        ),
         's' => $search_value,
+        'tax_query' => $tax_query,
         'paged' => $paged,
         'meta_query' => array(
             'relation'    => 'OR',
