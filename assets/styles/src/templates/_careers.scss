@@ -116,6 +116,24 @@ body.page-template-careers {
 				}
 			}
 		}
+        h3 {
+            font-size: 1.1rem;
+            color: $text-lt;
+            svg {
+                padding-top: 4px;
+                width: 12px;
+            }
+            svg path {
+                fill: $text-lt;
+            }
+            a {
+                text-decoration: none;
+                color: $text-lt;
+                &:hover svg path {
+                    fill: $accent-lt;
+                }
+            }
+        }
 		.results-text {
 			background-color: #eee;
 			border: solid 1px #c5c5c5;
@@ -259,103 +277,47 @@ body.page-template-careers {
 	}
 	.filters {
 		padding: 1rem;
-		form .field-wrap,
-		.select-category {
-			margin-bottom: 1rem;
-			border: solid 1px #999;
-			button[type=submit] {
-				margin-left: solid 1px #999;
-				width: auto !important;
-			}
-		}
-		form .field-wrap input,
-		.select-category {
-			font-size: 14px;
-		}
-		.field-wrap, form.Form--inline, .select-category {
-			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
-			font-size: .75rem;
-			width: 100%;
-			display: block !important;
-			font-size: 14px;
-		}
-        & > ul > .cat-filters > li {
-            display: inline-block;
-            vertical-align: top;
-            margin-bottom: 1rem;
-            a {
-                @extend .button;
-                margin-bottom: .3rem;
-                background: rgba(0,0,0,.1);
+        .children {
+            margin-bottom: 0;
+            margin-top: .5rem;
+            & > .button	 {
+                font-weight: normal;
                 color: $text;
+                background: $white-button;
+                cursor: pointer;
+                margin-bottom: .3rem;
+
+                &:hover {
+                    background: #333;
+                    background: rgba(0,0,0,.3);
+                }
+            }
+            .selected {
+                background-color: $accent!important;
+                color: white!important;
             }
         }
 		ul {
-			margin-left: 0;
 			padding-left: 0;
 			li {
 				font-weight: 600;
 				list-style: none;
 				&.cat-item {
-					margin-bottom: 1rem;
-				}
-				ul {
-					margin-left: 0;
-					&.children {
-						margin-bottom: 0;
-                        margin-top: .5rem;
-					}
-					& > .button	 {
-						margin-bottom: 0 !important;
-						font-weight: normal;
-                        color: $text;
-                        background: $white-button;
-                        cursor: pointer;
-                        
-                        &:hover {
-                            background: #333;
-                            background: rgba(0,0,0,.3);
-                        }
-					}
-                    .selected {
-                        background-color: $accent!important;
-                        color: white!important;
-                    }
+					margin-bottom: .75rem;
 				}
 			}
 		}
 	}
 }
 // Hacking nav to highlight students on careers single
-body.single-careers #menu-main .page-item-32 span>a {
-	background-color: #613ba9;
-	color: #fff !important;
-}
-body.single-careers #menu-main .page-item-32 span>a:before {
-	content: "";
-	display: block;
-	left: 50%;
-	position: absolute;
-	bottom: -14px;
-	right: 0;
-	margin-left: -14px;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-top: 14px solid #613ba9;
-}
-body.single-careers #menu-main .page-item-32 span>a:after {
-	content: none !important;
-}
+
 body.page-template-careers .career-intro {
 	margin-top: 1.5rem;
 }
 .single-careers {
 	.article__content {
 		h2 {
-			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
-
+			@include sans();
 		}
 		a.button {
 			background-color: #613ba9;
@@ -400,9 +362,6 @@ body.page-template-careers .career-intro {
 	.career-terms {
 		float: left;
 		width: 100%;
-		a {
-			color: #5a2baa;
-		}
 	}
 	.career__content {
 		float: left;
