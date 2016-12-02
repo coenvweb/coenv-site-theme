@@ -151,7 +151,7 @@ function careers_filter()
 
         'post_type' => 'careers',
         'post_status' => 'publish',
-        'posts_per_page' => 20,
+        'posts_per_page' => 5,
         's' => $search_value,
         'tax_query' => $tax_query,
         'paged' => $paged,
@@ -179,15 +179,18 @@ function careers_filter()
 			get_template_part( 'partials/partial', 'career' );
 		endwhile;
 		
-		echo '<div class="genre-filter-navigation">';
+		echo '<footer class="pagination"><div class="career-filter-navigation navigation">';
 		$big = 999999999;
 		echo paginate_links( array(
 			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 			'format' => '?paged=%#%',
+            'mid_size' => 1,
+            'prev_text' => '&laquo',
+            'next_text' => '&raquo',
 			'current' => max( 1, $paged ),
 			'total' => $career_loop->max_num_pages
 		) );
-		echo '</div>';	
+		echo '</div></footer>';	
 	else:
 		get_template_part('content-none');
 	endif;
