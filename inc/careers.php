@@ -151,7 +151,7 @@ function careers_filter()
 
         'post_type' => 'careers',
         'post_status' => 'publish',
-        'posts_per_page' => 5,
+        'posts_per_page' => 20,
         's' => $search_value,
         'tax_query' => $tax_query,
         'paged' => $paged,

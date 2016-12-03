@@ -17,7 +17,6 @@ $args = array(
   'title_li'     => $title,
   'walker' 		 => $walker,
   'hide_empty'   => 0,
-  'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814,574,412,863,869'
 );
 
 ?>

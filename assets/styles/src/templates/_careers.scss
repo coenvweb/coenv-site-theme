@@ -253,6 +253,14 @@ body.page-template-careers {
 
 #careers-filter {
 	background-color: rgb(238, 238, 238);
+    
+    &.f-nav {
+        z-index: 9999;
+        position: fixed;
+        width: 262px;
+        top: 0;
+    }
+    
     .sorter-row {
         width: 100%;
         display: table;
@@ -289,7 +297,7 @@ body.page-template-careers {
 
                 &:hover {
                     background: #333;
-                    background: rgba(0,0,0,.3);
+                    background: rgba(0,0,0,.4);
                 }
             }
             .selected {
@@ -309,7 +317,6 @@ body.page-template-careers {
 		}
 	}
 }
-// Hacking nav to highlight students on careers single
 
 body.page-template-careers .career-intro {
 	margin-top: 1.5rem;

@@ -74,6 +74,20 @@ jQuery(function ($) {
     
 });
 
+jQuery("document").ready(function($){
+	
+	var nav = $('#careers-filter');
+	
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 685) {
+			nav.addClass("f-nav");
+		} else {
+			nav.removeClass("f-nav");
+		}
+	});
+ 
+});
+
 /**
  * Banner image reveals
  */
