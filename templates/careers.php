@@ -59,8 +59,8 @@ $ancestor = array(
                                 </form>
                                 <li class="sorter right">Sort By
                                     <ul>
-                                        <li><a class="button <?php echo $post_date_class ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-                                        <li><a class="button <?php echo $deadline_class ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
+                                        <li class="button selected" data-value="postdate">Post date</a></li>
+                                        <li class="button"  data-value="deadline">Deadline</li>
                                     </ul>
                                 </li>
                             </div>

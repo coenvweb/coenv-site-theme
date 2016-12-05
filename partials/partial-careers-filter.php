@@ -25,7 +25,7 @@ $args = array(
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
-	<ul class="cat-filters" id="career-filter">
+	<ul class="ajax-filters" id="career-filter">
 		<?php wp_list_categories($args); ?>
 	</ul>
 	

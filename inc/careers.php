@@ -146,6 +146,9 @@ function careers_filter()
 	
 	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
     
+    $coenv_sort = ($query_data['sorter']) ? $query_data['sorter'] : false;
+    
+    
     // build the query based on $query_args
     $career_args = array(
 
@@ -171,8 +174,31 @@ function careers_filter()
             ),
         )
     );
+    
+        //Sort/*
+	if ($coenv_sort == 'deadline') {
+		$career_args['meta_key'] = '_expiration-date';
+		$career_args['orderby'] = 'meta_value';
+		$career_args['order'] = 'ASC';
+	} else {
+		$career_args['orderby'] = 'date';
+		$career_args['order'] = 'DESC';
+	}
 
 	$career_loop = new WP_Query($career_args);
+		
+    if ( $career_terms ) {
+        echo '<div class="filter-crumbs">';
+        echo '<h3>Filtering for careers tagged:</h3>';
+        foreach ( $career_terms as $term ) {
+            $term = get_term($term);
+            $career_filter_links .= '<li class="button selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
+        }
+        echo $career_filter_links;
+        echo '</div>';
+    }
+    
+    print_r ($search_value);
 	
 	if( $career_loop->have_posts() ):
 		while( $career_loop->have_posts() ): $career_loop->the_post();

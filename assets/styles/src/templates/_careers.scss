@@ -14,8 +14,8 @@ body.page-template-careers {
 	div.container a {
 		color: #421491;
 	} 
-	.career-terms {
-		padding: 1rem 0 1.25rem 0;
+	.keywords {
+		padding: .4rem 0 .5rem 0;
 	}
 	.careers {
 		@include rem('padding', 2);
@@ -116,7 +116,7 @@ body.page-template-careers {
 				}
 			}
 		}
-        h3 {
+        .location {
             font-size: 1.1rem;
             color: $text-lt;
             svg {
@@ -205,29 +205,28 @@ body.page-template-careers {
         li {
             display: inline-block;
             margin-right: -4px;
-            a {
-                border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
                 background: rgba(0,0,0,.1);
                 text-transform: uppercase!important;
                 font-weight: 800;
-                margin-right: 0!important;
                 height: 33px;
                 padding-top: .5rem;
+                cursor: pointer;
                 &:hover {
                     color: $accent;
                 }
-                &.active {
+                &.selected {
                     background-color: $accent;
                     color: white!important;
                 }
-            }
-            &:first-of-type a {
+            &:first-of-type {
                 border-radius: 4px 0 0 4px!important;
+                margin-right: -5px;
             }
         }  
     } 
     form {
-        width: 85%;        
+        width: 75%;        
         margin-bottom: 1rem;
         height: 33px;
         max-width: 580px;
@@ -250,6 +249,45 @@ body.page-template-careers {
 } // .sorter-search-row
 
 // Filters
+#results .status {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: .8rem;
+    line-height: 1;
+    margin: .75rem 0 .5rem;
+    color: #666;
+}
+
+.filter-crumbs {
+    margin: .75rem 0;
+    h3 {
+        text-transform: uppercase;
+		letter-spacing: .1em;
+		font-weight: 600;
+		vertical-align: middle;
+		text-decoration: none;
+		font-size: .8rem;
+		line-height: 1;
+		margin: 0 0 .5rem;
+		color: #666;
+    }
+    .button {
+        cursor: pointer;
+        padding-left: .5rem;
+        margin-right: .25rem;
+        margin-bottom: .25rem;
+        line-height: 2rem;
+        background: rgba(0,0,0,.05);
+    }
+    i {
+        font-size: 1.2rem;
+        position: relative;
+        top: 3px;
+    }
+}
 
 #careers-filter {
 	background-color: rgb(238, 238, 238);
@@ -272,7 +310,6 @@ body.page-template-careers {
 		font-size: 1rem;
 		font-weight: normal;
 		letter-spacing: .05rem;
-		margin-top: 1rem;
 		padding: .5rem 1rem;
 	}
 	h4 {
@@ -339,10 +376,8 @@ body.page-template-careers .career-intro {
 		text-decoration: none;
 		float: left;
 		font-size: .8rem;
-		font-size: .78571rem;
 		line-height: 1;
-		margin: 0 0 7px;
-		margin: 0 0 .5rem;
+		margin: .25rem 0 .5rem;
 		color: #666;
 		width: 70%;
 	}

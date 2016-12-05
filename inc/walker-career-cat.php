@@ -6,29 +6,6 @@
  *
  */
 
-//Get career Filters
-function get_career_filters()
-{
-    $terms = get_terms('career_category');
-    $filters_html = false;
- 
-    if( $terms ):
-        $filters_html = '<ul>';
- 
-        foreach( $terms as $term )
-        {
-            $term_id = $term->term_id;
-            $term_name = $term->name;
- 
-            $filters_html .= '<li class="term_id_'.$term_id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
-        }
-        $filters_html .= '<li class="clear-all">Clear All</li>';
-        $filters_html .= '</ul>';
- 
-        return $filters_html;
-    endif;
-}
-
 class CoEnv_Career_Category extends Walker_Category{
     function start_el(&$output, $category, $depth = 0, $args = array(), $current_page = 0) {
         extract($args);
