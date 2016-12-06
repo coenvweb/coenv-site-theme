@@ -280,6 +280,7 @@ return $newsizes;
  */
 
 require_once locate_template( '/inc/careers.php' );
+require_once locate_template( '/inc/infinite-scroll.php' );
 
 /**
  * Register Staff

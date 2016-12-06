@@ -104,12 +104,21 @@ jQuery(function($)
     });
  
     //Main ajax function
-    function ajax_get_posts(paged)
+    function ajax_get_posts(paged, infinite)
     {
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
         var ajax_url = ajax_career_params.ajax_url; //Get ajax url (added through wp_localize_script)
  
         $.ajax({
+            if(infinite) {
+                  type: 'POST',
+                  data: ajax_career_params.ajax_url, 
+                  success: function(html){
+                      $("#results").append(html);    // This will be the div where our content will be loaded
+                  }
+                $('#results').append(data);
+                return;
+            }
             type: 'GET',
             url: ajax_career_params.ajax_url,
             data: {
@@ -140,4 +149,14 @@ jQuery(function($)
         });
     }
  
+// INFINITE SCROLL
+    
+    var count = 2;
+    $(window).scroll(function(){
+            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+               ajax_get_posts(count, true)
+               count++;
+            }
+    }); 
+
 });
