@@ -245,7 +245,12 @@ body.page-template-careers {
         list-style: none;
         float: right;
         margin-top: -1.5rem;
-        font-weight: 600;
+        text-transform: uppercase;
+		letter-spacing: .1em;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: .8rem;
+		color: #666;
         ul {
             padding: 0;
             margin: 0;
@@ -253,7 +258,7 @@ body.page-template-careers {
     } 
     
     form {
-        width: calc(100% - 266px);        
+        width: calc(100% - 300px);        
         margin-bottom: 1rem;
         height: 35px;
         max-width: 580px;
