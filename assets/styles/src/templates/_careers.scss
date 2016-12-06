@@ -6,6 +6,17 @@ body.page-template-careers {
             padding: 0;
         }
 	}
+    
+    .type-careers {
+        border-bottom: .25rem solid $text-very-lt;
+        margin-bottom: 1.5rem;
+        margin-top: 0rem;
+        padding-left: 0rem;
+        padding-bottom: 1rem;
+        &:first-of-type {
+            margin-top: .4rem;
+        }
+    }
 
 	h1.article__title {
 		margin-bottom: 0;
@@ -14,9 +25,20 @@ body.page-template-careers {
 	div.container a {
 		color: #421491;
 	} 
+    
+    .career-col {
+        margin-top: 0;
+        padding-top: 0;
+        // min-height: 4200px;
+    }
 	.keywords {
 		padding: .4rem 0 .5rem 0;
+        margin: 0;
 	}
+    
+    .career-intro.article__content {
+        min-height: 0;
+    }
 	.careers {
 		@include rem('padding', 2);
 		background: #fff;
@@ -177,9 +199,7 @@ body.page-template-careers {
 			display: none;
 		}
 	} // .career-header
-	.pagination ul {
-		//@extend .shadow;
-	}
+
 	.article .pagination li .current {
 		background-color: #4b2e83;
 		color: #fff;
@@ -191,44 +211,51 @@ body.page-template-careers {
 
 .sorter-search-row {
     width: 100%;
-    .sorter {
-        list-style: none;
-        float: right;
-        margin-top: -1.5rem;
-        font-weight: 600;
-        font-size: 1.1rem;
-        ul {
-            padding: 0;
-            margin: 0;
+    
+    .subscribe {
+        margin-right: 1rem;
+        .button {
+            font-size: 1.4rem!important;
+            height: 35px;
+            padding: .5rem;
+            color: #000;
         }
-        
+    }
+    
+    .sorter {
         li {
-            display: inline-block;
-            margin-right: -4px;
             border-radius: 0 4px 4px 0;
-                background: rgba(0,0,0,.1);
-                text-transform: uppercase!important;
-                font-weight: 800;
-                height: 33px;
-                padding-top: .5rem;
-                cursor: pointer;
-                &:hover {
-                    color: $accent;
-                }
-                &.selected {
-                    background-color: $accent;
-                    color: white!important;
-                }
+            height: 35px;
+            padding-top: .5rem;
+            cursor: pointer;
+            &:hover {
+                color: $accent;
+            }
+            &.selected {
+                background-color: $accent;
+                color: white!important;
+            }
             &:first-of-type {
                 border-radius: 4px 0 0 4px!important;
                 margin-right: -5px;
             }
-        }  
+        }
+    }
+    .sorter, .subscribe {
+        list-style: none;
+        float: right;
+        margin-top: -1.5rem;
+        font-weight: 600;
+        ul {
+            padding: 0;
+            margin: 0;
+        }
     } 
+    
     form {
-        width: 75%;        
+        width: calc(100% - 266px);        
         margin-bottom: 1rem;
-        height: 33px;
+        height: 35px;
         max-width: 580px;
         .field-wrap {
             width: 100%;
@@ -236,12 +263,12 @@ body.page-template-careers {
         }
         input {
             background: rgba(0,0,0,0.05);
-            height: 33px;
+            height: 35px;
         }
         button[type=submit] {
             max-width: 10vw;
-            height: 33px;
-            min-width: 33px;
+            height: 35px;
+            min-width: 35px;
             margin-right: 5px;
             border-radius: 0 4px 4px 0;
         }
@@ -289,14 +316,43 @@ body.page-template-careers {
     }
 }
 
+ul.career-actions {
+    padding-left: 0;
+    li {
+        display: inline;
+        list-style: none;
+        margin-left: 0;
+        a.button {
+            width: calc(50% - .5rem);
+            text-align: center;
+            text-transform: uppercase!important;
+            letter-spacing: .1em;
+            font-weight: 600;
+            vertical-align: middle;
+            text-decoration: none;
+            font-size: 1.1rem!important;
+            line-height: 1.5rem;
+            padding: .5rem;
+            span {
+                display: block;
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
 #careers-filter {
 	background-color: rgb(238, 238, 238);
     
-    &.f-nav {
+    f-nav & {
         z-index: 9999;
         position: fixed;
         width: 262px;
         top: 0;
+        .filters {
+            max-height: 100vh;
+            overflow: scroll;
+        }
     }
     
     .sorter-row {
@@ -312,14 +368,7 @@ body.page-template-careers {
 		letter-spacing: .05rem;
 		padding: .5rem 1rem;
 	}
-	h4 {
-		font-family: open-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-size: 1rem;
-		margin-bottom: .5rem;
-	}
-	ul.subscribe li {
-		display: inline;
-	}
+
 	.filters {
 		padding: 1rem;
         .children {
@@ -331,10 +380,10 @@ body.page-template-careers {
                 background: $white-button;
                 cursor: pointer;
                 margin-bottom: .3rem;
+                line-height: 2rem;
 
                 &:hover {
-                    background: #333;
-                    background: rgba(0,0,0,.4);
+                    background: #363533;
                 }
             }
             .selected {

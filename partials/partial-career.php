@@ -72,8 +72,8 @@
 		<?php echo '<p class="keywords">Keywords: ' . $career_tag_links . '</p>'; ?>
 		</div>
 		<?php endif; ?>
-		<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button editor" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	</header>
+<?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button editor" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this post</a>'; } ?>
 	
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>

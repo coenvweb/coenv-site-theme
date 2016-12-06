@@ -37,7 +37,6 @@ jQuery(function($)
     function getSortValue()
     {
         var sortValue = $('.sorter .selected').data('value'); //Get sorter button value
-        console.log(sortValue);
         return sortValue;
     }
     
@@ -63,18 +62,23 @@ jQuery(function($)
             var val = $(this).val();
             careers.push(val); //Push value onto array
         });
-        console.log(careers);
         return careers; //Return all of the selected careers in an array
     }
  
     //Fire ajax request when typing in search
-    $('#career-search input.text-search').live('keyup', function(e){
+    $('#post-search input.text-search').live('keyup', function(e){
         if( e.keyCode == 27 )
         {
             $(this).val(''); //If 'escape' was pressed, clear value
         }
  
         ajax_get_posts(); //Load Posts
+    });
+    
+    $('.filter-crumbs .search-filter').live('click', function(){
+        $('.search-filter').remove();
+        $('#post-search input.text-search').val('');
+        ajax_get_posts();
     });
  
     $('#submit-search').live('click', function(e){
@@ -85,7 +89,7 @@ jQuery(function($)
     //Get Search Form Values
     function getSearchValue()
     {
-        var searchValue = $('#career-search input.text-search').val(); //Get search form text input value
+        var searchValue = $('#post-search input.text-search').val(); //Get search form text input value
         return searchValue;
     }
  

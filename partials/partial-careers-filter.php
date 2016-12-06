@@ -28,11 +28,5 @@ $args = array(
 	<ul class="ajax-filters" id="career-filter">
 		<?php wp_list_categories($args); ?>
 	</ul>
-	
-	<h4>Subscribe</h4>
-	<ul class="subscribe">
-		<li><a href="/students/career-resources/career-opportunities/subscribe-via-email/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
-		<li><a href="/feed/?post_type=careers"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
-	</ul>
 </div>
 </div><!-- #blog-header -->

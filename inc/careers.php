@@ -130,8 +130,6 @@ add_action('wp_ajax_nopriv_careers_filter', 'careers_filter');
 function careers_filter()
 {
 	$query_data = $_GET;
-    
-
 	
 	$career_terms = ($query_data['careers']) ? explode(',',$query_data['careers']) : false;
 	
@@ -187,7 +185,7 @@ function careers_filter()
 
 	$career_loop = new WP_Query($career_args);
 		
-    if ( $career_terms ) {
+    if ( $career_terms || $search_value) {
         echo '<div class="filter-crumbs">';
         echo '<h3>Filtering for careers tagged:</h3>';
         foreach ( $career_terms as $term ) {
@@ -195,10 +193,11 @@ function careers_filter()
             $career_filter_links .= '<li class="button selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
         }
         echo $career_filter_links;
+        if ($search_value) {
+        echo '<li class="button selected search-filter" name="filter_career[]"><i class="icon-cross"></i> Results containing "' . $search_value . '"</li>';
+        }
         echo '</div>';
     }
-    
-    print_r ($search_value);
 	
 	if( $career_loop->have_posts() ):
 		while( $career_loop->have_posts() ): $career_loop->the_post();
@@ -218,7 +217,7 @@ function careers_filter()
 		) );
 		echo '</div></footer>';	
 	else:
-		get_template_part('content-none');
+		echo '<p>Sorry, no career opportunities were found matching all your criteria.</p>';
 	endif;
 	wp_reset_postdata();
 	
