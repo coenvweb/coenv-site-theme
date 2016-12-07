@@ -84,6 +84,13 @@ $ancestor = array(
 								<?php endif ?>
 
 							</header>
+                                
+                                <?php
+        $location = get_field('location');
+        if (isset($location)) {
+            $location= ' - '.$location;
+        }
+        ?>
 
 							<section class="article__content">
 								<div class="post-info">
@@ -100,7 +107,7 @@ $ancestor = array(
                                         Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
                                     <?php } ?>               	
 					                </span>            	
-									<h2><?php the_title() ?></h2>
+									<h2><?php the_title(); echo $location; ?></h2>
 								</div>
 								
 								<p class="back"><a class="button" href="/students/career-resources/career-funding-opportunities/">Back to Career Opportunities</a></p>

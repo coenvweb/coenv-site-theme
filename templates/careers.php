@@ -47,51 +47,62 @@ $ancestor = array(
 					<header class="article__header">
 						<div class="article__meta">
 							<h1 class="article__title">Career Opportunities</h1>
-							<div class="career-intro">
+							<div class="career-intro article__content">
 							<?php the_content(); ?>
+                            <ul class="career-actions">
+                                <li><a class="button" href="/for-employers/"><span>Employers</span> Post an Opportunity</a></li>
+                                <li><a class="button" href="#filters"><span>Students</span> Begin your Search</a></li>
+                            </ul>
 							</div>
-                            <div class="sorter-search-row">
-                                <form role="search" class="search-form Form--inline" id="career-search">
-                                  <div class="field-wrap">
-                                    <input type="text" name="st" id="st" placeholder="Search" class="text-search" />
-                                    <input type="submit" value="Search" id="submit-search" />
-                                  </div>
-                                </form>
-                                <li class="sorter right">Sort By
-                                    <ul>
-                                        <li><a class="button <?php echo $post_date_class ?>" href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-                                        <li><a class="button <?php echo $deadline_class ?>" href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
-                                    </ul>
-                                </li>
-                            </div>
-
-<div id="career-results">
-					<?php
-    if( have_posts() ):
-        while( have_posts() ): the_post(); ?>
-
-						<?php get_template_part( 'partials/partial', 'career' ); ?>
-
-					<?php endwhile ?>
-				<?php else: ?>
-					<div class="no-results">
-						<p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
-					</div>
-				<?php endif ?>
-    </div>
+                        </div>
+                    </header>
+                </div>
+            </main><!-- .main-col -->
+            		</div><!-- .container -->
+        <div class="container">
+            <div class="career-col main-col article">
+                <div class="sorter-search-row">
+                    <form role="search" class="search-form Form--inline" id="post-search">
+                      <div class="field-wrap">
+                        <input type="text" name="st" id="st" placeholder="Search" class="text-search" />
+                        <button id="submit-search" type="submit"><i class="icon-search"></i><span>Search</span></button>
+                      </div>
+                    </form>
+                    <li class="sorter right">Sort By
+                        <ul>
+                            <li class="button selected" data-value="postdate">Post date</a></li>
+                            <li class="button"  data-value="deadline">Deadline</li>
+                        </ul>
+                    </li>
+                    <li class="subscribe">Subscribe
+                    <ul>
+                        <a class="button" href="/students/career-resources/career-opportunities/subscribe-via-email/"><i class="icon-mail"></i></a>
+                        <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
+                    </ul></li>
+                </div>
+                <div id="results">
+                    <?php
+                    if( have_posts() ):
+                        while( have_posts() ): the_post(); ?>
+                            <?php get_template_part( 'partials/partial', 'career' ); ?>
+                        <?php endwhile ?>
+                    <?php else: ?>
+                        <div class="no-results">
+                            <p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
+                        </div>
+                    <?php endif ?>
+                </div>
+                
                 <footer class="pagination">
-					<?php coenv_paginate() ?>
-				</footer>
+                    <?php coenv_paginate() ?>
+                </footer>
 
-			</div>
-
-			</main><!-- .main-col -->
-
-			<div class="side-col">
+                
+            </div><!-- .career-col -->
+            <div class="side-col">
                 <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
-			</div><!-- .side-col -->
-
-		</div><!-- .container -->
+            </div><!-- .side-col -->
+        </div><!-- .container -->
 
 	</section><!-- #page -->
 

@@ -15,17 +15,12 @@ class CoEnv_Career_Category extends Walker_Category{
         $cat_slug = esc_attr( $category->slug);
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
-            $link = '<a href="/students/career-resources/career-opportunities/career_category/' . $cat_slug . '" ';
-            if ( $use_desc_for_title == 0 || empty($category->description) )
-                $link .= 'title="' . esc_attr( sprintf(__( 'View all posts filed under %s' ), $cat_name) ) . '"';
-            else
-                $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
-            $link .= '>';
+            $link = '<li class="term_id_'.$category->term_id.' button"  name="filter_career[]" value="'.$category->term_id.'">';
         }
             $link .= $cat_name;
  
         if ( $category->parent > 0 ) {
-            $link .= '</a>';
+            $link .= '</li>';
         }
  
         if ( !empty($feed_image) || !empty($feed) ) {
@@ -65,6 +60,7 @@ class CoEnv_Career_Category extends Walker_Category{
             $link .= ' ' . gmdate('Y-m-d', $category->last_update_timestamp);
  
         if ( 'list' == $args['style'] ) {
+            if ( $category->parent == 0 ) {
             $output .= "\t<li";
             $class = 'cat-item cat-item-' . $category->term_id;
             if ( !empty($current_category) ) {
@@ -74,8 +70,9 @@ class CoEnv_Career_Category extends Walker_Category{
                 elseif ( $category->term_id == $_current_category->parent )
                     $class .=  ' current-cat-parent';
             }
-            $output .=  ' class="' . $class . '"';
-            $output .= ">$link\n";
+            $output .=  ' class="' . $class . '">';
+            }
+            $output .= "$link\n";
         } else {
             $output .= "\t$link<br />\n";
         }

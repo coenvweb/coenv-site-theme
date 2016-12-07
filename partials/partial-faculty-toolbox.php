@@ -72,9 +72,11 @@ $ordered_themes = $themes;
 							<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#theme-all">All Research Themes</option>
 
 							<?php foreach ( $themes as $theme ) : ?>
+                                <?php if (!$theme['count'] == 0) : ?>
 
 								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
-
+                            
+                                <? endif; ?>
 							<?php endforeach ?>
 
 						</select>

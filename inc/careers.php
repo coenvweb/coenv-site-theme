@@ -121,28 +121,6 @@ function enqueue_career_ajax_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_career_ajax_scripts');
 
-//Get career Filters
-function get_career_filters()
-{
-    $terms = get_terms('career_category');
-    $filters_html = false;
- 
-    if( $terms ):
-        $filters_html = '<ul>';
- 
-        foreach( $terms as $term )
-        {
-            $term_id = $term->term_id;
-            $term_name = $term->name;
- 
-            $filters_html .= '<li class="term_id_'.$term_id.' button"><input type="checkbox" name="filter_career[]" value="'.$term_id.'">'.$term_name.'</li>';
-        }
-        $filters_html .= '<li class="clear-all">Clear All</li>';
-        $filters_html .= '</ul>';
- 
-        return $filters_html;
-    endif;
-}
 
 //Add Ajax Actions
 add_action('wp_ajax_careers_filter', 'careers_filter');
@@ -152,38 +130,31 @@ add_action('wp_ajax_nopriv_careers_filter', 'careers_filter');
 function careers_filter()
 {
 	$query_data = $_GET;
-    
-
 	
-	$career_terms = ($query_data['careers']) ? explode(',',$query_data['careers']) : false;
+	$career_terms = ($query_data['terms']) ? explode(',',$query_data['terms']) : false;
 	
 	$tax_query = ($career_terms) ? array( array(
 		'taxonomy' => 'career_category',
 		'field' => 'id',
-		'terms' => $career_terms
+		'terms' => $career_terms,
+        'operator' => 'AND'
 	) ) : false;
-    
-    $comma_array = implode(',', $tax_query[0]['terms']);
-    echo($comma_array);
 	
 	$search_value = ($query_data['search']) ? $query_data['search'] : false;
 	
 	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
+    
+    $coenv_sort = ($query_data['sorter']) ? $query_data['sorter'] : false;
+    
     
     // build the query based on $query_args
     $career_args = array(
 
         'post_type' => 'careers',
         'post_status' => 'publish',
-        'posts_per_page' => 20,
-        'tax_query' => array(
-          'relation' => 'AND',
-          array(
-              'taxonomy' => 'career_category',
-              'terms' => array($comma_array),
-          ),
-        ),
+        'posts_per_page' => 5,
         's' => $search_value,
+        'tax_query' => $tax_query,
         'paged' => $paged,
         'meta_query' => array(
             'relation'    => 'OR',
@@ -201,25 +172,37 @@ function careers_filter()
             ),
         )
     );
+    
+        //Sort/*
+	if ($coenv_sort == 'deadline') {
+		$career_args['meta_key'] = '_expiration-date';
+		$career_args['orderby'] = 'meta_value';
+		$career_args['order'] = 'ASC';
+	} else {
+		$career_args['orderby'] = 'date';
+		$career_args['order'] = 'DESC';
+	}
 
 	$career_loop = new WP_Query($career_args);
+		
+    if ( ($career_terms || $search_value) && ($paged == 1)) {
+        echo '<div class="filter-crumbs">';
+        echo '<h3>' . $career_loop->found_posts . ' careers tagged:</h3>';
+        foreach ( $career_terms as $term ) {
+            $term = get_term($term);
+            $career_filter_links .= '<li class="button selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
+        }
+        echo $career_filter_links;
+        if ($search_value) {
+        echo '<li class="button selected search-filter" name="filter_career[]"><i class="icon-cross"></i> Results containing "' . $search_value . '"</li>';
+        }
+        echo '</div>';
+    }
 	
 	if( $career_loop->have_posts() ):
 		while( $career_loop->have_posts() ): $career_loop->the_post();
 			get_template_part( 'partials/partial', 'career' );
-		endwhile;
-		
-		echo '<div class="genre-filter-navigation">';
-		$big = 999999999;
-		echo paginate_links( array(
-			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format' => '?paged=%#%',
-			'current' => max( 1, $paged ),
-			'total' => $career_loop->max_num_pages
-		) );
-		echo '</div>';	
-	else:
-		get_template_part('content-none');
+		endwhile;		
 	endif;
 	wp_reset_postdata();
 	
