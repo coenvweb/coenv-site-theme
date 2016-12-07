@@ -54,15 +54,15 @@ jQuery(function($)
     });
  
     //Find Selected careers
-    function getSelectedcareers()
+    function getSelectedterms()
     {
-        var careers = []; //Setup empty array
+        var terms = []; //Setup empty array
  
         $(".ajax-filters li .selected").each(function() {
             var val = $(this).val();
-            careers.push(val); //Push value onto array
+            terms.push(val); //Push value onto array
         });
-        return careers; //Return all of the selected careers in an array
+        return terms; //Return all of the selected terms in an array
     }
  
     //Fire ajax request when typing in search
@@ -108,55 +108,73 @@ jQuery(function($)
     {
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
         var ajax_url = ajax_career_params.ajax_url; //Get ajax url (added through wp_localize_script)
- 
-        $.ajax({
-            if(infinite) {
-                  type: 'POST',
-                  data: ajax_career_params.ajax_url, 
-                  success: function(html){
-                      $("#results").append(html);    // This will be the div where our content will be loaded
+        
+        if(infinite) {
+            console.log(paged_value);
+            $.ajax({
+                  url: ajax_career_params.ajax_url,
+                  type:'GET',
+                  data: {
+                    action: 'careers_filter',
+                    terms: getSelectedterms, //Get array of values from previous function
+                    search: getSearchValue, //Retrieve search value using function
+                    paged: paged_value, //If paged value is being sent through with function call, store here
+                    sorter: getSortValue
+                  },
+                beforeSend: function ()
+                {
+                    //You could show a loader here
+                    $("#results").append('<p class="status">Loading additional results...</p>');
+                },
+                  success: function(data){
+                      $('.status').remove();
+                      $("#results").append(data);    // This will be the div where our content will be loaded
+                      ignore_scroll = false;
                   }
-                $('#results').append(data);
-                return;
-            }
-            type: 'GET',
-            url: ajax_career_params.ajax_url,
-            data: {
-                action: 'careers_filter',
-                careers: getSelectedcareers, //Get array of values from previous function
-                search: getSearchValue, //Retrieve search value using function
-                paged: paged_value, //If paged value is being sent through with function call, store here
-                sorter: getSortValue
-            },
-            beforeSend: function ()
-            {
-                //You could show a loader here
-                $("#results").html('<p class="status">Loading results...</p>');
-            },
-            success: function(data)
-            {
-                //Hide loader here
-                $('#results').html(data);
-                if(data == '') {
-                    $("#results").html('<p class="status">No results found.</p>');
-                }
-            },
-            error: function()
-            {
-                                //If an ajax error has occured, do something here...
-                $("#results").html('<p>There has been an error</p>');
-            }
-        });
-    }
+              });
+            } else {
  
-// INFINITE SCROLL
-    
-    var count = 2;
-    $(window).scroll(function(){
-            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-               ajax_get_posts(count, true)
-               count++;
-            }
-    }); 
+            $.ajax({
 
+                type: 'GET',
+                url: ajax_career_params.ajax_url,
+                data: {
+                    action: 'careers_filter',
+                    terms: getSelectedterms, //Get array of values from previous function
+                    search: getSearchValue, //Retrieve search value using function
+                    paged: paged_value, //If paged value is being sent through with function call, store here
+                    sorter: getSortValue
+                },
+                beforeSend: function ()
+                {
+                    //You could show a loader here
+                    $("#results").html('<p class="status">Loading results...</p>');
+                },
+                success: function(data)
+                {
+                    //Hide loader here
+                    $('#results').html(data);
+                    if(data == '') {
+                        $("#results").html('<p class="status">No results found.</p>');
+                    }
+                    var count = 2;
+                    $(window).scroll(function(){
+                        if(ignore_scroll == 'undefined' && (($('#results').offset().top + $('#results').height()) > ($(window).height() - $(window).scrollTop()))) {
+                        ignore_scroll = true;
+                           ajax_get_posts(count, true)
+                           count++;
+                        }
+                    }); 
+
+                },
+                error: function()
+                {
+                                    //If an ajax error has occured, do something here...
+                    $("#results").html('<p>There has been an error</p>');
+                }
+            });
+        };
+    }
+    
+   
 });

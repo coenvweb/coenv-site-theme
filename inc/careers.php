@@ -131,7 +131,7 @@ function careers_filter()
 {
 	$query_data = $_GET;
 	
-	$career_terms = ($query_data['careers']) ? explode(',',$query_data['careers']) : false;
+	$career_terms = ($query_data['terms']) ? explode(',',$query_data['terms']) : false;
 	
 	$tax_query = ($career_terms) ? array( array(
 		'taxonomy' => 'career_category',
@@ -152,7 +152,7 @@ function careers_filter()
 
         'post_type' => 'careers',
         'post_status' => 'publish',
-        'posts_per_page' => 20,
+        'posts_per_page' => 5,
         's' => $search_value,
         'tax_query' => $tax_query,
         'paged' => $paged,
@@ -185,9 +185,9 @@ function careers_filter()
 
 	$career_loop = new WP_Query($career_args);
 		
-    if ( $career_terms || $search_value) {
+    if ( ($career_terms || $search_value) && ($paged == 1)) {
         echo '<div class="filter-crumbs">';
-        echo '<h3>Filtering for careers tagged:</h3>';
+        echo '<h3>' . $career_loop->found_posts . ' careers tagged:</h3>';
         foreach ( $career_terms as $term ) {
             $term = get_term($term);
             $career_filter_links .= '<li class="button selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
@@ -202,22 +202,7 @@ function careers_filter()
 	if( $career_loop->have_posts() ):
 		while( $career_loop->have_posts() ): $career_loop->the_post();
 			get_template_part( 'partials/partial', 'career' );
-		endwhile;
-		
-		echo '<footer class="pagination"><div class="career-filter-navigation navigation">';
-		$big = 999999999;
-		echo paginate_links( array(
-			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format' => '?paged=%#%',
-            'mid_size' => 1,
-            'prev_text' => '&laquo',
-            'next_text' => '&raquo',
-			'current' => max( 1, $paged ),
-			'total' => $career_loop->max_num_pages
-		) );
-		echo '</div></footer>';	
-	else:
-		echo '<p>Sorry, no career opportunities were found matching all your criteria.</p>';
+		endwhile;		
 	endif;
 	wp_reset_postdata();
 	
