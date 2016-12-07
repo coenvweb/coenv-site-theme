@@ -118,7 +118,7 @@ function add_custom_fields_to_rss() {
     if(get_post_type() == 'careers' ) {
         $my_meta_value = get_field('location', get_the_ID());
         ?>
-        <source url="https://environment.uw.edu/"><?php echo $my_meta_value ?></source>
+        <source url="https://environment.uw.edu/"><?php echo htmlspecialchars($my_meta_value) ?></source>
         <?php
     }
 }
