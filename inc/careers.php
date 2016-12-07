@@ -115,10 +115,10 @@ add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns'
 
 
 function add_custom_fields_to_rss() {
-    if(get_post_type() == 'career' ) {
+    if(get_post_type() == 'careers' ) {
         $my_meta_value = get_field('location', get_the_ID());
         ?>
-        <location><?php echo $my_meta_value ?></location>
+        <source><?php echo $my_meta_value ?></source>
         <?php
     }
 }
