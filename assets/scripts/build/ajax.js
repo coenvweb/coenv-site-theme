@@ -2,6 +2,7 @@
 jQuery(function($)
 {
     //Load posts on document ready
+    var ignore_scroll = false;
     ajax_get_posts();
  
     //If list item is clicked, trigger input change and add css class
@@ -159,12 +160,13 @@ jQuery(function($)
                     }
                     var count = 2;
                     $(window).scroll(function(){
-                        if(ignore_scroll == 'undefined' && (($('#results').offset().top + $('#results').height()) > ($(window).height() - $(window).scrollTop()))) {
-                        ignore_scroll = true;
+                        console.log(ignore_scroll);
+                        if(ignore_scroll == false && (($('#results').offset().top + $('#results').height()) < ($(window).height() + $(window).scrollTop()))) {
+                            ignore_scroll = true;
                            ajax_get_posts(count, true)
                            count++;
                         }
-                    }); 
+                    });
 
                 },
                 error: function()
