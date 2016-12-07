@@ -200,6 +200,7 @@ function careers_filter()
     }
 	
 	if( $career_loop->have_posts() ):
+        echo '<span id="counter" data-page-count="' . $career_loop->max_num_pages . '"></span>';
 		while( $career_loop->have_posts() ): $career_loop->the_post();
 			get_template_part( 'partials/partial', 'career' );
 		endwhile;		

@@ -111,7 +111,6 @@ jQuery(function($)
         var ajax_url = ajax_career_params.ajax_url; //Get ajax url (added through wp_localize_script)
         
         if(infinite) {
-            console.log(paged_value);
             $.ajax({
                   url: ajax_career_params.ajax_url,
                   type:'GET',
@@ -130,7 +129,7 @@ jQuery(function($)
                   success: function(data){
                       $('.status').remove();
                       $("#results").append(data);    // This will be the div where our content will be loaded
-                      ignore_scroll = false;
+                      if (data) ignore_scroll = false;
                   }
               });
             } else {
@@ -159,11 +158,15 @@ jQuery(function($)
                         $("#results").html('<p class="status">No results found.</p>');
                     }
                     var count = 2;
+                    var total = $('#counter').data('page-count');
                     $(window).scroll(function(){
-                        console.log(ignore_scroll);
                         if(ignore_scroll == false && (($('#results').offset().top + $('#results').height()) < ($(window).height() + $(window).scrollTop()))) {
                             ignore_scroll = true;
-                           ajax_get_posts(count, true)
+                            if (count > total){
+                                return false;
+                            }else {
+                                ajax_get_posts(count, true)
+                            }
                            count++;
                         }
                     });
