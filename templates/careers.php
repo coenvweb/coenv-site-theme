@@ -70,8 +70,8 @@ $ancestor = array(
                     </form>
                     <li class="sorter right">Sort By
                         <ul>
-                            <li class="button selected" data-value="postdate">Post date</a></li>
-                            <li class="button"  data-value="deadline">Deadline</li>
+                            <li class="button selected" data-value="postdate" aria-pressed="true">Post date</a></li>
+                            <li class="button"  data-value="deadline" aria-pressed="false">Deadline</li>
                         </ul>
                     </li>
                     <li class="subscribe">Subscribe
@@ -80,7 +80,7 @@ $ancestor = array(
                         <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
                     </ul></li>
                 </div>
-                <div id="results" data-action="careers_filter">
+                <div id="results" data-action="careers_filter" aria-live="polite">
                     <?php
                     if( have_posts() ):
                         while( have_posts() ): the_post(); ?>

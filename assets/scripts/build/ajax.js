@@ -19,11 +19,11 @@ jQuery(function($)
         }
         else if ($(this).hasClass('selected') )
         {
-            $(this).removeClass('selected');
+            $(this).removeClass('selected').attr('aria-pressed', false);
             count = 2;
             
         } else {
-            $(this).addClass('selected');
+            $(this).addClass('selected').attr('aria-pressed', true);
         }
         
         $(this).change();
@@ -32,8 +32,8 @@ jQuery(function($)
     // sort your posts and if clicked, make selection selected
     $('.sorter ul li').live('click', function(){
         if (!$(this).hasClass('selected') ) {
-            $('.sorter ul li').removeClass('selected');
-            $(this).addClass('selected');
+            $('.sorter ul li').not(this).removeClass('selected').attr('aria-pressed', false);
+            $(this).attr('aria-pressed', true).addClass('selected');
             ajax_get_posts();
         }
         

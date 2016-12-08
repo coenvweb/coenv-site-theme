@@ -21,7 +21,7 @@ $args = array(
 
 ?>
 <a name="filters" id="filters"></a>
-<div id="careers-filter" class="careers-filter">
+<div id="careers-filter" class="careers-filter" aria-controls="results" aria-multiselectable="true">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
 	<ul>
