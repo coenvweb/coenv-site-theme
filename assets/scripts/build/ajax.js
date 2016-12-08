@@ -1,4 +1,4 @@
-//career Ajax Filtering
+//Universal Ajax Filtering
 jQuery(function($)
 {
     //Load posts on document ready
@@ -54,7 +54,7 @@ jQuery(function($)
         ajax_get_posts(); //Load Posts
     });
  
-    //Find Selected careers
+    //Find Selected terms
     function getSelectedterms()
     {
         var terms = []; //Setup empty array
@@ -95,7 +95,7 @@ jQuery(function($)
     }
  
     //If pagination is clicked, load correct posts
-    $('.career-filter-navigation a').live('click', function(e){
+    $('.pagination a').live('click', function(e){
         e.preventDefault();
  
         var url = $(this).attr('href'); //Grab the URL destination as a string
@@ -108,14 +108,15 @@ jQuery(function($)
     function ajax_get_posts(paged, infinite)
     {
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
-        var ajax_url = ajax_career_params.ajax_url; //Get ajax url (added through wp_localize_script)
+        var ajax_url = ajax_params.ajax_url; //Get ajax url (added through wp_localize_script)
+        var action = $('#results').data('action');
         
         if(infinite) {
             $.ajax({
-                  url: ajax_career_params.ajax_url,
+                  url: ajax_params.ajax_url,
                   type:'GET',
                   data: {
-                    action: 'careers_filter',
+                    action: action,
                     terms: getSelectedterms, //Get array of values from previous function
                     search: getSearchValue, //Retrieve search value using function
                     paged: paged_value, //If paged value is being sent through with function call, store here
@@ -137,9 +138,9 @@ jQuery(function($)
             $.ajax({
 
                 type: 'GET',
-                url: ajax_career_params.ajax_url,
+                url: ajax_params.ajax_url,
                 data: {
-                    action: 'careers_filter',
+                    action: action,
                     terms: getSelectedterms, //Get array of values from previous function
                     search: getSearchValue, //Retrieve search value using function
                     paged: paged_value, //If paged value is being sent through with function call, store here

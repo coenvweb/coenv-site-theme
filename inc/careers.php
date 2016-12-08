@@ -113,14 +113,6 @@ function mbe_change_sortable_columns($columns){
 }
 add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns');
 
-//Enqueue Ajax Scripts
-function enqueue_career_ajax_scripts() {
-    wp_register_script( 'career-ajax-js', get_bloginfo('template_url') . '/assets/scripts/build/ajax.js', array( 'jquery' ), '', true );
-    wp_localize_script( 'career-ajax-js', 'ajax_career_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
-		wp_enqueue_script( 'career-ajax-js' );
-}
-add_action('wp_enqueue_scripts', 'enqueue_career_ajax_scripts');
-
 
 //Add Ajax Actions
 add_action('wp_ajax_careers_filter', 'careers_filter');

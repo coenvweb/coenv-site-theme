@@ -80,7 +80,7 @@ $ancestor = array(
                         <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
                     </ul></li>
                 </div>
-                <div id="results">
+                <div id="results" data-action="careers_filter">
                     <?php
                     if( have_posts() ):
                         while( have_posts() ): the_post(); ?>

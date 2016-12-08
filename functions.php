@@ -11,6 +11,8 @@ require_once locate_template( '/inc/walker-career-cat.php' );
 
 require_once locate_template( '/inc/rewrites.php' );
 
+require_once locate_template( '/inc/ajax.php' );
+
 /**
  * Print styles and scripts in header and footer
  */
