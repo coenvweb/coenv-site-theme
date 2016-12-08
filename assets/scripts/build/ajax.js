@@ -1,9 +1,12 @@
+ if ( $('body').hasClass('page-template-careers') ) { //only run on careers template page
+
 //Universal Ajax Filtering
 jQuery(function($)
 {
     //Load posts on document ready
     var ignore_scroll = false;
     var count = 2;
+    
     ajax_get_posts();
  
     //If list item is clicked, trigger input change and add css class
@@ -56,6 +59,7 @@ jQuery(function($)
  
     //If input is changed, load posts
     $('.ajax-filters, .filter-crumbs').change( function(){
+        count = 2;
         ajax_get_posts(); //Load Posts
     });
  
@@ -91,6 +95,7 @@ jQuery(function($)
 
     $('#submit-search').live('click', function(e){
         e.preventDefault();
+        count = 2;
         ajax_get_posts(); //Load Posts
     });
  
@@ -102,14 +107,14 @@ jQuery(function($)
     }
  
     //If pagination is clicked, load correct posts
-    $('.pagination a').live('click', function(e){
-        e.preventDefault();
+    //$('.pagination a').live('click', function(e){
+      //  e.preventDefault();
  
-        var url = $(this).attr('href'); //Grab the URL destination as a string
-        var paged = url.split('&paged='); //Split the string at the occurance of &paged=
+        //var url = $(this).attr('href'); //Grab the URL destination as a string
+        //var paged = url.split('&paged='); //Split the string at the occurance of &paged=
  
-        ajax_get_posts(paged[1]); //Load Posts (feed in paged value)
-    });
+        //ajax_get_posts(paged[1]); //Load Posts (feed in paged value)
+    //});
  
     //Main ajax function
     function ajax_get_posts(paged, infinite)
@@ -172,12 +177,9 @@ jQuery(function($)
                     var total = $('#counter').data('page-count');
                     $(window).scroll(function(){
                         if(ignore_scroll == false && (($('#results').offset().top + $('#results').height()) < ($(window).height() + $(window).scrollTop()))) {
-                            console.log('gonna try to get more posts page'+count);
                             if (count > total){
-                                console.log('fail: count is greater than total number of pages'+total);
                                 return false;
                             }else {
-                                console.log('trying to get more posts because we havent hit'+total);
                                 ignore_scroll = true;
                                 ajax_get_posts(count, true)
                             }
@@ -197,3 +199,4 @@ jQuery(function($)
     
    
 });
+};
