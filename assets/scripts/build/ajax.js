@@ -3,6 +3,7 @@ jQuery(function($)
 {
     //Load posts on document ready
     var ignore_scroll = false;
+    var count = 2;
     ajax_get_posts();
  
     //If list item is clicked, trigger input change and add css class
@@ -16,6 +17,7 @@ jQuery(function($)
         else if ($(this).hasClass('selected') )
         {
             $(this).removeClass('selected');
+            count = 2;
             
         } else {
             $(this).addClass('selected');
@@ -24,6 +26,7 @@ jQuery(function($)
         $(this).change();
     });
     
+    // sort your posts and if clicked, make selection selected
     $('.sorter ul li').live('click', function(){
         if (!$(this).hasClass('selected') ) {
             $('.sorter ul li').removeClass('selected');
@@ -41,11 +44,13 @@ jQuery(function($)
         return sortValue;
     }
     
+    // show breadcrumbs for filtered terms and allow them to be removed by clicking to unselect
     $('.filter-crumbs .selected').live('click', function(){
         var crumbVal = $(this).val();
         var preClass = '.term_id_';
         crumbVal = preClass+crumbVal;
         $(crumbVal).removeClass('selected');
+        count = 2;
         ajax_get_posts();
     });
  
@@ -72,16 +77,18 @@ jQuery(function($)
         {
             $(this).val(''); //If 'escape' was pressed, clear value
         }
- 
+        count = 2;
         ajax_get_posts(); //Load Posts
     });
     
+    // when search filter breadcrumb is clicked on, clear the searchbox
     $('.filter-crumbs .search-filter').live('click', function(){
         $('.search-filter').remove();
         $('#post-search input.text-search').val('');
+        count = 2;
         ajax_get_posts();
     });
- 
+
     $('#submit-search').live('click', function(e){
         e.preventDefault();
         ajax_get_posts(); //Load Posts
@@ -109,7 +116,7 @@ jQuery(function($)
     {
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
         var ajax_url = ajax_params.ajax_url; //Get ajax url (added through wp_localize_script)
-        var action = $('#results').data('action');
+        var action = $('#results').data('action'); //get wordpress php function for posts - e.g. career-action
         
         if(infinite) {
             $.ajax({
@@ -134,6 +141,10 @@ jQuery(function($)
                   }
               });
             } else {
+            
+            if (count > 2 ) {
+                count = 2;
+            }
  
             $.ajax({
 
@@ -158,14 +169,16 @@ jQuery(function($)
                     if(data == '') {
                         $("#results").html('<p class="status">No results found.</p>');
                     }
-                    var count = 2;
                     var total = $('#counter').data('page-count');
                     $(window).scroll(function(){
                         if(ignore_scroll == false && (($('#results').offset().top + $('#results').height()) < ($(window).height() + $(window).scrollTop()))) {
-                            ignore_scroll = true;
+                            console.log('gonna try to get more posts page'+count);
                             if (count > total){
+                                console.log('fail: count is greater than total number of pages'+total);
                                 return false;
                             }else {
+                                console.log('trying to get more posts because we havent hit'+total);
+                                ignore_scroll = true;
                                 ajax_get_posts(count, true)
                             }
                            count++;
