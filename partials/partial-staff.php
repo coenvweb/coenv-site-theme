@@ -86,7 +86,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
                              
         echo '</ul>';
     else :
-
+        echo '<br/>';
         // no rows found
 
     endif;
