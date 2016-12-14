@@ -1,0 +1,407 @@
+{
+    "key": "group_58333f2e3679f",
+    "title": "Newsletter Fields",
+    "fields": [
+        {
+            "key": "field_58333fd3eab1e",
+            "label": "Newsletter Type",
+            "name": "newsletter_type",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "headlines": "Headlines",
+                "scicomm": "SciComm"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_58334013eab1f",
+            "label": "Feature Image",
+            "name": "feature_image",
+            "type": "image",
+            "instructions": "Image for SciComm Featured Story",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 640,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_58334080eab20",
+            "label": "Feature Title",
+            "name": "feature_title",
+            "type": "text",
+            "instructions": "Title of feature story for SciComm newsletter",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5833414eeab21",
+            "label": "Feature Content",
+            "name": "feature_content",
+            "type": "textarea",
+            "instructions": "Short content excerpt for the SciComm feature story",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_58334181eab22",
+            "label": "Feature Link",
+            "name": "feature_link",
+            "type": "url",
+            "instructions": "Link to read more on the SciComm feature story",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_583341a8eab23",
+            "label": "Feature Story",
+            "name": "feature_story",
+            "type": "post_object",
+            "instructions": "Headlines Feature Story Post",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "headlines"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_583341cfeab24",
+            "label": "News Items",
+            "name": "news_items",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_583341e4eab25",
+            "min": 3,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add News Item",
+            "sub_fields": [
+                {
+                    "key": "field_583341e4eab25",
+                    "label": "News Item",
+                    "name": "news_item",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "post"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
+        },
+        {
+            "key": "field_5833425ceab26",
+            "label": "Outside News",
+            "name": "outside_news",
+            "type": "repeater",
+            "instructions": "Titles, sources, and links to news and articles outside our website",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 1,
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Outside News",
+            "sub_fields": [
+                {
+                    "key": "field_58334294eab27",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_583342aaeab28",
+                    "label": "Source",
+                    "name": "source",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_583342b3eab29",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_58349757b436e",
+            "label": "Events",
+            "name": "events",
+            "type": "repeater",
+            "instructions": "For design purposes, add events in multiples of 2",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Event",
+            "sub_fields": [
+                {
+                    "key": "field_5834976db436f",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_58349778b4370",
+                    "label": "Date",
+                    "name": "date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "m\/d\/Y",
+                    "return_format": "F j, Y",
+                    "first_day": 0
+                },
+                {
+                    "key": "field_583497abb4371",
+                    "label": "Location",
+                    "name": "location",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_583497bcb4372",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "Trumba or other url for more event information",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "newsletter"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1479852840
+}
