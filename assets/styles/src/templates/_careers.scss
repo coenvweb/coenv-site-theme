@@ -19,6 +19,7 @@ body.page-template-careers {
     }
 
 	h1.article__title {
+        margin-top: .3rem;
 		margin-bottom: 0;
 		border-bottom: solid 1px #ccc;
 	}
@@ -67,7 +68,7 @@ body.page-template-careers {
 		}
 	} 
 	div.article header {
-		margin-bottom: 2rem;
+        margin-bottom: .5rem;
 	}
 	article header.article__header {
 		@media (min-width: 768px) {
@@ -211,6 +212,7 @@ body.page-template-careers {
 
 .sorter-search-row {
     width: 100%;
+    height: 3.5rem;
     
     .subscribe {
         margin-right: 1rem;
@@ -223,7 +225,7 @@ body.page-template-careers {
     }
     
     .sorter {
-        li {
+        li, form {
             border-radius: 0 4px 4px 0;
             height: 35px;
             padding-top: .5rem;
@@ -241,9 +243,8 @@ body.page-template-careers {
             }
         }
     }
-    .sorter, .subscribe {
+    .sorter, .subscribe, .search-form {
         list-style: none;
-        float: right;
         margin-top: -1.5rem;
         text-transform: uppercase;
 		letter-spacing: .1em;
@@ -256,6 +257,10 @@ body.page-template-careers {
             margin: 0;
         }
     } 
+    
+    .sorter, .subscribe {
+        float: right;
+    }
     
     form {
         width: calc(100% - 300px);        
@@ -293,6 +298,10 @@ body.page-template-careers {
     color: #666;
 }
 
+#results {
+    min-height: 100vh;
+}
+
 .filter-crumbs {
     margin: .75rem 0;
     h3 {
@@ -321,26 +330,41 @@ body.page-template-careers {
     }
 }
 
+.pagenav > a > span {
+    font-size: 1rem!important;
+    line-height: 1.5rem;
+    margin-right: -1rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: .8rem!important;
+    line-height: 1;
+    margin: 0 0 .5rem;
+    color: $text-very-lt;
+    @include sans();
+    .dashicons {
+        font-size: .8rem!important;
+        vertical-align: inherit;
+        height: auto;
+        width: auto;
+    }
+}
+
 ul.career-actions {
     padding-left: 0;
+    margin-top: 1rem!important;
     li {
         display: inline;
         list-style: none;
         margin-left: 0;
-        a.button {
-            width: calc(50% - .5rem);
-            text-align: center;
-            text-transform: uppercase!important;
-            letter-spacing: .1em;
-            font-weight: 600;
-            vertical-align: middle;
-            text-decoration: none;
-            font-size: 1.1rem!important;
-            line-height: 1.5rem;
-            padding: .5rem;
+        a {
             span {
-                display: block;
-                font-size: .8rem;
+                display: inline;
+                font-size: 1rem;
+                margin-right: .2rem;
             }
         }
     }
@@ -349,14 +373,17 @@ ul.career-actions {
 #careers-filter {
 	background-color: rgb(238, 238, 238);
     
-    .f-nav {
+    &.f-nav {
         z-index: 9999;
         position: fixed;
         width: 262px;
         top: 0;
+        margin-bottom: 800px;
         .filters {
-            max-height: 100vh;
-            overflow: scroll;
+            max-height: 810px;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
     
@@ -398,6 +425,7 @@ ul.career-actions {
         }
 		ul {
 			padding-left: 0;
+            margin-bottom: 0;
 			li {
 				font-weight: 600;
 				list-style: none;
@@ -409,9 +437,6 @@ ul.career-actions {
 	}
 }
 
-body.page-template-careers .career-intro {
-	margin-top: 1.5rem;
-}
 .single-careers {
 	.article__content {
 		h2 {
