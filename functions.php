@@ -28,6 +28,13 @@ function coenv_styles_and_scripts() {
 	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', null, true );
 	wp_enqueue_script( 'coenv-main' );
     
+    //Enqueue the Dashicons script
+    add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
+    function amethyst_enqueue_dashicons() {
+        wp_enqueue_style( 'amethyst-dashicons-style', get_stylesheet_directory_uri(), array('dashicons'), '1.0' );
+    }
+
+    
     if (is_post_type_archive('faculty') || is_singular('faculty')) {
 
         // register faculty scripts, enqueued within template files
