@@ -8,6 +8,11 @@ jQuery(function($)
     var count = 2;
     
     ajax_get_posts();
+    
+    $('.load-more').live('click', function(){
+        $(this).remove();
+        ajax_get_posts(count)
+    });
  
     //If list item is clicked, trigger input change and add css class
     $('.ajax-filters .button').live('click', function(){
@@ -48,7 +53,7 @@ jQuery(function($)
     }
     
     // show breadcrumbs for filtered terms and allow them to be removed by clicking to unselect
-    $('.filter-crumbs .selected').live('click', function(){
+    $('.filter-crumbs .term-filter').live('click', function(){
         var crumbVal = $(this).val();
         var preClass = '.term_id_';
         crumbVal = preClass+crumbVal;
@@ -58,8 +63,9 @@ jQuery(function($)
     });
  
     //If input is changed, load posts
-    $('.ajax-filters, .filter-crumbs').change( function(){
+    $('.ajax-filters, .filter-crumbs .term-filter').change( function(){
         count = 2;
+        console.log('crumb change!');
         ajax_get_posts(); //Load Posts
     });
  
@@ -76,25 +82,34 @@ jQuery(function($)
     }
  
     //Fire ajax request when typing in search
+    var oldSearchVal = $('.search-crumb').data('last-search');
+    console.log(oldSearchVal);
     $('#post-search input.text-search').live('keyup', function(e){
         if( e.keyCode == 27 )
         {
             $(this).val(''); //If 'escape' was pressed, clear value
+        }
+        var newSearchVal = $('#post-search input.text-search').val();
+        if (newSearchVal == oldSearchVal) {
+            return;
         }
         count = 2;
         ajax_get_posts(); //Load Posts
     });
     
     // when search filter breadcrumb is clicked on, clear the searchbox
-    $('.filter-crumbs .search-filter').live('click', function(){
+    $('.filter-crumbs .search-filter').live('click', function(){ 
+        console.log('filter clicked!');
         $('.search-filter').remove();
         $('#post-search input.text-search').val('');
+        var searchValue = null;
         count = 2;
         ajax_get_posts();
     });
 
     $('#submit-search').live('click', function(e){
         e.preventDefault();
+        console.log('search submission live');
         count = 2;
         ajax_get_posts(); //Load Posts
     });
@@ -122,6 +137,8 @@ jQuery(function($)
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
         var ajax_url = ajax_params.ajax_url; //Get ajax url (added through wp_localize_script)
         var action = $('#results').data('action'); //get wordpress php function for posts - e.g. career-action
+        console.log('query');
+        var oldSearchVal = $('.search-crumb').data('last-search');
         
         if(infinite) {
             $.ajax({
@@ -146,10 +163,6 @@ jQuery(function($)
                   }
               });
             } else {
-            
-            if (count > 2 ) {
-                count = 2;
-            }
  
             $.ajax({
 
@@ -164,33 +177,44 @@ jQuery(function($)
                 },
                 beforeSend: function ()
                 {
-                    //You could show a loader here
-                    $("#results").html('<p class="status">Loading results...</p>');
+                    if (paged_value) {
+                        //You could show a loader here
+                        $("#results").append('<p class="status">Loading more results...</p>');
+                    } else {
+                        //You could show a loader here
+                        $("#results").html('<p class="status">Loading results...</p>');
+                    }
                 },
                 success: function(data)
                 {
-                    //Hide loader here
-                    $('#results').html(data);
-                    if(data == '') {
-                        $("#results").html('<p class="status">No results found.</p>');
-                    }
-                    var total = $('#counter').data('page-count');
-                    $(window).scroll(function(){
-                        if(ignore_scroll == false && (($('#results').offset().top + $('#results').height()) < ($(window).height() + $(window).scrollTop()))) {
-                            if (count > total){
-                                return false;
-                            }else {
-                                ignore_scroll = true;
-                                ajax_get_posts(count, true)
-                            }
-                           count++;
+                    
+                    
+                    
+                    if (paged_value) {
+                        //On load more, remove the loading status, add the data, find the new page count, and put the button at the end
+                        $('.status').remove();
+                        $('#results').append(data);
+                        total = $('#counter').data('page-count');
+                        if (count <= total) {
+                            $('#results').append('<a class="button load-more">Load more</a>');
                         }
-                    });
-
+                        
+                    } else {
+                        //On first load, dump the data, get a page count, and add the more button if there's more
+                        $('#results').html(data);
+                        var total = $('#counter').data('page-count');
+                        if(data == '') {
+                            $("#results").html('<p class="status">No results found.</p>');
+                        }
+                        if (count <= total) {
+                            $('#results').append('<a class="button load-more">Load more</a>');
+                        }
+                    }
+                    count++;
                 },
                 error: function()
                 {
-                                    //If an ajax error has occured, do something here...
+                    //If an ajax error has occured, do something here...
                     $("#results").html('<p>There has been an error</p>');
                 }
             });

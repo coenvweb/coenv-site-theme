@@ -182,11 +182,11 @@ function careers_filter()
         echo '<h3>' . $career_loop->found_posts . ' careers tagged:</h3>';
         foreach ( $career_terms as $term ) {
             $term = get_term($term);
-            $career_filter_links .= '<li class="button selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
+            $career_filter_links .= '<li class="button term-filter selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';
         }
         echo $career_filter_links;
         if ($search_value) {
-        echo '<li class="button selected search-filter" name="filter_career[]"><i class="icon-cross"></i> Results containing "' . $search_value . '"</li>';
+        echo '<li class="button selected search-crumb" name="filter_career[]" data-last-search="' . $search_value . '"><i class="icon-cross"></i> Results containing "' . $search_value . '"</li>';
         }
         echo '</div>';
     }

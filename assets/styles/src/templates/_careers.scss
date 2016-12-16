@@ -23,7 +23,7 @@ body.page-template-careers {
 		margin-bottom: 0;
 		border-bottom: solid 1px #ccc;
 	}
-	div.container a {
+	article a {
 		color: #421491;
 	} 
     
@@ -368,6 +368,11 @@ ul.career-actions {
             }
         }
     }
+}
+
+.load-more {
+    cursor: pointer;
+    color: $text;
 }
 
 #careers-filter {
