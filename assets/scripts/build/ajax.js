@@ -80,38 +80,55 @@ jQuery(function($)
         });
         return terms; //Return all of the selected terms in an array
     }
- 
+    
+    var delay = (function(){
+    var timer = 0;
+      return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+      };
+    })();
+    
     //Fire ajax request when typing in search
-    var oldSearchVal = $('.search-crumb').data('last-search');
-    console.log(oldSearchVal);
     $('#post-search input.text-search').live('keyup', function(e){
-        if( e.keyCode == 27 )
-        {
+        if( e.keyCode == 27 ) {
             $(this).val(''); //If 'escape' was pressed, clear value
         }
-        var newSearchVal = $('#post-search input.text-search').val();
-        if (newSearchVal == oldSearchVal) {
+        if( e.keyCode == 13 ) {
             return;
         }
+        delay(function(){
+            var newSearchVal = $('#post-search input.text-search').val();
+            var oldSearchVal = $('#post-search input.text-search').attr('data-old-search');
+            if (newSearchVal === oldSearchVal) {
+                return;
+            } else {
+                count = 2;
+                ajax_get_posts(); //Load Posts
+            }
+        }, 200 );
+    });
+    
+    $('#submit-search').live('click', function(e){
+        e.preventDefault();
         count = 2;
-        ajax_get_posts(); //Load Posts
+        var newSearchVal = $('#post-search input.text-search').val();
+        var oldSearchVal = $('#post-search input.text-search').attr('data-old-search');
+        if (newSearchVal === oldSearchVal) {
+            return;
+        } else {
+            ajax_get_posts(); //Load Posts
+        }
     });
     
     // when search filter breadcrumb is clicked on, clear the searchbox
-    $('.filter-crumbs .search-filter').live('click', function(){ 
+    $('.filter-crumbs .search-crumb').live('click', function(){ 
         console.log('filter clicked!');
-        $('.search-filter').remove();
+        $('.search-crumb').remove();
         $('#post-search input.text-search').val('');
         var searchValue = null;
         count = 2;
         ajax_get_posts();
-    });
-
-    $('#submit-search').live('click', function(e){
-        e.preventDefault();
-        console.log('search submission live');
-        count = 2;
-        ajax_get_posts(); //Load Posts
     });
  
     //Get Search Form Values
@@ -137,8 +154,6 @@ jQuery(function($)
         var paged_value = paged; //Store the paged value if it's being sent through when the function is called
         var ajax_url = ajax_params.ajax_url; //Get ajax url (added through wp_localize_script)
         var action = $('#results').data('action'); //get wordpress php function for posts - e.g. career-action
-        console.log('query');
-        var oldSearchVal = $('.search-crumb').data('last-search');
         
         if(infinite) {
             $.ajax({
@@ -181,25 +196,30 @@ jQuery(function($)
                         //You could show a loader here
                         $("#results").append('<p class="status">Loading more results...</p>');
                     } else {
+                      if ($(window).scrollTop() > 355) {
+                        $('html, body').animate({
+                            scrollTop: $("#post-search").offset().top
+                        }, 500);
+                      }
                         //You could show a loader here
                         $("#results").html('<p class="status">Loading results...</p>');
                     }
                 },
                 success: function(data)
                 {
-                    
-                    
-                    
+                    $('#post-search input.text-search').attr( 'data-old-search', getSearchValue);
                     if (paged_value) {
                         //On load more, remove the loading status, add the data, find the new page count, and put the button at the end
                         $('.status').remove();
                         $('#results').append(data);
                         total = $('#counter').data('page-count');
+                        
                         if (count <= total) {
-                            $('#results').append('<a class="button load-more">Load more</a>');
+                            $('#results').append('<a class="button load-more">Load more '+count+'/'+total+'</a>');
                         }
                         
                     } else {
+                        
                         //On first load, dump the data, get a page count, and add the more button if there's more
                         $('#results').html(data);
                         var total = $('#counter').data('page-count');
@@ -207,7 +227,7 @@ jQuery(function($)
                             $("#results").html('<p class="status">No results found.</p>');
                         }
                         if (count <= total) {
-                            $('#results').append('<a class="button load-more">Load more</a>');
+                            $('#results').append('<a class="button load-more">Load more'+count+'/'+total+'</a>');
                         }
                     }
                     count++;
