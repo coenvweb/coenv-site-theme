@@ -216,7 +216,7 @@ jQuery(function($)
                         count++;
                         
                         if (count <= total) {
-                            $('#results').append('<a class="button load-more">Load more '+count+'/'+total+'</a>');
+                            $('#results').append('<a class="button load-more">Load more</a>');
                         }
                         
                         
@@ -229,7 +229,7 @@ jQuery(function($)
                             $("#results").html('<p class="status">No results found.</p>');
                         }
                         if (count <= total) {
-                            $('#results').append('<a class="button load-more">Load more'+count+'/'+total+'</a>');
+                            $('#results').append('<a class="button load-more">Load more</a>');
                         }
                     }
                 },
