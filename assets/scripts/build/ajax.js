@@ -213,11 +213,12 @@ jQuery(function($)
                         $('.status').remove();
                         $('#results').append(data);
                         total = $('#counter').data('page-count');
+                        count++;
                         
                         if (count <= total) {
                             $('#results').append('<a class="button load-more">Load more '+count+'/'+total+'</a>');
                         }
-                        count++;
+                        
                         
                     } else {
                         
