@@ -65,7 +65,6 @@ jQuery(function($)
     //If input is changed, load posts
     $('.ajax-filters, .filter-crumbs .term-filter').change( function(){
         count = 2;
-        console.log('crumb change!');
         ajax_get_posts(); //Load Posts
     });
  
@@ -123,7 +122,6 @@ jQuery(function($)
     
     // when search filter breadcrumb is clicked on, clear the searchbox
     $('.filter-crumbs .search-crumb').live('click', function(){ 
-        console.log('filter clicked!');
         $('.search-crumb').remove();
         $('#post-search input.text-search').val('');
         var searchValue = null;
