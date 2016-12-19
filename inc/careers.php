@@ -152,6 +152,11 @@ function careers_filter()
             'relation'    => 'OR',
             array(
                 'key' => 'deadline',
+                'compare' => 'NOT EXISTS',
+                'value' => ''
+            ),
+            array(
+                'key' => 'deadline',
                 'value' => date('Ymd'),
                 'type' => 'date',
                 'compare' => '>='
