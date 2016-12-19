@@ -173,7 +173,7 @@ function careers_filter()
         //Sort/*
 	if ($coenv_sort == 'deadline') {
 		$career_args['meta_key'] = '_expiration-date';
-		$career_args['orderby'] = 'meta_value title';
+		$career_args['orderby'] = 'meta_value';
 		$career_args['order'] = 'ASC';
 	} else {
 		$career_args['orderby'] = 'date';
