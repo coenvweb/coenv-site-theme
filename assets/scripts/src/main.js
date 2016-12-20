@@ -69,6 +69,9 @@ jQuery(function ($) {
             });
             
         }
+        $('.Faculty-member-contact-list').click(function(event){
+            event.stopPropagation();
+        });
 
 	}
     
@@ -148,7 +151,6 @@ $.fn.memberTabs = function () {
 		$tab.addClass( activeClass );
 	} );
 };
-
 
 /**
  * Close UW Alert
