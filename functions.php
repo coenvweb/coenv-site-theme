@@ -16,7 +16,7 @@ require_once locate_template( '/inc/ajax.php' );
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
 function amethyst_enqueue_dashicons() {
-    wp_enqueue_style( 'amethyst-dashicons-style', get_stylesheet_directory_uri(), array('dashicons'), '1.0' );
+    wp_enqueue_style( 'dashicons' );
 }
 
 
