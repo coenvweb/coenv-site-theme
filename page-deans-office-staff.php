@@ -48,7 +48,7 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
 
-	               <section class="article__content accordion" id="accordion-1">
+	               <section class="article__content accordion" id="bio">
                    <?php
                         $terms = get_terms( 'team', array(
                         'hide_empty' => 0
@@ -80,7 +80,6 @@ $ancestor = array(
                 
                         while ( $query->have_posts() ) : $query->the_post();
                              include( locate_template( 'partials/partial-staff.php', false, false ));
-                            $i++;
                         endwhile;
                         
 
@@ -134,6 +133,6 @@ $ancestor = array(
 <script type="text/javascript" src="<?php echo content_url(); ?>/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"accordion-1","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"bio","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>
