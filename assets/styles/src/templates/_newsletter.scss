@@ -1,0 +1,153 @@
+.template-newsletter {
+
+    .newsletter_header {
+        background-image: url("../../img/newsletter_background.png");
+        text-align: center;
+        .header_img {
+            width: 40%;
+            @include max-width( $iPadPortrait ) {
+                width: 55%;
+            }
+        }
+        @include rem('margin', 1);
+        @include rem('padding', 2, 1, 1, 1);
+        @extend .shadow;
+        .newsletter_title {
+            font-size: 1.5rem;
+            @include max-width( $iPadPortrait ) {
+                font-size: 1rem;
+            }
+            margin: 0rem;
+            color: black;
+        }
+    }
+
+    .newsletter {
+        @extend .shadow;
+        @include rem('margin', 0, 1, 1, 1);
+        @include rem('padding', 1, 2, 2, 2);
+        background: #f5f5f5;
+		.news_item {
+            position: relative;
+			@media print {
+				margin: 0;
+				padding: 0;
+			}
+
+			@include min-width ( $iPadPortrait ) {
+				@include rem('margin', 1, 0, 3, 0);
+				@media print {
+					margin: 0;
+				}
+			}
+
+			.article__title {
+				margin-top: 1rem;
+			}
+
+			.article__content {
+				margin-bottom: 2rem;
+				&:not(.scicomm_feature) {
+					max-height: 200px;
+                    @include max-width ( $bp-2 ) {
+                        max-height: 350px;
+                    }
+                    @include max-width ( $bp-1 ) {
+                        max-height: 500px;
+                    }
+					position: relative;
+					overflow: hidden;
+				}
+				.scicomm_image {
+					margin-bottom: 1rem;
+				}
+				.read-more {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					text-align: center;
+					margin: 0;
+					padding: 30px 0;
+					/* "transparent" only works here because == rgba(0,0,0,0) */
+					background-image: linear-gradient(to bottom, transparent, $text-very-lt);
+				}
+			}
+		}
+
+        .events {
+			overflow: hidden;
+			a {
+                @extend .shadow;
+				text-decoration: none;
+                border: 5px solid #fff;
+				color: black;
+				width: 47%;
+                @include max-width( $iPadPortrait ) {
+                    width: 99%;
+                    margin: 1rem 0.1rem;
+                }
+				margin: 1rem 0rem 1rem 1rem;
+				text-align: center;
+				background-color: #e5e5e5;
+				float: left;
+				min-height: 150px;
+				&:hover {
+					color: black !important;
+				}
+           		.event_container {
+					img {
+						margin-top: 1rem;
+					}
+				}
+				p {
+					margin: 0.5rem 0rem;
+				}
+				.event_date {
+					text-decoration: none;
+					font-weight: bold !important;
+					color: $accent;
+					text-transform: uppercase;
+				}
+				.event_title {
+					text-decoration: none;
+					font-weight: bold !important;
+					line-height: 1.4 !important;
+					word-break: keep-all;
+					color: black;
+                    padding: 0.5rem;
+				}
+			}
+        }
+        .college {
+			.around_list {
+				font-size: 1.2rem;
+				padding-left: 0px;
+				margin-bottom: 0px;
+				list-style-type: none;
+				a{
+					text-decoration: none;
+					p, li {
+						color: $accent;
+						padding-bottom: 20px;
+						margin-bottom: 0px;
+						font-weight: 600;
+						span {
+							color: $text-md;
+						}   
+					}   
+				}   
+			}
+        }
+        .section-title {
+            background-color: #e5e5e5;
+            line-height: 0rem !important;
+            .title-tag {
+                height: 2rem;
+                @include max-width( $iPadPortrait ) {
+                    height: 1.5rem;
+                }
+            }
+        }
+    }
+}
