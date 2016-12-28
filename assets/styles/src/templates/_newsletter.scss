@@ -1,14 +1,34 @@
 .template-newsletter {
 
     .newsletter_header {
-        background-image: url("../../img/newsletter_background.png");
-        text-align: center;
-        .header_img {
-            width: 40%;
-            @include max-width( $iPadPortrait ) {
-                width: 55%;
+        &.scicomm {
+            background-image: url("../../img/scicomm_background.png");
+            .newsletter_title {
+                color: $white;
+            }
+            .header_img {
+                width: 70%;
+                @include max-width( $iPadPortrait ) {
+                    width: 85%;
+                }
             }
         }
+        &.headlines {
+            background-image: url("../../img/headlines_background.png");
+            .newsletter_title {
+                color: black;
+            }
+            .header_img {
+                width: 40%;
+                @include max-width( $iPadPortrait ) {
+                    width: 55%;
+                }
+            }
+        }
+        background-size: cover;
+        background-position: 75% center;
+        text-align: center;
+        
         @include rem('margin', 1);
         @include rem('padding', 2, 1, 1, 1);
         @extend .shadow;
@@ -18,7 +38,6 @@
                 font-size: 1rem;
             }
             margin: 0rem;
-            color: black;
         }
     }
 
