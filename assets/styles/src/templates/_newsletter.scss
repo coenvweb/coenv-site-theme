@@ -96,7 +96,7 @@
 
         .events {
 			overflow: hidden;
-			a {
+			a.event-single {
                 @extend .shadow;
 				text-decoration: none;
                 border: 5px solid #fff;
@@ -137,6 +137,16 @@
                     padding: 0.5rem;
 				}
 			}
+            .more_events {
+                text-align: center;
+                .more_events_icon {
+                    vertical-align: bottom;
+                    margin-right: 0.5rem;
+                }
+                a {
+                    color: $text;
+                }
+            }
         }
         .college {
 			.around_list {
