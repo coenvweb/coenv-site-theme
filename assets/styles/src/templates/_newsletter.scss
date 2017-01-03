@@ -6,12 +6,6 @@
             .newsletter_title {
                 color: $white;
             }
-            .header_img {
-                width: 70%;
-                @include max-width( $iPadPortrait ) {
-                    width: 85%;
-                }
-            }
         }
         &.headlines {
             background-image: url("../../img/headlines_background.png");
