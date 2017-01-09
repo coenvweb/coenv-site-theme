@@ -30,6 +30,8 @@
             @include min-width ( $iPadPortrait ) {
                 max-width: 40%;
                 float: right;
+                margin-top: 1rem;
+                margin-left: 2rem;
                 .teal-widget, .grey-widget {
                     @include rem('margin', 1, 0, 1, 1);
                 }
