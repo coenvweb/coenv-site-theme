@@ -285,6 +285,12 @@ require_once locate_template( '/inc/careers.php' );
 require_once locate_template( '/inc/staff.php' );
 
 /**
+ * Register Students
+ */
+
+require_once locate_template( '/inc/student-ambassadors.php' );
+
+/**
  * Returns a unit color (hex value)
  *
  * @param int Unit post ID
