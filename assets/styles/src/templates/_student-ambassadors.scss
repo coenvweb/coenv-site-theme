@@ -1,6 +1,6 @@
 //Contact Page Styles
 
-.page-id-386 {
+.page-id-51924 {
     .contact {
         height: 130px;
         margin-bottom: 1.6rem;
@@ -14,6 +14,7 @@
             padding: 0;
             background-color: white;
             z-index: 1;
+            
              &:after {
                 content: "\e026";
                  font-size: 10px;
@@ -29,7 +30,11 @@
                 color: #666;
                 text-align: center;
                 right: .5rem;
-                top: 12.5%;
+                top: 7%;
+            }
+            &.open:after {
+                content: "\e028";
+                transform: translateY(-50%) rotate(90deg);
             }
         }
         
@@ -54,21 +59,32 @@
                 font-size: 20px;
                 margin-top: -4px;
                 right: 0.5rem;
-                top: 35%;
+                top: 50%;
                 border: none;
                 color: #666;
+            }
+            
+            .concentration {
+                display: inline!important;
+                &:before {
+                    content: ":"
+                }
+            }
+            li.not-primary {
+                display: block!important;
             }
 
             @include min-width ( 600 ) {
                 h3 {
-                    font-size: 1.7rem;
+                    font-size: 2rem;
                     padding-top: .5rem;
+                    margin-bottom: .5rem;
+                    padding-bottom: .75rem;
                 }
                 .contact-title {
                     font-size: 1.2rem;
-                    padding-top: .3rem;
-                    bottom: 58%;
                     transition: .3s;
+                    display: table;
                 }
                 .contact-info {
                     margin-left: 200px;
@@ -128,7 +144,7 @@
         background-color: #f7f7f7;
         transition: .3s width;
         position: relative;
-        bottom: 2rem;
+        bottom: .25rem;
         z-index: 0;
         padding-bottom: 1rem;
         @include min-width ( $iPadLandscape ) {
@@ -173,6 +189,13 @@
     img {
         transition-duration: .3s;
     }
+    
+    .contact-title {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .contact-info {
         margin-left: 130px;
         transition-duration: .3s;
@@ -184,8 +207,6 @@
         }
 
         .contact-title {
-            position: absolute;
-            bottom: 60%;
             @include rem('padding-left', 1);
             @include max-width ( $iPadLandscape ) {
                 bottom: 50%!important;
@@ -193,38 +214,40 @@
         }
 
         h3 {
-            margin-bottom: 0!important;
-
+            font-size: 1.7rem;
+            text-transform: none;
+            padding-bottom: .5rem;
+            margin-bottom: .25rem;
+            border-bottom: 1px solid $border;
         }
 
-        h4 {
-            font-size: 70%!important;
-            line-height: normal!important;
-            padding-right: 2rem;
-
+        .class {
+            font-size: 110%!important;
+            display: block;
+            font-family: 'skolar';
+            font-weight: 400;
+            margin-top: .25rem;
             @include max-width ( $iPhoneLandscape ) {
                 font-size: 60%!important;
             }
         }
-
-        ul {
-            position: absolute;
-            bottom: 0px;
-            width: 100%;
-            z-index: 99;
-            @include max-width ( $iPadLandscape ) {
-                bottom: 0!important;
-                @include rem ('padding', .5, 0, .5, 1);
-
-                li {
-                    font-size: 80%!important;
-                }
+        
+        .primary-majors {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 70%!important;
+            line-height: normal!important;
+            padding-right: 2rem;
+            padding-top: .1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            li {
+                padding-top: .25rem;
+            }
+            li.not-primary, .concentration {
+                display: none;
             }
         }
-    }
-}
-
-.page-id-386 {
-    .contact {
     }
 }
