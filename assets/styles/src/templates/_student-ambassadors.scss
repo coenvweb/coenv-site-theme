@@ -36,6 +36,9 @@
                 content: "\e028";
                 transform: translateY(-50%) rotate(90deg);
             }
+            .last {
+                display: none;
+            }
         }
         
         @include max-width ( 380 ) {
@@ -85,6 +88,7 @@
                     font-size: 1.2rem;
                     transition: .3s;
                     display: table;
+                    margin-right: 5rem;
                 }
                 .contact-info {
                     margin-left: 200px;
@@ -93,6 +97,9 @@
                 img {
                     width: 200px;
                     height: 200px;
+                }
+                .last {
+                    display: inline;
                 }
                 .left {
                     display: block;
@@ -147,6 +154,8 @@
         bottom: .25rem;
         z-index: 0;
         padding-bottom: 1rem;
+        padding-top: .5rem;
+        
         @include min-width ( $iPadLandscape ) {
             width: 368px;
         }
@@ -181,7 +190,7 @@
             
         }
         p {
-            padding: 1rem 1rem 0 1rem;
+            padding: .5rem 1rem .5rem 1rem;
             margin-bottom: 0;
         }
     }
@@ -208,9 +217,6 @@
 
         .contact-title {
             @include rem('padding-left', 1);
-            @include max-width ( $iPadLandscape ) {
-                bottom: 50%!important;
-            }
         }
 
         h3 {
@@ -247,6 +253,56 @@
             }
             li.not-primary, .concentration {
                 display: none;
+            }
+        }
+    }
+    .ambassador-info {
+        margin: 1rem 0 .5rem 1rem;
+        padding-left: 0;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 80%!important;
+        li {
+            display: inline;
+            list-style: none;
+            margin-left: 1rem;
+            i {
+                margin-right: .5rem;
+            }
+            &:first-of-type {
+                margin-left: 0;
+            }
+        }
+        .minors {
+            margin-left: 0;
+            padding-left: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            display: block;
+            li {
+                margin-left: .5rem;
+                .concentration {
+                    display: inline!important;
+                    &:before {
+                        content: ":"
+                    }
+                }
+            }
+        }
+    }
+    
+    .ambassador-links {
+        margin: 1rem 0 .5rem 1rem;
+        padding-left: 0;
+        li {
+            display: inline;
+            list-style: none;
+            margin-left: 1rem;
+            i {
+                margin-right: .5rem;
+            }
+            &:first-of-type {
+                margin-left: 0;
             }
         }
     }

@@ -22,6 +22,25 @@
             }
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "key": "field_58815ad821714",
+            "label": "Last Name",
+            "name": "last_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "multiple": 0,
             "allow_null": 0,
             "choices": {
@@ -101,6 +120,29 @@
                     "key": "field_587fde6d53b65",
                     "label": "Primary Major(s)",
                     "name": "primary_majors",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "layout": "vertical",
+                    "choices": {
+                        "minor": "Minor"
+                    },
+                    "default_value": [],
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "toggle": 0,
+                    "return_format": "value",
+                    "key": "field_58815030c01b8",
+                    "label": "Minor",
+                    "name": "minor",
                     "type": "checkbox",
                     "instructions": "",
                     "required": 0,
@@ -269,5 +311,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484783129
+    "modified": 1484872417
 }

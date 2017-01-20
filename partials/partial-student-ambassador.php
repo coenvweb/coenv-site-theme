@@ -3,6 +3,8 @@
  * An individual staff member
  */
 
+$first_name = get_field('first_name');
+$last_name = get_field('last_name');
 $image = get_field('photo');
 $class = get_field('class');
 $last_school = get_field('last_school');
@@ -33,12 +35,12 @@ if(!empty($description)) {
 
     <div class="contact-info">
         <div class="contact-title">
-            <h3><?php the_field('first_name'); ?></h3>
+            <h3><?php echo $first_name; ?><span class="last"> <?php echo $last_name; ?></span></h3>
             <span class="class"><?php echo $class; ?></span>
              <?php  // check if the repeater field has rows of data
                 if( have_rows('majors_and_minors') ) :
                     echo '<ul class="primary-majors">';
-
+                    $minors = '';
                     // loop through the rows of data
                     while ( have_rows('majors_and_minors') ) : the_row();
 
@@ -46,14 +48,24 @@ if(!empty($description)) {
                         $major = get_sub_field('major__minor');
                         $concentration = get_sub_field('concentration');
                         $primary = get_sub_field('primary_majors');
+                        $minor = get_sub_field('minor');
                         if (empty($primary)) {
                             $primary = "not-primary";
                         } else {
                             $primary = "primary";
                         }
-                        echo '<li class="' . $primary . '">' . $major;
-                        if (!empty($concentration)){
-                            echo '<span class="concentration"> ' . $concentration . '</span></li>';
+                        if ($minor) {
+                            $minors .= '<li>' . $major;
+                            if (!empty($concentration)){
+                                $minors .= '<span class="concentration"> ' . $concentration . ' </span></li>';
+                            } else {
+                                $minors .= '</li>';
+                            }
+                        } else {
+                            echo '<li class="' . $primary . ' ' . $minor . '">' . $major;
+                            if (!empty($concentration)){
+                                echo '<span class="concentration"> ' . $concentration . '</span></li>';
+                            }
                         }
 
                     endwhile;
@@ -67,62 +79,28 @@ if(!empty($description)) {
             ?>
         </div>
     </div>
-</div>
 <div id="bio-c-<?php echo $post->post_name ?>" class="accordion-content" aria-labelledby="bio-t-<? echo $post->post_name ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo $post->post_name ?>" style="display: none;">
-<? if(!empty($description) || have_rows('job_responsibilities')) { ?>
-    <?php if (!empty($class)) : ?>
-            <ul class="Faculty-member-contact-list">
-                    <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-contact-link-email"></i>Email <?php the_field('first_name'); ?></a></li>
-                <?php if (!empty($phone_number)) : ?>
-                    <li><a href="tel:<?php echo $phone_number; ?>"><i class="icon-contact-link-phone"></i><?php echo $phone_number; ?></a></li>
-                <?php endif; ?>
-                <?php  // check if the repeater field has rows of data
-                    if( have_rows('links') ) :
-                        echo '<div class="left">';
-
-                        // loop through the rows of data
-                        while ( have_rows('links') ) : the_row();
-
-                            // display a sub field value
-                            $link_text = get_sub_field('link_text');
-                            $link_url = get_sub_field('link_url');
-                            $link_icon = get_sub_field('link_icon');
-                            echo '<li><a class="left-link" href="' . $link_url . '"><i class=' . $link_icon . ' /></i>' . $link_text . '</a></li>';
-
-                        endwhile;
-
-                        echo '</div>';
-                    else :
-
-                        // no rows found
-
-                    endif;
-                ?>
-                
-            </ul>
+            
+    <ul class="ambassador-info">
+        <?php if (!empty($hometown)) : ?>
+            <li><span class="prompt">Hometown:</span> <?php echo $hometown; ?></li>
         <?php endif; ?>
-<?php
-    
-    // check if the repeater field has rows of data
-    if( have_rows('job_responsibilities') ):
-        echo '<ul class="responsibilities">';
+        <?php if (!empty($last_school)) : ?>
+            <li><span class="prompt">Last School:</span> <?php echo $last_school; ?></li>
+        <?php endif; ?>
+        <?php if (!empty($minor)) : ?>
+            <ul class="minors"><span class="prompt">Minor(s):</span> <?php echo $minors; ?></ul>
+        <?php endif; ?>  
+    </ul>
 
-        // loop through the rows of data
-        while ( have_rows('job_responsibilities') ) : the_row();
-
-            // display a sub field value
-            $responsibility = get_sub_field('responsibility');
-            echo '<li class="responsibility">' . $responsibility . '</li>';
-
-        endwhile;
-                             
-        echo '</ul>';
-    else :
-        echo '<br/>';
-        // no rows found
-
-    endif;
-
-    echo $description;
-?>
-<? } ?></div>
+    <?php echo $description; ?>
+    <ul class="ambassador-links">
+            <li><a class="button" href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
+        <?php if (!empty($twitter)) : ?>
+            <li><a class="button" href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
+        <?php endif; ?>
+        <?php if (!empty($linkedin)) : ?>
+            <li><a class="button" href="<?php echo $linked_in; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
+        <?php endif; ?>                
+    </ul>
+    </div>
