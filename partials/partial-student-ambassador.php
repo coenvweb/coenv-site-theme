@@ -40,15 +40,22 @@ if(!empty($description)) {
              <?php  // check if the repeater field has rows of data
                 if( have_rows('majors_and_minors') ) :
                     echo '<ul class="primary-majors">';
+                    $majors = '';
                     $minors = '';
                     // loop through the rows of data
                     while ( have_rows('majors_and_minors') ) : the_row();
 
                         // display a sub field value
-                        $major = get_sub_field('major__minor');
+                        $raw_major = get_sub_field('major__minor');
                         $concentration = get_sub_field('concentration');
                         $primary = get_sub_field('primary_majors');
                         $minor = get_sub_field('minor');
+                        $other_major = get_sub_field('other_major');
+                        if (!empty($other_major)){
+                            $major = $other_major;
+                        } else {
+                            $major = $raw_major;
+                        }
                         if (empty($primary)) {
                             $primary = "not-primary";
                         } else {
@@ -57,15 +64,19 @@ if(!empty($description)) {
                         if ($minor) {
                             $minors .= '<li>' . $major;
                             if (!empty($concentration)){
-                                $minors .= '<span class="concentration"> ' . $concentration . ' </span></li>';
+                                $minors .= '<span class="concentration">: ' . $concentration . ' </span></li>';
                             } else {
                                 $minors .= '</li>';
                             }
                         } else {
-                            echo '<li class="' . $primary . ' ' . $minor . '">' . $major;
+                            $this_major = '<li class="' . $primary . ' ' . $minor . '">' . $major;
                             if (!empty($concentration)){
-                                echo '<span class="concentration"> ' . $concentration . '</span></li>';
+                                $this_major .= '<span class="concentration">: ' . $concentration . '</span></li>';
+                            } else {
+                                $this_major .= '</li>';
                             }
+                            echo $this_major;
+                            $majors .= $this_major;
                         }
 
                     endwhile;
@@ -82,25 +93,35 @@ if(!empty($description)) {
 <div id="bio-c-<?php echo $post->post_name ?>" class="accordion-content" aria-labelledby="bio-t-<? echo $post->post_name ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo $post->post_name ?>" style="display: none;">
             
     <ul class="ambassador-info">
+        <?php if (!empty($majors)) : ?>
+            <div class="row"><div class="prompt">Major(s):</div><ul class="answer-content"><?php echo $majors; ?></ul></div>
+        <?php endif; ?>  
+        <?php if (!empty($minor)) : ?>
+        <div class="row"><div class="prompt">Minor(s):</div><ul class="answer-content"><?php echo $minors; ?></ul></div>
+        <?php endif; ?>  
         <?php if (!empty($hometown)) : ?>
-            <li><span class="prompt">Hometown:</span> <?php echo $hometown; ?></li>
+            <div class="row"><div class="prompt">Hometown:</div> <li class="answer-content"><?php echo $hometown; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($last_school)) : ?>
-            <li><span class="prompt">Last School:</span> <?php echo $last_school; ?></li>
+            <div class="row"><div class="prompt">Last School:</div> <li class="answer-content"><?php echo $last_school; ?></li></div>
         <?php endif; ?>
-        <?php if (!empty($minor)) : ?>
-            <ul class="minors"><span class="prompt">Minor(s):</span> <?php echo $minors; ?></ul>
-        <?php endif; ?>  
-    </ul>
-
-    <?php echo $description; ?>
-    <ul class="ambassador-links">
-            <li><a class="button" href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
-        <?php if (!empty($twitter)) : ?>
-            <li><a class="button" href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
+        <?php if (!empty($description)) : ?>
+            <div class="row"><div class="prompt">Ask <?php echo $first_name ?> About:</div> <li class="answer-content"><?php echo $tags; ?></li></div>
         <?php endif; ?>
-        <?php if (!empty($linkedin)) : ?>
-            <li><a class="button" href="<?php echo $linked_in; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
-        <?php endif; ?>                
+        <?php if (!empty($description)) : ?>
+            <div class="row"><div class="prompt">About <?php echo $first_name ?>:</div> <li class="answer-content"><?php echo $description; ?></li></div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="prompt">Connect:</div>
+            <ul class="answer-content">
+            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
+            <?php if (!empty($twitter)) : ?>
+                <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
+            <?php endif; ?>
+            <?php if (!empty($linkedin)) : ?>
+                <li><a href="<?php echo $linked_in; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
+            <?php endif; ?>                
+            </ul>
+        </div>
     </ul>
     </div>
