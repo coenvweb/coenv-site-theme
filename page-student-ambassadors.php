@@ -6,6 +6,10 @@
  */
 get_header();
 
+//Search terms
+$coenv_search_terms = isset($_GET['st']) ? $_GET['st'] : '';
+$coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
+
 $ancestor_id = coenv_get_ancestor();
 
 $ancestor = array(
@@ -47,17 +51,66 @@ $ancestor = array(
                     <header class="article__header">
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
+                    
+                    <form role="search" method="get" class="search-form Form--inline" action="/students/meet-our-students/student-ambassadors/">
+                      <div class="field-wrap">
+                        <input type="text" name="st" id="st" placeholder="Search" />
+                        <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+                      </div>
+                    </form>
 
 	               <section class="article__content accordion" id="bio">
                    <?php
+                        $terms = get_terms( array(
+                        'taxonomy' => 'unit',
+                        'hide_empty' => false,
+                    ) );
+                
+                    $i = 0;
 
-                        // Last Name Alpha Query
+                    foreach( $terms as $term ) {
+                        
+                        // First Placement Query
                         $args = array(
                             'post_type'     =>  'student_ambassadors',
                             'post_status'   =>  'publish',
                             'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
+                            'unit'          =>  $term->slug
+                        );
+                        
+                        // Search filters
+                        if ($coenv_search_terms) :
+                            $args['s'] = $coenv_search_terms;
+                        endif;
+                        
+                        $query = new WP_Query( $args );
+                        
+                        if ($query->have_posts()) {
+                            echo '<h2>' . $term->name . '</h2>';
+                        }
+                
+                        while ( $query->have_posts() ) : $query->the_post();
+                             include( locate_template( 'partials/partial-student-ambassador.php', false, false ));
+                        endwhile;
+                        
+
+                        // Last Name Alpha Query
+                        $args = array(
+                            'post_type'     =>  'staff',
+                            'post_status'   =>  'publish',
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'placement',
+                                    'value' => 3,
+                                    'compare' => '='
+                                )
+                            ),
+                            'orderby'		=>  'name',
+                            'order'			=>  'ASC',
+                            'posts_per_page' => -1,
+                            'team'          =>  $term->slug,
                         );
                         add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
                         $query = new WP_Query( $args );
@@ -68,7 +121,7 @@ $ancestor = array(
                             $i++;
                         endwhile;
                         wp_reset_postdata();
-                       ?>
+                    } ?>
                        
                     </section>
                     

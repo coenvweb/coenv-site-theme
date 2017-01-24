@@ -12,6 +12,8 @@ $hometown = get_field('hometown');
 $linkedin = get_field('linkedin_profile_link');
 $twitter = get_field('twitter_profile_link');
 $description = get_field('response');
+$tags = get_the_term_list($post->ID, 'student_tag', '' , ', ');
+$tags = strip_tags($tags);
 
 
 if( !empty($image) ) {
@@ -51,10 +53,14 @@ if(!empty($description)) {
                         $primary = get_sub_field('primary_majors');
                         $minor = get_sub_field('minor');
                         $other_major = get_sub_field('other_major');
+                        $link_to_major_info = get_sub_field('link_to_major_info');
                         if (!empty($other_major)){
                             $major = $other_major;
                         } else {
                             $major = $raw_major;
+                        }
+                        if (empty($link_to_major_info) && empty($other_major)){
+                            $link_to_major_info = '/students/degrees-programs-and-courses/undergraduate-degrees/#' . sanitize_title($major);
                         }
                         if (empty($primary)) {
                             $primary = "not-primary";
@@ -76,6 +82,9 @@ if(!empty($description)) {
                                 $this_major .= '</li>';
                             }
                             echo $this_major;
+                            if (!empty ($link_to_major_info)) {
+                                $this_major = '<a href="' . $link_to_major_info . '">' . $this_major . '</a>';
+                            }
                             $majors .= $this_major;
                         }
 

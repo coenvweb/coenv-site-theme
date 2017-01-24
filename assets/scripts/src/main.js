@@ -69,7 +69,7 @@ jQuery(function ($) {
             });
             
         }
-        $('.Faculty-member-contact-list, .primary-majors').click(function(event){
+        $('.Faculty-member-contact-list').click(function(event){
             event.stopPropagation();
         });
 

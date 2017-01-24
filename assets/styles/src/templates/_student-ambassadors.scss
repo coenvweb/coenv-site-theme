@@ -33,7 +33,7 @@
                 border: 2px solid #666;
                 color: #666;
                 text-align: center;
-                right: .5rem;
+                right: .75rem;
                 top: 7%;
             }
             &.open:after {
@@ -65,14 +65,14 @@
                 width: 16px;
                 font-size: 20px;
                 margin-top: -4px;
-                right: 0.5rem;
+                right: -1rem;
                 top: 50%;
                 border: none;
                 color: #666;
             }
             
-            li.not-primary {
-                display: block!important;
+            .primary-majors {
+                display: none;
             }
 
             @include min-width ( 600 ) {
@@ -86,10 +86,10 @@
                     font-size: 1.2rem;
                     transition: .3s;
                     display: table;
-                    margin-right: 5rem;
+                    padding-right: 5rem;
+                    padding-left: calc(200px + 1rem)
                 }
                 .contact-info {
-                    margin-left: 200px;
                     font-size: 1.2rem;
                 }
                 img {
@@ -160,22 +160,20 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        width: 100%;
+        padding-left: calc(130px + 1rem);
+        padding-right: 1rem;
+        transition-duration: .3s;
     }
 
     .contact-info {
-        margin-left: 130px;
-        transition-duration: .3s;
         @include max-width ( $iPhoneLandscape ) {
             @include rem('padding-right', .6);
             h3 {
                 font-size: 90%!important;
             }
         }
-
-        .contact-title {
-            @include rem('padding-left', 1);
-        }
-
+        
         h3 {
             font-size: 1.7rem;
             text-transform: none;
@@ -212,13 +210,15 @@
                 display: none;
             }
         }
+        
     }
     .accordion-content {
         background-color: #f7f7f7;
         transition: .3s width;
         position: relative;
         z-index: 0;
-        margin-top: -5px;
+        margin-top: -10rem;
+        padding-top: 10rem;
         
         a {
             color: $text;
@@ -232,7 +232,8 @@
         &:before {
             content: "";
             width: 200px;
-            height: 100%;
+            top: 0;
+            height: calc(100%);
             background: #eee;
             z-index: -1;
             position: absolute;

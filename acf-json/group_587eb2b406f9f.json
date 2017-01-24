@@ -136,6 +136,33 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "key": "field_58864c510cadc",
+                    "label": "Link to Major Info",
+                    "name": "link_to_major_info",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_587fde5053b63",
+                                "operator": "==",
+                                "value": "Other"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "key": "field_587fde6553b64",
                     "label": "Concentration",
                     "name": "concentration",
@@ -353,5 +380,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484955916
+    "modified": 1485196438
 }
