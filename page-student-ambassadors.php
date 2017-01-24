@@ -52,6 +52,12 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
                     
+                    <section class="article__content">
+                        <div class="intranet-summary">
+                            <?php the_content(); ?>
+                        </div>
+                    </section>
+                    
                     <form role="search" method="get" class="search-form Form--inline" action="/students/meet-our-students/student-ambassadors/">
                       <div class="field-wrap">
                         <input type="text" name="st" id="st" placeholder="Search" />
@@ -61,14 +67,6 @@ $ancestor = array(
 
 	               <section class="article__content accordion" id="bio">
                    <?php
-                        $terms = get_terms( array(
-                        'taxonomy' => 'unit',
-                        'hide_empty' => false,
-                    ) );
-                
-                    $i = 0;
-
-                    foreach( $terms as $term ) {
                         
                         // First Placement Query
                         $args = array(
@@ -77,7 +75,6 @@ $ancestor = array(
                             'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
-                            'unit'          =>  $term->slug
                         );
                         
                         // Search filters
@@ -95,33 +92,7 @@ $ancestor = array(
                              include( locate_template( 'partials/partial-student-ambassador.php', false, false ));
                         endwhile;
                         
-
-                        // Last Name Alpha Query
-                        $args = array(
-                            'post_type'     =>  'staff',
-                            'post_status'   =>  'publish',
-                            'meta_query' => array(
-                                array(
-                                    'key' => 'placement',
-                                    'value' => 3,
-                                    'compare' => '='
-                                )
-                            ),
-                            'orderby'		=>  'name',
-                            'order'			=>  'ASC',
-                            'posts_per_page' => -1,
-                            'team'          =>  $term->slug,
-                        );
-                        add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-                        $query = new WP_Query( $args );
-                        remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-                
-                        while ( $query->have_posts() ) : $query->the_post();
-                            include( locate_template( 'partials/partial-student-ambassador.php', false, false ));
-                            $i++;
-                        endwhile;
-                        wp_reset_postdata();
-                    } ?>
+                    ?>
                        
                     </section>
                     

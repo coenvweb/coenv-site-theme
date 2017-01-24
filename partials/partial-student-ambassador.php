@@ -75,15 +75,15 @@ if(!empty($description)) {
                                 $minors .= '</li>';
                             }
                         } else {
-                            $this_major = '<li class="' . $primary . ' ' . $minor . '">' . $major;
+                            $this_major = $major;
                             if (!empty($concentration)){
-                                $this_major .= '<span class="concentration">: ' . $concentration . '</span></li>';
-                            } else {
-                                $this_major .= '</li>';
+                                $this_major .= '<span class="concentration">: ' . $concentration . '</span>';
                             }
-                            echo $this_major;
+                            echo '<li class="' . $primary . ' ' . $minor . '">' . $this_major . '</li>';
                             if (!empty ($link_to_major_info)) {
-                                $this_major = '<a href="' . $link_to_major_info . '">' . $this_major . '</a>';
+                                $this_major = '<li class="' . $primary . ' ' . $minor . '"><a href="' . $link_to_major_info . '">' . $this_major . '</a></li>';
+                            } else {
+                                $this_major = '<li class="' . $primary . ' ' . $minor . '">' . $this_major . '</li>';
                             }
                             $majors .= $this_major;
                         }
