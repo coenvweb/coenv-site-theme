@@ -50,22 +50,19 @@ $ancestor = array(
                     
                     <header class="article__header">
                         <h1 class="article__title"><?php the_title() ?></h1>
-                    </header>
+                    </header>                 
                     
-                    <section class="article__content">
-                        <div class="intranet-summary">
-                            <?php the_content(); ?>
-                        </div>
-                    </section>
-                    
-                    <form role="search" method="get" class="search-form Form--inline" action="/students/meet-our-students/student-ambassadors/">
-                      <div class="field-wrap">
-                        <input type="text" name="st" id="st" placeholder="Search" />
-                        <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-                      </div>
-                    </form>
 
 	               <section class="article__content accordion" id="bio">
+                       <form role="search" method="get" class="search-form Form--inline" action="/students/meet-our-students/student-ambassadors/">
+                          <div class="field-wrap">
+                            <input type="text" name="st" id="st" placeholder="Search" value="<?php echo $coenv_search_terms ?>" />
+                            <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+                          </div>
+                        </form>
+                       <div class="intranet-summary">
+                            <?php the_content(); ?>
+                        </div>
                    <?php
                         
                         // First Placement Query
