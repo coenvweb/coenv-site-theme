@@ -7,8 +7,8 @@
 get_header();
 
 //Search terms
-$coenv_search_terms = isset($_GET['st']) ? $_GET['st'] : '';
-$coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
+$coenv_search_terms_raw = isset($_GET['st']) ? $_GET['st'] : '';
+$coenv_search_terms = urlencode(htmlentities($coenv_search_terms_raw));
 
 $ancestor_id = coenv_get_ancestor();
 
@@ -52,17 +52,18 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>                 
                     
+                    <div class="intranet-summary">
+                        <?php the_content(); ?>
+                    </div>
 
 	               <section class="article__content accordion" id="bio">
                        <form role="search" method="get" class="search-form Form--inline" action="/students/meet-our-students/student-ambassadors/">
                           <div class="field-wrap">
-                            <input type="text" name="st" id="st" placeholder="Search" value="<?php echo $coenv_search_terms ?>" />
+                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
                           </div>
                         </form>
-                       <div class="intranet-summary">
-                            <?php the_content(); ?>
-                        </div>
+            
                    <?php
                         
                         // First Placement Query
@@ -82,7 +83,8 @@ $ancestor = array(
                         $query = new WP_Query( $args );
                         
                         if ($query->have_posts()) {
-                            echo '<h2>' . $term->name . '</h2>';
+                        } else {
+                            echo '<p>No ambassadors found matching your search, try again.</p>';
                         }
                 
                         while ( $query->have_posts() ) : $query->the_post();

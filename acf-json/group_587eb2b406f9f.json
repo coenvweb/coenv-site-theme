@@ -299,28 +299,6 @@
             }
         },
         {
-            "taxonomy": "student_tag",
-            "field_type": "multi_select",
-            "multiple": 0,
-            "allow_null": 1,
-            "return_format": "object",
-            "add_term": 1,
-            "load_terms": 1,
-            "save_terms": 0,
-            "key": "field_5887e3052dd8a",
-            "label": "Student Tags",
-            "name": "student_tags",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -402,5 +380,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485300781
+    "modified": 1485368059
 }
