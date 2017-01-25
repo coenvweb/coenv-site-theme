@@ -3,6 +3,17 @@
     "title": "Newsletter Fields",
     "fields": [
         {
+            "multiple": 0,
+            "allow_null": 0,
+            "choices": {
+                "headlines": "Headlines",
+                "scicomm": "SciComm"
+            },
+            "default_value": [],
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "return_format": "value",
             "key": "field_58333fd3eab1e",
             "label": "Newsletter Type",
             "name": "newsletter_type",
@@ -14,135 +25,151 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "headlines": "Headlines",
-                "scicomm": "SciComm"
-            },
-            "default_value": [],
+            }
+        },
+        {
+            "post_type": [],
+            "taxonomy": [],
             "allow_null": 0,
             "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "return_format": "value",
-            "placeholder": ""
-        },
-        {
-            "key": "field_58334013eab1f",
-            "label": "Feature Image",
-            "name": "feature_image",
-            "type": "image",
-            "instructions": "Image for SciComm Featured Story",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_58333fd3eab1e",
-                        "operator": "==",
-                        "value": "scicomm"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 640,
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_58334080eab20",
-            "label": "Feature Title",
-            "name": "feature_title",
-            "type": "text",
-            "instructions": "Title of feature story for SciComm newsletter",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_58333fd3eab1e",
-                        "operator": "==",
-                        "value": "scicomm"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5833414eeab21",
-            "label": "Feature Content",
-            "name": "feature_content",
-            "type": "textarea",
-            "instructions": "Short content excerpt for the SciComm feature story",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_58333fd3eab1e",
-                        "operator": "==",
-                        "value": "scicomm"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_58334181eab22",
-            "label": "Feature Link",
-            "name": "feature_link",
-            "type": "url",
-            "instructions": "Link to read more on the SciComm feature story",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_58333fd3eab1e",
-                        "operator": "==",
-                        "value": "scicomm"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
+            "return_format": "object",
+            "ui": 1,
             "key": "field_583341a8eab23",
             "label": "Feature Story",
             "name": "feature_story",
             "type": "post_object",
-            "instructions": "Headlines Feature Story Post",
+            "instructions": "Feature Story Post",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "sub_fields": [
+                {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "key": "field_5888e2007be18",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "return_format": "url",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "key": "field_5888e20e7be19",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "default_value": "",
+                    "placeholder": "",
+                    "key": "field_5888e2257be1a",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "min": 1,
+            "max": 7,
+            "layout": "table",
+            "button_label": "",
+            "collapsed": "",
+            "key": "field_5888e0bc7be17",
+            "label": "Scicomm News Items",
+            "name": "scicomm_news_items",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "sub_fields": [
+                {
+                    "post_type": [
+                        "post"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1,
+                    "key": "field_583341e4eab25",
+                    "label": "News Item",
+                    "name": "news_item",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "min": 3,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add News Item",
+            "collapsed": "field_583341e4eab25",
+            "key": "field_583341cfeab24",
+            "label": "News Items",
+            "name": "news_items",
+            "type": "repeater",
+            "instructions": "",
             "required": 1,
             "conditional_logic": [
                 [
@@ -157,77 +184,16 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "post_type": [],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            }
         },
         {
-            "key": "field_583341cfeab24",
-            "label": "News Items",
-            "name": "news_items",
-            "type": "repeater",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "field_583341e4eab25",
-            "min": 3,
-            "max": 6,
-            "layout": "table",
-            "button_label": "Add News Item",
             "sub_fields": [
                 {
-                    "key": "field_583341e4eab25",
-                    "label": "News Item",
-                    "name": "news_item",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "post"
-                    ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
-                }
-            ]
-        },
-        {
-            "key": "field_5833425ceab26",
-            "label": "Outside News",
-            "name": "outside_news",
-            "type": "repeater",
-            "instructions": "Titles, sources, and links to news and articles outside our website",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 1,
-            "max": "",
-            "layout": "table",
-            "button_label": "Add Outside News",
-            "sub_fields": [
-                {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "key": "field_58334294eab27",
                     "label": "Title",
                     "name": "title",
@@ -239,14 +205,14 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
+                    }
+                },
+                {
                     "default_value": "",
+                    "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
-                },
-                {
                     "key": "field_583342aaeab28",
                     "label": "Source",
                     "name": "source",
@@ -258,14 +224,11 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    }
                 },
                 {
+                    "default_value": "",
+                    "placeholder": "",
                     "key": "field_583342b3eab29",
                     "label": "Link",
                     "name": "link",
@@ -277,32 +240,35 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
+                    }
                 }
-            ]
-        },
-        {
-            "key": "field_58349757b436e",
-            "label": "Events",
-            "name": "events",
+            ],
+            "min": 1,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Outside News",
+            "collapsed": "",
+            "key": "field_5833425ceab26",
+            "label": "Outside News \/ Science Journals",
+            "name": "outside_news",
             "type": "repeater",
-            "instructions": "For design purposes, add events in multiples of 2",
+            "instructions": "Titles, sources, and links to news and articles outside our website",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": "",
-            "layout": "table",
-            "button_label": "Add Event",
+            }
+        },
+        {
             "sub_fields": [
                 {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "key": "field_5834976db436f",
                     "label": "Title",
                     "name": "title",
@@ -314,14 +280,12 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    }
                 },
                 {
+                    "display_format": "m\/d\/Y",
+                    "return_format": "F j, Y",
+                    "first_day": 0,
                     "key": "field_58349778b4370",
                     "label": "Date",
                     "name": "date",
@@ -333,12 +297,14 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "display_format": "m\/d\/Y",
-                    "return_format": "F j, Y",
-                    "first_day": 0
+                    }
                 },
                 {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "key": "field_583497abb4371",
                     "label": "Location",
                     "name": "location",
@@ -350,14 +316,11 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    }
                 },
                 {
+                    "default_value": "",
+                    "placeholder": "",
                     "key": "field_583497bcb4372",
                     "label": "Link",
                     "name": "link",
@@ -369,11 +332,26 @@
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
+                    }
                 }
-            ]
+            ],
+            "min": 2,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Add Event",
+            "collapsed": "",
+            "key": "field_58349757b436e",
+            "label": "Events",
+            "name": "events",
+            "type": "repeater",
+            "instructions": "For design purposes, add events in multiples of 2",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -403,5 +381,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1479852840
+    "modified": 1485366280
 }
