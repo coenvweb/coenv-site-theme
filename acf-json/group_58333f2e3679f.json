@@ -69,8 +69,8 @@
                     }
                 },
                 {
-                    "return_format": "url",
-                    "preview_size": "thumbnail",
+                    "return_format": "id",
+                    "preview_size": "homepage-column",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -287,8 +287,25 @@
                     "return_format": "F j, Y",
                     "first_day": 0,
                     "key": "field_58349778b4370",
-                    "label": "Date",
-                    "name": "date",
+                    "label": "Start Date",
+                    "name": "start_date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "display_format": "m\/d\/Y",
+                    "return_format": "F j, Y",
+                    "first_day": 1,
+                    "key": "field_5888e616867bc",
+                    "label": "End Date",
+                    "name": "end_date",
                     "type": "date_picker",
                     "instructions": "",
                     "required": 0,
@@ -381,5 +398,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485366280
+    "modified": 1485366907
 }
