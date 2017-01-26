@@ -31,6 +31,10 @@
                 right: .5rem;
                 top: 12.5%;
             }
+            &.open:after {
+                content: "\e028";
+                transform: translateY(-50%) rotate(90deg);
+            }
         }
         
         @include max-width ( 380 ) {
