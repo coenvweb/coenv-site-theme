@@ -33,8 +33,24 @@ function coenv_register_student_ambassadors() {
 		'has_archive' => false,
 		'hierarchical' => false,
 		'menu_icon' => 'dashicons-smiley',
-		'capability_type' => 'page',
+		'capability_type' => 'post',
 		'rewrite' => $rewrite,
+        'capabilities' => array(
+            'publish_posts' => 'publish_student_ambassadors',
+            'delete_others_posts' => 'delete_others_student_ambassadors',
+            'delete_post' => 'delete_student_ambassadors',
+            'delete_posts' => 'delete_student_ambassadors',
+            'delete_private_posts' => 'delete_private_student_ambassadors',
+            'delete_published_posts' => 'delete_published_student_ambassadors',
+            'edit_others_posts' => 'edit_others_student_ambassadors',
+            'edit_post' => 'edit_student_ambassadors',
+            'edit_posts' => 'edit_student_ambassadors',
+            'edit_private_posts' => 'edit_private_student_ambassadors',
+            'edit_published_posts' => 'edit_published_student_ambassadors',
+            'read_post' => 'read_student_ambassadors',
+            'read_private_posts' => 'read_private_student_ambassadors',
+        ),
+
 	);
 
 	register_post_type( 'student_ambassadors', $args );
@@ -70,12 +86,12 @@ function taxonomy_student_tag() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
         
-        'capabilities'               => array(
-                'manage_terms' => 'edit_posts',
-                'edit_terms' => 'edit_posts',
-                'delete_terms' => 'edit_posts',
-                'assign_terms' => 'edit_posts'  // means administrator', 'editor', 'author', 'contributor'
-            ),
+        'capabilities' => array(
+			'assign_terms' => 'publish_student_ambassadors',
+	        'edit_terms' => 'publish_student_ambassadors',
+			'manage_terms' => 'publish_student_ambassadors',
+			'delete_terms' => 'publish_student_ambassadors',
+		),
 	);
 	register_taxonomy( 'student_tag', array( 'student_ambassadors' ), $args );
 
