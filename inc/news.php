@@ -37,7 +37,7 @@ function taxonomy_unit() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'unit', array( 'post', 'page', 'faculty', 'student_ambassadors' ), $args );
+	register_taxonomy( 'unit', array( 'post', 'page', 'faculty' ), $args );
 
 }
 
