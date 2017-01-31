@@ -55,23 +55,8 @@ $ancestor = array(
                     <div class="intranet-summary">
                         <?php the_content(); ?>
                     </div>
-
-	               <section class="article__content accordion" id="bio">
-                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
-                          <div class="field-wrap">
-                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
-                            <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-                          </div>
-                        </form>
-                       
-                       <?php if ($coenv_search_terms): // Category filter ?>
-                        <div class="panel">
-                            <div class="left"><?php echo $wp_query->found_posts; ?> Ambassador(s) matching <strong>"<?php echo $coenv_search_terms; ?>"</strong></div>
-                            <a class="right" href="<?php echo the_permalink(); ?>"><i class="icon-cross"></i></a>
-                        </div>
-                        <?php endif; ?>
-            
-                   <?php
+                    
+                    <?php
                         
                         // First Placement Query
                         $args = array(
@@ -88,6 +73,25 @@ $ancestor = array(
                         endif;
                         
                         $query = new WP_Query( $args );
+                    
+                    ?>
+
+	               <section class="article__content accordion" id="bio">
+                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
+                          <div class="field-wrap">
+                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
+                            <button type="submit"><i class="icon-search"></i><span>Search</span></button>
+                          </div>
+                        </form>
+                       
+                       <?php if ($coenv_search_terms): // Category filter ?>
+                        <div class="panel">
+                            <div class="left">Ambassador(s) matching <strong>"<?php echo $coenv_search_terms; ?>"</strong></div>
+                            <a class="right" href="<?php echo the_permalink(); ?>"><i class="icon-cross"></i></a>
+                        </div>
+                        <?php endif; ?>
+            
+                   <?php
                         
                         if ($query->have_posts()) {
                         } else {
