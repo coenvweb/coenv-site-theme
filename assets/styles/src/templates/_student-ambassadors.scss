@@ -1,11 +1,11 @@
 //Contact Page Styles
 
-.page-id-51924 {
+.student-ambassadors {
     
     .article__content {
         form {
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .field-wrap {
             display: block;
@@ -16,6 +16,26 @@
         }
         button {
             height: 2.5rem;
+        }
+        .panel {
+            float:left;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            padding: .5rem 1rem;
+            background-color: #eee;
+            .left {
+                float:left;
+                width: 85%;
+                padding-top: .25rem;
+            }
+            .right {
+                margin-bottom: 0;
+                text-decoration: none;
+                font-size: 2rem;
+                float: right;
+                text-align: center;
+                color: $text;
+            }
         }
     }
 
@@ -285,7 +305,7 @@
     }
     
     .ambassador-info {
-        padding: 0;
+        padding: 0 0 .5rem 0;
         margin: 0;
         .row {
             width: 100%;
@@ -300,20 +320,20 @@
             font-size: 90%!important;
             color: $text-md;
             width: 100%;
-            margin: 0 0 1rem 0;
+            margin: 0;
             background: #eee;
             
             @include min-width ( $iPadPortrait ) {
                 width: 200px;
                 text-align: right;
                 background: none;
-                padding: 1rem;
+                padding: .5rem 1rem;
             }
         }
         .answer-content {
             list-style: none;
             padding: 0rem 1rem 0 1rem;
-            margin: 0 0 1rem 0;
+            margin: 0;
             p {
                 margin: 0;
             }
@@ -329,7 +349,7 @@
             @include min-width ( $iPadPortrait ) {
                 width: calc(100% - 200px);
                 float: right;
-                padding: 1rem 1rem 0 1rem;
+                padding: .5rem 1rem .5rem 1rem;
             }
         }
     }

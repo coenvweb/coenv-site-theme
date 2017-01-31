@@ -46,7 +46,7 @@ $ancestor = array(
 
 			<main id="main-col" class="main-col">
                 
-                <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
+                <article id="post-<?php the_ID() ?>" <?php post_class( 'article student-ambassadors' ) ?>>
                     
                     <header class="article__header">
                         <h1 class="article__title"><?php the_title() ?></h1>
@@ -63,6 +63,13 @@ $ancestor = array(
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
                           </div>
                         </form>
+                       
+                       <?php if ($coenv_search_terms): // Category filter ?>
+                        <div class="panel">
+                            <div class="left"><?php echo $wp_query->found_posts; ?> Ambassador(s) matching <strong>"<?php echo $coenv_search_terms; ?>"</strong></div>
+                            <a class="right" href="<?php echo the_permalink(); ?>"><i class="icon-cross"></i></a>
+                        </div>
+                        <?php endif; ?>
             
                    <?php
                         
