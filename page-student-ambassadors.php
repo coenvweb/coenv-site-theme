@@ -57,7 +57,7 @@ $ancestor = array(
                     </div>
 
 	               <section class="article__content accordion" id="bio">
-                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/student-ambassadors/">
+                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
                           <div class="field-wrap">
                             <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
