@@ -128,7 +128,7 @@ if(!empty($description)) {
                 <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
             <?php endif; ?>
             <?php if (!empty($linkedin)) : ?>
-                <li><a href="<?php echo $linked_in; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
+                <li><a href="<?php echo $linkedin; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
             <?php endif; ?>                
             </ul>
         </div>
