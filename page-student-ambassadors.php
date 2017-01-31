@@ -52,10 +52,6 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>                 
                     
-                    <div class="intranet-summary">
-                        <?php the_content(); ?>
-                    </div>
-                    
                     <?php
                         
                         // First Placement Query
@@ -77,6 +73,10 @@ $ancestor = array(
                     ?>
 
 	               <section class="article__content accordion" id="bio">
+                       <div class="intranet-summary">
+                            <?php the_content(); ?>
+                       </div>
+
                        <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
                           <div class="field-wrap">
                             <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
