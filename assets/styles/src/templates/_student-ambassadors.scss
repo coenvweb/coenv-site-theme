@@ -337,7 +337,10 @@
         .answer-content {
             list-style: none;
             padding: 0rem 1rem 0 1rem;
-            margin: 0;
+            margin: .5rem 0;
+            p {
+                margin: 0 0 .75rem 0;
+            }
             li, a {
                 &:first-of-type {
                     margin-top: 0;
@@ -351,9 +354,7 @@
                 width: calc(100% - 200px);
                 float: right;
                 padding: .5rem 1rem .5rem 1rem;
-                p {
-                    margin: 0 0 .75rem 0;
-                }
+                margin: 0;
             }
         }
     }
