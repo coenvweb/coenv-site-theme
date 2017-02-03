@@ -303,7 +303,6 @@
             }
         }
         @include min-width ( $iPadLandscape ) {
-            width: 368px;
             transition: .3s width;
         }
     }
