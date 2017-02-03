@@ -84,9 +84,6 @@
             .contact-info {
                 margin-left: 0!important;
             }
-            img {
-                display: none!important;
-            }
         }
 
 
@@ -303,6 +300,7 @@
             }
         }
         @include min-width ( $iPadLandscape ) {
+            width: 368px;
             transition: .3s width;
         }
     }
