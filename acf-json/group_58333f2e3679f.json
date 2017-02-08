@@ -28,6 +28,116 @@
             }
         },
         {
+            "return_format": "id",
+            "preview_size": "large",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "key": "field_589b7b9cc0495",
+            "label": "Feature Image",
+            "name": "feature_image",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "key": "field_589b7c01c0496",
+            "label": "Feature Title",
+            "name": "feature_title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "key": "field_589b7c4dc0498",
+            "label": "Feature Content",
+            "name": "feature_content",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": "",
+            "placeholder": "",
+            "key": "field_589b7c22c0497",
+            "label": "Feature Link",
+            "name": "feature_link",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "scicomm"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
             "post_type": [],
             "taxonomy": [],
             "allow_null": 0,
@@ -40,7 +150,15 @@
             "type": "post_object",
             "instructions": "Feature Story Post",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_58333fd3eab1e",
+                        "operator": "==",
+                        "value": "headlines"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -398,5 +516,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485366907
+    "modified": 1486584974
 }
