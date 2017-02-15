@@ -120,6 +120,10 @@ if ($coenv_search_terms) :
 	$query_args['s'] = $coenv_search_terms;
 endif;
 
+if (empty($coenv_cat_term_1) && empty($coenv_cat_tag_1) && empty($coenv_year) && empty($coenv_month) && empty($coenv_search_terms) && $paged == 0) {
+    $first_page = true;
+}
+
 //Sort/*
 	if ($coenv_sort == 'deadline') {
 		$query_args['meta_key'] = '_expiration-date';
@@ -191,7 +195,7 @@ $wp_announcement_query = new WP_Query( $announcement_query_args );
 						</div>
 					</header>
                     
-                <?php if ( $wp_announcement_query->have_posts() ) : ?>
+                <?php if ( ($wp_announcement_query->have_posts()) && $first_page == true ) : ?>
                     <div class="featured-career">
 					<?php while ( $wp_announcement_query->have_posts() ) : $wp_announcement_query->the_post() ?>
 
