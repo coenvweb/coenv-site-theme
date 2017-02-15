@@ -56,6 +56,15 @@ $query_args = array(
 	'post_status' => 'publish',
 	'posts_per_page' => 20,
     'paged' => $paged,
+    'category__not_in' => array( 1972 ),
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'career_category',
+            'terms' => array('announcement'),
+            'field' => 'slug',
+            'operator' => 'NOT IN',
+        ),
+    ),
     'meta_query' => array(
     	'relation'    => 'OR',
         array(
@@ -71,6 +80,19 @@ $query_args = array(
             'compare' => '>='
         ),
     )
+);
+
+$announcement_query_args = array(
+	'post_type' => 'careers',
+	'post_status' => 'publish',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'career_category',
+            'terms' => array('announcement'),
+            'field' => 'slug',
+            'operator' => 'IN',
+        ),
+    ),
 );
 
 // Category filter
@@ -109,6 +131,7 @@ endif;
 	}
 // Make query
 $wp_query = new WP_Query( $query_args ); 
+$wp_announcement_query = new WP_Query( $announcement_query_args ); 
 ?>
 	<section id="page" role="main" class="template-page">
 
@@ -167,6 +190,46 @@ $wp_query = new WP_Query( $query_args );
 							<?php endif; ?>
 						</div>
 					</header>
+                    
+                <?php if ( $wp_announcement_query->have_posts() ) : ?>
+                    <div class="featured-career">
+					<?php while ( $wp_announcement_query->have_posts() ) : $wp_announcement_query->the_post() ?>
+
+						<article id="post-<?php the_ID() ?>" <?php post_class( 'career' ) ?>>
+
+                        <header class="article__header">
+                            <div class="article__meta">
+                                <div class="post-info">
+                                    Announcement | Posted: 
+                                    <time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time>         	
+                                </div>
+                            </div>
+
+                            <?php
+                            $location = get_field('location');
+                            ?>
+
+                            <?php if ( is_single() ) : ?>
+                                <h1 class="article__title"><?php the_title(); ?></h1>
+                                <h3 class="location"><?php echo $location; ?></h3>
+                            <?php else : ?>
+                                <h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                                <h3 class="location"><?php echo $location; ?></h3>
+                            <br />
+                            <?php endif; ?>
+                            <?php the_content(); ?>
+                            <?php if (current_user_can( 'edit_career', get_the_ID() ) ) { echo '<a class="button" href="/wordpress/wp-admin/post.php?post='. get_the_ID() . '&action=edit">Edit this announcement post</a>'; } ?>
+                        </header>
+
+                        <?php remove_filter( 'the_title', 'wptexturize' );
+                        remove_filter( 'the_excerpt', 'wptexturize' ); ?>
+
+                    </article><!-- .article -->
+
+
+					<?php endwhile ?>
+                    </div>
+				<?php endif; ?>
 
 
 				<?php if ( $wp_query->have_posts() ) : ?>
