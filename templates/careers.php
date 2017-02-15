@@ -85,6 +85,7 @@ $query_args = array(
 $announcement_query_args = array(
 	'post_type' => 'careers',
 	'post_status' => 'publish',
+    'posts_per_page' => 1,
     'tax_query' => array(
         array(
             'taxonomy' => 'career_category',
