@@ -71,7 +71,7 @@ jQuery(function($)
     //Find Selected terms
     function getSelectedterms()
     {
-        var terms = []; //Setup empty array
+        var terms = []; //Setup empty array with excluded categories
  
         $(".ajax-filters li .selected").each(function() {
             var val = $(this).val();

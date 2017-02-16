@@ -1,4 +1,16 @@
 <?php
+
+$exclude_slugs      = array( 'announcement', 'under-1-year', '1-2-years', '2-5-years', 'more-than-5-years', 'northwest-region-id-or-or', 'wa', 'seasonal', 'contract', 'permanent', 'organization-type', 'academia', 'tribal', 'gov', 'nonprofit', 'private-sector', 'careers', 'volunteer', 'uw-student-campus-jobs', 'uw-positions', 'us', 'field', 'compensation');           
+$exclude_ids        = array();
+
+foreach( $exclude_slugs as $slug ) { 
+    $tmp_term = get_term_by( 'slug', $slug, 'career_category' );
+
+    if( is_object( $tmp_term ) ) {
+        $exclude_ids[] = $tmp_term->term_id;
+    }
+}
+
 //list terms in a given taxonomy using wp_list_categories (also useful as a widget if using a PHP Code plugin)
 $taxonomy     = 'career_category';
 $orderby      = 'name'; 
@@ -17,6 +29,7 @@ $args = array(
   'title_li'     => $title,
   'walker' 		 => $walker,
   'hide_empty'   => 0,
+  'exclude'      => $exclude_ids,
 );
 
 ?>

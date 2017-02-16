@@ -17,7 +17,6 @@ $ancestor = array(
 	'title' => get_the_title( $ancestor_id )
 );
 
-// Make query
 ?>
 	<section id="page primary" role="main" class="template-page content-area">
 
@@ -78,6 +77,7 @@ $ancestor = array(
                         <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
                     </ul></li>
                 </div>
+                 
                 <div id="results" data-action="careers_filter" aria-live="polite">
                     <?php
                     if( have_posts() ):
