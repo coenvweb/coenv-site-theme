@@ -67,7 +67,7 @@ $ancestor = array(
                     </form>
                     <li class="sorter right">Sort By
                         <ul>
-                            <li class="button selected" data-value="postdate" aria-pressed="true">Post date</a></li>
+                            <li class="button selected" data-value="postdate" aria-pressed="true">Post date</li>
                             <li class="button"  data-value="deadline" aria-pressed="false">Deadline</li>
                         </ul>
                     </li>
@@ -76,6 +76,12 @@ $ancestor = array(
                         <a class="button" href="/students/career-resources/career-opportunities/subscribe-via-email/"><i class="icon-mail"></i></a>
                         <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
                     </ul></li>
+                    <li class="mobile-filter">Filter By
+                    <ul>
+                        <a class="filter-anchor" href="#filters"><li class="button"><span class="plus">+</span> Add Filter</li></a>
+                        <a class="filter-clear" href=""><li class="button"><i class="icon-cross"></i> Clear Filters</li></a>
+                    </ul>
+                    </li>
                 </div>
                  
                 <div id="results" data-action="careers_filter" aria-live="polite">

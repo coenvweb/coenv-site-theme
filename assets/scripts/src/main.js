@@ -75,6 +75,8 @@ jQuery(function ($) {
 });
 
 jQuery("document").ready(function($){
+    
+    if ($(window).width() > 768) {
 	
 	var nav = $('#careers-filter');
 	
@@ -101,6 +103,8 @@ jQuery("document").ready(function($){
             nav.css('margin-top', 0);
         }
 	});
+        
+    };
  
 });
 
