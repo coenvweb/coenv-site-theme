@@ -88,14 +88,14 @@
         },
         {
             "default_value": "",
+            "new_lines": "wpautop",
             "maxlength": "",
             "placeholder": "",
-            "prepend": "",
-            "append": "",
+            "rows": "",
             "key": "field_589b7c4dc0498",
             "label": "Feature Content",
             "name": "feature_content",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 1,
             "conditional_logic": [
@@ -535,5 +535,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1487703911
+    "modified": 1487705821
 }
