@@ -113,7 +113,8 @@ class CoEnv_Widget_Events extends WP_Widget {
                 array(
                     'timeout' => 3,  //1200 Seconds is 20 Minutes
                 )
-            ));
+            ),
+            array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false)));
             
 			if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
                 
