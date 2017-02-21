@@ -212,6 +212,25 @@
                 },
                 {
                     "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "key": "field_58ac8f44c092c",
+                    "label": "Source",
+                    "name": "source",
+                    "type": "text",
+                    "instructions": "Eg. \"Read more at example.com\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "default_value": "",
                     "placeholder": "",
                     "key": "field_5888e2257be1a",
                     "label": "Link",
@@ -516,5 +535,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1486584974
+    "modified": 1487703911
 }
