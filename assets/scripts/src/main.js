@@ -157,7 +157,39 @@ $.fn.memberTabs = function () {
  */
 
 jQuery(document).ready(function() {
-  closeUWAlert();
+    closeUWAlert();
+
+   var $el, $ps, $up, totalHeight;
+
+    $(".article__content .read-more .button").click(function() {
+
+      totalHeight = 0
+
+      $el = $(this);
+      $p  = $el.parent();
+      $up = $p.parent();
+      $ps = $up.find("p:not('.read-more')");
+      $e  = $up.find(".external");
+
+      // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
+      $ps.each(function() {
+        totalHeight += $(this).outerHeight(true);
+      });
+      totalHeight += $e.outerHeight(true) + 10;
+
+      $up
+        .animate({
+          "max-height": 9999
+        });
+
+      // fade out read-more
+      $p.fadeOut();
+
+      // prevent jump-down
+      return false;
+
+    });
+
 });
 
 function closeUWAlert () {
@@ -181,3 +213,5 @@ function closeUWAlert () {
     setTimeout(closeUWAlert, 50); //wait 50 ms, then try again
   }
 }
+
+

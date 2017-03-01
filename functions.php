@@ -500,6 +500,11 @@ function coenv_banner() {
         $ancestor = 32;
     }
 
+    if (is_singular('newsletter')) {
+        unset($ancestor);
+        $ancestor = 5;
+    }
+
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
 
