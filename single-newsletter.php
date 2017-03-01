@@ -157,16 +157,20 @@ $links = get_field('outside_news');
 						<div class="related-posts">
 							<div class="related-container">
 								<div class="related-article-title">
-									<h3>
-										<a href="<?=get_site_url()?>/news" title="More news from the College of the Environment" rel="bookmark">More news from the College of the Environment</a>
-									</h3>
+                                    <a href="<?=get_site_url()?>/news" title="More news from the College of the Environment" rel="bookmark">
+                                        <h3>
+                                            <img class="newsletter-icon" src="<?=get_template_directory_uri()?>/assets/img/icon-newspaper.png" alt="Newspaper Icon" /><span>More news from the </br>College of the Environment</span>
+                                        </h3>
+                                    </a>
 								</div>
 							</div>
 							<div class="related-container">
 								<div class="related-article-title">
-									<h3>
-										<a href="http://engage.washington.edu/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&amp;SURVEY_ID=18921" title="Sign up to receive UW Headlines monthly" rel="bookmark">Sign up to receive UW Headlines monthly</a>
-									</h3>
+                                    <a href="http://engage.washington.edu/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&amp;SURVEY_ID=18921" title="Sign up to receive UW Headlines monthly" rel="bookmark">
+                                        <h3>
+                                            <img class="newsletter-icon" src="<?=get_template_directory_uri()?>/assets/img/icon-email.png" alt="Email Icon" /><span>Sign up to receive </br>UW Headlines monthly</span>
+                                        </h3>
+                                    </a>
 								</div>
 							</div>
 							<br style="clear:both">

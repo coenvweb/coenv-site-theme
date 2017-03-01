@@ -57,6 +57,11 @@
 			.article__title {
 				margin-top: 1rem;
 			} 
+            .article__content {
+                .button {
+                    background: #555;
+                }
+            }
         }
 
         .scicomm_news_item {
@@ -199,6 +204,26 @@
                 height: 2rem;
                 @include max-width( $iPadPortrait ) {
                     height: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .related {
+        .related-container {
+            .newsletter-icon {
+                float: left;
+                display: block;
+                padding-top: 0.2rem;
+                width: 13%;
+                clear: both;
+            }
+            .related-article-title {
+                span {
+                    display: block;
+                    overflow: hidden;
+                    padding-bottom: 0.5rem;
+                    padding-left: 1rem;
                 }
             }
         }
