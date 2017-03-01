@@ -224,9 +224,11 @@ function coenv_related_news ($id) {
     $_coenv_terms = get_the_terms( $id, $post_tax );
     $coenv_terms = array();
 
-	foreach ( $_coenv_terms as $term) {
-		$coenv_terms[] = $term->slug;
-	}
+    if($_coenv_terms) {
+        foreach ( $_coenv_terms as $term) {
+            $coenv_terms[] = $term->slug;
+        }
+    }
 
 	$args = array (
 
