@@ -235,7 +235,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 }
 
 /**
- * Insider Newsletter Widget
+ * Headlines Newsletter Widget
  */
 register_widget( 'CoEnv_Widget_Newsletter' );
 
@@ -244,12 +244,12 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
   public function __construct() {
 		$args = array(
 			'classname' => 'widget-link',
-			'description' => __( 'Display a link to the Insider Newsletter archive page.', 'coenv' )
+			'description' => __( 'Display a link to the Headlines Newsletter page.', 'coenv' )
 		);
  
 		parent::__construct(
 			'newsletter_link', // base ID
-			'Insider Newsletter Link', // name
+			'Headlines Newsletter Link', // name
 			$args
 		);
 	}
@@ -259,7 +259,7 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( '<em>The Insider</em> Newsletter Archive', 'coenv' );
+			$title = __( '<em>Headlines</em> Newsletter Archive', 'coenv' );
 		}
         $newsletter_url = $instance['newsletter_url'];
  
