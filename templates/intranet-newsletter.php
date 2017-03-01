@@ -57,7 +57,7 @@ $query = new WP_Query($args);
 
 					<section class="article__content">
                         <?php if($query->have_posts()) { ?>
-                            <h3>Headlines Newsletters 2016-Current</h3>
+                            <h3>Headlines Newsletters</h3>
                         <?php } ?>
 
                         <?php if($query->have_posts()) { ?>
