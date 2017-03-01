@@ -147,10 +147,36 @@ $links = get_field('outside_news');
                         </ul>
                     </div>
                 </section>
+
+
+				<footer class="related">
+					<div class="related-news newsletter">
+						<div class="related-heading">
+							<h2 class="title">Stay Connected</h2>
+						</div>
+						<div class="related-posts">
+							<div class="related-container">
+								<div class="related-article-title">
+									<h3>
+										<a href="<?=get_site_url()?>/news" title="More news from the College of the Environment" rel="bookmark">More news from the College of the Environment</a>
+									</h3>
+								</div>
+							</div>
+							<div class="related-container">
+								<div class="related-article-title">
+									<h3>
+										<a href="http://engage.washington.edu/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&amp;SURVEY_ID=18921" title="Sign up to receive UW Headlines monthly" rel="bookmark">Sign up to receive UW Headlines monthly</a>
+									</h3>
+								</div>
+							</div>
+							<br style="clear:both">
+						</div>
+					</div>
+				</footer>
 			</main><!-- .main-col -->
 
             <div class="side-col">
-                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter', 'newsletter_url' => 'https://environment.uw.edu/news/college-newsletter/')); ?>
+                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter', 'newsletter_url' => get_site_url() . '/news/college-newsletter/')); ?>
                 <?php dynamic_sidebar('News / Sidebar'); ?>
             </div><!-- .side-col -->
 
