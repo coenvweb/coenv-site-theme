@@ -35,7 +35,7 @@
 
         <?php } ?>
 
-        <p class="read-more"><a href="#" class="button">Read More</a></p>
+        <p class="read-more"><a href="javascript();" class="button">Read More</a></p>
 
     </section>
 
