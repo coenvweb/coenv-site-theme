@@ -195,10 +195,10 @@ $links = get_field('outside_news');
 jQuery(document).ready(function(){
     (function($) {
 		var hash = window.location.hash;
-		$(hash).find('.read-more a').click();
+		$(hash).find('.read-more a')[0].click();
 		$(window).on('hashchange', function() {
 			var hash = window.location.hash;
-			$(hash).find('.read-more a').click();
+			$(hash).find('.read-more a')[0].click();
 		});
     })(jQuery);
 });

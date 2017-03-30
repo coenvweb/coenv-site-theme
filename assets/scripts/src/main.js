@@ -161,7 +161,7 @@ jQuery(document).ready(function() {
 
    var $el, $ps, $up, totalHeight;
 
-    $(".article__content .read-more .button").click(function() {
+    $(".article__content .read-more .button").on('click', function() {
 
       totalHeight = 0
 
