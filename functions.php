@@ -250,6 +250,9 @@ function coenv_theme_setup() {
         add_image_size( 'homepage-column', 253 );
 		add_image_size( 'half', 375 );
 		add_image_size( 'one-third', 250 );
+        // restrained height
+        add_image_size( 'homepage-column-standard', '253', '168', true );
+        add_image_size( 'homepage-hero-standard', '680', '450', true );
 	}
 
   // medium: 528x528
@@ -265,7 +268,9 @@ add_filter('image_size_names_choose', 'my_image_sizes');
 function my_image_sizes($sizes) {
 $addsizes = array(
 "half" => __( "50% of column"),
-"one-third" => __( "33% of column")
+"one-third" => __( "33% of column"),
+"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
+"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
 );
 $newsizes = array_merge($sizes, $addsizes);
 return $newsizes;
@@ -1002,7 +1007,9 @@ function remove_faculty_search( $query ) {
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
 
-function cdn_upload_url() {
-    return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev') {
+    function cdn_upload_url() {
+        return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+    }
+    add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
 }
-add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
