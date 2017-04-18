@@ -29,13 +29,19 @@
 
                         <nav class="footer-nav">
                             <!--<h1 class="footer-nav__title">Units and programs</h1>-->
-                            <?php wp_nav_menu( array(
+                            <?php $footer_menu = wp_nav_menu( array(
                                 'theme_location' => 'footer-units',
                                 'depth' => 1,
                                 'menu_class' => 'menu-footer-units',
                                 'container' => false,
-                                'fallback_cb' => false
-                            ) ) ?>
+                                'fallback_cb' => false,
+                                'echo' => false,
+                            ) ); 
+                            $footer_menu = substr($footer_menu, 0, -5);
+                            echo $footer_menu;
+                            echo '<li></li>';
+                            echo '</ul>';
+                            ?>
                         </nav>
 
                 </footer><!-- #footer -->

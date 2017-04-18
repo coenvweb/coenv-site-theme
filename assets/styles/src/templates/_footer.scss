@@ -104,16 +104,20 @@
                 border-bottom: #292827 1px solid;
                 border-top: #43423f 1px solid;
 				@include rem('min-height', 2);
-                &:nth-child(8) {
+                &:nth-child(9) {
                     border-bottom: none;
                 }
                 &:nth-child(16) {
                     border-bottom: none;
                 }
+                &:nth-child(17) {
+                    border-top: none;
+                    border-bottom: none;
+                }
                 &:nth-child(1) {
                     border-top: none;
                 }
-                &:nth-child(9) {
+                &:nth-child(10) {
                     border-top: none;
                 }
                 &:nth-child(11) {
