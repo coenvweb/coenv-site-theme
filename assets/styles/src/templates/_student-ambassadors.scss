@@ -1,0 +1,374 @@
+//Contact Page Styles
+
+.student-ambassadors {
+    
+    .article__content {
+        form {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        .field-wrap {
+            display: block;
+        }
+        input {
+            background-color: #eee;
+            height: 2.5rem;
+        }
+        button {
+            height: 2.5rem;
+        }
+        .panel {
+            float:left;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            padding: .5rem 1rem;
+            background-color: #eee;
+            .left {
+                float:left;
+                width: 85%;
+                padding-top: .25rem;
+            }
+            .right {
+                margin-bottom: 0;
+                text-decoration: none;
+                font-size: 2rem;
+                float: right;
+                text-align: center;
+                color: $text;
+            }
+        }
+        hr {
+            margin-bottom: 2.5rem;
+            margin-top: 3rem;
+        }
+    }
+
+    .contact {
+        height: 130px;
+        margin-bottom: 1.6rem;
+        overflow: hidden;
+        transition-duration: .3s;
+        position: relative;
+        &.accordion-title {
+            padding: 0;
+            background-color: white;
+            z-index: 1;
+            
+             &:after {
+                content: "\e026";
+                 font-size: 10px;
+                -webkit-transform: none;
+                -ms-transform: none;
+                transform: none;
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                padding: 2px 2px 1px 1px;
+                background: transparent;
+                border: 2px solid #666;
+                color: #666;
+                text-align: center;
+                right: .75rem;
+                top: 7%;
+            }
+            &.open:after {
+                content: "\e028";
+                transform: translateY(-50%) rotate(90deg);
+            }
+            .last {
+                display: none;
+            }
+        }
+        
+        @include max-width ( 380 ) {
+            .contact-info {
+                margin-left: 0!important;
+            }
+        }
+
+
+        &.open {
+            width: 100%;
+            margin-bottom: 0rem;
+            .contact-title {
+                padding-right: 3rem;
+            }
+            &:after {
+                letter-spacing: -1px;
+                padding-top: 3px;
+                height: 16px;
+                width: 16px;
+                font-size: 20px;
+                margin-top: -4px;
+                right: .5rem;
+                top: 50%;
+                border: none;
+                color: #666;
+            }
+            
+            .primary-majors {
+                display: none;
+            }
+
+            @include min-width ( 768 ) {
+                h3 {
+                    font-size: 2rem;
+                    padding-top: .5rem;
+                    margin-bottom: .5rem;
+                    padding-bottom: .75rem;
+                }
+                .contact-title {
+                    font-size: 1.2rem;
+                    transition: .3s;
+                    display: table;
+                    padding-right: 5rem;
+                    padding-left: calc(200px + 1rem)
+                }
+                .contact-info {
+                    font-size: 1.2rem;
+                }
+                img {
+                    width: 200px;
+                    height: 200px;
+                }
+                .primary-majors{
+                    padding-top: .5rem;
+                    li {
+                        padding-top: .5rem;
+                    }
+                }
+                .last {
+                    display: inline;
+                }
+                .left {
+                    display: block;
+                    position: absolute;
+                    left: 40%;
+                    top: 1rem;
+                    @include max-width ( $iPadLandscape ) {
+                        top: 0;
+                        bottom: 0!important;
+                        @include rem ('padding', .5, 0, .5, 1);
+                        left: 30%;
+
+                        li {
+                            font-size: 80%!important;
+                        }
+                    }
+                }
+                height: 200px;
+                &:after {
+                    height: 32px;
+                    width: 33px;
+                    font-size: 30px;
+                    right: 1.5rem;
+                }
+                
+            }
+        }
+
+        @media print {
+            page-break-inside: avoid;
+            display: inline-block;
+            width: 49%;
+            @include rem('margin-right', .3)
+        }
+
+        @include min-width ( $iPadLandscape ) {
+            display: inline-block;
+            width: 49%;
+            @include rem('margin-right', .3)
+        }
+
+    }
+    
+    [aria-hidden=false] {
+            transition: width .3s;
+            width: 100%!important;
+        }
+    
+    img {
+        transition-duration: .3s;
+    }
+    
+    .contact-title {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        padding-left: calc(130px + 1rem);
+        padding-right: 1rem;
+        @include min-width ( $iPadPortrait ) {
+            transition-duration: .3s;
+        }
+    }
+
+    .contact-info {
+        
+        h3 {
+            font-size: 1.7rem;
+            text-transform: none;
+            padding-bottom: .5rem;
+            margin-bottom: .25rem;
+            border-bottom: 1px solid $border;
+            
+        }
+
+        .class {
+            font-size: 120%!important;
+            display: block;
+            font-family: 'skolar';
+            font-weight: 400;
+            margin-top: .25rem;
+        }
+        
+        .primary-majors {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 70%!important;
+            line-height: normal!important;
+            padding-top: .1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            @include max-width ( $iPadPortrait ) {
+                font-size: 60%!important;
+                padding-top: 0;
+            }
+            li {
+                padding-top: .25rem;
+            }
+            li.not-primary, .concentration {
+                display: none;
+            }
+        }
+        
+        @include max-width ( $iPhoneLandscape ) {
+            @include rem('padding-right', .6);
+        }
+        
+    }
+    
+    [aria-expanded="false"] {
+        .contact-title h3 {
+            @include max-width ( $iPadPortrait ) {
+                transition-duration: .3s;
+                font-size: 1.2rem!important;
+                padding-bottom: .25rem;
+                margin-bottom: .15rem;
+            }
+            @include max-width ( $iPhoneLandscape ) {
+                font-size: 1rem!important;
+            }
+        }
+        .class {
+            @include max-width ( $iPadPortrait ) {
+                transition-duration: .3s;
+                font-size: 1rem!important;
+            }
+            @include max-width ( $iPhoneLandscape ) {
+                font-size: .8rem!important;
+            }
+        }
+    }
+    
+    .accordion-content {
+        background-color: #f7f7f7;
+        position: relative;
+        z-index: 0;
+        margin-top: -7rem;
+        padding-top: 7rem;
+        transition: .3s height;
+        width: 100%;
+        
+        a {
+            color: $text;
+            text-decoration: none;
+        }
+        
+        @include min-width ( $iPadPortrait ) {
+            margin-top: -10rem;
+            padding-top: 10rem;
+            &:before {
+                content: "";
+                width: 200px;
+                top: 0;
+                height: calc(100%);
+                background: #eee;
+                z-index: -1;
+                position: absolute;
+            }
+        }
+        @include min-width ( $iPadLandscape ) {
+            width: 368px;
+            transition: .3s width;
+        }
+    }
+    
+    .ambassador-info {
+        padding: 0 0 .5rem 0;
+        margin: 0;
+        .row {
+            width: 100%;
+            padding: 0;
+            display: table;
+        }
+        .prompt {
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: .5rem 1rem;
+            display: inline-block;
+            font-size: 90%!important;
+            color: $text-md;
+            width: 100%;
+            margin: 0;
+            background: #eee;
+            
+            @include min-width ( $iPadPortrait ) {
+                width: 200px;
+                text-align: right;
+                background: none;
+                padding: .5rem 1rem;
+            }
+        }
+        .answer-content {
+            list-style: none;
+            padding: 0rem 1rem 0 1rem;
+            margin: .5rem 0;
+            p {
+                margin: 0 0 .75rem 0;
+            }
+            li, a {
+                &:first-of-type {
+                    margin-top: 0;
+                }
+                margin-top: .5rem;
+                i {
+                    margin-right: .5rem;
+                }
+            }
+            @include min-width ( $iPadPortrait ) {
+                width: calc(100% - 200px);
+                float: right;
+                padding: .5rem 1rem .5rem 1rem;
+                margin: 0;
+            }
+        }
+    }
+    
+    .ambassador-links {
+        margin: 1rem 0 .5rem 1rem;
+        padding-left: 0;
+        li {
+            display: inline;
+            list-style: none;
+            margin-left: 1rem;
+            i {
+                margin-right: .5rem;
+            }
+            &:first-of-type {
+                margin-left: 0;
+            }
+        }
+    }
+}

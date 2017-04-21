@@ -49,13 +49,13 @@ $ancestor = array(
                     </header>
 
 	               <section class="article__content accordion" id="bio">
+                       
+                    <div class="advancement-summary">
+                        <?php the_content(); ?>
+                        </hr>
+                    </div>
+                       
                    <?php
-                        $terms = get_terms( 'team', array(
-                        'hide_empty' => 0
-                    ) );
-                $i = 0;
-
-                    foreach( $terms as $term ) {
                         
                         // First Placement Query
                         $args = array(
@@ -72,7 +72,7 @@ $ancestor = array(
                             'orderby'		=>  'meta_value_num',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
-                            'team'          =>  $term->slug
+                            'team'          =>  'advancement'
                         );
                         $query = new WP_Query( $args );
 
@@ -97,7 +97,7 @@ $ancestor = array(
                             'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
-                            'team'          =>  $term->slug,
+                            'team'          =>  'advancement',
                         );
                         add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
                         $query = new WP_Query( $args );
@@ -108,7 +108,7 @@ $ancestor = array(
                             $i++;
                         endwhile;
                         wp_reset_postdata();
-                    } ?>
+                     ?>
                        
                     </section>
                     

@@ -103,10 +103,14 @@
         $post_image = $thumb_src[0];
     } else {
         if ( !is_404() ) {
-        $post_title = get_the_title().' | College of the Environment';
-        $post_description = $advancedExcerpt;
-        $post_link = get_the_permalink();
-        $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+            if($post->post_type == 'page' && get_field('social_image', $post->ID)) {
+                $post_image = get_field('social_image', $post->ID);
+            } else {
+                $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+            }
+            $post_title = get_the_title().' | College of the Environment';
+            $post_description = $advancedExcerpt;
+            $post_link = get_the_permalink();
         }
     }
     

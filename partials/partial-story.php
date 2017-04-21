@@ -1,9 +1,14 @@
 <?php if (is_front_page()): ?>
 	<article class="story">
 		<div class="inner">
+            <?php if ( get_field('autocrop') == true) {
+                $col_image = 'homepage-column-standard';
+            } else {
+                $col_image = 'homepage-column';
+            }; ?>
             <?php if ( has_term( 'weekly-research', 'topic' ) || ( has_term( 'deans-letter', 'story_type' ) ) ) : ?>
                     <a href="<?php the_permalink() ?>" class="img">
-                        <?php the_post_thumbnail( 'homepage-column' ) ?>
+                        <?php the_post_thumbnail( $col_image ); ?>
                     </a>
 
                 <?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
@@ -22,7 +27,7 @@
                 </a>
 			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
-					<?php the_post_thumbnail( 'homepage-column' ) ?>
+					<?php the_post_thumbnail( $col_image ); ?>
                     <div class="content">
                         <h1><?php the_title() ?></h1>
                     </div>

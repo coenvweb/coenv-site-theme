@@ -13,7 +13,7 @@
     $content_target = '';
 //}
 
-$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'homepage-hero-standard' );
 $feature_caption = get_post_meta(get_post_thumbnail_id(), "_credit_text", true);
 
 $units = get_the_terms( $post->ID, 'unit' );
