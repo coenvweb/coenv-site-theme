@@ -21,6 +21,14 @@
 		color: #fff !important;
 	}
 
+    a {
+        color: $text;
+        text-decoration: none;
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
 	@media print {
         a[href]:after {
             content: " (" attr(href) ")";
