@@ -24,11 +24,11 @@ jQuery(function($)
         }
         else if ($(this).hasClass('selected') )
         {
-            $(this).removeClass('selected').attr('aria-pressed', false);
+            $(this).removeClass('selected').attr('aria-pressed', false).find('i').remove();
             count = 2;
             
         } else {
-            $(this).addClass('selected').attr('aria-pressed', true);
+            $(this).addClass('selected').attr('aria-pressed', true).prepend('<i class="icon-cross"></i> ');
         }
         
         $(this).change();

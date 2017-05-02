@@ -468,6 +468,7 @@ ul.career-actions {
         width: 100%;
         display: table;
     }
+    
 	h3.title {
 		background-color: #000;
 		color: #fff;
@@ -477,14 +478,17 @@ ul.career-actions {
 		letter-spacing: .05rem;
 		padding: .5rem 1rem;
 	}
+    
 	h4 {
 		font-family: open-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-size: 1rem;
 		margin-bottom: .5rem;
 	}
+    
 	ul.subscribe li {
 		display: inline;
 	}
+    
 	.filters {
 		padding: 1rem;
         .children {
