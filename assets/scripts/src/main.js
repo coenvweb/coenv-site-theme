@@ -78,8 +78,6 @@ jQuery(function ($) {
 });
 
 jQuery("document").ready(function($){
-    
-    if ($(window).width() > 768) {
 	
 	var nav = $('#careers-filter');
 	
@@ -89,10 +87,10 @@ jQuery("document").ready(function($){
 		} else {
 			nav.removeClass("f-nav");
 		}
-        
+
         // distance from top of footer to top of document
         footertotop = ($('#footer').position().top);
-        // distance user has scrolled from top, adjusted to take in height of sidebar (570 pixels inc. padding)
+        // distance user has scrolled from top, adjusted to take in height of sidebar (850 pixels inc. padding)
         scrolltop = $(document).scrollTop()+850;
         // difference between the two
         difference = scrolltop-footertotop;
@@ -106,8 +104,6 @@ jQuery("document").ready(function($){
             nav.css('margin-top', 0);
         }
 	});
-        
-    };
  
 });
 

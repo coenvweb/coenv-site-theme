@@ -28,7 +28,10 @@ jQuery(function($)
             count = 2;
             
         } else {
-            $(this).addClass('selected').attr('aria-pressed', true).prepend('<i class="icon-cross"></i> ');
+            $(this).addClass('selected').attr('aria-pressed', true).delay(400).queue(function (next) {
+                $(this).prepend('<i class="icon-cross"></i> ');
+                next();
+            });
         }
         
         $(this).change();

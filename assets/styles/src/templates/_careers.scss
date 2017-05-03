@@ -218,6 +218,13 @@ body.page-template-careers {
 	div.container article .pagination li a {
 		color: #000;
 	}
+    
+    .icon-cross {
+        font-size: 1.2rem;
+        position: relative;
+        top: 3px;
+    }
+    
 } // .template-career
 
 .plus {
@@ -384,17 +391,14 @@ body.page-template-careers {
     .button {
         cursor: pointer;
         padding-left: .5rem;
-        margin-right: .25rem;
+        margin-right: .45rem;
         margin-bottom: .25rem;
         line-height: 2rem;
         background: rgba(0,0,0,.05);
     }
-    i {
-        font-size: 1.2rem;
-        position: relative;
-        top: 3px;
-    }
 }
+
+
 
 .pagenav > a > span {
     font-size: 1rem!important;
@@ -445,7 +449,7 @@ ul.career-actions {
 	background-color: rgb(238, 238, 238);
     
     @include max-width ( $iPadPortrait ) {
-        margin-top: 2rem;
+        margin-top: 2rem!important;
     }
     
     &.f-nav {
@@ -495,6 +499,7 @@ ul.career-actions {
             margin-bottom: 0;
             margin-top: .5rem;
             & > .button	 {
+                position: relative;
                 font-weight: normal;
                 color: $text;
                 background: $white-button;
@@ -502,6 +507,15 @@ ul.career-actions {
                 margin-bottom: .3rem;
                 line-height: 2rem;
                 margin-left: 0.03rem;
+                padding-left: 1.1rem;
+                transition: .1s linear;
+                
+                .icon-cross {
+                    position: absolute;
+                    left: .3rem;
+                    top: .735rem;
+                    transition: .1s linear;
+                }
 
                 &:hover {
                     background: #363533;
@@ -510,6 +524,9 @@ ul.career-actions {
             .selected {
                 background-color: $accent!important;
                 color: white!important;
+                padding-right: .7rem;
+                padding-left: 1.4rem;
+                transition-delay: .3s;
             }
         }
 		ul {
