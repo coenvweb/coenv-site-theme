@@ -233,8 +233,8 @@ jQuery(function($)
                             $('#results').append('<a class="button load-more"><span class="plus">+</span> Load more</a>');
                         }
                     }
-                    var lastShown = $('.career').eq(0).attr('id');
-                    localStorage.lastShown = lastShown;
+                    var lastShownID = $('.career').eq(0).attr('id').replace ( /[^\d.]/g, '' );
+                    localStorage.lastShown = parseInt(lastShown, 10);
                 },
                 error: function()
                 {
