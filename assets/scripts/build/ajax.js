@@ -60,7 +60,7 @@ jQuery(function($)
         var crumbVal = $(this).val();
         var preClass = '.term_id_';
         crumbVal = preClass+crumbVal;
-        $(crumbVal).removeClass('selected');
+        $(crumbVal).removeClass('selected').find('i').remove();
         count = 2;
         ajax_get_posts();
     });
@@ -233,6 +233,8 @@ jQuery(function($)
                             $('#results').append('<a class="button load-more"><span class="plus">+</span> Load more</a>');
                         }
                     }
+                    var lastShown = $('.career').eq(0).attr('id');
+                    localStorage.lastShown = lastShown;
                 },
                 error: function()
                 {
