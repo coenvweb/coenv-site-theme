@@ -6,6 +6,7 @@ jQuery(function($)
     //Load posts on document ready
     var ignore_scroll = false;
     var count = 2;
+    var firstScroll = true;
     
     ajax_get_posts();
     
@@ -233,8 +234,20 @@ jQuery(function($)
                             $('#results').append('<a class="button load-more"><span class="plus">+</span> Load more</a>');
                         }
                     }
-                    var lastShownID = $('.career').eq(0).attr('id').replace ( /[^\d.]/g, '' );
-                    localStorage.lastShown = parseInt(lastShown, 10);
+                    if (firstScroll == true) {
+                        var newPosts = $('.career').filter(function() {
+                            return $(this).attr('id') > localStorage.lastShown;
+                        }).map(function() { return '#'+this.id+' .article__meta'; })      .get(); //ToArray;
+                        if (window.sessionStorage) {
+                            sessionStorage.newPosts = newPosts;
+                            console.log(newPosts);
+                        }
+                        var lastShownID = $('.career').eq(2).attr('id');
+                        localStorage.lastShown = lastShownID
+                        firstScroll = false;
+                    }
+                    var newPostsSS = String(sessionStorage.newPosts);
+                    $(newPostsSS).prepend('<p class="new"><span class="dashicons dashicons-star-filled"></span> New</p>');
                 },
                 error: function()
                 {
@@ -248,3 +261,4 @@ jQuery(function($)
    
 });
 };
+ 

@@ -86,9 +86,22 @@ body.page-template-careers {
 		}
 	}
 	.article__header {
-		.article__meta .post-info {
+		.article__meta .post-info{
 			color: #565656;
+            display: inline-block;
 		}
+        .new {
+            @extend .post-info;
+            display: inline-block;
+            color: gold!important;
+            span {
+                font-size: 12px;
+                height: 10px;
+                width: 10px;
+                margin-top: 4px;
+                margin-bottom: -4px;
+            }
+        }
 		a.button {
 			color: #000;
 			margin-bottom: .4rem;
@@ -566,6 +579,7 @@ ul.career-actions {
 		margin: .25rem 0 .5rem;
 		color: #666;
 		width: 70%;
+        display: inline-block;
 	}
 	.post-info span {
 		margin: 0;
