@@ -1001,7 +1001,7 @@ function remove_faculty_search( $query ) {
             unset($types['careers']);
             $query->query_vars['post_type'] = $types;
         }
-        $query->query_vars['posts_per_page'] = 10;
+        $query->query_vars['posts_per_page'] = 15;
 
     }
 }

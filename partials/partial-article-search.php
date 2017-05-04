@@ -17,11 +17,7 @@
 
     <section class="article__content row">
         <?php
-        if (function_exists(the_advanced_excerpt)) {
-            the_advanced_excerpt('length=30&length_type=words&no_custom=1&ellipsis=%26hellip;&exclude_tags=img,p,strong,table&no_shortcode=1');
-        } else {
             echo get_the_excerpt();
-        }
         ?>
 
     </section>
