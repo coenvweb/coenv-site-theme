@@ -1,10 +1,10 @@
 <div id="blog-header" class="blog-header">
 
-	<form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url( '/' ); ?>">
+	<form role="search" method="get" class="search-form Form--inline" action="<?php echo home_url('/news'); ?>">
 	  <div class="field-wrap">
 	  	<input type="hidden" name="post_type" value="post" />
         <label for="s">Search news</label>
-	    <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s" placeholder="Search news" aria-label="Search" title="Search" />
+	    <input type="text" value="<?php echo get_query_var('s'); ?>" name="s" id="s" placeholder="Search news" aria-label="Search" title="Search" />
 	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
 	  </div>
 	</form>
