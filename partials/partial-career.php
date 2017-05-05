@@ -57,7 +57,7 @@
 			<h1 class="article__title"><?php the_title() . $location; ?></h1>
             <h3><?php echo '<a href="http://maps.google.com/?q=' . urlencode($location) . file_get_contents('/wp-content/themes/coenv-wordpress-theme/assets/img/icomoon-location.svg') . $location; ?></a></h3>
 		<?php else : ?>
-			<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
+			<h2><a href="<?php the_permalink() ?>" rel="bookmark" target="_blank"><?php the_title() ?></a></h2>
             <h3 class="location"><?php echo $location; ?></h3>
 		<?php endif;
 		$career_tags = get_the_terms($post->ID,'career_post_tag');
