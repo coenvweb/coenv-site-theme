@@ -64,7 +64,7 @@
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
         $prefix = '';
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= $prefix . $tag->name;
+			$career_tag_links .= $prefix . '<span class="tag">' . $tag->name . '</span>';
             $prefix = ', ';
 		}
 		?>

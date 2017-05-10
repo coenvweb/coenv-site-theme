@@ -242,7 +242,7 @@ jQuery(function($)
                             sessionStorage.newPosts = newPosts;
                             console.log(newPosts);
                         }
-                        var lastShownID = $('.career').eq(2).attr('id');
+                        var lastShownID = $('.career').eq(0).attr('id');
                         localStorage.lastShown = lastShownID
                         firstScroll = false;
                     }
