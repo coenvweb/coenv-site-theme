@@ -42,41 +42,30 @@ body.page-template-careers {
         padding-top: 0;
         // min-height: 4200px;
     }
-	.keywords {
-		padding: .4rem 0 .5rem 0;
-        margin: 0;
-	}
+	.career-terms {
+        ul {
+            margin: 0;
+            padding: .5rem 0 .5rem 0;
+        }
+        .dot {
+            font-weight: 600;
+        }
+
+        .tags {
+            display: inline-block;
+            white-space: nowrap;
+            font-weight: 600;
+            &:last-of-type {
+                .dot {
+                    display: none;
+                }
+            }
+        }
+    }
     
     .career-intro.article__content {
         min-height: 0;
     }
-	.careers {
-		@include rem('padding', 2);
-		background: #fff;
-		border-bottom: solid 1px #ddd;
-		margin: 0;
-        padding: 0;
-		@media print {
-			margin: 0;
-			padding: 0;
-		}
-
-		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, 0, 1, 0);
-			@media print {
-				margin: 0;
-			}
-		}
-		.career__title {
-			@include font-size(30);
-			@include line-height(36);
-			@include rem('margin', 2, 0, 0, 0);
-			@include min-width ( $iPadPortrait ) {
-				@include font-size(36);
-				@include line-height(48);
-			}
-		}
-	} 
 	div.article header {
         margin-bottom: .5rem;
 	}
@@ -102,45 +91,7 @@ body.page-template-careers {
                 color: #F1CB00;
             }
         }
-		a.button {
-			color: #000;
-			margin-bottom: .4rem;
-			margin-right: .25rem;
-			font-size: .75rem;
-			text-transform: capitalize;
-			&:hover {
-				color: #fff !important;
-                background: #363533!important;
-			}
-            &.editor {
-                float: right;
-                margin-bottom: 1rem;
-            }
-			.right & {
-				margin-bottom: 0;
-			}
-            &.parent-863 {
-                display: none;
-            }
-            &.parent-868 {
-                border-bottom: 3px solid lighten($accent-teal, 30%);
-            }
-            &.parent-867 {
-                border-bottom: 3px solid lighten($accent, 30%);
-            }
-            &.parent-869 {
-                display: none;
-            }
-            &.parent-1051 {
-                border-bottom: 3px solid lighten($accent-blue, 30%);
-            }
-            &.parent-1052 {
-                border-bottom: 3px solid lighten($accent-red, 20%);
-            }
-            &.parent-870 {
-                border-bottom: 3px solid lighten($accent-green, 30%);
-            }
-		}
+
 		@extend .clearfix;
 		@include min-width ( $iPadPortrait ) {
 			@include rem('margin', 0, 0, 0m, 0);
@@ -181,81 +132,10 @@ body.page-template-careers {
             }
         }
         
-        .career-terms {
-            .keywords-text {
-                text-transform: uppercase;
-                letter-spacing: .1em;
-                font-weight: 600;
-                vertical-align: middle;
-                text-decoration: none;
-                float: left;
-                font-size: .8rem;
-                line-height: 1;
-                margin: .25rem .5rem .5rem 0;
-                color: #666;
-                display: inline-block;
-            }
-            .tag {
-                background-color: rgba(0,0,0,.05);
-                display: inline-block;
-                padding: .18rem .5rem .25rem .5rem;
-                margin: .25rem 0;
-                font-size: .8rem;
-                border-radius: 1rem;
-                white-space:nowrap;
-            }
-        }
-		.results-text {
-			background-color: #eee;
-			border: solid 1px #c5c5c5;
-			float: left;
-			margin-top: .5rem;
-			padding: 8px 12px;
-			text-transform: uppercase;
-			width: 100%;
-			a.button {
-				background-color: #613ba9;
-				color: #fff;
-				margin-bottom: 0;
-				margin-left: .25rem;
-				font-size: .9rem;
-				text-transform: capitalize;
-				&:hover {
-					color: #fff !important;
-				}
-				.right & {
-					margin-bottom: 0;
-				}
-			}
-			p {
-				color: #474747;
-				@include font-size(11);
-				float: left;
-				font-weight: 600;
-				@include rem('margin', 0);
-				@include rem('padding', 0);
-			}
-			p.left {
-				letter-spacing: .1em;	
-				line-height: 2rem;	
-			}
-			p.right {
-				float: right;
-				@include rem('padding', 0, 0, 0, 0);
-			}
-		}
 		@media print{
 			display: none;
 		}
 	} // .career-header
-
-	.article .pagination li .current {
-		background-color: #4b2e83;
-		color: #fff;
-	}
-	div.container article .pagination li a {
-		color: #000;
-	}
     
     .icon-cross {
         font-size: 1.2rem;
@@ -263,16 +143,16 @@ body.page-template-careers {
         top: 3px;
     }
     
+    .plus {
+        font-size: 1.2rem;
+        margin-right: .2rem;
+        position: relative;
+        top: 2px;
+        font-weight: 900;
+        display: inline-block;
+    }
+    
 } // .template-career
-
-.plus {
-    font-size: 1.2rem;
-    margin-right: .2rem;
-    position: relative;
-    top: 3px;
-    font-weight: 900;
-    display: inline-block;
-}
 
 .sorter-search-row {
     width: 100%;
@@ -322,6 +202,9 @@ body.page-template-careers {
         margin-top: .5rem;
         .filter-clear .button {
             padding-top: .45rem;
+        }
+        .filter-anchor {
+            padding-top: .5rem;
         }
         .button {
             display: inline-block;
@@ -435,8 +318,6 @@ body.page-template-careers {
         background: rgba(0,0,0,.05);
     }
 }
-
-
 
 .pagenav > a > span {
     font-size: 1rem!important;
@@ -583,13 +464,23 @@ ul.career-actions {
 }
 
 .single-careers {
+    .back-side {
+        background-color: $accent;
+        color: #fff!important;
+        &:hover {
+            background-color: $accent-lt;
+        }
+    }
 	.article__content {
 		h2 {
 			@include sans();
 		}
 		a.button {
-			background-color: #613ba9;
-			color: #fff;
+			background-color: $accent;
+            color: #fff!important;
+            &:hover {
+                background-color: $accent-lt;
+            }
 		}
 	}
 	.post-info {

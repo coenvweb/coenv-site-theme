@@ -62,14 +62,13 @@
 		<?php endif;
 		$career_tags = get_the_terms($post->ID,'career_post_tag');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
-        $prefix = '';
+        $prefix = ' <span class="dot">•</span> ';
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= ' <span class="">' . $prefix . $tag->name . '</span>';
-            $prefix = '• ';
+			$career_tag_links .= ' <li class="tags">' . $tag->name . $prefix . '</li>';
 		}
 		?>
 		<div class="career-terms">
-		<?php echo '<p class="keywords">' . $career_tag_links . '</p>'; ?>
+		<?php echo '<ul class="keywords">' . $career_tag_links . '</ul>'; ?>
 		</div>
 		<?php endif; ?>
 	</header>
