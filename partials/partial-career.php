@@ -64,12 +64,12 @@
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
         $prefix = '';
 		foreach ( $career_tags as $tag ) {
-			$career_tag_links .= $prefix . '<span class="tag">' . $tag->name . '</span>';
-            $prefix = ', ';
+			$career_tag_links .= ' <span class="">' . $prefix . $tag->name . '</span>';
+            $prefix = '• ';
 		}
 		?>
 		<div class="career-terms">
-		<?php echo '<p class="keywords">Keywords: ' . $career_tag_links . '</p>'; ?>
+		<?php echo '<p class="keywords">' . $career_tag_links . '</p>'; ?>
 		</div>
 		<?php endif; ?>
 	</header>
