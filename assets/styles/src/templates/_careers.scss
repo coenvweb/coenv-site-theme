@@ -45,7 +45,7 @@ body.page-template-careers {
 	.career-terms {
         ul {
             margin: 0;
-            padding: .5rem 0 .5rem 0;
+            padding: .25rem 0 .5rem 0;
         }
         .dot {
             font-weight: 600;
@@ -55,6 +55,14 @@ body.page-template-careers {
             display: inline-block;
             white-space: nowrap;
             font-weight: 600;
+            margin-right: .1rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            vertical-align: middle;
+            text-decoration: none;
+            font-size: .8rem;
+            line-height: 1.2rem;
+            color: $text-lt;
             &:last-of-type {
                 .dot {
                     display: none;
@@ -99,13 +107,14 @@ body.page-template-careers {
 		h2 {
 			float: left;
 			font-size: 1.65rem;
-			line-height: 2rem;
+			line-height: 1.5rem;
 			width: 100%;
 			margin-bottom: .5rem;
 			margin-top: 0;
 			a {
 				color: #333;
-				font-weight: bold;
+				font-weight: 600;
+                @include serif();
 				text-decoration: none;
 				&:hover {
 					color: #421491 !important;
@@ -126,6 +135,7 @@ body.page-template-careers {
             a {
                 text-decoration: none;
                 color: $text-lt;
+                font-weight: 600;
                 &:hover svg path {
                     fill: $accent-lt;
                 }
