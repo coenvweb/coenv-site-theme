@@ -27,9 +27,9 @@ $ancestor = array(
             <nav id="arrow-nav" class="second-nav">
 
                 <ul id="menu-secondary" class="arrow-menu">
-                    <li class="arrow-button arrow-1"><a href="http://environment.uw.dev/students/">Students</a></li>
-                    <li class="arrow-button arrow-1"><a href="http://environment.uw.dev/students/">Students</a></li>
-                    <li class="arrow-button arrow-1"><a href="http://environment.uw.dev/students/">Students</a></li>
+                    <li class="arrow-button arrow-1 active"><a href="http://environment.uw.dev/students/">Prepare</a></li>
+                    <li class="arrow-button arrow-2"><a href="http://environment.uw.dev/students/">Visit</a></li>
+                    <li class="arrow-button arrow-3"><a href="http://environment.uw.dev/students/">Apply</a></li>
                 </ul>
 
             </nav><!-- #secondary-nav.side-col -->

@@ -6,6 +6,7 @@
         @extend #secondary-nav;
         @extend .side-col;
         float: left;
+        margin-bottom: 0;
         a {
             display: table;
         }
@@ -13,13 +14,58 @@
     #arrow-nav {
         position: relative;
         width: 100%;
+        ul {
+            margin: 0!important;
+            padding: 0;
+            overflow: hidden;
+        }
         li {
             display: inline-block;
             width: 33%;
+            transform: skewX(-15deg);
+            background: #eee;
+            &:hover{
+                background-color: #efefef;
+                &:before {
+                    background-color: #efefef;
+                }
+            }
+            &.arrow-1:before {
+                content: '';
+                position: absolute;
+                display: block;
+                background: #eee;
+                height: 100%;
+                width: 50px;
+                transform: skewX(15deg);
+            }
+            &.arrow-3:before {
+                content: '';
+                position: absolute;
+                display: block;
+                background: #eee;
+                height: 100%;
+                width: 50px;
+                right: -4px;
+                transform: skewX(15deg);
+            }
+            a {
+                display: inline-block;
+                @include serif();
+                font-size: 1.2rem;
+                width: 100%;
+                padding: 1rem 0 1rem 1.2rem;
+                text-decoration: none;
+                color: $text;
+                transform: skewX(15deg);
+            }
         }
     }
     .article {
         padding: 1rem;
+        .article__content p:first-of-type {
+            margin: 0;
+        }
     }
     .article__title {
         @extend .post-info;
