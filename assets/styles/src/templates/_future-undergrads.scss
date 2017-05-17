@@ -14,6 +14,7 @@
     #arrow-nav {
         position: relative;
         width: 100%;
+        margin-top: 1rem;
         ul {
             margin: 0!important;
             padding: 0;
@@ -23,18 +24,18 @@
             display: inline-block;
             width: 33%;
             transform: skewX(-15deg);
-            background: #eee;
+            background: #fff;
             &:hover{
                 background-color: #efefef;
                 &:before {
-                    background-color: #efefef;
+                    background: #efefef!important;
                 }
             }
             &.arrow-1:before {
                 content: '';
                 position: absolute;
                 display: block;
-                background: #eee;
+                background: #fff;
                 height: 100%;
                 width: 50px;
                 transform: skewX(15deg);
@@ -43,7 +44,7 @@
                 content: '';
                 position: absolute;
                 display: block;
-                background: #eee;
+                background: #fff;
                 height: 100%;
                 width: 50px;
                 right: -4px;
@@ -70,19 +71,39 @@
     .article__title {
         @extend .post-info;
         margin: 0;
-        padding: 0 0 .25rem 0;
+        padding: 1rem 0 .25rem 0;
         border: none;
         line-height: 1rem;
         @include sans();
         font-size: 1rem!important;
+        color: #fff!important;
+    }
+    .image-area {
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(to bottom right,#002f4b,#555);
+        //opacity: .6; 
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: -225px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('http://environment.uw.dev/wp-content/uploads/2016/07/IMG_1577.jpg');
+            background-size: cover;
+        }
     }
     .first-title {
         @extend h1;
-        font-size: 4rem!important;
-        line-height: 4.5rem!important;
-        border-bottom: 2px solid #ddd;
+        font-size: 4vw!important;
+        line-height: 4.5vw!important;
         margin-top: 0;
         padding-bottom: 1rem;
         margin-bottom: 2rem;
+        color: #fff;
     }
 }

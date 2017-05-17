@@ -15,6 +15,8 @@ $ancestor = array(
 
 	<section id="page" role="main" class="template-page future-undergrads">
         
+        <div class="image-area">
+        
 		<div class="container">
             <div id="top-tab" class="side-col">
 
@@ -33,6 +35,23 @@ $ancestor = array(
                 </ul>
 
             </nav><!-- #secondary-nav.side-col -->
+            <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
+                <header class="article__header">
+                    <div class="article__meta">
+                        <h1 class="article__title"><?php the_title() ?></h1>
+                    </div>
+                </header>
+                <section class="article__content">
+                    <p class="first-title">One College,<br> Many Paths</p>
+                </section>
+            </article>
+            
+            </div>
+            
+        </div>
+        <div>
+        
+		<div class="container">
 
 			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
             
