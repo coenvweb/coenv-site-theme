@@ -77,6 +77,36 @@ jQuery(function ($) {
     
 });
 
+jQuery("document").ready(function($){
+	
+	var nav = $('#careers-filter');
+	
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 355) {
+			nav.addClass("f-nav");
+		} else {
+			nav.removeClass("f-nav");
+		}
+
+        // distance from top of footer to top of document
+        footertotop = ($('#footer').position().top);
+        // distance user has scrolled from top, adjusted to take in height of sidebar (850 pixels inc. padding)
+        scrolltop = $(document).scrollTop()+850;
+        // difference between the two
+        difference = scrolltop-footertotop;
+
+        // if user has scrolled further than footer,
+        // pull sidebar up using a negative margin
+
+        if (scrolltop > footertotop) {
+            nav.css('margin-top',  0-difference);
+        } else  {
+            nav.css('margin-top', 0);
+        }
+	});
+ 
+});
+
 /**
  * Banner image reveals
  */

@@ -1,73 +1,105 @@
 body.page-template-careers {
+    
+@include max-width ( $iPadPortrait ) {
+    #secondary-nav {
+        margin-top: -1rem;
+    }
+    
+    .article {
+        padding: 0 1rem;
+    }
+}
 
 @include max-width ( $iPhoneLandscape ) {
-	.article {
-		margin:0;
-		padding: 0;
+        .article {
+            margin:0;
+            padding: 0;
+        }
 	}
-	}
+    
+    .type-careers {
+        border-bottom: .25rem solid $text-very-lt;
+        margin-bottom: 1.5rem;
+        margin-top: 0rem;
+        padding-left: 0rem;
+        padding-bottom: 1rem;
+        &:first-of-type {
+            margin-top: .4rem;
+        }
+    }
 
 	h1.article__title {
+        margin-top: .3rem;
 		margin-bottom: 0;
 		border-bottom: solid 1px #ccc;
 	}
-	div.container a {
+	article a {
 		color: #421491;
 	} 
+    
+    .career-col {
+        margin-top: 0;
+        padding-top: 0;
+        // min-height: 4200px;
+    }
 	.career-terms {
-		padding: 1rem 0 1.25rem 0;
+        ul {
+            margin: 0;
+            padding: .25rem 0 .5rem 0;
+        }
+        .dot {
+            font-weight: 600;
+        }
+
+        .tags {
+            display: inline-block;
+            white-space: nowrap;
+            font-weight: 600;
+            margin-right: .1rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            vertical-align: middle;
+            text-decoration: none;
+            font-size: .8rem;
+            line-height: 1.2rem;
+            color: $text-lt;
+            &:last-of-type {
+                .dot {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    .career-intro.article__content {
+        min-height: 0;
+    }
+	div.article header {
+        margin-bottom: .5rem;
 	}
-	.careers {
-		@include rem('margin', 1);
-		@include rem('padding', 2);
-		background: #fff;
-		border-bottom: solid 1px #ddd;
-		margin: 0 0 0;
-		padding: 0 .75rem 0 0;
-		@media print {
-			margin: 0;
-			padding: 0;
-		}
-
-		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 1, 0, 1, 1);
-			@media print {
-				margin: 0;
-			}
-		}
-		.career__title {
-			@include font-size(30);
-			@include line-height(36);
-			@include rem('margin', 2, 0, 0, 0);
-			@include min-width ( $iPadPortrait ) {
-				@include font-size(36);
-				@include line-height(48);
-			}
-		}
-	} 
-
 	article header.article__header {
 		@media (min-width: 768px) {
 			margin-bottom: 0;
 		}
 	}
 	.article__header {
-		.article__meta .post-info {
+		.article__meta .post-info{
 			color: #565656;
 		}
-		a.button {
-			color: #000;
-			margin-bottom: 1rem;
-			margin-left: .25rem;
-			float: right;
-			font-size: .75rem;å
-			&:hover {
-				color: #fff !important;
-			}
-			.right & {
-				margin-bottom: 0;
-			}
-		}
+        .new {
+            @extend .post-info;
+            
+            float: right;
+            span {
+                font-size: 12px;
+                height: 10px;
+                width: 10px;
+                margin-top: 4px;
+                margin-bottom: -4px;
+                color: #F1CB00;
+            }
+        }
+
 		@extend .clearfix;
 		@include min-width ( $iPadPortrait ) {
 			@include rem('margin', 0, 0, 0m, 0);
@@ -75,13 +107,14 @@ body.page-template-careers {
 		h2 {
 			float: left;
 			font-size: 1.65rem;
-			line-height: 2rem;
+			line-height: 1.5rem;
 			width: 100%;
 			margin-bottom: .5rem;
 			margin-top: 0;
 			a {
 				color: #333;
-				font-weight: bold;
+				font-weight: 600;
+                @include serif();
 				text-decoration: none;
 				&:hover {
 					color: #421491 !important;
@@ -89,65 +122,289 @@ body.page-template-careers {
 				}
 			}
 		}
-		.results-text {
-			background-color: #eee;
-			border: solid 1px #c5c5c5;
-			float: left;
-			margin-top: .5rem;
-			padding: 8px 12px;
-			text-transform: uppercase;
-			width: 100%;
-			a.button {
-				background-color: #613ba9;
-				color: #fff;
-				margin-bottom: 0;
-				margin-left: .25rem;
-				font-size: .9rem;
-				text-transform: capitalize;
-				&:hover {
-					color: #fff !important;
-				}
-				.right & {
-					margin-bottom: 0;
-				}
-			}
-			p {
-				color: #474747;
-				@include font-size(11);
-				float: left;
-				font-weight: 600;
-				@include rem('margin', 0);
-				@include rem('padding', 0);
-			}
-			p.left {
-				letter-spacing: .1em;	
-				line-height: 2rem;	
-			}
-			p.right {
-				float: right;
-				@include rem('padding', 0, 0, 0, 0);
-			}
-		}
+        .location {
+            font-size: 1.1rem;
+            color: $text-lt;
+            svg {
+                padding-top: 4px;
+                width: 12px;
+            }
+            svg path {
+                fill: $text-lt;
+            }
+            a {
+                text-decoration: none;
+                color: $text-lt;
+                font-weight: 600;
+                &:hover svg path {
+                    fill: $accent-lt;
+                }
+            }
+        }
+        
 		@media print{
 			display: none;
 		}
 	} // .career-header
-	.pagination ul {
-		//@extend .shadow;
-	}
-	.article .pagination li .current {
-		background-color: #4b2e83;
-		color: #fff;
-	}
-	div.container article .pagination li a {
-		color: #000;
-	}
+    
+    .icon-cross {
+        font-size: 1.2rem;
+        position: relative;
+        top: 3px;
+    }
+    
+    .plus {
+        font-size: 1.2rem;
+        margin-right: .2rem;
+        position: relative;
+        top: 2px;
+        font-weight: 900;
+        display: inline-block;
+    }
+    
 } // .template-career
 
+.sorter-search-row {
+    width: 100%;
+    height: 3.5rem;
+    @include max-width ( $iPadPortrait ) {
+        display: table;
+        padding-bottom: 1rem;
+        border-bottom: solid 1px #ccc;
+        margin-bottom: 1rem;
+    }
+    
+    .subscribe {
+        margin-right: 1rem;
+        .button {
+            font-size: 1.4rem!important;
+            height: 35px;
+            padding: .5rem;
+            color: #000;
+        }
+    }
+    
+    .sorter {
+        li, form {
+            border-radius: 0 4px 4px 0;
+            height: 35px;
+            padding-top: .5rem;
+            cursor: pointer;
+            &:hover {
+                color: $accent;
+            }
+            &.selected {
+                background-color: $accent;
+                color: white!important;
+            }
+            &:first-of-type {
+                border-radius: 4px 0 0 4px!important;
+                margin-right: -5px;
+            }
+        }
+    }
+    
+    .mobile-filter { 
+        display: none;
+        @include max-width ( $iPadPortrait ) {
+            display: block;
+        }
+        margin-top: .5rem;
+        .filter-clear .button {
+            padding-top: .45rem;
+        }
+        .filter-anchor {
+            padding-top: .5rem;
+        }
+        .button {
+            display: inline-block;
+            height: 35px;
+            padding-top: .3rem;
+            padding-left: .75rem;
+            width: calc(50% - .25rem);
+            i {
+                font-size: 1.2rem;
+                position: relative;
+                top: 3px;
+            }
+        }
+    }
+    .sorter, .subscribe, .search-form, .mobile-filter{
+        list-style: none;
+        text-transform: uppercase;
+		letter-spacing: .1em;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: .8rem;
+		color: #666;
+        @include min-width ( $iPadPortrait ) {
+            margin-top: -1.5rem;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+    } 
+    .sorter{
+        float: right;
+    }
+    @include min-width ( $iPadPortrait ) {
+        .subscribe {
+            float: right;
+        }
+    }
+    
+    form {
+        @include min-width ( $iPadPortrait ) {
+            width: calc(100% - 300px);
+        }
+        width: 100%;
+        margin-bottom: 1rem;
+        height: 35px;
+        max-width: 580px;
+        @include max-width ( $iPadPortrait ) {
+            margin-bottom: 2rem;
+        }
+        .field-wrap {
+            width: 100%;
+            height: 34px;
+        }
+        input {
+            background: rgba(0,0,0,0.05);
+            height: 35px;
+        }
+        button[type=submit] {        
+            height: 35px;
+            min-width: 35px;
+            margin-right: 5px;
+            border-radius: 0 4px 4px 0;
+            @include min-width ( $iPadPortrait ) {
+                max-width: 10vw;
+            }
+        }
+    }
+} // .sorter-search-row
+
 // Filters
+#results .status {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: .8rem;
+    line-height: 1;
+    margin: .75rem 0 .5rem;
+    color: #666;
+}
+
+.status {
+    margin-bottom: 1.2rem!important;
+}
+
+#results {
+    min-height: 100vh;
+}
+
+.filter-crumbs {
+    margin: .75rem 0;
+    h3 {
+        text-transform: uppercase;
+		letter-spacing: .1em;
+		font-weight: 600;
+		vertical-align: middle;
+		text-decoration: none;
+		font-size: .8rem;
+		line-height: 1;
+		margin: 0 0 .5rem;
+		color: #666;
+    }
+    .button {
+        cursor: pointer;
+        padding-left: .5rem;
+        margin-right: .45rem;
+        margin-bottom: .25rem;
+        line-height: 2rem;
+        background: rgba(0,0,0,.05);
+    }
+}
+
+.pagenav > a > span {
+    font-size: 1rem!important;
+    line-height: 1.5rem;
+    margin-right: -1rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: .8rem!important;
+    line-height: 1;
+    margin: 0 0 .5rem;
+    color: $text-very-lt;
+    @include sans();
+    .dashicons {
+        font-size: .8rem!important;
+        vertical-align: inherit;
+        height: auto;
+        width: auto;
+    }
+}
+
+ul.career-actions {
+    padding-left: 0;
+    margin-top: 1rem!important;
+    li {
+        display: inline;
+        list-style: none;
+        margin-left: 0;
+        a {
+            span {
+                display: inline;
+                font-size: 1rem;
+                margin-right: .2rem;
+            }
+        }
+    }
+}
+
+.load-more {
+    cursor: pointer;
+    color: $text;
+    height: 35px;
+    padding-top: .35rem;
+}
 
 #careers-filter {
 	background-color: rgb(238, 238, 238);
+    
+    @include max-width ( $iPadPortrait ) {
+        margin-top: 2rem!important;
+    }
+    
+    &.f-nav {
+        @include min-width ( $iPadPortrait ) {
+            z-index: 9999;
+            position: fixed;
+            width: 27vw;
+            max-width: 262px;
+            top: 0;
+            margin-bottom: 800px;
+            .filters {
+                max-height: 810px;
+                height: 100vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+        }
+    }
+    
+    .sorter-row {
+        width: 100%;
+        display: table;
+    }
+    
 	h3.title {
 		background-color: #000;
 		color: #fff;
@@ -155,106 +412,87 @@ body.page-template-careers {
 		font-size: 1rem;
 		font-weight: normal;
 		letter-spacing: .05rem;
-		margin-top: 1rem;
 		padding: .5rem 1rem;
 	}
+    
 	h4 {
 		font-family: open-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-size: 1rem;
 		margin-bottom: .5rem;
 	}
+    
 	ul.subscribe li {
 		display: inline;
 	}
+    
 	.filters {
 		padding: 1rem;
-		form .field-wrap,
-		.select-category {
-			margin-bottom: 1rem;
-			border: solid 1px #999;
-			button[type=submit] {
-				margin-left: solid 1px #999;
-				width: auto !important;
-			}
-		}
-		form .field-wrap input,
-		.select-category {
-			font-size: 14px;
-		}
-		.field-wrap, form.Form--inline, .select-category {
-			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
-			font-size: .75rem;
-			width: 100%;
-			display: block !important;
-			font-size: 14px;
-		}
+        .children {
+            margin-bottom: 0;
+            margin-top: .5rem;
+            & > .button	 {
+                position: relative;
+                font-weight: normal;
+                color: $text;
+                background: $white-button;
+                cursor: pointer;
+                margin-bottom: .3rem;
+                line-height: 2rem;
+                margin-left: 0.03rem;
+                padding-left: 1.1rem;
+                transition: .1s linear;
+                
+                .icon-cross {
+                    position: absolute;
+                    left: .3rem;
+                    top: .735rem;
+                    transition: .1s linear;
+                }
+
+                &:hover {
+                    background: #363533;
+                }
+            }
+            .selected {
+                background-color: $accent!important;
+                color: white!important;
+                padding-right: .7rem;
+                padding-left: 1.4rem;
+                transition-delay: .3s;
+            }
+        }
 		ul {
-			margin-left: 0;
 			padding-left: 0;
+            margin-bottom: 0;
 			li {
 				font-weight: 600;
 				list-style: none;
 				&.cat-item {
-					margin-bottom: 1rem;
-					a {
-						color: #421491;;
-					}
-				}
-				ul {
-					margin-left: 0;
-					&.children {
-						margin-bottom: 0;
-					}
-					li	 {
-						margin-bottom: 0 !important;
-						font-weight: normal;
-					}
+					margin-bottom: .75rem;
 				}
 			}
 		}
 	}
 }
-// Hacking nav to highlight students on careers single
-body.single-careers #menu-main .page-item-32 span>a {
-	background-color: #613ba9;
-	color: #fff !important;
-}
-body.single-careers #menu-main .page-item-32 span>a:before {
-	content: "";
-	display: block;
-	left: 50%;
-	position: absolute;
-	bottom: -14px;
-	right: 0;
-	margin-left: -14px;
-	width: 0;
-	height: 0;
-	border-left: 14px solid transparent;
-	border-right: 14px solid transparent;
-	border-top: 14px solid #613ba9;
-}
-body.single-careers #menu-main .page-item-32 span>a:after {
-	content: none !important;
-}
-body.page-template-careers .career-intro {
-	margin-top: 1.5rem;
-}
+
 .single-careers {
-	.banner-wrapper {
-		background-image: url('/wp-content/uploads/2013/03/coenv-student-banner.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		height: 225px;
-	}
+    .back-side {
+        background-color: $accent;
+        color: #fff!important;
+        &:hover {
+            background-color: $accent-lt;
+        }
+    }
 	.article__content {
 		h2 {
-			font-family: open-sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
-
+			@include sans();
 		}
 		a.button {
-			background-color: #613ba9;
-			color: #fff;
+			background-color: $accent;
+            color: #fff!important;
+            &:hover {
+                background-color: $accent-lt;
+            }
 		}
 	}
 	.post-info {
@@ -265,12 +503,11 @@ body.page-template-careers .career-intro {
 		text-decoration: none;
 		float: left;
 		font-size: .8rem;
-		font-size: .78571rem;
 		line-height: 1;
-		margin: 0 0 7px;
-		margin: 0 0 .5rem;
+		margin: .25rem 0 .5rem;
 		color: #666;
 		width: 70%;
+        display: inline-block;
 	}
 	.post-info span {
 		margin: 0;
@@ -295,9 +532,6 @@ body.page-template-careers .career-intro {
 	.career-terms {
 		float: left;
 		width: 100%;
-		a {
-			color: #5a2baa;
-		}
 	}
 	.career__content {
 		float: left;

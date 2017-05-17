@@ -120,6 +120,7 @@ gulp.task('watch', function () {
     gulp.watch('**/*.{html,php}', livereload.reload);
     gulp.watch('assets/styles/src/**/*.scss', ['sass', 'refresh']);
     gulp.watch('assets/scripts/src/**/*.js', ['js', 'refresh']);
+    gulp.watch('assets/scripts/build/**/ajax.js', ['js', 'refresh']);
 });
 
 // Refresh task. Depends on Jade task completion
