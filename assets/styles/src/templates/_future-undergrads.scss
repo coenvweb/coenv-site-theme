@@ -13,8 +13,10 @@
     }
     #arrow-nav {
         position: relative;
+        display: table;
         width: 100%;
         margin-top: 1rem;
+        margin-bottom: 1rem;
         ul {
             margin: 0!important;
             padding: 0;
@@ -24,7 +26,8 @@
             display: inline-block;
             width: 33%;
             transform: skewX(-15deg);
-            background: #fff;
+            background: $text-very-lt;
+            text-align: center;
             &:hover{
                 background-color: #efefef;
                 &:before {
@@ -35,7 +38,7 @@
                 content: '';
                 position: absolute;
                 display: block;
-                background: #fff;
+                background: $text-very-lt;
                 height: 100%;
                 width: 50px;
                 transform: skewX(15deg);
@@ -44,7 +47,7 @@
                 content: '';
                 position: absolute;
                 display: block;
-                background: #fff;
+                background: $text-very-lt;
                 height: 100%;
                 width: 50px;
                 right: -4px;
@@ -53,9 +56,9 @@
             a {
                 display: inline-block;
                 @include serif();
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 width: 100%;
-                padding: 1rem 0 1rem 1.2rem;
+                padding: 1rem 1rem 1rem 1.2rem;
                 text-decoration: none;
                 color: $text;
                 transform: skewX(15deg);
@@ -76,7 +79,7 @@
         line-height: 1rem;
         @include sans();
         font-size: 1rem!important;
-        color: #fff!important;
+        color: $text-very-lt!important;
     }
     .image-area {
         display: block;
@@ -85,25 +88,36 @@
         width: 100%;
         background-image: linear-gradient(to bottom right,#002f4b,#555);
         //opacity: .6; 
-
-        &:before {
-            content: '';
-            position: absolute;
-            top: -225px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-image: url('http://environment.uw.dev/wp-content/uploads/2016/07/IMG_1577.jpg');
-            background-size: cover;
+    }
+    .first-section {
+        width: 35%;
+        padding-left: 1rem;
+        display: inline-block;
+        .article__content {
+            min-height: 275px;
+        }
+    }
+    .other-side {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        width: 65%;
+        float: right;
+        margin-top: 3rem;
+        p {
+            color: $text-very-lt;
+            font-size: 1.2rem;
+            line-height: 2rem;
+            padding: 2rem 2rem 4rem 4rem;
         }
     }
     .first-title {
         @extend h1;
-        font-size: 4vw!important;
+        font-size: 3.5vw!important;
         line-height: 4.5vw!important;
         margin-top: 0;
         padding-bottom: 1rem;
         margin-bottom: 2rem;
-        color: #fff;
+        color: $text-very-lt;
     }
 }
