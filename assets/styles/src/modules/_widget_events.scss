@@ -61,3 +61,38 @@
 	} // .event
 
 } // .widget-events
+
+#sidebar .widget-events {
+    background-color: $text-very-lt;
+    padding: 0;
+    
+    .widgettitle {
+        margin: 0;
+        a {
+            color: $text;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 600;
+            line-height: 0;
+            font-size: 11px;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 1rem;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    
+    .event {
+        border-top: 1px #ddd solid;
+        background-color: transparent;
+        box-shadow: none;
+        margin-bottom: 0;
+        &:hover{
+            background-color: $accent;
+        }
+    }
+    
+}

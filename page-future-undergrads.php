@@ -26,7 +26,7 @@ $ancestor = array(
 
             </div><!-- #secondary-nav.side-col -->
             
-            <article class="first-section" ?>>
+            <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
                         <h1 class="article__title"><?php the_title() ?></h1>
@@ -64,7 +64,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
             
                 <sidebar id="sidebar" class="side-col right-col">
 
-                    <p>stuff here</p>
+                    <?php the_widget('CoEnv_Widget_Events', 'title=Upcoming Student Events&feed_url=https://www.trumba.com/calendars/uwbg-featured.rss&posts_per_page=3'); ?>
 
 				</sidebar>
 
@@ -77,12 +77,26 @@ With an entire environment-focused College to explore, you’ll be able to try n
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'article' ) ?>
+						<?php  
+                        /**
+                         * An individual article
+                         */
+                        ?>
+                        <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
+
+                            <section class="article__content">
+
+                                <?php the_content() ?>
+                            </section>
+                            
+                        </article><!-- .article -->
 
 					<?php endwhile ?>
 
 				<?php endif ?>
-                <section class="article__content majors-minors accordion" id="bio">
+                <article class="article majors-minors-section">
+                <section class="article__content majors-minors accordion" id="major">
+                    <h2>Majors and Minors</h2>
                 <?php
 
                 // check if the repeater field has rows of data
@@ -104,6 +118,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
 
                 ?>
                 </section>
+                </article>
 
 			</main><!-- .main-col -->
 
@@ -120,6 +135,6 @@ With an entire environment-focused College to explore, you’ll be able to try n
 <script type="text/javascript" src="http://environment.uw.dev/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"bio","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>

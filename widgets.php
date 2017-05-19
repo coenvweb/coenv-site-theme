@@ -106,25 +106,22 @@ class CoEnv_Widget_Events extends WP_Widget {
 		}
 
 		// get cached XML from WP transient API
-		$events_xml = get_transient( 'trumba_events_xml' );
-		if ( $events_xml === false || $events_xml === '' ) {
-            
-            $ctx = stream_context_create(
+        unset ($events_xml);
+        $events_xml = get_transient( 'trumba_events_xml' );
+        $ctx = stream_context_create(array('http'=>
                 array(
-                    'http' => array('timeout' => 3),
-                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
-                )
-            );
-            
-			if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
-                
-            }else {
+                    'timeout' => 3,  //1200 Seconds is 20 Minutes
+                ),
+                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
+            ));
+
+            if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
+
+            } else {
                 return;
             };
-			set_transient( 'trumba_events_xml', $events_xml, 10 * MINUTE_IN_SECONDS );
-		}
-		
-		$xml = new SimpleXmlElement($events_xml);
+
+        $xml = new SimpleXmlElement($events_xml);
 		
 		$events = array();
 

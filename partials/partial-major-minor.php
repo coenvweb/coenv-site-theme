@@ -25,7 +25,7 @@ if(!empty($description)) {
 }
 
 ?>
-<div id="bio-t-<?php echo sanitize_title($name); ?>" class="contact <?php if(!empty($description)) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
+<div id="major-t-<?php echo sanitize_title($name); ?>" class="contact <?php if(!empty($description)) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
@@ -35,7 +35,8 @@ if(!empty($description)) {
             <span class="type"><?php echo $type_of_degree; ?></span>
         </div>
     </div>
-<div id="bio-c-<?php echo sanitize_title($name); ?>" class="accordion-content" aria-labelledby="bio-t-<? echo sanitize_title($name); ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo sanitize_title($name); ?>" style="display: none;">
+</div>
+<div id="major-c-<?php echo sanitize_title($name); ?>" class="accordion-content major-content" aria-labelledby="major-t-<? echo sanitize_title($name); ?>" aria-hidden="true" aria-controlled-by="major-t-<? echo sanitize_title($name); ?>" style="display: none;">
             
     <ul class="major-info">
         <?php if (!empty($description)) : ?>
