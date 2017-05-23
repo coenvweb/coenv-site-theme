@@ -5,9 +5,16 @@
 
 $name = get_sub_field('name');
 $type_of_degree = get_sub_field('type_of_degree');
+$unit_color = get_sub_field('unit_color');
 $description = get_sub_field('description');
-$image = get_sub_field('image');
+$image = get_sub_field('image_array');
+$adviser = get_sub_field('adviser_name');
+$adviser_email = get_sub_field('adviser_email');
+$adviser_phone = get_sub_field('adviser_phone_number');
 $link = get_sub_field('link');
+$facebook = get_sub_field('facebook_link');
+$twitter = get_sub_field('twitter_link');
+
 
 
 if( !empty($image) ) {
@@ -25,7 +32,7 @@ if(!empty($description)) {
 }
 
 ?>
-<div id="major-t-<?php echo sanitize_title($name); ?>" class="contact <?php if(!empty($description)) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
+<div id="major-t-<?php echo sanitize_title($name); ?>" class="major-minor accordion-title read <?php if($unit_color){ echo 'unit-color" style="background-color:' . $unit_color . ';';} ?>" aria-label="Toggle more information" tabindex="0" aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
@@ -44,12 +51,23 @@ if(!empty($description)) {
                 <div class="prompt">Description:</div><li class="answer-content"><?php echo $description; ?></li></div>
         <?php endif; ?>
         <div class="row">
+            <div class="prompt">Adviser:</div>
+            <ul class="answer-content">
+                <li><i class="dashicons dashicons-admin-users"></i><?php echo $adviser; ?></li>
+                <li><a href="mailto:<?php echo $adviser_email; ?>?subject=Question%20about%20<?php echo $name; ?>"><i class="icon-mail"></i><?php echo $adviser_email; ?></a></li>
+                <li><a href="tel:<?php echo $adviser_phone; ?>"><i class="icon-phone"></i><?php echo $adviser_phone; ?></a></li>
+            </ul>
+        </div>
+        <div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $name; ?></a></li>
-            <?php if (!empty($link)) : ?>
-                <li><a href="<?php echo $link; ?>"><?php echo $name; ?> Website</a></li>
-            <?php endif; ?>            
+                <li><a href="<?php echo $link; ?>"><i class="icon-link"></i>Visit <?php echo $name; ?> Website</a></li>
+                <?php if (!empty($facebook)) : ?>
+                    <li><a href="<?php echo $facebook; ?>"><i class="icon-facebook"></i>Like on Facebook</a></li>
+                <?php endif; ?>    
+                <?php if (!empty($twitter)) : ?>
+                    <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow on Twitter</a></li>
+                <?php endif; ?>            
             </ul>
         </div>
     </ul>

@@ -1,12 +1,36 @@
 //Contact Page Styles
 
-    .contact {
+    .major-minor {
         height: 130px;
-        margin-bottom: 1.6rem;
+        margin-bottom: .5rem;
         overflow: hidden;
         transition-duration: .3s;
         position: relative;
         background-color: #fff;
+        &.unit-color {
+            color: white;
+            @extend .shadow;
+            &:after {
+                color: white!important;
+                border-color: white!important;
+            }
+            &.open:after {
+                color: white;
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                margin-left: 130px;
+                background-color: rgba(0,0,0,.1);
+            }
+            &:hover:before {
+                content: none;
+            }
+        }
         &.accordion-title {
             padding: 0;
             background-color: white;
@@ -33,11 +57,14 @@
                 content: "\e028";
                 transform: translateY(-50%) rotate(90deg);
             }
-            &:hover {
-                background-color: #fff!important;
+            &.open:before {
+                margin-left: 200px;
             }
             .last {
                 display: none;
+            }
+            &:hover {
+                background-color: #fff;
             }
         }
         
@@ -73,6 +100,7 @@
                     padding-top: .5rem;
                     margin-bottom: .5rem;
                     padding-bottom: .75rem;
+                    line-height: 2rem;
                 }
                 .major-title {
                     font-size: 1.2rem;
@@ -158,7 +186,8 @@
     .major-info {
         
         h3 {
-            font-size: 1.7rem;
+            font-size: 1.3rem;
+            line-height: 1.3rem;
             text-transform: none;
             padding-bottom: .5rem;
             margin-bottom: .25rem;
@@ -276,6 +305,13 @@
                 margin-top: .5rem;
                 i {
                     margin-right: .5rem;
+                }
+                .dashicons {
+                    font-size: 16px;
+                    height: 16px;
+                    width: 16px;
+                    margin-top: 2px;
+                    margin-left: -1px;
                 }
             }
             @include min-width ( $iPadPortrait ) {

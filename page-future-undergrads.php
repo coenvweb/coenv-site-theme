@@ -64,7 +64,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
             
                 <sidebar id="sidebar" class="side-col right-col">
 
-                    <?php the_widget('CoEnv_Widget_Events', 'title=Upcoming Student Events&feed_url=https://www.trumba.com/calendars/uwbg-featured.rss&posts_per_page=3'); ?>
+                    <?php the_widget('CoEnv_Widget_Events', 'title=Upcoming Student Events&feed_url=http://www.trumba.com/calendars/uwbg-featured.rss&posts_per_page=3'); ?>
 
 				</sidebar>
 
@@ -98,12 +98,14 @@ With an entire environment-focused College to explore, you’ll be able to try n
                 <section class="article__content majors-minors accordion" id="major">
                     <h2>Majors and Minors</h2>
                 <?php
+    
+                $major_page = get_page_by_title( 'Undergraduate Degrees' );
 
                 // check if the repeater field has rows of data
-                if( have_rows('majors_and_minors') ):
+                if( have_rows('majors_and_minors', $major_page->ID) ):
 
                     // loop through the rows of data
-                    while ( have_rows('majors_and_minors') ) : the_row();
+                    while ( have_rows('majors_and_minors', $major_page->ID) ) : the_row();
 
                         // display a sub field value
                         get_template_part( 'partials/partial', 'major-minor' );
