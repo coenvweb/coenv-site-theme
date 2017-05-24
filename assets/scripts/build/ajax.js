@@ -247,7 +247,9 @@ jQuery(function($)
                         firstScroll = false;
                     }
                     var newPostsSS = String(sessionStorage.newPosts);
-                    $(newPostsSS).prepend('<p class="new"><span class="dashicons dashicons-star-filled"></span> New</p>');
+                    if (!$(".new")[0]){
+                        $(newPostsSS).prepend('<p class="new"><span class="dashicons dashicons-star-filled"></span> New</p>');
+                    }
                 },
                 error: function()
                 {
