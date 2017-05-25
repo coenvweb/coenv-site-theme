@@ -64,9 +64,9 @@ if(!empty($description)) {
         <div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-                <li><a href="<?php echo $link; ?>"><i class="icon-link"></i>Visit <?php echo $name; ?> Website</a></li>
+                <li><a href="<?php echo $link; ?>"><i class="icon-link"></i>Visit website</a></li>
                 <?php if (!empty($faculty_link)) : ?>
-                    <li><a href="<?php echo $faculty_link; ?>"><i class="icon-faculty-grid-alt-2"></i>Meet <?php echo $name; ?> Faculty</a></li>
+                    <li><a href="<?php echo $faculty_link; ?>"><i class="icon-faculty-grid-alt-2"></i>Meet faculty</a></li>
                 <?php endif; ?>       
                 <?php if (!empty($facebook)) : ?>
                     <li><a href="<?php echo $facebook; ?>"><i class="icon-facebook"></i>Like on Facebook</a></li>
