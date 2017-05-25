@@ -54,7 +54,9 @@ if(!empty($description)) {
         <div class="row">
             <div class="prompt">Adviser:</div>
             <ul class="answer-content">
+                <?php if (!empty($adviser)) : ?>
                 <li><i class="dashicons dashicons-admin-users"></i><?php echo $adviser; ?></li>
+                <?php endif; ?>
                 <li><a href="mailto:<?php echo $adviser_email; ?>?subject=Question%20about%20<?php echo $name; ?>"><i class="icon-mail"></i><?php echo $adviser_email; ?></a></li>
                 <li><a href="tel:<?php echo $adviser_phone; ?>"><i class="icon-phone"></i><?php echo $adviser_phone; ?></a></li>
             </ul>
