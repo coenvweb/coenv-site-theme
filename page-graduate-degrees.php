@@ -53,7 +53,7 @@ $ancestor = array(
 				<?php endif ?>
                 <article class="article majors-minors-section">
                 <section class="article__content majors-minors accordion" id="major">
-                    <h2>Masters and Ph.D.</h2>
+                    <h2>Masters and Ph.D.c</h2>
                 <?php
     
                 $major_page = get_page_by_title( 'Graduate Degrees' );
@@ -75,7 +75,7 @@ $ancestor = array(
 
                 endif;
                 ?>
-                <h2>Graduate Certificates</h2>
+                <h2>Graduate certificates</h2>
                 <?php
                 $major_page = get_page_by_title( 'Graduate Degrees' );
 
