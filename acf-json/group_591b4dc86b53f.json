@@ -1,10 +1,10 @@
 {
     "key": "group_591b4dc86b53f",
-    "title": "Undergraduate Degrees",
+    "title": "Degrees",
     "fields": [
         {
             "key": "field_591b5157792b9",
-            "label": "Majors",
+            "label": "Majors \/ Masters and Ph.D.",
             "name": "majors",
             "type": "repeater",
             "instructions": "",
@@ -242,7 +242,7 @@
         },
         {
             "key": "field_59234c88741e0",
-            "label": "Minors",
+            "label": "Minors \/ Certificates",
             "name": "minors",
             "type": "repeater",
             "instructions": "",
@@ -486,6 +486,13 @@
                 "operator": "==",
                 "value": "26990"
             }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "26992"
+            }
         ]
     ],
     "menu_order": 0,
@@ -496,5 +503,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1495744819
+    "modified": 1495745423
 }
