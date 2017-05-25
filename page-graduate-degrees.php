@@ -116,7 +116,7 @@ $ancestor = array(
 
 <?php get_footer() ?>
 
-<script type="text/javascript" src="http://environment.uw.dev/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+<script type="text/javascript" src="https://environment.uw.edu/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
