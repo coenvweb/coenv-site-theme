@@ -1,0 +1,13 @@
+@include min-width ( $iPadPortrait ) {
+    .page-id-46142 {
+        .fluid-width-video-wrapper {
+            width: 66%;
+            float: right;
+            margin: 1rem;
+            margin-bottom: -20%;
+            iframe {
+                height: 66%!important;
+            }
+        }
+    }
+}
