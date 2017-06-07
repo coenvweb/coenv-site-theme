@@ -24,7 +24,7 @@
         }
         li {
             display: inline-block;
-            width: 33%;
+            width: calc(25% - 3px);
             transform: skewX(-15deg);
             background: $text-very-lt;
             text-align: center;
@@ -40,7 +40,7 @@
                 display: block;
                 background: $text-very-lt;
                 height: 100%;
-                width: 50px;
+                width: 20px;
                 transform: skewX(15deg);
             }
             &.arrow-3:before {
@@ -49,8 +49,8 @@
                 display: block;
                 background: $text-very-lt;
                 height: 100%;
-                width: 50px;
-                right: -4px;
+                width: 20px;
+                right: -7px;
                 transform: skewX(15deg);
             }
             a {

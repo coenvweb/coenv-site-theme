@@ -54,6 +54,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
 
                 <ul id="menu-secondary" class="arrow-menu">
                     <li class="arrow-button arrow-1 active"><a href="http://environment.uw.dev/students/">Prepare</a></li>
+                    <li class="arrow-button arrow-2"><a href="http://environment.uw.dev/students/">Connect</a></li>
                     <li class="arrow-button arrow-2"><a href="http://environment.uw.dev/students/">Visit</a></li>
                     <li class="arrow-button arrow-3"><a href="http://environment.uw.dev/students/">Apply</a></li>
                 </ul>
