@@ -61,16 +61,6 @@ With an entire environment-focused College to explore, you’ll be able to try n
 
             </nav><!-- #secondary-nav.side-col -->
 
-			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
-            
-                <sidebar id="sidebar" class="side-col right-col">
-
-                    <?php the_widget('CoEnv_Widget_Events', 'title=Upcoming Student Events&feed_url=http://www.trumba.com/calendars/uwbg-featured.rss&posts_per_page=3'); ?>
-
-				</sidebar>
-
-			<?php endif ?>
-
 			<main id="main-col" class="main-col">
                 
                 

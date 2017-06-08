@@ -35,6 +35,8 @@ function coenv_styles_and_scripts() {
 
 require_once locate_template( '/inc/faculty.php' );
 
+require_once locate_template( '/inc/widget-shortcode.php' );
+
 /**
  * Incorporate CoEnv Member API into the theme
  * this used to be a separate plugin, but it makes more sense to include it in the theme
@@ -323,8 +325,8 @@ function coenv_widgets_init() {
 	}
 
 	$before_widget	= '<section id="%1$s" class="widget %2$s">';
-	$before_title 	= '<header class="section-header"><h1>';
-	$after_title	= '</h1></header> <!-- end .section-header -->';
+	$before_title 	= '<header class="section-header"><h3>';
+	$after_title	= '</h3></header> <!-- end .section-header -->';
 	$after_widget	= '</section> <!-- end #%1$s -->';
 
 	// this will return only top-level pages

@@ -160,7 +160,6 @@ class CoEnv_Widget_Events extends WP_Widget {
 					<article class="event">
 
 						<a href="<?php echo $event['url'] ?>">
-							<div>
                                 
                                 <?php
                                 $date = substr($event['date'], 0, -6);
@@ -172,10 +171,9 @@ class CoEnv_Widget_Events extends WP_Widget {
 								</footer>
 
 								<header>
-									<h1><?php echo $event['title'] ?></h1>
+									<h3><?php echo $event['title'] ?></h3>
 								</header>
 
-							</div>
 						</a>
 
 					</article>
