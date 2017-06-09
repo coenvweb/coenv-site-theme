@@ -85,33 +85,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
 					<?php endwhile ?>
 
 				<?php endif ?>
-                <article class="article majors-minors-section">
-                <section class="article__content majors-minors accordion" id="major">
-                    <h2>Majors and Minors</h2>
-                <?php
-    
-                $major_page = get_page_by_title( 'Undergraduate Degrees' );
-
-                // check if the repeater field has rows of data
-                if( have_rows('majors_and_minors', $major_page->ID) ):
-
-                    // loop through the rows of data
-                    while ( have_rows('majors_and_minors', $major_page->ID) ) : the_row();
-
-                        // display a sub field value
-                        get_template_part( 'partials/partial', 'major-minor' );
-
-                    endwhile;
-
-                else :
-
-                    // no rows found
-
-                endif;
-
-                ?>
-                </section>
-                </article>
+                
 
 			</main><!-- .main-col -->
 

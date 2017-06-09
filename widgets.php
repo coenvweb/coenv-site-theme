@@ -75,6 +75,92 @@ class CoEnv_Widget_Social extends WP_Widget {
 }
 
 /**
+ * Undergrad Majors and Minors Widget
+ */
+register_widget( 'CoEnv_Widget_UG_majors' );
+
+class CoEnv_Widget_UG_majors extends WP_Widget {
+ 
+  public function __construct() {
+		$args = array(
+			'classname' => 'widget-majors',
+			'description' => __( 'Display a grid of the college\'s degrees', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'social_links', // base ID
+			'Social Media Links', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Connect with the College', 'coenv' );
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+ 
+		echo $before_widget;
+		?>
+			
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+ 
+			<article class="article majors-minors-section">
+                <section class="article__content majors-minors accordion" id="major">
+                    <h2>Majors and Minors</h2>
+                <?php
+    
+                $major_page = get_page_by_title( 'Undergraduate Degrees' );
+
+                // check if the repeater field has rows of data
+                if( have_rows('majors_and_minors', $major_page->ID) ):
+
+                    // loop through the rows of data
+                    while ( have_rows('majors_and_minors', $major_page->ID) ) : the_row();
+
+                        // display a sub field value
+                        get_template_part( 'partials/partial', 'major-minor' );
+
+                    endwhile;
+
+                else :
+
+                    // no rows found
+
+                endif;
+
+                ?>
+                </section>
+                </article>
+ 
+		<?php
+		echo $after_widget;
+	}
+ 
+}
+
+/**
  * Events Widget
  */
 register_widget( 'CoEnv_Widget_Events' );

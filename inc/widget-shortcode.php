@@ -15,11 +15,13 @@ function widget($atts) {
     $instance = str_ireplace("&amp;", '&' ,$widget_args);
     
     ob_start();
-    the_widget($widget_name, $instance, array('widget_id'=>'arbitrary-instance-'.$id,
-        'before_widget' => '<div class="right-col"><div class="widget-events widget">',
+    if ($widget_name == 'widget_events'){
+        $widget_classes = ",'before_widget' => '<div class=\"right-col\"><div class=\"widget-events widget\">',
         'after_widget' => '</div></div>',
-        'before_title' => '<h2 class="widgettitle">',
-        'after_title' => '</h2>'
+        'before_title' => '<h2 class=\"widgettitle\">',
+        'after_title' => '</h2>'";
+      }
+    the_widget($widget_name, $instance, array('widget_id'=>'arbitrary-instance-'.$id, $widget_classes
     ));
     $output = ob_get_contents();
     ob_end_clean();
