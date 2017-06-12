@@ -6,7 +6,13 @@
         margin-bottom: 0;
         a {
             display: table;
+            @include max-width ( $iPadPortrait ) {
+                width: calc(100vw - 2rem);
+            }
         }
+    }
+    .article__content > h2, .article__content > h3, .article__content > h4 {
+        zoom: 1.2;
     }
     #arrow-nav {
         position: relative;
@@ -26,9 +32,12 @@
             background: $text-very-lt;
             text-align: center;
             &:hover{
-                background-color: #efefef;
+                background-color: $accent-lt;
                 &:before {
-                    background: #efefef!important;
+                    background: $accent-lt!important;
+                }
+                a {
+                    color: white!important;
                 }
             }
             &.arrow-1:before {
@@ -66,6 +75,9 @@
         padding: 1rem;
         .article__content p:first-of-type {
             margin: 0;
+        }
+        &.majors-minors-section {
+            padding: 0;
         }
     }
     .article__title {
@@ -111,7 +123,7 @@
     }
     .first-title {
         @extend h1;
-        font-size: 3.5vw!important;
+        font-size: 3.3vw!important;
         line-height: 4.5vw!important;
         margin-top: 0;
         padding-bottom: 1rem;

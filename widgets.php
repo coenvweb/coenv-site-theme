@@ -88,8 +88,8 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 		);
  
 		parent::__construct(
-			'social_links', // base ID
-			'Social Media Links', // name
+			'major_links', // base ID
+			'Majors and Minors Links', // name
 			$args
 		);
 	}
@@ -123,12 +123,11 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
  
 		echo $before_widget;
 		?>
-			
+			<?php if (!empty($title)) { ?>
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
- 
+            <?php }; ?>
 			<article class="article majors-minors-section">
                 <section class="article__content majors-minors accordion" id="major">
-                    <h2>Majors and Minors</h2>
                 <?php
     
                 $major_page = get_page_by_title( 'Undergraduate Degrees' );

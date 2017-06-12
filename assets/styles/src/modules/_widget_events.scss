@@ -64,7 +64,10 @@
 
 } // .widget-events
 
-.right-col .widget {
+.main-col .widget-events {
+    float: right;
+    max-width: 255px;
+    margin: 0 0 1rem 1rem;
     
     .event {
         border-top: 1px #ddd solid;
