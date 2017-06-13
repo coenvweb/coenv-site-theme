@@ -65,9 +65,12 @@
 } // .widget-events
 
 .main-col .widget-events {
-    float: right;
-    max-width: 255px;
-    margin: 0 0 1rem 1rem;
+    @include min-width ( $iPadPortrait ) {
+        float: right!important;
+        width: 262px!important;
+        margin: 0 0 1rem 1rem;
+    }
+    margin: 0 0 1rem 0;
     
     .event {
         border-top: 1px #ddd solid;

@@ -1,10 +1,10 @@
 {
     "key": "group_591b4dc86b53f",
-    "title": "Undergraduate Degrees",
+    "title": "Degrees",
     "fields": [
         {
             "key": "field_591b5157792b9",
-            "label": "Majors",
+            "label": "Majors \/ Masters and Ph.D.",
             "name": "majors",
             "type": "repeater",
             "instructions": "",
@@ -102,7 +102,7 @@
                     "key": "field_591b5179792bc",
                     "label": "Description",
                     "name": "description",
-                    "type": "wysiwyg",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -112,10 +112,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 0,
-                    "delay": 0
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "wpautop"
                 },
                 {
                     "key": "field_591f2154e0b95",
@@ -183,7 +183,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -199,7 +199,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -215,7 +215,23 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5927408752449",
+                    "label": "Faculty Link",
+                    "name": "faculty_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -226,7 +242,7 @@
         },
         {
             "key": "field_59234c88741e0",
-            "label": "Minors",
+            "label": "Minors \/ Certificates",
             "name": "minors",
             "type": "repeater",
             "instructions": "",
@@ -324,7 +340,7 @@
                     "key": "field_59234c89741e5",
                     "label": "Description",
                     "name": "description",
-                    "type": "wysiwyg",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -334,10 +350,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 0,
-                    "delay": 0
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "wpautop"
                 },
                 {
                     "key": "field_59234c89741e6",
@@ -405,7 +421,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -421,7 +437,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -437,7 +453,23 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5927411d397a7",
+                    "label": "Faculty Link",
+                    "name": "faculty_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -454,6 +486,13 @@
                 "operator": "==",
                 "value": "26990"
             }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "26992"
+            }
         ]
     ],
     "menu_order": 0,
@@ -464,5 +503,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1495485584
+    "modified": 1495745423
 }

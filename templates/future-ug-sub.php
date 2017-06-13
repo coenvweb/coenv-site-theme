@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Full width
+Template Name: Future Undergrad Subpage
 */
 get_header();
 
@@ -13,7 +13,7 @@ $ancestor = array(
 );
 ?>
 
-	<section id="page" role="main" class="template-page future-undergrads front">
+	<section id="page" role="main" class="template-page future-undergrads">
         
         <div class="image-area">
         
@@ -29,20 +29,13 @@ $ancestor = array(
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                        <h1 class="article__title small"><a href="students/future-students/future-undergrads/"><?php the_title() ?></a></h1>
+                        <h2 class="article__title small"><a href="students/future-students/future-undergrads/">Future Undergrads</a></h2>
                     </div>
                 </header>
                 <section class="article__content">
                     <p class="first-title">One College,<br> Many Paths</p>
                 </section>
             </article>
-            <div class="other-side">
-                <p class="side-text">What’s it like to be a UW College of the Environment undergrad?
- 
-It’s waking long before dawn breaks onboard a research vessel in search of Puget Sound marine life. It’s trekking into the Cascade Mountains to explore volcanoes and rock formations that reveal our planet’s history. It’s exploring the sustainability of our natural resources through the perspectives of the people and communities that depend on them. It’s developing computer models that inform climate predictions.
- 
-With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit. Your experiences will be exciting. Challenging. Uniquely your own.</p>
-            </div>
             
         </div>
             
@@ -68,7 +61,7 @@ With an entire environment-focused College to explore, you’ll be able to try n
                         <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
                             <section class="article__content">
-                                
+                                <h1 class="article__title"><?php the_title() ?></h1>
                                 <?php the_content() ?>
                             </section>
                             
@@ -90,10 +83,3 @@ With an entire environment-focused College to explore, you’ll be able to try n
 	</section><!-- #page -->
 
 <?php get_footer() ?>
-        
-<script type="text/javascript" src="http://environment.uw.dev/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
-<script type="text/javascript">
-/* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
-/* ]]> */
-</script>

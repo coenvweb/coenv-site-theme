@@ -14,6 +14,7 @@ $adviser_phone = get_sub_field('adviser_phone_number');
 $link = get_sub_field('link');
 $facebook = get_sub_field('facebook_link');
 $twitter = get_sub_field('twitter_link');
+$faculty_link = get_sub_field('faculty_link');
 
 
 
@@ -53,7 +54,9 @@ if(!empty($description)) {
         <div class="row">
             <div class="prompt">Adviser:</div>
             <ul class="answer-content">
+                <?php if (!empty($adviser)) : ?>
                 <li><i class="dashicons dashicons-admin-users"></i><?php echo $adviser; ?></li>
+                <?php endif; ?>
                 <li><a href="mailto:<?php echo $adviser_email; ?>?subject=Question%20about%20<?php echo $name; ?>"><i class="icon-mail"></i><?php echo $adviser_email; ?></a></li>
                 <li><a href="tel:<?php echo $adviser_phone; ?>"><i class="icon-phone"></i><?php echo $adviser_phone; ?></a></li>
             </ul>
@@ -61,7 +64,10 @@ if(!empty($description)) {
         <div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-                <li><a href="<?php echo $link; ?>"><i class="icon-link"></i>Visit <?php echo $name; ?> Website</a></li>
+                <li><a href="<?php echo $link; ?>"><i class="icon-link"></i>Visit website</a></li>
+                <?php if (!empty($faculty_link)) : ?>
+                    <li><a href="<?php echo $faculty_link; ?>"><i class="icon-faculty-grid-alt-2"></i>Meet faculty</a></li>
+                <?php endif; ?>       
                 <?php if (!empty($facebook)) : ?>
                     <li><a href="<?php echo $facebook; ?>"><i class="icon-facebook"></i>Like on Facebook</a></li>
                 <?php endif; ?>    

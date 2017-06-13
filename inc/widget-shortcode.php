@@ -24,3 +24,4 @@ function widget($atts) {
     
 }
 add_shortcode('widget','widget'); 
+

@@ -53,10 +53,10 @@ $ancestor = array(
 				<?php endif ?>
                 <article class="article majors-minors-section">
                 <section class="article__content majors-minors accordion" id="major">
-                    <h2>Majors</h2>
+                    <h2>Masters and Ph.D.</h2>
                 <?php
     
-                $major_page = get_page_by_title( 'Undergraduate Degrees' );
+                $major_page = get_page_by_title( 'Graduate Degrees' );
 
                 // check if the repeater field has rows of data
                 if( have_rows('majors', $major_page->ID) ):
@@ -75,9 +75,9 @@ $ancestor = array(
 
                 endif;
                 ?>
-                <h2>Interdisciplinary minors</h2>
+                <h2>Graduate certificates</h2>
                 <?php
-                $major_page = get_page_by_title( 'Undergraduate Degrees' );
+                $major_page = get_page_by_title( 'Graduate Degrees' );
 
                 // check if the repeater field has rows of data
                 if( have_rows('minors', $major_page->ID) ):

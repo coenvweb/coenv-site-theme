@@ -23,17 +23,20 @@ $ancestor = array(
 
 				<nav id="secondary-nav" class="side-col">
 
-			<ul id="menu-secondary" class="menu">
-	              <?php wp_list_pages( array(
-	              	  'child_of' => $ancestor['id'],
-	                  'depth' => 3,
-	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-	                  'link_after' => '<i class="icon-arrow-right"></i>',
-	                  'walker' => new CoEnv_Secondary_Menu_Walker,
-	                  'sort_column' => 'menu_order'
-	              ) ) ?>
-	          </ul>
-
+                    <ul id="menu-secondary" class="menu">
+                        <li class="pagenav">
+                          <?php echo '<a href="' . $ancestor['permalink'] . '"><span>Back to</span>' . $ancestor['title'] . '</a>'; ?>
+                            <ul class="career-actions">
+                                <li><a class="back-side" href="/students/career-resources/career-opportunities/">← Back to All Career Opportunities</a>
+                                </li>
+                            </ul>
+                            <ul class="career-actions">
+                                <li><a href="/students/career-resources/career-opportunities/for-employers/"><span class="dashicons dashicons-welcome-add-page"></span> Post an Opportunity</a></li>
+                                <li><a href="/students/career-resources/career-opportunities/tips-for-jobinternship-seekers/"><span class="dashicons dashicons-star-filled"></span> Tips for Seekers</a></li>
+                                <li><a href="/students/career-resources/career-opportunities/uw-environmental-career-fair/"><span class="dashicons dashicons-businessman"></span> UW Environmental Career Fair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 				</nav><!-- #secondary-nav.side-col -->
 
 			<?php endif ?>
@@ -69,13 +72,6 @@ $ancestor = array(
 
 							<header class="article__header">
 						        <div class="article__meta">
-						   		<?php if ( !is_page() ) : ?>
-									<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
-									data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-									data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
-						            </div>
-									
-								<?php endif ?>
 
 								<?php if ( is_page() || is_single() ) : ?>
 									<h1 class="article__title">Career Opportunities</h1>
@@ -110,7 +106,7 @@ $ancestor = array(
 									<h2><?php the_title(); echo $location; ?></h2>
 								</div>
 								
-								<p class="back"><a class="button" href="/students/career-resources/career-funding-opportunities/">Back to Career Opportunities</a></p>
+								<p class="back"><a class="button" href="/students/career-resources/career-opportunities/">← Back to Career Opportunities</a></p>
 								<section class="career__content">
 								<?php the_content() ?>
 								</section>
@@ -140,7 +136,7 @@ $ancestor = array(
 			</main><!-- .main-col -->
 
 			<div class="side-col">
-				<?php get_sidebar() ?>
+
 			</div><!-- .side-col -->
 
 		</div><!-- .container -->
