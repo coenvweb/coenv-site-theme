@@ -52,10 +52,16 @@
             margin: 0!important;
             padding: 0;
             overflow: hidden;
+            white-space: nowrap;
+            max-width: calc(100vw - 3px);
+            @include max-width ( 375 ) {
+                overflow: auto;
+            }
         }
         li {
             display: inline-block;
             width: calc(25% - 3px);
+            min-width: 85px;
             transform: skewX(-15deg);
             background: $text-very-lt;
             text-align: center;
