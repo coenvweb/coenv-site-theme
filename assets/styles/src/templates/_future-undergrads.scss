@@ -6,6 +6,7 @@
         border-bottom: 3px solid #eee;
         padding-bottom: 1rem;
         margin-bottom: 2rem;
+        margin-top: 3rem;
         clear: both;
     }
     .first-section {
@@ -48,13 +49,34 @@
         width: 100%;
         margin-top: 1.5rem;
         margin-bottom: 1rem;
+        .back {
+            display: block;
+            margin-bottom: 3px;
+            padding: .35rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .2px;
+            @include sans();
+            background: $text-very-lt;
+            text-decoration: none;
+            color: $text;
+             &:hover{
+                background-color: $accent-lt;
+                 color: white!important;
+                &:before {
+                    background: $accent-lt!important;
+                 }
+            }
+        }
         ul {
             margin: 0!important;
             padding: 0;
             overflow: hidden;
             white-space: nowrap;
             max-width: calc(100vw - 3px);
-            @include max-width ( 375 ) {
+            @include max-width ( 374 ) {
                 overflow: auto;
             }
         }
