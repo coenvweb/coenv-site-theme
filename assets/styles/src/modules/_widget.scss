@@ -82,10 +82,15 @@
 
 } // .widget
 
-.main-col .widget-events {
+.main-col .widget-events, .main-col .student-ambassadors-widget {
     background-color: $text-very-lt;
     padding: 0;
     margin-bottom: 1rem;
+    @include min-width ( $iPadPortrait ) {
+        float: right!important;
+        width: 262px!important;
+        margin: 0 0 1rem 1rem;
+    }
     
     .widgettitle {
         margin: 0;
