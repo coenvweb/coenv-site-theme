@@ -215,7 +215,7 @@
         @include min-width ( $iPadPortrait ) {
             float: right!important;
             width: 262px!important;
-            margin: 2.5rem 0 0 2rem;
+            margin: 0 0 1rem 3rem;
         }
         margin: 0;
         background-color: $text-very-lt;
