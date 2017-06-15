@@ -131,7 +131,7 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
                 <?php
                 
                 $major_page = get_page_by_title( 'Undergraduate Degrees' );
-        echo $major_page;   
+        echo $major_page->ID;   
 
                 // check if the repeater field has rows of data
                 if( have_rows('majors_and_minors', $major_page->ID) ):
