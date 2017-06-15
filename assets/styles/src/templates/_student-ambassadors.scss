@@ -399,17 +399,24 @@
         @includes sans();
     }
     
+    .ambassador-name {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
 	.ambassador-name h3 {
 		margin: 0;
         @include font-size(12);
         line-height: 1;
         font-weight: 600;
         padding: .5rem;
-        float: left;
+        position: absolute;
         @include sans;
         width: 100%;
         text-align: center;
-        height: 40px;
 
         @include min-width ( 600 ) {
             @include font-size(12);
@@ -450,38 +457,25 @@
     
     .ambassadors a {
         position: relative;
-        width: calc(33.1%);
-        display: inline-block;
+        width: calc(33.4%);
+        display: inline-grid;
         text-decoration: none;
         color: $text;
         z-index: 2;
-        border-right: 1px solid $border;
-        background-color: #ddd;
-        &:last-of-type {
-            border: none;
-        }
-        border-right: none;
-        margin-right: 1px;
-        &:nth-child(6n+4){
-            border-top: 1px $border solid;
-        }
-        &:nth-child(6n+5){
-            border-top: 1px $border solid;
-        }
-        &:nth-child(6n+6) {
-            border-top: 1px $border solid;
-        }
-        &:nth-child(6n+7) {
-            border-top: 1px $border solid;
-        }
+        border-right: 1px solid #ddd;
+        border-top: 1px #ddd solid;
+        background-color: #eee;
         &:nth-child(6n+3) {
             margin-right: -2px;
+            border-right: none;
         }
         &:nth-child(6n+6) {
             margin-right: -2px;
+            border-right: none;
         }
         &:hover {
             background-color: $accent;
+            margin-top: 0;
             h3 {
                 color: $white;
             }
@@ -537,6 +531,7 @@
         text-align: center;
         width: 100%!important;
         @include font-size(13);
+        border-top: 1px solid #eee;
         font-weight: 600;
         padding: .5rem;
         line-height: 2rem;
