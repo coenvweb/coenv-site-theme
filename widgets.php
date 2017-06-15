@@ -129,8 +129,9 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 			<article class="article majors-minors-section">
                 <section class="article__content majors-minors accordion" id="major">
                 <?php
-                echo $major_page;
+                
                 $major_page = get_page_by_title( 'Undergraduate Degrees' );
+        echo $major_page;   
 
                 // check if the repeater field has rows of data
                 if( have_rows('majors_and_minors', $major_page->ID) ):
