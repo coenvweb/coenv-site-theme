@@ -126,7 +126,7 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 			<?php if (!empty($title)) { ?>
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
             <?php }; ?>
-			<article class="article majors-minors-section">
+			<article class="majors-minors-section">
                 <section class="article__content majors-minors accordion" id="major">
                 <?php
                 
