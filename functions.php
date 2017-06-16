@@ -525,6 +525,11 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 5;
     }
+    
+    if (is_page_template('templates/future-ug-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38568;
+    }
 
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
@@ -539,7 +544,7 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'homepage-column' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
 
 	$banner = array(

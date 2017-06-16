@@ -13,33 +13,34 @@ $ancestor = array(
 );
 ?>
 
-	<section id="page" role="main" class="template-page future-undergrads">
-        
-        <div class="image-area">
+                        </header><!-- #header -->
+
+    <div class="image-area smaller">
         
 		<div class="container">
-            <div id="top-tab" class="side-col">
-
-                <ul class="menu">
-                    <li class="pagenav parent_page_item current_page_parent"><a href="http://environment.uw.dev/students/">Students</a></li>
-                </ul>
-
-            </div><!-- #secondary-nav.side-col -->
             
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                        <h2 class="article__title small"><a href="students/future-students/future-undergrads/">Future Undergrads</a></h2>
+                        <h1 class="article__title small"><a href="/students/">Students</a> > <a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title">One College,<br> Many Paths</p>
+                    <p class="first-title small">One College,<br> Many Paths</p>
                 </section>
             </article>
             
         </div>
             
         </div>
+
+
+                    </div><!-- .container.header-container -->
+
+                </div><!-- .banner-wrapper -->
+
+	<section id="page" role="main" class="template-page future-undergrads">
+
         <div>
         
 		<div class="container">

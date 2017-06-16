@@ -1,3 +1,133 @@
+.page-id-38568 {
+    .banner-wrapper {
+        padding-bottom: 0;
+        background-position-y: 100%;
+    }
+}
+
+.page-template-future-ug-sub .banner-wrapper {
+    background-position-y: 65%;
+}
+
+.image-area {
+    display: block;
+    position: relative;
+    height: 35rem;
+    width: 100%;
+    padding-top: 7rem;
+    //opacity: .6; 
+    @include max-width ( $iPadPortrait ) {
+        height: 15rem;
+        padding-top: 0rem;
+        .first-section {
+            padding-left: 0!important;
+        }
+        .first-title {
+            font-size: 3.5rem!important;
+            line-height: 4rem!important;
+        }
+    }
+    
+    #top-tab {
+        @extend #secondary-nav;
+        @extend .side-col;
+        float: left;
+        margin-bottom: 0;
+        a {
+            display: table;
+            @include max-width ( $iPadPortrait ) {
+                width: calc(100vw - 2rem);
+            }
+        }
+    }
+    .article__title.small {
+        @extend .post-info;
+        margin: 0;
+        padding: 1rem 0 .25rem 0;
+        border: none;
+        line-height: 1rem;
+        @include sans();
+        font-size: 1rem!important;
+        color: $text-very-lt!important;
+        a {
+            color: $text-very-lt!important;
+        }
+    }
+    &.smaller {
+        padding-top: 0rem;
+        height: 8rem;
+    }
+    .first-section {
+        padding-left: 1rem;
+        display: inline-block;
+        padding-top: 1rem;
+        .article__content {
+            min-height: 0;
+        }
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
+    }
+    .little-blurb {
+        display: block;
+        width: 75%;
+        p {
+            color: $text-very-lt;
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+            padding: 1rem 1rem .5rem 1rem;
+        }
+        a {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: .5rem;
+            background: rgba(100,100,100,.4);
+                &:hover {
+                    background: rgba(150,150,150,.4)!important;
+                }
+        }
+        @include max-width ( $iPadPortrait ) {
+            display: none;
+        }
+    }
+    section {
+        position: relative;
+    }
+    .first-title {
+        @include serif();
+        margin-top: 2rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        color: $text-very-lt;
+        font-size: 4.5rem;
+        line-height: 6rem;
+        &:before {
+            content: '';
+            display: block;
+            width: 3rem;
+            border-top: .5rem solid $text-very-lt;
+            position: absolute;
+            top: 1rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4rem;
+            border-top: .5rem solid $text-very-lt;
+            transform: skewX(-15deg);
+            top: 1rem;
+            left: 10px;
+        }
+        &.small {
+            margin-top: 2.5rem;
+            font-size: 3.5rem;
+            line-height: 4rem;
+            
+        }
+    }
+}
+
 .future-undergrads.front {
     .article__content > h2, .article__content > h3, .article__content > h4 {
         zoom: 1.2;
@@ -31,18 +161,7 @@
     }
 }
 .future-undergrads {
-    #top-tab {
-        @extend #secondary-nav;
-        @extend .side-col;
-        float: left;
-        margin-bottom: 0;
-        a {
-            display: table;
-            @include max-width ( $iPadPortrait ) {
-                width: calc(100vw - 2rem);
-            }
-        }
-    }
+    
     #arrow-nav {
         position: relative;
         display: table;
@@ -152,62 +271,7 @@
             padding: 0;
         }
     }
-    .article__title.small {
-        @extend .post-info;
-        margin: 0;
-        padding: 1rem 0 .25rem 0;
-        border: none;
-        line-height: 1rem;
-        @include sans();
-        font-size: 1rem!important;
-        color: $text-very-lt!important;
-        a {
-            color: $text-very-lt!important;
-        }
-    }
-    .image-area {
-        display: block;
-        position: relative;
-        height: 100%;
-        width: 100%;
-        background-image: linear-gradient(to bottom right,#002f4b,#555);
-        //opacity: .6; 
-    }
-    .first-section {
-        padding-left: 1rem;
-        display: inline-block;
-        padding-top: 1rem;
-        .article__content {
-            min-height: 0;
-        }
-        @include max-width ( $iPadPortrait ) {
-            width: 100%;
-        }
-    }
-    .other-side {
-        position: relative;
-        display: inline-block;
-        top: 0;
-        width: 65%;
-        float: right;
-        margin-top: 3rem;
-        p {
-            color: $text-very-lt;
-            font-size: 1.2rem;
-            line-height: 2rem;
-            padding: 2rem 2rem 4rem 4rem;
-        }
-        @include max-width ( $iPadPortrait ) {
-            display: none;
-        }
-    }
-    .first-title {
-        @extend h1;
-        margin-top: 0;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-        color: $text-very-lt;
-    }
+
     .main-col {
         width: 100%!important;
     }

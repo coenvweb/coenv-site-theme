@@ -13,43 +13,43 @@ $ancestor = array(
 );
 ?>
 
-	<section id="page" role="main" class="template-page future-undergrads front">
-        
-        <div class="image-area">
+                        </header><!-- #header -->
+
+    <div class="image-area small">
         
 		<div class="container">
-            <div id="top-tab" class="side-col">
-
-                <ul class="menu">
-                    <li class="pagenav parent_page_item current_page_parent"><a href="http://environment.uw.dev/students/">Students</a></li>
-                </ul>
-
-            </div><!-- #secondary-nav.side-col -->
             
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                        <h1 class="article__title small"><a href="students/future-students/future-undergrads/"><?php the_title() ?></a></h1>
+                        <h1 class="article__title small"><a href="/students/">Students</a> > <a href="students/future-students/future-undergrads/"><?php the_title() ?></a></h1>
                     </div>
                 </header>
                 <section class="article__content">
                     <p class="first-title">One College,<br> Many Paths</p>
                 </section>
             </article>
-            <div class="other-side">
-                <p class="side-text">What’s it like to be a UW College of the Environment undergrad?
- 
-It’s waking long before dawn breaks onboard a research vessel in search of Puget Sound marine life. It’s trekking into the Cascade Mountains to explore volcanoes and rock formations that reveal our planet’s history. It’s exploring the sustainability of our natural resources through the perspectives of the people and communities that depend on them. It’s developing computer models that inform climate predictions.
- 
-With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit. Your experiences will be exciting. Challenging. Uniquely your own.</p>
+            <div class="little-blurb">
+                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit. Your experiences will be exciting. Challenging. Uniquely your own.</p>
+                <a href=#arrow-nav class="button">Start your journey</a>
             </div>
             
         </div>
             
         </div>
+
+                    </div><!-- .container.header-container -->
+
+                </div><!-- .banner-wrapper -->
+
+
+	<section id="page" role="main" class="template-page future-undergrads front">
+        
+        
         <div>
         
 		<div class="container">
+            
             
             <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
 

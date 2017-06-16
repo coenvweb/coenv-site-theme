@@ -243,5 +243,3 @@ function closeUWAlert () {
     setTimeout(closeUWAlert, 50); //wait 50 ms, then try again
   }
 }
-
-
