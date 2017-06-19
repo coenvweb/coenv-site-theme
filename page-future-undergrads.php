@@ -31,7 +31,6 @@ $ancestor = array(
             </article>
             <div class="little-blurb">
                 <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit. Your experiences will be exciting. Challenging. Uniquely your own.</p>
-                <a href=#arrow-nav class="button">Start your journey</a>
             </div>
             
         </div>
