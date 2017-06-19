@@ -314,12 +314,12 @@
             margin-bottom: 3rem;
         }
         .fluid-width-video-wrapper {
-            width: calc(50% - 1rem);
+            width: calc(49% - .3rem);
             float: right;
             margin: 1rem;
             margin-bottom: -25%;
             iframe {
-                height: calc(50% - 1rem)!important;
+                height: calc(49% - .3rem)!important;
             }
         }
     }
