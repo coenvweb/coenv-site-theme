@@ -134,18 +134,15 @@
     }
     .article__content > h2 {
         border-bottom: 3px solid #eee;
-        margin-bottom: 2rem;
-        margin-top: 3rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
+        margin: 3rem -2rem 2rem;
         clear: both;
         a {
-            padding: 1rem;
+            padding: 2rem;
             text-decoration: none;
             color: $accent;
             width: 100%;
             display: block;
-            background-color: $text-very-lt;
+            background-color: #fafafa;
             padding: 1rem;
         }
     }
