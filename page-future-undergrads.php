@@ -30,7 +30,7 @@ $ancestor = array(
                 </section>
             </article>
             <div class="little-blurb">
-                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit. Your experiences will be exciting. Challenging. Uniquely your own.</p>
+                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit.</p>
             </div>
             
         </div>
