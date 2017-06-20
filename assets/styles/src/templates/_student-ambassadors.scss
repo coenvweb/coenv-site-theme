@@ -414,6 +414,7 @@
         font-weight: 600;
         padding: .5rem;
         position: relative;
+        min-height: 38px;
         @include sans;
         width: 100%;
         text-align: center;
