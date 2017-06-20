@@ -134,10 +134,20 @@
     }
     .article__content > h2 {
         border-bottom: 3px solid #eee;
-        padding-bottom: 1rem;
         margin-bottom: 2rem;
         margin-top: 3rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
         clear: both;
+        a {
+            padding: 1rem;
+            text-decoration: none;
+            color: $accent;
+            width: 100%;
+            display: block;
+            background-color: $text-very-lt;
+            padding: 1rem;
+        }
     }
     .first-section {
         width: 35%;
@@ -161,15 +171,30 @@
     }
     .majors-minors {
         //margin-right: calc(-1rem + 2px);
-        .major-minor:not(.open) {
+        div:not(.open) {
             @include min-width ( $iPadPortrait ) {
-                display: inline-block;
-                width: calc(50% - .3rem);
-                @include rem('margin-right', .3)
+                &.major-minor{
+                    display: inline-block;
+                    width: calc(50% - .4rem);
+                    @include rem('margin-right', .3)
+                }
+                &:nth-of-type(4n+3) {
+                    margin-right: 0!important;
+                }
             }
-        }
-        div:nth-of-type(4n+3) {
-            margin-right: 0!important;
+            //@include min-width ( 1000 ) {
+            //    &.major-minor {
+            //        display: inline-block;
+            //        width: calc(33% - .3rem);
+            //        margin-right: .3rem;
+            //    }
+            //    &:nth-of-type(4n+3) {
+            //        margin-right: .3rem!important;
+            //    }
+            //    &:nth-of-type(6n+6) {
+            //        margin-right: 0!important;
+            //    }
+            //}
         }
     }
 }
@@ -277,9 +302,6 @@
             padding: 0rem 2rem;
         }
         padding: 1rem;
-        .article__content p:first-of-type {
-            margin: 0;
-        }
         .article__content > h2:first-of-type {
             margin-top: 1rem;
         }
