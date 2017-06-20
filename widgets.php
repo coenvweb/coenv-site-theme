@@ -641,7 +641,7 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
         echo $before_widget; ?>
         <?php echo $before_title ?>
 
-            <span><a href="/students/future-students/future-undergrads/student-ambassadors/">
+            <span><a href="/students/meet-our-students/undergraduate-ambassadors/">
                 <?php 
                 if ( $title == '' ){
                     echo 'Student Ambassadors';
@@ -669,7 +669,7 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
                         $thumb = $image['sizes'][ $size ];
                     }
                     $name = $first_name . ' ' . $last_name;
-                    echo '<a href="/students/future-students/future-undergrads/student-ambassadors/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                    echo '<a href="/students/meet-our-students/undergraduate-ambassadors/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
                         echo '<div class="ambassador-container" >';
                         if ( $image ) {
                             echo '<div class="ambassador-thumb">';
@@ -687,7 +687,7 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
                     echo '</div>';
                 echo '</a>';
             }
-            echo '<a href="/students/future-students/future-undergrads/student-ambassadors/" title="Browse more faculty in the College of the Environment" class="count" >';
+            echo '<a href="/students/meet-our-students/undergraduate-ambassadors/" title="Browse more faculty in the College of the Environment" class="count" >';
             echo '<div class="ambassador-container">';
             echo '<div class="ambassador-thumb">';
             echo '<i class="icon-faculty-grid-alt-2"></i>';
