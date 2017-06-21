@@ -358,6 +358,16 @@
             margin-top: 1rem;
         }
     }
+    .join {
+        display: inline-block;
+        width: calc(49% + 0.5rem);
+        .apply {
+            padding-left: 2rem;
+        }
+        .declare {
+            padding-right: 2rem;
+        }
+    }
     @include min-width ( $iPadPortrait ) {
         hr {
             border: none;
