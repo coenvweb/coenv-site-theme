@@ -222,6 +222,13 @@ img {
 
     @include max-width ( $iPhoneLandscape ) {
         @include rem('padding-right', .6);
+        h3 {
+            font-size: 1rem;
+        }
+
+        .type {
+            font-size: 80%!important;
+        }
     }
 
 }

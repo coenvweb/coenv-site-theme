@@ -138,8 +138,14 @@
 }
 
 .future-undergrads.front {
-    .article__content > h2, .article__content > h3, .article__content > h4 {
-        zoom: 1.2;
+    .article__content > h2 {
+        font-size: calc(1.2em + 1.2vmin);
+    }
+    .article__content > h3 {
+        font-size: calc(1em + 1vmin);
+    }
+    .article__content > h4 {
+        font-size: calc(.8em + 1vmin);
     }
     .article__content > h2 {
         border-bottom: 3px solid #eee;
