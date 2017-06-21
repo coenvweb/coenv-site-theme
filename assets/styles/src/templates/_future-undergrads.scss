@@ -239,6 +239,9 @@
     }
 }
 .future-undergrads {
+    p:not(.intro) {
+        max-width: 760px;
+    }
     
     img[class*='wp-image-'] {
         @include max-width ( $iPadPortrait ) {
