@@ -285,7 +285,7 @@
 		height: auto !important;
 	}
     
-    a > img[class*='wp-image-'] {
+    img[class*='wp-image-'] {
         @include max-width ( $iPadPortrait ) {
             width: 100%;
         }
