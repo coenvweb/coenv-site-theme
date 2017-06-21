@@ -234,6 +234,12 @@
 }
 .future-undergrads {
     
+    img[class*='wp-image-'] {
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
+    }
+    
     #arrow-nav {
         position: relative;
         display: table;

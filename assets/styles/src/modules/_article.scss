@@ -285,12 +285,6 @@
 		height: auto !important;
 	}
     
-    img[class*='wp-image-'] {
-        @include max-width ( $iPadPortrait ) {
-            width: 100%;
-        }
-    }
-    
     .gallery {
         margin-bottom: 2rem!important;
         padding-top: 1rem;
