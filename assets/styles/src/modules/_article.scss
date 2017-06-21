@@ -283,6 +283,9 @@
 	.twitter-tweet-rendered {
 		max-width: 100% !important;
 		height: auto !important;
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
 	}
     
     .gallery {
