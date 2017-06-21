@@ -50,10 +50,16 @@
         border: none;
         line-height: 1rem;
         @include sans();
-        font-size: 1rem!important;
+        font-size: .9rem!important;
         color: $text-very-lt!important;
         a {
             color: $text-very-lt!important;
+        }
+        @include min-width ( $iPadPortrait ) {
+            font-size: 1.2rem!important;
+            .mobile {
+                display: none;
+            }
         }
     }
     &.smaller {
@@ -358,14 +364,16 @@
             margin-top: 1rem;
         }
     }
-    .join {
-        display: inline-block;
-        width: calc(49% + 0.5rem);
-        .apply {
-            padding-left: 2rem;
-        }
-        .declare {
-            padding-right: 2rem;
+    @include min-width ( $iPadPortrait ) {
+        .join {
+            display: inline-block;
+            width: calc(49% + 0.5rem);
+            .apply {
+                padding-left: 2rem;
+            }
+            .declare {
+                padding-right: 2rem;
+            }
         }
     }
     @include min-width ( $iPadPortrait ) {
