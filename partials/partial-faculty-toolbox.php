@@ -51,9 +51,9 @@ $ordered_themes = $themes;
 
 										<div class="Faculty-toolbox-roller-item"><a href="<?php echo $theme['url'] ?>" data-theme="theme-<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></a></div>
 
-									<?php endforeach ?>
+									<?php endforeach; ?>
 
-								<?php endif ?>
+								<?php endif; ?>
 
 					</div><!-- .Faculty-toolbox-roller-items -->
 
@@ -76,8 +76,8 @@ $ordered_themes = $themes;
 
 								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
                             
-                                <? endif; ?>
-							<?php endforeach ?>
+                                <?php endif; ?>
+							<?php endforeach; ?>
 
 						</select>
 
