@@ -222,9 +222,15 @@
                                     ?>
                                 </ul>
                             </nav>
-
+                            
+                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php'))) {
+    ?>
                         </header><!-- #header -->
 
                     </div><!-- .container.header-container -->
 
                 </div><!-- .banner-wrapper -->
+    
+    <?php
+                }
+                            ?>

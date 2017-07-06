@@ -22,6 +22,7 @@
 			@include rem('padding', 1);
 			text-decoration: none;
 			color: $text;
+            @include sans();
 			@media print {
 			 	padding: 0;
 			}
@@ -35,11 +36,12 @@
 
 		header {
 
-			h1 {
+			h3 {
 				margin: 0;
 				@include font-size(14);
 				@include line-height(24);
 				font-weight: 600;
+                @include sans();
 			}
 
 		} // header
@@ -62,29 +64,7 @@
 
 } // .widget-events
 
-#sidebar .widget-events {
-    background-color: $text-very-lt;
-    padding: 0;
-    margin-top: 1rem;
-    
-    .widgettitle {
-        margin: 0;
-        a {
-            color: $text;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: .1em;
-            font-weight: 600;
-            line-height: 0;
-            font-size: 11px;
-            display: block;
-            border-bottom: 1px solid #ddd;
-            padding: 1.5rem 1rem;
-            &:hover {
-                color: white;
-            }
-        }
-    }
+.main-col .widget-events {
     
     .event {
         border-top: 1px #ddd solid;

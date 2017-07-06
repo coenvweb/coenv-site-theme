@@ -93,16 +93,16 @@
             border-right: none;
             margin-right: 1px;
             &:nth-child(6n+4){
-                border-top: 1px $border solid;
+                border-top: 1px #ddd solid;
             }
             &:nth-child(6n+5){
-                border-top: 1px $border solid;
+                border-top: 1px #ddd solid;
             }
             &:nth-child(6n+6) {
-                border-top: 1px $border solid;
+                border-top: 1px #ddd solid;
             }
             &:nth-child(6n+7) {
-                border-top: 1px $border solid;
+                border-top: 1px #ddd solid;
             }
             &:nth-child(6n+3) {
                 margin-right: -2px;

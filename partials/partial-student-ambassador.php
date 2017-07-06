@@ -1,6 +1,6 @@
 <?php  
 /**
- * An individual staff member
+ * An individual Student Ambassador
  */
 
 $first_name = get_field('first_name');

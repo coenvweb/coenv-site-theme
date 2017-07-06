@@ -48,6 +48,8 @@ function coenv_styles_and_scripts() {
 
 require_once locate_template( '/inc/faculty.php' );
 
+require_once locate_template( '/inc/widget-shortcode.php' );
+
 /**
  * Incorporate CoEnv Member API into the theme
  * this used to be a separate plugin, but it makes more sense to include it in the theme
@@ -337,8 +339,8 @@ function coenv_widgets_init() {
 	}
 
 	$before_widget	= '<section id="%1$s" class="widget %2$s">';
-	$before_title 	= '<header class="section-header"><h1>';
-	$after_title	= '</h1></header> <!-- end .section-header -->';
+	$before_title 	= '<header class="section-header"><h3>';
+	$after_title	= '</h3></header> <!-- end .section-header -->';
 	$after_widget	= '</section> <!-- end #%1$s -->';
 
 	// this will return only top-level pages
@@ -523,6 +525,11 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 5;
     }
+    
+    if (is_page_template('templates/future-ug-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38568;
+    }
 
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
@@ -537,7 +544,7 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'homepage-column' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
 
 	$banner = array(
@@ -1021,7 +1028,7 @@ function remove_faculty_search( $query ) {
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
 
-if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev') {
+if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
     function cdn_upload_url() {
         return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
     }
