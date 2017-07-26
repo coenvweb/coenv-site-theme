@@ -50,8 +50,8 @@ $banner = coenv_banner();
                         <header class="article__header">
                         </header>
                         <section class="">
-                            <p><strong>No Results Found</strong><br />
-                            Please try searching with different terms.</p>
+                            <div class="no-results"><h3>No Results Found</h3>
+                            <p>Please try searching with different terms.</p></div>
                         </section>
                 </article>
 				<?php endif ?>

@@ -57,4 +57,10 @@
 			<?php } ?>
 		</div>
 	<?php } ?>
+    <?php if (!empty(get_query_var('s'))) { ?>
+		<div class="results-text">
+            <p><?php if (!empty($coenv_post_count)) {echo $coenv_post_count;} else {echo '0';}; ?> news posts related to <span class="term-name"> <?php echo get_query_var('s'); ?> </span></p>
+				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
+        </div>
+    <?php } ?>
 </div><!-- #blog-header -->
