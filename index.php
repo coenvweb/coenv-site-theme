@@ -43,7 +43,17 @@ $banner = coenv_banner();
 						<?php get_template_part( 'partials/partial', 'story' ) ?>
 
 					<?php endwhile ?>
+                
+                <?php else : ?>
+                	<article <?php post_class( 'article' ) ?>>
 
+                        <header class="article__header">
+                        </header>
+                        <section class="">
+                            <p><strong>No Results Found</strong><br />
+                            Please try searching with different terms.</p>
+                        </section>
+                </article>
 				<?php endif ?>
 
 				<footer class="pagination">
