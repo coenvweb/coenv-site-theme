@@ -45,7 +45,7 @@
    		<?php if ( !is_page() ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
+			data-article-permalink="<?php echo the_permalink(); ?>"><a><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
