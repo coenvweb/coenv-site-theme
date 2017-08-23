@@ -27,7 +27,7 @@ if( !empty($image) ) {
 }
 
 if(!empty($description)) {
-    $accordionclass = accordion-title;
+    $accordionclass = 'accordion-title';
 }
 
 ?>

@@ -20,7 +20,7 @@ if( !empty($image) ) {
 }
 
 if(!empty($description) || have_rows('job_responsibilities')) {
-    $accordionclass = accordion-title;
+    $accordionclass = 'accordion-title';
 }
 
 ?>
