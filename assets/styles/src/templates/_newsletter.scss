@@ -211,14 +211,24 @@
 
     .related {
         .related-container {
-            .newsletter-icon {
-                float: left;
-                display: block;
-                padding-top: 0.2rem;
-                width: 13%;
-                clear: both;
-            }
             .related-article-title {
+                a:hover {
+                    i {
+                        color: #fff;
+                    }
+                }
+                i {
+                    float: left;
+                    display: block;
+                    padding-top: .5rem;
+                    font-size: 2rem;
+                    clear: both;
+                    margin-right: 1rem;
+                    color: #888;
+                }
+                .icon-mail {
+                    padding-top: .25rem;
+                }
                 span {
                     display: block;
                     overflow: hidden;
