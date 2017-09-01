@@ -27,9 +27,9 @@ $lowerBoundStartYear = $lowerBound->format('Y');
 $lowerBoundEndYear = $lowerBoundStartYear + 1;
 $upperBoundEndYear = $lowerBoundEndYear + 1;
 
-$lowerBoundStart = '08/11/' . $lowerBoundStartYear;
-$lowerBoundEnd = '08/10/' . $lowerBoundEndYear;
-$upperBoundEnd = '08/10/' . $upperBoundEndYear;
+$lowerBoundStart = '09/10/' . $lowerBoundStartYear;
+$lowerBoundEnd = '09/09/' . $lowerBoundEndYear;
+$upperBoundEnd = '09/09/' . $upperBoundEndYear;
 
 /*
 $lowerArgs = array(
