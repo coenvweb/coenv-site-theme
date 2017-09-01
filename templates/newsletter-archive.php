@@ -18,7 +18,7 @@ $ancestor = array(
 $banner = coenv_banner();
 
 $current = new DateTime();
-if($current->format('m') < 9) {
+if($current->format('m') < 10) {
     $lowerBound = new DateTime('-2 year');
 } else {
     $lowerBound = new DateTime('-1 year');
