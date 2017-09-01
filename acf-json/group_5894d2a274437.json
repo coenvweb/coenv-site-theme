@@ -3,16 +3,6 @@
     "title": "Social Image",
     "fields": [
         {
-            "return_format": "url",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
             "key": "field_5894d2bda772c",
             "label": "Social Image",
             "name": "social_image",
@@ -24,7 +14,17 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -33,6 +33,13 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "newsletter"
             }
         ]
     ],
@@ -44,5 +51,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1486148388
+    "modified": 1504286778
 }

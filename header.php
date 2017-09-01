@@ -103,7 +103,7 @@
         $post_image = $thumb_src[0];
     } else {
         if ( !is_404() ) {
-            if($post->post_type == 'page' && get_field('social_image', $post->ID)) {
+            if(!empty(get_field('social_image', $post->ID))) {
                 $post_image = get_field('social_image', $post->ID);
             } else {
                 $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
