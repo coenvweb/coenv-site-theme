@@ -28,7 +28,7 @@ $lowerBoundEndYear = $lowerBoundStartYear + 1;
 $upperBoundEndYear = $lowerBoundEndYear + 1;
 
 $lowerBoundStart = '08/10/' . $lowerBoundStartYear;
-$lowerBoundEnd = '09/09/' . $lowerBoundEndYear;
+$lowerBoundEnd = '08/09/' . $lowerBoundEndYear;
 $upperBoundEnd = '09/09/' . $upperBoundEndYear;
 
 /*
