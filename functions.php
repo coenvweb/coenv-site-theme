@@ -354,9 +354,9 @@ function coenv_widgets_init() {
 	}
 
 	foreach( $pages as $page ) {
-		// remove specific pages
+        // remove specific pages
 		if( !in_array( $page->post_name, $pages_to_remove ) ) {
-            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID)){
+            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID) && ($page->post_title !== 'Home')){
                 register_sidebar( array(
                     'name' 			=> $page->post_title . ' / Sidebar',
                     'id'			=> 'sidebar-' . $page->ID,
@@ -372,6 +372,16 @@ function coenv_widgets_init() {
                     'after_widget'	=> $after_widget,
                     'before_title' 	=> $before_title,
                     'after_title'	=> $after_title
+                ) );
+            }
+            if( ($page->post_title == 'Home')){
+                register_sidebar( array(
+                    'name' 			=> 'Homepage / Sidebar',
+                    'id'			=> 'sidebar-' . $page->ID,
+                    'before_widget' => $before_widget,
+                    'after_widget'	=> $after_widget,
+                    'before_title' 	=> '<header class="section-header"><h2>',
+                    'after_title'	=> '</h2></header> <!-- end .section-header -->'
                 ) );
             }
 		}

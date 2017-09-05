@@ -391,7 +391,7 @@ body.home {
 	.content {
 		@include rem('padding', 1);
 
-		h1 {
+		h3 {
 			margin: 0;
 			@include serif;
 			@include font-size(16);

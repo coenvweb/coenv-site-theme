@@ -23,13 +23,13 @@
                 <?php endif ?>
 
                 <a class="content" href="<?php the_permalink() ?>">
-                    <h1><?php the_title() ?></h1>
+                    <h3><?php the_title() ?></h3>
                 </a>
 			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
 					<?php the_post_thumbnail( $col_image ); ?>
                     <div class="content">
-                        <h1><?php the_title() ?></h1>
+                        <h3><?php the_title() ?></h3>
                     </div>
                 </a>
             <?php endif ?>
