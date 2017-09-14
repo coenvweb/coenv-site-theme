@@ -118,7 +118,7 @@ $ordered_themes = $themes;
 					<div class="Faculty-toolbox-form-group">
 
 						<div class="field-wrap">
-    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="Faculty Search" />
+    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
     						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
   						</div>
 
