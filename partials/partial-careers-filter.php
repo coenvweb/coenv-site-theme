@@ -37,7 +37,6 @@ $args = array(
 <div id="careers-filter" class="careers-filter" aria-controls="results" aria-multiselectable="true">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
-	<ul>
 	<ul class="ajax-filters" id="career-filter">
 		<?php wp_list_categories($args); ?>
 	</ul>

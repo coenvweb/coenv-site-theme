@@ -15,7 +15,7 @@ class CoEnv_Career_Category extends Walker_Category{
         $cat_slug = esc_attr( $category->slug);
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
-            $link = '<li class="term_id_'.$category->term_id.' button"  name="filter_career[]" aria-pressed="false" value="'.$category->term_id.'">';
+            $link = '<li class="term_id_'.$category->term_id.' button"  name="filter_career[]" role="button" aria-pressed="false" value="'.$category->term_id.'">';
         }
             $link .= $cat_name;
  

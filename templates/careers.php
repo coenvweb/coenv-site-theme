@@ -59,29 +59,30 @@ $ancestor = array(
             <div class="career-col main-col article">
                 <div class="sorter-search-row">
                     <form role="search" class="search-form Form--inline" id="post-search">
-                        Search
+                        <label for="st">Search</label>
                       <div class="field-wrap">
                         <input type="text" name="st" id="st" placeholder="e.g. Faculty, Bellevue, Wildlife, etc." class="text-search" />
                         <button id="submit-search" type="submit"><i class="icon-search"></i><span>Search</span></button>
                       </div>
                     </form>
-                    <li class="sorter right">Sort By
+                    <div class="sorter right">Sort By
                         <ul>
-                            <li class="button selected" data-value="postdate" aria-pressed="true">Post date</li>
-                            <li class="button"  data-value="deadline" aria-pressed="false">Deadline</li>
+                            <li class="button selected" role="button" data-value="postdate" aria-pressed="true">Post date</li>
+                            <li class="button" role="button" data-value="deadline" aria-pressed="false">Deadline</li>
                         </ul>
-                    </li>
-                    <li class="subscribe">Subscribe
-                    <ul>
-                        <a class="button" href="/students/career-resources/career-opportunities/subscribe-via-email/"><i class="icon-mail"></i></a>
-                        <a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i></a>
-                    </ul></li>
-                    <li class="mobile-filter">Filter By
-                    <ul>
-                        <a class="filter-anchor" href="#filters"><li class="button"><span class="plus">+</span> Add Filter</li></a>
-                        <a class="filter-clear" href=""><li class="button"><i class="icon-cross"></i> Clear Filters</li></a>
-                    </ul>
-                    </li>
+                    </div>
+                    <div class="subscribe">Subscribe
+                      <ul>
+                          <li><a class="button" href="/students/career-resources/career-opportunities/subscribe-via-email/"><i class="icon-mail"></i><span class="visuallyhidden">Email</span></a></li>
+                          <li><a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i><span class="visuallyhidden">RSS</span></a></li>
+                      </ul>
+                    </div>
+                    <div class="mobile-filter">Filter By
+                      <ul>
+                          <a class="filter-anchor" href="#filters"><li class="button"><span class="plus">+</span> Add Filter</li></a>
+                          <a class="filter-clear" href=""><li class="button"><i class="icon-cross"></i> Clear Filters</li></a>
+                      </ul>
+                    </div>
                 </div>
                  
                 <div id="results" data-action="careers_filter" aria-live="polite">
