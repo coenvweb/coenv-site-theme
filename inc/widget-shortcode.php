@@ -26,22 +26,44 @@ function widget($atts) {
 add_shortcode('widget','widget'); 
 
 function marketo_signup_form($atts) {
-	$atts = shortcode_atts( array(
-		'subID' => 378,
-		'fromName' => 'UW Email Sign Up',
-		'fromEmail' => 'advsti@uw.edu',
-	), $atts);
+    remove_filter( 'the_content', 'eae_encode_emails', EAE_FILTER_PRIORITY );
+    $mkto = shortcode_atts( array(
+        'subid' => 378,
+        'fromname' => 'UW Email Sign Up',
+        'fromemail' => 'advsti@uw.edu',
+    ), $atts);
     $output = '<script type="text/javascript" src="https://subscribe.gifts.washington.edu/Scripts/SubManBuilder/submanbuilder.js" id="uwSubscriptionManager"></script>
-	<script type="text/javascript">
-		SUBMANBUILDER.makeIframe({
-			subscriptionID: '.$atts['subID'].',
-			fromName: "'.$atts['fromName'].'",
-			fromEmail: "'.$atts['fromEmail'].'",
-			showPlaceHolders: false,
-			hideLabels: false,
-			returnURL: ""
-		});
-	</script>';
-	return $output;
+    <script type="text/javascript">
+        SUBMANBUILDER.makeIframe({
+            subscriptionID: '.$mkto['subid'].',
+            fromEmail: "'.$mkto['fromemail'].'",
+            fromName: "'.$mkto['fromname'].'",
+            showPlaceHolders: false,
+            hideLabels: false,
+            returnURL: ""
+        });
+    </script>';
+    return $output;
 }
 add_shortcode('mkto_signup','marketo_signup_form');
+
+function marketo_prefCenter($atts) {
+    remove_filter( 'the_content', 'eae_encode_emails', EAE_FILTER_PRIORITY );
+    $mkto = shortcode_atts( array(
+        'subid' => 378,
+        'fromname' => 'UW Email Sign Up',
+        'fromemail' => 'advsti@uw.edu',
+    ), $atts);
+    $output = '<script type="text/javascript" src="https://subscribe.gifts.washington.edu/Scripts/SubManBuilder/submanbuilder.js" id="uwSubscriptionManager"></script>
+    <script type="text/javascript">
+        SUBMANBUILDER.makeIframe({
+            preferenceID: '.$mkto['subid'].',
+            managePreferences: true,
+            fromEmail: "'.$mkto['fromemail'].'",
+            fromName: "'.$mkto['fromname'].'",
+            showHeader: false,
+        });
+    </script>';
+    return $output;
+}
+add_shortcode('mkto_pref_center','marketo_prefCenter');
