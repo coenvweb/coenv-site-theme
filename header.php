@@ -81,7 +81,7 @@
         <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
         <meta name="theme-color" content="#613ba9">
 
-		<script src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
+		<script async src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
     <script>
         (function(d) {
                 var config = {

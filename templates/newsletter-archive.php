@@ -18,7 +18,7 @@ $ancestor = array(
 $banner = coenv_banner();
 
 $current = new DateTime();
-if($current->format('m') < 10) {
+if($current->format('m') < 9) {
     $lowerBound = new DateTime('-2 year');
 } else {
     $lowerBound = new DateTime('-1 year');
@@ -27,12 +27,11 @@ $lowerBoundStartYear = $lowerBound->format('Y');
 $lowerBoundEndYear = $lowerBoundStartYear + 1;
 $upperBoundEndYear = $lowerBoundEndYear + 1;
 
-$lowerBoundStart = '08/10/' . $lowerBoundStartYear;
-$lowerBoundEnd = '08/09/' . $lowerBoundEndYear;
-$upperBoundEnd = '09/09/' . $upperBoundEndYear;
+$lowerBoundStart = '09/02/' . $lowerBoundStartYear;
+$lowerBoundEnd = '09/01/' . $lowerBoundEndYear;
+$upperBoundEnd = '09/01/' . $upperBoundEndYear;
 //I messed around here to get the dates working correctly. - Drew 9/1/17
 
-/*
 $lowerArgs = array(
     'post_type' => 'newsletter',
     'meta_key' => 'newsletter_type',
@@ -46,7 +45,6 @@ $lowerArgs = array(
     ),
 );
 $lowerQuery = new WP_Query($lowerArgs);
-*/
 
 $upperArgs = array(
     'post_type' => 'newsletter',
@@ -93,7 +91,7 @@ $upperQuery = new WP_Query($upperArgs);
 							    <h2>Recent Headlines Newsletters</h2>
 							<?php } ?>
 
-							<?php if($upperQuery->have_posts()) { ?>
+						    <?php if($upperQuery->have_posts()) { ?>
 								<h3><?=$lowerBoundEndYear?>-<?=substr($upperBoundEndYear, -2)?> Academic Year</h3>
                                 <ul>
                                     <?php while ($upperQuery->have_posts()) : $upperQuery->the_post(); ?>
@@ -105,6 +103,19 @@ $upperQuery = new WP_Query($upperArgs);
                                     <?php endwhile; ?>
                                 </ul>
 							<?php } ?>
+
+                            <?php if($lowerQuery->have_posts()) { ?>
+								<h3><?=$lowerBoundStartYear?>-<?=substr($lowerBoundEndYear, -2)?> Academic Year</h3>
+                                <ul>
+                                    <?php while ($lowerQuery->have_posts()) : $lowerQuery->the_post(); ?>
+                                        <?php
+                                            $nl_link = get_the_permalink();
+                                            $nl_title = get_the_title();
+                                        ?>
+                                        <li><a href="<?=$nl_link?>"><?=$nl_title?></a></li>
+                                    <?php endwhile; ?>
+                                </ul>
+							<?php } ?>	
                             <p><a href="/intranet/marketing-communications/college-newsletter-archive/" target="_blank"><span class="button">Full Archive</span></a></p>
 					</section>
 				</article>
