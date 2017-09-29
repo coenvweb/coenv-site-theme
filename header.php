@@ -223,7 +223,7 @@
                                 </ul>
                             </nav>
                             
-                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php'))) {
+                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php') || $post->ID == '38585' || is_page_template('templates/future-grad-sub.php') )) {
     ?>
                         </header><!-- #header -->
 

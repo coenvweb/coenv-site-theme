@@ -1,4 +1,4 @@
-.page-id-38568 {
+.page-id-38568, .page-id-38585 {
     .banner-wrapper {
         padding-bottom: 0;
         background-position-y: 75%;
@@ -8,7 +8,7 @@
     }
 }
 
-.page-template-future-ug-sub .banner-wrapper {
+.page-template-future-ug-sub .banner-wrapper, .page-template-future-grad-sub .banner-wrapper{
     background-position-y: 60%;
 }
 
@@ -238,7 +238,7 @@
         }
     }
 }
-.future-undergrads {
+.future-undergrads, .future-grads{
     p:not(.intro) {
         max-width: 760px;
     }
