@@ -41,7 +41,7 @@ $ancestor = array(
                 </div><!-- .banner-wrapper -->
 
 
-	<section id="page" role="main" class="template-page future-undergrads front">
+	<section id="page" role="main" class="template-page future-students front">
         
         
         <div>

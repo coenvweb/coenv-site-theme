@@ -39,13 +39,13 @@ $ancestor = array(
 
                 </div><!-- .banner-wrapper -->
 
-	<section id="page" role="main" class="template-page future-undergrads">
+	<section id="page" role="main" class="template-page future-students">
 
         <div>
         
 		<div class="container">
             
-            <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
+            <?php get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
 
 			<main id="main-col" class="main-col">
                 
