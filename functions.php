@@ -540,6 +540,11 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 38568;
     }
+    
+    if (is_page_template('templates/future-grad-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38585;
+    }
 
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
 		$page_id = $obj->ID;
