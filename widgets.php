@@ -99,7 +99,7 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Connect with the College', 'coenv' );
+			$title = __( 'Graduate Degrees', 'coenv' );
 		}
  
 		?>
@@ -152,6 +152,91 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
                 ?>
                 </section>
                 </article>
+ 
+		<?php
+		echo $after_widget;
+	}
+ 
+}
+
+/**
+ * Undergrad Majors and Minors Widget
+ */
+register_widget( 'CoEnv_Widget_G_majors' );
+
+class CoEnv_Widget_G_degrees extends WP_Widget {
+ 
+  public function __construct() {
+		$args = array(
+			'classname' => 'widget-majors',
+			'description' => __( 'Display a grid of the college\'s graduate degrees', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'grad_degree_links', // base ID
+			'Graduate Degree Links', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Graduate Degrees', 'coenv' );
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+ 
+		echo $before_widget;
+		?>
+			<?php if (!empty($title)) { ?>
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+            <?php }; ?>
+			<article class="majors-minors-section">
+        <section class="article__content majors-minors accordion" id="major">
+        <?php
+
+        $major_page = get_page_by_title( 'Graduate Degrees' ); 
+
+        // check if the repeater field has rows of data
+        if( have_rows('majors', $major_page->ID) ):
+
+            // loop through the rows of data
+            while ( have_rows('majors', $major_page->ID) ) : the_row();
+
+                // display a sub field value
+                get_template_part( 'partials/partial', 'major-minor' );
+
+            endwhile;
+
+        else :
+
+            // no rows found
+
+        endif;
+
+        ?>
+        </section>
+    </article>
  
 		<?php
 		echo $after_widget;
