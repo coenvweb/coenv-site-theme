@@ -162,7 +162,7 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 /**
  * Undergrad Majors and Minors Widget
  */
-register_widget( 'CoEnv_Widget_G_majors' );
+register_widget( 'CoEnv_Widget_G_degrees' );
 
 class CoEnv_Widget_G_degrees extends WP_Widget {
  
