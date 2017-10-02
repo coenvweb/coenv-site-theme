@@ -45,7 +45,7 @@ $ancestor = array(
         
 		<div class="container">
             
-            <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
+            <?php get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
 
 			<main id="main-col" class="main-col">
                 

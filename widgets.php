@@ -127,7 +127,7 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
             <?php }; ?>
 			<article class="majors-minors-section">
-                <section class="article__content majors-minors accordion" id="major">
+                <section class="majors-minors accordion" id="major">
                 <?php
                 
                 $major_page = get_page_by_title( 'Undergraduate Degrees' ); 
@@ -212,7 +212,7 @@ class CoEnv_Widget_G_degrees extends WP_Widget {
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
             <?php }; ?>
 			<article class="majors-minors-section">
-        <section class="article__content majors-minors accordion" id="major">
+        <section class="majors-minors accordion" id="major">
         <?php
 
         $major_page = get_page_by_title( 'Graduate Degrees' ); 
