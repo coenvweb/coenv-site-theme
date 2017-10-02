@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Future Undergrad Subpage
+Template Name: Future Graduate Subpage
 */
 get_header();
 
