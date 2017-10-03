@@ -7,15 +7,15 @@ add_action( 'init', 'coenv_register_student_ambassadors' );
 function coenv_register_student_ambassadors() {
 
 	$labels = array(
-		'name' => __( 'Student Ambassadors' ),
-		'singular_name' => __( 'Student Ambassador' ),
-		'add_new' => __( 'Add New Student Ambassador' ),
-		'edit_item' => __( 'Edit Student Ambassador' ),
-		'add_new_item' => __( 'New Student Ambassador' ),
-		'view_item' => __( 'View Student Ambassador' ),
-		'search_items' => __( 'Search Student Ambassadors' ),
-		'not_found' => __( 'No Student Ambassadors found' ),
-		'not_found_in_trash' => __( 'No Student Ambassadors found in Trash' )
+		'name' => __( 'Student Ambassadors/Profiles' ),
+		'singular_name' => __( 'Student Ambassador/Profile' ),
+		'add_new' => __( 'Add New Student Ambassador/Profile' ),
+		'edit_item' => __( 'Edit Student Ambassador/Profile' ),
+		'add_new_item' => __( 'New Student Ambassador/Profile' ),
+		'view_item' => __( 'View Student Ambassador/Profile' ),
+		'search_items' => __( 'Search Student Ambassadors/Profiles' ),
+		'not_found' => __( 'No Student Ambassadors/Profiles found' ),
+		'not_found_in_trash' => __( 'No Student Ambassadors/Profiles found in Trash' )
 	);
 
 	$rewrite = array(
