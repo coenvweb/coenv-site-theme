@@ -36,6 +36,7 @@ $ancestor = array(
 	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
 	                  'link_after' => '<i class="icon-arrow-right"></i>',
 	                  'walker' => new CoEnv_Secondary_Menu_Walker,
+                    'category_name' => 'graduate-student',
 	                  'sort_column' => 'menu_order'
 	              ) ) ?>
 	          </ul>
