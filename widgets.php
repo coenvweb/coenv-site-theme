@@ -717,8 +717,14 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
         $sa_args = array(
             'post_type' => 'student_ambassadors',
             'posts_per_page' => '6',
-            'category_name' => 'graduate_student',
             'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'student-type',
+                    'field'    => 'slug',
+                    'terms'    => 'undergraduate-student',
+                ),
+            ),
 		);
         
 
@@ -861,8 +867,14 @@ class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
         $sa_args = array(
            'post_type' => 'student_ambassadors',
             'posts_per_page' => '6',
-            'category_name' => 'graduate_student',
             'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'student-type',
+                    'field'    => 'slug',
+                    'terms'    => 'undergraduate-student',
+                ),
+            ),
 		);
         
 

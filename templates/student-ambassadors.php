@@ -61,6 +61,13 @@ $ancestor = array(
                             'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'student-type',
+                                    'field'    => 'slug',
+                                    'terms'    => 'undergraduate-student',
+                                ),
+                            ),
                         );
                         
                         // Search filters

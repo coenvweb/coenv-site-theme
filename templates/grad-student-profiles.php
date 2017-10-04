@@ -58,10 +58,16 @@ $ancestor = array(
                         $args = array(
                             'post_type'     =>  'student_ambassadors',
                             'post_status'   =>  'publish',
-                            'category_name' => 'graduate-student',
                             'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'student-type',
+                                    'field'    => 'slug',
+                                    'terms'    => 'graduate-student',
+                                ),
+                            ),
                         );
                         
                         // Search filters
