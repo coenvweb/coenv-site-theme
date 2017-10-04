@@ -63,7 +63,7 @@ $ancestor = array(
                             'posts_per_page' => -1,
                             'tax_query' => array(
                                 array(
-                                    'taxonomy' => 'student-type',
+                                    'taxonomy' => 'student_type',
                                     'field'    => 'slug',
                                     'terms'    => 'graduate-student',
                                 ),

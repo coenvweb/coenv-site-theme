@@ -53,8 +53,7 @@ $ancestor = array(
                     </header>                 
                     
                     <?php
-                        
-                        // First Placement Query
+
                         $args = array(
                             'post_type'     =>  'student_ambassadors',
                             'post_status'   =>  'publish',
@@ -63,7 +62,7 @@ $ancestor = array(
                             'posts_per_page' => -1,
                             'tax_query' => array(
                                 array(
-                                    'taxonomy' => 'student-type',
+                                    'taxonomy' => 'student_type',
                                     'field'    => 'slug',
                                     'terms'    => 'undergraduate-student',
                                 ),
