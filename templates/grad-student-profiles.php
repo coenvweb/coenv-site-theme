@@ -84,7 +84,7 @@ $ancestor = array(
                             <?php the_content(); ?>
                        </div>
 
-                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
+                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/graduate-students/">
                           <div class="field-wrap">
                             <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
@@ -106,7 +106,7 @@ $ancestor = array(
                         }
                 
                         while ( $query->have_posts() ) : $query->the_post();
-                             include( locate_template( 'partials/partial-student-ambassador.php', false, false ));
+                             include( locate_template( 'partials/partial-grad-profile.php', false, false ));
                         endwhile;
                         
                     ?>
