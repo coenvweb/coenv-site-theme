@@ -720,7 +720,7 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
             'orderby' => 'rand',
             'tax_query' => array(
                 array(
-                    'taxonomy' => 'student-type',
+                    'taxonomy' => 'student_type',
                     'field'    => 'slug',
                     'terms'    => 'undergraduate-student',
                 ),
@@ -870,9 +870,9 @@ class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
             'orderby' => 'rand',
             'tax_query' => array(
                 array(
-                    'taxonomy' => 'student-type',
+                    'taxonomy' => 'student_type',
                     'field'    => 'slug',
-                    'terms'    => 'undergraduate-student',
+                    'terms'    => 'graduate-student',
                 ),
             ),
 		);
