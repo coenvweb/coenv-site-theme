@@ -59,7 +59,7 @@ if(!empty($description)) {
                         } else {
                             $major = $raw_major;
                         }
-                        if (empty($link_to_major_info) && empty($other_major)){
+                        if (empty($link_to_major_info) && ($raw_major !== 'Other')){
                             if ($major == 'Aquatic and Fishery Sciences') {
                                 $link_to_major_info = 'https://fish.uw.edu/students/about-undergraduate-program/degrees-offered/';
                             }
