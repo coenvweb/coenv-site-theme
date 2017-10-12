@@ -54,7 +54,7 @@ if(!empty($description)) {
                         $minor = get_sub_field('minor');
                         $other_major = get_sub_field('other_major');
                         $link_to_major_info = get_sub_field('link_to_major_info');
-                        if (!empty($other_major)){
+                        if ($major == 'Other'){
                             $major = $other_major;
                         } else {
                             $major = $raw_major;
