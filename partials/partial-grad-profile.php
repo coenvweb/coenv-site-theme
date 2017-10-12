@@ -88,7 +88,7 @@ if(!empty($description)) {
             <div class="row"><div class="prompt">What has been your most meaningful moment in graduate school?:</div> <li class="answer-content"><?php echo $meaningful_moment; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($faculty_advisor)) : ?>
-            <div class="row"><div class="prompt">Faculty advisor:</div> <li class="answer-content"><?php echo $faculty_advisor; ?></li></div>
+            <div class="row"><div class="prompt">Faculty advisor(s):</div> <li class="answer-content"><?php echo $faculty_advisor; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($tags)) : ?>
             <div class="row"><div class="prompt">Ask <?php echo $first_name ?> About:</div> <li class="answer-content"><?php echo $tags; ?></li></div>
