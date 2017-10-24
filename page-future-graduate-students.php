@@ -26,12 +26,12 @@ $ancestor = array(
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title">Moving forward <br>into the future, undaunted
+                    <p class="first-title">Into the future, <br>undaunted
 </p>
                 </section>
             </article>
             <div class="little-blurb">
-                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit.</p>
+                <p><br></p>
             </div>
             
         </div>
