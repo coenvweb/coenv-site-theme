@@ -883,10 +883,10 @@ class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
         echo $before_widget; ?>
         <?php echo $before_title ?>
 
-            <span><a href="/students/meet-our-students/graduate-student-profiles/">
+            <span><a href="/students/meet-our-students/graduate-student/">
                 <?php 
                 if ( $title == '' ){
-                    echo 'Student Ambassadors';
+                    echo 'Featured Graduate Students';
                 } else {
                     echo $title;
                 } ?>
