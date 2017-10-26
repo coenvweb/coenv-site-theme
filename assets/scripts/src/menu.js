@@ -315,12 +315,9 @@ jQuery(function ($) {
 
 })(jQuery, window, document);
 
-$(document).ready(function(){
-	$('#secondary-nav li:has(li.current_page_item)').addClass('parent_page_item current_page_parent');
-});
-
-$(document).ready(function(){
-    jQuery(document).ready(function() {
+(function ($, window, document, undefined) {
+    $(document).ready(function() {
+	    $('#secondary-nav li:has(li.current_page_item)').addClass('parent_page_item current_page_parent');
         var children = $('.page-item-270').find('.children');
         children.each(function() {
             var sorted = $(this).children('li').detach().sort(function(a, b) {
@@ -330,6 +327,5 @@ $(document).ready(function(){
             });
             $(this).append(sorted);
         });
-    });
-});
-
+    })
+})(jQuery, window, document);

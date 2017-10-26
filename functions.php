@@ -1039,3 +1039,26 @@ if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== '
     }
     add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
 }
+
+function my_custom_post_status(){
+	register_post_status( 'pending_revision', array(
+		'label'                     => 'Pending Revision',
+		'public'                    => false,
+		'exclude_from_search'       => false,
+		'show_in_admin_all_list'    => true,
+		'show_in_admin_status_list' => true,
+		'label_count'               => _n_noop( '<span class="count">(%s)</span> Pending Revision', 'Unread <span class="count">(%s)s</span> Pending Revision' ),
+	) );
+}
+add_action( 'init', 'my_custom_post_status' );
+
+add_action( 'admin_bar_menu', 'toolbar_link_to_mypage', 999 );
+
+function toolbar_link_to_mypage( $wp_admin_bar ) {
+	$args = array(
+		'id'    => '',
+		'title' => do_shortcode('[ow_make_revision_link text="Make Revision" class="" post_id="'.get_the_ID().'"]'),
+		'href'  => 'javascript:void(0);',
+	);
+	$wp_admin_bar->add_node( $args );
+}
