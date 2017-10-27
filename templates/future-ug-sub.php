@@ -26,7 +26,7 @@ $ancestor = array(
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title small">One College,<br> Many Paths</p>
+                    <p class="first-title small">One College,<br> many paths</p>
                 </section>
             </article>
             
