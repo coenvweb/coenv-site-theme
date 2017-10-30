@@ -54,10 +54,6 @@ $banner = coenv_banner();
                 
 			</main><!-- .main-col -->
 
-			<div class="side-col">
-				<?php get_sidebar() ?>
-			</div><!-- .side-col -->
-
 		</div><!-- .container -->
 
 	</section><!-- #blog -->
