@@ -38,7 +38,7 @@ $feature = array(
 );
 ?>
 
-<article class="feature loading">
+<article class="feature">
     
     <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
         
