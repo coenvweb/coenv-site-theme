@@ -93,4 +93,8 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 
     echo $description;
 ?>
-<? } ?></div>
+<? } ?>
+<?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
+    <p class="revision"><?php echo do_shortcode('[ow_make_revision_link text="Make a revision" class="" type="text" post_id="'.$post->ID.'"]'); ?></p>
+<?php } ?>
+</div>

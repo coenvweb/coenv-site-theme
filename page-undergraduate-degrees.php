@@ -104,6 +104,14 @@ $ancestor = array(
                 <?php get_sidebar('footer') ?>
             </div>
 
+			<div class="side-footer">
+                <div class="hidden">
+                    <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
+                        <?php echo do_shortcode('[ow_make_revision_link text="Make Revision" class="" type="text" post_id="'.get_the_ID().'"]'); ?>
+                    <?php } ?>
+                </div>
+                <?php get_sidebar('footer') ?>
+            </div>
 			</main><!-- .main-col -->
 
 			<div class="side-col">

@@ -18,12 +18,12 @@ $tags = strip_tags($tags);
 
 if( !empty($image) ) {
 
-	// vars
-	$alt = $image['alt'];
+    // vars
+    $alt = $image['alt'];
 
-	// thumbnail
-	$size = 'thumbnail';
-	$thumb = $image['sizes'][ $size ];
+    // thumbnail
+    $size = 'thumbnail';
+    $thumb = $image['sizes'][ $size ];
 }
 
 if(!empty($description)) {
@@ -161,5 +161,13 @@ if(!empty($description)) {
             <?php endif; ?>                
             </ul>
         </div>
+        <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
+        <div class="row">
+            <div class="prompt">Logged in users:</div>
+            <li class="answer-content">
+                <?php echo do_shortcode('[ow_make_revision_link text="Make a revision" class="" type="text" post_id="'.$post->ID.'"]'); ?>
+            </li>
+        </div>
+        <?php } ?>
     </ul>
     </div>

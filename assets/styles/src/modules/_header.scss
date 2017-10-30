@@ -354,24 +354,18 @@
 
 } // .coenv-print-breadcrumbs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+li#wp-admin-bar-revision {
+    div.ab-item {
+        padding: 0 !important;
+        a {
+            color: #eee;
+            background-color: #23282d;
+            border:0;
+            padding: 0 8px 0 7px;
+            &:hover {
+                background: 0 0;
+                color: #006ca2;
+            }
+        }
+    }
+}
