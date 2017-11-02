@@ -32,7 +32,7 @@ $banner = coenv_banner();
 			</nav><!-- #secondary-nav.side-col -->
 
 			<main id="main-col" class="main-col">
-
+          
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>

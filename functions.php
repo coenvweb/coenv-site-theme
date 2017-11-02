@@ -13,6 +13,8 @@ require_once locate_template( '/inc/rewrites.php' );
 
 require_once locate_template( '/inc/ajax.php' );
 
+require_once locate_template( '/inc/featured-story-fun.php' );
+
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
 function amethyst_enqueue_dashicons() {
