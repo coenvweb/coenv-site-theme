@@ -4,5 +4,35 @@
     .main-col {
         margin: auto;
         float: none!important;
+        width: 65%!important;
+        .article__content > p:not(.intro) {
+            font-size: 1.1rem;
+        }
+    }
+    .element {
+        width: 30%;
+        &.right {
+            position: absolute;
+            right: calc(-30% - 3rem);        
+        }
+        &.left {
+            position: absolute;
+            left: calc(-30% - 3rem);        
+        }
+        .title {
+            margin: .5rem 0 0;
+            font-size: 1.5rem;
+        }
+        .subtitle {
+            font-size: .8em;
+            font-weight: 600;
+            margin: 0;
+            @include sans();
+            letter-spacing: .1px;
+            text-transform: uppercase;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
     }
 }

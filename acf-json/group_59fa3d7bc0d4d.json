@@ -150,7 +150,7 @@
                 {
                     "key": "field_59fa4b9ad131c",
                     "label": "Photos",
-                    "name": "photo",
+                    "name": "photos",
                     "type": "gallery",
                     "value": null,
                     "instructions": "The first photo will be the primary photo.",
@@ -193,5 +193,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1509731158
+    "modified": 1509745574
 }

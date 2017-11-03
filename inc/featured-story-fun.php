@@ -3,6 +3,7 @@ function element_func( $atts ){
     
     $a = shortcode_atts( array(
         'id' => '1',
+        'align' => 'right',
     ), $atts );
     $element_id = ($atts['id'] - 1);
     $rows = get_field('element');
@@ -17,9 +18,21 @@ function element_func( $atts ){
     ob_start ();
     ?>
 
-    <div class="element">
-        <h2><?php echo $title ?></h2>
-        <h3><?php echo $sub_title ?></h3>
+    <div class="element <?php echo $atts['align']; ?>">
+        <?php
+        if( !empty($photos) ):
+            foreach ($photos as $photo) {
+        ?>        
+        
+                <a class="photo" href="<?php echo $links[0]['link']['url']; ?>"><img src="<?php echo $photo['sizes'][ 'homepage-column-standard' ]; ?>" alt="<?php echo $photo['alt']; ?>" /></a>
+        <?php
+            }
+        else :
+            // no rows found
+        endif;
+        ?>
+        <h2 class="title"><?php echo $title ?></h2>
+        <h3 class="subtitle"><?php echo $sub_title ?></h3>
         <p><?php echo $text ?></p>
         <?php
         if( !empty($links) ):
@@ -32,11 +45,6 @@ function element_func( $atts ){
         else :
             // no rows found
         endif;
-        ?>
-        <?php
-    
-        print_r($photos);
-        
         ?>
         
     </div>
