@@ -11,7 +11,7 @@ function element_func( $atts ){
     $title = $active_row['element_title'];
     $sub_title = $active_row['element_subtitle'];
     $text = $active_row['text_area'];
-    $link = $active_row['link'];
+    $links = $active_row['links'];
     $photos = $active_row['photos'];
     
     ob_start ();
@@ -22,17 +22,21 @@ function element_func( $atts ){
         <h3><?php echo $sub_title ?></h3>
         <p><?php echo $text ?></p>
         <?php
-        // check if the repeater field has rows of data
-        if( have_rows('link') ):
-          // loop through the rows of data
-            while ( have_rows('link') ) : the_row();
-                // display a sub field value
-                $link = the_sub_field('link');
-                ?><a class="button" href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a> <?
-            endwhile;
+        if( !empty($links) ):
+            foreach ($links as $link) {
+                $link = $link['link']
+        ?>        
+                <a class="button" href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a>
+        <?php
+            }
         else :
             // no rows found
         endif;
+        ?>
+        <?php
+    
+        print_r($photos);
+        
         ?>
         
     </div>

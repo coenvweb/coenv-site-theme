@@ -112,7 +112,7 @@
                 {
                     "key": "field_59fa47f76d5a3",
                     "label": "Links",
-                    "name": "link",
+                    "name": "links",
                     "type": "repeater",
                     "value": null,
                     "instructions": "The first link will be the primary link.",
@@ -193,5 +193,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1509576115
+    "modified": 1509731158
 }
