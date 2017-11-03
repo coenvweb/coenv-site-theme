@@ -31,7 +31,7 @@ $ancestor = array(
                 </section>
             </article>
             <div class="little-blurb">
-                <p>As a graduate student at the College of the Environment, you’ll put science into action to discover the unknown</p>
+                <p>As a graduate student at the College of the Environment, <br />you’ll put science into action to discover the unknown</p>
             </div>
             
         </div>
