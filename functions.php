@@ -547,8 +547,13 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 38568;
     }
+    
+    if (is_page_template('templates/featured-story.php')) {
+        unset($ancestor);
+        $ancestor = 38568;
+    }
 
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
+	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/featured-story.php')) ) {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( $ancestor ) ) {

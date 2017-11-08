@@ -1,4 +1,15 @@
 <?php
+function element_wrapper_func( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'align' => 'right',
+    ), $atts );
+    $output = '<div class="element-wrapper ' . $a['align'] . '">';
+    $output .= do_shortcode($content);
+    $output .= '</div>';
+return $output;
+};
+add_shortcode( 'element_wrapper', 'element_wrapper_func' );
+
 function element_func( $atts ){
     
     $a = shortcode_atts( array(
@@ -14,17 +25,21 @@ function element_func( $atts ){
     $text = $active_row['text_area'];
     $links = $active_row['links'];
     $photos = $active_row['photos'];
+    if ($element_type == 'gallery') {
+        $primary_link = $links[0]['link']['url'];
+    } else {
+        $primary_link = null;
+    }
     
     ob_start ();
     ?>
 
-    <div class="element <?php echo $atts['align']; ?>">
+    <div class="element <?php echo $atts['align'] . ' element-' . $element_type; ?>">
         <?php
         if( !empty($photos) ):
             foreach ($photos as $photo) {
         ?>        
-        
-                <a class="photo" href="<?php echo $links[0]['link']['url']; ?>"><img src="<?php echo $photo['sizes'][ 'homepage-column-standard' ]; ?>" alt="<?php echo $photo['alt']; ?>" /></a>
+                <a class="photo" href="<?php echo (!$primary_link) ? $photo['url'] : $primary_link; ?>" title="<?php echo $photo['description']; ?>" <?php echo (!$primary_link) ? 'data-lightbox-gallery="gallery-1"' : 'none' ; ?>><?php echo wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ); ?></a>
         <?php
             }
         else :
@@ -57,3 +72,19 @@ function element_func( $atts ){
 return $content;
 };
 add_shortcode( 'element', 'element_func' );
+
+function quote_func( $atts, $content = null ){
+return '<a href="http://twitter.com/home?status=' . $content . ' ' . wp_get_shortlink() . '"><div class="feat-quote">' . $content . '</div></a>';
+};
+add_shortcode( 'quote', 'quote_func' );
+
+function photo_divider_func( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'src' => 'none',
+    ), $atts );
+    $regex = '/https?\:\/\/[^\" ]+/i';
+    preg_match($regex, $content, $matches);
+    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0] . ')"></div><section class="article__content">';
+return $output;
+};
+add_shortcode( 'photo_divider', 'photo_divider_func' );

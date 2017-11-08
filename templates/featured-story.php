@@ -30,6 +30,7 @@ $banner = coenv_banner();
           </ul>
                 
 			</nav><!-- #secondary-nav.side-col -->
+  </div>
 
 			<main id="main-col" class="main-col">
           

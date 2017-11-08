@@ -1,24 +1,57 @@
+
+
 .template-featured-story {
+    .article {
+        padding: 0;
+    }
     background: #fff;
     min-height: 500px;
+    .article__title {
+        font-size: 3.5rem;
+        line-height: 4rem;
+        text-align: center;
+        margin: 3rem 0;
+        border: none;
+    }
+    
+    .article__header {
+        margin-bottom: 2rem;
+    }
+    .intro {
+        font-size: 1.8rem;
+        line-height: 150%;
+    }
     .main-col {
         margin: auto;
-        float: none!important;
-        width: 65%!important;
+        width: 100%!important;
+        .article__content, .article__header {
+            max-width: 640px!important;
+            padding: 0 2rem;
+            margin: auto;
+        }
         .article__content > p:not(.intro) {
             font-size: 1.1rem;
+            line-height: 2rem;
+            margin-bottom: 2.5rem;
         }
     }
-    .element {
-        width: 30%;
+    .article__content .element-wrapper, .article__content > .element {
+        position: absolute;
         &.right {
-            position: absolute;
-            right: calc(-30% - 3rem);        
+            margin: auto;
+            right: calc(50% - 620px);     
         }
         &.left {
-            position: absolute;
-            left: calc(-30% - 3rem);        
+            left: calc(50% - 620px);   
         }
+        
+    }
+    .element-wrapper .element {
+        position: relative;
+    }
+    .element {
+        max-width: 253px;
+        padding-bottom: 2rem;
         .title {
             margin: .5rem 0 0;
             font-size: 1.5rem;
@@ -34,5 +67,39 @@
         p {
             margin-bottom: 1rem;
         }
+        &.element-gallery {
+            a {
+                display: none;
+                &:first-of-type {
+                    display: block;
+                }
+            }
+        }
+    }
+    
+    .feat-quote {
+        @include serif();
+        font-size: 1.8rem;
+        line-height: 150%;
+        margin: 3rem 0;
+        font-weight: 200;
+        color: #666;
+        a {
+            color: #666;
+            text-decoration: none;
+
+        }
+    }
+    
+    .photo-divider { 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 2rem 0;
+        height: 500px; 
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
