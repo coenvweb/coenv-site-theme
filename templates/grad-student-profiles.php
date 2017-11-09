@@ -86,14 +86,14 @@ $ancestor = array(
 
                        <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/graduate-students/">
                           <div class="field-wrap">
-                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
+                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, outreach, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
                           </div>
                         </form>
                        
                        <?php if ($coenv_search_terms): // Category filter ?>
                         <div class="panel">
-                            <div class="left">Ambassador(s) matching <strong>"<?php echo $coenv_search_terms; ?>"</strong></div>
+                            <div class="left">Graduate student profile(s) matching <strong>"<?php echo $coenv_search_terms; ?>"</strong></div>
                             <a class="right" href="<?php echo the_permalink(); ?>"><i class="icon-cross"></i></a>
                         </div>
                         <?php endif; ?>
@@ -102,7 +102,7 @@ $ancestor = array(
                         
                         if ($query->have_posts()) {
                         } else {
-                            echo '<p>No ambassadors found matching your search, try again.</p>';
+                            echo '<p>No graduate student profile(s) found matching your search, try again.</p>';
                         }
                 
                         while ( $query->have_posts() ) : $query->the_post();
