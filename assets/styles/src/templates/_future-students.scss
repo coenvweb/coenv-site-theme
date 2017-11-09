@@ -8,8 +8,14 @@
     }
 }
 
-.page-id-38585 #arrow-nav {
-    margin-bottom: 2rem!important;
+.page-id-38585 {
+    .article__content > h2 {
+        margin-top: 1rem!important;
+    }
+    
+    #arrow-nav {
+        margin-bottom: 2rem!important;
+    }
 }
 
 .page-template-future-ug-sub .banner-wrapper{
