@@ -3,6 +3,22 @@
     "title": "Featured Story",
     "fields": [
         {
+            "key": "field_5a034c44b5b1e",
+            "label": "Accent Color",
+            "name": "accent_color",
+            "type": "color_picker",
+            "value": null,
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#666"
+        },
+        {
             "key": "field_59fa461d6d5a0",
             "label": "Element",
             "name": "element",
@@ -39,7 +55,8 @@
                     "choices": {
                         "profile": "Profile",
                         "content": "Content Block",
-                        "gallery": "Gallery"
+                        "gallery": "Gallery",
+                        "big_gallery": "Big Gallery"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -193,5 +210,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510004430
+    "modified": 1510186556
 }

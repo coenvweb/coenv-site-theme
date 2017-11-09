@@ -74,9 +74,15 @@ return $content;
 add_shortcode( 'element', 'element_func' );
 
 function quote_func( $atts, $content = null ){
-return '<a href="http://twitter.com/home?status=' . $content . ' ' . wp_get_shortlink() . '"><div class="feat-quote">' . $content . '</div></a>';
+return '<i class="quote">"</i> <div class="feat-quote">' . $content . '</div>';
 };
 add_shortcode( 'quote', 'quote_func' );
+
+function share_quote_func( $atts, $content = null ){
+return '<a href="http://twitter.com/home?status=' . $content . ' ' . wp_get_shortlink() . '"><div class="share-quote">' . $content . '</div></a>';
+};
+add_shortcode( 'share_quote', 'share_quote_func' );
+
 
 function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(

@@ -8,10 +8,29 @@
     min-height: 500px;
     .article__title {
         font-size: 3.5rem;
-        line-height: 4rem;
-        text-align: center;
-        margin: 3rem 0;
+        line-height: 4.25rem;
+        margin: 2rem 0 5rem 0;
         border: none;
+        font-weight: 200;
+        letter-spacing: 1px;
+        &:before {
+            content: '';
+            display: block;
+            width: 5rem;
+            border-top: .25rem solid #666;
+            position: absolute;
+            bottom: -1.5rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 7rem;
+            border-top: .25rem solid #666;
+            transform: skewX(-15deg);
+            bottom: -1.5rem;
+            left: 30px;
+        }
     }
     
     .article__header {
@@ -21,6 +40,29 @@
         font-size: 1.8rem;
         line-height: 150%;
     }
+    h2 {
+        margin-bottom: 3rem;
+        line-height: 150%;
+        position: relative;
+        &:before {
+            content: '';
+            display: block;
+            width: 3rem;
+            border-top: .25rem solid #666;
+            position: absolute;
+            bottom: -1.5rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4rem;
+            border-top: .25rem solid #666;
+            transform: skewX(-15deg);
+            bottom: -1.5rem;
+            left: 1px;
+        }
+    }
     .main-col {
         margin: auto;
         width: 100%!important;
@@ -28,6 +70,10 @@
             max-width: 640px!important;
             padding: 0 2rem;
             margin: auto;
+            position: relative;
+            @include min-width ( 1020 ) {
+                width: 50%;
+            }
         }
         .article__content > p:not(.intro) {
             font-size: 1.1rem;
@@ -36,25 +82,58 @@
         }
     }
     .article__content .element-wrapper, .article__content > .element {
-        position: absolute;
-        &.right {
-            margin: auto;
-            right: calc(50% - 620px);     
-        }
-        &.left {
-            left: calc(50% - 620px);   
+        position: relative;
+        @include min-width ( 1020 ) {
+            position: absolute;
+            &.right {
+                margin: auto;
+                right: -253px;     
+            }
+            &.left {
+                margin-left: calc(-253px - 2rem);
+            }
         }
         
+    }
+    .element-wrapper .element:nth-child(even) {
+        margin-top: 1rem;
+        &:before {
+            content: '';
+            display: block;
+            width: 3rem;
+            border-top: .25rem solid #666;
+            position: absolute;
+            top: -1.5rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4rem;
+            border-top: .25rem solid #666;
+            transform: skewX(-15deg);
+            top: -1.5rem;
+            left: 1px;
+        }
     }
     .element-wrapper .element {
         position: relative;
     }
     .element {
-        max-width: 253px;
+        max-width: 253px; 
+        @include min-width ( 1020 ) {
+            max-width: 253px;    
+        }
+        @include max-width ( 1020 ) {
+            padding-right: 1rem;
+        }
         padding-bottom: 2rem;
         .title {
             margin: .5rem 0 0;
             font-size: 1.5rem;
+            &:before, &:after {
+                display: none;
+            }
         }
         .subtitle {
             font-size: .8em;
@@ -77,17 +156,40 @@
         }
     }
     
+    .quote {
+        position: absolute;
+        display: block;
+        font-size: 4rem;
+        margin-top: 2.5rem;
+        left: -.5rem;
+        color: #888;
+    }
+    
     .feat-quote {
         @include serif();
         font-size: 1.8rem;
         line-height: 150%;
-        margin: 3rem 0;
+        margin: 3rem 0 4rem 0;
         font-weight: 200;
-        color: #666;
-        a {
-            color: #666;
-            text-decoration: none;
-
+        color: #777;
+        position: relative;
+        &:before {
+            content: '';
+            display: block;
+            width: 3rem;
+            border-top: .25rem solid #777;
+            position: absolute;
+            bottom: -1.5rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 5rem;
+            border-top: .25rem solid #777;
+            transform: skewX(-15deg);
+            bottom: -1.5rem;
+            left: 1px;
         }
     }
     
@@ -95,8 +197,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 2rem 0;
-        height: 500px; 
+        margin: 1rem 0;
+        height: 40vh; 
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
