@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Future Undergraduate Students
+Template Name: Future Graduate Students
 */
 get_header();
 
@@ -22,20 +22,20 @@ $ancestor = array(
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                         <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
+                         <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-graduate-students/">Future Graduate Students</a></h1>
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title">One College,<br> Many Paths</p>
+                    <p class="first-title">Passion never rests
+</p>
                 </section>
             </article>
             <div class="little-blurb">
-                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit.</p>
+                <p>As a graduate student at the College of the Environment, <br />you’ll put science into action to discover the unknown</p>
             </div>
             
         </div>
-            
-        </div>
+        </div> 
 
                     </div><!-- .container.header-container -->
 
@@ -50,7 +50,7 @@ $ancestor = array(
 		<div class="container">
             
             
-            <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
+            <?php get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
 
 			<main id="main-col" class="main-col">
                 

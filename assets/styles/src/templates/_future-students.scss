@@ -1,4 +1,4 @@
-.page-id-38568 {
+.page-id-38568, .page-id-38585 {
     .banner-wrapper {
         padding-bottom: 0;
         background-position-y: 75%;
@@ -8,8 +8,22 @@
     }
 }
 
-.page-template-future-ug-sub .banner-wrapper {
+.page-id-38585 {
+    .article__content > h2 {
+        margin-top: 1rem!important;
+    }
+    
+    #arrow-nav {
+        margin-bottom: 2rem!important;
+    }
+}
+
+.page-template-future-ug-sub .banner-wrapper{
     background-position-y: 60%;
+}
+
+.page-template-future-grad-sub .banner-wrapper{
+    background-position-y: 75%;
 }
 
 .image-area {
@@ -137,7 +151,7 @@
     }
 }
 
-.future-undergrads.front {
+.future-students.front {
     .article__content > h2 {
         font-size: calc(1.2em + 1.2vmin);
     }
@@ -150,9 +164,9 @@
     .article__content > h2 {
         border-bottom: 3px solid #eee;
         margin: 3rem 0 2rem;
-        clear: both;
+        clear: left;
+        padding-bottom: 1rem;
         a {
-            padding-bottom: 1rem;
             text-decoration: none;
             color: $accent;
             width: 100%;
@@ -238,7 +252,7 @@
         }
     }
 }
-.future-undergrads {
+.future-students{
     p:not(.intro) {
         max-width: 760px;
     }
@@ -371,6 +385,7 @@
         margin: 0;
         background-color: $text-very-lt;
         margin-bottom: 1rem;
+        border-left: 1rem solid white;
         p {
             padding: .5rem 1rem 1rem 1rem;
             margin-bottom: 0;

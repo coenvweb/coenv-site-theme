@@ -548,9 +548,9 @@ function coenv_banner() {
         $ancestor = 38568;
     }
     
-    if (is_page_template('templates/featured-story.php')) {
+    if (is_page_template('templates/future-grad-sub.php')) {
         unset($ancestor);
-        $ancestor = 38568;
+        $ancestor = 38585;
     }
 
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/featured-story.php')) ) {
