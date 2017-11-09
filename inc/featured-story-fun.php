@@ -25,51 +25,43 @@ function element_func( $atts ){
     $text = $active_row['text_area'];
     $links = $active_row['links'];
     $photos = $active_row['photos'];
-    if ($element_type == 'gallery') {
+    if ($element_type !== 'gallery') {
         $primary_link = $links[0]['link']['url'];
     } else {
         $primary_link = null;
     }
     
-    ob_start ();
-    ?>
 
-    <div class="element <?php echo $atts['align'] . ' element-' . $element_type; ?>">
-        <?php
-        if( !empty($photos) ):
+    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . '">';
+        if( !empty($photos) ){
             foreach ($photos as $photo) {
-        ?>        
-                <a class="photo" href="<?php echo (!$primary_link) ? $photo['url'] : $primary_link; ?>" title="<?php echo $photo['description']; ?>" <?php echo (!$primary_link) ? 'data-lightbox-gallery="gallery-1"' : 'none' ; ?>><?php echo wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ); ?></a>
-        <?php
+                if (!$primary_link) {
+                    $top_link = $photo['url'];
+                    $gallery = 'data-lightbox-gallery="gallery-1"';
+                } else {
+                    $top_link = $primary_link;
+                }
+                $output .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
             }
-        else :
+        } else {
             // no rows found
-        endif;
-        ?>
-        <h2 class="title"><?php echo $title ?></h2>
-        <h3 class="subtitle"><?php echo $sub_title ?></h3>
-        <p><?php echo $text ?></p>
-        <?php
-        if( !empty($links) ):
+        };
+        $output .= '<h2 class="title">' . $title . '</h2>';
+        $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+        $output .= '<p>' . $text . '</p>';
+            
+        if( !empty($links) ){
             foreach ($links as $link) {
-                $link = $link['link']
-        ?>        
-                <a class="button" href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a>
-        <?php
+                $link = $link['link'];
+                $output .=  '<a class="button" href="' . $link['url'] . '" target="' . $link['target'] . '">' . $link['title'] . '</a>';
             }
-        else :
+        } else {
             // no rows found
-        endif;
-        ?>
+        }
         
-    </div>
-
-
-    <?  
-    $content = ob_get_contents();
-    ob_end_clean();
+    $output .= '</div>'; 
     
-return $content;
+return $output;
 };
 add_shortcode( 'element', 'element_func' );
 
