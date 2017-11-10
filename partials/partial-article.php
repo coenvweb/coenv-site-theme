@@ -5,7 +5,7 @@
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-	<header class="article__header">
+	<header class="article__header" id="#share-<?php the_ID() ?>">
         <div class="article__meta">
    		<?php if ( !is_page() && !is_singular('intranet') ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"

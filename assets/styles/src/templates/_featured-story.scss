@@ -193,6 +193,18 @@
         }
     }
     
+    .article__content .wp-caption {
+        box-shadow: none;
+        background: none;
+        font-style: italic;
+        margin-bottom: 2rem;
+        .wp-caption-text {
+            color: #666;
+            margin-left: 0;
+            margin-top: .5rem;
+        }
+    }
+    
     .photo-divider { 
         display: flex;
         flex-direction: column;
