@@ -57,7 +57,7 @@ function element_func( $atts ){
     $output = $opener . '<div class="element ' . $atts['align'] . ' element-' . $element_type . '"';
     
         if ($element_type == 'call_to_action'){
-            $output .= ' style="background-image: url(' . $photo_url[0] . ');" ><div class="cta-content">';
+            $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover;" ><div class="cta-content">';
         } else {
             $output .= '>' . $photo_holder;
         }
@@ -89,12 +89,12 @@ function tweetable_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'alter' => '',
     ), $atts );
-    if ($atts['alter']) {
+    if (isset($atts['alter'])) {
         $tweet_text = $atts['alter'];
     }else {
         $tweet_text = $content;
     }
-return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $tweet_text  . ' ' . wp_get_shortlink() . ' - @UW_CoEnv">' . $content . '</a></span>';
+return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $tweet_text  . ' Read more via @UW_CoEnv:' . wp_get_shortlink() . '">' . $content . '</a></span>';
 };
 add_shortcode( 'tweetable', 'tweetable_func' );
 

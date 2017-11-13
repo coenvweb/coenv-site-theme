@@ -195,7 +195,6 @@
             position: relative;
             max-width: none;
             background-size: contain;
-            @extend .photo-divider;
             margin-bottom: 0!important;
             color: white;
             @include max-width ( 800 ) {
