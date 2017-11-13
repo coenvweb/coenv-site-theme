@@ -56,7 +56,8 @@
                         "profile": "Profile",
                         "content": "Content Block",
                         "gallery": "Gallery",
-                        "big_gallery": "Big Gallery"
+                        "big_gallery": "Big Gallery",
+                        "call_to_action": "Call to Action"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -210,5 +211,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510186556
+    "modified": 1510606505
 }

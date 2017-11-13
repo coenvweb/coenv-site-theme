@@ -142,11 +142,12 @@
     }
     .element-wrapper .element {
         position: relative;
+        padding-bottom: 2rem;
     }
     .element {
-        max-width: 253px; 
         @include min-width ( 800 ) {
             width: 24vw;
+            max-width: 253px;
         }
         @include min-width ( 1020 ) {
             width: 253px;
@@ -154,22 +155,25 @@
         @include max-width ( 1020 ) {
             padding-right: 1rem;
         }
-        padding-bottom: 2rem;
-        .title {
-            margin: .5rem 0 0;
-            font-size: 1.5rem;
-            &:before, &:after {
-                display: none;
+        padding-bottom: 1rem;
+        &:not(.element-call_to_action) {
+            .title {
+                margin: .5rem 0 0;
+                font-size: 1.5rem;
+                &:before, &:after {
+                    display: none;
+                }
+            }
+            .subtitle {
+                font-size: .8em;
+                font-weight: 600;
+                margin: 0;
+                @include sans();
+                letter-spacing: .1px;
+                text-transform: uppercase;
             }
         }
-        .subtitle {
-            font-size: .8em;
-            font-weight: 600;
-            margin: 0;
-            @include sans();
-            letter-spacing: .1px;
-            text-transform: uppercase;
-        }
+        
         p {
             margin-bottom: 1rem;
             letter-spacing: .5px;
@@ -184,6 +188,40 @@
                 &:first-of-type {
                     display: block;
                 }
+            }
+        }
+        &.element-call_to_action {
+            width: 100%;
+            position: relative;
+            max-width: none;
+            background-size: contain;
+            @extend .photo-divider;
+            margin-bottom: 0!important;
+            color: white;
+            @include max-width ( 800 ) {
+                padding: 3rem 0;
+            }
+            .title {
+                font-size: 3rem!important;
+                line-height: 100%!important;
+                padding-bottom: 1rem!important;
+                margin-bottom: 4rem!important;
+                &:before, &:after {
+                    border-color: white;
+                }
+            }
+            .cta-content {
+                @extend .article__content;
+            }
+            .button {
+                text-transform: uppercase;
+                font-weight: 600;
+                background: none;
+                border: 3px solid white;
+                color: white;
+                padding: .5rem;
+                font-size: 1rem;
+                line-height: 120%;
             }
         }
     }
@@ -228,6 +266,49 @@
         }
     }
     
+    .tweetable a {
+        position: relative;
+        text-decoration: none;
+        background-color: rgba(1,1,1,.05);
+        border-bottom: 1px solid grey;
+        color: $text;
+         &:before {
+            visibility: hidden;
+            opacity: 0;
+            content: "\e016";
+            position: absolute;
+            display: block;
+            float: left;
+            top: calc(50% - 12px);
+            margin-left: -36px;
+             font-size: 1.5rem;
+            font-family: icomoon;
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        @include max-width ( 800 ) {
+            &:before {
+               visibility: visible;
+               opacity: 1;
+               color: rgba(1,1,1,.2);
+                font-size: 1.3rem;
+                margin-left: -26px;
+            }
+        }
+        &:hover {
+           &:before {
+               visibility: visible;
+               opacity: 1;
+               transition: visibility 0s, opacity 0.5s linear;
+            }
+        }
+    }
+    
     
     //photos
     
@@ -248,7 +329,7 @@
         flex-direction: column;
         justify-content: center;
         margin: 1rem 0;
-        height: 40vh; 
+        min-height: 40vh; 
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;

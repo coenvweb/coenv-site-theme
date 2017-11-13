@@ -31,21 +31,36 @@ function element_func( $atts ){
         $primary_link = null;
     }
     
-
-    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . '">';
-        if( !empty($photos) ){
-            foreach ($photos as $photo) {
-                if (!$primary_link) {
-                    $top_link = $photo['url'];
-                    $gallery = 'data-lightbox-gallery="gallery-1"';
-                } else {
-                    $top_link = $primary_link;
-                }
-                $output .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+    if( !empty($photos) ){
+        $photo_holder = '';
+        foreach ($photos as $photo) {
+            if (!$primary_link) {
+                $top_link = $photo['url'];
+                $gallery = 'data-lightbox-gallery="gallery-1"';
+            } else {
+                $top_link = $primary_link;
             }
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
+            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+        }
+    } else {
+        // no rows found
+    };
+    
+    if ($element_type == 'call_to_action'){
+        $opener = '</section>';
+        $ender = '</div><section class="article__content">';
+    } else {
+        $opener = $ender = '';
+    }
+
+    $output = $opener . '<div class="element ' . $atts['align'] . ' element-' . $element_type . '"';
+    
+        if ($element_type == 'call_to_action'){
+            $output .= ' style="background-image: url(' . $photo_url[0] . ');" ><div class="cta-content">';
         } else {
-            // no rows found
-        };
+            $output .= '>' . $photo_holder;
+        }
         $output .= '<h2 class="title">' . $title . '</h2>';
         $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
         $output .= '<p>' . $text . '</p>';
@@ -59,7 +74,7 @@ function element_func( $atts ){
             // no rows found
         }
         
-    $output .= '</div>'; 
+    $output .= '</div>' . $ender; 
     
 return $output;
 };
@@ -70,10 +85,18 @@ return '<i class="quote">"</i> <div class="feat-quote">' . $content . '</div>';
 };
 add_shortcode( 'quote', 'quote_func' );
 
-function share_quote_func( $atts, $content = null ){
-return '<a href="http://twitter.com/home?status=' . $content . ' ' . wp_get_shortlink() . '"><div class="share-quote">' . $content . '</div></a>';
+function tweetable_func( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'alter' => '',
+    ), $atts );
+    if ($atts['alter']) {
+        $tweet_text = $atts['alter'];
+    }else {
+        $tweet_text = $content;
+    }
+return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $tweet_text  . ' ' . wp_get_shortlink() . ' - @UW_CoEnv">' . $content . '</a></span>';
 };
-add_shortcode( 'share_quote', 'share_quote_func' );
+add_shortcode( 'tweetable', 'tweetable_func' );
 
 
 function photo_divider_func( $atts, $content = null ){
