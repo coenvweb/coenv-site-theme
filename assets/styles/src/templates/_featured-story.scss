@@ -71,9 +71,11 @@
             padding: 0 2rem;
             margin: auto;
             position: relative;
-            @include min-width ( 1020 ) {
+            @include min-width ( 800 ) {
                 width: 50%;
             }
+            
+            
         }
         .article__content > p:not(.intro) {
             font-size: 1.1rem;
@@ -95,10 +97,21 @@
             position: absolute;
             &.right {
                 margin: auto;
-                right: -253px;
+                right: -253px!important;
             }
             &.left {
-                margin-left: calc(-253px - 2rem);
+                margin-left: calc(-253px - 2rem)!important;
+            }
+        }
+        
+        @include min-width ( 800 ) {
+            position: absolute;
+            &.right {
+                margin: auto;
+                right: -24vw;
+            }
+            &.left {
+                margin-left: calc(-24vw - 1rem);
             }
         }
         
@@ -132,8 +145,11 @@
     }
     .element {
         max-width: 253px; 
+        @include min-width ( 800 ) {
+            width: 24vw;
+        }
         @include min-width ( 1020 ) {
-            max-width: 253px;    
+            width: 253px;
         }
         @include max-width ( 1020 ) {
             padding-right: 1rem;
