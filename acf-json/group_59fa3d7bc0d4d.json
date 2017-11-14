@@ -57,7 +57,8 @@
                         "content": "Content Block",
                         "gallery": "Gallery",
                         "big_gallery": "Big Gallery",
-                        "call_to_action": "Call to Action"
+                        "call_to_action": "Call to Action",
+                        "map": "Map"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -115,7 +116,35 @@
                     "value": null,
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "profile"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "content"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "gallery"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "big_gallery"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "call_to_action"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -135,7 +164,35 @@
                     "value": null,
                     "instructions": "The first link will be the primary link.",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "profile"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "content"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "big_gallery"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "gallery"
+                            },
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "call_to_action"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -190,6 +247,243 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": ""
+                },
+                {
+                    "key": "field_5a0b2fdb033a5",
+                    "label": "Map",
+                    "name": "map",
+                    "type": "google_map",
+                    "value": null,
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "map"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "center_lat": "47.662952",
+                    "center_lng": "-121.505899",
+                    "zoom": 5,
+                    "height": 400
+                },
+                {
+                    "key": "field_5a0b33fa033a6",
+                    "label": "Marker Locations",
+                    "name": "locations",
+                    "type": "repeater",
+                    "value": null,
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "map"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "block",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a0b34d89e08d",
+                            "label": "Latitude",
+                            "name": "lat",
+                            "type": "text",
+                            "value": null,
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a0b34e69e08e",
+                            "label": "Longitude",
+                            "name": "lng",
+                            "type": "text",
+                            "value": null,
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a0b34f69e08f",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "value": null,
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a0b350c9e090",
+                            "label": "Text Area",
+                            "name": "text_area",
+                            "type": "wysiwyg",
+                            "value": null,
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5a0b40dc289c4",
+                    "label": "Map Instructions",
+                    "name": "map_instructions",
+                    "type": "textarea",
+                    "value": null,
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Helpful instructions for interacting with the map",
+                    "maxlength": "",
+                    "rows": 2,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5a0b6bd05434d",
+                    "label": "Marker Icons",
+                    "name": "marker_icons",
+                    "type": "repeater",
+                    "value": null,
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "map"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 1,
+                    "layout": "table",
+                    "button_label": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a0b6be25434e",
+                            "label": "Active Icon",
+                            "name": "active_icon",
+                            "type": "image",
+                            "value": null,
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_5a0b6be35434f",
+                            "label": "Inactive Icon",
+                            "name": "inactive_icon",
+                            "type": "image",
+                            "value": null,
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ]
                 }
             ]
         }
@@ -211,5 +505,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510606505
+    "modified": 1510698065
 }
