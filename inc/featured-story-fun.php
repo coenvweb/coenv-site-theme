@@ -54,9 +54,15 @@ function element_func( $atts ){
         } else {
             $output .= '>' . $photo_holder;
         }
-        $output .= '<h2 class="title">' . $title . '</h2>';
-        $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-        $output .= '<p>' . $text . '</p>';
+        if (!empty($title)) {
+            $output .= '<h2 class="title">' . $title . '</h2>';
+        }
+        if (!empty($sub_title)) {
+            $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+        }
+        if (!empty($text)) {
+            $output .= '<p>' . $text . '</p>';
+        }
             
         if( !empty($links) ){
             foreach ($links as $link) {
@@ -96,29 +102,29 @@ function big_element_func( $atts ){
     if( !empty($photos) ){
         $photo_holder = '';
         foreach ($photos as $photo) {
-            if (!$primary_link) {
-                $top_link = $photo['url'];
-                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
-            } else {
-                $top_link = $primary_link;
-            }
-            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+            print_r ($photo);
+            
         }
     } else {
         // no rows found
     };
 
-    $output = '</section><div class="big-element ' . $atts['align'] . ' element-' . $element_type . '"';
+    $output = '</section><div class="big-element element-' . $element_type . '"';
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
         } else {
             $output .= '>' . $photo_holder;
         }
-        $output .= '<h2 class="title">' . $title . '</h2>';
-        $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-        $output .= '<p>' . $text . '</p>';
+        if (!empty($title)) {
+            $output .= '<h2 class="title">' . $title . '</h2>';
+        }
+        if (!empty($sub_title)) {
+            $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+        }
+        if (!empty($text)) {
+            $output .= '<p>' . $text . '</p>';
+        }
             
         if( !empty($links) ){
             foreach ($links as $link) {
