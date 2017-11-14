@@ -36,7 +36,7 @@ function element_func( $atts ){
         foreach ($photos as $photo) {
             if (!$primary_link) {
                 $top_link = $photo['url'];
-                $gallery = 'data-lightbox-gallery="gallery-1"';
+                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
             } else {
                 $top_link = $primary_link;
             }
@@ -46,15 +46,8 @@ function element_func( $atts ){
     } else {
         // no rows found
     };
-    
-    if ($element_type == 'call_to_action'){
-        $opener = '</section>';
-        $ender = '</div><section class="article__content">';
-    } else {
-        $opener = $ender = '';
-    }
 
-    $output = $opener . '<div class="element ' . $atts['align'] . ' element-' . $element_type . '"';
+    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . '"';
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
@@ -74,11 +67,73 @@ function element_func( $atts ){
             // no rows found
         }
         
-    $output .= '</div>' . $ender; 
+    $output .= '</div>'; 
     
 return $output;
 };
 add_shortcode( 'element', 'element_func' );
+
+function big_element_func( $atts ){
+    
+    $a = shortcode_atts( array(
+        'id' => '1',
+    ), $atts );
+    $element_id = ($atts['id'] - 1);
+    $rows = get_field('element');
+    $active_row = $rows[$element_id];
+    $element_type = $active_row['element_type'];
+    $title = $active_row['element_title'];
+    $sub_title = $active_row['element_subtitle'];
+    $text = $active_row['text_area'];
+    $links = $active_row['links'];
+    $photos = $active_row['photos'];
+    if ($element_type !== 'big_gallery') {
+        $primary_link = $links[0]['link']['url'];
+    } else {
+        $primary_link = null;
+    }
+    
+    if( !empty($photos) ){
+        $photo_holder = '';
+        foreach ($photos as $photo) {
+            if (!$primary_link) {
+                $top_link = $photo['url'];
+                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
+            } else {
+                $top_link = $primary_link;
+            }
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
+            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+        }
+    } else {
+        // no rows found
+    };
+
+    $output = '</section><div class="big-element ' . $atts['align'] . ' element-' . $element_type . '"';
+    
+        if ($element_type == 'call_to_action'){
+            $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
+        } else {
+            $output .= '>' . $photo_holder;
+        }
+        $output .= '<h2 class="title">' . $title . '</h2>';
+        $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+        $output .= '<p>' . $text . '</p>';
+            
+        if( !empty($links) ){
+            foreach ($links as $link) {
+                $link = $link['link'];
+                $output .=  '<a class="button" href="' . $link['url'] . '" target="' . $link['target'] . '">' . $link['title'] . '</a>';
+            }
+        } else {
+            // no rows found
+        }
+        
+    $output .= '</div><section class="article__content">'; 
+    
+return $output;
+};
+add_shortcode( 'big_element', 'big_element_func' );
 
 function quote_func( $atts, $content = null ){
 return '<i class="quote">"</i> <div class="feat-quote">' . $content . '</div>';

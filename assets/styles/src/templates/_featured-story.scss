@@ -190,6 +190,10 @@
                 }
             }
         }
+        
+    }
+    
+    .big-element {
         &.element-call_to_action {
             width: 100%;
             position: relative;
@@ -197,9 +201,7 @@
             background-size: contain;
             margin-bottom: 0!important;
             color: white;
-            @include max-width ( 800 ) {
-                padding: 3rem 0;
-            }
+            padding: 2rem 0;
             .title {
                 font-size: 3rem!important;
                 line-height: 100%!important;
@@ -223,6 +225,11 @@
                 line-height: 120%;
             }
         }
+        
+    }
+    
+    .element-big_gallery {
+        position: relative;
     }
     
     
@@ -279,8 +286,10 @@
             display: block;
             float: left;
             top: calc(50% - 12px);
-            margin-left: -36px;
+            margin-left: -40px;
              font-size: 1.5rem;
+             padding: .25rem;
+             border-radius: 5px;
             font-family: icomoon;
             speak: none;
             font-style: normal;
@@ -289,18 +298,39 @@
             text-transform: none;
             line-height: 1;
             -webkit-font-smoothing: antialiased;
+             background-color: rgba(1,1,1,.05);
+        }
+        &:after {
+            content: '';
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            display: block;
+            float: left;
+            top: calc(50% - 12px);
+            width: 0;
+            height: 0;
+            margin-left: -12px;
+            margin-top: 10px;
+            border-bottom: 5px solid transparent;
+	           border-top: 5px solid transparent;
+	           border-left: 5px solid rgba(1,1,1,.05);
         }
         @include max-width ( 800 ) {
+            &:after {
+                display: none;
+            }
             &:before {
                visibility: visible;
                opacity: 1;
                color: rgba(1,1,1,.2);
                 font-size: 1.3rem;
                 margin-left: -26px;
+                background: none;
             }
         }
         &:hover {
-           &:before {
+           &:before, &:after{
                visibility: visible;
                opacity: 1;
                transition: visibility 0s, opacity 0.5s linear;
