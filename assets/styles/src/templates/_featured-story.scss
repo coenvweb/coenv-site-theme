@@ -97,10 +97,10 @@
             position: absolute;
             &.right {
                 margin: auto;
-                right: -253px!important;
+                right: -253px;
             }
             &.left {
-                margin-left: calc(-253px - 2rem)!important;
+                margin-left: calc(-253px - 2rem);
             }
         }
         
@@ -230,9 +230,36 @@
             position: relative;
             margin: auto;
             max-width: 640px;
+            width: 50%;
+            @include max-width ( 800 ) {
+                width: 100%;
+                margin-bottom: 1rem;
+                &:before {
+                    content: 'touch image to load gallery';
+                    position: absolute;
+                    display: block;
+                    bottom: .5rem;
+                    right: 2.5rem;
+                    color: #666;
+                    font-size: .8rem;
+                }
+            }
             a {
-                img {
+                &:nth-of-type(2) img, &:nth-of-type(3) img, &:nth-of-type(4) img, &:nth-of-type(5) img {
                     width: 253px;
+                    @include min-width ( 800 ) {
+                        width: 24vw;
+                        max-width: 253px;
+                    }
+                    @include min-width ( 1020 ) {
+                        width: 253px;
+                    }
+                    @include max-width ( 1020 ) {
+                        padding-right: 1rem;
+                    }
+                    @include max-width ( 800 ) {
+                        display: none;
+                    }
                 }
                 &:nth-of-type(1) img {
                     width: 640px;
@@ -241,12 +268,12 @@
                 }
                 &:nth-of-type(2) img, &:nth-of-type(3) img {
                     @include min-width ( 1200 ) {
-                        right: calc(-253px - 4rem)!important;
+                        right: calc(-253px - 2rem)!important;
                     }
                     @include min-width ( 1020 ) {
                         position: absolute;
                         margin: auto;
-                        right: -253px!important;
+                        right: -253px;
                     }
                     @include min-width ( 800 ) {
                         position: absolute;
@@ -257,21 +284,24 @@
                 
                 &:nth-of-type(4) img, &:nth-of-type(5) img {
                     @include min-width ( 1200 ) {
-                        left: calc(-253px - 4rem)!important;
+                        left: calc(-253px - 2rem)!important;
                     }
                     @include min-width ( 1020 ) {
                         position: absolute;
-                        left: calc(-253px - 0rem)!important;
+                        left: calc(-253px - 0rem);
                     }
 
                     @include min-width ( 800 ) {
                         position: absolute;
-                        left: calc(-24vw - 1rem);
+                        left: calc(-24vw + 1rem);
                     }
                 }
                 
                 &:nth-of-type(3) img, &:nth-of-type(5) img {
                     top: 187px;
+                    @include max-width ( 1020 ) {
+                        top: 18vw;
+                    }
                 }
                 
             }

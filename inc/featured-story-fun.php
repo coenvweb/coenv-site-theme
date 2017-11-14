@@ -101,9 +101,23 @@ function big_element_func( $atts ){
     
     if( !empty($photos) ){
         $photo_holder = '';
+        $i = 0;
         foreach ($photos as $photo) {
-            print_r ($photo);
+            if (!$primary_link) {
+                $top_link = $photo['url'];
+                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
+            } else {
+                $top_link = $primary_link;
+            }
             
+            if ($element_type == 'big_gallery' && ($i == 0)) {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
+            } else {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+            }
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
+            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+            $i++;
         }
     } else {
         // no rows found
