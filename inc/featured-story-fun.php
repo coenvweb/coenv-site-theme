@@ -112,6 +112,7 @@ function big_element_func( $atts ){
             
             if ($element_type == 'big_gallery' && ($i == 0)) {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
+                $caption = $photo['description'];
             } else {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
             }
@@ -127,9 +128,13 @@ function big_element_func( $atts ){
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
+        } elseif ($element_type == 'big_gallery') {
+            $output .= '>' . $photo_holder;
+            $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $caption . '</p>';
         } else {
             $output .= '>' . $photo_holder;
         }
+        
         if (!empty($title)) {
             $output .= '<h2 class="title">' . $title . '</h2>';
         }

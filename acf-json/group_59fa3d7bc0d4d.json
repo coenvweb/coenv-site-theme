@@ -111,7 +111,7 @@
                     "key": "field_59fa478a6d5a2",
                     "label": "Text Area",
                     "name": "text_area",
-                    "type": "textarea",
+                    "type": "wysiwyg",
                     "value": null,
                     "instructions": "",
                     "required": 0,
@@ -122,10 +122,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": ""
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 },
                 {
                     "key": "field_59fa47f76d5a3",
@@ -135,7 +135,15 @@
                     "value": null,
                     "instructions": "The first link will be the primary link.",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "!=",
+                                "value": "big_gallery"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -211,5 +219,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510606505
+    "modified": 1510693784
 }
