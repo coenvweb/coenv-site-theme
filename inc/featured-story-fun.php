@@ -164,7 +164,7 @@ function big_element_func( $atts ){
 							$output .= '<div class="marker" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-active="'.$active_icon.'" data-inactive="'.$inactive_icon.'">';
 								$output .= '<img class="icon" src="'.$photo_url[0].'" />';
 								$output .= '<h2>'.$location['title'].' </h2>';
-								$output .= '<p class="marker_text">'.$location['text_area'].'</p>';
+								$output .= '<div class="marker_text">'.$location['text_area'].'</div>';
 							$output .= '</div>';
 						}
 					$output .= '</div>';
