@@ -17,11 +17,12 @@ $ancestor = array(
 $banner = coenv_banner();
 ?>
 
-<script type="stylesheet/css">
- .element a{
+<style type="text/css">
+ .element a {
     color: <?php echo get_field('accent_color'); ?>;
+     font-weight: 600;
  }
-</script>
+</style>
 
 	<section id="blog" role="main" class="template-featured-story">
 
