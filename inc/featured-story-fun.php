@@ -196,24 +196,7 @@ function big_element_func( $atts ){
             case 'big_gallery':
                 $output .= '>' . $photo_holder;
                 $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $caption . '</p>';
-                if (!empty($title)) {
-                    $output .= '<h2 class="title">' . $title . '</h2>';
-                }
-                if (!empty($sub_title)) {
-                    $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-                }
-                if (!empty($text)) {
-                    $output .= '<p>' . $text . '</p>';
-                }
-                if( !empty($links) ){
-                    foreach ($links as $link) {
-                        $link = $link['link'];
-                        $output .=  '<a class="button" href="' . $link['url'] . '" target="' . $link['target'] . '">' . $link['title'] . '</a>';
-                    }
-                } else {
-                    // no rows found
-                }
-				break; 
+				break;
         }
     $output .= '</div><section class="article__content">';
 	return $output;
