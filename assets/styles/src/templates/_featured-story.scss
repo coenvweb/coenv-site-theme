@@ -583,16 +583,16 @@
     }
 }
 .element-what-makes-green-crab-so-successful {
-    img {
+    p img {
         display: none;
     }
     @include min-width ( 800 ) {
-        img:first-of-type {
+        p:nth-of-type(2) img {
             display: block;
         }
     }
     @include max-width ( 800 ) {
-        img:nth-of-type(2) {
+        p:nth-of-type(3) img {
             display: block;
         }
     }
