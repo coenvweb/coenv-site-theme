@@ -221,23 +221,15 @@ function add_marker( $marker, map ) {
             $.each(map.markers, function(i, marker) {
                 marker.setIcon(iconInActive);
             });
-			$('.map-box').html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
-            clicked = true;
+			$('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
             marker.setIcon(iconActive);
 		});
 		google.maps.event.addListener(marker, 'mouseover', function() {
             $.each(map.markers, function(i, marker) {
                 marker.setIcon(iconInActive);
             });
-            clicked = false;
-			$('.map-box').html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
+			$('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
             marker.setIcon(iconActive);
-		});
-		google.maps.event.addListener(marker, 'mouseout', function() {
-            if(!clicked) {
-			    $('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html('');
-                marker.setIcon(iconInActive);
-            }
 		});
 	}
 
