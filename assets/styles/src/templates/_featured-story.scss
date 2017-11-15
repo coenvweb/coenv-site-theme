@@ -306,16 +306,30 @@
                 }
 
                 .map-box {
+                    visibility: hidden;
+                    transition: opacity 750ms;
                     .icon {
                         width: 50px;
                     }
                     h2 {
                         margin-top: 0;
                     }
+                    @include max-width ( 799 ) {
+                        .icon {
+                            float: left;
+                            margin-right: 1rem;
+                        }
+                        h2 {
+                            display: none;
+                            &:before, &:after {
+                                left: .5rem;
+                            }
+                            padding-left: .5rem;
+                            padding-right: 1rem;
+                        }
+                    }
                 }
             }
-
-            
         }
         
         &.element-big_gallery {
