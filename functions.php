@@ -1040,7 +1040,7 @@ function remove_faculty_search( $query ) {
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
 
-if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
+if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'environment.uw.local' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
     function cdn_upload_url() {
         return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
     }
