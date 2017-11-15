@@ -54,9 +54,15 @@ function element_func( $atts ){
         } else {
             $output .= '>' . $photo_holder;
         }
-        $output .= '<h2 class="title">' . $title . '</h2>';
-        $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-        $output .= '<p>' . $text . '</p>';
+        if (!empty($title)) {
+            $output .= '<h2 class="title">' . $title . '</h2>';
+        }
+        if (!empty($sub_title)) {
+            $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+        }
+        if (!empty($text)) {
+            $output .= '<p>' . $text . '</p>';
+        }
             
         if( !empty($links) ){
             foreach ($links as $link) {
@@ -97,6 +103,7 @@ function big_element_func( $atts ){
     
     if( !empty($photos) ){
         $photo_holder = '';
+        $i = 0;
         foreach ($photos as $photo) {
             if (!$primary_link) {
                 $top_link = $photo['url'];
@@ -104,22 +111,35 @@ function big_element_func( $atts ){
             } else {
                 $top_link = $primary_link;
             }
+            
+            if ($element_type == 'big_gallery' && ($i == 0)) {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
+                $caption = $photo['description'];
+            } else {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+            }
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+            $i++;
         }
     } else {
         // no rows found
     };
-
 
     $output = '</section><div class="big-element ' . $atts['align'] . ' element-' . $element_type . '"';
     
         switch($element_type) {
             case 'call_to_action':
                 $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
-                $output .= '<h2 class="title">' . $title . '</h2>';
-                $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-                $output .= '<p>' . $text . '</p>';
+                if (!empty($title)) {
+                    $output .= '<h2 class="title">' . $title . '</h2>';
+                }
+                if (!empty($sub_title)) {
+                    $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+                }
+                if (!empty($text)) {
+                    $output .= '<p>' . $text . '</p>';
+                }
                 if( !empty($links) ){
                     foreach ($links as $link) {
                         $link = $link['link'];
@@ -153,12 +173,17 @@ function big_element_func( $atts ){
 				break;
             case 'profile':
             case 'gallery':
-            case 'big_gallery':
             case 'content':
                 $output .= '>' . $photo_holder;
-                $output .= '<h2 class="title">' . $title . '</h2>';
-                $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
-                $output .= '<p>' . $text . '</p>';
+                if (!empty($title)) {
+                    $output .= '<h2 class="title">' . $title . '</h2>';
+                }
+                if (!empty($sub_title)) {
+                    $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+                }
+                if (!empty($text)) {
+                    $output .= '<p>' . $text . '</p>';
+                }
                 if( !empty($links) ){
                     foreach ($links as $link) {
                         $link = $link['link'];
@@ -167,7 +192,28 @@ function big_element_func( $atts ){
                 } else {
                     // no rows found
                 }
-				break;
+				break; 
+            case 'big_gallery':
+                $output .= '>' . $photo_holder;
+                $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $caption . '</p>';
+                if (!empty($title)) {
+                    $output .= '<h2 class="title">' . $title . '</h2>';
+                }
+                if (!empty($sub_title)) {
+                    $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+                }
+                if (!empty($text)) {
+                    $output .= '<p>' . $text . '</p>';
+                }
+                if( !empty($links) ){
+                    foreach ($links as $link) {
+                        $link = $link['link'];
+                        $output .=  '<a class="button" href="' . $link['url'] . '" target="' . $link['target'] . '">' . $link['title'] . '</a>';
+                    }
+                } else {
+                    // no rows found
+                }
+				break; 
         }
     $output .= '</div><section class="article__content">';
 	return $output;
