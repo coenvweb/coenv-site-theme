@@ -47,7 +47,7 @@ function element_func( $atts ){
         // no rows found
     };
 
-    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . '"';
+    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . '"';
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';

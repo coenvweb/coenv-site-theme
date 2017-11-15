@@ -316,6 +316,7 @@
                     h2 {
                         margin-top: 0;
                         @include serif();
+                        font-weight: 400;
                     }
                     @include max-width ( 799 ) {
                         opacity: 1;
@@ -570,5 +571,29 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+}
+
+
+//green crabs
+
+.element-help-nab-green-crabs {
+    @include min-width ( 800 ) {
+        margin-top: -10rem;
+    }
+}
+.element-what-makes-green-crab-so-successful {
+    img {
+        display: none;
+    }
+    @include min-width ( 800 ) {
+        img:first-of-type {
+            display: block;
+        }
+    }
+    @include max-width ( 800 ) {
+        img:nth-of-type(2) {
+            display: block;
+        }
     }
 }
