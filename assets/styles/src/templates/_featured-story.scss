@@ -591,7 +591,15 @@
             display: block;
         }
     }
+    p img:nth-of-type(2) {
+            display: none;
+        }
+    }
     @include max-width ( 800 ) {
+        p img:nth-of-type(1) {
+            display: none;
+        }
+    }
         p img:nth-of-type(2) {
             display: block;
         }
