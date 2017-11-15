@@ -133,8 +133,8 @@ function big_element_func( $atts ){
 				$locations = $active_row['locations'];
 				$map_instructions = $active_row['map_instructions'];
 				$marker_icons = $active_row['marker_icons'][0];
-				$active_icon = $marker_icons[0];
-				$inactive_icon = $marker_icons[1];
+				$active_icon = $marker_icons['active_icon'];
+				$inactive_icon = $marker_icons['inactive_icon'];
                 $output .= '><script async defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>';
 				$output .= '<div class="acf-map-container">';
 					$output .= '<div class="map-instructions right">'.$map_instructions.'</div>';

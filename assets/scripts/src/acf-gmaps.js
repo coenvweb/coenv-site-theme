@@ -188,8 +188,19 @@ function add_marker( $marker, map ) {
 	// var
 	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
 
-    var iconActive = $marker.attr('data-active');
-    var iconInActive = $marker.attr('data-inactive');
+    var iconActive = {
+		url: $marker.attr('data-active'),
+		size: new google.maps.Size(20, 20),
+		origin: new google.maps.Point(0, 0),
+		anchor: new google.maps.Point(0, 20)
+	};
+
+    var iconInActive = {
+		url: $marker.attr('data-inactive'),
+		size: new google.maps.Size(20, 20),
+		origin: new google.maps.Point(0, 0),
+		anchor: new google.maps.Point(0, 20)
+	};
 
 	// create marker
 	var marker = new google.maps.Marker({
@@ -210,7 +221,7 @@ function add_marker( $marker, map ) {
             $.each(map.markers, function(i, marker) {
                 marker.setIcon(iconInActive);
             });
-			$('.map-box').html($marker.html());
+			$('.map-box').html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
             clicked = true;
             marker.setIcon(iconActive);
 		});
@@ -219,12 +230,12 @@ function add_marker( $marker, map ) {
                 marker.setIcon(iconInActive);
             });
             clicked = false;
-			$('.map-box').html($marker.html());
+			$('.map-box').html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
             marker.setIcon(iconActive);
 		});
 		google.maps.event.addListener(marker, 'mouseout', function() {
             if(!clicked) {
-			    $('.map-box').html('');
+			    $('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html('');
                 marker.setIcon(iconInActive);
             }
 		});

@@ -393,7 +393,15 @@
                     "value": null,
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "map"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -505,5 +513,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510698065
+    "modified": 1510702129
 }
