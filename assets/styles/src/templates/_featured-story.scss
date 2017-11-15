@@ -315,6 +315,7 @@
                     }
                     h2 {
                         margin-top: 0;
+                        @include serif();
                     }
                     @include max-width ( 799 ) {
                         opacity: 1;
@@ -483,6 +484,9 @@
         background-color: rgba(1,1,1,.05);
         border-bottom: 1px solid grey;
         color: $text;
+        font-size: 1.1rem;
+        line-height: 2rem;
+        margin-bottom: 2.5rem;
          &:before {
             visibility: hidden;
             opacity: 0;
