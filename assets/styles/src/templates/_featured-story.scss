@@ -80,6 +80,12 @@
             margin-bottom: 2.5rem;
         }
     }
+    
+    .button {
+        text-transform: uppercase;
+        border: 3px solid #666;
+        background-color: transparent;
+    }
     .article__content .element-wrapper, .article__content > .element {
         position: relative;
          @include min-width ( 1200 ) {
@@ -197,7 +203,7 @@
             max-width: none;
             background-size: contain;
             margin-bottom: 0!important;
-            margin-top: 2rem;
+            margin-top: 4rem;
             color: white;
             padding: 8vw 0;
             .title {
@@ -578,7 +584,7 @@
 
 .element-help-nab-green-crabs {
     @include min-width ( 800 ) {
-        margin-top: -10rem;
+        margin-top: -6rem;
     }
 }
 .element-what-makes-green-crab-so-successful {
@@ -589,9 +595,9 @@
         p img:nth-of-type(1) {
             display: block;
         }
-    }
-    p img:nth-of-type(2) {
-            display: none;
+        p img:nth-of-type(2) {
+                display: none;
+        }
     }
     @include max-width ( 800 ) {
         p img:nth-of-type(1) {
