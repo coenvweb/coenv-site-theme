@@ -316,6 +316,8 @@
                 .map-box-wrap {
                     .icon {
                         width: 50px;
+                        display: none;
+                        
                     }
                     .map-box h2 {
                         margin-top: 0;
@@ -447,13 +449,17 @@
     
     //quotes
     
-    .quote {
+    .open-quote {
         position: absolute;
         display: block;
         font-size: 4rem;
         margin-top: .5rem;
         left: -.5rem;
         color: #888;
+        &:before {
+            content: '“';
+            font-family: skolar;
+        }
     }
     
     .feat-quote {

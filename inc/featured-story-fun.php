@@ -207,7 +207,7 @@ function big_element_func( $atts ){
 add_shortcode( 'big_element', 'big_element_func' );
 
 function quote_func( $atts, $content = null ){
-return '<i class="quote">"</i> <div class="feat-quote">' . $content . '</div>';
+return '<i class="open-quote"></i> <div class="feat-quote">' . $content . '</div>';
 };
 add_shortcode( 'quote', 'quote_func' );
 
