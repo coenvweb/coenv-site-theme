@@ -158,15 +158,13 @@ function big_element_func( $atts ){
                 $output .= '>';
 				$output .= '<div class="acf-map-container">';
 					$output .= '<div class="map-instructions right">'.$map_instructions.'</div>';
-                    $output .= '<div class="map-box-wrap left">';
-                        if(!empty($photo_url)) {
-                            $output .= '<img class="icon" src="'.$photo_url[0].'" />';
-                        }
-                        $output .= '<div class="map-box"></div>';
-                    $output .= '</div>';
+                    $output .= '<div class="map-box left"></div>';
 					$output .= '<div class="acf-map" style="height: 400px">';
 						foreach($locations as $location) {
 							$output .= '<div class="marker" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-active="'.$active_icon.'" data-inactive="'.$inactive_icon.'">';
+                                if(!empty($photo_url)) {
+                                    $output .= '<img class="icon" src="'.$photo_url[0].'" />';
+                                }
 								$output .= '<h2>'.$location['title'].' </h2>';
 								$output .= '<div class="marker_text">'.$location['text_area'].'</div>';
 							$output .= '</div>';
