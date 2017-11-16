@@ -229,7 +229,7 @@ function add_marker( $marker, map ) {
 				marker.setIcon(iconInActive);
 			});
 			$('.map-box').fadeOut(100, function() {
-                $(this).html($marker.html()).fad(600);
+                $(this).html($marker.html()).fadeIn(600);
             });
 			marker.setIcon(iconActive);
 		});
