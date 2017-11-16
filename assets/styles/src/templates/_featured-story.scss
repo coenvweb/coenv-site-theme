@@ -313,13 +313,11 @@
                     color: #666;
                 }
 
-                .map-box-wrap {
+                .map-box {
                     .icon {
                         width: 50px;
-                        display: none;
-                        
                     }
-                    .map-box h2 {
+                    h2 {
                         margin-top: 0;
                         @include serif();
                         font-weight: 400;
@@ -329,15 +327,13 @@
                         margin: 1rem auto 1rem auto;
                         width: 260px;
                             
-                        .map-box {
-                            h2 {
-                                display: none;
-                                &:before, &:after {
-                                    left: .5rem;
-                                }
-                                padding-left: .5rem;
-                                padding-right: 1rem;
+                        h2 {
+                            display: none;
+                            &:before, &:after {
+                                left: .5rem;
                             }
+                            padding-left: .5rem;
+                            padding-right: 1rem;
                         }
                         .icon {
                             float: left;
