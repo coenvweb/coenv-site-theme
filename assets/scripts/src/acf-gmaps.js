@@ -202,7 +202,6 @@ function add_marker( $marker, map ) {
 		anchor: new google.maps.Point(0, 20)
 	};
 
-	// create marker
 	var marker = new google.maps.Marker({
 		position	: latlng,
         icon        : iconInActive,
@@ -213,23 +212,26 @@ function add_marker( $marker, map ) {
 	map.markers.push( marker );
 
 	// if marker contains HTML, add it to an infoWindow
-    var clicked = false;
 	if( $marker.html() )
 	{
 		// show info window when marker is clicked
 		google.maps.event.addListener(marker, 'click', function() {
-            $.each(map.markers, function(i, marker) {
-                marker.setIcon(iconInActive);
+			$.each(map.markers, function(i, marker) {
+				marker.setIcon(iconInActive);
+			});
+			$('.map-box').fadeOut(100, function() {
+                $(this).html($marker.html()).fadeIn(600);
             });
-			$('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
-            marker.setIcon(iconActive);
+			marker.setIcon(iconActive);
 		});
 		google.maps.event.addListener(marker, 'mouseover', function() {
-            $.each(map.markers, function(i, marker) {
-                marker.setIcon(iconInActive);
+			$.each(map.markers, function(i, marker) {
+				marker.setIcon(iconInActive);
+			});
+			$('.map-box').fadeOut(100, function() {
+                $(this).html($marker.html()).fad(600);
             });
-			$('.map-box').css({'visibility': 'hidden', 'opacity': '0'}).html($marker.html()).css({'visibility': 'visible', 'opacity': '1'});
-            marker.setIcon(iconActive);
+			marker.setIcon(iconActive);
 		});
 	}
 

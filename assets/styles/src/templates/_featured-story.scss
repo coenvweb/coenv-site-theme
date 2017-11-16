@@ -225,6 +225,18 @@
         }
 
         &.element-map {
+            .acf-map {
+                h2 {
+                    display: inline;
+                    margin: auto;
+                    margin-right: 1rem;
+                    font-size: 1rem;
+                    &:before, &:after {
+                        display: none;
+                    }
+                }
+            }
+
             .acf-map-container {
                 position: relative;
                 margin: auto;
@@ -248,9 +260,6 @@
                         margin-left: calc(-24vw - 1rem);
                         width: 24vw;
                         max-width: 253px;
-                    }
-                    .mobile {
-                        display: none;
                     }
                 }
 
@@ -280,15 +289,6 @@
                     }
                 }
 
-                @include max-width ( 799 ) {
-                    .desktop {
-                        display: none;
-                    }
-                    .mobile {
-                        margin-top: 1rem;
-                    }
-                }
-
                 .map-instructions {
                     @include min-width ( 800 ) {
                         &:before {
@@ -307,36 +307,35 @@
                     color: #666;
                 }
 
-                .map-box {
-                    visibility: hidden;
-                    transition: opacity 750ms;
+                .map-box-wrap {
                     .icon {
                         width: 50px;
                     }
-                    h2 {
+                    .map-box h2 {
                         margin-top: 0;
                         @include serif();
                         font-weight: 400;
                     }
                     @include max-width ( 799 ) {
-                        opacity: 1;
-                        visibility: visible;
-                        min-height: 105px;
-                        margin: 1rem auto 0rem auto;
-                        width: 300px;
+                        height: 105px;
+                        margin: 1rem auto 1rem auto;
+                        width: 260px;
+                            
+                        .map-box {
+                            h2 {
+                                display: none;
+                                &:before, &:after {
+                                    left: .5rem;
+                                }
+                                padding-left: .5rem;
+                                padding-right: 1rem;
+                            }
+                        }
                         .icon {
                             float: left;
                             margin-right: 1rem;
                             margin-top: 1rem;
                             margin-bottom: 2rem;
-                        }
-                        h2 {
-                            display: none;
-                            &:before, &:after {
-                                left: .5rem;
-                            }
-                            padding-left: .5rem;
-                            padding-right: 1rem;
                         }
                     }
                 }
@@ -593,13 +592,11 @@
     }
     p img:nth-of-type(2) {
             display: none;
-        }
     }
     @include max-width ( 800 ) {
         p img:nth-of-type(1) {
             display: none;
         }
-    }
         p img:nth-of-type(2) {
             display: block;
         }

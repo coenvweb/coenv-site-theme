@@ -23,8 +23,9 @@ $banner = coenv_banner();
      font-weight: 600;
  }
 </style>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>
 
-	<section id="blog" role="main" class="template-featured-story">
+<section id="blog" role="main" class="template-featured-story">
 
 		<div class="container">
 

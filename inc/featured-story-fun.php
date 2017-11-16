@@ -155,20 +155,23 @@ function big_element_func( $atts ){
 				$marker_icons = $active_row['marker_icons'][0];
 				$active_icon = $marker_icons['active_icon'];
 				$inactive_icon = $marker_icons['inactive_icon'];
-                $output .= '><script async defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>';
+                $output .= '>';
 				$output .= '<div class="acf-map-container">';
 					$output .= '<div class="map-instructions right">'.$map_instructions.'</div>';
-					$output .= '<div class="map-box desktop left"></div>';
+                    $output .= '<div class="map-box-wrap left">';
+                        if(!empty($photo_url)) {
+                            $output .= '<img class="icon" src="'.$photo_url[0].'" />';
+                        }
+                        $output .= '<div class="map-box"></div>';
+                    $output .= '</div>';
 					$output .= '<div class="acf-map" style="height: 400px">';
 						foreach($locations as $location) {
 							$output .= '<div class="marker" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-active="'.$active_icon.'" data-inactive="'.$inactive_icon.'">';
-								$output .= '<img class="icon" src="'.$photo_url[0].'" />';
 								$output .= '<h2>'.$location['title'].' </h2>';
 								$output .= '<div class="marker_text">'.$location['text_area'].'</div>';
 							$output .= '</div>';
 						}
 					$output .= '</div>';
-					$output .= '<div class="map-box mobile"></div>';
 				$output .= '</div>';
 				break;
             case 'profile':
@@ -229,6 +232,6 @@ function photo_divider_func( $atts, $content = null ){
     $regex = '/https?\:\/\/[^\" ]+/i';
     preg_match($regex, $content, $matches);
     $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0] . ')"></div><section class="article__content">';
-return $output;
+    return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
