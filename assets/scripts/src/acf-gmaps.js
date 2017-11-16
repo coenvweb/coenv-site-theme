@@ -219,8 +219,8 @@ function add_marker( $marker, map ) {
 			$.each(map.markers, function(i, marker) {
 				marker.setIcon(iconInActive);
 			});
-			$('.map-box').fadeOut(100, function() {
-                $(this).html($marker.html()).fadeIn(600);
+			$('.map-box').stop().fadeOut(100, function() {
+                $(this).html($marker.html()).stop().fadeIn(600);
             });
 			marker.setIcon(iconActive);
 		});
@@ -228,8 +228,8 @@ function add_marker( $marker, map ) {
 			$.each(map.markers, function(i, marker) {
 				marker.setIcon(iconInActive);
 			});
-			$('.map-box').fadeOut(100, function() {
-                $(this).html($marker.html()).fadeIn(600);
+			$('.map-box').stop().fadeOut(100, function() {
+                $(this).html($marker.html()).stop().fadeIn(600);
             });
 			marker.setIcon(iconActive);
 		});
