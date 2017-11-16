@@ -120,28 +120,13 @@
                         [
                             {
                                 "field": "field_59fa4bc3d131d",
-                                "operator": "==",
-                                "value": "profile"
+                                "operator": "!=",
+                                "value": "map"
                             },
                             {
                                 "field": "field_59fa4bc3d131d",
-                                "operator": "==",
-                                "value": "content"
-                            },
-                            {
-                                "field": "field_59fa4bc3d131d",
-                                "operator": "==",
-                                "value": "gallery"
-                            },
-                            {
-                                "field": "field_59fa4bc3d131d",
-                                "operator": "==",
+                                "operator": "!=",
                                 "value": "big_gallery"
-                            },
-                            {
-                                "field": "field_59fa4bc3d131d",
-                                "operator": "==",
-                                "value": "call_to_action"
                             }
                         ]
                     ],
@@ -170,21 +155,27 @@
                                 "field": "field_59fa4bc3d131d",
                                 "operator": "==",
                                 "value": "profile"
-                            },
-                            {
-                                "field": "field_59fa4bc3d131d",
-                                "operator": "==",
-                                "value": "content"
-                            },
+                            }
+                        ],
+                        [
                             {
                                 "field": "field_59fa4bc3d131d",
                                 "operator": "==",
                                 "value": "gallery"
-                            },
+                            }
+                        ],
+                        [
                             {
                                 "field": "field_59fa4bc3d131d",
                                 "operator": "==",
                                 "value": "call_to_action"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_59fa4bc3d131d",
+                                "operator": "==",
+                                "value": "content"
                             }
                         ]
                     ],
@@ -508,5 +499,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1510693784
+    "modified": 1510873268
 }
