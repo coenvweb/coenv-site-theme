@@ -117,10 +117,9 @@ function big_element_func( $atts ){
                 $caption = $photo['caption'];
             } else {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
-                $caption = $photo['caption'];
             }
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
             $i++;
         }
     } else {
