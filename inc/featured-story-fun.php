@@ -114,9 +114,10 @@ function big_element_func( $atts ){
             
             if ($element_type == 'big_gallery' && ($i == 0)) {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
-                $caption = $photo['description'];
+                $caption = $photo['caption'];
             } else {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+                $caption = $photo['caption'];
             }
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
             $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . $photo_el . '</a>';
