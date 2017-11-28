@@ -192,14 +192,14 @@ function add_marker( $marker, map ) {
 		url: $marker.attr('data-active'),
 		size: new google.maps.Size(20, 20),
 		origin: new google.maps.Point(0, 0),
-		anchor: new google.maps.Point(-10, 10)
+		anchor: new google.maps.Point(10, 10)
 	};
 
     var iconInActive = {
 		url: $marker.attr('data-inactive'),
 		size: new google.maps.Size(20, 20),
 		origin: new google.maps.Point(0, 0),
-		anchor: new google.maps.Point(-10, 10)
+		anchor: new google.maps.Point(10, 10)
 	};
 
 	var marker = new google.maps.Marker({
