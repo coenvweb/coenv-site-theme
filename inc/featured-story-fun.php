@@ -218,7 +218,7 @@ function tweetable_func( $atts, $content = null ){
     }else {
         $tweet_text = $content;
     }
-return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $tweet_text  . ' Read more via @UW_CoEnv:' . wp_get_shortlink() . '">' . $content . '</a></span>';
+return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $tweet_text  . ' Read more via @UW_CoEnv:' . wp_get_shortlink() . '" target="_blank">' . $content . '</a></span>';
 };
 add_shortcode( 'tweetable', 'tweetable_func' );
 
