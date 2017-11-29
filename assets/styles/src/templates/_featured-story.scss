@@ -598,6 +598,15 @@
         background-position: top;
     }
 }
+.wp-image-59763 {
+    @include max-width ( 1200 ) {
+        margin-bottom: calc(25rem - 20vw);
+    }
+    @include max-width ( 799 ) {
+        margin-bottom: 0!important;
+    }
+}
+
 
 .element-green-crabs-are-survivors {
     img {
