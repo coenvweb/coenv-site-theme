@@ -228,6 +228,10 @@
                 padding: .5rem;
                 font-size: 1rem;
                 line-height: 120%;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
             }
         }
 
@@ -595,11 +599,6 @@
     }
 }
 
-.element-help-nab-green-crabs {
-    @include min-width ( 800 ) {
-        margin-top: -6rem;
-    }
-}
 .element-green-crabs-are-survivors {
     img {
         display: none;
