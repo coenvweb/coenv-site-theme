@@ -145,11 +145,10 @@ body.home {
 					color: #fff;
 					background: #363533;
 					background: rgba(0,0,0,0.6);
-                    display: none;
 
 					@include min-width ( $iPadPortrait ) {
 						position: relative;
-						@include rem('padding', 1, 0);
+						@include rem('padding', .5, 0);
 						background: none;
 						color: rgba(255,255,255,0.8);
 					}

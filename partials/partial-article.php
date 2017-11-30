@@ -19,6 +19,7 @@
 		<?php endif ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
+      <!--<div class="post-info subtitle"><p><?php echo get_field('feature_label'); ?></p></div>-->
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>
 			<h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>

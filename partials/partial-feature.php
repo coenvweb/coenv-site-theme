@@ -54,7 +54,7 @@ $feature = array(
 		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
 
 			<div class="feature-type">
-
+        <?php echo $feature['label']; ?> 
 			</div><!-- .feature-type -->
 
 			<div class="feature-content">
