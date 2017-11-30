@@ -16,11 +16,14 @@
                 "id": ""
             },
             "choices": {
+                "0": "Choose one",
                 "Signature Story": "Signature Story",
                 "Video": "Video",
                 "Dean's Letter": "Dean's Letter"
             },
-            "default_value": [],
+            "default_value": [
+                0
+            ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -90,5 +93,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511999697
+    "modified": 1512069688
 }
