@@ -27,16 +27,21 @@
 
     <section class="article__content">
 
-        <?php the_content() ?>
-
-        <?php if ( !is_page() && get_field('story_link_url') ) { ?>
-
+        <?php if(get_field('feature_label') == 'Signature Story') { ?>
+            <div style="overflow:hidden; float:right; margin-left: 10px;">
+                <?php the_post_thumbnail('thumbnail'); ?>
+            </div>
+            <?php the_advanced_excerpt('no_custom=1&no_shortcode=1&length=50&length_type=words') ?>
+            <a class="button" href="<?php echo get_the_permalink(); ?>">Read More</a>
+        <?php } else { ?>
+            <?php the_content() ?>
+            <?php if ( !is_page() && get_field('story_link_url') ) { ?>
                 <a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a>
-
+            <?php } ?>
+            <p class="read-more"><a href="javascript();" class="button">Read More</a></p>
         <?php } ?>
 
-        <p class="read-more"><a href="javascript();" class="button">Read More</a></p>
-
+        
     </section>
 
     <?php remove_filter( 'the_title', 'wptexturize' );
