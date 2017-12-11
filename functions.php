@@ -13,7 +13,7 @@ require_once locate_template( '/inc/rewrites.php' );
 
 require_once locate_template( '/inc/ajax.php' );
 
-require_once locate_template( '/inc/featured-story-fun.php' );
+require_once locate_template( '/inc/signature-story-fun.php' );
 
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
@@ -553,7 +553,7 @@ function coenv_banner() {
         $ancestor = 38585;
     }
 
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/featured-story.php')) ) {
+	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( $ancestor ) ) {
@@ -569,17 +569,14 @@ function coenv_banner() {
 	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
     
-  if (is_page_template('templates/featured-story.php')) {
-      $banner = array(
-        'url' => get_field('banner_image'),
-        'permalink' => get_permalink( $attachment_post_obj->ID ),
-      );
-  } else {
-      $banner = array(
-        'url' => $image_src[0],
-        'permalink' => get_permalink( $attachment_post_obj->ID ),
-      );
+  if (is_page_template('templates/signature-story.php')) {
+      $thumb_id_custom = get_field('banner_image');
+      $image_src = wp_get_attachment_image_src( $thumb_id_custom, 'banner' );
   }
+  $banner = array(
+    'url' => $image_src[0],
+    'permalink' => get_permalink( $attachment_post_obj->ID ),
+  );
 
 	return $banner;
 }
