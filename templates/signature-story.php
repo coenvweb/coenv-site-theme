@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Featured Story
+ * Template Name: Signature Story
  * Template Post Type: post
  */
   
@@ -25,7 +25,7 @@ $banner = coenv_banner();
 </style>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbky381Xxqtk8LVWJEENojL44RG2oYR14"></script>
 
-<section id="blog" role="main" class="template-featured-story">
+<section id="blog" role="main" class="template-signature-story">
 
 		<div class="container">
 

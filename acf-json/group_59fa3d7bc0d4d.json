@@ -1,6 +1,6 @@
 {
     "key": "group_59fa3d7bc0d4d",
-    "title": "Featured Story",
+    "title": "Signature Story",
     "fields": [
         {
             "key": "field_5a21d37f04ef5",
@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
+            "return_format": "id",
             "preview_size": "homepage-hero-standard",
             "library": "all",
             "min_width": "",
@@ -486,7 +486,7 @@
             {
                 "param": "post_template",
                 "operator": "==",
-                "value": "templates\/featured-story.php"
+                "value": "templates\/signature-story.php"
             }
         ]
     ],
@@ -498,5 +498,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1512166707
+    "modified": 1513017553
 }
