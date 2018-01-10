@@ -54,8 +54,10 @@ class CoEnv_Widget_Social extends WP_Widget {
  
 		echo $before_widget;
 		?>
+
+        <?php if(!empty($title)) { ?>
 			
-			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
  
 			<ul>
 				<?php if (get_option('facebook')) { ?><li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="icon-facebook"> </i>Facebook</a></li><?php } ?>
