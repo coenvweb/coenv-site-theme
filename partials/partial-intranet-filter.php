@@ -50,7 +50,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                                 $output .= '<option value="/intranet/">Choose a topic</option>';
                                 if ( !empty( $cats ) ) {	
                                 foreach ( $cats as $cat ) {
-                                    if (term_is_ancestor_of(1239, $cat->term_id, 'topic')){
+                                    if (term_is_ancestor_of(1239, $cat->term_id, 'topic') && ($cat->slug !== 'diversity-equity-and-inclusion') && (!term_is_ancestor_of(2437, $cat->term_id, 'topic'))){
                                     if (isset($coenv_cat_term_1_id)) {
                                         $selected = $coenv_cat_term_1_id == $cat->term_id ? ' selected="selected"' : '';} else {
                                         $selected = '';
