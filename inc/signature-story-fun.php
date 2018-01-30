@@ -228,7 +228,7 @@ function define_term_func( $atts, $content = null ){
     ), $atts );
 return '<span class="define_term"><a>' . $content . '</a></span><div class="left"><h3>'. get_template_directory_uri() . '/assets/img/definition.jpg</h3><p>' . $atts['definition'] . '</p></div>';
 };
-add_shortcode( 'define_term', 'tdefine_term_func' );
+add_shortcode( 'define_term', 'define_term_func' );
 
 
 function photo_divider_func( $atts, $content = null ){
