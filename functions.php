@@ -13,6 +13,8 @@ require_once locate_template( '/inc/rewrites.php' );
 
 require_once locate_template( '/inc/ajax.php' );
 
+require_once locate_template( '/inc/signature-story-fun.php' );
+
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
 function amethyst_enqueue_dashicons() {
@@ -545,8 +547,13 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 38568;
     }
+    
+    if (is_page_template('templates/future-grad-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38585;
+    }
 
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
+	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( $ancestor ) ) {
@@ -561,11 +568,15 @@ function coenv_banner() {
 	$thumb_id = get_post_thumbnail_id( $page_id );
 	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
-
-	$banner = array(
-		'url' => $image_src[0],
-		'permalink' => get_permalink( $attachment_post_obj->ID ),
-	);
+    
+  if (is_page_template('templates/signature-story.php')) {
+      $thumb_id_custom = get_field('banner_image');
+      $image_src = wp_get_attachment_image_src( $thumb_id_custom, 'banner' );
+  }
+  $banner = array(
+    'url' => $image_src[0],
+    'permalink' => get_permalink( $attachment_post_obj->ID ),
+  );
 
 	return $banner;
 }
@@ -1033,7 +1044,7 @@ function remove_faculty_search( $query ) {
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
 
-if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
+if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'environment.uw.local' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
     function cdn_upload_url() {
         return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
     }

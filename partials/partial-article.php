@@ -5,7 +5,7 @@
 ?>
 <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-	<header class="article__header">
+	<header class="article__header" id="#share-<?php the_ID() ?>">
         <div class="article__meta">
    		<?php if ( !is_page() && !is_singular('intranet') ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
@@ -19,6 +19,7 @@
 		<?php endif ?>
 
 		<?php if ( is_page() || is_single() ) : ?>
+      <!--<div class="post-info subtitle"><p><?php echo get_field('feature_label'); ?></p></div>-->
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>
 			<h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>

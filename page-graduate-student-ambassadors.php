@@ -1,6 +1,6 @@
 <?php
 /**
- Template Name: Student Ambassador Page
+ * graduate student ambassadors
  *
  * The main page template edited for ambassador profiles
  */
@@ -53,20 +53,14 @@ $ancestor = array(
                     </header>                 
                     
                     <?php
-
+                        
+                        // First Placement Query
                         $args = array(
                             'post_type'     =>  'student_ambassadors',
                             'post_status'   =>  'publish',
-                            'orderby'		=>  'title',
+                            'orderby'		=>  'name',
                             'order'			=>  'ASC',
                             'posts_per_page' => -1,
-                            'tax_query' => array(
-                                array(
-                                    'taxonomy' => 'student_type',
-                                    'field'    => 'slug',
-                                    'terms'    => 'undergraduate-student',
-                                ),
-                            ),
                         );
                         
                         // Search filters
@@ -83,7 +77,7 @@ $ancestor = array(
                             <?php the_content(); ?>
                        </div>
 
-                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduate-ambassadors/">
+                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/students/meet-our-students/undergraduates/student-ambassadors/">
                           <div class="field-wrap">
                             <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, ROTC, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
@@ -136,4 +130,3 @@ $ancestor = array(
 var accordionShortcodesSettings = [{"id":"bio","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>
-

@@ -53,13 +53,13 @@ form {
 
 		input[type="text"] {
 			@include rem('padding', 0, 0.5);
-			width: 85%;
+			width: 80%;
 			border-radius: $radius 0 0 $radius;
 		}
 
 		button[type="submit"] {
 			@include rem('padding', 0, 0.5);
-			width: 15%;
+			width: 20%;
 			text-align: center;
 			background: #ddd;
 			border-radius: 0 $radius $radius 0;
