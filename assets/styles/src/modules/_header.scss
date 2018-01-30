@@ -58,11 +58,11 @@
 	} // .has-banner &
 
 	// top level pages have bigger banners
-	.page-top-level.has-banner & {
+	.page-top-level.has-banner & , .post-template-signature-story &{
 		padding-bottom: 25%;
 	}
 
-	.has-banner.banner-revealed & {
+	.has-banner.banner-revealed &  {
 		padding-bottom: 50% !important;
 		background-size: contain;
 		cursor: pointer;

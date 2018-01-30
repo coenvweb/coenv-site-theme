@@ -34,6 +34,7 @@ gulp.task('main_js', function () {
             './assets/scripts/src/features.js',
             './assets/scripts/src/blog.js',
             './assets/scripts/src/share.js',
+            './assets/scripts/src/acf-gmaps.js',
             './assets/scripts/src/main.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))

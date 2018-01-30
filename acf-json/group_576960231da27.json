@@ -1,7 +1,36 @@
 {
     "key": "group_576960231da27",
-    "title": "Story Source",
+    "title": "Story Fields",
     "fields": [
+        {
+            "key": "field_5a1f47113efe8",
+            "label": "Feature Label",
+            "name": "feature_label",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "0": "Choose one",
+                "Signature Story": "Signature Story",
+                "Video": "Video",
+                "Dean's Letter": "Dean's Letter"
+            },
+            "default_value": [
+                0
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
         {
             "key": "field_537638937d170",
             "label": "Story Link (URL)",
@@ -64,5 +93,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1467816489
+    "modified": 1512069688
 }

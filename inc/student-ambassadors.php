@@ -7,15 +7,15 @@ add_action( 'init', 'coenv_register_student_ambassadors' );
 function coenv_register_student_ambassadors() {
 
 	$labels = array(
-		'name' => __( 'Student Ambassadors' ),
-		'singular_name' => __( 'Student Ambassador' ),
-		'add_new' => __( 'Add New Student Ambassador' ),
-		'edit_item' => __( 'Edit Student Ambassador' ),
-		'add_new_item' => __( 'New Student Ambassador' ),
-		'view_item' => __( 'View Student Ambassador' ),
-		'search_items' => __( 'Search Student Ambassadors' ),
-		'not_found' => __( 'No Student Ambassadors found' ),
-		'not_found_in_trash' => __( 'No Student Ambassadors found in Trash' )
+		'name' => __( 'Student Profiles' ),
+		'singular_name' => __( 'Student Profile' ),
+		'add_new' => __( 'Add New Student Profile' ),
+		'edit_item' => __( 'Edit Student Profile' ),
+		'add_new_item' => __( 'New Student Profile' ),
+		'view_item' => __( 'View Student Profile' ),
+		'search_items' => __( 'Search Student Profiles' ),
+		'not_found' => __( 'No Student Profiles found' ),
+		'not_found_in_trash' => __( 'No Profiles found in Trash' )
 	);
 
 	$rewrite = array(
@@ -56,6 +56,45 @@ function coenv_register_student_ambassadors() {
 	register_post_type( 'student_ambassadors', $args );
 }
 
+function taxonomy_student_type() {
+
+	$labels = array(
+		'name'                       => _x( 'Student Types', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Student Type', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Student Type', 'text_domain' ),
+		'all_items'                  => __( 'All Student Types', 'text_domain' ),
+		'parent_item'                => __( 'Parent Student Type', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Student Type:', 'text_domain' ),
+		'new_item_name'              => __( 'New Student Type', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Student Type', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Student Type', 'text_domain' ),
+		'update_item'                => __( 'Update Student Type', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate Student Types with commas', 'text_domain' ),
+		'search_items'               => __( 'Search Student Types', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove Student Types', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most used Student Types', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+        
+      'capabilities' => array(
+        'assign_terms' => 'publish_student_ambassadors',
+        'edit_terms' => 'publish_student_ambassadors',
+        'manage_terms' => 'publish_student_ambassadors',
+        'delete_terms' => 'publish_student_ambassadors',
+      ),
+	);
+	register_taxonomy( 'student_type', array( 'student_ambassadors' ), $args );
+
+}
+add_action( 'init', 'taxonomy_student_type', 0 );
 
 
 function taxonomy_student_tag() {
