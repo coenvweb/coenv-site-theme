@@ -227,13 +227,13 @@ function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'src' => 'none',
     ), $atts );
-    preg_match_all('/https?\:\/\/[^\",]+/i', $content, $matches);
-    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0][0] . ')"></div>';
-        if (isset($matches[1])) {
-        $output .= '</section><div class="photo-divider" style="background-image:url(' . $matches[1][0] . ')"></div><section class="article__content">';
+    preg_match_all('/wp-image-([\d]+)/', $content, $matches);
+    $output = '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_image_src($matches[1][0]) . ')"></div>';
+        if (isset($matches[3][0])) {
+        $output .= '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_image_src($matches[3][0]). ')"></div><section class="article__content">';
     } else {
         $output .= '<section class="article__content">';
     }
-    return $output . print_r($matches);
+    return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
