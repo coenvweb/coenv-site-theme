@@ -233,15 +233,3 @@ function photo_divider_func( $atts, $content = null ){
     return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
-
-function photo_divider_func( $atts, $content = null ){
-    $a = shortcode_atts( array(
-        'src' => 'none',
-    ), $atts );
-    $regex = '/https?\:\/\/[^\" ]+/i';
-    preg_match($regex, $content, $matches);
-    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0] . ')"></div>';
-
-    return $output;
-};
-add_shortcode( 'photo_divider', 'photo_divider_func' );
