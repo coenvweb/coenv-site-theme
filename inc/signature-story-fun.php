@@ -228,9 +228,9 @@ function photo_divider_func( $atts, $content = null ){
         'src' => 'none',
     ), $atts );
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
+    $output = '</section><div class="photo-divider photo-divider-1" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
         if (isset($matches[1][1])) {
-        $output .= '<div class="photo-divider" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
+        $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
     } else {
         $output .= '<section class="article__content">';
     }
