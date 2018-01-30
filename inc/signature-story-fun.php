@@ -229,11 +229,11 @@ function photo_divider_func( $atts, $content = null ){
     ), $atts );
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
     $output = '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
-        if (isset($matches[3][0])) {
-        $output .= '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_url($matches[3][0]) . ')"></div><section class="article__content">';
+        if (isset($matches[1][1])) {
+        $output .= '</section><div class="photo-divider" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
     } else {
         $output .= '<section class="article__content">';
     }
-    return $output . print_r($matches);
+    return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
