@@ -659,6 +659,9 @@
     .photo-divider-1 {
         margin-bottom: 0;
         background-attachment: inherit;
+        min-height: 31vw;
+        background-size: contain;
+        background-position: bottom;
     }
     .photo-divider-2 {
         margin-top: 0;
