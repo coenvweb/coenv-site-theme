@@ -227,11 +227,10 @@ function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'src' => 'none',
     ), $atts );
-    $regex = '/https?\:\/\/[^\" ]+/i';
-    preg_match($regex, $content, $matches);
-    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0] . ')"></div>';
+    preg_match_all('/https?\:\/\/[^\",]+/i', $content, $matches);
+    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0][0] . ')"></div>';
         if (isset($matches[1])) {
-        $output .= '</section><div class="photo-divider" style="background-image:url(' . $matches[1] . ')"></div><section class="article__content">';
+        $output .= '</section><div class="photo-divider" style="background-image:url(' . $matches[1][0] . ')"></div><section class="article__content">';
     } else {
         $output .= '<section class="article__content">';
     }
