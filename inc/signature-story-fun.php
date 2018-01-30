@@ -234,6 +234,6 @@ function photo_divider_func( $atts, $content = null ){
     } else {
         $output .= '<section class="article__content">';
     }
-    return $output;
+    return $output . print_r($matches);
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
