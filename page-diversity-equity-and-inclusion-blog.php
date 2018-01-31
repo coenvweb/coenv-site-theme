@@ -1,8 +1,6 @@
 <?php
 /**
- * page.php
- *
- * The main page template
+ * Intranet - Diversity Equity Inclusion
  */
 get_header();
 
@@ -90,16 +88,10 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
                     'post_status' => 'publish',
                     'posts_per_page' => 10,
                     'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'topic',
-                            'terms' => 1239
-                        ),
                         array(
                             'taxonomy' => 'topic',
                             'terms' => 'diversity-equity-and-inclusion',
                             'field' => 'slug',
-                            'operator' => 'NOT IN',
                         ),
                     ),
                     'paged' => $paged,
