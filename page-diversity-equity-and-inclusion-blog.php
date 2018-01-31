@@ -43,7 +43,7 @@ $coenv_search_terms = urlencode(htmlentities($coenv_search_terms));
 ?>
 
 
-	<section id="page" role="main" class="template-page">
+	<section id="page" role="main" class="template-page intranet-blog">
 
 		<div class="container">
 
