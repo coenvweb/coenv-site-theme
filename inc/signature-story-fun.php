@@ -226,7 +226,7 @@ function define_term_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'definition' => '',
     ), $atts );
-return '<div class="element left element-content define-element"><h3><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"></h3>' . $atts['definition'] . '</div><span class="define_term"><a>' . $content . '</a></span>';
+return '<span class="element left element-content define-element"><h3><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"></h3>' . $atts['definition'] . '</span><span class="define_term"><a>' . $content . '</a></span>';
 };
 add_shortcode( 'define_term', 'define_term_func' );
 
