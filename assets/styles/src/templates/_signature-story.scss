@@ -87,7 +87,7 @@
         border: 3px solid #666;
         background-color: transparent;
     }
-    .article__content .element-wrapper, .article__content > .element {
+    .article__content .element-wrapper, .article__content > .element, .article__content > p > .element, .article__content > p > .define-term > .element{
         position: relative;
          @include min-width ( 1200 ) {
             &.right {
