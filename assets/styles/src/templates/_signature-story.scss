@@ -575,6 +575,8 @@
             }
             .define-element {
                 visibility: hidden;
+                opacity: 0;
+                left: 1rem;
                 .underline {
                     position: relative;
                     margin-bottom: 2rem;
@@ -601,31 +603,15 @@
                     display: block;
                     margin-top: 1.5rem;
                 }
-            }
-            &:hover {
-                .define-element {
-                    visibility: visible;
-                }
-            }
-        @include max-width ( 800 ) {
-            &:after {
-                display: none;                
-            }
-            &:before {
-               visibility: visible;
-               opacity: 1;
-               color: rgba(1,1,1,.2);
-                font-size: 1.3rem;
-                margin-left: -26px;
-                background: none;
-                position: initial;
+            @include max-width ( 800 ) {
+                display: none;
             }
         }
         &:hover {
-           &:before, &:after{
-               visibility: visible;
-               opacity: 1;
-               transition: visibility 0s, opacity 0.5s linear;
+            .define-element {
+                visibility: visible;
+                opacity: 1;
+                transition: visibility 0s, opacity 0.5s linear;
             }
         }
     }
