@@ -560,6 +560,75 @@
             }
         }
     }
+        
+        .define-term {
+            a {
+                position: relative;
+                text-decoration: none;
+                background-color: rgba(1,1,1,.05);
+                border-bottom: 1px solid grey;
+                color: $text;
+                font-size: 1.1rem;
+                line-height: 2rem;
+                margin-bottom: 2.5rem;
+                cursor: pointer;
+            }
+            .define-element {
+                visibility: hidden;
+                .underline {
+                    position: relative;
+                    margin-bottom: 2rem;
+                    &:before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 3rem;
+                        border-top: .25rem solid #000;
+                        top: 1.5rem;
+                    }
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 5rem;
+                        border-top: .25rem solid #000;
+                        transform: skewX(-15deg);
+                        top: 1.5rem;
+                        right: -15px;
+                    }
+                }
+                .definition-text {
+                    display: block;
+                    margin-top: 1.5rem;
+                }
+            }
+            &:hover {
+                .define-element {
+                    visibility: visible;
+                }
+            }
+        @include max-width ( 800 ) {
+            &:after {
+                display: none;                
+            }
+            &:before {
+               visibility: visible;
+               opacity: 1;
+               color: rgba(1,1,1,.2);
+                font-size: 1.3rem;
+                margin-left: -26px;
+                background: none;
+                position: initial;
+            }
+        }
+        &:hover {
+           &:before, &:after{
+               visibility: visible;
+               opacity: 1;
+               transition: visibility 0s, opacity 0.5s linear;
+            }
+        }
+    }
 
         //photos
     .article__content .wp-caption {
