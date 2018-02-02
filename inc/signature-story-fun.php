@@ -35,7 +35,11 @@ function element_func( $atts ){
         $photo_holder = '';
         foreach ($photos as $photo) {
             if (!$primary_link) {
-                $top_link = $photo['url'];
+                if ($element_type !== 'content_block') {
+                    $top_link = $photo['url'];
+                } else {
+                    $top_link = '';
+                }
                 $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
             } else {
                 $top_link = $primary_link;
