@@ -217,7 +217,8 @@ function tweetable_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'alter' => '',
     ), $atts );
-    if (isset($atts['alter'])) {
+   
+     if (isset($atts['alter'])) {
         $tweet_text = $atts['alter'];
     }else {
         $tweet_text = $content;
@@ -237,11 +238,16 @@ add_shortcode( 'define_term', 'define_term_func' );
 
 function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
-        'src' => 'none',
-        'type' => 'default',
+        'src' => '',
+        'class' => '',
     ), $atts );
+     if (isset($atts['class'])) {
+        $divider_class = $atts['class'];
+    }else {
+        $divider_class = 'default';
+    }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section><div class="photo-divider photo-divider-1' . $atts['type'] . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
+    $output = '</section><div class="photo-divider photo-divider-1' . $divider_class . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
         if (isset($matches[1][1])) {
         $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
     } else {
