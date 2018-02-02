@@ -37,7 +37,7 @@ function element_func( $atts ){
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
             if (!$primary_link) {
                 if ($element_type == 'gallery') {
-                    $top_link = $photo['url'];
+                    $top_link = $photo_url;
                     $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
                     $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
                 } else {
@@ -46,6 +46,7 @@ function element_func( $atts ){
                 
             } else {
                 $top_link = $primary_link;
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
             }
             
         }
