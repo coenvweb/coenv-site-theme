@@ -576,7 +576,8 @@
             .define-element {
                 visibility: hidden;
                 opacity: 0;
-                left: 1rem;
+                left: 2rem;
+                margin-top: -5rem;
                 .underline {
                     position: relative;
                     margin-bottom: 2rem;
@@ -585,7 +586,7 @@
                         display: block;
                         position: absolute;
                         width: 3rem;
-                        border-top: .25rem solid #000;
+                        border-top: .3rem solid #000;
                         top: 1.5rem;
                     }
                     &:after {
@@ -642,6 +643,12 @@
         @include max-width ( 800 ) {
             background-attachment: inherit;
         }
+    }
+    
+    .parallax {
+        background-attachment: fixed!important;
+        background-size: cover!important;
+        background-position: center!important;
     }
 }
 
@@ -725,10 +732,4 @@
     .big-element.element-call_to_action {
         margin-top: 0;
     }
-}
-
-.parallax {
-    background-attachment: fixed!important;
-    background-size: cover!important;
-    background-position: center!important;
 }
