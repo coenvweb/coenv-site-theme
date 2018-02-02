@@ -35,7 +35,7 @@ function element_func( $atts ){
         $photo_holder = '';
         foreach ($photos as $photo) {
             if (!$primary_link) {
-                if ($element_type !== 'content_block') {
+                if ($element_type !== 'gallery') {
                     $top_link = $photo['url'];
                 } else {
                     $top_link = '';
