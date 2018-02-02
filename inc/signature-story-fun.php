@@ -238,7 +238,7 @@ add_shortcode( 'define_term', 'define_term_func' );
 function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'src' => 'none',
-        'class' => 'default',
+        'type' => 'default',
     ), $atts );
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
     $output = '</section><div class="photo-divider photo-divider-1' . $atts['class'] . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
