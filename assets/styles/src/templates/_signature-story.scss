@@ -724,6 +724,9 @@
         min-height: 31vw;
         background-size: contain;
         background-position: bottom;
+        &.parallax {
+            margin-top: 0;
+        }
     }
     .photo-divider-2 {
         margin-top: 0;
