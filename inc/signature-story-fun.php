@@ -34,20 +34,20 @@ function element_func( $atts ){
     if( !empty($photos) ){
         $photo_holder = '';
         foreach ($photos as $photo) {
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
             if (!$primary_link) {
                 if ($element_type == 'gallery') {
                     $top_link = $photo['url'];
                     $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
+                    $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
                 } else {
-                    $top_link = '';
-                    $gallery = '';
+                    $photo_holder .= wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
                 }
                 
             } else {
                 $top_link = $primary_link;
             }
-            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+            
         }
     } else {
         // no rows found
