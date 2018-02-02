@@ -603,6 +603,7 @@
                 .definition-text {
                     display: block;
                     margin-top: 1.5rem;
+                    padding-right: 2rem;
                 }
             @include max-width ( 800 ) {
                 display: none;
