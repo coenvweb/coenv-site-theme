@@ -87,7 +87,7 @@
         border: 3px solid #666;
         background-color: transparent;
     }
-    .article__content .element-wrapper, .article__content > .element {
+    .article__content .element-wrapper, .article__content > .element, .article__content > p > .element, .article__content > p > .define-term > .element{
         position: relative;
          @include min-width ( 1200 ) {
             &.right {
@@ -627,5 +627,47 @@
         p img:nth-of-type(2) {
             display: block;
         }
+    }
+}
+
+.element-green-crabs-are-survivors {
+    img {
+        display: none;
+    }
+    @include min-width ( 800 ) {
+        p img:nth-of-type(1) {
+            display: block;
+        }
+        p img:nth-of-type(2) {
+                display: none;
+        }
+    }
+    @include max-width ( 800 ) {
+        p img:nth-of-type(1) {
+            display: none;
+        }
+        p img:nth-of-type(2) {
+            display: block;
+        }
+    }
+}
+
+
+//ess field camp
+
+.postid-59849 {
+    .photo-divider-1 {
+        margin-bottom: 0;
+        background-attachment: inherit;
+        min-height: 31vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+    .photo-divider-2 {
+        margin-top: 0;
+    }
+    
+    .big-element.element-call_to_action {
+        margin-top: 0;
     }
 }
