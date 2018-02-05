@@ -560,6 +560,63 @@
             }
         }
     }
+        
+        .define-term {
+            a {
+                position: relative;
+                text-decoration: none;
+                background-color: rgba(1,1,1,.05);
+                border-bottom: 1px solid grey;
+                color: $text;
+                font-size: 1.1rem;
+                line-height: 2rem;
+                margin-bottom: 2.5rem;
+                cursor: pointer;
+            }
+            .define-element {
+                visibility: hidden;
+                opacity: 0;
+                left: 2rem;
+                margin-top: -5rem;
+                .underline {
+                    position: relative;
+                    margin-bottom: 2rem;
+                    &:before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 3rem;
+                        border-top: .3rem solid #000;
+                        top: 1.5rem;
+                    }
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 5rem;
+                        border-top: .25rem solid #000;
+                        transform: skewX(-15deg);
+                        top: 1.5rem;
+                        right: -15px;
+                    }
+                }
+                .definition-text {
+                    display: block;
+                    margin-top: 1.5rem;
+                    padding-right: 2rem;
+                }
+            @include max-width ( 800 ) {
+                display: none;
+            }
+        }
+        &:hover {
+            .define-element {
+                visibility: visible;
+                opacity: 1;
+                transition: visibility 0s, opacity 0.5s linear;
+            }
+        }
+    }
 
         //photos
     .article__content .wp-caption {
@@ -587,6 +644,12 @@
         @include max-width ( 800 ) {
             background-attachment: inherit;
         }
+    }
+    
+    .parallax {
+        background-attachment: fixed!important;
+        background-size: cover!important;
+        background-position: center!important;
     }
 }
 
@@ -662,9 +725,19 @@
         min-height: 31vw;
         background-size: contain;
         background-position: bottom;
+        &.parallax {
+            margin-top: 0;
+        }
     }
     .photo-divider-2 {
         margin-top: 0;
+    }
+    
+    .big-element.element-map .acf-map-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
     }
     
     .big-element.element-call_to_action {
