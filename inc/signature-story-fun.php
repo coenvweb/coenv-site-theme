@@ -222,14 +222,26 @@ return '<span class="tweetable"><a href="http://twitter.com/home?status=' . $twe
 };
 add_shortcode( 'tweetable', 'tweetable_func' );
 
+function define_term_func( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'definition' => '',
+    ), $atts );
+return '<span class="define-term"><a>' . $content . '</a><span class="element left element-content define-element"><span><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"></span><br>' . $atts['definition'] . '</span></span>';
+};
+add_shortcode( 'define_term', 'define_term_func' );
+
 
 function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'src' => 'none',
     ), $atts );
-    $regex = '/https?\:\/\/[^\" ]+/i';
-    preg_match($regex, $content, $matches);
-    $output = '</section><div class="photo-divider" style="background-image:url(' . $matches[0] . ')"></div><section class="article__content">';
+    preg_match_all('/wp-image-([\d]+)/', $content, $matches);
+    $output = '</section><div class="photo-divider photo-divider-1" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
+        if (isset($matches[1][1])) {
+        $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
+    } else {
+        $output .= '<section class="article__content">';
+    }
     return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
