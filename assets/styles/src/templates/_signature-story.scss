@@ -731,9 +731,25 @@
     .play-pause-hero {
         color: white;
         padding: .5rem;
-        margin-top: .5rem;
-        margin-right: .5rem;
+        margin-bottom: 1.5rem;
+        margin-right: 1.5rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    .fi-play {
+        color: #fff;
+        height: 33px;
+        width: 33px;
+        position: absolute;
         font-size: 2rem;
+    }
+    .fi-pause {
+        color: #fff;
+        height: 33px;
+        width: 33px;
+        position: absolute;
+        font-size: 1rem;
     }
 }
 

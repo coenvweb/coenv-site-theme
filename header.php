@@ -181,17 +181,17 @@
 
                 </nav><!-- #top-nav -->
                 
-                <?php if ($post->ID == '59849') { ?>
+                <?php if ($post->ID == '59849' || $post->ID == '60011' ) { ?>
                 <div class="feature homepage-hero-module">
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
-                        <video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="/wp-content/themes/coenv-fhl/assets/video/ess-video.jpg">
                         <?php
+                            echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg">';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '</video>';
                          ?>
-                        </video>
                         <div class="poster visuallyhidden">
                             <?php
                             echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg" alt="">';
