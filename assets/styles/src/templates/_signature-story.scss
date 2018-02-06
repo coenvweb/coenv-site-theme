@@ -125,6 +125,10 @@
    
     //elements 
     
+    .element-wrapper {
+        max-width: 253px;
+    }
+    
     .element-wrapper .element:not(:first-child) {
         margin-top: 1rem;
         &:before {
