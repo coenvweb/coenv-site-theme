@@ -588,7 +588,7 @@
                         display: block;
                         position: absolute;
                         width: 3rem;
-                        border-top: .3rem solid #000;
+                        border-top: .25rem solid #000;
                         top: 1.5rem;
                     }
                     &:after {
@@ -606,6 +606,9 @@
                     display: block;
                     margin-top: 1.5rem;
                     padding-right: 2rem;
+                    line-height: 1.5rem;
+                    font-size: 1rem;
+                    letter-spacing: .5px;
                 }
             @include max-width ( 800 ) {
                 display: none;

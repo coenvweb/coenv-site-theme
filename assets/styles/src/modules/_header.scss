@@ -183,7 +183,6 @@
 	background: $white;
 	@extend .shadow;
 	@extend .hide-on-banner-reveal;
-position: relative;
 
 	@include min-width ( $iPadLandscape ) {
 		display: block;
@@ -201,10 +200,10 @@ position: relative;
 		}
 
 		@include min-width ( 580 ) {
-			float: left;
-			display: block;
-			width: 502px;
-            max-height: 99px;
+        float: left;
+        display: block;
+        width: 502px;
+        max-height: 99px;
 		}
 
 		// take care of ~1px white space to the right of the logo
