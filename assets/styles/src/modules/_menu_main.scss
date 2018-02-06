@@ -417,7 +417,7 @@
 			text-transform: uppercase;
 			letter-spacing: 0.1em;
 			font-weight: 600;
-            
+      background: $white;
             @include min-width ( 1080 ) {
                 @include font-size(13);
             }
