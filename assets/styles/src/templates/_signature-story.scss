@@ -1,4 +1,4 @@
-.template-signature-story {
+.post-template-signature-story {
 
     .article {
         padding: 0;
@@ -587,6 +587,63 @@
         @include max-width ( 800 ) {
             background-attachment: inherit;
         }
+    }
+    
+    //video header
+
+    .no-video .video-container video {
+        display: none!important;
+    }
+    .no-video .video-container .poster {
+        display: block !important;
+    }
+    .video-container {
+        position: relative;
+        bottom: 0%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        display: table;
+        background: #000;
+        .poster img {
+                max-width: none;
+                top: -50%;
+                position: absolute;
+                width: 225%;
+                left: -100%;
+        }
+        .filter {
+            z-index: 100;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+        }
+        #hero-video {
+            position: absolute;
+            height: 100%;
+            z-index: 0;
+            bottom: 0;
+            opacity: 1;
+            transition: 1s opacity;
+            object-fit: cover;
+            &.fullfade {
+                opacity: 0;
+            }
+            &.fade {
+                opacity: .7;
+            }
+        }
+        video.fillWidth {
+            width: 100%;
+        }
+    }
+    .play-pause-hero {
+        color: white;
+        padding: .5rem;
+        margin-top: .5rem;
+        margin-right: .5rem;
+        font-size: 2rem;
     }
 }
 
