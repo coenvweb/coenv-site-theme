@@ -8,6 +8,10 @@
 }
 .majors-minors-section {
     padding-top: 0;
+    
+    img {
+        transition-duration: .3s;
+    }
 }
 
 
@@ -183,10 +187,6 @@
         transition: width .3s;
         width: 100%!important;
     }
-
-img {
-    transition-duration: .3s;
-}
 
 .major-title {
     position: absolute;
