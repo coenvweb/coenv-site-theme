@@ -34,14 +34,21 @@ function element_func( $atts ){
     if( !empty($photos) ){
         $photo_holder = '';
         foreach ($photos as $photo) {
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
             if (!$primary_link) {
-                $top_link = $photo['url'];
-                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
+                if ($element_type == 'gallery') {
+                    $top_link = $photo_url;
+                    $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
+                    $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+                } else {
+                    $photo_holder .= wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+                }
+                
             } else {
                 $top_link = $primary_link;
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
             }
-            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+            
         }
     } else {
         // no rows found
@@ -213,7 +220,8 @@ function tweetable_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'alter' => '',
     ), $atts );
-    if (isset($atts['alter'])) {
+   
+     if (isset($atts['alter'])) {
         $tweet_text = $atts['alter'];
     }else {
         $tweet_text = $content;
@@ -226,17 +234,23 @@ function define_term_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'definition' => '',
     ), $atts );
-return '<span class="define-term"><a>' . $content . '</a><span class="element left element-content define-element"><span><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"></span><br>' . $atts['definition'] . '</span></span>';
+return '<span class="define-term"><span class="element left element-content define-element"><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"><i class="underline"></i><span class="definition-text"><strong>'. $content  . ':</strong> ' . $atts['definition'] . '</span></span><a>' . $content . '</a></span>';
 };
 add_shortcode( 'define_term', 'define_term_func' );
 
 
 function photo_divider_func( $atts, $content = null ){
     $a = shortcode_atts( array(
-        'src' => 'none',
+        'src' => '',
+        'class' => '',
     ), $atts );
+     if (isset($atts['class'])) {
+        $divider_class = $atts['class'];
+    }else {
+        $divider_class = 'default';
+    }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section><div class="photo-divider photo-divider-1" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
+    $output = '</section><div class="photo-divider photo-divider-1 ' . $divider_class . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"></div>';
         if (isset($matches[1][1])) {
         $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"></div><section class="article__content">';
     } else {
