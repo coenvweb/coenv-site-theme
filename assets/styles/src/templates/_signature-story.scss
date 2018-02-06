@@ -648,6 +648,30 @@
         }
     }
     
+    p.small-text {
+        position: relative;
+        margin-top: 3rem;
+        font-size: 80%!important;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -1.5rem;
+            border-top: 0.25rem solid rgb(102, 102, 102);
+            width: 5rem;
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -1.5rem;
+            border-top: 0.25rem solid rgb(102, 102, 102);
+            width: 7rem;
+            transform: skewX(-15deg);
+            left: 30px;
+        }
+    }
+    
     //video header
 
     .no-video .video-container video {
