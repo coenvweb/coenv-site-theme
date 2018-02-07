@@ -849,7 +849,7 @@
             margin-top: .5rem;
             &:hover {
                 background-color: darken($accent-red, 10%)!important;
-                color: white;
+                color: white!important;
             }
         }
     }
