@@ -42,9 +42,9 @@
 				)) ?>
 			</select>
 	</div>
+	<?php $coenv_post_count = $wp_query->found_posts;  ?>
 	<?php if (is_tax() || is_date()) { ?>
 		<div class="results-text">
-			<?php $coenv_post_count = $GLOBALS['wp_query']->found_posts;  ?>
 			<?php if ($queried_object->taxonomy == 'topic') { ?>
 				<p><?php echo $coenv_post_count; ?> news posts related to <span class="term-name"> <?php echo single_cat_title( '', true ); ?> </span></p>
 				<p class="all-news"><a href="/news/" class="button">Return to News</a></p>
