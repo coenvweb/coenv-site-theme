@@ -183,6 +183,8 @@
 	background: $white;
 	@extend .shadow;
 	@extend .hide-on-banner-reveal;
+  z-index: 99;
+  position: relative;
 
 	@include min-width ( $iPadLandscape ) {
 		display: block;
