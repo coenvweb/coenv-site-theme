@@ -842,5 +842,15 @@
     
     .big-element.element-call_to_action {
         margin-top: 0;
+        .button:first-of-type {
+            background-color: $accent-red!important;
+            border: 3px solid darken($accent-red, 10%)!important;
+            margin-bottom: 1rem;
+            margin-top: .5rem;
+            &:hover {
+                background-color: darken($accent-red, 10%)!important;
+                color: white!important;
+            }
+        }
     }
 }
