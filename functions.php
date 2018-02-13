@@ -41,11 +41,11 @@ function coenv_styles_and_scripts() {
     if (is_post_type_archive('faculty') || is_singular('faculty')) {
 
         // register faculty scripts, enqueued within template files
-        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main' ), null, true );
+        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main2' ), null, true );
     }
 
     if (is_singular('newsletter') || is_home() || is_page_template('templates/newsletter-archive.php') || is_singular('post')) {
-        wp_register_script( 'coenv-munchkin', get_template_directory_uri() . '/assets/scripts/build/munchkin.min.js', array( 'coenv-main' ), null, true );
+        wp_register_script( 'coenv-munchkin', get_template_directory_uri() . '/assets/scripts/build/munchkin.min.js', array( 'coenv-main2' ), null, true );
         wp_enqueue_script('coenv-munchkin');
     }
 
