@@ -120,6 +120,15 @@
                 margin-left: calc(-24vw - 1rem);
             }
         }
+        @include min-width ( 600 ) {
+            position: relative;
+            &.right {
+                float: none!important;
+            }
+            &.left {
+                float: none!important;
+            }
+        }
 
     }
    
@@ -827,6 +836,14 @@
         background-position: bottom;
         &.parallax {
             margin-top: 0;
+        }
+        
+        &.mobile-zoom {
+            @include max-width ( 800 ) {
+                min-height: 42vw;
+                background-size: 170%;
+                background-position: bottom;
+            }
         }
     }
     .photo-divider-2 {
