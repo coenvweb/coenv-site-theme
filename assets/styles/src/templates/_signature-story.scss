@@ -379,7 +379,7 @@
             width: 50%;
             padding: 0 0 1rem 0;
             &:before {
-                content: 'click images to load gallery';
+                content: 'click image to load gallery';
                 position: relative;
                 float: right;
                 display: block;
@@ -393,6 +393,9 @@
                 margin-bottom: 1rem;
             }
             a {
+                &:hover {
+                    opacity: .8; 
+                }
                 &:nth-of-type(2) img, &:nth-of-type(3) img, &:nth-of-type(4) img, &:nth-of-type(5) img {
                     width: 253px;
                     @include min-width ( 800 ) {
