@@ -878,12 +878,10 @@
     
     .element-beyond-my-field-notes {
         .button {
-            background-color: $accent;
-            border: 3px solid lighten($accent, 10%)!important;
-            color: white;
+            background-color: #f5c902;
+            border: 3px solid #e4bd0b!important;
             &:hover {
-                background-color: 3px solid lighten($accent, 10%)!important;
-                color: white;
+                background-color: 3px solid lighten(#f5c902, 10%)!important;
             }
         }
     }
