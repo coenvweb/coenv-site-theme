@@ -378,19 +378,19 @@
             max-width: 640px;
             width: 50%;
             padding: 0 0 1rem 0;
+            &:before {
+                content: 'click images to load gallery';
+                position: relative;
+                float: right;
+                display: block;
+                bottom: .5rem;
+                right: 2.5rem;
+                color: #666;
+                font-size: .8rem;
+            }
             @include max-width ( 800 ) {
                 width: 100%;
                 margin-bottom: 1rem;
-                &:before {
-                    content: 'touch image to load gallery';
-                    position: relative;
-                    float: right;
-                    display: block;
-                    bottom: .5rem;
-                    right: 2.5rem;
-                    color: #666;
-                    font-size: .8rem;
-                }
             }
             a {
                 &:nth-of-type(2) img, &:nth-of-type(3) img, &:nth-of-type(4) img, &:nth-of-type(5) img {
