@@ -120,8 +120,14 @@
                 margin-left: calc(-24vw - 1rem);
             }
         }
+        @include max-width ( 800 ) {
+            img {
+                padding: 1rem;
+            }
+        }
         @include max-width ( 600 ) {
             position: relative;
+            width: 100%;
             &.right {
                 float: none!important;
             }
