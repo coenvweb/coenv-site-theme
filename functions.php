@@ -34,8 +34,8 @@ function coenv_styles_and_scripts() {
 	}
 
 	// include theme scripts in footer
-	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', null, true );
-	wp_enqueue_script( 'coenv-main' );
+	wp_register_script( 'coenv-main2', get_template_directory_uri() . '/assets/scripts/build/main2.min.js', null, true );
+	wp_enqueue_script( 'coenv-main2' );
     
     
     if (is_post_type_archive('faculty') || is_singular('faculty')) {
@@ -50,7 +50,7 @@ function coenv_styles_and_scripts() {
     }
 
 	// make variables available to theme scripts
-	wp_localize_script( 'coenv-main', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
+	wp_localize_script( 'coenv-main2', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
 }
 
 require_once locate_template( '/inc/faculty.php' );
