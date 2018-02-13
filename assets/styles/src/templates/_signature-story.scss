@@ -449,7 +449,7 @@
                 }
                 
                 &:nth-of-type(3) img, &:nth-of-type(5) img {
-                    top: 187px;
+                    top: 200px;
                     @include max-width ( 1020 ) {
                         top: 18vw;
                     }
