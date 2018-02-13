@@ -715,7 +715,6 @@
         .filter {
             z-index: 100;
             position: absolute;
-            background: rgba(0, 0, 0, 0.8);
             width: 100%;
         }
         #hero-video {
@@ -728,9 +727,6 @@
             object-fit: cover;
             &.fullfade {
                 opacity: 0;
-            }
-            &.fade {
-                opacity: .7;
             }
         }
         video.fillWidth {
