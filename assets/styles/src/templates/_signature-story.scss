@@ -120,7 +120,7 @@
                 margin-left: calc(-24vw - 1rem);
             }
         }
-        @include min-width ( 600 ) {
+        @include max-width ( 600 ) {
             position: relative;
             &.right {
                 float: none!important;
