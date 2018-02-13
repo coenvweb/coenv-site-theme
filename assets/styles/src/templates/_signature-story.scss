@@ -875,4 +875,16 @@
             }
         }
     }
+    
+    .element-beyond-my-field-notes {
+        .button {
+            background-color: $accent;
+            border: 3px solid lighten($accent, 10%)!important;
+            color: white;
+            &:hover {
+                background-color: 3px solid lighten($accent, 10%)!important;
+                color: white;
+            }
+        }
+    }
 }
