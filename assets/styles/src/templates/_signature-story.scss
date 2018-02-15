@@ -881,7 +881,8 @@
             background-color: #f5c902;
             border: 3px solid #e4bd0b!important;
             &:hover {
-                background-color: 3px solid lighten(#f5c902, 10%)!important;
+                background-color: lighten(#f5c902, 10%)!important;
+                color: $text!important;
             }
         }
     }
