@@ -51,7 +51,7 @@
     
 } // .template-blog
 
-.template-blog, .page-id-267, .single-intranet {
+.template-blog, .page-id-267, .single-intranet, .intranet-blog {
 
 	.blog-header {
 		@extend .clearfix;
@@ -102,6 +102,17 @@
 		}
 		
 	} // .blog-header
+    
+    .no-results {
+        p {
+            margin-bottom: 0;
+        }
+        h3 {
+            @include serif;
+            margin-bottom: .5rem;
+            font-weight: 400;
+        }
+    }
     
     .results-text {
         border-top: solid 1px #dfdfdf;

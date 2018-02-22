@@ -43,7 +43,17 @@ $banner = coenv_banner();
 						<?php get_template_part( 'partials/partial', 'story' ) ?>
 
 					<?php endwhile ?>
+                
+                <?php else : ?>
+                	<article <?php post_class( 'article' ) ?>>
 
+                        <header class="article__header">
+                        </header>
+                        <section class="">
+                            <div class="no-results"><h3>No Results Found</h3>
+                            <p>Please try searching with different terms.</p></div>
+                        </section>
+                </article>
 				<?php endif ?>
 
 				<footer class="pagination">
@@ -53,7 +63,7 @@ $banner = coenv_banner();
 			</main><!-- .main-col -->
 
 			<div class="side-col">
-                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter Archive', 'newsletter_url' => 'https://environment.uw.edu/news/the-insider-newsletter')); ?>
+                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter', 'newsletter_url' => 'https://environment.uw.edu/news/college-newsletter')); ?>
 				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 

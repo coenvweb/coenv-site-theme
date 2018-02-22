@@ -12,13 +12,16 @@
 		text-align: center;
 	}
 
-	li {
+	li, span {
 		display: inline-block;
 	}
 
-	li .current {
+	li .current, span.current{
 		@extend .button;
-		background: $accent;
+		background: $accent!important;
+        color: white!important;
+        margin-bottom: .4rem;
+        margin-right: .25rem;
 	}
 
 	a {

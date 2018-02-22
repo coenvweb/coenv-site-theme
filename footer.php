@@ -29,13 +29,19 @@
 
                         <nav class="footer-nav">
                             <!--<h1 class="footer-nav__title">Units and programs</h1>-->
-                            <?php wp_nav_menu( array(
+                            <?php $footer_menu = wp_nav_menu( array(
                                 'theme_location' => 'footer-units',
                                 'depth' => 1,
                                 'menu_class' => 'menu-footer-units',
                                 'container' => false,
-                                'fallback_cb' => false
-                            ) ) ?>
+                                'fallback_cb' => false,
+                                'echo' => false,
+                            ) ); 
+                            $footer_menu = substr($footer_menu, 0, -5);
+                            echo $footer_menu;
+                            echo '<li></li>';
+                            echo '</ul>';
+                            ?>
                         </nav>
 
                 </footer><!-- #footer -->
@@ -44,8 +50,8 @@
                         <div class="layout-container">
                             
                             <div class="be-boundless">
-                                <a href="http://washington.edu/" rel="home" title="University of Washington" target="_blank"><?php include('assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
-                                <a href="http://www.washington.edu/boundless/" rel="home" title="University of Washington - Be Boundless" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
+                                <a href="http://washington.edu/" rel="home" target="_blank"><?php include('assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
+                                <a href="http://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
                             </div>
                             
                             <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://washington.edu/" target="_blank">University of Washington</a></p></div>

@@ -21,6 +21,14 @@
 		color: #fff !important;
 	}
 
+    a {
+        color: $text;
+        text-decoration: none;
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
 	@media print {
         a[href]:after {
             content: " (" attr(href) ")";
@@ -29,7 +37,7 @@
 
 } // .button
 
-.article {
+.article, .side-col {
 	
 	.button {
 		background: $white-button;

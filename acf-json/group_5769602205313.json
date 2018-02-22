@@ -26,7 +26,8 @@
             "ajax": 0,
             "placeholder": "",
             "disabled": 0,
-            "readonly": 0
+            "readonly": 0,
+            "return_format": "value"
         },
         {
             "key": "field_55db53d458124",
@@ -157,5 +158,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1467816466
+    "modified": 1519171831
 }

@@ -13,7 +13,7 @@
     $content_target = '';
 //}
 
-$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'homepage-hero-standard' );
 $feature_caption = get_post_meta(get_post_thumbnail_id(), "_credit_text", true);
 
 $units = get_the_terms( $post->ID, 'unit' );
@@ -38,7 +38,7 @@ $feature = array(
 );
 ?>
 
-<article class="feature loading">
+<article class="feature">
     
     <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
         
@@ -54,7 +54,11 @@ $feature = array(
 		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
 
 			<div class="feature-type">
-
+            <?php
+            if($feature['label']) {
+                echo $feature['label'];
+            }
+            ?>
 			</div><!-- .feature-type -->
 
 			<div class="feature-content">

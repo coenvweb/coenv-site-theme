@@ -51,9 +51,9 @@ $ordered_themes = $themes;
 
 										<div class="Faculty-toolbox-roller-item"><a href="<?php echo $theme['url'] ?>" data-theme="theme-<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></a></div>
 
-									<?php endforeach ?>
+									<?php endforeach; ?>
 
-								<?php endif ?>
+								<?php endif; ?>
 
 					</div><!-- .Faculty-toolbox-roller-items -->
 
@@ -77,7 +77,7 @@ $ordered_themes = $themes;
 								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
                             
                                 <?php endif; ?>
-							<?php endforeach ?>
+							<?php endforeach; ?>
 
 						</select>
 
@@ -92,9 +92,21 @@ $ordered_themes = $themes;
 							<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
 
 							<?php foreach ( $units as $unit ) : ?>
-
-								<option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
-
+                  <?php
+                      $the_query = new WP_Query( array(
+                          'post_type' => 'faculty',
+                          'tax_query' => array(
+                              array(
+                                  'taxonomy' => 'unit',
+                                  'field' => 'slug',
+                                  'terms' => $unit['slug']
+                              )
+                          )
+                      ) );
+                  ?>
+                  <?php if (!$the_query->found_posts == 0) : ?>
+                    <option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
+                  <?php endif; ?>
 							<?php endforeach ?>
 
 						</select>
@@ -106,7 +118,7 @@ $ordered_themes = $themes;
 					<div class="Faculty-toolbox-form-group">
 
 						<div class="field-wrap">
-    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" aria-role="Faculty Search" />
+    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
     						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
   						</div>
 

@@ -58,11 +58,11 @@
 	} // .has-banner &
 
 	// top level pages have bigger banners
-	.page-top-level.has-banner & {
+	.page-top-level.has-banner & , .post-template-signature-story &{
 		padding-bottom: 25%;
 	}
 
-	.has-banner.banner-revealed & {
+	.has-banner.banner-revealed &  {
 		padding-bottom: 50% !important;
 		background-size: contain;
 		cursor: pointer;
@@ -183,6 +183,8 @@
 	background: $white;
 	@extend .shadow;
 	@extend .hide-on-banner-reveal;
+  z-index: 99;
+  position: relative;
 
 	@include min-width ( $iPadLandscape ) {
 		display: block;
@@ -200,10 +202,10 @@
 		}
 
 		@include min-width ( 580 ) {
-			float: left;
-			display: block;
-			width: 502px;
-            max-height: 99px;
+        float: left;
+        display: block;
+        width: 502px;
+        max-height: 99px;
 		}
 
 		// take care of ~1px white space to the right of the logo
@@ -354,24 +356,18 @@
 
 } // .coenv-print-breadcrumbs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+li#wp-admin-bar-revision {
+    div.ab-item {
+        padding: 0 !important;
+        a {
+            color: #eee;
+            background-color: #23282d;
+            border:0;
+            padding: 0 8px 0 7px;
+            &:hover {
+                background: 0 0;
+                color: #006ca2;
+            }
+        }
+    }
+}

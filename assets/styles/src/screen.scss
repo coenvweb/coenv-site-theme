@@ -43,7 +43,6 @@
 /*	Modules
 		======================================================================== */
 @import 'modules/button.scss';
-@import 'modules/contact.scss';
 @import 'modules/media.scss';
 @import 'modules/form.scss';
 @import 'modules/menu_top.scss';
@@ -58,12 +57,15 @@
 @import 'modules/widget_social.scss';
 @import 'modules/widget_events.scss';
 @import 'modules/widget_link.scss';
+@import 'modules/widget_text.scss';
 @import 'modules/faculty-list.scss';
 @import 'modules/faculty-selector.scss';
 @import 'modules/faculty-toolbox.scss';
 @import 'modules/faculty-single.scss';
 @import 'modules/related-news.scss';
 @import 'modules/related-faculty.scss';
+@import 'modules/feedback.scss';
+@import 'modules/major-minor.scss';
 
 /*	Templates
 		Specific pages and page areas that further extend modules and components
@@ -71,8 +73,14 @@
 @import 'templates/home.scss';
 @import 'templates/page.scss';
 @import 'templates/blog.scss';
+@import 'templates/courses.scss';
+@import 'templates/contact.scss';
 @import 'templates/search.scss';
 @import 'templates/footer.scss';
 @import 'templates/careers.scss';
 @import 'templates/ocean-acid.scss';
 @import 'templates/intranet.scss';
+@import 'templates/student-ambassadors.scss';
+@import 'templates/newsletter.scss';
+@import 'templates/signature-story.scss';
+@import 'templates/future-students.scss';

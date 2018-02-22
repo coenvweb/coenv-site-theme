@@ -8,6 +8,20 @@ require_once locate_template( '/inc/walker-secondary-menu.php' );
 require_once locate_template( '/inc/walker-top-menu.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
+
+require_once locate_template( '/inc/rewrites.php' );
+
+require_once locate_template( '/inc/ajax.php' );
+
+require_once locate_template( '/inc/signature-story-fun.php' );
+
+//Enqueue the Dashicons script
+add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
+function amethyst_enqueue_dashicons() {
+    wp_enqueue_style( 'dashicons' );
+}
+
+
 /**
  * Print styles and scripts in header and footer
  */
@@ -20,20 +34,28 @@ function coenv_styles_and_scripts() {
 	}
 
 	// include theme scripts in footer
-	wp_register_script( 'coenv-main', get_template_directory_uri() . '/assets/scripts/build/main.min.js', null, true );
-	wp_enqueue_script( 'coenv-main' );
+	wp_register_script( 'coenv-main2', get_template_directory_uri() . '/assets/scripts/build/main2.min.js', null, true );
+	wp_enqueue_script( 'coenv-main2' );
+    
     
     if (is_post_type_archive('faculty') || is_singular('faculty')) {
 
         // register faculty scripts, enqueued within template files
-        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main' ), null, true );
+        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main2' ), null, true );
+    }
+
+    if (is_singular('newsletter') || is_home() || is_page_template('templates/newsletter-archive.php') || is_singular('post')) {
+        wp_register_script( 'coenv-munchkin', get_template_directory_uri() . '/assets/scripts/build/munchkin.min.js', array( 'coenv-main2' ), null, true );
+        wp_enqueue_script('coenv-munchkin');
     }
 
 	// make variables available to theme scripts
-	wp_localize_script( 'coenv-main', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
+	wp_localize_script( 'coenv-main2', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
 }
 
 require_once locate_template( '/inc/faculty.php' );
+
+require_once locate_template( '/inc/widget-shortcode.php' );
 
 /**
  * Incorporate CoEnv Member API into the theme
@@ -250,6 +272,9 @@ function coenv_theme_setup() {
         add_image_size( 'homepage-column', 253 );
 		add_image_size( 'half', 375 );
 		add_image_size( 'one-third', 250 );
+        // restrained height
+        add_image_size( 'homepage-column-standard', '253', '168', true );
+        add_image_size( 'homepage-hero-standard', '680', '450', true );
 	}
 
   // medium: 528x528
@@ -265,7 +290,9 @@ add_filter('image_size_names_choose', 'my_image_sizes');
 function my_image_sizes($sizes) {
 $addsizes = array(
 "half" => __( "50% of column"),
-"one-third" => __( "33% of column")
+"one-third" => __( "33% of column"),
+"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
+"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
 );
 $newsizes = array_merge($sizes, $addsizes);
 return $newsizes;
@@ -277,12 +304,19 @@ return $newsizes;
  */
 
 require_once locate_template( '/inc/careers.php' );
+require_once locate_template( '/inc/infinite-scroll.php' );
 
 /**
  * Register Staff
  */
 
 require_once locate_template( '/inc/staff.php' );
+
+/**
+ * Register Students
+ */
+
+require_once locate_template( '/inc/student-ambassadors.php' );
 
 /**
  * Returns a unit color (hex value)
@@ -312,8 +346,8 @@ function coenv_widgets_init() {
 	}
 
 	$before_widget	= '<section id="%1$s" class="widget %2$s">';
-	$before_title 	= '<header class="section-header"><h1>';
-	$after_title	= '</h1></header> <!-- end .section-header -->';
+	$before_title 	= '<header class="section-header"><h3>';
+	$after_title	= '</h3></header> <!-- end .section-header -->';
 	$after_widget	= '</section> <!-- end #%1$s -->';
 
 	// this will return only top-level pages
@@ -327,9 +361,9 @@ function coenv_widgets_init() {
 	}
 
 	foreach( $pages as $page ) {
-		// remove specific pages
+        // remove specific pages
 		if( !in_array( $page->post_name, $pages_to_remove ) ) {
-            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID)){
+            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID) && ($page->post_title !== 'Home')){
                 register_sidebar( array(
                     'name' 			=> $page->post_title . ' / Sidebar',
                     'id'			=> 'sidebar-' . $page->ID,
@@ -345,6 +379,16 @@ function coenv_widgets_init() {
                     'after_widget'	=> $after_widget,
                     'before_title' 	=> $before_title,
                     'after_title'	=> $after_title
+                ) );
+            }
+            if( ($page->post_title == 'Home')){
+                register_sidebar( array(
+                    'name' 			=> 'Homepage / Sidebar',
+                    'id'			=> 'sidebar-' . $page->ID,
+                    'before_widget' => $before_widget,
+                    'after_widget'	=> $after_widget,
+                    'before_title' 	=> '<header class="section-header"><h2>',
+                    'after_title'	=> '</h2></header> <!-- end .section-header -->'
                 ) );
             }
 		}
@@ -494,7 +538,22 @@ function coenv_banner() {
         $ancestor = 32;
     }
 
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && !is_single() ) {
+    if (is_singular('newsletter')) {
+        unset($ancestor);
+        $ancestor = 5;
+    }
+    
+    if (is_page_template('templates/future-ug-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38568;
+    }
+    
+    if (is_page_template('templates/future-grad-sub.php')) {
+        unset($ancestor);
+        $ancestor = 38585;
+    }
+
+	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( $ancestor ) ) {
@@ -507,13 +566,17 @@ function coenv_banner() {
 	}
 
 	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'homepage-column' );
+	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
 	$attachment_post_obj = get_post( $thumb_id );
-
-	$banner = array(
-		'url' => $image_src[0],
-		'permalink' => get_permalink( $attachment_post_obj->ID ),
-	);
+    
+  if (is_page_template('templates/signature-story.php')) {
+      $thumb_id_custom = get_field('banner_image');
+      $image_src = wp_get_attachment_image_src( $thumb_id_custom, 'banner' );
+  }
+  $banner = array(
+    'url' => $image_src[0],
+    'permalink' => get_permalink( $attachment_post_obj->ID ),
+  );
 
 	return $banner;
 }
@@ -964,16 +1027,6 @@ function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	wp_reset_query();
 }
 
-function remove_plaintext_email($emailAddress) {
-    $emailRegEx = '/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4})/i';
-    return preg_replace_callback($emailRegEx, "encodeEmail", $emailAddress);
-}
-function encodeEmail($result) {
-    return antispambot($result[1]);
-}
-add_filter( 'the_content', 'remove_plaintext_email', 20 );
-add_filter( 'widget_text', 'remove_plaintext_email', 20 );
-
 function remove_faculty_search( $query ) {
     // Run only on search
     if ( $query->is_search() && $query->is_main_query() ) {
@@ -985,13 +1038,39 @@ function remove_faculty_search( $query ) {
             unset($types['careers']);
             $query->query_vars['post_type'] = $types;
         }
-        $query->query_vars['posts_per_page'] = 10;
+        $query->query_vars['posts_per_page'] = 15;
 
     }
 }
 add_action( 'pre_get_posts', 'remove_faculty_search' );
 
-function cdn_upload_url() {
-    return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'environment.uw.local' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
+    function cdn_upload_url() {
+        return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+    }
+    add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
 }
-add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
+
+function add_pending_revision_status(){
+	register_post_status( 'pending_revision', array(
+		'label'                     => 'Pending Revision',
+		'public'                    => false,
+		'exclude_from_search'       => false,
+		'show_in_admin_all_list'    => true,
+		'show_in_admin_status_list' => true,
+		'label_count'               => _n_noop( '<span class="count">(%s)</span> Pending Revision', 'Unread <span class="count">(%s)s</span> Pending Revision' ),
+	) );
+}
+add_action( 'init', 'add_pending_revision_status' );
+
+add_action( 'admin_bar_menu', 'add_revision_link', 999 );
+function add_revision_link( $wp_admin_bar ) {
+    if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others') && is_page() && !is_front_page()) {
+        $args = array(
+            'id'    => 'revision',
+            'title' => do_shortcode('[ow_make_revision_link text="Make Revision" class="" type="text" post_id="'.get_the_ID().'"]'),
+            'href'  => '',
+        );
+        $wp_admin_bar->add_node( $args );
+    }
+}

@@ -14,6 +14,7 @@ if ( get_query_var('post_type') == 'post') {
 } else {
 	$classes[] = 'template-page base_search';
 }
+
 ?>
 
 	<section id="search" role="main" class="<?php echo implode( ' ', $classes ) ?>">

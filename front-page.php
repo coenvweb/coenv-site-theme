@@ -46,12 +46,13 @@ $post_sort = new WP_Query( array(
     <?php wp_reset_postdata() ?>
 
     <div class="container">
+        <?php $page = ($post_sort->post_count + 1) / get_option('posts_per_page') + 1; ?>
         <?php if ( $post_sort->have_posts() ) : ?>
             <section class="widget featured-stories">
 
                 <header>
 
-                    <h1><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">More &raquo;</a></h1>
+                    <h2><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>page/<?=$page?>/">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>page/<?=$page?>/">More news &raquo;</a></h2>
                 </header>
 
                 <div class="stories-container">

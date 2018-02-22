@@ -1,9 +1,14 @@
 <?php if (is_front_page()): ?>
 	<article class="story">
 		<div class="inner">
+            <?php if ( get_field('autocrop') == true) {
+                $col_image = 'homepage-column-standard';
+            } else {
+                $col_image = 'homepage-column';
+            }; ?>
             <?php if ( has_term( 'weekly-research', 'topic' ) || ( has_term( 'deans-letter', 'story_type' ) ) ) : ?>
                     <a href="<?php the_permalink() ?>" class="img">
-                        <?php the_post_thumbnail( 'homepage-column' ) ?>
+                        <?php the_post_thumbnail( $col_image ); ?>
                     </a>
 
                 <?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
@@ -18,13 +23,13 @@
                 <?php endif ?>
 
                 <a class="content" href="<?php the_permalink() ?>">
-                    <h1><?php the_title() ?></h1>
+                    <h3><?php the_title() ?></h3>
                 </a>
 			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
-					<?php the_post_thumbnail( 'homepage-column' ) ?>
+					<?php the_post_thumbnail( $col_image ); ?>
                     <div class="content">
-                        <h1><?php the_title() ?></h1>
+                        <h3><?php the_title() ?></h3>
                     </div>
                 </a>
             <?php endif ?>
@@ -40,7 +45,7 @@
    		<?php if ( !is_page() ) : ?>
 			<div class="share align-right" data-article-id="<?php the_ID(); ?>" data-article-title="<?php echo get_the_title(); ?>"
 			data-article-shortlink="<?php echo wp_get_shortlink(); ?>"
-			data-article-permalink="<?php echo the_permalink(); ?>"><a href="#"><i class="icon-share"></i>Share</a>
+			data-article-permalink="<?php echo the_permalink(); ?>"><a><i class="icon-share"></i>Share</a>
             </div>
 			<div class="post-info">
 				<time class="article__time" datetime="<?php echo get_the_date('Y-m-d h:i:s') ?>"><?php echo get_the_date('M j, Y') ?></time> 
