@@ -181,7 +181,7 @@
 
                 </nav><!-- #top-nav -->
                 
-                <?php if ($post->ID == '59849' || $post->ID == '60011' ) { ?>
+                <?php if ($post->slug == 'field-journal-practicing-geology-in-big-sky-country'  ) { ?>
                 <div class="feature homepage-hero-module">
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
