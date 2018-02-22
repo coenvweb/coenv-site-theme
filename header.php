@@ -180,8 +180,7 @@
                     </div><!-- .container -->
 
                 </nav><!-- #top-nav -->
-                
-                <?php if ($post->slug == 'field-journal-practicing-geology-in-big-sky-country'  ) { ?>
+                <?php if ($post->post_name == 'field-journal-practicing-geology-in-big-sky-country'  ) { ?>
                 <div class="feature homepage-hero-module">
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
