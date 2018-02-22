@@ -120,8 +120,14 @@
                 margin-left: calc(-24vw - 1rem);
             }
         }
+        @include max-width ( 800 ) {
+            img {
+                padding: 1rem;
+            }
+        }
         @include max-width ( 600 ) {
             position: relative;
+            width: 100%;
             &.right {
                 float: none!important;
             }
@@ -372,21 +378,24 @@
             max-width: 640px;
             width: 50%;
             padding: 0 0 1rem 0;
+            &:before {
+                content: 'click image to load gallery';
+                position: relative;
+                float: right;
+                display: block;
+                bottom: .5rem;
+                right: 2.5rem;
+                color: #666;
+                font-size: .7rem;
+            }
             @include max-width ( 800 ) {
                 width: 100%;
                 margin-bottom: 1rem;
-                &:before {
-                    content: 'touch image to load gallery';
-                    position: relative;
-                    float: right;
-                    display: block;
-                    bottom: .5rem;
-                    right: 2.5rem;
-                    color: #666;
-                    font-size: .8rem;
-                }
             }
             a {
+                &:hover {
+                    opacity: .9; 
+                }
                 &:nth-of-type(2) img, &:nth-of-type(3) img, &:nth-of-type(4) img, &:nth-of-type(5) img {
                     width: 253px;
                     @include min-width ( 800 ) {
@@ -440,7 +449,7 @@
                 }
                 
                 &:nth-of-type(3) img, &:nth-of-type(5) img {
-                    top: 187px;
+                    top: 200px;
                     @include max-width ( 1020 ) {
                         top: 18vw;
                     }
@@ -863,6 +872,17 @@
             &:hover {
                 background-color: darken($accent-red, 10%)!important;
                 color: white!important;
+            }
+        }
+    }
+    
+    .element-beyond-my-field-notes {
+        .button {
+            background-color: #f5c902;
+            border: 3px solid #e4bd0b!important;
+            &:hover {
+                background-color: lighten(#f5c902, 10%)!important;
+                color: $text!important;
             }
         }
     }
