@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Darin Reid / elegant contraption",
   "dependencies": {
-    "jquery": "~1.9.1",
+    "jquery": "latest",
     "modernizr": "~2.6.2",
     "respond": "~1.2.0",
     "chosen": "~0.9.14",

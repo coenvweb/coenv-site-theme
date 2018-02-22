@@ -11,6 +11,7 @@
 		letter-spacing: .1em;
 		font-weight: 600;
 		@include rem('margin-top', 0.1);
+        cursor: pointer;
 	}
 
 	// only show if js is enabled

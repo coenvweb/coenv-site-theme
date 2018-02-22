@@ -1,4 +1,16 @@
 <?php
+
+$exclude_slugs      = array( 'announcement', 'under-1-year', '1-2-years', '2-5-years', 'more-than-5-years', 'northwest-region-id-or-or', 'wa', 'seasonal', 'contract', 'permanent', 'organization-type', 'academia', 'tribal', 'gov', 'nonprofit', 'private-sector', 'careers', 'volunteer', 'uw-student-campus-jobs', 'uw-positions', 'us', 'field', 'compensation');           
+$exclude_ids        = array();
+
+foreach( $exclude_slugs as $slug ) { 
+    $tmp_term = get_term_by( 'slug', $slug, 'career_category' );
+
+    if( is_object( $tmp_term ) ) {
+        $exclude_ids[] = $tmp_term->term_id;
+    }
+}
+
 //list terms in a given taxonomy using wp_list_categories (also useful as a widget if using a PHP Code plugin)
 $taxonomy     = 'career_category';
 $orderby      = 'name'; 
@@ -16,34 +28,17 @@ $args = array(
   'hierarchical' => $hierarchical,
   'title_li'     => $title,
   'walker' 		 => $walker,
-  'exclude'      => '1807,1808,1809,1810,1811,1812,1813,1814'
+  'hide_empty'   => 0,
+  'exclude'      => $exclude_ids,
 );
+
 ?>
 <a name="filters" id="filters"></a>
-<div id="careers-filter" class="careers-filter">
+<div id="careers-filter" class="careers-filter" aria-controls="results" aria-multiselectable="true">
 	<h3 class="title">Filter</h3>
 	<div class="filters">
-	<ul>
-		<li>Sort By
-			<ul>
-				<li><a href="/students/career-resources/career-opportunities/?sort=post_date">Post date</a></li>
-				<li><a href="/students/career-resources/career-opportunities/?sort=deadline">Deadline</a></li>
-			</ul>
-		</li>
-	<ul>
-		<?php wp_list_categories( $args ); ?>
+	<ul class="ajax-filters" id="career-filter">
+		<?php wp_list_categories($args); ?>
 	</ul>
-	
-	<h4>Subscribe</h4>
-	<ul class="subscribe">
-		<li><a href="/students/career-resources/career-opportunities/subscribe-via-email/"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-mail.png" alt="Subscribe via email" /></a></li>
-		<li><a href="/feed/?post_type=careers"><img src="/wp-content/themes/coenv-wordpress-theme/assets/img/icon-feed.png" alt="Subscribe to our feed" /></a></li>
-	</ul>
-	<form role="search" method="get" class="search-form Form--inline" action="/students/career-resources/career-opportunities/">
-	  <div class="field-wrap">
-	    <input type="text" name="st" id="st" placeholder="Search" />
-	    <button type="submit"><i class="icon-search"></i><span>Search</span></button>
-	  </div>
-	</form>
 </div>
 </div><!-- #blog-header -->

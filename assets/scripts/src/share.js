@@ -125,7 +125,7 @@
 		var _this = this;
 
 		// append modal
-		$('.post-' + this.articleID).prepend( this.$modal );
+		$('.post-' + this.articleID + ' .article__meta').prepend( this.$modal );
 
 		// show modal
 		this.$modal.addClass('active');

@@ -54,8 +54,10 @@ class CoEnv_Widget_Social extends WP_Widget {
  
 		echo $before_widget;
 		?>
+
+        <?php if(!empty($title)) { ?>
 			
-			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
  
 			<ul>
 				<?php if (get_option('facebook')) { ?><li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="icon-facebook"> </i>Facebook</a></li><?php } ?>
@@ -67,6 +69,176 @@ class CoEnv_Widget_Social extends WP_Widget {
 				<li class="feeds"><a href="/news/feed" title="UW College of the Environment RSS Feed"><i class="icon-rss"> </i> Feed</a></li>
 				<?php if (get_option('uw_social')) { ?><li class="uw-social"><a href="<?php echo get_option('uw_social'); ?>" title="<?php bloginfo('name'); ?> on UW Social" target="_blank" rel="nofollow"><i class="icon-icon-uw"> </i>UW Social</a></li><?php } ?>
 			</ul>
+ 
+		<?php
+		echo $after_widget;
+	}
+ 
+}
+
+/**
+ * Undergrad Majors and Minors Widget
+ */
+register_widget( 'CoEnv_Widget_UG_majors' );
+
+class CoEnv_Widget_UG_majors extends WP_Widget {
+ 
+  public function __construct() {
+		$args = array(
+			'classname' => 'widget-majors',
+			'description' => __( 'Display a grid of the college\'s degrees', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'major_links', // base ID
+			'Majors and Minors Links', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Graduate Degrees', 'coenv' );
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+ 
+		echo $before_widget;
+		?>
+			<?php if (!empty($title)) { ?>
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+            <?php }; ?>
+			<article class="majors-minors-section">
+                <section class="majors-minors accordion" id="major">
+                <?php
+                
+                $major_page = get_page_by_title( 'Undergraduate Degrees' ); 
+
+                // check if the repeater field has rows of data
+                if( have_rows('majors', $major_page->ID) ):
+
+                    // loop through the rows of data
+                    while ( have_rows('majors', $major_page->ID) ) : the_row();
+
+                        // display a sub field value
+                        get_template_part( 'partials/partial', 'major-minor' );
+
+                    endwhile;
+
+                else :
+
+                    // no rows found
+
+                endif;
+
+                ?>
+                </section>
+                </article>
+ 
+		<?php
+		echo $after_widget;
+	}
+ 
+}
+
+/**
+ * Undergrad Majors and Minors Widget
+ */
+register_widget( 'CoEnv_Widget_G_degrees' );
+
+class CoEnv_Widget_G_degrees extends WP_Widget {
+ 
+  public function __construct() {
+		$args = array(
+			'classname' => 'widget-majors',
+			'description' => __( 'Display a grid of the college\'s graduate degrees', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'grad_degree_links', // base ID
+			'Graduate Degree Links', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance ) {
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Graduate Degrees', 'coenv' );
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance ) {
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+ 
+		echo $before_widget;
+		?>
+			<?php if (!empty($title)) { ?>
+			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?>
+            <?php }; ?>
+			<article class="majors-minors-section">
+        <section class="majors-minors accordion" id="major">
+        <?php
+
+        $major_page = get_page_by_title( 'Graduate Degrees' ); 
+
+        // check if the repeater field has rows of data
+        if( have_rows('majors', $major_page->ID) ):
+
+            // loop through the rows of data
+            while ( have_rows('majors', $major_page->ID) ) : the_row();
+
+                // display a sub field value
+                get_template_part( 'partials/partial', 'major-minor' );
+
+            endwhile;
+
+        else :
+
+            // no rows found
+
+        endif;
+
+        ?>
+        </section>
+    </article>
  
 		<?php
 		echo $after_widget;
@@ -106,24 +278,22 @@ class CoEnv_Widget_Events extends WP_Widget {
 		}
 
 		// get cached XML from WP transient API
-		$events_xml = get_transient( 'trumba_events_xml' );
-		if ( $events_xml === false || $events_xml === '' ) {
-            
-            $ctx = stream_context_create(array('http'=>
+        unset ($events_xml);
+        $events_xml = get_transient( 'trumba_events_xml' );
+        $ctx = stream_context_create(array('http'=>
                 array(
                     'timeout' => 3,  //1200 Seconds is 20 Minutes
-                )
+                ),
+                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
             ));
-            
-			if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
-                
-            }else {
+
+            if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
+
+            } else {
                 return;
             };
-			set_transient( 'trumba_events_xml', $events_xml, 10 * MINUTE_IN_SECONDS );
-		}
-		
-		$xml = new SimpleXmlElement($events_xml);
+
+        $xml = new SimpleXmlElement($events_xml);
 		
 		$events = array();
 
@@ -150,7 +320,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 					<?php if ( $events_url != '' ) : ?>
                                    
-						<a href="<?php echo $events_url; ?>" title="View All Events">More &raquo;</a>
+						<a href="<?php echo $events_url; ?>" title="View All Events">More events &raquo;</a>
 					<?php endif ?>
 
 				<?php echo $after_title ?>
@@ -162,7 +332,6 @@ class CoEnv_Widget_Events extends WP_Widget {
 					<article class="event">
 
 						<a href="<?php echo $event['url'] ?>">
-							<div>
                                 
                                 <?php
                                 $date = substr($event['date'], 0, -6);
@@ -174,10 +343,9 @@ class CoEnv_Widget_Events extends WP_Widget {
 								</footer>
 
 								<header>
-									<h1><?php echo $event['title'] ?></h1>
+									<h3><?php echo $event['title'] ?></h3>
 								</header>
 
-							</div>
 						</a>
 
 					</article>
@@ -235,7 +403,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 }
 
 /**
- * Insider Newsletter Widget
+ * Headlines Newsletter Widget
  */
 register_widget( 'CoEnv_Widget_Newsletter' );
 
@@ -244,12 +412,12 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
   public function __construct() {
 		$args = array(
 			'classname' => 'widget-link',
-			'description' => __( 'Display a link to the Insider Newsletter archive page.', 'coenv' )
+			'description' => __( 'Display a link to the Headlines Newsletter page.', 'coenv' )
 		);
  
 		parent::__construct(
 			'newsletter_link', // base ID
-			'Insider Newsletter Link', // name
+			'Headlines Newsletter Link', // name
 			$args
 		);
 	}
@@ -259,7 +427,7 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( '<em>The Insider</em> Newsletter Archive', 'coenv' );
+			$title = __( '<em>Headlines</em> Newsletter Archive', 'coenv' );
 		}
         $newsletter_url = $instance['newsletter_url'];
  
@@ -478,6 +646,306 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 		<?php
 		echo $after_widget;
         endif;
+ 
+		wp_reset_postdata();
+	}
+ 
+}
+
+/**
+ * Student Ambassadors Widget
+ */
+register_widget( 'CoEnv_Widget_Student_Ambassadors' );
+
+class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
+ 
+  public function __construct()
+	{
+		$args = array(
+			'classname' => 'student-ambassadors-widget',
+			'description' => __( 'Display a short list of random student ambassadors.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'related_posts', // base ID
+			'Related Posts', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance )
+	{
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Student Ambassador Profiles', 'coenv' );
+		}
+ 
+		if ( isset( $instance['posts_per_page'] ) ) {
+			$posts_per_page = (int) $instance['posts_per_page'];
+		} else {
+			$posts_per_page = 2;
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'posts_per_page' ) ?>">Number of posts to show: </label>
+				<input name="<?php echo $this->get_field_name( 'posts_per_page' ) ?>" type="text" size="3" value="<?php echo $posts_per_page ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
+ 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance )
+	{
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+		$posts_per_page = (int) $instance['posts_per_page'];        
+        
+ 
+        $sa_args = array(
+            'post_type' => 'student_ambassadors',
+            'posts_per_page' => '6',
+            'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'student_type',
+                    'field'    => 'slug',
+                    'terms'    => 'undergraduate-student',
+                ),
+            ),
+		);
+        
+
+        $sa_query = new WP_Query( $sa_args );
+        
+        echo $before_widget; ?>
+        <?php echo $before_title ?>
+
+            <span><a href="/students/meet-our-students/undergraduate-ambassadors/">
+                <?php 
+                if ( $title == '' ){
+                    echo 'Student Ambassadors';
+                } else {
+                    echo $title;
+                } ?>
+            </a></span>
+
+
+        <?php echo $after_title;
+
+        if ( $sa_query->have_posts()) {
+                echo '<div class="ambassadors">';
+                while ( $sa_query->have_posts() ) {
+                    $sa_query->the_post();
+                    $first_name = get_field('first_name');
+                    $last_name = get_field('last_name');
+                    $image = get_field('photo');
+                    if( !empty($image) ) {
+                        // vars
+                        $alt = $image['alt'];
+
+                        // thumbnail
+                        $size = 'thumbnail';
+                        $thumb = $image['sizes'][ $size ];
+                    }
+                    $name = $first_name . ' ' . $last_name;
+                    echo '<a href="/students/meet-our-students/undergraduate-ambassadors/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                        echo '<div class="ambassador-container" >';
+                        if ( $image ) {
+                            echo '<div class="ambassador-thumb">';
+                            echo '<img alt="' . $alt . '" src=' . $thumb . '>';
+                            echo '</div>';
+                        }	else {
+                            echo '<div class="ambassador-thumb">';
+                            echo '</div>';
+                        }
+                        echo '<div class="ambassador-name">';
+                            echo '<h3>';
+                                echo $first_name;
+                            echo '</h3>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</a>';
+            }
+            echo '<a href="/students/meet-our-students/undergraduate-ambassadors/" title="Browse more faculty in the College of the Environment" class="count" >';
+            echo '<div class="ambassador-container">';
+            echo '<div class="ambassador-thumb">';
+            echo '<i class="icon-faculty-grid-alt-2"></i>';
+            echo '</div>';
+            if (empty($term)) {
+                echo '<span class="number">All Ambassadors';
+            } else {
+                echo '<span class="number">+' . ($term->count - 6) . ' more';
+            }
+            echo '</span></div>';
+            echo '</a>';
+            echo '</div>';
+        }
+		echo $after_widget;
+ 
+		wp_reset_postdata();
+	}
+ 
+}
+
+/**
+ * Graduate Student Profiles Widget
+ */
+register_widget( 'CoEnv_Widget_Graduate_Student_Profiles' );
+
+class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
+ 
+  public function __construct()
+	{
+		$args = array(
+			'classname' => 'graduate-student-profiles-widget',
+			'description' => __( 'Display a short list of random graduate student profiles.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'related_posts', // base ID
+			'Related Posts', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance )
+	{
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Graduate Student Profiles', 'coenv' );
+		}
+ 
+		if ( isset( $instance['posts_per_page'] ) ) {
+			$posts_per_page = (int) $instance['posts_per_page'];
+		} else {
+			$posts_per_page = 2;
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'posts_per_page' ) ?>">Number of posts to show: </label>
+				<input name="<?php echo $this->get_field_name( 'posts_per_page' ) ?>" type="text" size="3" value="<?php echo $posts_per_page ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
+ 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance )
+	{
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );
+		$posts_per_page = (int) $instance['posts_per_page'];        
+        
+ 
+        $sa_args = array(
+           'post_type' => 'student_ambassadors',
+            'posts_per_page' => '6',
+            'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'student_type',
+                    'field'    => 'slug',
+                    'terms'    => 'graduate-student',
+                ),
+            ),
+		);
+        
+
+        $sa_query = new WP_Query( $sa_args );
+        
+        echo $before_widget; ?>
+        <?php echo $before_title ?>
+
+            <span><a href="/students/meet-our-students/graduate-students/">
+                <?php 
+                if ( $title == '' ){
+                    echo 'Featured Graduate Students';
+                } else {
+                    echo $title;
+                } ?>
+            </a></span>
+
+
+        <?php echo $after_title;
+
+        if ( $sa_query->have_posts()) {
+                echo '<div class="ambassadors">';
+                while ( $sa_query->have_posts() ) {
+                    $sa_query->the_post();
+                    $first_name = get_field('first_name');
+                    $last_name = get_field('last_name');
+                    $image = get_field('photo');
+                    if( !empty($image) ) {
+                        // vars
+                        $alt = $image['alt'];
+
+                        // thumbnail
+                        $size = 'thumbnail';
+                        $thumb = $image['sizes'][ $size ];
+                    }
+                    $name = $first_name . ' ' . $last_name;
+                    echo '<a href="/students/meet-our-students/graduate-students/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                        echo '<div class="ambassador-container" >';
+                        if ( $image ) {
+                            echo '<div class="ambassador-thumb">';
+                            echo '<img alt="' . $alt . '" src=' . $thumb . '>';
+                            echo '</div>';
+                        }	else {
+                            echo '<div class="ambassador-thumb">';
+                            echo '</div>';
+                        }
+                        echo '<div class="ambassador-name">';
+                            echo '<h3>';
+                                echo $first_name;
+                            echo '</h3>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</a>';
+            }
+            echo '<a href="/students/meet-our-students/graduate-students/" title="Browse more faculty in the College of the Environment" class="count" >';
+            echo '<div class="ambassador-container">';
+            echo '<div class="ambassador-thumb">';
+            echo '<i class="icon-faculty-grid-alt-2"></i>';
+            echo '</div>';
+            if (empty($term)) {
+                echo '<span class="number">All Featured Grad Students';
+            } else {
+                echo '<span class="number">+' . ($term->count - 6) . ' more';
+            }
+            echo '</span></div>';
+            echo '</a>';
+            echo '</div>';
+        }
+		echo $after_widget;
  
 		wp_reset_postdata();
 	}

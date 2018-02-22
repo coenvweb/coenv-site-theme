@@ -48,11 +48,12 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
 
-	               <section class="article__content">
+	               <section class="article__content accordion" id="bio">
                    <?php
                         $terms = get_terms( 'team', array(
                         'hide_empty' => 0
                     ) );
+                $i = 0;
 
                     foreach( $terms as $term ) {
                         
@@ -78,7 +79,7 @@ $ancestor = array(
                         echo '<h2>' . $term->name . '</h2>';
                 
                         while ( $query->have_posts() ) : $query->the_post();
-                            get_template_part( 'partials/partial', 'staff' );
+                             include( locate_template( 'partials/partial-staff.php', false, false ));
                         endwhile;
                         
 
@@ -102,10 +103,10 @@ $ancestor = array(
                         $query = new WP_Query( $args );
                         remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
                 
-                        while ( $query->have_posts() ) : $query->the_post(); ?>
-
-                           <?php get_template_part( 'partials/partial', 'staff' ) ?>
-                        <?php endwhile;
+                        while ( $query->have_posts() ) : $query->the_post();
+                            include( locate_template( 'partials/partial-staff.php', false, false ));
+                            $i++;
+                        endwhile;
                         wp_reset_postdata();
                     } ?>
                        
@@ -128,3 +129,10 @@ $ancestor = array(
 	</section><!-- #page -->
 
 <?php get_footer() ?>
+
+<script type="text/javascript" src="<?php echo content_url(); ?>/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var accordionShortcodesSettings = [{"id":"bio","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+/* ]]> */
+</script>

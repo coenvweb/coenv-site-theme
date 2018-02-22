@@ -55,7 +55,7 @@
 	button {
 		display: inline-block;
 		padding: 0;
-		font-size: .68rem!important;
+		font-size: 10px!important;
 		@include rem('line-height', 1.8);
 		@include rem('height', 1.8);
 		vertical-align: top;
@@ -76,6 +76,7 @@
 		i {
 			@include font-size(16);
 			color: #eee;
+            margin-left: -5px;
 		}
 
 		&:hover i {

@@ -2,7 +2,7 @@
 /*	Widgets
 		======================================================================== */
 
-.widget {
+.widget, .article__content .widget{
 	@extend .clearfix;
 	@include rem('padding-bottom', 1);
 
@@ -13,7 +13,7 @@
 			@include rem('margin-bottom', 1);			
 		}
 
-		h1 {
+		h2 {
 			position: relative;
 			z-index: 0;
 			margin: 0;
@@ -81,3 +81,34 @@
 	} // & > header
 
 } // .widget
+
+.main-col .widget-events, .main-col .student-ambassadors-widget, .main-col .early-explorers, .main-col .graduate-student-profiles-widget{
+    background-color: $text-very-lt;
+    padding: 0;
+    margin-bottom: 1rem;
+    @include min-width ( $iPadPortrait ) {
+        float: right!important;
+        width: 262px!important;
+        margin: 0 0 1rem 1rem;
+    }
+    
+    .widgettitle {
+        margin: 0;
+        a {
+            color: $text;
+            @include sans();
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 600;
+            line-height: 0;
+            font-size: 11px;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 1rem;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}

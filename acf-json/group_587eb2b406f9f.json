@@ -1,0 +1,644 @@
+{
+    "key": "group_587eb2b406f9f",
+    "title": "Student Profiles",
+    "fields": [
+        {
+            "key": "field_587fd3c41a2e9",
+            "label": "First Name",
+            "name": "first_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_58815ad821714",
+            "label": "Last Name",
+            "name": "last_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_587eb2ce0c91c",
+            "label": "Class",
+            "name": "class",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Freshman": "Freshman",
+                "Sophomore": "Sophomore",
+                "Junior": "Junior",
+                "Senior": "Senior",
+                "Graduate Student": "Graduate Student"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_587fdd9353b62",
+            "label": "Majors and Minors",
+            "name": "majors_and_minors",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "!=",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_587fde5053b63",
+                    "label": "Major \/ Minor",
+                    "name": "major__minor",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "choices": {
+                        "Aquatic and Fishery Sciences": "Aquatic and Fishery Sciences",
+                        "Atmospheric Sciences": "Atmospheric Sciences",
+                        "Bioresource Science and Engineering": "Bioresource Science and Engineering",
+                        "Earth and Space Sciences": "Earth and Space Sciences",
+                        "Environmental Science and Terrestrial Resource Management": "Environmental Science and Terrestrial Resource Management",
+                        "Environmental Studies": "Environmental Studies",
+                        "Oceanography": "Oceanography",
+                        "Climate Science": "Climate Science",
+                        "Marine Biology": "Marine Biology",
+                        "Quantitative Science": "Quantitative Science",
+                        "Other": "Other"
+                    },
+                    "default_value": [],
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_588297343cf99",
+                    "label": "Other Major",
+                    "name": "other_major",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_587fde5053b63",
+                                "operator": "==",
+                                "value": "Other"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_58864c510cadc",
+                    "label": "Link to Major Info",
+                    "name": "link_to_major_info",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_587fde5053b63",
+                                "operator": "==",
+                                "value": "Other"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_587fde6553b64",
+                    "label": "Concentration",
+                    "name": "concentration",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_587fde6d53b65",
+                    "label": "Primary Major(s)",
+                    "name": "primary_majors",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "vertical",
+                    "choices": {
+                        "primary": "Primary Major"
+                    },
+                    "default_value": [],
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "toggle": 0,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_58815030c01b8",
+                    "label": "Minor",
+                    "name": "minor",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "vertical",
+                    "choices": {
+                        "minor": "Minor"
+                    },
+                    "default_value": [],
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "toggle": 0,
+                    "return_format": "value"
+                }
+            ]
+        },
+        {
+            "key": "field_59d51e04d3852",
+            "label": "Department and Pursued Degree",
+            "name": "department_and_pursued_degree",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_587eb2fd0c91d",
+            "label": "Last School",
+            "name": "last_school",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59d51ddad3851",
+            "label": "Undergraduate Degree",
+            "name": "undergraduate_degree",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_587eb3280c91e",
+            "label": "Hometown (city, state, country)",
+            "name": "hometown",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_587eb33b0c91f",
+            "label": "LinkedIn Profile Link",
+            "name": "linkedin_profile_link",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_587eb3460c920",
+            "label": "Twitter Profile Link",
+            "name": "twitter_profile_link",
+            "type": "text",
+            "instructions": "You should include https:\/\/twitter.com\/ in your field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_587fad0fec8c8",
+            "label": "Photo",
+            "name": "photo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_587faf1c1540f",
+            "label": "Response",
+            "name": "response",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "!=",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59d6645ad6634",
+            "label": "When I was a kid, I wanted to become",
+            "name": "kid_become",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d66490d6635",
+            "label": "Research Interests",
+            "name": "research_interests",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d664a1d6636",
+            "label": "Location of research",
+            "name": "location",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d664b3d6637",
+            "label": "Career Aspiration",
+            "name": "career_aspiration",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d664bfd6638",
+            "label": "Why do you study the environment?",
+            "name": "why_study_environment",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_59d664ecd6639",
+            "label": "What has been your most meaningful moment in graduate school?",
+            "name": "meaningful_moment",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_59d6650bd663a",
+            "label": "Faculty advisor",
+            "name": "faculty_advisor",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "student_ambassadors"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1507222908
+}

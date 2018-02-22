@@ -54,7 +54,10 @@
 	background: #000;
 	color: #fff;
 	padding: 7px 15px;
-	border-radius: 30px;
+	border-radius: 5px;
+  display: block;
+  max-width:650px;
+  margin: auto;
 }
 
 .nivo-lightbox-theme-default .nivo-lightbox-image img {

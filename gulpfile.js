@@ -13,8 +13,8 @@ var livereload = require('gulp-livereload');
 
 gulp.task('main_js', function () {
   return gulp
-    .src([  './bower_components/jquery/jquery.min.js',
-            './bower_components/jquery/jquery-migrate.min.js',
+    .src([  './bower_components/jquery/dist/jquery.min.js',
+            './bower_components/jquery/dist/jquery-migrate.min.js',
             './bower_components/jquery-fast-click/jQuery.fastClick.js',
             './bower_components/jquery-throttle-debounce/jquery.ba-throttle-debounce.js',
             './assets/scripts/src/plugins/modernizr.custom.92408.js',
@@ -34,13 +34,14 @@ gulp.task('main_js', function () {
             './assets/scripts/src/features.js',
             './assets/scripts/src/blog.js',
             './assets/scripts/src/share.js',
+            './assets/scripts/src/acf-gmaps.js',
             './assets/scripts/src/main.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(rename('main.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
     .pipe(livereload());
@@ -120,6 +121,7 @@ gulp.task('watch', function () {
     gulp.watch('**/*.{html,php}', livereload.reload);
     gulp.watch('assets/styles/src/**/*.scss', ['sass', 'refresh']);
     gulp.watch('assets/scripts/src/**/*.js', ['js', 'refresh']);
+    gulp.watch('assets/scripts/build/**/ajax.js', ['js', 'refresh']);
 });
 
 // Refresh task. Depends on Jade task completion

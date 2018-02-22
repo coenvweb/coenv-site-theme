@@ -22,6 +22,7 @@
 			@include rem('padding', 1);
 			text-decoration: none;
 			color: $text;
+            @include sans();
 			@media print {
 			 	padding: 0;
 			}
@@ -35,11 +36,12 @@
 
 		header {
 
-			h1 {
+			h3 {
 				margin: 0;
 				@include font-size(14);
 				@include line-height(24);
 				font-weight: 600;
+                @include sans();
 			}
 
 		} // header
@@ -61,3 +63,17 @@
 	} // .event
 
 } // .widget-events
+
+.main-col .widget-events {
+    
+    .event {
+        border-top: 1px #ddd solid;
+        background-color: transparent;
+        box-shadow: none;
+        margin-bottom: 0;
+        &:hover{
+            background-color: $accent;
+        }
+    }
+    
+}

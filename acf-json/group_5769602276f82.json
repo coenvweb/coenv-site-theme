@@ -3,6 +3,11 @@
     "title": "Staff",
     "fields": [
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_57192e9dfebd2",
             "label": "Job Title",
             "name": "job_title",
@@ -15,16 +20,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "formatting": "html",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_57192f89ee577",
             "label": "Email",
             "name": "email",
@@ -37,16 +42,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "formatting": "html",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "206-xxx-xxxx",
+            "prepend": "",
+            "append": "",
             "key": "field_57192fb308d89",
             "label": "Phone Number",
             "name": "phone_number",
@@ -59,16 +64,21 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "206-xxx-xxxx",
-            "prepend": "",
-            "append": "",
             "formatting": "html",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": "",
             "key": "field_57192fb808d8a",
             "label": "Photo",
             "name": "photo",
@@ -80,19 +90,20 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "preview_size": "thumbnail",
-            "library": "all",
-            "return_format": "array",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
+            }
         },
         {
+            "layout": "horizontal",
+            "choices": {
+                "1": "Team Lead",
+                "2": "Assistant to Team Lead",
+                "3": "Default Alphabetical Sort"
+            },
+            "default_value": 3,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "allow_null": 0,
+            "return_format": "value",
             "key": "field_57195c03a64ec",
             "label": "Placement",
             "name": "placement",
@@ -104,17 +115,66 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "1": "Team Lead",
-                "2": "Assistant to Team Lead",
-                "3": "Default Alphabetical Sort"
-            },
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "default_value": 3,
-            "layout": "horizontal",
-            "allow_null": 0
+            }
+        },
+        {
+            "sub_fields": [
+                {
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "key": "field_580ea19b36964",
+                    "label": "Responsibility",
+                    "name": "responsibility",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ],
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Add Row",
+            "collapsed": "",
+            "key": "field_580ea17e36963",
+            "label": "Job Responsibilities",
+            "name": "job_responsibilities",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": "",
+            "new_lines": "wpautop",
+            "maxlength": 500,
+            "placeholder": "",
+            "rows": "",
+            "key": "field_580ea1a436965",
+            "label": "Details",
+            "name": "details",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -144,5 +204,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1467816483
+    "modified": 1481667525
 }

@@ -81,7 +81,7 @@
         <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() ?>/assets/img/ms-icon-144x144.png">
         <meta name="theme-color" content="#613ba9">
 
-		<script src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
+		<script async src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
     <script>
         (function(d) {
                 var config = {
@@ -103,10 +103,14 @@
         $post_image = $thumb_src[0];
     } else {
         if ( !is_404() ) {
-        $post_title = get_the_title().' | College of the Environment';
-        $post_description = $advancedExcerpt;
-        $post_link = get_the_permalink();
-        $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+            if(!empty(get_field('social_image', $post->ID))) {
+                $post_image = get_field('social_image', $post->ID);
+            } else {
+                $post_image = get_template_directory_uri().'/assets/img/logo-1200x1200.png';
+            }
+            $post_title = get_the_title().' | College of the Environment';
+            $post_description = $advancedExcerpt;
+            $post_link = get_the_permalink();
         }
     }
     
@@ -176,6 +180,72 @@
                     </div><!-- .container -->
 
                 </nav><!-- #top-nav -->
+                
+                <?php if ($post->slug == 'field-journal-practicing-geology-in-big-sky-country' ) { ?>
+                <div class="feature homepage-hero-module">
+                    <div class="feature-image video-container banner-wrapper">
+                    <div class="filter"></div>
+                        <?php
+                            echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg">';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '</video>';
+                         ?>
+                        <div class="poster visuallyhidden">
+                            <?php
+                            echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg" alt="">';
+                             ?>
+                        </div>
+                        <div class="layout-container layout-container--header">
+
+                        <header id="header" role="banner" class="site-header">
+
+                            <h1 id="logo">
+                                <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
+                                    <span><?php bloginfo('name') ?></span>
+                                    <!--[if lt IE 9]>
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="UW College of the Environment Logo" />
+                                    <![endif]-->
+                                    <!--[if gt IE 8]><!-->
+                                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="UW College of the Environment Logo" />
+                                    <!--<![endif]-->
+                                </a>
+                            </h1>
+
+                            <div id="show-menu">
+                                <button>
+                                    <span>Menu</span>
+                                </button>
+                            </div><!-- #show-menu -->
+
+                            <nav class="nav-main main-menu normal-menu" role="navigation">
+
+                                <?php get_search_form() ?>
+                                
+                                <div class="close-mobile"><i class="icon-cross"></i></div>
+
+                                <ul id="menu-main" class="nav-main__menu  menu">
+                                    <?php 
+                                    wp_list_pages( array(
+                                        'depth' => 3,
+                                        'walker' => new CoEnv_Main_Menu_Walker(),
+                                        'title_li' => false,
+                                        'sort_column' => 'menu_order'
+                                    ) );
+                                    ?>
+                                </ul>
+                            </nav>
+                            
+                        </header><!-- #header -->
+
+                    </div><!-- .container.header-container -->
+                        
+                    <div class="feature-info-container">
+                        <a class="play-pause-hero right show-for-medium-up"></a>
+                  </div><!-- .feature-info-container -->
+                  </div>
+                <?php } else { ?>
 
                 <div class="banner-wrapper"<?php if (isset( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
 
@@ -218,9 +288,16 @@
                                     ?>
                                 </ul>
                             </nav>
-
+                            
+                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php') || $post->ID == '38585' || is_page_template('templates/future-grad-sub.php') )) {
+    ?>
                         </header><!-- #header -->
 
                     </div><!-- .container.header-container -->
 
                 </div><!-- .banner-wrapper -->
+    
+    <?php
+                                    }
+                                    }
+                            ?>
