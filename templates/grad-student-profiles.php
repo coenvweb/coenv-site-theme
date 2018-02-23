@@ -8,7 +8,7 @@ get_header();
 
 //Search terms
 $coenv_search_terms_raw = isset($_GET['st']) ? $_GET['st'] : '';
-$coenv_search_terms = urlencode(htmlentities($coenv_search_terms_raw));
+$coenv_search_terms = $coenv_search_terms_raw;
 
 $ancestor_id = coenv_get_ancestor();
 
@@ -72,7 +72,75 @@ $ancestor = array(
                         
                         // Search filters
                         if ($coenv_search_terms) :
-                            $args['s'] = $coenv_search_terms;
+                            $meta_query = array(
+                                'relation' => 'OR',
+                                array(
+                                    'key' => 'hometown',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'first_name',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'last_name',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'class',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'department_and_pursued_degree',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'undergraduate_degree',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'kid_become',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'research_interests',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'location',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'career_aspiration',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'why_study_environment',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'meaningful_moment',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'faculty_advisor',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                            );
+                            $args['meta_query'] = $meta_query;
                         endif;
                         
                         $query = new WP_Query( $args );

@@ -8,43 +8,43 @@ get_header();
 
 //Search terms
 $coenv_search_terms_raw = isset($_GET['st']) ? $_GET['st'] : '';
-$coenv_search_terms = urlencode(htmlentities($coenv_search_terms_raw));
+$coenv_search_terms = $coenv_search_terms_raw;
 
 $ancestor_id = coenv_get_ancestor();
 
 $ancestor = array(
-	'id' => $ancestor_id,
-	'permalink' => get_permalink( $ancestor_id ),
-	'title' => get_the_title( $ancestor_id )
+    'id' => $ancestor_id,
+    'permalink' => get_permalink( $ancestor_id ),
+    'title' => get_the_title( $ancestor_id )
 );
 
 
 ?>
 
-	<section id="page" role="main" class="template-page">
+    <section id="page" role="main" class="template-page">
 
-		<div class="container">
+        <div class="container">
 
-			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+            <?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-				<nav id="secondary-nav" class="side-col">
+                <nav id="secondary-nav" class="side-col">
 
-			<ul id="menu-secondary" class="menu">
-	              <?php wp_list_pages( array(
-	              		'child_of' => $ancestor['id'],
-	                  'depth' => 3,
-	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-	                  'link_after' => '<i class="icon-arrow-right"></i>',
-	                  'walker' => new CoEnv_Secondary_Menu_Walker,
-	                  'sort_column' => 'menu_order'
-	              ) ) ?>
-	          </ul>
+            <ul id="menu-secondary" class="menu">
+                  <?php wp_list_pages( array(
+                        'child_of' => $ancestor['id'],
+                      'depth' => 3,
+                      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+                      'link_after' => '<i class="icon-arrow-right"></i>',
+                      'walker' => new CoEnv_Secondary_Menu_Walker,
+                      'sort_column' => 'menu_order'
+                  ) ) ?>
+              </ul>
 
-				</nav><!-- #secondary-nav.side-col -->
+                </nav><!-- #secondary-nav.side-col -->
 
-			<?php endif ?>
+            <?php endif ?>
 
-			<main id="main-col" class="main-col">
+            <main id="main-col" class="main-col">
                 
                 <article id="post-<?php the_ID() ?>" <?php post_class( 'article student-ambassadors' ) ?>>
                     
@@ -57,8 +57,8 @@ $ancestor = array(
                         $args = array(
                             'post_type'     =>  'student_ambassadors',
                             'post_status'   =>  'publish',
-                            'orderby'		=>  'title',
-                            'order'			=>  'ASC',
+                            'orderby'       =>  'title',
+                            'order'         =>  'ASC',
                             'posts_per_page' => -1,
                             'tax_query' => array(
                                 array(
@@ -71,14 +71,91 @@ $ancestor = array(
                         
                         // Search filters
                         if ($coenv_search_terms) :
-                            $args['s'] = $coenv_search_terms;
+                            $meta_query = array(
+                                'relation' => 'OR',
+                                array(
+                                    'key' => 'class',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_0_major__minor',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_0_other_major',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_0_concentration',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),                                
+                                array(
+                                    'key' => 'majors_and_minors_1_major__minor',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_1_other_major',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_1_concentration',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),                                
+                                array(
+                                    'key' => 'majors_and_minors_2_major__minor',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_2_other_major',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'majors_and_minors_2_concentration',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'last_school',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'hometown',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'first_name',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'last_name',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'response',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                            );
+                            $args['meta_query'] = $meta_query;
                         endif;
                         
                         $query = new WP_Query( $args );
-                    
                     ?>
 
-	               <section class="article__content accordion" id="bio">
+                   <section class="article__content accordion" id="bio">
                        <div class="intranet-summary">
                             <?php the_content(); ?>
                        </div>
@@ -118,15 +195,15 @@ $ancestor = array(
                 <?php get_sidebar('contact') ?>
             </div>
 
-			</main><!-- .main-col -->
+            </main><!-- .main-col -->
 
-			<div class="side-col">
-				<?php get_sidebar() ?>
-			</div><!-- .side-col -->
+            <div class="side-col">
+                <?php get_sidebar() ?>
+            </div><!-- .side-col -->
 
-		</div><!-- .container -->
+        </div><!-- .container -->
 
-	</section><!-- #page -->
+    </section><!-- #page -->
 
 <?php get_footer() ?>
 

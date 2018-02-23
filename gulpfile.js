@@ -41,8 +41,8 @@ gulp.task('main_js', function () {
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(sourcemaps.write())
-    //.pipe(uglify())
-    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(rename('main2.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
     .pipe(livereload());
   ;
