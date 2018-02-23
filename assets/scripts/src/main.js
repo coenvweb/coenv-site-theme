@@ -74,7 +74,7 @@ jQuery(function ($) {
         } );
     };
     
-    if (!$('body').hasClass('postid-62064')) {
+    if (!$('body').hasClass('lt-ie8')) {
         autoplay = true;
         var ppbutton = $('.play-pause-hero');
         var hero = $('#hero-video');
