@@ -839,7 +839,7 @@
         min-height: 31vw;
         background-size: contain;
         background-position: bottom;
-        margin-top: -5rem;
+        margin-top: -2rem;
         &.parallax {
             margin-top: 0;
         }
@@ -850,10 +850,6 @@
                 background-size: 170%;
                 background-position: bottom;
             }
-        }
-        
-        &:nth-of-type(3) {
-            margin-top: -1rem;
         }
     }
     .photo-divider-2 {
