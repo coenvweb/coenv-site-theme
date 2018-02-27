@@ -183,6 +183,11 @@ function careers_filter()
                 'type' => 'char',
                 'compare' => '>='
             ),
+            array(
+                'key' => 'location',
+                'value' => $search_value,
+                'compare' => 'LIKE'
+            ),
         )
     );
     

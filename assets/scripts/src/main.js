@@ -74,7 +74,7 @@ jQuery(function ($) {
         } );
     };
     
-    if (!$('body').hasClass('lt-ie8')) {
+    if ($('body').hasClass('postid-62064')) {
         autoplay = true;
         var ppbutton = $('.play-pause-hero');
         var hero = $('#hero-video');
@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
         if ($('#uwalert-alert-message')){
             $('#uwalert-alert-header').append('<div class="button right" id="closer">X</div>');
             var alertHeading = $('#uwalert-alert-header')[0];
-            $('#closer').live('click', function(e){
+            $('#closer').on('click', function(e){
                 $('#uwalert-alert-message').removeClass('please-unhide');
                 $('#uwalert-alert-message').hide();
                 localStorage.clicked = alertHeading.innerHTML;
