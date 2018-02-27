@@ -1065,7 +1065,7 @@ add_action( 'init', 'add_pending_revision_status' );
 
 add_action( 'admin_bar_menu', 'add_revision_link', 999 );
 function add_revision_link( $wp_admin_bar ) {
-    if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others') && is_page() && !is_front_page()) {
+    if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others') && is_page() && !is_front_page() && !is_preview()) {
         $args = array(
             'id'    => 'revision',
             'title' => do_shortcode('[ow_make_revision_link text="Make Revision" class="" type="text" post_id="'.get_the_ID().'"]'),
