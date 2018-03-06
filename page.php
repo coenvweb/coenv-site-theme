@@ -52,7 +52,7 @@ $ancestor = array(
 					<?php endwhile ?>
 
 				<?php endif ?>
-                
+          
             <div class="side-footer">
                 <div class="hidden">
                     <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
