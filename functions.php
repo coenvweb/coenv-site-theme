@@ -44,11 +44,6 @@ function coenv_styles_and_scripts() {
         wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main2' ), null, true );
     }
 
-    if (is_singular('newsletter') || is_home() || is_page_template('templates/newsletter-archive.php') || is_singular('post')) {
-        wp_register_script( 'coenv-munchkin', get_template_directory_uri() . '/assets/scripts/build/munchkin.min.js', array( 'coenv-main2' ), null, true );
-        wp_enqueue_script('coenv-munchkin');
-    }
-
 	// make variables available to theme scripts
 	wp_localize_script( 'coenv-main2', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
 }
