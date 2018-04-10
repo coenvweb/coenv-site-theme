@@ -283,12 +283,12 @@ class CoEnv_Widget_Events extends WP_Widget {
         $ctx = stream_context_create(array('http'=>
                 array(
                     'timeout' => 3,  //1200 Seconds is 20 Minutes
+                    'ignore_errors' => true
                 ),
                 'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
             ));
 
-            if ($events_xml = file_get_contents( $feed_url, false, $ctx )) {
-
+            if ($events_xml = @file_get_contents( $feed_url, false, $ctx )) {
             } else {
                 return;
             };
