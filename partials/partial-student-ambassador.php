@@ -152,7 +152,7 @@ if(!empty($description)) {
         <div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
+            <li><a href="mailto:envamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
             <?php if (!empty($twitter)) : ?>
                 <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
             <?php endif; ?>
