@@ -324,8 +324,8 @@
 				color: $text !important;
 			}
 
-            @include max-width ( $iPhoneLandscape ) {
-                &:before {
+            &:before {
+                @include max-width ( 585 ) {
                     display: block;
                 }
             }
