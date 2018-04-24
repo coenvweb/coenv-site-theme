@@ -324,6 +324,12 @@
 				color: $text !important;
 			}
 
+            @include max-width ( $iPhoneLandscape ) {
+                &:before {
+                    display: block;
+                }
+            }
+
 			span {
 				position: relative;
 				@include sans;
