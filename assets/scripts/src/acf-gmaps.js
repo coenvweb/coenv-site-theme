@@ -302,25 +302,28 @@ $(document).ready(function(){
 
 	});
 
+    if(map) {
 	var size = window.innerWidth;
-	$(window).resized(function() {
-		if(size < 800 && window.innerWidth >= 800) {
-			center_map(map);
-			size = window.innerWidth;
-		}
-		if(size >= 1020 && window.innerWidth < 1020) {
-			center_map(map);
-			size = window.innerWidth;
-		}
-		if(size >= 800 && window.innerWidth < 800) {
-			center_map(map);
-			size = window.innerWidth;
-		}
-	});
+        $(window).resized(function() {
+            console.log('resize');
+            if(size < 800 && window.innerWidth >= 800) {
+                center_map(map);
+                size = window.innerWidth;
+            }
+            if(size >= 1020 && window.innerWidth < 1020) {
+                center_map(map);
+                size = window.innerWidth;
+            }
+            if(size >= 800 && window.innerWidth < 800) {
+                center_map(map);
+                size = window.innerWidth;
+            }
+        });
 
-	$(window).on( "orientationchange", function(e) {
-		center_map(map);
-	});
+        $(window).on( "orientationchange", function(e) {
+            center_map(map);
+        });
+    }
 });
 
 })(jQuery);
