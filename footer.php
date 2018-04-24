@@ -86,6 +86,7 @@
 							ga('create', 'UA-42374937-1', 'auto');
 							ga('require', 'linkid', 'linkid.js');
 							ga('send', 'pageview');
+                            ga('set', 'anonymizeIp', true);
 
 						</script>
 						<script type="text/javascript">
