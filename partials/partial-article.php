@@ -32,8 +32,13 @@
 		<?php the_content() ?>
 
 		<?php if ( !is_page() && get_field('story_link_url') ) { ?>
-
-				<a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a>
+        <?php if ( strpos(get_field('story_link_url'),"environment.") ) {
+          $env_target = '_self';
+        } else {
+          $env_target = '_blank';
+        }
+        ?>
+				<a href="<?php the_field('story_link_url'); ?>" class="button" target="<?php echo $env_target; ?>"><?php the_field('story_source_name'); ?> »</a>
 
 		<?php } ?>
 
