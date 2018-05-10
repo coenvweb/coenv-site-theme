@@ -90,15 +90,17 @@ function coenv_related_faculty ($id, $term = 0) {
                         echo '</div>';
                     }	
                     echo '<div class="related-faculty-name">';
-                        echo '<h3>';
+                        echo '<p>';
                             echo the_title();
-                        echo '</h3>';
+                        echo '</p>';
                     echo '</div>';
                 echo '</div>';
             echo '</a>';
 		}
         if (empty($term)) {
-            echo '<a href="/faculty/" title="Browse more faculty in the College of the Environment" class="count" >';
+            $profile_count = wp_count_posts('faculty');
+            $profile_count = $profile_count->publish;
+            echo '<a href="/faculty/" title="Browse ' . ($profile_count - 6) . ' more faculty in the College of the Environment" class="count" >';
         } else {
             echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
         }
@@ -107,7 +109,7 @@ function coenv_related_faculty ($id, $term = 0) {
         echo '<i class="icon-faculty-grid-alt-2"></i>';
         echo '</div>';
         if (empty($term)) {
-            echo '<span class="number">All Faculty';
+            echo '<span class="number">+' . ($profile_count - 6) . ' more';
         } else {
             echo '<span class="number">+' . ($term->count - 6) . ' more';
         }
@@ -123,3 +125,15 @@ function coenv_related_faculty ($id, $term = 0) {
 	wp_reset_postdata();
 
 }
+
+function faculty_sidebar_shortcode( $atts, $content = null ) {
+	ob_start();
+    echo '<div class="widget-column">';
+    echo '<div class="grey-widget faculty-sidebar">';
+    echo '<a href="/faculty" class="faculty-sidebar-title"><h2><i class="icon-faculty-grid-alt-2"></i> Faculty Profiles</h2></a>';
+    echo '<span class="caption">' . $content . '</span>'; 
+    coenv_related_faculty( $post->ID );
+    echo '</div></div>';
+    return ob_get_clean();
+}
+add_shortcode( 'faculty_sidebar', 'faculty_sidebar_shortcode' );

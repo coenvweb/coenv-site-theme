@@ -53,8 +53,6 @@ $ancestor = array(
 
 				<?php endif ?>
                 
-                <?php coenv_related_faculty( $post->ID ); ?>
-                
             <div class="side-footer">
                 <?php get_sidebar('footer') ?>
             </div>

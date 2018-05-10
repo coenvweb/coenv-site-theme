@@ -1,4 +1,4 @@
-.page-id-433, .page-id-28128 {
+.page-id-433, .page-id-28128, .page-id-51037 {
     .article__content {
         
         .object {
@@ -27,9 +27,11 @@
         }
         
         .widget-column {
+            margin-top: 1rem;
             @include min-width ( $iPadPortrait ) {
                 max-width: 40%;
                 float: right;
+                margin-left: 2rem;
                 .teal-widget, .grey-widget {
                     @include rem('margin', 1, 0, 1, 1);
                 }
