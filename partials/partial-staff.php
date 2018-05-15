@@ -24,7 +24,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 }
 
 ?>
-<div id="bio-t-<?php echo $post->post_name ?>" class="contact <?php if(!empty($description) || have_rows('job_responsibilities')) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
+<div id="bio-t-<?php echo $post->post_name ?>" class="contact <?php if( is_page('deans-office-staff') && (!empty($description) || have_rows('job_responsibilities'))) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
@@ -69,7 +69,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     </div>
 </div>
 <div id="bio-c-<?php echo $post->post_name ?>" class="accordion-content" aria-labelledby="bio-t-<? echo $post->post_name ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo $post->post_name ?>" style="display: none;">
-<? if(!empty($description) || have_rows('job_responsibilities')) { ?>
+<? if(is_page('deans-office-staff') && (!empty($description) || have_rows('job_responsibilities'))) { ?>
 <?php
     // check if the repeater field has rows of data
     if( have_rows('job_responsibilities') ):
@@ -94,7 +94,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     echo $description;
 ?>
 <? } ?>
-<?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
+<?php if(is_page('deans-office-staff') && (current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others'))) { ?>
     <p class="revision"><?php echo do_shortcode('[ow_make_revision_link text="Make a revision" class="" type="text" post_id="'.$post->ID.'"]'); ?></p>
 <?php } ?>
 </div>

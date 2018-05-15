@@ -43,7 +43,28 @@
 		<?php } ?>
 
 
+    <?php 
+        $posts = get_field('page_contacts');
 
+      if( $posts ): ?>
+        <h2 class="small-contact-title">
+        <?php
+        $page_contact_title = get_field('contact_title');
+         if ($page_contact_title) {
+            echo $page_contact_title;
+        } elseif (count($posts) > 1) {
+            echo 'Dean\'s Office Contacts:';
+        } else {
+            echo 'Dean\'s Office Contact:';
+        };
+        ?>
+        </h2>
+        <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+            <?php setup_postdata($post); ?>
+            <?php get_template_part( 'partials/partial', 'staff' ) ?>
+        <?php endforeach; ?>
+        <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+    <?php endif; ?>
 	</section>
 		
     <?php remove_filter( 'the_title', 'wptexturize' );
