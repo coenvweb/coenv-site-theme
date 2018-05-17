@@ -47,6 +47,7 @@
         $posts = get_field('page_contacts');
 
       if( $posts ): ?>
+        <div class="page-contacts">
         <h2 class="small-contact-title">
         <?php
         $page_contact_title = get_field('contact_title');
@@ -64,6 +65,7 @@
             <?php get_template_part( 'partials/partial', 'staff' ) ?>
         <?php endforeach; ?>
         <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+        </div>
     <?php endif; ?>
 	</section>
 		
