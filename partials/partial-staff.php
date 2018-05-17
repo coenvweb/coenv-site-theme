@@ -24,7 +24,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 }
 
 ?>
-<div id="bio-t-<?php echo $post->post_name ?>" class="contact <?php if( is_page('deans-office-staff') && (!empty($description) || have_rows('job_responsibilities'))) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
+<div id="bio-t-<?php echo $post->post_name ?>" class="contact <?php if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>accordion-title read" aria-label="Toggle more information" tabindex="0<?php } ?>" aria-expanded="false">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
