@@ -1,5 +1,7 @@
 //Contact Page Styles
 
+.page-contacts {
+
     .contact {
         height: 130px;
         margin-bottom: 1.6rem;
@@ -226,18 +228,19 @@
         }
     }
 
-h2.small-contact-title {
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    font-weight: 600;
-    line-height: 1rem;
-    padding: 1rem 0;
-    font-size: 11px;
-    font-size: .78571rem;
-    @include sans();
-    border-bottom: 1px solid $border;
-}
+    h2.small-contact-title {
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-weight: 600;
+        line-height: 1rem;
+        padding: 1rem 0;
+        font-size: 11px;
+        font-size: .78571rem;
+        @include sans();
+        border-bottom: 1px solid $border;
+    }
 
-#bio-t-john-meyer h4, #bio-t-liz-exell h4 {
-    padding-right: 0;
+    #bio-t-john-meyer h4, #bio-t-liz-exell h4 {
+        padding-right: 0;
+    }
 }
