@@ -54,6 +54,7 @@ $ancestor = array(
                         <?php the_content(); ?>
                         </hr>
                     </div>
+                    <div class="page-contacts">
                        
                    <?php
                         
@@ -109,7 +110,7 @@ $ancestor = array(
                         endwhile;
                         wp_reset_postdata();
                      ?>
-                       
+                       </div>
                     </section>
                     
                 </article>

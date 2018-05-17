@@ -49,6 +49,7 @@ $ancestor = array(
                     </header>
 
 	               <section class="article__content accordion" id="bio">
+                     <div class="page-contacts">
                    <?php
                         $terms = get_terms( 'team', array(
                         'hide_empty' => 0
@@ -109,7 +110,7 @@ $ancestor = array(
                         endwhile;
                         wp_reset_postdata();
                     } ?>
-                       
+                       </div>
                     </section>
                     
                 </article>
