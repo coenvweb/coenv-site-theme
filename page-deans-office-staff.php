@@ -48,8 +48,8 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
 
-	               <section class="article__content accordion" id="bio">
-                     <div class="page-contacts">
+	               <section class="article__content" >
+                     <div class="page-contacts accordion" id="bio">
                    <?php
                         $terms = get_terms( 'team', array(
                         'hide_empty' => 0

@@ -69,7 +69,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     </div>
 </div>
 <div id="bio-c-<?php echo $post->post_name ?>" class="accordion-content" aria-labelledby="bio-t-<? echo $post->post_name ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo $post->post_name ?>" style="display: none;">
-<? if(is_page('deans-office-staff') && (!empty($description) || have_rows('job_responsibilities'))) { ?>
+<? if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>
 <?php
     // check if the repeater field has rows of data
     if( have_rows('job_responsibilities') ):
