@@ -48,13 +48,13 @@ $ancestor = array(
                         <h1 class="article__title"><?php the_title() ?></h1>
                     </header>
 
-	               <section class="article__content accordion" id="bio">
+	               <section class="article__content">
                        
                     <div class="advancement-summary">
                         <?php the_content(); ?>
                         </hr>
                     </div>
-                    <div class="page-contacts">
+                    <div class="page-contacts accordion" id="bio">
                        
                    <?php
                         
