@@ -73,7 +73,7 @@ $ancestor = array(
                     </div>
                     <div class="subscribe">Subscribe
                       <ul>
-                          <li><a class="button" href="/students/career-resources/career-opportunities/subscribe-via-email/"><i class="icon-mail"></i><span class="visuallyhidden">Email</span></a></li>
+                          <li><a class="button" href="http://eepurl.com/hN5H-/"><i class="icon-mail"></i><span class="visuallyhidden">Email</span></a></li>
                           <li><a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i><span class="visuallyhidden">RSS</span></a></li>
                       </ul>
                     </div>
