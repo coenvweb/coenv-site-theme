@@ -986,6 +986,17 @@ function jk_img_caption_shortcode_filter($val, $attr, $content = null)
 }
 add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
 
+
+function youtube_nocookie( $data, $url, $args ){
+  
+  $data = str_replace( 'www.youtube.com', 'www.youtube-nocookie.com', $data );
+  
+  return $data;
+  
+}
+
+add_filter( 'oembed_result', 'youtube_nocookie', 10, 3 );
+
 /**
  * Add taxonomies & news functions
  */
