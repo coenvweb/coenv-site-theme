@@ -121,6 +121,7 @@
     <meta property="og:url" content="<?php echo $post_link ?>" />
     <meta property="og:image" content="<?php echo $post_image ?>" />
     <meta property="og:site_name" content="<?php bloginfo('name') ?>" />
+    <meta name="twitter:dnt" content="on">
         
         <!--[if lt IE 9]>
             <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js"></script>
