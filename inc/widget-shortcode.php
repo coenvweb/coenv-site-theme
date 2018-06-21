@@ -26,7 +26,7 @@ function widget($atts) {
 add_shortcode('widget','widget'); 
 
 function marketo_signup_form($atts) {
-    remove_filter( 'the_content', 'eae_encode_emails', EAE_FILTER_PRIORITY );
+    remove_filter( 'the_content', 'eae_encode_emails', 'EAE_FILTER_PRIORITY' );
     $mkto = shortcode_atts( array(
         'subid' => 378,
         'fromname' => 'UW Email Sign Up',
