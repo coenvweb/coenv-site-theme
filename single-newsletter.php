@@ -167,10 +167,10 @@ $links = get_field('outside_news');
 							</div>
 							<div class="related-container">
 								<div class="related-article-title">
-                                    <a href="http://engage.washington.edu/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&amp;SURVEY_ID=18921" title="Sign up to receive UW Headlines monthly" rel="bookmark">
+                                    <a href="/news/college-newsletter/" title="Subscribe to UW Environment Headlines" rel="bookmark">
                                         <h3>
                                             <i class="icon-mail"></i>
-                                            <span>Sign up to receive </br>UW Headlines monthly</span>
+                                            <span>Subscribe to </br>UW Environment Headlines</span>
                                         </h3>
                                     </a>
 								</div>
