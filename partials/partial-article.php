@@ -44,7 +44,7 @@
 
 
     <?php 
-        $posts = get_field('page_contacts');
+        $posts = get_field('page_contacts', get_the_ID());
 
       if( $posts ): ?>
         <div class="page-contacts">

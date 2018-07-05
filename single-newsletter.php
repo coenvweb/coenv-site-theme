@@ -156,24 +156,25 @@ $links = get_field('outside_news');
 						</div>
 						<div class="related-posts">
 							<div class="related-container">
-								<div class="related-article-title">
-                                    <a href="<?=get_site_url()?>/news" title="More news from the College of the Environment" rel="bookmark">
-                                        <h3>
-                                            <i class="dashicons-format-aside dashicons"></i>
-                                            <span>More news from the </br>College of the Environment</span>
-                                        </h3>
-                                    </a>
-								</div>
+                  <a href="<?=get_site_url()?>/news" title="More news from the College of the Environment" rel="bookmark">
+                    <div class="related-article-title">
+                                            <h3>
+                                                <i class="dashicons-format-aside dashicons"></i>
+                                                <span>More news from the <br />College of the Environment</span>
+                                            </h3>
+
+                    </div>
+                  </a>
 							</div>
 							<div class="related-container">
-								<div class="related-article-title">
-                                    <a href="/news/college-newsletter/" title="Subscribe to UW Environment Headlines" rel="bookmark">
-                                        <h3>
-                                            <i class="icon-mail"></i>
-                                            <span>Subscribe to </br>UW Environment Headlines</span>
-                                        </h3>
-                                    </a>
-								</div>
+                <a href="http://engage.washington.edu/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&amp;SURVEY_ID=18921" title="Sign up to receive UW Headlines monthly" rel="bookmark">
+                    <div class="related-article-title">
+                            <h3>
+                                <i class="icon-mail"></i>
+                                <span>Sign up to receive <br />UW Headlines monthly</span>
+                            </h3>
+                    </div>
+                </a>
 							</div>
 							<br style="clear:both">
 						</div>
