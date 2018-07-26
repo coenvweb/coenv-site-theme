@@ -45,8 +45,14 @@ $banner = coenv_banner();
 					<?php endwhile ?>
                 
                 <footer class="related">
-					<?php get_template_part( 'partials/partial', 'related-news' ) ?>
-                    <?php get_template_part( 'partials/partial', 'related-faculty' ) ?>
+                    <?php
+                        global $post;
+                        $tempPost = $post;
+                        get_template_part( 'partials/partial', 'related-news' );
+                        $post = $tempPost;
+                        get_template_part( 'partials/partial', 'related-faculty' );
+                        $post = $tempPost;
+                    ?>
                 </footer>
 				<footer class="pagination">
 					<?php coenv_paginate() ?>
