@@ -242,12 +242,12 @@
 .Faculty-member-name {
 	@extend .antialiased;
 	margin: 0;
-	@include font-size(24);
+	@include font-size(20);
 	line-height: 1.25;
 	font-weight: 400;
 	color: #fff;
 
-	@include min-width ( 830 ) {
+	@include min-width ( 860 ) {
 		@include font-size(30);
 	}
 	
@@ -258,16 +258,18 @@
 }
 
 .Faculty-member-academic-title {
-	@extend .antialiased;
-	margin: 0;
-	@include font-size(14);
-	line-height: 1.428571429;
-	font-weight: 600;
-	color: #fff;
+    @include rem('margin-top', .5);
+    @extend .antialiased;
+    margin: 0;
+    @include font-size(14);
+    line-height: 1.428571429;
+    font-weight: 600;
+    color: #fff;
 
-	@include min-width ( 830 ) {
-		@include font-size(18);
-	}
+    @include min-width ( 840 ) {
+        @include rem('margin-top', .25);
+        @include font-size(18);
+    }
 }
 
 .Faculty-member-unit {
@@ -275,13 +277,14 @@
 	margin: 0;
 	@include font-size(12);
 	line-height: 1.666666667;
+  margin-left: 2px;
 	font-weight: 600;
 	text-transform: uppercase; 
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
     color: white;
 
-	@include min-width ( 830 ) {
+	@include min-width ( 840 ) {
 		@include font-size(12);
 	}
 
@@ -300,14 +303,22 @@
 	}
 }
 
-.Faculty-member-themes {
-	//@include rem('margin-top', 1);
-	@include font-size(12);
-	color: #fff;
+.Faculty-member-endowment {
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.25rem;
+}
 
-	@include min-width ( 830 ) {
-		@include font-size(14);
-	}
+.Faculty-member-themes {
+    @include rem('margin-top', .5);
+    @include font-size(12);
+    color: #fff;
+
+    @include min-width ( 840 ) {
+        @include rem('margin-top', .25);
+        @include font-size(14);
+    }
 
 	ul {
 		@extend .clearfix;
