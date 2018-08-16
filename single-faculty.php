@@ -57,18 +57,17 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 						<div class="Faculty-member-vcard-content">
 
 							<div class="Faculty-member-vcard-content-inner">
-								
+								<?php if ( !empty( $member['units'] ) ) : ?>
+                  <h3 class="Faculty-member-unit"><a href="<?php echo $member['units'][0]['url'] ?>" title="See all faculty members in <?php echo $member['units'][0]['name'] ?>">
+                <?php echo $member['units'][0]['name'] ?></a></h3>
 								<h1 class="Faculty-member-name"><?php echo $member['full_name'] ?></h1>
-
+								<?php endif ?>
 								<?php if ( !empty( $member['academic_title'] ) ) : ?>
 									<h2 class="Faculty-member-academic-title"><?php echo $member['academic_title'] ?></h2>
 								<?php endif ?>
-                <?php if ( !empty( $member['endowments_chairs'] ) ) : ?>
-									<h3 class="Faculty-member-unit"><?php echo $member['endowments_chairs'] ?></h3>
-								<?php endif ?>
-								<?php if ( !empty( $member['units'] ) ) : ?>
-									<h3 class="Faculty-member-unit"><a href="<?php echo $member['units'][0]['url'] ?>" title="See all faculty members in <?php echo $member['units'][0]['name'] ?>"><?php echo $member['units'][0]['name'] ?></a></h3>
-								<?php endif ?>
+                <!--<?php //if ( !empty( $member['endowments_chairs'] ) ) : ?>
+									<!--<h3 class="Faculty-member-endowment"><?php //echo $member['endowments_chairs'] ?></h3>-->
+								<?php //endif ?>
 
 								<?php if ( !empty( $member['themes'] ) ) : ?>
 
