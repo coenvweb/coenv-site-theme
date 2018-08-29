@@ -96,7 +96,7 @@ $links = get_field('outside_news');
                         ?>
                     </section>
                 </section>
-          <?php if (isset($events)) { ?>
+          <?php if (empty($events)) { ?>
                 <section class="newsletter">
                     <h2 class="section-title">
                         <?php if($nl_type == 'headlines') { ?>
