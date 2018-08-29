@@ -96,6 +96,7 @@ $links = get_field('outside_news');
                         ?>
                     </section>
                 </section>
+          <?php if (isset($events)) { ?>
                 <section class="newsletter">
                     <h2 class="section-title">
                         <?php if($nl_type == 'headlines') { ?>
@@ -126,6 +127,7 @@ $links = get_field('outside_news');
                         <h5 class="more_events"><img class="more_events_icon" src="<?= get_template_directory_uri() ?>/assets/img/calendar_purple.png" alt="Calendar Icon" />   Check out our calendar for <a href="http://environment.uw.edu/alumni-and-community/calendar-events/">more</a> events</h5>
                     </div>
                 </section>
+          <?php }; ?>
                 <section class="newsletter">
 
                     <h2 class="section-title">
