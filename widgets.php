@@ -316,11 +316,11 @@ class CoEnv_Widget_Events extends WP_Widget {
 			
 				<?php echo $before_title ?>
 
-					<span><a class="more" href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
+					<span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
 
 					<?php if ( $events_url != '' ) : ?>
                                    
-						<a href="<?php echo $events_url; ?>" title="View All Events">More events &raquo;</a>
+						<a class="more" href="<?php echo $events_url; ?>" title="View All Events">More events &raquo;</a>
 					<?php endif ?>
 
 				<?php echo $after_title ?>
