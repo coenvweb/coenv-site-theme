@@ -316,7 +316,7 @@ class CoEnv_Widget_Events extends WP_Widget {
 			
 				<?php echo $before_title ?>
 
-					<span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
+					<span><a class="more" href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
 
 					<?php if ( $events_url != '' ) : ?>
                                    
@@ -945,6 +945,179 @@ class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
             echo '</a>';
             echo '</div>';
         }
+		echo $after_widget;
+ 
+		wp_reset_postdata();
+	}
+ 
+}
+
+/**
+ * Meet a Postdoc
+ */
+register_widget( 'CoEnv_Widget_Meet_Postdoc' );
+
+class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
+ 
+  public function __construct()
+	{
+		$args = array(
+			'classname' => 'meet-postdoc-widget',
+			'description' => __( 'Display a single postdoc and information about them.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'meet_postdoc', // base ID
+			'Meet A Postdoc', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance )
+	{
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Meet a Postdoc', 'coenv' );
+		}
+ 
+		if ( isset( $instance['text'] ) ) {
+			$text = $instance['text'];
+		} else {
+			$text = '';
+		}
+    
+    if ( isset( $instance['button_url'] ) ) {
+			$button_url = $instance['button_url'];
+		} else {
+			$button_url = '';
+		}
+      
+    if ( isset( $instance['button_text'] ) ) {
+			$button_text = $instance['button_text'];
+		} else {
+			$button_text = 'See more';
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'text' ) ?>">Text to show: </label>
+				<textarea name="<?php echo $this->get_field_name( 'text' ) ?>" cols="31" rows="5"><?php echo $text ?></textarea>
+			</p>
+      <p>
+				<label for="<?php echo $this->get_field_name( 'button_url' ) ?>">Button URL: </label>
+				<input class="widefat" name="<?php echo $this->get_field_name( 'button_url' ) ?>" type="url" value="<?php echo $button_url ?>" />
+			</p>
+      <p>
+				<label for="<?php echo $this->get_field_name( 'button_text' ) ?>">Button Text: </label>
+				<input class="widefat" name="<?php echo $this->get_field_name( 'button_text' ) ?>" type="text" value="<?php echo $button_text ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['text'] = strip_tags( $new_instance['text'] );
+    $instance['button_url'] = strip_tags( $new_instance['button_url'] );
+    $instance['button_text'] = strip_tags( $new_instance['button_text'] );
+ 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance )
+	{
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );   
+        
+ 
+        $sa_args = array(
+            'post_type' => 'student_ambassadors',
+            'posts_per_page' => '1',
+            'orderby' => 'rand',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'student_type',
+                    'field'    => 'slug',
+                    'terms'    => 'postdoctoral-fellow',
+                ),
+            ),
+		);
+        
+
+        $sa_query = new WP_Query( $sa_args );
+        
+        echo $before_widget; ?>
+        <?php echo $before_title ?>
+
+            <span><a href="/students/meet-our-students/undergraduate-ambassadors/">
+                <?php 
+                if ( $title == '' ){
+                    echo 'Student Ambassadors';
+                } else {
+                    echo $title;
+                } ?>
+            </a></span>
+
+
+        <?php echo $after_title;
+
+        if ( $sa_query->have_posts()) {
+                echo '<div class="ambassadors">';
+                while ( $sa_query->have_posts() ) {
+                    $sa_query->the_post();
+                    $first_name = get_field('first_name');
+                    $last_name = get_field('last_name');
+                    $image = get_field('photo');
+                    if( !empty($image) ) {
+                        // vars
+                        $alt = $image['alt'];
+
+                        // thumbnail
+                        $size = 'thumbnail';
+                        $thumb = $image['sizes'][ $size ];
+                    }
+                    $name = $first_name . ' ' . $last_name;
+                    echo '<a href="/students/meet-our-students/undergraduate-ambassadors/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                        echo '<div class="ambassador-container" >';
+                        if ( $image ) {
+                            echo '<div class="ambassador-thumb">';
+                            echo '<img alt="' . $alt . '" src=' . $thumb . '>';
+                            echo '</div>';
+                        }	else {
+                            echo '<div class="ambassador-thumb">';
+                            echo '</div>';
+                        }
+                        echo '<div class="ambassador-name">';
+                            echo '<h3>';
+                                echo $first_name;
+                            echo '</h3>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</a>';
+            }
+            echo '<a href="/students/meet-our-students/undergraduate-ambassadors/" title="Browse more faculty in the College of the Environment" class="count" >';
+            echo '<div class="ambassador-container">';
+            echo '<div class="ambassador-thumb">';
+            echo '<i class="icon-faculty-grid-alt-2"></i>';
+            echo '</div>';
+            if (empty($term)) {
+                echo '<span class="number">All Ambassadors';
+            } else {
+                echo '<span class="number">+' . ($term->count - 6) . ' more';
+            }
+            echo '</span></div>';
+            echo '</a>';
+            echo '</div>';
+        }
+        echo '<p>' . $instance['text'] . '</p>';
+        echo '<a href="' . $instance['button_url'] . '">' . $instance['button_text'] . '</a>';
 		echo $after_widget;
  
 		wp_reset_postdata();
