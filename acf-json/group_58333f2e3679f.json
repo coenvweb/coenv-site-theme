@@ -404,14 +404,14 @@
             "name": "events",
             "type": "repeater",
             "instructions": "For design purposes, add events in multiples of 2",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "min": 2,
+            "min": 0,
             "max": 2,
             "layout": "table",
             "button_label": "Add Event",
@@ -423,7 +423,7 @@
                     "name": "title",
                     "type": "text",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
