@@ -1,11 +1,11 @@
 {
-    "key": "group_5894d2a274437",
-    "title": "Social Sharing",
+    "key": "group_5bc4c5a153983",
+    "title": "Metas",
     "fields": [
         {
-            "key": "field_5bc617b44eea3",
-            "label": "Social Share Title",
-            "name": "social_share_title",
+            "key": "field_5bc4c5b790d3c",
+            "label": "Meta Title Tag",
+            "name": "meta_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -22,9 +22,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_5bc617984eea2",
-            "label": "Social Share Description",
-            "name": "social_share_description",
+            "key": "field_5bc4c5c090d3d",
+            "label": "Meta Description",
+            "name": "meta_description_on_page",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,11 +41,11 @@
             "maxlength": ""
         },
         {
-            "key": "field_5894d2bda772c",
-            "label": "Social Share Image",
-            "name": "social_image",
-            "type": "image",
-            "instructions": "",
+            "key": "field_5bc616b5bee3a",
+            "label": "Meta Robots",
+            "name": "meta_robots",
+            "type": "text",
+            "instructions": "Add optional meta robots such as \"noindex, nofollow\"",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -53,16 +53,11 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": 2,
-            "mime_types": ""
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -71,6 +66,11 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "5"
             }
         ],
         [
@@ -79,9 +79,16 @@
                 "operator": "==",
                 "value": "newsletter"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
         ]
     ],
-    "menu_order": 10,
+    "menu_order": 999,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -89,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1539733991
+    "modified": 1539714223
 }
