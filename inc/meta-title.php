@@ -12,7 +12,7 @@ function coenv_meta_title() {
     
     // "You Are Here" info
     $page_id = get_queried_object_id(); 
-    $page_for_posts_id = get_option( 'page_for_posts' );
+    //$page_for_posts_id = get_option( 'page_for_posts' );
     $page_title = wp_title('|', FALSE, 'right');
     $taxonomy_title = single_term_title('', FALSE);
     $site_title = get_bloginfo('name');
@@ -27,23 +27,26 @@ function coenv_meta_title() {
         $page_number = '';
     }
     
-    // If it's the blog page, return a standard title. 
-    if ($page_id == $page_for_posts_id) {
-        $html = '<title>' . $page_title . $site_title . $page_number . '</title>';
+    // Return the custom title if supplied
+    if ($meta_title) {
+        $html = '<title>' . $meta_title . $page_number . '</title>';
+    } 
+    // If it's the faculty page, return a custom design title. 
+    elseif (is_post_type_archive('faculty') ) {
+        $html = '<title>Faculty Profiles | '. $site_title . $page_number . '</title>';
+    }
     // If it's a taxonomy category, return a custom title. 
-    } elseif (is_archive()) {
+    elseif (is_archive()) {
         $html = '<title>' . $taxonomy_title . ' News | '. $site_title . $page_number . '</title>';
-    // If search results page, return a standard title.
-    } elseif ( is_search() ) {
+    } 
+    // If it's the search results page, return a standard title.
+    elseif ( is_search() ) {
         $html = '<title>' . 'Search for "' . esc_attr($search_query) . '" | ' . $site_title . '</title>';
     // If 404 page page, return a standard title.
     } elseif ( is_404() ) {
         $html = '<title>' . 'Error 404 Not Found | ' . $site_title . '</title>';
-    // If the ACF field is filled out, use that.
-    } elseif ($meta_title) {
-        $html = '<title>' . $meta_title . '</title>';
-    // If it's the homepage, return a standard title. 
-    }  elseif ( is_front_page() ) {
+    // If it's the homepage, return a standard title.
+    } elseif ( is_front_page() ) {
         $html = '<title>' . $site_title . ' | ' . $site_description . '</title>';
     // If all else fails, build a title. 
     } else {
