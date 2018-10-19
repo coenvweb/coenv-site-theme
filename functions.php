@@ -1,19 +1,28 @@
 <?php
 
-/**
- * Custom menu walkers
- */
+// Load constants
+require_once locate_template( '/inc/site-constants.php' );
+
+// Custom Menu Walkers
 require_once locate_template( '/inc/walker-main-menu.php' );
 require_once locate_template( '/inc/walker-secondary-menu.php' );
 require_once locate_template( '/inc/walker-top-menu.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
-
+// Rewrites
 require_once locate_template( '/inc/rewrites.php' );
 
+// Ajax
 require_once locate_template( '/inc/ajax.php' );
 
+// Signature Story
 require_once locate_template( '/inc/signature-story-fun.php' );
+
+// Unique Meta Titles 
+require_once locate_template( '/inc/meta-title.php' );
+
+// Custom Metas (SEO and Social)
+require_once locate_template( '/inc/custom-metas.php' );
 
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
@@ -67,24 +76,6 @@ function coenv_admin_scripts() {
 	wp_enqueue_script( 'coenv_admin' );
 }
 
-/**
- * Print the <title> tag based on what is being viewed
- * @return 
- * - echo string
- */
-function coenv_title() {
-	global $page, $paged;
-
-	wp_title( '|', true, 'right' );
-
-	// Add the blog name
-	bloginfo( 'name' );
-
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 ) {
-		echo ' | ' . sprintf( __( 'Page %s', 'vpc' ), max( $paged, $page ) );
-	}
-}
 
 /**
  * Open graph doctype
