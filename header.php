@@ -4,9 +4,12 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>    
+
 <?php 
 global $wp;
-$post_link = home_url( $wp->request ); ?>
+$post_link = home_url( $wp->request ); 
+?>
+
 <?php echo coenv_meta_title(); ?> 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
