@@ -7,7 +7,7 @@
 
 <?php 
 global $wp;
-$post_link = home_url( $wp->request ); 
+$post_link = home_url( add_query_arg( array(), $wp->request ) );
 ?>
 
 <?php echo coenv_meta_title(); ?> 
