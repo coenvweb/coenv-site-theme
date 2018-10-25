@@ -280,9 +280,9 @@
 	img[class*="align"],
 	img[class*="wp-image-"],
 	img[class*="attachment-"],
-	.wp-caption,
-	.twitter-tweet-rendered {
+	.wp-caption, {
 		max-width: 100% !important;
+		height: auto !important;
 	}
     
     .gallery {
