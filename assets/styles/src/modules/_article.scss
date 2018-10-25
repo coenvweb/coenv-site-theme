@@ -282,7 +282,7 @@
 	img[class*="attachment-"],
 	.wp-caption,
 	.twitter-tweet-rendered {
-		height: auto !important;
+		max-width: 100% !important;
 	}
     
     .gallery {
