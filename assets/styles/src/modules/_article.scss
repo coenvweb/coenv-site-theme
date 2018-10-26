@@ -269,22 +269,6 @@
         }
     }
 
-	// responsive elements
-	// make sure elements with WP-added height and width attributes are scaled correctly
-	img,
-	img.size-small,
-	img.size-medium,
-	img.size-full,
-	img.size-large,
-	img.wp-post-image
-	img[class*="align"],
-	img[class*="wp-image-"],
-	img[class*="attachment-"],
-	.wp-caption, {
-		max-width: 100% !important;
-		height: auto !important;
-	}
-    
     .gallery {
         margin-bottom: 2rem!important;
         padding-top: 1rem;
