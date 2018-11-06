@@ -154,7 +154,7 @@ $ancestor = array(
 
                        <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/faculty-info/postdoctoral-fellows/meet-postdocs">
                           <div class="field-wrap">
-                            <input type="text" name="st" id="st" placeholder="Search for keywords (out of state, oceanography, outreach, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
+                            <input type="text" name="st" id="st" placeholder="Search for keywords (teaching, oceanography, outreach, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>
                           </div>
                         </form>
