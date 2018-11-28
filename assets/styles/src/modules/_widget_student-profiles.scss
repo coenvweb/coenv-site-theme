@@ -250,5 +250,10 @@
                 color: $white;
             }
         }
+        @include min-width ( 600 ) {
+            &:hover {
+                 transform: scale(1.05);
+            }
+        }
     }
 }
