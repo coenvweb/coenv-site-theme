@@ -5,7 +5,7 @@
 		$coenv_choice = get_field('related_posts');
 		if ( $coenv_choice == 'related' ) {
 			coenv_related_news( $post->ID );
-		} elseif ( $coenv_choice == 'choose' && $posts) {
+		} elseif ( $coenv_choice == 'choose') {
 			$coenv_chosen = get_field('related_posts_post');
 			echo '<div class="related-news"><div class="related-heading">';
 			echo '<h2 class="title">Related News</h2></div>';
