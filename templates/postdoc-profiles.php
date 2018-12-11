@@ -139,6 +139,11 @@ $ancestor = array(
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
+                                array(
+                                    'key' => 'research_description',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
                             );
                             $args['meta_query'] = $meta_query;
                         endif;
