@@ -642,6 +642,13 @@
                         "operator": "==",
                         "value": "Graduate Student"
                     }
+                ],
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
                 ]
             ],
             "wrapper": {
@@ -882,5 +889,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1540497442
+    "modified": 1544566746
 }
