@@ -1081,7 +1081,7 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
                         $alt = $image['alt'];
 
                         // thumbnail
-                        $size = 'medium';
+                        $size = 'homepage-column-standard';
                         $thumb = $image['sizes'][ $size ];
                     }
                     $name = $first_name . ' ' . $last_name;
