@@ -57,7 +57,7 @@ if( !empty($image) ) {
             <div class="row"><div class="prompt">Doctorate from:</div> <li class="answer-content"><?php echo $last_school; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($year_joined_uw)) : ?>
-            <div class="row"><div class="prompt">When I joined UW:</div> <li class="answer-content"><?php echo $quarter_joined_uw . ' ' . $year_joined_uw; ?></li></div>
+            <div class="row"><div class="prompt">Joined UW:</div> <li class="answer-content"><?php echo $quarter_joined_uw . ' ' . $year_joined_uw; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($current_research_project)) : ?>
             <div class="row"><div class="prompt">Current project:</div> <li class="answer-content"><?php echo $current_research_project; ?></li></div>
