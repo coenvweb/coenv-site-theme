@@ -1056,10 +1056,10 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
         echo $before_widget; ?>
         <?php echo $before_title ?>
 
-            <span><a href="/students/meet-our-students/undergraduate-ambassadors/">
+            <span><a href="/faculty-info/postdoctoral-fellows/meet-postdocs/">
                 <?php 
                 if ( $title == '' ){
-                    echo 'Student Ambassadors';
+                    echo 'Meet a Postdoc';
                 } else {
                     echo $title;
                 } ?>
@@ -1075,16 +1075,17 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
                     $first_name = get_field('first_name');
                     $last_name = get_field('last_name');
                     $image = get_field('photo');
+                    $unit = get_field('academic_unit');
                     if( !empty($image) ) {
                         // vars
                         $alt = $image['alt'];
 
                         // thumbnail
-                        $size = 'thumbnail';
+                        $size = 'homepage-column-standard';
                         $thumb = $image['sizes'][ $size ];
                     }
                     $name = $first_name . ' ' . $last_name;
-                    echo '<a href="/students/meet-our-students/undergraduate-ambassadors/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                    echo '<a href="/faculty-info/postdoctoral-fellows/meet-postdocs/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
                         echo '<div class="ambassador-container" >';
                         if ( $image ) {
                             echo '<div class="ambassador-thumb">';
@@ -1096,19 +1097,22 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
                         }
                         echo '<div class="ambassador-name">';
                             echo '<h3>';
-                                echo $first_name;
+                                echo $first_name . ' ' . $last_name;
                             echo '</h3>';
+                            echo '<h4>';
+                                echo $unit[0]->name;
+                            echo '</h4>';
                         echo '</div>';
                     echo '</div>';
                 echo '</a>';
             }
-            echo '<a href="/students/meet-our-students/undergraduate-ambassadors/" title="Browse more faculty in the College of the Environment" class="count" >';
+            echo '<a href="/faculty-info/postdoctoral-fellows/meet-postdocs/" title="Browse more postdocs in the College of the Environment" class="count" >';
             echo '<div class="ambassador-container">';
             echo '<div class="ambassador-thumb">';
             echo '<i class="icon-faculty-grid-alt-2"></i>';
             echo '</div>';
             if (empty($term)) {
-                echo '<span class="number">All Ambassadors';
+                echo '<span class="number">' . $instance['button_text'];
             } else {
                 echo '<span class="number">+' . ($term->count - 6) . ' more';
             }
@@ -1116,8 +1120,6 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
             echo '</a>';
             echo '</div>';
         }
-        echo '<p>' . $instance['text'] . '</p>';
-        echo '<a href="' . $instance['button_url'] . '">' . $instance['button_text'] . '</a>';
 		echo $after_widget;
  
 		wp_reset_postdata();
