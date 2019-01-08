@@ -44,7 +44,7 @@ if(!empty($description)) {
         </div>
     </div>
 </div>
-<div id="major-c-<?php echo sanitize_title($name); ?>" class="accordion-content major-content" aria-labelledby="major-t-<? echo sanitize_title($name); ?>" aria-hidden="true" aria-controlled-by="major-t-<? echo sanitize_title($name); ?>" style="display: none;">
+<div id="major-c-<?php echo sanitize_title($name); ?>" class="accordion-content major-content" aria-labelledby="major-t-<?php echo sanitize_title($name); ?>" aria-hidden="true" aria-controlled-by="major-t-<? echo sanitize_title($name); ?>" style="display: none;">
             
     <ul class="major-info">
         <?php if (!empty($description)) : ?>
