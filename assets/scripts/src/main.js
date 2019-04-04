@@ -239,14 +239,16 @@ jQuery(function ($) {
             $boxes.hide();
 
             $('.stories-container').imagesLoaded( function() {
-                $boxes.fadeIn();
-
-                $('.stories-container').masonry({
-                    // options
-                    itemSelector: '.story',
-                    columnWidth: '.story-sizer',
-                    percentPosition: true
-                });
+                setTimeout(function(){ 
+                    $boxes.fadeIn();
+                    $('.stories-container').masonry({
+                        // options
+                        itemSelector: '.story',
+                        columnWidth: '.story-sizer',
+                        percentPosition: true
+                    });
+                }, 200);
+                
             });
             
         }
