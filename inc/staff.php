@@ -28,7 +28,6 @@ function coenv_register_staff() {
 		'menu_position' => null,
 		'supports' => array('title','editor','page-attributes'),
 		'public' => true,
-        'exclude_from_search' => true,
         'publicly_queryable' => false,
 		'has_archive' => false,
 		'hierarchical' => false,
