@@ -377,3 +377,31 @@ li#wp-admin-bar-revision {
         }
     }
 }
+
+/*	Mini header
+		======================================================================== */
+
+.mini-header {
+    .mini-top-menu {
+        margin-top: -21px;
+        background: $accent;
+        height: 44px;
+        .mini-top-menu-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #desktop-logo {
+            fill: white;
+            height: 36px;
+            width: 80px;
+            bottom: -8px;
+            position: relative;
+        }
+        #university-of-washington-svg {
+            top: -5px;
+            position: relative;
+            transform: scale(1.15);
+            left: 1.5rem;
+        }
+    }
+}
