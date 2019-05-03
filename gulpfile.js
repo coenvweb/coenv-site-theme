@@ -9,7 +9,13 @@ var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-minify-css');
 var sourcemaps = require('gulp-sourcemaps');
-var livereload = require('gulp-livereload');
+var browserSync = require('browser-sync').create();
+
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        proxy: "environment.uw.local"
+    });
+});
 
 gulp.task('main_js', function () {
   return gulp
@@ -44,7 +50,7 @@ gulp.task('main_js', function () {
     .pipe(uglify())
     .pipe(rename('main2.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
   ;
 });
 
@@ -65,7 +71,7 @@ gulp.task('faculty_js', function () {
     .pipe(uglify())
     .pipe(rename('faculty.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
   ;
 });
 
@@ -80,7 +86,7 @@ gulp.task('fallback_js', function () {
     .pipe(uglify())
     .pipe(rename('jquery-fallback.min.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
   ;
 });
 
@@ -95,7 +101,7 @@ gulp.task('admin_js', function () {
     .pipe(uglify())
     .pipe(rename('customNavSubheadCheckboxes.js'))
     .pipe(gulp.dest('./assets/scripts/build/'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
   ;
 });
 
@@ -112,22 +118,18 @@ gulp.task('sass', function () {
     .pipe(cssmin())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('assets/styles/build'))
-    .pipe(livereload());
+    .pipe(browserSync.stream());
   ;
 });
 
 gulp.task('watch', function () {
-    livereload.listen();
-    gulp.watch('**/*.{html,php}', livereload.reload);
-    gulp.watch('assets/styles/src/**/*.scss', ['sass', 'refresh']);
-    gulp.watch('assets/scripts/src/**/*.js', ['js', 'refresh']);
-    gulp.watch('assets/scripts/build/**/ajax.js', ['js', 'refresh']);
-});
-
-// Refresh task. Depends on Jade task completion
-gulp.task("refresh", function(){
-  livereload.changed();
-  console.log('LiveReload is triggered');
+    browserSync.init({
+        proxy: "environment.uw.local"
+    });
+    gulp.watch('**/*.{html,php}', browserSync.reload);
+    gulp.watch('assets/styles/**/*.scss', ['sass']);
+    gulp.watch(['./assets/scripts/**/*.js', '!./assets/scripts/build/*.js'], ['js']);
+;
 });
 
 gulp.task('dev', ["default","watch"]);
