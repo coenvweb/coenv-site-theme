@@ -74,7 +74,7 @@ jQuery(function ($) {
         } );
     };
     
-    if ($('body').hasClass('postid-62064')) {
+    if ($('body').is('.postid-62064, .post-template-cambodia-signature-story')) {
         autoplay = true;
         var ppbutton = $('.play-pause-hero');
         var hero = $('#hero-video');

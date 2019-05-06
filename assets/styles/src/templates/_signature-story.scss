@@ -884,3 +884,36 @@
         }
     }
 }
+
+//cambodia
+
+.post-template-cambodia-signature-story {
+    #hero-video {
+        height: 110%!important;
+    }
+    
+    .article__title {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        color: white;
+        max-width: 70%;
+        &:before, &:after {
+            display: none;
+        }
+        .big__title {
+            font-style: italic;
+            font-size: 6rem;
+            line-height: normal;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            line-height: normal;
+            letter-spacing: 2.5px;
+            @include sans();
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    }
+
+}

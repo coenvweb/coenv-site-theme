@@ -32,7 +32,22 @@ $banner = coenv_banner();
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'article' ) ?>
+            <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
+
+              <header class="article__header" id="#share-<?php the_ID() ?>">
+                  <div class="article__title">
+                      <h1 class="big__title">Fueled by floods</h1>
+                      <p class="subtitle">Hydropower Demands Threaten Cambodia's Food Security</p>
+                  </div>
+              </header>
+
+              <section class="article__content">
+
+                <?php the_content() ?>
+
+              </section>
+
+            </article><!-- .article -->
 
 					<?php endwhile ?>
 

@@ -144,6 +144,30 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
             </h1>
             </div>
         </div>
+         <div class="feature homepage-hero-module">
+                <div class="feature-image video-container banner-wrapper">
+                <div class="filter"></div>
+                    <?php
+                        echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg">';
+                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
+                        echo '</video>';
+                     ?>
+                    <div class="poster visuallyhidden">
+                        <?php
+                        echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg" alt="">';
+                         ?>
+                    </div>
+                    <div class="layout-container layout-container--header">
+
+                </div><!-- .container.header-container -->
+
+                <div class="feature-info-container">
+                    <a class="play-pause-hero right show-for-medium-up"></a>
+              </div><!-- .feature-info-container -->
+              </div>
+        </div>
     <?php } else { ?>
 
             <div id="wrapper" class="layout-wrapper">
