@@ -891,10 +891,14 @@
     #hero-video {
         height: 110%!important;
     }
+    .banner-wrapper {
+        padding-bottom: 43%;
+    }
     
     .article__title {
         position: absolute;
         bottom: 0;
+        left: -1rem;
         margin: 0;
         color: white;
         max-width: 70%;
@@ -914,6 +918,11 @@
             font-weight: 800;
             text-transform: uppercase;
         }
+    }
+    
+    .article__content {
+        top: 2rem;
+        left: -3rem;
     }
 
 }
