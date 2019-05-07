@@ -19,13 +19,6 @@ $banner = coenv_banner();
 
 <section id="blog" role="main" class="template-signature-story">
 
-		<div class="container">
-
-			<nav id="secondary-nav" class="side-col">
-                
-			</nav><!-- #secondary-nav.side-col -->
-  </div>
-
 			<main id="main-col" class="main-col">
           
 				<?php if ( have_posts() ) : ?>
@@ -36,7 +29,7 @@ $banner = coenv_banner();
 
               <header class="article__header" id="#share-<?php the_ID() ?>">
                   <div class="article__title">
-                      <h1 class="big__title">Fueled by floods</h1>
+                      <h1 class="big__title">Fueled by floods:</h1>
                       <p class="subtitle">Hydropower Demands Threaten Cambodia's Food Security</p>
                   </div>
               </header>
