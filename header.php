@@ -148,7 +148,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 <div class="feature-image video-container banner-wrapper">
                 <div class="filter"></div>
                     <?php
-                        echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.jpg">';
+                        echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/mekong-video.jpg">';
                         echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-looper-720.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                         echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                         echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
