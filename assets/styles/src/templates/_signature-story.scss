@@ -888,6 +888,8 @@
 //cambodia
 
 .post-template-cambodia-signature-story {
+    
+    // top video
     .feature {
         margin-top: -32px;
     }
@@ -897,6 +899,8 @@
     .banner-wrapper {
         padding-bottom: 43%;
     }
+    
+    //title
     
     .article__title {
         position: absolute;
@@ -912,6 +916,7 @@
             font-style: italic;
             font-size: 6rem;
             line-height: normal;
+            font-family: 'pt-serif-bold-italic';
         }
         .subtitle {
             font-size: 1.5rem;
@@ -923,9 +928,16 @@
         }
     }
     
+    //article
+    
     .article__content {
         top: 2rem;
         left: -3rem;
+        
+        strong {
+            font-family: 'pt-serif-bold';
+            font-size: 1.2rem;
+        }
     }
 
 }
