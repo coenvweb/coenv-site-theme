@@ -898,6 +898,9 @@
     }
     .banner-wrapper {
         padding-bottom: 43%;
+        @include min-width ( 1400 ) {
+            padding-bottom: 35%;
+        }
     }
     
     //title
@@ -908,15 +911,18 @@
         left: -1rem;
         margin: 0;
         color: white;
-        max-width: 70%;
+        max-width: 600px;
         &:before, &:after {
             display: none;
         }
         .big__title {
             font-style: italic;
-            font-size: 6rem;
-            line-height: normal;
+            font-size: 5.5vw;
+            line-height: 90%;
             font-family: 'pt-serif-bold-italic';
+            @include min-width ( 1400 ) {
+                font-size: 9rem;
+            }
         }
         .subtitle {
             font-size: 1.5rem;
@@ -936,7 +942,73 @@
         
         strong {
             font-family: 'pt-serif-bold';
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+        }
+        
+        .wp-caption.alignright {
+            margin-right: -50%;
+            padding-left: 1rem;
+        }
+        
+        .wp-caption.aligncenter {
+            margin-left: -45%;
+        }
+    }
+    
+    // parallax dividers
+    
+    .photo-divider {
+        min-height: 80vh;
+        text-align: center;
+        position: relative;
+        
+        &:after {
+          display: block;
+          position: relative;
+          background-image: linear-gradient(to bottom, transparent 50%, black 140%);
+          min-height: 80vh;
+          width: 100%;
+          content: '';
+        }
+
+        .inner-divider-content {
+            bottom: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: left;
+            z-index: 2;
+        }
+        
+        .title-block {
+            margin-left: -1rem;
+        }
+        .section-title {
+            font-style: italic;
+            font-size: 4.5vw;
+            line-height: 110%;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            font-family: 'pt-serif-bold-italic';
+            color: white;
+            max-width: 600px;
+            @include min-width ( 1400 ) {
+                font-size: 6rem;
+            }
+            &:before, &:after {
+                display: none;
+            }
+        }
+        .subtitle {
+            font-size: 1.25rem;
+            line-height: normal;
+            letter-spacing: 2.5px;
+            @include sans();
+            font-weight: 800;
+            text-transform: uppercase;
+            color: white;
         }
     }
 
