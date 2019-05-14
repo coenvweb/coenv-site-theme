@@ -34,12 +34,13 @@ gulp.task('main_js', function () {
             './bower_components/imagesloaded/imagesloaded.pkgd.min.js',
             './bower_components/nivo-lightbox/nivo-lightbox.js',
             './assets/scripts/src/plugins/jquery.royalslider.js',
-            //'./assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
-            //'./assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
+            './assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
+            './assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
             './assets/scripts/src/menu.js',
             './assets/scripts/src/features.js',
             './assets/scripts/src/blog.js',
             './assets/scripts/src/share.js',
+            './assets/scripts/src/slider.js',
             './assets/scripts/src/acf-gmaps.js',
             './assets/scripts/src/main.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
