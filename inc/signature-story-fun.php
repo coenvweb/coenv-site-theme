@@ -112,6 +112,7 @@ function big_element_func( $atts ){
         $photo_holder = '';
         $i = 0;
         foreach ($photos as $photo) {
+            
             if (!$primary_link) {
                 $top_link = $photo['url'];
                 $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
@@ -124,9 +125,19 @@ function big_element_func( $atts ){
                 $caption = $photo['caption'];
             } else {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+                $caption = $photo['caption'];
             }
+            
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
-            $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+            
+            if ($element_type == 'slider_gallery') {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
+                $photo_holder .= $photo_el;
+                //$photo_holder .= '<div class="photo rsImg">' . $photo_el . '<p class="caption">' . $photo['caption'] . '</p></div>';
+            } else {
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+            }
+            
             $i++;
         }
     } else {
@@ -205,6 +216,26 @@ function big_element_func( $atts ){
                 $output .= '>' . $photo_holder;
                 $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $caption . '</p>';
 				break;
+            case 'slider_gallery':
+                $output .= '>' . $photo_holder;
+                if (!empty($title)) {
+                    $output .= '<h2 class="title">' . $title . '</h2>';
+                }
+                if (!empty($sub_title)) {
+                    $output .= '<h3 class="subtitle">' . $sub_title . '</h3>';
+                }
+                if (!empty($text)) {
+                    $output .= '<p>' . $text . '</p>';
+                }
+                if( !empty($links) ){
+                    foreach ($links as $link) {
+                        $link = $link['link'];
+                        $output .=  '<a class="button" href="' . $link['url'] . '" target="' . $link['target'] . '">' . $link['title'] . '</a>';
+                    }
+                } else {
+                    // no rows found
+                }
+        break;      
         }
     $output .= '</div><section class="article__content">';
 	return $output;
