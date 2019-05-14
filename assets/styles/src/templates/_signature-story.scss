@@ -897,10 +897,7 @@
         height: 110%!important;
     }
     .banner-wrapper {
-        padding-bottom: 43%;
-        @include min-width ( 1400 ) {
-            padding-bottom: 35%;
-        }
+        height: 80vh;
     }
     
     //title
@@ -958,17 +955,21 @@
     // parallax dividers
     
     .photo-divider {
-        min-height: 80vh;
+        min-height: 100vh;
         text-align: center;
         position: relative;
         
         &:after {
           display: block;
           position: relative;
-          background-image: linear-gradient(to bottom, transparent 50%, black 140%);
-          min-height: 80vh;
+          background-image: linear-gradient(to bottom, transparent 50%, black 130%);
+          min-height: 100vh;
           width: 100%;
           content: '';
+        }
+        
+        &#relying-on-rice {
+            background-position: top;
         }
 
         .inner-divider-content {
@@ -1010,6 +1011,35 @@
             text-transform: uppercase;
             color: white;
         }
+    }
+    
+    // element 
+    
+    .element-trey-riel {
+        background: $text-very-lt;
+        h3, p {
+            padding: 0 2rem;
+            margin-bottom: 0;
+        }
+        .title {
+            position: absolute;
+            margin-top: -3.05rem!important;
+            margin-left: 1rem!important;
+            padding: .25rem 1rem;
+            color: white;
+            background: $accent;
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+    
+    //flourish
+    
+    .flourish-embed {
+        max-width: 1200px;
+        width: 140%;
+        margin-left: -40%;
     }
 
 }
