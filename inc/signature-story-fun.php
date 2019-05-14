@@ -262,7 +262,7 @@ function photo_divider_func( $atts, $content = null ){
         $divider_subtitle = null;
     }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section><div class="photo-divider photo-divider-1 ' . $divider_class . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
+    $output = '</section><div id="' . sanitize_title($divider_title) .'" class="photo-divider photo-divider-1 ' . $divider_class . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
     if (isset($matches[1][1])) {
         $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div><section class="article__content">';
     } else {
