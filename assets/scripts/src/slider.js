@@ -4,53 +4,52 @@ jQuery(function ($) {
 	// no slider animations for < ie8
     if ( !$('body').is('.lt-ie8 .post-template-cambodia-signature-story' )) {
         if ( $('body').is('.post-template-cambodia-signature-story' )) {
-            $('.element-slider_gallery').sliderGallery();
+            $('.element-slider_gallery').royalSlider({
+                loop: true,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 3,
+                autoScaleSliderHeight: 1,
+                imageScaleMode: 'fill',
+                height: 300,
+                width: 750,
+                controlNavigation: 'bullets',
+                arrowsNav: true,
+                transitionType: 'fade',
+                controlsInside: false,
+                arrowsNavAutoHide: false,
+                block: {
+                    fadeEffect: true,
+                }
+              });
         }
     }
 });
 
-$.fn.sliderGallery = function() {
-	'use strict';
+//$.fn.sliderGallery = function() {
+	//'use strict';
 
-	var $container = $(this),
-			$rsContainer = $container.find('.element-slider_gallery'),
-			$features = $container.find('.photo'),
-			$nav = $('<div></div>'),
-			offsetTop,
-			rsInstance,
-			navOutput;
-    
+	//var $container = $(this),
+	//		$rsContainer = $container.find('.element-slider_gallery'),
+	//		$features = $container.find('.photo'),
+	//		$nav = $('<div></div>'),
+	//		offsetTop,
+	//		rsInstance,
+	//		navOutput;  
 
-	if ( !$rsContainer.length ) {
+	//if ( !$rsContainer.length ) {
 		//return;
-	}
+	//}
 
 	//offsetTop = $rsContainer.offset().top;
     
   
 
 	// init royalSlider
-	$('.element-slider_gallery').royalSlider({
-		loop: true,
-		autoScaleSlider: true,
-    autoScaleSliderWidth: 3,
-    autoScaleSliderHeight: 1,
-    imageScaleMode: 'fill',
-    height: 300,
-    width: 750,
-    controlNavigation: 'bullets',
-    arrowsNav: true,
-    transitionType: 'fade',
-    controlsInside: false,
-    arrowsNavAutoHide: false,
-    block: {
-        fadeEffect: true,
-    }
-	});
+	
 
-	rsInstance = $rsContainer.data('royalSlider');
+	//rsInstance = $rsContainer.data('royalSlider');
 
-	$features.removeClass('loading');
+	//$features.removeClass('loading');
 
 	// start/stop autoplay when scrolling up or down past 
 	// halfway point of feature
@@ -67,27 +66,27 @@ $.fn.sliderGallery = function() {
 	//} ) );
 
 	// set up nav links
-	navOutput = '<ul>';
+	//navOutput = '<ul>';
 
-	$nav.addClass('features-nav');
+	//$nav.addClass('features-nav');
 
 	//for ( var i = 0, len = rsInstance.numSlides; i < len; i++ ) {
 	//	navOutput += '<li><a href="#"><span>' + ( i + 1 ) + '</span></a></li>';
 	//}
 
-	navOutput += '</ul>';
+	//navOutput += '</ul>';
 
-	$nav.append( $(navOutput) );
-	$nav.appendTo( $container );
+	//$nav.append( $(navOutput) );
+	//$nav.appendTo( $container );
 
 	//$nav.find('a').eq( rsInstance.currSlideId ).addClass( 'active' );
 
-	$nav.find('a').on( 'click', function (e) {
-		e.preventDefault();
-		$rsContainer.royalSlider( 'goTo', $(this).parent().index() );
-		$nav.find('a').removeClass( 'active' );
-		$(this).addClass( 'active' );
-	} );
+	//$nav.find('a').on( 'click', function (e) {
+	//	e.preventDefault();
+	//	$rsContainer.royalSlider( 'goTo', $(this).parent().index() );
+	//	$nav.find('a').removeClass( 'active' );
+	//	$(this).addClass( 'active' );
+	//} );
 
 	// update nav on slide change
 	//rsInstance.ev.on( 'rsAfterSlideChange', function () {
@@ -95,4 +94,4 @@ $.fn.sliderGallery = function() {
 	//	$nav.find('a').eq( rsInstance.currSlideId ).addClass( 'active' );
 	//} );
 
-};
+//};
