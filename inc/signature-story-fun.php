@@ -36,17 +36,28 @@ function element_func( $atts ){
         foreach ($photos as $photo) {
             $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
             if (!$primary_link) {
-                if ($element_type == 'gallery') {
-                    $top_link = $photo_url;
-                    $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
-                    $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
-                } else {
-                    $photo_holder .= wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
-                }
-                
+                $top_link = $photo['url'];
+                $gallery = 'data-lightbox-gallery="gallery-' . $atts['id'] . '"';
             } else {
                 $top_link = $primary_link;
-                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['description'] . '" ' . $gallery . '>' . wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' ) . '</a>';
+            }
+            
+            if ($element_type == 'big_gallery' && ($i == 0)) {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
+                $caption = $photo['caption'];
+            } else {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+                $caption = $photo['caption'];
+            }
+            
+            $photo_url = wp_get_attachment_image_src( $photo['ID'] , 'original');
+            
+            if ($element_type == 'slider_gallery') {
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
+                $photo_holder .= $photo_el;
+                //$photo_holder .= '<div class="photo rsImg">' . $photo_el . '<p class="caption">' . $photo['caption'] . '</p></div>';
+            } else {
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
             }
             
         }
@@ -121,10 +132,10 @@ function big_element_func( $atts ){
             }
             
             if ($element_type == 'big_gallery' && ($i == 0)) {
-                $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
                 $caption = $photo['caption'];
             } else {
-                $photo_el = wp_get_attachment_image( $photo['ID'], 'homepage-column-standard' );
+                $photo_el = wp_get_attachment_image( $photo['ID'], 'large' );
                 $caption = $photo['caption'];
             }
             

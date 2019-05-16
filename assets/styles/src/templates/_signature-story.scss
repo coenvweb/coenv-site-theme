@@ -898,6 +898,7 @@
     }
     .banner-wrapper {
         height: 80vh;
+        min-height: 700px;
     }
     
     //title
@@ -905,24 +906,35 @@
     .article__title {
         position: absolute;
         bottom: 0;
-        left: -1rem;
         margin: 0;
         color: white;
         max-width: 600px;
         &:before, &:after {
             display: none;
         }
+        @include min-width ( 900 ) {
+            left: -1rem;
+        }
         .big__title {
             font-style: italic;
-            font-size: 5.5vw;
             line-height: 90%;
             font-family: 'pt-serif-bold-italic';
-            @include min-width ( 1400 ) {
+            font-size: 4rem;
+            @include min-width ( 900 ) {
+                font-size: calc(2.5vw + 4rem);
+            }
+            @include min-width ( 1800 ) {
                 font-size: 9rem;
             }
         }
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
+            @include min-width ( 900 ) {
+                font-size: calc(.5vw + 1rem);
+            }
+            @include min-width ( 1800 ) {
+                font-size: 1.5rem;
+            }
             line-height: normal;
             letter-spacing: 2.5px;
             @include sans();
@@ -935,7 +947,10 @@
     
     .article__content {
         top: 2rem;
-        left: -3rem;
+        
+        @include min-width ( 900 ) {
+            left: -3rem;
+        }
         
         strong {
             font-family: 'pt-serif-bold';
@@ -948,7 +963,20 @@
         }
         
         .wp-caption.aligncenter {
-            margin-left: -45%;
+            max-width: 100%;
+            position: relative;
+            @include min-width ( 800 ) {
+                margin-left: -20%;
+                max-width: 130%;
+            }
+            @include min-width ( 1400 ) {
+                left: 12.5%;
+                max-width: 125%;
+            }
+            @include min-width ( 1600 ) {
+                left: -25%;
+                max-width: none;
+            }
         }
     }
     
@@ -975,28 +1003,38 @@
         .inner-divider-content {
             bottom: 0;
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 640px;
-            margin: 0 auto;
+            margin: 0 2rem;
             text-align: left;
             z-index: 2;
+            @include min-width ( 900 ) {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 640px;
+                margin: 0 auto;
+            }
         }
         
-        .title-block {
-            margin-left: -1rem;
+        @include min-width ( 900 ) {
+            .title-block {
+                margin-left: -1rem;
+            }
         }
+        
+        
         .section-title {
             font-style: italic;
-            font-size: 4.5vw;
             line-height: 110%;
             margin-bottom: 1rem;
             letter-spacing: 1px;
             font-family: 'pt-serif-bold-italic';
             color: white;
             max-width: 600px;
-            @include min-width ( 1400 ) {
-                font-size: 6rem;
+            font-size: 3rem;
+            @include min-width ( 900 ) {
+                font-size: calc(2.5vw + 3rem);
+            }
+            @include min-width ( 1800 ) {
+                font-size: 7rem;
             }
             &:before, &:after {
                 display: none;
@@ -1014,6 +1052,29 @@
     }
     
     // element 
+    
+    .element-tonle-sap-and-the-mekong-rivers {
+        ol {
+            margin-top: .1rem;
+            margin-left: -2rem;
+        }
+    }
+    
+    .element.element- { //river map
+        max-width: 1200px;
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        position: relative!important;
+        @include min-width ( 1600 ) {
+            width: 140%;
+            margin-left: -40%;
+        }
+        min-height: inherit!important;
+        .rsOverflow{
+            min-height: inherit!important;
+        }
+    }
     
     .element-trey-riel {
         background: $text-very-lt;
@@ -1041,7 +1102,7 @@
         }
     }
     
-    .element-content {
+    .element-content { //standard content sidebar
         .title {
             color: $accent;
             font-family: 'pt-serif-bold';
@@ -1054,14 +1115,27 @@
         h3, p {
             margin-bottom: 0;
         }
-        p {
+        p, ol {
             font-style: italic;
             font-size: .9rem;
             color: #666;
         }
     }
     
-    .element-slider_gallery {
+    .element-slider_gallery { //slider galleries
+        margin-top: 3.5rem;
+        min-height: 60vw;
+        .rsOverflow {
+            min-height: 60vw;
+        }
+        
+        @include min-width ( 1600 ) {
+            min-height: 20vw;
+            .rsOverflow {
+                min-height: 20vw;
+            }
+        }
+        
         .caption {
             position: absolute;
             bottom: 0px;
@@ -1109,6 +1183,13 @@
             }
         }
     }
+    
+    .big-element.element-big_gallery {
+        a:nth-of-type(1) img {
+            width: auto;
+        }
+    }
+
     
     //flourish
     
