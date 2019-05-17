@@ -958,8 +958,15 @@
         }
         
         .wp-caption.alignright {
-            margin-right: -50%;
-            padding-left: 1rem;
+
+            @include max-width ( 1000 ) {
+                width: 100%!important;
+                margin-right: 0;
+            }
+            @include min-width ( 1000 ) {
+                margin-right: -50%;
+                padding-left: 1rem;
+            }
         }
         
         .wp-caption.aligncenter {
@@ -983,15 +990,26 @@
     // parallax dividers
     
     .photo-divider {
-        min-height: 100vh;
         text-align: center;
         position: relative;
+        @include min-width ( 600 ) {
+            max-height: 80vh;
+            &:after {
+                max-height: 80vh;
+            }
+        }
+        
+        @include min-width ( 600 ) {
+            min-height: 100vh;
+            &:after {
+                min-height: 100vh;
+            }
+        } 
         
         &:after {
           display: block;
           position: relative;
           background-image: linear-gradient(to bottom, transparent 50%, black 130%);
-          min-height: 100vh;
           width: 100%;
           content: '';
         }
@@ -1078,6 +1096,11 @@
     
     .element-trey-riel {
         background: $text-very-lt;
+        
+        @include max-width ( 1020 ) {
+            margin-right: 1rem;
+        } 
+        
         h3, p {
             padding: 0 2rem;
             margin-bottom: 0;
@@ -1147,9 +1170,9 @@
         }
         .rsArrow {
             display: block;
-            height: 60px;
+            height: 58px;
             width: 58px;
-            bottom: calc(50% - 30px);
+            bottom: calc(50% + 30px);
             position: relative;
             transition: none;
             color: white;
