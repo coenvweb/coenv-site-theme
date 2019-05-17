@@ -1146,6 +1146,7 @@
     }
     
     .element-slider_gallery { //slider galleries
+        position: relative;
         margin-top: 3.5rem;
         min-height: 60vw;
         .rsOverflow {
@@ -1205,6 +1206,57 @@
                 padding-right: 4px;
             }
         }
+        .features-nav {
+            position: absolute;
+            bottom: 0;
+            bottom: 18px;
+            width: 100%;
+            
+            ul {
+              @include rem('margin', 0.5);
+              padding: 0;
+              text-align: center;
+
+              @include min-width ( $iPadPortrait ) {
+                @include rem('margin', 0.5, 1);
+              }
+
+              @include min-width ( $maxWidthBreakpoint ) {
+                @include rem('margin', 0.5, 0);
+              }
+
+            } // ul
+
+            li {
+              display: inline-block;
+              @include rem('margin-left', 0.5);
+            }
+
+            a {
+              display: block;
+              @include rem('width', 1);
+              @include rem('height', 1);
+              background: rgba(255,255,255,.45);
+              border-radius: 50%;
+              cursor: pointer;
+              transition: all .1s ease;
+
+              span {
+                @extend .visuallyhidden;
+              }
+
+              &:hover,
+              &.active {
+                background: white;
+                @extend .shadow;
+                @include rem('width', 1.5);
+                @include rem('height', 1.5);
+                margin-bottom: -3px;
+              }
+
+            } // a
+
+          } // .features-nav
     }
     
     .big-element.element-big_gallery {
