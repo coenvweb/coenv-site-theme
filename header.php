@@ -113,7 +113,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
         $banner_class .= ' template-print';
     }
     
-    if ($post->post_name == 'fueled-by-floods-hydropower-demands-threaten-cambodias-food-security') {
+    if ($post->post_name == 'fueled-by-floods') {
         $mini_header = true;
         $banner_class .= ' mini-header';
     }
