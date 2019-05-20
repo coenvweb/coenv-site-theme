@@ -76,49 +76,9 @@ jQuery(function ($) {
                 });
             };
             
-            sliderGallery('.element-slider_gallery1');
-            sliderGallery('.element-slider_gallery3');
-            sliderGallery('.element-slider_gallery5');
+            //sliderGallery('.element-slider_gallery1');
+            //sliderGallery('.element-slider_gallery3');
+            //sliderGallery('.element-slider_gallery5');
         }
     }
 });
-    
-
-//$.fn.sliderGallery = function() {
-	//'use strict';
-
-	//var $container = $(this),
-	//		$rsContainer = $container.find('.element-slider_gallery'),
-	//		$features = $container.find('.photo'),
-	//		$nav = $('<div></div>'),
-	//		offsetTop,
-	//		rsInstance,
-	//		navOutput;  
-
-	//if ( !$rsContainer.length ) {
-		//return;
-	//}
-
-	//offsetTop = $rsContainer.offset().top;
-    
-  
-
-	// init royalSlider
-
-	//$features.removeClass('loading');
-
-	// start/stop autoplay when scrolling up or down past 
-	// halfway point of feature
-	//$(window).on( 'scroll', $.debounce( 200, function () {
-	//	var scrollTop = $(window).scrollTop(),
-//				rsContainerOffset = $rsContainer.offset().top,
-	//			rsContainerHeight = $rsContainer.outerHeight(true);
-
-		//if ( scrollTop > rsContainerOffset + ( rsContainerHeight / 2 ) ) {
-	//		rsInstance.stopAutoPlay();
-//		} else {
-	//		rsInstance.startAutoPlay();
-		//}
-	//} ) );
-
-//};
