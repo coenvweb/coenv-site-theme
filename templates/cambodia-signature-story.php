@@ -30,7 +30,7 @@ $banner = coenv_banner();
               <header class="article__header" id="#share-<?php the_ID() ?>">
                   <div class="article__title">
                       <h1 class="big__title">Fueled by floods:</h1>
-                      <p class="subtitle">Hydropower Demands Threaten Cambodia's Food Security</p>
+                      <p class="subtitle">The Cambodian People's Food Security is Threatened by Hydropower Demands</p>
                   </div>
               </header>
 
