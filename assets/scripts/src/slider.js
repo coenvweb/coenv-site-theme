@@ -76,9 +76,9 @@ jQuery(function ($) {
                 });
             };
             
-            //sliderGallery('.element-slider_gallery1');
-            //sliderGallery('.element-slider_gallery3');
-            //sliderGallery('.element-slider_gallery5');
+            sliderGallery('.element-slider_gallery1');
+            sliderGallery('.element-slider_gallery3');
+            sliderGallery('.element-slider_gallery5');
         }
     }
 });
