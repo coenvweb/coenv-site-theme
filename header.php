@@ -116,6 +116,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
     if ($post->post_name == 'fueled-by-floods') {
         $mini_header = true;
         $banner_class .= ' mini-header';
+        echo '<meta name="robots" content="noindex">';
     }
     if ($post->post_name == 'field-journal-practicing-geology-in-big-sky-country') {
         $big_sky_video_header = true;
