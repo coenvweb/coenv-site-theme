@@ -45,8 +45,7 @@ jQuery(function ($) {
                     rsInstance,
                     navOutput;
                 rsInstance = $rsContainer.data('royalSlider');
-
-                console.log($rsContainer);
+                
                 navOutput = '<ul>';
 
                 $nav.addClass('features-nav');
