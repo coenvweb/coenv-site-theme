@@ -887,7 +887,56 @@
 
 //cambodia
 
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
 .post-template-cambodia-signature-story {
+    
+    //navigator
+    
+    #logo {
+        width: 350px;
+    }
+    .mini-top-menu-inner {
+        position: relative;
+    }
+    .navigator {
+        position: absolute;
+        right: 0;
+        top: 0;
+        li {
+            display: inline-block;
+            a {
+                color: white;
+                text-decoration: none;
+                font-size: .775rem;
+                line-height: 42px;
+                letter-spacing: 1px;
+                @include sans();
+                font-weight: 800;
+                text-transform: uppercase;
+                margin-left: 1rem;
+                text-decoration: none;
+                background-image: linear-gradient(currentColor, currentColor);
+                background-position: -1px 100%;
+                background-repeat: no-repeat;
+                background-size: 0% 2px;
+                transition: background-size .3s;
+                padding-bottom: 2px;
+                opacity: .8;
+
+                &:hover, &.active {
+                    background-size: 100% 1px;
+                    color: white!important;
+                    opacity: 1;
+                }
+            }
+        }
+        @include max-width ( 900 ) {
+            display: none;
+        }
+    }
     
     // top video
     .feature {
@@ -1371,24 +1420,31 @@
         }
         a:nth-of-type(1) {
             grid-column-start: 1;
+            /* autoprefixer: off */
             grid-column-end: 6;
             grid-row-start: 1;
+            /* autoprefixer: off */
             grid-row-end: 5;
         }
         a:nth-of-type(2) {
             grid-column-start: 6;
+            /* autoprefixer: off */
             grid-column-end: 8;
             grid-row-start: 1;
+            /* autoprefixer: off */
             grid-row-end: 3;
         }
         a:nth-of-type(3) {
             grid-column-start: 6;
+            /* autoprefixer: off */
             grid-column-end: 8;
             grid-row-start: 3;
+            /* autoprefixer: off */
             grid-row-end: 5;
         }
         .gallery-caption {
             grid-column-start: 1;
+            /* autoprefixer: off */
             grid-column-end: 8;
             margin-bottom: 0;
         }
