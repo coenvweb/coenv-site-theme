@@ -1347,8 +1347,61 @@
     }
     
     .big-element.element-big_gallery {
-        a:nth-of-type(1) img {
-            width: auto;
+        margin: inherit;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(4, 8vw);
+        grid-gap: 20px;
+        width: 100%;
+        margin-top: 3rem;
+        padding-bottom: 0;
+        .photo {
+            width: 100%!important;
+            img {
+                position: relative!important;
+                right: 0!important;
+                top: 0!important;
+                width: 100%!important;
+                height: 100%!important;
+                padding: 0!important;
+                margin: 0!important;
+                object-fit: cover;
+                max-width: none!important; 
+            }
+        }
+        a:nth-of-type(1) {
+            grid-column-start: 1;
+            grid-column-end: 6;
+            grid-row-start: 1;
+            grid-row-end: 5;
+        }
+        a:nth-of-type(2) {
+            grid-column-start: 6;
+            grid-column-end: 8;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+        a:nth-of-type(3) {
+            grid-column-start: 6;
+            grid-column-end: 8;
+            grid-row-start: 3;
+            grid-row-end: 5;
+        }
+        .gallery-caption {
+            grid-column-start: 1;
+            grid-column-end: 8;
+            margin-bottom: 0;
+        }
+        a:nth-of-type(2) img {
+            right: 0!important;
+        }
+        a:nth-of-type(3) img {
+            right: 0!important;
+        }
+        max-width: none;
+        &:before {
+            position: absolute;
+            bottom: 1rem;
         }
     }
 
