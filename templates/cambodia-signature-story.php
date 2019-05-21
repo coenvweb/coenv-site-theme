@@ -33,6 +33,8 @@ $banner = coenv_banner();
                       <p class="subtitle">The Cambodian People's Food Security is Threatened by Hydropower Demands</p>
                   </div>
               </header>
+                
+                <div id="introduction" class="waves"></div><!-- waves -->
 
               <section class="article__content">
 
