@@ -922,7 +922,7 @@
                 background-position: -1px 100%;
                 background-repeat: no-repeat;
                 background-size: 0% 2px;
-                transition: background-size .3s;
+                transition: background-size .3s ease-in;
                 padding-bottom: 2px;
                 opacity: .8;
 
@@ -1390,8 +1390,7 @@
                 @extend .visuallyhidden;
               }
 
-              &:hover,
-              &.active {
+              &:hover {
                 background: white;
                 @extend .shadow;
                 @include rem('width', 1.5);
@@ -1493,7 +1492,7 @@
         
         .cta-content {
             h2.title {
-                font-family: 'pt-serif-bold-italic';
+                font-family: 'PT Serif Bold Italic', 'pt-serif-bold-italic';
                 margin-bottom: 1rem!important;
                 &:before, &:after {
                     display: none;
