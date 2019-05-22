@@ -36,13 +36,15 @@ gulp.task('main_js', function () {
             './assets/scripts/src/plugins/jquery.royalslider.js',
             './assets/scripts/src/plugins/royalslider-modules/jquery.rs.auto-height.js',
             './assets/scripts/src/plugins/royalslider-modules/jquery.rs.autoplay.js',
+            './assets/scripts/src/jquery.stickyNavbar.js',
             './assets/scripts/src/menu.js',
             './assets/scripts/src/features.js',
             './assets/scripts/src/blog.js',
             './assets/scripts/src/share.js',
             './assets/scripts/src/slider.js',
             './assets/scripts/src/acf-gmaps.js',
-            './assets/scripts/src/main.js'])
+            './assets/scripts/src/main.js',
+            './assets/scripts/src/navigator.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))
     .pipe(sourcemaps.init())

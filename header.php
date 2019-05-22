@@ -144,12 +144,12 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 </svg><?php include('assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a>
             </h1>
                 <nav class="navigator">
-                    <li class="navigator-link"><a href="#">Introduction</a></li>
-                    <li class="navigator-link"><a href="#the-forecast-for-fish">Fish</a></li>
-                    <li class="navigator-link"><a href="#relying-on-rice">Rice</a></li>
-                    <li class="navigator-link"><a href="#assessing-nutritional-needs">Nutrition</a></li>
-                    <li class="navigator-link"><a href="#optimal-hydropower-operations">Hydropower</a></li>
-                    <li class="navigator-link"><a href="#a-call-for-collaboration">Collaboration</a></li>
+                    <li class="navigator-link"><a href="#section-introduction">Introduction</a></li>
+                    <li class="navigator-link"><a href="#section-the-forecast-for-fish">Fish</a></li>
+                    <li class="navigator-link"><a href="#section-relying-on-rice">Rice</a></li>
+                    <li class="navigator-link"><a href="#section-assessing-nutritional-needs">Nutrition</a></li>
+                    <li class="navigator-link"><a href="#section-optimal-hydropower-operations">Hydropower</a></li>
+                    <li class="navigator-link"><a href="#section-a-call-for-collaboration">Collaboration</a></li>
                 </nav>
             </div>
         </div>
