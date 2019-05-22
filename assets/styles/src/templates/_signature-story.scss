@@ -1490,7 +1490,33 @@
     //call-to-action
     
     .element-call_to_action {
-        background: linear-gradient(none);
+        
+        .cta-content {
+            h2.title {
+                font-family: 'pt-serif-bold-italic';
+                margin-bottom: 1rem!important;
+                &:before, &:after {
+                    display: none;
+                }
+            }
+            h2 + p {
+                display: none;
+            }
+            &:before {
+                content: '';
+                display: block!important;
+                position: absolute;
+                top: -2rem;
+                bottom:-2rem;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,.7); 
+                z-index: -1;
+            }
+            .button {
+                letter-spacing: 1px;
+            }
+        }
     }
     
     //footer
