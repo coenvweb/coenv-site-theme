@@ -43,8 +43,8 @@ gulp.task('main_js', function () {
             './assets/scripts/src/share.js',
             './assets/scripts/src/slider.js',
             './assets/scripts/src/acf-gmaps.js',
-            './assets/scripts/src/main.js',
-            './assets/scripts/src/navigator.js'])
+            './assets/scripts/src/navigator.js',
+            './assets/scripts/src/main.js',])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))
     .pipe(sourcemaps.init())
@@ -61,11 +61,11 @@ gulp.task('faculty_js', function () {
   return gulp
     .src([  './bower_components/get-style-property/get-style-property.js',
             './bower_components/get-size/get-size.js',
-			'./bower_components/jquery-smartresize/jquery.debouncedresize.js',
+            './bower_components/jquery-smartresize/jquery.debouncedresize.js',
             './bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
             './bower_components/jquery.scrollTo/jquery.scrollTo.js',
-			'./assets/scripts/src/plugins/isotope2.js',
-			'./assets/scripts/src/faculty.js'])
+            './assets/scripts/src/plugins/isotope2.js',
+            './assets/scripts/src/faculty.js'])
     //.pipe(jshint('./.jshintrc')) Too many hinting errors
     //.pipe(jshint.reporter('jshint-stylish'))
     //.pipe(sourcemaps.init())

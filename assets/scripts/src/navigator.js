@@ -1,4 +1,4 @@
-$(function () {
+jQuery(function ($) {
     $('.mini-top-menu').stickyNavbar({
     activeClass: "active",          // Class to be added to highlight nav elements
     sectionSelector: "scrollto",    // Class of the section that is interconnected with nav links
