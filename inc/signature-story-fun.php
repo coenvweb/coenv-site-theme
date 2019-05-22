@@ -68,7 +68,7 @@ function element_func( $atts ){
     $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . '"';
     
         if ($element_type == 'call_to_action'){
-            $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
+            $output .= ' style="background: url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
         } else {
             $output .= '>' . $photo_holder;
         }
@@ -159,7 +159,7 @@ function big_element_func( $atts ){
     
         switch($element_type) {
             case 'call_to_action':
-                $output .= ' style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
+                $output .= ' style="background: url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
                 if (!empty($title)) {
                     $output .= '<h2 class="title">' . $title . '</h2>';
                 }
@@ -313,17 +313,3 @@ function photo_divider_func( $atts, $content = null ){
     return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
-
-function scroll_to_section_func( $atts, $content = null ){
-    $a = shortcode_atts( array(
-        'src' => '',
-        'title' => '',
-    ), $atts );
-    if (isset($atts['title'])) {
-        $output = '</section><section id="' . sanitize_title($atts['title']) .'" class="scrollto">' . $content;
-    }else {
-        $output = '</section><section class="scrollto">' . $content;
-    }
-    return $output;
-};
-add_shortcode( 'section', 'scroll_to_section_func' );

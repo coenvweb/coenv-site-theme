@@ -41,6 +41,7 @@ $banner = coenv_banner();
   </div>
 
 			<main id="main-col" class="main-col">
+          <div id="section-introduction" class="scrollto">
           
 				<?php if ( have_posts() ) : ?>
 
