@@ -1486,5 +1486,17 @@
         width: 140%;
         margin-left: -40%;
     }
+    
+    //call-to-action
+    
+    .element-call_to_action {
+        background: linear-gradient(none);
+    }
+    
+    //footer
+    #footer {
+        background: $accent;
+        min-height: 200px;
+    }
 
 }
