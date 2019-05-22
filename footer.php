@@ -43,7 +43,7 @@
                             echo '</ul>';
                             ?>
                         </nav>
-
+                    </div>
                 </footer><!-- #footer -->
 
                     <div class="uw-footer">

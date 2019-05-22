@@ -1506,10 +1506,10 @@
                 content: '';
                 display: block!important;
                 position: absolute;
-                top: -2rem;
-                bottom:-2rem;
-                left: 0;
-                width: 100%;
+                top: -3rem;
+                bottom:-3rem;
+                left: -1rem;
+                right: -1rem;
                 background: rgba(0,0,0,.7); 
                 z-index: -1;
             }
@@ -1522,7 +1522,40 @@
     //footer
     #footer {
         background: $accent;
-        min-height: 200px;
+        text-align: center;
+        .layout-container {
+            max-width: none;
+        }
+        .colleges-schools {
+            position: relative;
+        }
+        .environment img {
+            width: 450px;
+            padding-right: 1.5rem;
+        }
+        img {
+            max-height: 20px;
+            width: 100%;
+            margin: 2rem 0;
+            padding: 0 2rem;
+        }
+        a {
+            position: relative;
+            display: inline-block;
+            &:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                height: 30px;
+                border-left: 1px solid white;
+                transform: skewX(-15deg);
+                top: calc(50% - 17px);
+                right: 0rem;
+            }
+        }
+        a:last-of-type:after {
+            display: none;
+        }
     }
 
 }
