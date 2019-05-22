@@ -58,7 +58,6 @@ jQuery(function ($) {
 
                 $nav.append( $(navOutput) );
                 $nav.appendTo( $rsContainer );
-                console.log(rsInstance.currSlideId);
                 $nav.find('a').eq( rsInstance.currSlideId ).addClass( 'active' );
 
                 $nav.find('a').on( 'click', function (e) {

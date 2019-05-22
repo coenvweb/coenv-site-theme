@@ -34,7 +34,8 @@ $banner = coenv_banner();
                   </div>
               </header>
                 
-                <div id="introduction" class="waves"></div><!-- waves -->
+                <div class="waves"></div><!-- waves -->
+                <div id="section-introduction" class="scrollto">
 
               <section class="article__content">
 

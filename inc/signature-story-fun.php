@@ -304,7 +304,7 @@ function photo_divider_func( $atts, $content = null ){
         $divider_subtitle = null;
     }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section><div id="' . sanitize_title($divider_title) .'" class="photo-divider photo-divider-1 ' . $divider_class . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
+    $output = '</section></div><div id="section-' . sanitize_title($atts['title']) . '" class="scrollto"><div class="photo-divider photo-divider-1 ' . $divider_class . ' divider-' . sanitize_title($atts['title']) . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
     if (isset($matches[1][1])) {
         $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div><section class="article__content">';
     } else {
@@ -313,3 +313,17 @@ function photo_divider_func( $atts, $content = null ){
     return $output;
 };
 add_shortcode( 'photo_divider', 'photo_divider_func' );
+
+function scroll_to_section_func( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'src' => '',
+        'title' => '',
+    ), $atts );
+    if (isset($atts['title'])) {
+        $output = '</section><section id="' . sanitize_title($atts['title']) .'" class="scrollto">' . $content;
+    }else {
+        $output = '</section><section class="scrollto">' . $content;
+    }
+    return $output;
+};
+add_shortcode( 'section', 'scroll_to_section_func' );
