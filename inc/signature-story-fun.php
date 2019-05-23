@@ -295,8 +295,10 @@ function photo_divider_func( $atts, $content = null ){
     }
     if (isset($atts['title'])) {
         $divider_title = '<h2 class="section-title">' . $atts['title'] . '</h2>';
+        $sanitized_title = sanitize_title($atts['title']);
     }else {
-        $divider_title = '';
+        $divider_title = ' ';
+        $sanitized_title = 'undefined' . uniqid();
     }
     if (isset($atts['subtitle'])) {
         $divider_subtitle = '<p class="subtitle">' . $atts['subtitle'] . '</p>';
@@ -304,7 +306,7 @@ function photo_divider_func( $atts, $content = null ){
         $divider_subtitle = null;
     }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section></div><div id="section-' . sanitize_title($atts['title']) . '" class="scrollto"><div class="photo-divider photo-divider-1 ' . $divider_class . ' divider-' . sanitize_title($atts['title']) . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
+    $output = '</section></div><div id="section-' . $sanitized_title . '" class="scrollto"><div class="photo-divider photo-divider-1 ' . $divider_class . ' divider-' . $sanitized_title . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
     if (isset($matches[1][1])) {
         $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div><section class="article__content">';
     } else {
