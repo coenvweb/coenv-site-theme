@@ -225,7 +225,7 @@
             max-width: none;
             background-size: contain;
             margin-bottom: 0!important;
-            margin-top: 4rem;
+            margin-top: 1rem;
             color: white;
             padding: 8vw 0;
             .title {
@@ -924,9 +924,12 @@
                 transition: background-size .3s ease-in;
                 padding-bottom: 2px;
                 opacity: .8;
+                
+                &:hover {
+                    background-size: 100% 1px;
+                }
 
                 &:hover, &.active {
-                    background-size: 100% 1px;
                     color: white!important;
                     opacity: 1;
                 }
@@ -1025,6 +1028,7 @@
     .article__content {
         top: 2rem;
         z-index: 2;
+        padding: 0 2rem 2rem 2rem!important;
         
         @include min-width ( 900 ) {
             left: -3rem;
@@ -1150,10 +1154,6 @@
     // motifs
     .scrollto {
         position: relative;
-        margin-bottom: 2rem;
-        &:last-of-type {
-            margin-bottom: 0;
-        }
     }
     #section-introduction:before{
          content: '';
@@ -1295,7 +1295,7 @@
     
     .element-slider_gallery { //slider galleries
         position: relative;
-        margin-top: 3.5rem;
+        margin-top: 0.5rem;
         min-height: 60vw;
         .rsOverflow {
             min-height: 60vw;
@@ -1421,7 +1421,7 @@
         grid-template-rows: repeat(4, 8vw);
         grid-gap: 20px;
         width: 100%;
-        margin-top: 3rem;
+        margin-top: 0rem;
         padding-bottom: 0;
         .photo {
             width: 100%!important;
