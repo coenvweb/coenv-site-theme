@@ -296,7 +296,7 @@ function photo_divider_func( $atts, $content = null ){
     if (isset($atts['title'])) {
         $divider_title = '<h2 class="section-title">' . $atts['title'] . '</h2>';
     }else {
-        $divider_title = null;
+        $divider_title = '';
     }
     if (isset($atts['subtitle'])) {
         $divider_subtitle = '<p class="subtitle">' . $atts['subtitle'] . '</p>';
