@@ -72,7 +72,7 @@ $banner = coenv_banner();
                         <div class="layout-container">
                             
                             <div class="be-boundless">
-                                <a href="http://washington.edu/" rel="home" target="_blank"><?php include( $_SERVER['DOCUMENT_ROOT'] . 'wp-content/themes/coenv-wordpress-theme/assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
+                                <a href="http://washington.edu/" rel="home" target="_blank"><?php include( $_SERVER['DOCUMENT_ROOT'] . '/wp-content/themes/coenv-wordpress-theme/assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
                                 <a href="http://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
                             </div>
                             
