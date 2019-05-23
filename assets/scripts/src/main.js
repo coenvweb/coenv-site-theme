@@ -205,7 +205,8 @@ jQuery(function ($) {
         
         $('figure a img').each(function () {
             var $this = $(this);
-            $this.parent().attr('title', $this.attr('alt'));
+            var $caption = $(this).closest('figure').attr('title');
+            $this.parent().attr('title', $caption);
 		});
         
         $('div.gallery img').each(function () {
