@@ -55,7 +55,8 @@ function element_func( $atts ){
             if ($element_type == 'slider_gallery') {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
                 $photo_holder .= $photo_el;
-                //$photo_holder .= '<div class="photo rsImg">' . $photo_el . '<p class="caption">' . $photo['caption'] . '</p></div>';
+                //$photo_holder .= '<a class="photo rsImg" href="' . $photo_el . '">' . $photo['caption'] . '</a>';
+                $element_extra_class .= ' rsDefault';
             } else {
                 $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
             }
@@ -65,7 +66,7 @@ function element_func( $atts ){
         // no rows found
     };
 
-    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . '"';
+    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"';
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
@@ -143,8 +144,10 @@ function big_element_func( $atts ){
             
             if ($element_type == 'slider_gallery') {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
-                $photo_holder .= $photo_el;
-                //$photo_holder .= '<div class="photo rsImg">' . $photo_el . '<p class="caption">' . $photo['caption'] . '</p></div>';
+                $photo_alt = $photo['alt'];
+                //$photo_holder .= $photo_el;
+                $photo_holder .= '<a class="photo rsImg" href="' . $photo_url[0] . '" alt="' . $photo_alt . '">' . $caption . '</a>';
+                $element_extra_class .= ' rsDefault';
             } else {
                 $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
             }
@@ -155,7 +158,7 @@ function big_element_func( $atts ){
         // no rows found
     };
 
-    $output = '</section><div class="big-element ' . $atts['align'] . ' element-' . $element_type . ' element-' . $element_type . $atts['id'] . '"';
+    $output = '</section><div class="big-element ' . $atts['align'] . ' element-' . $element_type . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"';
     
         switch($element_type) {
             case 'call_to_action':
