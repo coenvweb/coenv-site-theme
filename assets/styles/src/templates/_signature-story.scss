@@ -1122,7 +1122,7 @@
             max-height: 100vw;
             height: 100vw;
             &:after {
-                background-image: linear-gradient(to bottom, transparent 10%, black 110%)!important;
+                background-image: linear-gradient(180deg, transparent 10%, black 110%)!important;
                 max-height: 105vw;
                 height: 105vw;
             }
@@ -1138,7 +1138,7 @@
         &:after {
           display: block;
           position: relative;
-          background-image: linear-gradient(to bottom, transparent 50%, black 130%);
+          background-image: linear-gradient(180deg, transparent 50%, black 130%);
           width: 100%;
           content: '';
         }
