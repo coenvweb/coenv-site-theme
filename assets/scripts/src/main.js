@@ -102,7 +102,7 @@ jQuery(function ($) {
                     hero.addClass("fade");
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
-                }, 90000);
+                }, 120000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
                 hero.get(0).pause()
@@ -114,7 +114,7 @@ jQuery(function ($) {
                 hero.addClass("fade");
                 ppbutton.html('<i class="fi-play"> ►</i>');
                 autoplay = false;
-        }, 90000);
+        }, 120000);
 };
 });
 
