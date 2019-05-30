@@ -1,5 +1,6 @@
 .post-template-signature-story, .post-template-cambodia-signature-story {
-    overflow-x: hidden;
+    overflow: hidden;
+    overflow-y: auto;
 
     .article {
         padding: 0;
@@ -1024,6 +1025,16 @@
             text-transform: uppercase;
         }
     }
+    .article__header {
+        @include min-width ( 800 ) {
+            width: 75%!important;
+            max-width: none;
+        }
+        @include min-width ( 900 ) {
+            width: 50%!important;
+        }
+        
+    }
     
     //waves
     
@@ -1047,7 +1058,7 @@
         }
     }
     
-    .main-col .article__content {
+    .main-col .article__content{
         top: 2rem;
         z-index: 2;
         padding: 0 2rem 2rem 2rem!important;
@@ -1224,6 +1235,13 @@
     .scrollto {
         position: relative;
     }
+    
+    #section-introduction {
+        @include max-width ( 900 ) {
+            margin-top: -10rem;
+        }
+        margin-top: -7rem;
+    }
     #section-introduction:before{
          content: '';
         display: block;
@@ -1280,6 +1298,7 @@
         opacity: .05;
         @include max-width ( 800 ) {
             background-size: 800px;
+            width: 100%;
         }
     }
     #section-optimal-hydropower-operations:before {
@@ -1368,6 +1387,19 @@
                 padding-top: 0;
             }
         }
+        @include max-width ( 600 ) {
+            max-width: 253px;
+            h2,h3,p {
+                max-width: none;
+            }
+            a.photo {
+                width: 100%;
+                float: none;
+                img{
+                    padding: 0;
+                }
+            }
+        }
     }
     
     .element-content { //standard content sidebar
@@ -1395,6 +1427,8 @@
         margin-top: 0.5rem;
         min-height: 60vw;
         margin-bottom: 2rem;
+        text-align: center;
+        
         .rsOverflow {
             min-height: 60vw;
         }
@@ -1404,6 +1438,10 @@
             .rsOverflow {
                 min-height: 20vw;
             }
+        }
+        
+        @include max-width ( 800 ) {
+            margin-bottom: 4rem;
         }
         
         .rsArrow {
@@ -1477,7 +1515,8 @@
           } // .features-nav
         
         .rsGCaption {
-            position: relative;
+            position: inherit;
+            display: inline-block;
             text-align: center;
             background-color: transparent!important;
             font-style: italic;
