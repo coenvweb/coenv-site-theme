@@ -998,6 +998,10 @@
         @include min-width ( 900 ) {
             left: -1rem;
         }
+        @include max-width ( 800 ) {
+            margin-bottom: 4rem;
+            bottom: 10rem;
+        }
         .big__title {
             font-style: italic;
             line-height: 90%;
