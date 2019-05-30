@@ -153,7 +153,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 </nav>
             </div>
         </div>
-         <div class="feature homepage-hero-module">
+         <div id="section-video" class="feature homepage-hero-module scrollTo">
                 <div class="feature-image video-container banner-wrapper">
                 <div class="filter"></div>
                     <?php
