@@ -116,10 +116,16 @@
             }
             &.left {
                 margin-left: calc(-253px - 2rem);
+                
             }
         }
+        @include max-width ( 1020 ) {
+            &.left {
+                padding-right: 1rem;
+            }
+        } 
 
-        @include min-width ( 800 ) {
+        @include min-width ( 900 ) {
             position: absolute;
             &.right {
                 margin: auto;
@@ -129,7 +135,7 @@
                 margin-left: calc(-24vw - 1rem);
             }
         }
-        @include max-width ( 800 ) {
+        @include max-width ( 900 ) {
             img {
                 padding: 1rem;
             }
@@ -179,16 +185,13 @@
         padding-bottom: 2rem;
     }
     .element {
-        @include min-width ( 800 ) {
+        @include min-width ( 900 ) {
             width: 24vw;
             max-width: 253px;
         }
         @include min-width ( 1020 ) {
             width: 253px;
         }
-        @include max-width ( 1020 ) {
-            padding-right: 1rem;
-        } 
         padding-bottom: 1rem;
         &:not(.element-call_to_action) {
             .title {
@@ -641,7 +644,7 @@
                     font-size: 1rem;
                     letter-spacing: .5px;
                 }
-            @include max-width ( 800 ) {
+            @include max-width ( 900 ) {
                 display: none;
             }
         }
@@ -1336,7 +1339,7 @@
             margin-right: 1rem;
         } 
         
-        @include max-width ( 800 ) {
+        @include max-width ( 900 ) {
             margin: auto;
             padding-top: .5rem;
             padding-bottom: 1rem;
