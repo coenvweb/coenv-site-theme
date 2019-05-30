@@ -61,8 +61,8 @@ $banner = coenv_banner();
                     <div class="layout-container">
                         <div class="colleges-schools">
                             <a href="http://environment.uw.edu/" rel="home" title="UW College of the Environment" class="environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Environment.svg"></a>
-                            <a href="https://www.engr.washington.edu/" rel="home" title="UW College of Engineering"><img alt="College of Engineering Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Engineering.svg"></a>
-                            <a href="https://sph.washington.edu/" rel="home" title="UW School of Public Health"><img alt="School of Public Health Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-PublicHealth.svg"></a>
+                            <a href="https://www.engr.washington.edu/" rel="home" title="UW College of Engineering" class="engineering"><img alt="College of Engineering Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Engineering.svg"></a>
+                            <a href="https://sph.washington.edu/" rel="home" title="UW School of Public Health" class="public-health"><img alt="School of Public Health Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-PublicHealth.svg"></a>
                         </div>
                     </div>
 
