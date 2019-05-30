@@ -1100,7 +1100,7 @@
     //image order switcher
     
     @include max-width ( 1000 ) {
-        #section-introduction .article__content:first-child, #section-relying-on-rice .article__content:first-child {
+        #section-introduction2 .article__content:first-child, #section-relying-on-rice .article__content:first-child {
             display: flex;
             flex-flow: column;
             #attachment_71658, #attachment_71679 {
