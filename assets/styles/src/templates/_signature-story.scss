@@ -959,18 +959,22 @@
     
     // top video
     .feature {
-        margin-top: -32px;
+        //margin-top: -32px;
+        position: relative;
     }
     #hero-video {
         height: 110%!important;
     }
     .banner-wrapper {
-        height: 82vh;
+        height: 88vh;
         min-height: 700px;
     }
     
     .play-pause-hero {
-        bottom: 5rem;
+        bottom: 7rem;
+        i {
+            font-style: normal!important;
+        }
         &:hover {
             cursor: pointer;
         }
@@ -980,7 +984,7 @@
     
     .article__title {
         position: absolute;
-        bottom: 0;
+        bottom: 5rem;
         margin: 0;
         color: white;
         max-width: 600px;
@@ -1028,6 +1032,7 @@
         height: 100px;
         position: absolute;
         display: block;
+        bottom: 0;
     }
     
     //article
@@ -1457,13 +1462,16 @@
         .rsGCaption {
             position: relative;
             text-align: center;
-            background-color: white;
+            background-color: none;
             font-style: italic;
             color: #666;
             height: 2rem;
             margin-top: 1rem;
-            float: left;
+            float: inherit;
             width: 100%;
+            max-width: 710px;
+            margin: 0 auto;
+            bottom: -6px;
         }
     }
     
@@ -1593,8 +1601,7 @@
             position: relative;
         }
         .environment img {
-            width: 450px;
-            padding-right: 1.5rem;
+            width: 370px;
         }
         .engineering img {
             width: 300px;
