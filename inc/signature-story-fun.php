@@ -66,7 +66,7 @@ function element_func( $atts ){
         // no rows found
     };
 
-    $output = '<div class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"';
+    $output = '<div id="element-' . $element_type . '-' . $atts['id'] . '" class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"';
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';
