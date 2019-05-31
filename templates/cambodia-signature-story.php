@@ -160,7 +160,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
 <section id="blog" class="template-signature-story">
 
-			<main id="main-col" class="main-col">
+			<main id="main-col" role="main" class="main-col">
           
 				<?php if ( have_posts() ) : ?>
 

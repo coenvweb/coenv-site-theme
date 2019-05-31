@@ -1485,7 +1485,7 @@
         .rsBullets {
             position: absolute;
             bottom: 0;
-            bottom: 18px;
+            bottom: 40px;
             width: 100%;
             background: none;
             height: 3rem;
@@ -1518,20 +1518,34 @@
 
           } // .features-nav
         
-        .rsGCaption {
-            position: inherit;
-            display: inline-block;
+        .caption-wrapper {
+            width: 100%;
+            position: absolute;
+            display: table;
             text-align: center;
-            background-color: transparent!important;
+            background-color: white;
+            bottom: 0px;
+            padding-top: 5px;
+        }
+        
+        .specialCaption {
             font-style: italic;
             color: #666;
-            height: 2rem;
             margin-top: 1rem;
             float: inherit;
             width: 100%;
-            max-width: 710px;
             margin: 0 auto;
-            bottom: -6px;
+            max-width: 710px;
+            font-size: 12px;
+        }
+        .rsGCaption {
+            display: none;
+        }
+    }
+    
+    .big-element.element-slider_gallery {
+        .photo {
+            width: 100vw;
         }
     }
     
