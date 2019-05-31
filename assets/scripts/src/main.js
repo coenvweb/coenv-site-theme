@@ -78,6 +78,7 @@ jQuery(function ($) {
         $("html").addClass("smooth-scroll");
         autoplay = true;
         var ppbutton = $('.play-pause-hero');
+        var poster = $('.poster');
         var hero = $('#hero-video');
         ppbutton.html('<i class="fi-pause">▐▐</i>');
         hero.removeClass("fullfade");
@@ -85,6 +86,8 @@ jQuery(function ($) {
             hero.removeAttribute("autoplay");
             hero.get(0).pause()
             hero.addClass("fade");
+            console.log(poster);
+            poster.removeClass("visuallyhidden");
             ppbutton.html('<i class="fi-play"> ►</i>');
             autoplay = false;
         }
@@ -97,11 +100,14 @@ jQuery(function ($) {
                 
                 autoplay = true;
                 ppbutton.html('<i class="fi-pause">▐▐</i>');
+                
                 setTimeout(function(){
                     hero.get(0).pause()
                     hero.addClass("fade");
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
+                    console.log(poster);
+                poster.removeClass("visuallyhidden");
                 }, 120000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
@@ -113,6 +119,8 @@ jQuery(function ($) {
                 hero.get(0).pause()
                 hero.addClass("fade");
                 ppbutton.html('<i class="fi-play"> ►</i>');
+                console.log(poster);
+            poster.removeClass("visuallyhidden");
                 autoplay = false;
         }, 120000);
 };
