@@ -122,9 +122,9 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 </head>
     
 <body <?php if (isset( $banner_class )) { body_class( $banner_class ); } else { body_class(); }; ?>>
-  <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
     <div id="outer" class="layout-outer">
-        <div class="mini-top-menu">
+      <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
+        <header class="mini-top-menu" role="banner">
             <div class="mini-top-menu-inner">
             <h1 id="logo">
                 <a href="http://washington.edu/" rel="home" target="_blank">
@@ -137,16 +137,18 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     C107.176,0.112,80.251,0.112,79.343,0.112z"/>
                 </svg><?php include( $_SERVER['DOCUMENT_ROOT'] . '/wp-content/themes/coenv-wordpress-theme/assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a>
             </h1>
-                <nav class="navigator">
-                    <li class="navigator-link"><a href="#section-introduction">Introduction</a></li>
-                    <li class="navigator-link"><a href="#section-the-forecast-for-fish">Fish</a></li>
-                    <li class="navigator-link"><a href="#section-relying-on-rice">Rice</a></li>
-                    <li class="navigator-link"><a href="#section-assessing-nutritional-needs">Nutrition</a></li>
-                    <li class="navigator-link"><a href="#section-optimal-hydropower-operations">Hydropower</a></li>
-                    <li class="navigator-link"><a href="#section-a-call-for-collaboration">Collaboration</a></li>
+                <nav role="navigation">
+                    <ul class="navigator">
+                        <li class="navigator-link"><a href="#section-introduction">Introduction</a></li>
+                        <li class="navigator-link"><a href="#section-the-forecast-for-fish">Fish</a></li>
+                        <li class="navigator-link"><a href="#section-relying-on-rice">Rice</a></li>
+                        <li class="navigator-link"><a href="#section-assessing-nutritional-needs">Nutrition</a></li>
+                        <li class="navigator-link"><a href="#section-optimal-hydropower-operations">Hydropower</a></li>
+                        <li class="navigator-link"><a href="#section-a-call-for-collaboration">Collaboration</a></li>
+                    </ul>
                 </nav>
             </div>
-        </div>
+        </header>
 
 <style type="text/css">
  .element a {
@@ -156,7 +158,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 </style>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>
 
-<section id="blog" role="main" class="template-signature-story">
+<section id="blog" class="template-signature-story">
 
 			<main id="main-col" class="main-col">
           
@@ -192,12 +194,12 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 <div class="waves"></div><!-- waves -->
             </div>
 
-              <header class="article__header" id="#share-<?php the_ID() ?>">
+              <div class="article__header" id="#share-<?php the_ID() ?>">
                   <div class="article__title">
                       <h1 class="big__title">Fueled by floods:</h1>
                       <p class="subtitle">The Cambodian People's Food Security is Threatened by Hydropower Demands</p>
                   </div>
-              </header>
+              </div>
                 
                 <div id="section-introduction" class="scrollto">
 
@@ -230,8 +232,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                         </div>
                     </div>
 
-                </footer><!-- #footer -->
-
                     <div class="uw-footer scrollTo">
                         <div class="layout-container">
                             
@@ -251,6 +251,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                             ) ) ?>
                         </div>
                     </div>
+                </footer><!-- #footer -->
                     
             </div><!-- #wrapper -->
 

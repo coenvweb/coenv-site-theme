@@ -15,6 +15,7 @@ function element_func( $atts ){
     $a = shortcode_atts( array(
         'id' => '1',
         'align' => 'right',
+        'describedby' => null,
     ), $atts );
     $element_id = ($atts['id'] - 1);
     $rows = get_field('element');
@@ -24,7 +25,12 @@ function element_func( $atts ){
     $sub_title = $active_row['element_subtitle'];
     $text = $active_row['text_area'];
     $links = $active_row['links'];
-    $photos = $active_row['photos'];
+    $photos = $active_row['photos']; 
+    if (!empty($atts['describedby'])) {
+        $aria_describedby = 'aria-describedby="' . $atts['describedby'] . '"';
+    } else {
+       $aria_describedby = null;
+    };
     if ($element_type !== 'gallery') {
         $primary_link = $links[0]['link']['url'];
     } else {
@@ -66,7 +72,7 @@ function element_func( $atts ){
         // no rows found
     };
 
-    $output = '<div id="element-' . $element_type . '-' . $atts['id'] . '" class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"';
+    $output = '<div id="element-' . $element_type . '-' . $atts['id'] . '" class="element ' . $atts['align'] . ' element-' . $element_type . ' element-' . sanitize_title($title) . ' element-' . $element_type . $atts['id'] . $element_extra_class . '"' . $aria_describedby;
     
         if ($element_type == 'call_to_action'){
             $output .= ' style="background: url(' . $photo_url[0] . '); background-size: cover; background-position: center;" ><div class="cta-content">';

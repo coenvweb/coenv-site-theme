@@ -1659,30 +1659,32 @@
     
     //footer
     #footer {
+        padding-bottom: 0;
         background: $accent;
         text-align: center;
         .layout-container {
             max-width: none;
+            padding-bottom: 2rem;
         }
         .colleges-schools {
             position: relative;
+            .environment > img {
+                width: 370px;
+            }
+            .engineering img {
+                width: 300px;
+            }
+            .public-health img {
+                width: 300px;
+            }
         }
-        .environment img {
-            width: 370px;
-        }
-        .engineering img {
-            width: 300px;
-        }
-        .public-health img {
-            width: 300px;
-        }
-        img {
-            max-height: 20px;
-            width: 100%;
-            margin: 2rem 0;
-            padding: 0 2rem;
-        }
-        a {
+        .environment, .engineering, .public-health {
+            img {
+                max-height: 20px;
+                width: 100%;
+                margin: 2rem 0;
+                padding: 0 2rem;
+            }
             position: relative;
             display: inline-block;
             &:after {
