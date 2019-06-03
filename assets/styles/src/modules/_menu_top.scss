@@ -13,12 +13,16 @@
 		overflow: hidden; 
 	}
 	a:focus, .skipnav a:active {
-		position: static;
+		position: absolute;
 		left: 0;
 		width: auto;
 		height: auto;
 		overflow: visible; 
 		text-decoration: underline; 
+      z-index: 9999999;
+    color: white;
+    background: black;
+    padding: 1rem;
 	}
 }
 

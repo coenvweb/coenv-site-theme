@@ -775,19 +775,22 @@
         right: 1rem;
         height: 33px;
         width: 33px;
+        border: none;
+        background-color: transparent;
+        
     }
     .fi-play {
         color: #fff;
         height: 33px;
         width: 33px;
-        position: absolute;
         font-size: 2rem;
+        position: relative;
+        top: -.75rem;
     }
     .fi-pause {
         color: #fff;
         height: 33px;
         width: 33px;
-        position: absolute;
         font-size: 1rem;
     }
 }
@@ -1059,7 +1062,7 @@
         background-repeat: repeat-x;
         background-image: url(../../img/mekong/Flooding.svg);
         background-size: cover;
-        width: 100%;
+        width: 101%;
         height: 100px;
         position: absolute;
         display: block;
