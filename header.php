@@ -173,7 +173,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 </div><!-- .container.header-container -->
 
                 <div class="feature-info-container">
-                    <a class="play-pause-hero right show-for-medium-up" tabindex="0" title="pause or play header video"></a>
+                    <button class="play-pause-hero right show-for-medium-up" tabindex="0" title="pause or play header video"></button>
               </div><!-- .feature-info-container -->
               </div>
         </div>
