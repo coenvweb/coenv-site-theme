@@ -115,6 +115,11 @@ jQuery(function ($) {
                 autoplay = false;
             }
         });
+        $(ppbutton).keypress(function(e){
+            if(e.which == 13){//Enter key pressed
+                $(ppbutton).click();//Trigger search button click event
+            }
+        });
         setTimeout(function(){
                 hero.get(0).pause()
                 hero.addClass("fade");
