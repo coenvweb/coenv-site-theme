@@ -171,9 +171,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 <div id="section-video" class="feature homepage-hero-module scrollTo">
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
-                        <div id='video-overlay'>
-                            <img src="<?php get_bloginfo('template_directory') ?>/assets/video/mekong-video.jpg" />
-                        </div>
                         <?php
                             echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="https://coenv-media-gene1ufvxiloffjq.stackpathdns.com/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg">';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-looper-720.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
@@ -181,9 +178,9 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
                             echo '</video>';
                          ?>
-                        <div class="poster visuallyhidden">
+                        <div class="poster poster-hidden">
                             <?php
-                            echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video.jpg" alt="">';
+                            echo '<img src="https://coenv-media-gene1ufvxiloffjq.stackpathdns.com/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg" alt="">';
                              ?>
                         </div>
                         <div class="layout-container layout-container--header">

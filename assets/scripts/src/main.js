@@ -87,7 +87,7 @@ jQuery(function ($) {
             hero.get(0).pause()
             hero.addClass("fade");
             console.log(poster);
-            poster.removeClass("visuallyhidden");
+            poster.removeClass("poster-hidden");
             ppbutton.html('<i class="fi-play"> ►</i>');
             autoplay = false;
         }
@@ -97,21 +97,22 @@ jQuery(function ($) {
             if (autoplay == null || autoplay === false) {
                 $(this).html('<i class="fi-pause">▐▐</i>');
                 hero.get(0).play()
-                //$('.poster').addClass('visuallyhidden');
                 autoplay = true;
                 ppbutton.html('<i class="fi-pause">▐▐</i>');
+                $('.poster').addClass('poster-hidden');
                 
                 setTimeout(function(){
                     hero.get(0).pause()
                     hero.addClass("fade");
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
-                    //$('.poster').removeClass("visuallyhidden");
+                    $('.poster').removeClass("poster-hidden");
                 }, 120000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
                 hero.get(0).pause()
                 autoplay = false;
+                $('.poster').removeClass("poster-hidden");
             }
         });
         $(ppbutton).keypress(function(e){
@@ -123,7 +124,7 @@ jQuery(function ($) {
                 hero.get(0).pause()
                 hero.addClass("fade");
                 ppbutton.html('<i class="fi-play"> ►</i>');
-                $('.poster').removeClass("visuallyhidden");
+                $('.poster').removeClass("poster-hidden");
                 autoplay = false;
         }, 120000);
 };
