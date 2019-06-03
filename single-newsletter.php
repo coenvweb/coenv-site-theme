@@ -89,7 +89,26 @@ $links = get_field('outside_news');
                                     setup_postdata($post);
                                     get_template_part( 'partials/partial', 'newsletter-article' );
                                 } else {
-                                    get_template_part( 'partials/partial', 'scicomm-news' );
+                                      $image = $nl_post['image'];
+                                      $title = $nl_post['title'];
+                                      $link = $nl_post['link'];
+                                    ?>
+                                    <div class="scicomm_news_item">
+                                        <header class="article__header">
+                                        <?php if ( $image ) {
+                                                $image = wp_get_attachment_image($image, '', false, array('class'=>'scicomm_image'));
+                                                echo '<a href="'.$link.'">';
+                                                    echo $image;
+                                                echo '</a>';
+                                        } ?>
+                                            <h1 class="article__title"><a href="<?php echo $link; ?>" rel="bookmark"><?php echo $title; ?></a></h1>
+                                        </header>
+
+                                        <section class="article__content">
+
+                                        </section>
+                                    </div>
+                                    <?php
                                 }
                             }
                             wp_reset_postdata();
