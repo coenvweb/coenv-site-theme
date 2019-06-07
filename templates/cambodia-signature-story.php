@@ -116,7 +116,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 <?php
         $mini_header = true;
         $banner_class .= ' mini-header';
-        echo '<meta name="robots" content="noindex">';
 ?>
 
 </head>
