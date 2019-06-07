@@ -1655,9 +1655,12 @@
             -ms-grid-row-span: 2
         }
         .gallery-caption {
+            display: -ms-grid;
             grid-column-start: 1;
             /* autoprefixer: off */
             grid-column-end: 8;
+            -ms-grid-column: 1;
+            -ms-grid-column-span: 7;
             margin-bottom: 0;
             max-width: 670px;
             margin: auto;
