@@ -1587,7 +1587,7 @@
     .big-element.element-big_gallery {
         margin: inherit;
         display: grid;
-        display: ms-grid;
+        display: -ms-grid;
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(4, 8vw);
         grid-gap: 20px;
@@ -1599,6 +1599,7 @@
         }
         .photo {
             width: 100%!important;
+            display: table-cell;
             img {
                 position: relative!important;
                 right: 0!important;
