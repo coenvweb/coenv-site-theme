@@ -407,6 +407,10 @@ li#wp-admin-bar-revision {
             position: relative;
             transform: scale(1.15);
             left: 1.5rem;
+            @include max-width ( 700 ) {
+                width: calc(100% - 160px);
+                left: 1rem;
+            }
         }
     }
     .template-signature-story {
