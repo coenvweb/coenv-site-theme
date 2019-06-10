@@ -1728,6 +1728,9 @@
         max-width: 1200px;
         width: 140%;
         margin-left: -40%;
+        #legend {
+            min-height: 170px;
+        }
         @include max-width ( 900 ) {
             width: calc(100% + 4rem);
             margin-left: -2rem;
