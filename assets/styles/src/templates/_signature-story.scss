@@ -1733,7 +1733,7 @@
         max-width: 1200px;
         width: 140%;
         margin-left: -40%;
-        #legend {
+        html > #legend {
             min-height: 170px;
             max-height: none;
         }
@@ -1770,6 +1770,9 @@
                 right: -1rem;
                 background: rgba(0,0,0,.7); 
                 z-index: -1;
+                @include max-width ( 600 ) {
+                    top: -5rem;
+                }
             }
             .button {
                 letter-spacing: 1px;
