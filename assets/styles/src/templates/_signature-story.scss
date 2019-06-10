@@ -1470,6 +1470,15 @@
         
         .rsOverflow {
             min-height: 60vw;
+            @include max-width ( 800 ) {
+                overflow: visible;
+            }
+        }
+        
+        .rsSlide {
+            @include max-width ( 800 ) {
+                overflow: visible;
+            }
         }
         
         @include min-width ( 1600 ) {
@@ -1561,6 +1570,9 @@
             background-color: white;
             bottom: 0px;
             padding-top: 5px;
+            @include max-width ( 800 ) {
+                margin-bottom: -4rem;
+            }
         }
         
         .specialCaption {
@@ -1570,9 +1582,21 @@
             float: inherit;
             width: 100%;
             margin: 0 auto;
-            max-width: 710px;
+            max-width: 1000px;
             font-size: 12px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            @include max-width ( 800 ) {
+                width: calc(100% - 4rem);
+                margin: 0 2rem;
+                padding: 0;
+            }
+            @include min-width ( 1300 ) {
+                max-width: 1200px;
+                padding-left: 12rem;
+            }
         }
+        
         .rsGCaption {
             display: none;
         }
@@ -1591,9 +1615,14 @@
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(4, 8vw);
         grid-gap: 20px;
-        width: 100%;
         margin-top: 0rem;
         padding-bottom: 0;
+        width: 100%;
+        @include max-width ( 800 ) {
+            width: calc(100% - 4rem);
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
         &:before {
             display: none;
         }
