@@ -1267,6 +1267,9 @@
             font-weight: 800;
             text-transform: uppercase;
             color: white;
+            @include max-width ( 800 ) {
+                font-size: .9rem;
+            }
         }
     }
     
@@ -1534,6 +1537,13 @@
             background: none;
             height: 3rem;
             overflow: visible;
+            @include max-width ( 800 ) {
+                height: 2rem;
+            }
+            @include max-width ( 600 ) {
+                display: none!important;
+            }
+            
             
             .rsBullet {
                 height: 2rem;
@@ -1720,6 +1730,7 @@
         @include max-width ( 900 ) {
             width: calc(100% + 4rem);
             margin-left: -2rem;
+            max-height: 80vh;
         }
     }
     
