@@ -778,6 +778,11 @@
         border: none;
         background-color: transparent;
         z-index: 3;
+        @supports (-webkit-overflow-scrolling: touch) {
+          /* CSS specific to iOS devices */ 
+            display: none;
+        }
+
     }
     .fi-play {
         color: #fff;
