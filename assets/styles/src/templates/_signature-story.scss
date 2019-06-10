@@ -1596,6 +1596,7 @@
             font-size: 12px;
             padding-left: 1rem;
             padding-right: 1rem;
+            min-height: 3rem;
             @include max-width ( 800 ) {
                 width: calc(100% - 4rem);
                 margin: 0 2rem;
