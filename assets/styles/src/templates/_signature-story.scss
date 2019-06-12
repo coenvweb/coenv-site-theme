@@ -680,6 +680,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        margin-bottom: 3rem;
         @include max-width ( 800 ) {
             background-attachment: inherit;
         }
@@ -1195,6 +1196,7 @@
     .photo-divider {
         text-align: center;
         position: relative;
+        margin-bottom: 0rem;
         @include max-width ( 600 ) {
             max-height: 100vw;
             height: 100vw;
