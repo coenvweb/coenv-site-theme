@@ -34,8 +34,11 @@ function coenv_custom_metas() {
     if (get_field('social_share_description')) {
         $social_share_description = trim(get_field('social_share_description', $page_id));
     } else {
-        $social_share_title = get_the_excerpt($page_id);
+        $social_share_description = get_the_excerpt($page_id);
     }
+    
+    echo get_field('social_share_description', 71545);
+    echo 'hello';
     
     $social_image = trim(get_field('social_image', $page_id)); 
 
