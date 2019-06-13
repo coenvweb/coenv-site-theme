@@ -26,8 +26,17 @@ function coenv_custom_metas() {
     $meta_robots = trim(get_field('meta_robots', $page_id));
         
     // Social ACFs
-    $social_share_title = trim(get_field('social_share_title', $page_id));
-    $social_share_description = trim(get_field('social_share_description', $page_id));
+    if (get_field('social_share_title')) {
+        $social_share_title = trim(get_field('social_share_title', $page_id));
+    } else {
+        $social_share_title = get_the_title($page_id);
+    }
+    if (get_field('social_share_description')) {
+        $social_share_description = trim(get_field('social_share_description', $page_id));
+    } else {
+        $social_share_title = get_the_excerpt($page_id);
+    }
+    
     $social_image = trim(get_field('social_image', $page_id)); 
 
     // Get featured image, or use ancestor's if empty, or fallback to logo
@@ -38,7 +47,7 @@ function coenv_custom_metas() {
     } elseif (has_post_thumbnail($ancestor)) {
         $featured_img = get_the_post_thumbnail_url($ancestor, 'large' );
     } else {
-        $featured_img = get_template_directory_uri() . '/assets/img/logo-1200x1200.png';
+        $featured_img = get_template_directory_uri() . '/assets/img/logo-1200x1200.jpg';
     }
     
     // Get featured image width and heights
@@ -62,12 +71,12 @@ function coenv_custom_metas() {
         $html .= '<meta property="twitter:image" content="' . $featured_img . '"/>' . $break;
     } 
     // Add social title if declared in ACF. Default will use meta title.
-    if ($social_share_title) {
+    if (!empty($social_share_title)) {
         $html .= '<meta property="og:title" content="' . $social_share_title . '"/>' . $break;
         $html .= '<meta property="twitter:title" content="' . $social_share_title . '"/>' . $break;
     } 
     // Add social description if declared in ACF. 
-    if ($social_share_description) {
+    if (!empty($social_share_description)) {
         $html .= '<meta property="og:description" content="' . $social_share_description . '"/>' . $break;
         $html .= '<meta property="twitter:description" content="' . $social_share_description . '"/>';
     } 
