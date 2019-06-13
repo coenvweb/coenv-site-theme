@@ -12,8 +12,6 @@
 global $coenv_member_api;
 $coenv_member_api = new CoEnvMemberAPI();
 
-require_once( $coenv_member_api->directory . 'member-importer.php' );
-
 class CoEnvMemberAPI {
 
 	function __construct() {

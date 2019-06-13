@@ -129,7 +129,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
   <div class="skipnav"><a href="#main-col">Skip to main content</a> <a href="#footer">Skip to footer unit links</a></div>
     <div id="outer" class="layout-outer">
     <?php 
-    if ($mini_header == true ) { ?>
+    if (!empty($mini_header)) { ?>
         <div class="mini-top-menu">
             <div class="mini-top-menu-inner">
             <h1 id="logo">
@@ -144,38 +144,9 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 </svg><?php include('assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a>
             </h1>
                 <nav class="navigator">
-                    <li class="navigator-link"><a href="#section-introduction">Introduction</a></li>
-                    <li class="navigator-link"><a href="#section-the-forecast-for-fish">Fish</a></li>
-                    <li class="navigator-link"><a href="#section-relying-on-rice">Rice</a></li>
-                    <li class="navigator-link"><a href="#section-assessing-nutritional-needs">Nutrition</a></li>
-                    <li class="navigator-link"><a href="#section-optimal-hydropower-operations">Hydropower</a></li>
-                    <li class="navigator-link"><a href="#section-a-call-for-collaboration">Collaboration</a></li>
+                    
                 </nav>
             </div>
-        </div>
-         <div id="section-video" class="feature homepage-hero-module scrollTo">
-                <div class="feature-image video-container banner-wrapper">
-                <div class="filter"></div>
-                    <?php
-                        echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/mekong-video.jpg">';
-                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-looper-720.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
-                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
-                        echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
-                        echo '</video>';
-                     ?>
-                    <div class="poster visuallyhidden">
-                        <?php
-                        echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video.jpg" alt="">';
-                         ?>
-                    </div>
-                    <div class="layout-container layout-container--header">
-
-                </div><!-- .container.header-container -->
-
-                <div class="feature-info-container">
-                    <button class="play-pause-hero right show-for-medium-up" tabindex="0" title="pause or play header video"></button>
-              </div><!-- .feature-info-container -->
-              </div>
         </div>
     <?php } else { ?>
 
@@ -219,7 +190,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     </div><!-- .container -->
 
                 </nav><!-- #top-nav -->
-                <?php if ($big_sky_video_header == true) { ?>
+                <?php if (!empty($big_sky_video_header)) { ?>
                 <div class="feature homepage-hero-module">
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
