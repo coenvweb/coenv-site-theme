@@ -37,9 +37,6 @@ function coenv_custom_metas() {
         $social_share_description = get_the_excerpt($page_id);
     }
     
-    echo get_field('social_share_description', 71545);
-    echo 'hello';
-    
     $social_image = trim(get_field('social_image', $page_id)); 
 
     // Get featured image, or use ancestor's if empty, or fallback to logo
