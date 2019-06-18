@@ -67,7 +67,7 @@
 			{
 				name: 'Twitter',
 				className: 'twitter',
-				url: 'http://twitter.com/home?status=' + this.articleTitle + ' ' + this.articleShortLink + ' from @UWEnvironment" target="_blank'
+				url: 'http://twitter.com/intent/tweet?text=' + this.articleTitle + '&url=' + this.articleShortLink + '&via=UWEnvironment" target="_blank'
 			},
 			{
 				name: 'Facebook',
