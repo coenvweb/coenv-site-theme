@@ -81,7 +81,7 @@
                 }
                 img {
                     width: 200px;
-                    height: 200px;
+                    height: 100%;
                 }
                 .left {
                     display: block;
@@ -131,13 +131,14 @@
     
     .accordion-content {
         background-color: #f7f7f7;
-        transition: .3s width;
+        transition: .3s width, .3s height;
         position: relative;
         bottom: 2rem;
         z-index: 0;
         padding-bottom: 1rem;
         @include min-width ( $iPadLandscape ) {
             width: 368px;
+            transition: .3s;
         }
 
         .responsibilities {
