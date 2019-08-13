@@ -97,6 +97,40 @@
             "maxlength": ""
         },
         {
+            "key": "field_59d6650bd663a",
+            "label": "Faculty advisor",
+            "name": "faculty_advisor",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_59d51ddad3851",
             "label": "Previous Institution and Degree Earned",
             "name": "undergraduate_degree",
@@ -190,40 +224,6 @@
                         "field": "field_587eb2ce0c91c",
                         "operator": "==",
                         "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_59d6650bd663a",
-            "label": "Faculty advisor",
-            "name": "faculty_advisor",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
                     }
                 ]
             ],
@@ -672,6 +672,11 @@
                         "field": "field_587eb2ce0c91c",
                         "operator": "!=",
                         "value": "Postdoctoral Fellow"
+                    },
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "!=",
+                        "value": "Graduate Student"
                     }
                 ]
             ],
@@ -699,9 +704,7 @@
                         "field": "field_587eb2ce0c91c",
                         "operator": "!=",
                         "value": "Postdoctoral Fellow"
-                    }
-                ],
-                [
+                    },
                     {
                         "field": "field_587eb2ce0c91c",
                         "operator": "!=",
@@ -733,9 +736,7 @@
                         "field": "field_587eb2ce0c91c",
                         "operator": "!=",
                         "value": "Postdoctoral Fellow"
-                    }
-                ],
-                [
+                    },
                     {
                         "field": "field_587eb2ce0c91c",
                         "operator": "!=",
@@ -830,5 +831,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1565734122
+    "modified": 1565735138
 }
