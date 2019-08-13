@@ -75,11 +75,6 @@ $ancestor = array(
                             $meta_query = array(
                                 'relation' => 'OR',
                                 array(
-                                    'key' => 'hometown',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
                                     'key' => 'first_name',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
@@ -105,11 +100,6 @@ $ancestor = array(
                                     'value' => $coenv_search_terms
                                 ),
                                 array(
-                                    'key' => 'kid_become',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
                                     'key' => 'research_interests',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
@@ -125,12 +115,7 @@ $ancestor = array(
                                     'value' => $coenv_search_terms
                                 ),
                                 array(
-                                    'key' => 'why_study_environment',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'meaningful_moment',
+                                    'key' => 'dissertation_title',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),

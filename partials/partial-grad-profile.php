@@ -5,22 +5,13 @@
 
 $first_name = get_field('first_name');
 $last_name = get_field('last_name');
-$image = get_field('photo');
 $department_degree = get_field('department_and_pursued_degree');
-$last_school = get_field('last_school');
-$undergrad_degree = get_field('undergraduate_degree');
-$hometown = get_field('hometown');
-$kid_become = get_field('kid_become');
-$research_interests = get_field('research_interests');
-$location = get_field('location');
-$career_aspiration = get_field('career_aspiration');
-$why_study = get_field('why_study_environment');
-$meaningful_moment = get_field('meaningful_moment');
 $faculty_advisor = get_field('faculty_advisor');
-$tags = get_the_term_list($post->ID, 'student_tag', '' , ', ');
-$tags = strip_tags($tags);
-$linkedin = get_field('linkedin_profile_link');
-$twitter = get_field('twitter_profile_link');
+$undergrad_degree = get_field('undergraduate_degree');
+$research_interests = get_field('research_interests');
+$disseration_title = get_field('dissertation_title');
+$location = get_field('location');
+$image = get_field('photo');
 
 
 if( !empty($image) ) {
@@ -58,51 +49,27 @@ if(!empty($description)) {
             
     <ul class="ambassador-info">
         <?php if (!empty($department_degree)) : ?>
-            <div class="row"><div class="prompt">Degree and department:</div><ul class="answer-content"><?php echo $department_degree; ?></ul></div>
-        <?php endif; ?>  
-        <?php if (!empty($hometown)) : ?>
-            <div class="row"><div class="prompt">Hometown:</div> <li class="answer-content"><?php echo $hometown; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($last_school)) : ?>
-            <div class="row"><div class="prompt">Undergraduate institution:</div> <li class="answer-content"><?php echo $last_school; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($undergrad_degree)) : ?>
-            <div class="row"><div class="prompt">Undergraduate degree:</div> <li class="answer-content"><?php echo $undergrad_degree; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($kid_become)) : ?>
-            <div class="row"><div class="prompt">When I was a kid, I wanted to become:</div> <li class="answer-content"><?php echo $kid_become; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($research_interests)) : ?>
-            <div class="row"><div class="prompt">Research interests:</div> <li class="answer-content"><?php echo $research_interests; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($location)) : ?>
-            <div class="row"><div class="prompt">Research location:</div> <li class="answer-content"><?php echo $location; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($career_aspiration)) : ?>
-            <div class="row"><div class="prompt">Career aspiration:</div> <li class="answer-content"><?php echo $career_aspiration; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($why_study)) : ?>
-            <div class="row"><div class="prompt">Why do you study the environment?:</div> <li class="answer-content"><?php echo $why_study; ?></li></div>
-        <?php endif; ?>
-        <?php if (!empty($meaningful_moment)) : ?>
-            <div class="row"><div class="prompt">What has been your most meaningful moment in graduate school?:</div> <li class="answer-content"><?php echo $meaningful_moment; ?></li></div>
+            <div class="row"><div class="prompt">Department and pursued degree:</div><ul class="answer-content"><?php echo $department_degree; ?></ul></div>
         <?php endif; ?>
         <?php if (!empty($faculty_advisor)) : ?>
             <div class="row"><div class="prompt">Faculty advisor(s):</div> <li class="answer-content"><?php echo $faculty_advisor; ?></li></div>
         <?php endif; ?>
-        <?php if (!empty($tags)) : ?>
-            <div class="row"><div class="prompt">Ask <?php echo $first_name ?> About:</div> <li class="answer-content"><?php echo $tags; ?></li></div>
+        <?php if (!empty($undergrad_degree)) : ?>
+            <div class="row"><div class="prompt">Previous institution and degree:</div> <li class="answer-content"><?php echo $undergrad_degree; ?></li></div>
+        <?php endif; ?>
+        <?php if (!empty($research_interests)) : ?>
+            <div class="row"><div class="prompt">Research interest:</div> <li class="answer-content"><?php echo $research_interests; ?></li></div>
+        <?php endif; ?>
+        <?php if (!empty($disseration_title)) : ?>
+            <div class="row"><div class="prompt">Dissertation title:</div> <li class="answer-content"><?php echo $disseration_title; ?></li></div>
+        <?php endif; ?>
+        <?php if (!empty($location)) : ?>
+            <div class="row"><div class="prompt">Research location:</div> <li class="answer-content"><?php echo $location; ?></li></div>
         <?php endif; ?>
         <div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>
-            <?php if (!empty($twitter)) : ?>
-                <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow <?php echo $first_name; ?> on Twitter</a></li>
-            <?php endif; ?>
-            <?php if (!empty($linkedin)) : ?>
-                <li><a href="<?php echo $linkedin; ?>"><i class="icon-link"></i>Connect with <?php echo $first_name; ?> on LinkedIn</a></li>
-            <?php endif; ?>                
+            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>             
             </ul>
         </div>
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
