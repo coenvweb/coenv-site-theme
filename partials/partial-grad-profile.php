@@ -66,12 +66,6 @@ if(!empty($description)) {
         <?php if (!empty($location)) : ?>
             <div class="row"><div class="prompt">Research location:</div> <li class="answer-content"><?php echo $location; ?></li></div>
         <?php endif; ?>
-        <div class="row">
-            <div class="prompt">Connect:</div>
-            <ul class="answer-content">
-            <li><a href="mailto:coenvamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>             
-            </ul>
-        </div>
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
         <div class="row">
             <div class="prompt">Logged in users:</div>
