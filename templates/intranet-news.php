@@ -1,8 +1,6 @@
 <?php
 /**
- * page.php
- *
- * The main page template
+ * Template name: Intranet News
  */
 get_header();
 
