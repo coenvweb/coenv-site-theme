@@ -13,7 +13,7 @@ $ordered_themes = $themes;
 
 		<div class="Faculty-toolbox-header">
 			<h1 class="Faculty-toolbox-title">
-                <a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Faculty <span>Profiles</span></a>
+                <a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Faculty</a>
 				<a href="#" class="Faculty-toolbox-toggle">
 
 					<div class="Faculty-toolbox-toggle-search">
