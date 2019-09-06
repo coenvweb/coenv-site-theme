@@ -148,6 +148,11 @@ $ancestor = array(
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
+                                array(
+                                    'key' => 'student_tag',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
                             );
                             $args['meta_query'] = $meta_query;
                         endif;
