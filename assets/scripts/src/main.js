@@ -1,4 +1,17 @@
 jQuery(function ($) {
+    
+    //outbound link tracking
+    
+    $('a').each(function () {
+        if( location.hostname === this.hostname || !this.hostname.length ) {
+        } else {
+            var href = $(this).attr('href');
+            var func = 'trackOutboundLink("' + href + '"); return false;';
+            $(this).attr('onclick', func);
+        }
+    });
+    
+    
     /**
      * Banner image reveals
      */
