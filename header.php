@@ -90,6 +90,12 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
          
 <script async src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
 <script>
+    var trackOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {
+            'transport': 'beacon',
+            'hitCallback': function(){document.location = url;}
+        });
+    }
     (function(d) {
              var config = {
               kitId: 'dyq8fxo',
