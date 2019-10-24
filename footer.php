@@ -86,10 +86,15 @@
 							ga('create', 'UA-42374937-1', 'auto');
 							ga('require', 'linkid', 'linkid.js');
 							ga('send', 'pageview');
-                            ga('set', 'anonymizeIp', true);
-
+              ga('set', 'anonymizeIp', true);
 						</script>
 						<script type="text/javascript">
+                var trackOutboundLink = function(url) {
+                    ga('send', 'event', 'outbound', 'click', url, {
+                        'transport': 'beacon',
+                        'hitCallback': function(){document.location = url;}
+                    });
+                }
 							try{
 							(function() {
 							var afterPrint = function() { ga('send', 'event', 'Print Intent', document.location.pathname); };
