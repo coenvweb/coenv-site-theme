@@ -1056,7 +1056,7 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
         echo $before_widget; ?>
         <?php echo $before_title ?>
 
-            <span><a href="/faculty-info/postdoctoral-fellows/meet-postdocs/">
+            <span><a href="/research/postdoctoral-fellows/meet-postdocs/">
                 <?php 
                 if ( $title == '' ){
                     echo 'Meet a Postdoc';
@@ -1085,7 +1085,7 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
                         $thumb = $image['sizes'][ $size ];
                     }
                     $name = $first_name . ' ' . $last_name;
-                    echo '<a href="/faculty-info/postdoctoral-fellows/meet-postdocs/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                    echo '<a href="/research/postdoctoral-fellows/meet-postdocs/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
                         echo '<div class="ambassador-container" >';
                         if ( $image ) {
                             echo '<div class="ambassador-thumb">';
@@ -1106,7 +1106,7 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
                     echo '</div>';
                 echo '</a>';
             }
-            echo '<a href="/faculty-info/postdoctoral-fellows/meet-postdocs/" title="Browse more postdocs in the College of the Environment" class="count" >';
+            echo '<a href="/research/postdoctoral-fellows/meet-postdocs/" title="Browse more postdocs in the College of the Environment" class="count" >';
             echo '<div class="ambassador-container">';
             echo '<div class="ambassador-thumb">';
             echo '<i class="icon-faculty-grid-alt-2"></i>';

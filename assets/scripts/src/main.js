@@ -213,14 +213,14 @@ jQuery(function ($) {
 		// share buttons
 		$('.share').coenvshare();
       
-   $('a').each(function () { //outbound link tracking
-        if( location.hostname === this.hostname || !this.hostname.length ) {
-        } else {
-            var href = $(this).attr('href');
-            var func = 'trackOutboundLink("' + href + '");';
-            $(this).attr('onclick', func);
-        }
-    });
+    //$('a').each(function () { //outbound link tracking
+    //    if( location.hostname === this.hostname || !this.hostname.length ) {
+    //    } else {
+    //        var href = $(this).attr('href');
+    //        var func = 'trackOutboundLink("' + href + '");';
+    //        $(this).attr('onclick', func);
+    //    }
+    //});
 		
 		// lightbox
 		$('a:not([href*=youtube]):not([href*=youtu]):not([href*=vimeo])').nivoLightbox();
