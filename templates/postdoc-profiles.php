@@ -75,7 +75,7 @@ $ancestor = array(
                             $meta_query = array(
                                 'relation' => 'OR',
                                 array(
-                                    'key' => 'hometown',
+                                    'key' => 'faculty_advisor',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
@@ -95,52 +95,22 @@ $ancestor = array(
                                     'value' => $coenv_search_terms
                                 ),
                                 array(
-                                    'key' => 'department_and_pursued_degree',
+                                    'key' => 'last_school',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
                                 array(
-                                    'key' => 'undergraduate_degree',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'kid_become',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'research_interests',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'location',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'career_aspiration',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'why_study_environment',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'meaningful_moment',
-                                    'compare' => 'LIKE',
-                                    'value' => $coenv_search_terms
-                                ),
-                                array(
-                                    'key' => 'faculty_advisor',
+                                    'key' => 'current_research_project',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
                                 array(
                                     'key' => 'research_description',
+                                    'compare' => 'LIKE',
+                                    'value' => $coenv_search_terms
+                                ),
+                                array(
+                                    'key' => 'research_image_description',
                                     'compare' => 'LIKE',
                                     'value' => $coenv_search_terms
                                 ),
@@ -157,7 +127,7 @@ $ancestor = array(
                             <?php the_content(); ?>
                        </div>
 
-                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/faculty-info/postdoctoral-fellows/meet-postdocs">
+                       <form role="search" method="get" class="search-form Form--inline" id="post-search" action="/research/postdoctoral-fellows/meet-postdocs">
                           <div class="field-wrap">
                             <input type="text" name="st" id="st" placeholder="Search for keywords (teaching, oceanography, outreach, etc.)" value="<?php echo $coenv_search_terms_raw ?>" />
                             <button type="submit"><i class="icon-search"></i><span>Search</span></button>

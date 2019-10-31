@@ -15,6 +15,7 @@ $current_research_project = get_field('current_research_project');
 $research_description = get_field('research_description');
 $citations = get_field('citations');
 $research_image = get_field('research_image');
+$research_image_description = get_field('research_image_description');
 
 
 if( !empty($image) ) {
@@ -66,10 +67,10 @@ if( !empty($image) ) {
             <div class="row"><div class="prompt">Research description:</div> <li class="answer-content"><?php echo $research_description; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($research_image)) : ?>
-            <div class="row"><div class="prompt">Research graphic:</div> <li class="answer-content"><img src="<?php echo $research_image['url']; ?>" alt="<?php echo $research_image['alt']; ?>" /></li></div>
+            <div class="row"><div class="prompt">Research graphic:</div><li class="answer-content"><a href="<?php echo esc_url($research_image['url']); ?>" title="<?php echo wp_strip_all_tags($research_image_description); ?>"><img src="<?php echo esc_url($research_image['url']); ?>" alt="<?php echo esc_attr($research_image['alt']); ?>" /></a></li></div>
         <?php endif; ?>
-        <?php if (!empty($citations)) : ?>
-            <div class="row"><div class="prompt">Top two citations:</div> <li class="answer-content"><?php echo $citations; ?></li></div>
+        <?php if (!empty($research_image_description)) : ?>
+            <div class="row"><div class="prompt"></div> <li class="answer-content"><?php echo $research_image_description; ?></li></div>
         <?php endif; ?>
 
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>

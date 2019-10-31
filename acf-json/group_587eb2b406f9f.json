@@ -3,6 +3,94 @@
     "title": "Students\/Postdocs Profiles",
     "fields": [
         {
+            "key": "field_59d51e04d3852",
+            "label": "Department and Pursued Degree",
+            "name": "department_and_pursued_degree",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d664a1d6636",
+            "label": "Research Location",
+            "name": "location",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d6650bd663a",
+            "label": "Faculty advisor",
+            "name": "faculty_advisor",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_587fd3c41a2e9",
             "label": "First Name",
             "name": "first_name",
@@ -68,382 +156,6 @@
             "return_format": "value",
             "ajax": 0,
             "placeholder": ""
-        },
-        {
-            "key": "field_59d51e04d3852",
-            "label": "Department and Pursued Degree",
-            "name": "department_and_pursued_degree",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_59d6650bd663a",
-            "label": "Faculty advisor",
-            "name": "faculty_advisor",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_59d51ddad3851",
-            "label": "Previous Institution and Degree Earned",
-            "name": "undergraduate_degree",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_59d66490d6635",
-            "label": "Research Interests",
-            "name": "research_interests",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "new_lines": "",
-            "maxlength": "",
-            "placeholder": "",
-            "rows": ""
-        },
-        {
-            "key": "field_5d533467d739b",
-            "label": "Dissertation or Thesis Title",
-            "name": "dissertation_title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_59d664a1d6636",
-            "label": "Research Location",
-            "name": "location",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5bca3ccbba618",
-            "label": "Academic Unit",
-            "name": "academic_unit",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "unit",
-            "field_type": "checkbox",
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "object",
-            "multiple": 0,
-            "allow_null": 0
-        },
-        {
-            "key": "field_5bca3d3fba61a",
-            "label": "Year joined UW",
-            "name": "year_joined_uw",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "e.g. 2014",
-            "prepend": "",
-            "append": "",
-            "min": 1990,
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_5bca3d8bba61b",
-            "label": "Quarter joined UW",
-            "name": "quarter_joined_uw",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "Autumn": "Autumn",
-                "Winter": "Winter",
-                "Spring": "Spring",
-                "Summer": "Summer"
-            },
-            "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_5bca3de1ba61d",
-            "label": "What is your current research project?",
-            "name": "current_research_project",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": 160
-        },
-        {
-            "key": "field_5bca3e77ba61e",
-            "label": "Research Description",
-            "name": "research_description",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 3,
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_5bca3ea4ba61f",
-            "label": "Citations for your top 2 papers",
-            "name": "citations",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
-        },
-        {
-            "key": "field_5bca3ec1ba620",
-            "label": "Research image",
-            "name": "research_image",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "==",
-                        "value": "Postdoctoral Fellow"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
         },
         {
             "key": "field_587fdd9353b62",
@@ -810,6 +522,294 @@
             "maxlength": "",
             "rows": "",
             "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5bca3ccbba618",
+            "label": "Academic Unit",
+            "name": "academic_unit",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "unit",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_5bca3d3fba61a",
+            "label": "Year joined UW",
+            "name": "year_joined_uw",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. 2014",
+            "prepend": "",
+            "append": "",
+            "min": 1990,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5bca3d8bba61b",
+            "label": "Quarter joined UW",
+            "name": "quarter_joined_uw",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Autumn": "Autumn",
+                "Winter": "Winter",
+                "Spring": "Spring",
+                "Summer": "Summer"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5bca3de1ba61d",
+            "label": "What is your current research project?",
+            "name": "current_research_project",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 160
+        },
+        {
+            "key": "field_5bca3e77ba61e",
+            "label": "Bio \/ Description",
+            "name": "research_description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5bca3ec1ba620",
+            "label": "Research image",
+            "name": "research_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_59d51ddad3851",
+            "label": "Previous Institution and Degree Earned",
+            "name": "undergraduate_degree",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d533467d739b",
+            "label": "Dissertation or Thesis Title",
+            "name": "dissertation_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59d66490d6635",
+            "label": "Research Interests",
+            "name": "research_interests",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Graduate Student"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5db9d835529bf",
+            "label": "Research Image Description",
+            "name": "research_image_description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "==",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -831,5 +831,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1565738478
+    "modified": 1572476385
 }
