@@ -412,7 +412,7 @@
             margin-top: 3rem;
             margin-bottom: 3rem;
         }
-        .fluid-width-video-wrapper {
+        .article__content .fluid-width-video-wrapper {
             width: calc(40% - .3rem);
             float: right;
             margin: 0 0 -31%;
@@ -420,6 +420,13 @@
                 height: calc(40% - .3rem)!important;
             }
         }
+    }
+    
+    .intro-video {
+        margin-right: -2rem;
+        margin-left: -2rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
     }
     
 }
