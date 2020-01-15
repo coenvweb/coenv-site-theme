@@ -159,7 +159,7 @@
             "label": "Twitter",
             "name": "twitter",
             "type": "text",
-            "instructions": "",
+            "instructions": "e.g. http:\/\/twitter.com\/uwenvironment",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -171,10 +171,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "formatting": "html",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
         },
         {
             "key": "field_533ca02a33103",
@@ -244,7 +241,7 @@
             "key": "field_26",
             "label": "Biography",
             "name": "biography",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -254,12 +251,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_27",
@@ -348,7 +343,6 @@
     "hide_on_screen": [
         "the_content",
         "excerpt",
-        "custom_fields",
         "discussion",
         "comments",
         "revisions",
@@ -361,5 +355,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1478194623
+    "modified": 1579119540
 }
