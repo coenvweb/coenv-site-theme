@@ -761,7 +761,7 @@
             "key": "field_59d66490d6635",
             "label": "Research Interests",
             "name": "research_interests",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -779,10 +779,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5db9d835529bf",
@@ -831,5 +831,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1572476385
+    "modified": 1585943297
 }
