@@ -411,11 +411,11 @@
                 "class": "",
                 "id": ""
             },
+            "collapsed": "",
             "min": 0,
             "max": 2,
             "layout": "table",
             "button_label": "Add Event",
-            "collapsed": "",
             "sub_fields": [
                 {
                     "key": "field_5834976db436f",
@@ -431,10 +431,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_58349778b4370",
@@ -474,7 +474,7 @@
                     "key": "field_583497bcb4372",
                     "label": "Link",
                     "name": "link",
-                    "type": "url",
+                    "type": "text",
                     "instructions": "Trumba or other url for more event information",
                     "required": 0,
                     "conditional_logic": 0,
@@ -484,7 +484,10 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -516,5 +519,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1488993481
+    "modified": 1586384281
 }
