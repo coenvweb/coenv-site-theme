@@ -191,6 +191,21 @@ $clearfix-method: overflow !default;
     user-select: none;
 }
 
+/*  UW Skew
+    ======================================================================== */
+
+.uw-skew {
+    -ms-transform: skewX(-15deg);
+    -webkit-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+}
+
+.uw-unskew {
+    -ms-transform: skewX(15deg);
+    -webkit-transform: skewX(15deg);
+    transform: skewX(15deg);
+}
+
 @media print {
     * {
         background: transparent !important;

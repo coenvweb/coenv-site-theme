@@ -325,6 +325,12 @@
 		color: #fff;
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 		background-color: $bg-dk;
+		@include max-width ( 515 ) {
+			width: 100%!important;
+			img {
+				width: 100%;
+			}
+		}
 		
 		.source {
 			background-color: rgba(0,0,0,.5);
