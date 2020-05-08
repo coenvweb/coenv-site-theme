@@ -294,13 +294,3 @@ function coenv_post_date() {
 	global $post;
 	return '<time class="updated" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" pubdate>' . esc_html( get_the_date() ) . '</time>';
 }
-
-/**
- * Ignore sticky on main query
- **/
-add_filter( 'pre_get_posts', 'ignore_sticky' );
-function ignore_sticky( $query ) {
-    if (is_home()) {
-        $query->set( 'ignore_sticky_posts', true );
-    }
-}
