@@ -8,18 +8,29 @@ get_header();
 $features = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 1,
-    'post__in' => get_option('sticky_posts'),
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'story_type',
+            'field' => 'slug',
+            'terms' => 'featured-story'
+        )
+    ),
     'orderby' => 'menu_order',
     'order' => 'ASC',
-    'ignore_sticky_posts' => 1
 ) );
 // Get posts and sort using post-types-order
 $post_sort = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 9,
-    'post__not_in' => get_option('sticky_posts'),
-    'orderby' => array('menu_order' => 'ASC', 'date' => 'DESC'),
-    'ignore_sticky_posts' => 1
+    'ignore_sticky_posts' => 'false',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'story_type',
+            'field' => 'slug',
+            'terms' => 'featured-story',
+            'operator' => 'NOT_IN'
+        )
+    ),
 ) );
 ?>
 
