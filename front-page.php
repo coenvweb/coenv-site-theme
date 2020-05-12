@@ -22,15 +22,7 @@ $features = new WP_Query( array(
 $post_sort = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 9,
-    'ignore_sticky_posts' => 'false',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'story_type',
-            'field' => 'slug',
-            'terms' => 'featured-story',
-            'operator' => 'NOT_IN'
-        )
-    ),
+    'post__not_in' => array($features->post->ID)
 ) );
 ?>
 
