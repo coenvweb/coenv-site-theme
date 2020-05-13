@@ -55,7 +55,7 @@ $post_sort = new WP_Query( array(
 
                 <header>
 
-                    <h2><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>page/<?=$page?>/">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>page/<?=$page?>/">More news &raquo;</a></h2>
+                    <h2><span><a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>page/<?=$page?>/">News from the College</a></span> <a href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">All news &raquo;</a></h2>
                 </header>
 
                 <div class="stories-container">
