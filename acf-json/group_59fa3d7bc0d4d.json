@@ -236,7 +236,9 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "return_format": "array",
+                    "preview_size": "medium"
                 },
                 {
                     "key": "field_5a0b2fdb033a5",
@@ -490,6 +492,13 @@
                 "operator": "==",
                 "value": "templates\/cambodia-signature-story.php"
             }
+        ],
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "templates\/signature-story-small-column.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -500,5 +509,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1557868910
+    "modified": 1589580464
 }
