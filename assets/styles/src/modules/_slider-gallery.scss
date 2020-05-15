@@ -1,12 +1,22 @@
+.big-element.element-slider_gallery {
+    min-height: 60vw;
+    .photo {
+        width: 100vw;
+    }
+    .rsOverflow {
+        min-height: 60vw;
+    }
+}
+
 .element-slider_gallery { //slider galleries
     position: relative;
     margin-top: 0.5rem;
-    min-height: 60vw;
+    min-height: 40vw;
     margin-bottom: 2rem;
     text-align: center;
     
     .rsOverflow {
-        min-height: 60vw;
+        min-height: 40vw;
         @include max-width ( 800 ) {
             overflow: visible;
         }
