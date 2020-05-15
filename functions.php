@@ -17,6 +17,7 @@ require_once locate_template( '/inc/ajax.php' );
 
 // Signature Story
 require_once locate_template( '/inc/signature-story-fun.php' );
+//require_once locate_template( '/inc/gallery.php' ); (this is kinda working, but switched to slickslider plugin)
 
 // Unique Meta Titles 
 require_once locate_template( '/inc/meta-title.php' );
