@@ -60,8 +60,13 @@ function element_func( $atts ){
             
             if ($element_type == 'slider_gallery') {
                 $photo_el = wp_get_attachment_image( $photo['ID'], 'original' );
-                //$photo_el .= '<a class="photo rsImg" href="' . $photo_el . '">' . $photo['caption'] . '</a>';
-                $photo_holder .= $photo_el;
+                $photo_alt = $photo['alt'];
+                //$photo_holder .= $photo_el;
+                $photo_holder .= '<div class="slide-and-caption"><img class="photo" src="' . $photo_url[0] . '" alt="' . $photo_alt . '"></img>';
+                if ($caption) {
+                    $photo_holder .= '<div class="caption-wrapper"><p class="specialCaption">' . $caption . '</p></div>';
+                };
+                $photo_holder .= '</div>';
                 $element_extra_class .= ' rsDefault';
             } else {
                 $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
