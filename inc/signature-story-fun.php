@@ -63,9 +63,9 @@ function element_func( $atts ){
                 $photo_alt = $photo['alt'];
                 //$photo_holder .= $photo_el;
                 $photo_holder .= '<div class="slide-and-caption"><img class="photo" src="' . $photo_url[0] . '" alt="' . $photo_alt . '"></img>';
-                if ($caption) {
-                    $photo_holder .= '<div class="caption-wrapper"><p class="specialCaption">' . $caption . '</p></div>';
-                };
+                //if ($caption) {
+                //    $photo_holder .= '<div class="caption-wrapper"><p class="specialCaption">' . $caption . '</p></div>';
+                //};
                 $photo_holder .= '</div>';
                 $element_extra_class .= ' rsDefault';
             } else {
