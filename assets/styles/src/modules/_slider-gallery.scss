@@ -40,9 +40,15 @@
     @include max-width ( 800 ) {
         margin-bottom: 4rem;
     }
+
+    @include max-width ( 500 ) {
+        margin-bottom: 5rem;
+    }
     
     .rsArrow {
         display: block;
+        position: absolute;
+        top: calc(50% - 3rem);
         .rsArrowIcn {
             background: none;
             height: 56px;
