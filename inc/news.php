@@ -37,7 +37,7 @@ function taxonomy_unit() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'unit', array( 'post', 'page', 'faculty' ), $args );
+	register_taxonomy( 'unit', array( 'post', 'faculty' ), $args );
 
 }
 
@@ -77,7 +77,7 @@ function taxonomy_story_type() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'story_type', array( 'post', 'page' ), $args );
+	register_taxonomy( 'story_type', array( 'post' ), $args );
 
 }
 add_action( 'init', 'taxonomy_story_type', 0 );
@@ -116,7 +116,7 @@ function taxonomy_topic() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true
 	);
-	register_taxonomy( 'topic', array( 'post', 'page', 'intranet' ), $args );
+	register_taxonomy( 'topic', array( 'post', 'intranet' ), $args );
 
 }
 add_action( 'init', 'taxonomy_topic', 0 );
