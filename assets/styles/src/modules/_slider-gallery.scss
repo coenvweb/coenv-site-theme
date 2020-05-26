@@ -158,8 +158,8 @@
             padding: 0;
         }
         @include min-width ( 1300 ) {
-            max-width: 1200px;
-            padding-left: 12rem;
+            max-width: none;
+            //padding-left: 12rem;
         }
     }
     
