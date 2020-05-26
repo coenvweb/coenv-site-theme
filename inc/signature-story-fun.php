@@ -67,7 +67,7 @@ function element_func( $atts ){
                 // with caption
                 $photo_holder .= '<div class="slide-and-caption"><img class="rsImg" src="' . $photo_url[0] . '" alt="' . $photo_alt . '"></img>';
                 if ($caption) {
-                    $photo_holder .= '<div class="caption-wrapper"><p class="specialCaption">' . $caption . '</p></div>';
+                    $photo_holder .= '<div class="caption-wrapper"><p class="specialCaption"><strong>SLIDESHOW // </strong>' . $caption . '</p></div>';
                 };
                 $photo_holder .= '</div>';
             } else {
