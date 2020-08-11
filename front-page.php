@@ -18,12 +18,22 @@ $features = new WP_Query( array(
     'orderby' => 'menu_order',
     'order' => 'ASC',
 ) );
-// Get posts and sort using post-types-order
-$post_sort = new WP_Query( array(
-    'post_type' => 'post',
-    'posts_per_page' => 9,
-    'post__not_in' => array($features->post->ID)
-) );
+
+$sticky = get_option( 'sticky_posts' );
+if( $sticky ) {
+    $post_sort = new WP_Query( array(
+        'post_type' => 'post',
+        'posts_per_page' => 8,
+        'post__not_in' => array($features->post->ID)
+    ) );
+}else{
+    $post_sort = new WP_Query( array(
+        'post_type' => 'post',
+        'posts_per_page' => 9,
+        'post__not_in' => array($features->post->ID)
+    ) );
+}
+
 ?>
 
     <?php if ( $features->have_posts() ) : ?>
