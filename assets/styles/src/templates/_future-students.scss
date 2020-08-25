@@ -16,13 +16,8 @@
     #arrow-nav {
         margin-bottom: 2rem!important;
     }
-    
+
     @include min-width ( $iPadPortrait ) {
-        hr {
-            border: none;
-            margin-top: 3rem;
-            margin-bottom: 3rem;
-        }
         .article__content .fluid-width-video-wrapper {
             width: calc(40% - .3rem);
             float: right;
