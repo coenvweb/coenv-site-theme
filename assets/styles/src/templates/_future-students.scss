@@ -16,7 +16,8 @@
     #arrow-nav {
         margin-bottom: 2rem!important;
     }
-
+}
+.page-id-38585 {
     @include min-width ( $iPadPortrait ) {
         .article__content .fluid-width-video-wrapper {
             width: calc(40% - .3rem);
