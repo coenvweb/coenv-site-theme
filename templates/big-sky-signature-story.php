@@ -1,3 +1,11 @@
+<?php
+/*
+ * Template Name: Big Sky Signature Story
+ * Template Post Type: post
+ */
+
+ ?>
+  
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
@@ -160,10 +168,22 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     </div><!-- .container -->
 
                 </nav><!-- #top-nav -->
-
-                <div class="banner-wrapper"<?php if (isset( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
-
-                    <div class="layout-container layout-container--header">
+                <div class="feature homepage-hero-module">
+                    <div class="feature-image video-container banner-wrapper">
+                    <div class="filter"></div>
+                        <?php
+                            echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg">';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
+                            echo '</video>';
+                         ?>
+                        <div class="poster visuallyhidden">
+                            <?php
+                            echo '<img src="' . get_bloginfo('template_directory') . '/assets/video/ess-video.jpg" alt="">';
+                             ?>
+                        </div>
+                        <div class="layout-container layout-container--header">
 
                         <header id="header" role="banner" class="site-header">
 
@@ -203,14 +223,76 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                 </ul>
                             </nav>
                             
-                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php') || $post->ID == '38585' || is_page_template('templates/future-grad-sub.php') )) {
-    ?>
                         </header><!-- #header -->
 
                     </div><!-- .container.header-container -->
+                        
+                    <div class="feature-info-container">
+                        <a class="play-pause-hero right show-for-medium-up"></a>
+                  </div><!-- .feature-info-container -->
+                  </div>
 
-                </div><!-- .banner-wrapper -->
-    
-    <?php
-        }
+<?php
+$ancestor_id = coenv_get_ancestor();
+
+$ancestor = array(
+	'id' => $ancestor_id,
+	'permalink' => get_permalink( $ancestor_id ),
+	'title' => get_the_title( $ancestor_id )
+);
+
+$banner = coenv_banner();
 ?>
+
+<style type="text/css">
+ .element a {
+    color: <?php echo get_field('accent_color'); ?>;
+     font-weight: 600;
+ }
+</style>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>
+
+<section id="blog" role="main" class="template-signature-story">
+
+		<div class="container">
+
+			<nav id="secondary-nav" class="side-col">
+
+					<ul id="menu-secondary" class="menu">
+						<li class="pagenav">
+							<a href="<?php echo home_url("/news"); ?>">News</a>
+						</li>
+          </ul>
+                
+			</nav><!-- #secondary-nav.side-col -->
+  </div>
+
+			<main id="main-col" class="main-col">
+          <div id="section-introduction" class="scrollto">
+          
+				<?php if ( have_posts() ) : ?>
+
+					<?php while ( have_posts() ) : the_post() ?>
+
+						<?php get_template_part( 'partials/partial', 'article' ) ?>
+
+					<?php endwhile ?>
+                
+                <footer class="related">
+					<?php get_template_part( 'partials/partial', 'related-news' ) ?>
+                    <?php get_template_part( 'partials/partial', 'related-faculty' ) ?>
+                </footer>
+				<footer class="pagination">
+					<?php coenv_paginate() ?>
+				</footer>
+
+
+				<?php endif ?>
+                
+			</main><!-- .main-col -->
+
+		</div><!-- .container -->
+
+	</section><!-- #blog -->
+
+<?php get_footer() ?>
