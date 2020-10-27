@@ -1,4 +1,4 @@
-.post-template-signature-story, .post-template-cambodia-signature-story {
+.post-template-signature-story, .post-template-cambodia-signature-story, .post-template-big-sky-signature-story {
     overflow: hidden;
     overflow-y: auto;
 
@@ -866,9 +866,13 @@
 
 //ess field camp
 
-.postid-62064 {
+.post-template-big-sky-signature-story {
     #hero-video {
         height: 110%!important;
+    }
+    .banner-wrapper {
+        height: 58vh;
+        min-height: 500px;
     }
     .photo-divider-1 {
         margin-bottom: 0;
