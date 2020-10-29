@@ -12,6 +12,7 @@ $hometown = get_field('hometown');
 $linkedin = get_field('linkedin_profile_link');
 $twitter = get_field('twitter_profile_link');
 $description = get_field('response');
+$video = get_field('video');
 $tags = get_the_term_list($post->ID, 'student_tag', '' , ', ');
 $tags = strip_tags($tags);
 
@@ -161,6 +162,9 @@ if(!empty($description)) {
             <?php endif; ?>                
             </ul>
         </div>
+        <?php if (!empty($video)) : ?>
+            <div class="row"><iframe width="560" height="315" src="<?php echo $video ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <?php endif; ?>
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
         <div class="row">
             <div class="prompt">Logged in users:</div>
