@@ -3,8 +3,10 @@
  * An individual Student Ambassador
  */
 
-$first_name = sanitize_title(get_field('first_name'));
-$last_name = sanitize_title(get_field('last_name'));
+$first_name = get_field('first_name');
+$first_name_san = sanitize_title($first_name);
+$last_name = get_field('last_name');
+$last_name_san = sanitize_title($last_name);
 $image = get_field('photo');
 $class = get_field('class');
 $last_school = get_field('last_school');
