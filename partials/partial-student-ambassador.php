@@ -163,7 +163,7 @@ if(!empty($description)) {
             </ul>
         </div>
         <?php if (!empty($video)) : ?>
-            <div class="row"><br><iframe width="560" height="315" src="<?php echo $video ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="row"><br><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $video ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         <?php endif; ?>
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
         <div class="row">
