@@ -781,7 +781,7 @@
             "default_value": "",
             "tabs": "visual",
             "toolbar": "basic",
-            "media_upload": 0,
+            "media_upload": 1,
             "delay": 0
         },
         {
@@ -810,6 +810,35 @@
             "toolbar": "basic",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_5f9b4a078d7cf",
+            "label": "Video",
+            "name": "video",
+            "type": "url",
+            "instructions": "YouTube video URL",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "!=",
+                        "value": "Graduate Student"
+                    },
+                    {
+                        "field": "field_587eb2ce0c91c",
+                        "operator": "!=",
+                        "value": "Postdoctoral Fellow"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. https:\/\/www.youtube.com\/watch?v=XrEH5JLljDI"
         }
     ],
     "location": [
@@ -829,7 +858,7 @@
     "hide_on_screen": [
         "the_content"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1585943297
+    "modified": 1604012926
 }
