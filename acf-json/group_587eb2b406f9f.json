@@ -816,7 +816,7 @@
             "label": "Video",
             "name": "video",
             "type": "url",
-            "instructions": "YouTube video URL",
+            "instructions": "YouTube video embed code. Copy from the end of YouTube URL.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -838,7 +838,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "e.g. https:\/\/www.youtube.com\/watch?v=XrEH5JLljDI"
+            "placeholder": "e.g. XrEH5JLljDI"
         }
     ],
     "location": [
@@ -860,5 +860,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1604012926
+    "modified": 1604013535
 }
