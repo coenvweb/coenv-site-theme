@@ -25,7 +25,22 @@ global $themes, $units, $faculty, $query_args;
 		<select class="Faculty-selector-unit" name="unit" id="unit-mobile">
 			<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
 			<?php foreach ( $units as $unit ) : ?>
+				<?php
+				$the_query = new WP_Query( array(
+					'post_type' => 'faculty',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'unit',
+							'field' => 'slug',
+							'terms' => $unit['slug']
+						)
+					)
+				) );
+			?>
+				<?php if (!$the_query->found_posts == 0) : ?>
+					<?php if ($unit['name'] == 'Marine Biology' || $unit['name'] == 'Cooperative Institute for Climate, Ocean, and Ecosystem Studies') {break; }; ?>
 			  <option value="unit-<?php echo $unit['slug'] ?>"<?php if ( $query_args['unit'] == $unit['slug'] ) echo ' selected' ?> data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
+			<?php endif;?>
 			<?php endforeach ?>
 		</select>
         <label for="unit-mobile" style="display:none;">Research themes</label>

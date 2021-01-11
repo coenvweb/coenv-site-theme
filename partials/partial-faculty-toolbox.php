@@ -105,6 +105,7 @@ $ordered_themes = $themes;
                       ) );
                   ?>
                   <?php if (!$the_query->found_posts == 0) : ?>
+					 <?php if ($unit['name'] == 'Marine Biology' || $unit['name'] == 'Cooperative Institute for Climate, Ocean, and Ecosystem Studies') {break; }; ?>
                     <option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
                   <?php endif; ?>
 							<?php endforeach ?>
