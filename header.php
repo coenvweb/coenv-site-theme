@@ -100,6 +100,16 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 </script>
 
 <?php wp_head() ?>
+
+<!-- Global site tag (gtag.js) - Google Analytics 4 - old in footer.php -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5R657MZJ8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5R657MZJ8Q');
+</script>
                                
 <!--[if lt IE 9]>
     <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/bower_components/selectivizr/selectivizr.js"></script>
