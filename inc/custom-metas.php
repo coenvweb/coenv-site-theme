@@ -84,7 +84,4 @@ function coenv_custom_metas() {
     return $html;
 } 
 
-
-
 ?>
-
