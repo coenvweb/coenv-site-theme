@@ -111,7 +111,7 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 	/**
 	 * Places top-level items in one array, and children in another.
 	 */
-	public function walk( $elements, $max_depth ) {	
+	public function walk( $elements, $max_depth, ...$args ) {	
 
 		$args = array_slice( func_get_args(), 2 );
 
