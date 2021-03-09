@@ -84,17 +84,7 @@ function coenv_custom_metas() {
     return $html;
 } 
 
-function password_protected_noindex_header() {
 
-	global $post;
-
-	if (!empty($post->post_password)) {
-		echo '<meta name="robots" content="noindex">'."\n";
-	}
-
-}
-
-add_action('wp_head', 'password_protected_noindex_header');
 
 ?>
 
