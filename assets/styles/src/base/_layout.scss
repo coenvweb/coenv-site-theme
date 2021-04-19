@@ -22,6 +22,10 @@ body {
 body {
 	@include sans;
 	color: $text;
+
+	p:empty::before {
+        content: none;
+    } //for accordions
 }
 
 // outer wrapper
