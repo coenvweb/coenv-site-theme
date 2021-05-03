@@ -88,10 +88,13 @@
 		}
 
 		.menu-footer-units {
-			@include rem('margin-top', 2);
+			margin: 0;
 			padding: 0;
 			list-style: none;
-			columns: 2;
+			column-count: 2;
+			-webkit-column-count: 2;
+			-moz-column-count: 2;
+
 
 
 			@include min-width ( $iPadPortrait ) {
