@@ -104,24 +104,19 @@
                 border-bottom: #292827 1px solid;
                 border-top: #43423f 1px solid;
 				@include rem('min-height', 2);
-                &:nth-child(9) {
-                    border-bottom: none;
-                    padding-bottom: 2px;
-                }
-                &:nth-child(18) {
-                    border-bottom: none;
-                }
                 &:last-child {
-                    border-top: none;
                     border-bottom: none;
                 }
-                &:nth-child(1) {
+                &:first-child {
                     border-top: none;
                 }
-                &:nth-child(10) {
+                &:nth-child(8) {
+                    border-bottom: none;
+                }
+                &:nth-child(9) {
                     border-top: none;
                 }
-            }
+			}
             
 			a {
 				display: inline-block;
