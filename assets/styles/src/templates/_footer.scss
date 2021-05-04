@@ -91,15 +91,13 @@
 			margin: 0;
 			padding: 0;
 			list-style: none;
-			column-count: 2;
-			-webkit-column-count: 2;
-			-moz-column-count: 2;
-
 
 
 			@include min-width ( $iPadPortrait ) {
                 margin: -3px;
-				columns: 2;
+                column-count: 2;
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
 			}
 
 			li {
@@ -107,7 +105,7 @@
                 border-bottom: #292827 1px solid;
                 border-top: #43423f 1px solid;
 				@include rem('min-height', 2);
-                &:last-child {
+                &:nth-last-child(2) {
                     border-bottom: none;
                 }
                 &:first-child {
@@ -118,6 +116,9 @@
                 }
                 &:nth-child(9) {
                     border-top: none;
+                }
+                &:last-child {
+                    display: none;
                 }
 			}
             
