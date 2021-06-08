@@ -196,48 +196,6 @@
             "disabled": 0
         },
         {
-            "key": "field_17",
-            "label": "Endowments and chairs",
-            "name": "endowments_chairs",
-            "type": "textarea",
-            "instructions": "Endowed professorships and chairs",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_19",
-            "label": "Degree institutions",
-            "name": "degree_institutions",
-            "type": "textarea",
-            "instructions": "Masters and PhD degree institutions",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_26",
             "label": "Biography",
             "name": "biography",
@@ -255,75 +213,6 @@
             "toolbar": "basic",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_27",
-            "label": "Pullquote",
-            "name": "pullquote",
-            "type": "textarea",
-            "instructions": "Quotation marks will be added automatically.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_28",
-            "label": "Selected publications",
-            "name": "publications",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_32",
-            "label": "Related stories",
-            "name": "related_stories",
-            "type": "relationship",
-            "instructions": "Choose related stories from CoEnv Currents",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "object",
-            "post_type": [
-                "post"
-            ],
-            "taxonomy": [],
-            "filters": [
-                "search"
-            ],
-            "max": "",
-            "min": 0,
-            "elements": [
-                "post_type"
-            ]
         }
     ],
     "location": [
@@ -353,7 +242,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1579119735
+    "modified": 1623107969
 }

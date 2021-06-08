@@ -17,16 +17,16 @@
             },
             "choices": {
                 "related": "Automatically show latest news on topic and story type(s)",
+                "unit": "Automatically show latest news by unit",
                 "choose": "Choose related news manually"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 1,
             "multiple": 0,
             "ui": 0,
+            "return_format": "value",
             "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0
+            "placeholder": ""
         },
         {
             "key": "field_5417525377066",
@@ -62,6 +62,36 @@
             "elements": [
                 "featured_image"
             ]
+        },
+        {
+            "key": "field_60bea9d3e8191",
+            "label": "Choose related unit",
+            "name": "choose_related_unit",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5417521177065",
+                        "operator": "==",
+                        "value": "unit"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "unit",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
         }
     ],
     "location": [
@@ -86,7 +116,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1467816474
+    "modified": 1623108160
 }
