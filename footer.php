@@ -25,7 +25,7 @@
                                 'walker' => new CoEnv_Top_Menu_Walker(),
                                 'fallback_cb' => false
                             )); ?>
-                            <p><a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
+                            <p><a href="wp-login-husky.php" title="Login">Staff Login</a></p>
                         </div>
 
                         <nav class="footer-nav">
