@@ -33,7 +33,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
             <h3><?php the_title(); ?></h3>
             <h4><?php the_field('job_title'); ?></h4>
         </div>
-        <?php if (!empty($email) && !empty($phone_number)) : ?>
+        <?php if (!empty($email) || !empty($phone_number)) : ?>
             <ul class="Faculty-member-contact-list">
                 <?php if (!empty($email)) : ?>
                     <li><a href="mailto:<?php echo antispambot($email); ?>"><i class="icon-contact-link-email"></i><?php echo antispambot($email); ?></a></li>
