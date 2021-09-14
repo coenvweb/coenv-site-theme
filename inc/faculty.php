@@ -33,8 +33,8 @@ function coenv_related_faculty ($id, $term = 0) {
         $label = 'Faculty Profiles';
      
         
-    } else {
-        
+    } elseif ($coenv_term) {
+
        $args = array (
 
             'post_type' => 'faculty',
@@ -53,7 +53,19 @@ function coenv_related_faculty ($id, $term = 0) {
         );
         
         $label = get_field('related_faculty_label');
-    }
+    } else {
+        $manual_choice = 1;
+        $args = array (
+ 
+             'post_type' => 'faculty',
+             'posts_per_page' => '7',
+             'post__not_in' => array($id),
+             'orderby' => 'rand',
+             'post__in' => $term,
+         );
+         
+         $label = get_field('related_faculty_label');
+     }
 
 	$query = new WP_Query( $args );
 
@@ -97,24 +109,26 @@ function coenv_related_faculty ($id, $term = 0) {
                 echo '</div>';
             echo '</a>';
 		}
-        if (empty($term)) {
-            $profile_count = wp_count_posts('faculty');
-            $profile_count = $profile_count->publish;
-            echo '<a href="/faculty/" title="Browse ' . ($profile_count - 6) . ' more faculty in the College of the Environment" class="count" >';
-        } else {
-            echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
+        if (empty($manual_choice)) {
+            if (empty($term)) {
+                $profile_count = wp_count_posts('faculty');
+                $profile_count = $profile_count->publish;
+                echo '<a href="/faculty/" title="Browse ' . ($profile_count - 6) . ' more faculty in the College of the Environment" class="count" >';
+            } else {
+                echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
+            }
+            echo '<div class="related-container">';
+            echo '<div class="related-thumb">';
+            echo '<i class="icon-faculty-grid-alt-2"></i>';
+            echo '</div>';
+            if (empty($term)) {
+                echo '<span class="number">+' . ($profile_count - 6) . ' more';
+            } else {
+                echo '<span class="number">+' . ($term->count - 6) . ' more';
+            }
+            echo '</span></div>';
+            echo '</a>';
         }
-        echo '<div class="related-container">';
-        echo '<div class="related-thumb">';
-        echo '<i class="icon-faculty-grid-alt-2"></i>';
-        echo '</div>';
-        if (empty($term)) {
-            echo '<span class="number">+' . ($profile_count - 6) . ' more';
-        } else {
-            echo '<span class="number">+' . ($term->count - 6) . ' more';
-        }
-        echo '</span></div>';
-        echo '</a>';
         echo '</div>';
         echo '</div>';
         
