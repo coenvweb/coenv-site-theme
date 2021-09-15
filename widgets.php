@@ -5,6 +5,12 @@
 |---------------------------------------------------------------------------
 */
 
+// deactivate new widget block editor
+function phi_theme_support() {
+	remove_theme_support( 'widgets-block-editor' );
+}
+add_action( 'after_setup_theme', 'phi_theme_support' );
+
 /**
  * Social Links Widget
  */
