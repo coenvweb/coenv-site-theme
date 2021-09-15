@@ -213,39 +213,73 @@ add_filter('get_archives_link', 'coenv_get_archives_link');
  */
 function coenv_related_news ($id) {
     
-    if (is_singular('post')) {
-        $post_tax = 'topic';        
-    }
-    
-    if (is_singular('faculty')) {
-        $post_tax = 'member_theme';        
-    }
-    
-    $_coenv_terms = get_the_terms( $id, $post_tax );
-    $coenv_terms = array();
+	$coenv_choice = get_field('related_posts');
 
-    if($_coenv_terms) {
-        foreach ( $_coenv_terms as $term) {
-            $coenv_terms[] = $term->slug;
-        }
-    }
+    if ( $coenv_choice == 'related' ) {
+        $post_tax = 'topic';
+		$_coenv_terms = get_the_terms( $id, $post_tax );
+		$coenv_terms = array();
+		$field = 'slug';
+	
+		if($_coenv_terms) {
+			foreach ( $_coenv_terms as $term) {
+				$coenv_terms[] = $term->slug;
+			}
+		}
+		$args = array (
 
-	$args = array (
-
-		'post_type' => 'post',
-		'posts_per_page' => '2',
-		'post__not_in' => array($id),
-		'tax_query' => array(
-		'relation' => 'AND',
-			array(
-			'taxonomy' => 'topic',
-			'field' => 'slug',
-			'terms' => $coenv_terms,
-			'operator' => 'IN'
+			'post_type' => 'post',
+			'posts_per_page' => '2',
+			'post__not_in' => array($id),
+			'post_in' => $coenv_chosen,
+			'tax_query' => array(
+			'relation' => 'AND',
+				array(
+				'taxonomy' => $post_tax,
+				'field' => $field,
+				'terms' => $coenv_terms,
+				'operator' => 'IN'
+				)
 			)
-		)
+	
+		);
+    }
+    
+    if ( $coenv_choice == 'unit') {
+        $post_tax = 'unit';
+		$coenv_terms = get_field('choose_related_unit');
+		$field = 'id';
 
-    );
+		$args = array (
+
+			'post_type' => 'post',
+			'posts_per_page' => '2',
+			'post__not_in' => array($id),
+			'post_in' => $coenv_chosen,
+			'tax_query' => array(
+			'relation' => 'AND',
+				array(
+				'taxonomy' => $post_tax,
+				'field' => $field,
+				'terms' => $coenv_terms,
+				'operator' => 'IN'
+				)
+			)
+	
+		);
+    }
+
+	if ( $coenv_choice == 'choose') {
+		$coenv_chosen = get_field('related_posts_post');
+
+		$args = array (
+			'post_type' => 'post',
+			'posts_per_page' => '2',
+			'post__not_in' => array($id),
+			'post__in' => $coenv_chosen,	
+			'ignore_sticky_posts' => 1,
+		);
+	}
 
 	$query = new WP_Query( $args );
 
