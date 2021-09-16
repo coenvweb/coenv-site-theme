@@ -92,6 +92,25 @@
             "load_terms": 0,
             "return_format": "id",
             "multiple": 0
+        },
+        {
+            "key": "field_614384c08c59e",
+            "label": "Related news label",
+            "name": "related_news_label",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Related news",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -118,5 +137,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1623182844
+    "modified": 1631814865
 }
