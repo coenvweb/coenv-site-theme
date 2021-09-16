@@ -214,6 +214,11 @@ add_filter('get_archives_link', 'coenv_get_archives_link');
 function coenv_related_news ($id) {
     
 	$coenv_choice = get_field('related_posts');
+	$coenv_related_news_label = get_field('related_news_label');
+
+	if ( !$coenv_related_news_label ) { 
+		$coenv_related_news_label = 'Related news';
+	};
 
     if ( $coenv_choice == 'related' ) {
         $post_tax = 'topic';
@@ -286,7 +291,7 @@ function coenv_related_news ($id) {
 	if ( $query->have_posts() ) {
 		echo '<div class="related-news">';
 		echo '<div class="related-heading">';
-		echo '<h2 class="title">Related News</h2>';
+		echo '<h2 class="title">' . $coenv_related_news_label  . '</h2>';
 		echo '</div>';
 		echo '<div class="related-posts">';
 		while ( $query->have_posts() ) {
