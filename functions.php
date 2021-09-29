@@ -80,6 +80,17 @@ function coenv_admin_scripts() {
 	wp_enqueue_script( 'coenv_admin' );
 }
 
+/**
+ * Hide ACF editor for non-admins
+ **/
+
+add_filter('acf/settings/show_admin', 'my_acf_show_admin');
+
+function my_acf_show_admin( $show ) {
+    
+    return current_user_can('manage_options');
+    
+}
 
 /**
  * Open graph doctype
