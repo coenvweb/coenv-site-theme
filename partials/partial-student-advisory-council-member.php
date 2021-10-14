@@ -160,12 +160,12 @@ if(!empty($description)) {
         <?php if (!empty($random_fact)) : ?>
             <div class="row"><div class="prompt">Random fact about <?php echo $first_name ?>:</div> <li class="answer-content"><?php echo $random_fact; ?></li></div>
         <?php endif; ?>
-        <div class="row">
+        <!--<div class="row">
             <div class="prompt">Connect:</div>
             <ul class="answer-content">
-            <li><a href="mailto:envamb@uw.edu?subject=Question%20for%20<?php the_title(); ?>"><i class="icon-mail"></i>Email <?php echo $first_name; ?></a></li>      
+            <li><a href="mailto:envamb@uw.edu?subject=Question%20for%20<?php //the_title(); ?>"><i class="icon-mail"></i>Email <?php //echo $first_name; ?></a></li>      
             </ul>
-        </div>
+        </div>-->
         <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
         <div class="row">
             <div class="prompt">Logged in users:</div>
