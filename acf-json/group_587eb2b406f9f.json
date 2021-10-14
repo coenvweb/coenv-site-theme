@@ -129,6 +129,25 @@
             "append": ""
         },
         {
+            "key": "field_61660643d573e",
+            "label": "Pronouns",
+            "name": "pronouns",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_587eb2ce0c91c",
             "label": "Class",
             "name": "class",
@@ -812,23 +831,91 @@
             "delay": 0
         },
         {
-            "key": "field_5f9b4a078d7cf",
-            "label": "Video",
-            "name": "video",
+            "key": "field_616606c7d5740",
+            "label": "Student Advisory Council Member",
+            "name": "sac_member",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6166067ad573f",
+            "label": "Department\/Organization Representing",
+            "name": "sac_representing",
             "type": "text",
-            "instructions": "YouTube video embed code. Copy from the end of YouTube URL.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "!=",
-                        "value": "Graduate Student"
-                    },
+                        "field": "field_616606c7d5740",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61662056bc72a",
+            "label": "About this Student Advisory Council member",
+            "name": "sac_about_me",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
                     {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "!=",
-                        "value": "Postdoctoral Fellow"
+                        "field": "field_616606c7d5740",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_6166083ed5743",
+            "label": "Random fact",
+            "name": "sac_random_fact",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_616606c7d5740",
+                        "operator": "==",
+                        "value": "1"
                     }
                 ]
             ],
@@ -863,5 +950,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1604013639
+    "modified": 1634082942
 }
