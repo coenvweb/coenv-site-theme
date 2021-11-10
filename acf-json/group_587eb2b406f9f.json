@@ -514,7 +514,7 @@
             "key": "field_587faf1c1540f",
             "label": "Response",
             "name": "response",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
