@@ -92,7 +92,7 @@ if($attributes['ids']) {
 
                 $output .= "</div>";
 
-                if($links) {
+                if($tile['link']) {
                   $output .= '</a>';
                 }
 
