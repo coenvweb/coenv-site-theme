@@ -151,3 +151,20 @@ function faculty_sidebar_shortcode( $atts, $content = null ) {
     return ob_get_clean();
 }
 add_shortcode( 'faculty_sidebar', 'faculty_sidebar_shortcode' );
+
+function remove_faculty_search( $query ) {
+    // Run only on search
+    if ( $query->is_search() && $query->is_main_query() ) {
+        //dont set post type if one is already specified
+        if(!$query->query_vars['post_type']) {
+            $types = get_post_types(array('exclude_from_search'=>false));
+            // remove faculty from post types to search
+            unset($types['faculty']);
+            unset($types['careers']);
+            $query->query_vars['post_type'] = $types;
+        }
+        $query->query_vars['posts_per_page'] = 15;
+
+    }
+}
+add_action( 'pre_get_posts', 'remove_faculty_search' );

@@ -1,0 +1,71 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/drewcoll/.nvm/versions/node/v4.8.4/bin/node',
+1 verbose cli   '/Users/drewcoll/.nvm/versions/node/v4.8.4/bin/npm',
+1 verbose cli   'rebuild',
+1 verbose cli   'node-sass' ]
+2 info using npm@2.15.11
+3 info using node@v4.8.4
+4 info readInstalled object
+5 verbose rebuild path, id [ '/Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass',
+5 verbose rebuild   'node-sass@3.13.1' ]
+6 silly rebuild set [ '/Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass' ]
+7 info build /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass
+8 info preinstall node-sass@3.13.1
+9 info linkStuff node-sass@3.13.1
+10 silly linkStuff node-sass@3.13.1 has /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules as its parent node_modules
+11 verbose linkBins node-sass@3.13.1
+12 verbose link bins [ { 'node-sass': 'bin/node-sass' },
+12 verbose link bins   '/Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/.bin',
+12 verbose link bins   false ]
+13 verbose linkMans node-sass@3.13.1
+14 verbose rebuildBundles node-sass@3.13.1
+15 verbose rebuildBundles [ 'gaze', 'glob', 'globule' ]
+16 verbose rebuild bundle /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass/node_modules/globule
+17 silly gentlyRm /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/.bin/node-sass is being purged
+18 verbose gentlyRm don't care about contents; nuking /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/.bin/node-sass
+19 info build /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass/node_modules/globule
+20 silly vacuum-fs purging /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/.bin/node-sass
+21 silly vacuum-fs quitting because other entries in /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/.bin
+22 info preinstall globule@1.3.3
+23 info linkStuff globule@1.3.3
+24 silly linkStuff globule@1.3.3 has /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme/node_modules/node-sass/node_modules as its parent node_modules
+25 verbose linkBins globule@1.3.3
+26 verbose linkMans globule@1.3.3
+27 verbose rebuildBundles globule@1.3.3
+28 verbose rebuildBundles [ 'glob' ]
+29 info install globule@1.3.3
+30 info postinstall globule@1.3.3
+31 info install node-sass@3.13.1
+32 verbose unsafe-perm in lifecycle false
+33 info node-sass@3.13.1 Failed to exec install script
+34 verbose stack Error: node-sass@3.13.1 install: `node scripts/install.js`
+34 verbose stack Exit status 1
+34 verbose stack     at EventEmitter.<anonymous> (/Users/drewcoll/.nvm/versions/node/v4.8.4/lib/node_modules/npm/lib/utils/lifecycle.js:217:16)
+34 verbose stack     at emitTwo (events.js:87:13)
+34 verbose stack     at EventEmitter.emit (events.js:172:7)
+34 verbose stack     at ChildProcess.<anonymous> (/Users/drewcoll/.nvm/versions/node/v4.8.4/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+34 verbose stack     at emitTwo (events.js:87:13)
+34 verbose stack     at ChildProcess.emit (events.js:172:7)
+34 verbose stack     at maybeClose (internal/child_process.js:862:16)
+34 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:222:5)
+35 verbose pkgid node-sass@3.13.1
+36 verbose cwd /Users/drewcoll/Local Sites/college-of-the-environment-staging/app/public/wp-content/themes/coenv-wordpress-theme
+37 error Darwin 21.1.0
+38 error argv "/Users/drewcoll/.nvm/versions/node/v4.8.4/bin/node" "/Users/drewcoll/.nvm/versions/node/v4.8.4/bin/npm" "rebuild" "node-sass"
+39 error node v4.8.4
+40 error npm  v2.15.11
+41 error code ELIFECYCLE
+42 error node-sass@3.13.1 install: `node scripts/install.js`
+42 error Exit status 1
+43 error Failed at the node-sass@3.13.1 install script 'node scripts/install.js'.
+43 error This is most likely a problem with the node-sass package,
+43 error not with npm itself.
+43 error Tell the author that this fails on your system:
+43 error     node scripts/install.js
+43 error You can get information on how to open an issue for this project with:
+43 error     npm bugs node-sass
+43 error Or if that isn't available, you can get their info via:
+43 error
+43 error     npm owner ls node-sass
+43 error There is likely additional logging output above.
+44 verbose exit [ 1, true ]

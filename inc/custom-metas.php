@@ -51,7 +51,7 @@ function coenv_custom_metas() {
     }
     
     // Get featured image width and heights
-    list($featured_img_width,$featured_img_height,$featured_img_type,$featured_img_attr) = getimagesize($featured_img);
+    list($featured_img_width,$featured_img_height,$featured_img_type,$featured_img_attr) = @getimagesize($featured_img);
     
     $html = '';
     

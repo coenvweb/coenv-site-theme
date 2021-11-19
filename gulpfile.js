@@ -13,7 +13,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: "https://uwenvironment.local"
+        proxy: "https://college-of-the-environment-staging.local"
     });
 });
 
@@ -125,7 +125,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function () {
     browserSync.init({
-        proxy: "https://uwenvironment.local"
+        proxy: "https://college-of-the-environment-staging.local"
     });
     gulp.watch('**/*.{html,php}', browserSync.reload);
     gulp.watch('assets/styles/**/*.scss', ['sass']);
