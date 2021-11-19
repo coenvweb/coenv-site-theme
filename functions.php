@@ -27,6 +27,26 @@ require_once locate_template( '/inc/custom-metas.php' );
 
 // Shortcodes
 require_once locate_template( '/inc/shortcodes.php' );
+require_once locate_template( '/inc/shortcodes-tiles.php' );
+require_once locate_template( '/inc/shortcodes-widget.php' );
+
+// Images
+require_once locate_template( '/inc/images.php' );
+
+// Widgets
+require_once locate_template( '/inc/widgets.php' );
+
+// Faculty
+require_once locate_template( 'member-api.php' );
+require_once locate_template( '/inc/faculty.php' );
+
+// News
+require_once locate_template( '/inc/news.php' );
+require_once locate_template( '/inc/related-news.php' );
+require_once locate_template( '/inc/intranet.php' );
+
+// Print Styles
+require_once locate_template( '/inc/print.php' );
 
 //Enqueue the Dashicons script
 add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
@@ -35,41 +55,6 @@ function amethyst_enqueue_dashicons() {
 }
 
 
-/**
- * Print styles and scripts in header and footer
- */
-add_action( 'wp_enqueue_scripts', 'coenv_styles_and_scripts' );
-function coenv_styles_and_scripts() {
-
-	// for public side only
-	if ( is_admin() ) {
-		return false;
-	}
-
-	// include theme scripts in footer
-	wp_register_script( 'coenv-main2', get_template_directory_uri() . '/assets/scripts/build/main2.min.js', null, true );
-	wp_enqueue_script( 'coenv-main2' );
-    
-    
-    if (is_post_type_archive('faculty') || is_singular('faculty')) {
-
-        // register faculty scripts, enqueued within template files
-        wp_register_script( 'coenv-faculty', get_template_directory_uri() . '/assets/scripts/build/faculty.min.js', array( 'coenv-main2' ), null, true );
-    }
-
-	// make variables available to theme scripts
-	wp_localize_script( 'coenv-main2', 'themeVars', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'themeurl' => get_template_directory_uri() ) );
-}
-
-require_once locate_template( '/inc/faculty.php' );
-
-require_once locate_template( '/inc/widget-shortcode.php' );
-
-/**
- * Incorporate CoEnv Member API into the theme
- * this used to be a separate plugin, but it makes more sense to include it in the theme
- */
-require_once 'member-api.php';
 
 /**
  * Admin only scripts
@@ -118,10 +103,6 @@ function coenv_admin_settings() {
 	add_settings_field( 'twitter', 'Twitter', 'coenv_setting_twitter', 'general' );
 	register_setting( 'general', 'twitter' );
 
-	add_option( 'google_plus' );
-	add_settings_field( 'google_plus', 'Google+', 'coenv_setting_google_plus', 'general' );
-	register_setting( 'general', 'google_plus' );
-
 	add_option( 'youtube' );
 	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
 	register_setting( 'general', 'youtube' );
@@ -129,11 +110,6 @@ function coenv_admin_settings() {
     add_option( 'instagram' );
 	add_settings_field( 'instagram', 'Instagram', 'coenv_setting_instagram', 'general' );
 	register_setting( 'general', 'instagram' );
-
-
-//	add_option( 'feeds' );
-//	add_settings_field( 'feeds', 'Feeds', 'coenv_setting_feeds', 'general' );
-//	register_setting( 'general', 'feeds' );
 
 	add_option( 'uw_social' );
 	add_settings_field( 'UW Social', 'UW Social', 'coenv_setting_uw_social', 'general' );
@@ -173,18 +149,6 @@ function coenv_setting_twitter() {
 	?>	
 		<input name="twitter" type="text" id="twitter" value="<?php echo $value; ?>" class="regular-text">
 		<p class="description">Just the handle ONLY (e.g. @handle).</p>
-	<?php
-}
-
-/**
- * Google Plus setting
- */
-function coenv_setting_google_plus() {
-	$value = get_option('google_plus');
-
-	?>	
-		<input name="google_plus" type="text" id="google_plus" value="<?php echo $value; ?>" class="regular-text">
-		<p class="description">Full URL to your Google+ profile.</p>
 	<?php
 }
 
@@ -253,52 +217,7 @@ function coenv_theme_setup() {
 		'footer-links' => 'Footer links',
 		'footer-units' => 'Footer academic units'
 	));
-
-	// Featured images
-	if ( function_exists( 'add_theme_support' ) ) {
-		add_theme_support('post-thumbnails');
-	}
-
-	// Set media sizes
-	// thumbnail: 200x200 square crop
-  update_option( 'thumbnail_size_w', 200 );
-  update_option( 'thumbnail_size_h', 200 );
-  update_option( 'thumbnail_crop', 1 );
-
-	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'tiny', 129, 129, true );
-		add_image_size( 'small', 262, 262 );
-		add_image_size( 'banner', 1680 );
-        add_image_size( 'homepage-column-retina', 528 );
-        add_image_size( 'homepage-column', 253 );
-		add_image_size( 'half', 375 );
-		add_image_size( 'one-third', 250 );
-        // restrained height
-        add_image_size( 'homepage-column-standard', '253', '168', true );
-        add_image_size( 'homepage-hero-standard', '680', '450', true );
-	}
-
-  // medium: 528x528
-  update_option( 'medium_size_w', 528 );
-  update_option( 'medium_size_h', 528 );
-
-  // large: 750x750
-  update_option( 'large_size_w', 794 );
-  update_option( 'large_size_h', 794 );
 }
-
-add_filter('image_size_names_choose', 'my_image_sizes');
-function my_image_sizes($sizes) {
-$addsizes = array(
-"half" => __( "50% of column"),
-"one-third" => __( "33% of column"),
-"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
-"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
-);
-$newsizes = array_merge($sizes, $addsizes);
-return $newsizes;
-}
-
 
 /**
  * Register Careers
@@ -331,86 +250,6 @@ function coenv_unit_color( $unit_id ) {
 }
 
 
-/**
- * Register sidebars for all pages, format widget HTML,
- * include widgets.php
- */
-add_action( 'widgets_init', 'coenv_widgets_init' );
-
-function coenv_widgets_init() {
-
-	// include custom widgets
-	$file = dirname(__FILE__) . '/widgets.php';
-
-	if ( file_exists( $file ) ) {
-		require( $file );
-	}
-
-	$before_widget	= '<section id="%1$s" class="widget %2$s">';
-	$before_title 	= '<header class="section-header"><h3>';
-	$after_title	= '</h3></header> <!-- end .section-header -->';
-	$after_widget	= '</section> <!-- end #%1$s -->';
-
-	// this will return only top-level pages
-	$pages = get_pages('parent=0&sort_column=menu_order&sort_order=ASC');
-
-	// remove specific pages by page name
-	$pages_to_remove = array( );
-
-	if ( empty( $pages ) ) {
-		return false;
-	}
-
-	foreach( $pages as $page ) {
-        // remove specific pages
-		if( !in_array( $page->post_name, $pages_to_remove ) ) {
-            if ((get_field('show_as_top-level_page', $page->ID) == true ) || has_post_thumbnail($page->ID) || (get_option('page_on_front') == $page->ID) && ($page->post_title !== 'Home')){
-                register_sidebar( array(
-                    'name' 			=> $page->post_title . ' / Sidebar',
-                    'id'			=> 'sidebar-' . $page->ID,
-                    'before_widget' => $before_widget,
-                    'after_widget'	=> $after_widget,
-                    'before_title' 	=> $before_title,
-                    'after_title'	=> $after_title
-                ) );
-                register_sidebar( array(
-                    'name' 			=> $page->post_title . ' / Footer',
-                    'id'			=> 'sidebar-footer-' . $page->ID,
-                    'before_widget' => $before_widget,
-                    'after_widget'	=> $after_widget,
-                    'before_title' 	=> $before_title,
-                    'after_title'	=> $after_title
-                ) );
-            }
-            if( ($page->post_title == 'Home')){
-                register_sidebar( array(
-                    'name' 			=> 'Homepage / Sidebar',
-                    'id'			=> 'sidebar-' . $page->ID,
-                    'before_widget' => $before_widget,
-                    'after_widget'	=> $after_widget,
-                    'before_title' 	=> '<header class="section-header"><h2>',
-                    'after_title'	=> '</h2></header> <!-- end .section-header -->'
-                ) );
-            }
-		}
-	}
-
-	$additional_sidebars = array('Search');
-
-	if ( !empty( $additional_sidebars ) ) {
-		foreach ( $additional_sidebars as $sidebar ) {
-			register_sidebar( array(
-				'name' => $sidebar,
-				'id' => 'sidebar-' . str_replace(' ', '-', strtolower( $sidebar ) ),
-				'before_widget' => $before_widget,
-				'after_widget'	=> $after_widget,
-				'before_title' 	=> $before_title,
-				'after_title'	=> $after_title
-			) );
-		}
-	}
-
-}
 
 /**
  * Add class 'page-top-level' class to top level page body_class
@@ -521,83 +360,6 @@ function coenv_editor_formats( $init )
 	
 	return $init;
 }
-
-/**
- * Page banners
- *
- * 2013.07.31 | Darin | disabled check for post thumbnail, will always fall back to ancestor thumbnail.
- */
-function coenv_banner() {
-	$obj = get_queried_object();
-
-	$page_id = false;
-	$banner = false;
-    
-    $ancestor = coenv_get_ancestor();
-    if (is_singular('careers')) {
-        unset($ancestor);
-        $ancestor = 32;
-    }
-
-    if (is_singular('newsletter')) {
-        unset($ancestor);
-        $ancestor = 5;
-    }
-    
-    if (is_page_template('templates/future-ug-sub.php')) {
-        unset($ancestor);
-        $ancestor = 38568;
-    }
-    
-    if (is_page_template('templates/future-grad-sub.php')) {
-        unset($ancestor);
-        $ancestor = 38585;
-    }
-
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
-		$page_id = $obj->ID;
-
-	} else if ( has_post_thumbnail( $ancestor ) ) {
-
-		$page_id = $ancestor;
-    }
-
-	if ( $page_id == false ) {
-		return false;
-	}
-
-	$thumb_id = get_post_thumbnail_id( $page_id );
-	$image_src = wp_get_attachment_image_src( $thumb_id, 'banner' );
-	$attachment_post_obj = get_post( $thumb_id );
-    
-  if (is_page_template('templates/signature-story.php')) {
-      $thumb_id_custom = get_field('banner_image');
-      $image_src = wp_get_attachment_image_src( $thumb_id_custom, 'banner' );
-  }
-  $banner = array(
-    'url' => $image_src[0],
-    'permalink' => get_permalink( $attachment_post_obj->ID ),
-  );
-
-	return $banner;
-}
-
-function my_gallery_default_type_set_link( $settings ) {
-    $settings['galleryDefaults']['link'] = 'file';
-    return $settings;
-}
-add_filter( 'media_view_settings', 'my_gallery_default_type_set_link');
-
-/**
- * Remove WordPress's default padding on images with captions
- *
- * @param int $width Default WP .wp-caption width (image width + 10px)
- * @return int Updated width to remove 10px padding
- */
-function remove_caption_padding( $width ) {
-	return $width - 10;
-}
-add_filter( 'img_caption_shortcode_width', 'remove_caption_padding' );
 
 /**
  * Display breadcrumb links for a page, post or faculty
@@ -826,21 +588,6 @@ if ( !function_exists( 'coenv_archive_title' ) ) {
 }
 
 /**
- * Print breadcrumbs
- * For print stylesheet only
- */
-function coenv_print_breadcrumbs() {
-	global $post;
-
-	print '<pre>';
-	print_r($post->ancestors);
-	print '</pre>';
-
-	$output = get_bloginfo('url');
-	echo $output;
-}
-
-/**
  * Add Read More button links to RSS
  */
 
@@ -877,120 +624,7 @@ if(!is_admin()){
 	}
 }
 
-/**
- * Adds divs around all inline images (for excerpts)
- **/
-function breezer_addDivToImage( $content ) {
 
-   // A regular expression of what to look for.
-   $pattern = '/(<img([^>]*)>)/i';
-   // What to replace it with. $1 refers to the content in the first 'capture group', in parentheses above
-   $replacement = '<div class="myphoto">$1</div>';
-
-   // run preg_replace() on the $content
-   $content = preg_replace( $pattern, $replacement, $content );
-
-   // return the processed content
-   return $content;
-}
-if (is_archive()):
-	add_filter( 'the_content', 'breezer_addDivToImage' );
-endif;
-
-/**
- * Add custom media metadata fields
- *
- * Be sure to sanitize your data before saving it
- * http://codex.wordpress.org/Data_Validation
- *
- * @param $form_fields An array of fields included in the attachment form
- * @param $post The attachment record in the database
- * @return $form_fields The final array of form fields to use
- */
-function add_image_attachment_fields_to_edit( $form_fields, $post ) {		
-	// Add a Credit field
-	$form_fields["credit_text"] = array(
-		"label" => __("Credit"),
-		"input" => "text", // this is default if "input" is omitted
-		"value" => esc_attr( get_post_meta($post->ID, "_credit_text", true) ),
-		"helps" => __("The owner of the image."),
-	);
-	
-	// Add a Credit field
-	$form_fields["credit_link"] = array(
-		"label" => __("Credit URL"),
-		"input" => "text", // this is default if "input" is omitted
-		"value" => esc_url( get_post_meta($post->ID, "_credit_link", true) ),
-		"helps" => __("Attribution link to the image source or owners website."),
-	);
-	
-	return $form_fields;
-}
-add_filter("attachment_fields_to_edit", "add_image_attachment_fields_to_edit", null, 2);
-
-/**
- * Save custom media metadata fields
- *
- * Be sure to validate your data before saving it
- * http://codex.wordpress.org/Data_Validation
- *
- * @param $post The $post data for the attachment
- * @param $attachment The $attachment part of the form $_POST ($_POST[attachments][postID])
- * @return $post
- */
-function add_image_attachment_fields_to_save( $post, $attachment ) {
-	if ( isset( $attachment['credit_text'] ) )
-		update_post_meta( $post['ID'], '_credit_text', esc_attr($attachment['credit_text']) );
-		
-	if ( isset( $attachment['credit_link'] ) )
-		update_post_meta( $post['ID'], '_credit_link', esc_url($attachment['credit_link']) );
-
-	return $post;
-}
-add_filter("attachment_fields_to_save", "add_image_attachment_fields_to_save", null , 2);
-
-/**
- * Improves the caption shortcode with HTML5 figure & figcaption; microdata & wai-aria attributes
- * 
- * @param  string $val     Empty
- * @param  array  $attr    Shortcode attributes
- * @param  string $content Shortcode content
- * @return string          Shortcode output
- */
-function jk_img_caption_shortcode_filter($val, $attr, $content = null)
-{
-	extract(shortcode_atts(array(
-		'id'      => '',
-		'align'   => 'aligncenter',
-		'width'   => '',
-		'caption' => ''
-	), $attr));
-	
-	// No caption, no dice... But why width? 
-	if ( 1 > (int) $width || empty($caption) )
-		return $val;
- 
-	if ( $id )
-		$id = esc_attr( $id );
-		$attach_id = str_replace('attachment_', '', $id);
-		$photo_source = get_post_meta( $attach_id, '_credit_text', true );
-		$photo_source_url = get_post_meta( $attach_id, '_credit_link', true );
-	
-		if ( $photo_source ) {
-		if (!empty($photo_source_url)) {
-			$photo_source_div = "<div class=\"source\"><a href=\"$photo_source_url\" target=\"blank\">$photo_source</a></div>";
-		} else 
-			$photo_source_div = "<div class=\"source\">$photo_source</div>";
-		} else
-			$photo_source_div= " ";
-		
-	
-
-
-	return '<figure title="' . $caption . '" id="' . $id . '" aria-describedby="figcaption_' . $id . '" class="wp-caption ' . esc_attr($align) . '" itemscope itemtype="http://schema.org/ImageObject" style="width: ' . (0 + (int) $width) . 'px">' . do_shortcode( $content ) . $photo_source_div . '<figcaption id="figcaption_'. $id . '" class="wp-caption-text" itemprop="description">' . $caption . '</figcaption></figure>';
-	
-}
-add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
 
 
 function youtube_nocookie( $data, $url, $args ){
@@ -1003,12 +637,7 @@ function youtube_nocookie( $data, $url, $args ){
 
 add_filter( 'oembed_result', 'youtube_nocookie', 10, 3 );
 
-/**
- * Add taxonomies & news functions
- */
 
-require_once locate_template( '/inc/news.php' );
-require_once locate_template( '/inc/intranet.php' );
 
 function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	$counter = 0;
@@ -1038,23 +667,6 @@ function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 	wp_reset_postdata();
 	wp_reset_query();
 }
-
-function remove_faculty_search( $query ) {
-    // Run only on search
-    if ( $query->is_search() && $query->is_main_query() ) {
-        //dont set post type if one is already specified
-        if(!$query->query_vars['post_type']) {
-            $types = get_post_types(array('exclude_from_search'=>false));
-            // remove faculty from post types to search
-            unset($types['faculty']);
-            unset($types['careers']);
-            $query->query_vars['post_type'] = $types;
-        }
-        $query->query_vars['posts_per_page'] = 15;
-
-    }
-}
-add_action( 'pre_get_posts', 'remove_faculty_search' );
 
 if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'environment.uw.local' && $_SERVER['HTTP_HOST'] !== 'uwenvironment.local' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
     function cdn_upload_url() {
