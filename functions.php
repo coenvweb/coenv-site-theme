@@ -29,6 +29,7 @@ require_once locate_template( '/inc/custom-metas.php' );
 require_once locate_template( '/inc/shortcodes.php' );
 require_once locate_template( '/inc/shortcodes-tiles.php' );
 require_once locate_template( '/inc/shortcodes-widget.php' );
+require_once locate_template( '/inc/shortcodes-related-news.php' );
 
 // Images
 require_once locate_template( '/inc/images.php' );

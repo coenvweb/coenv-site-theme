@@ -240,4 +240,51 @@ function remove_caption_padding( $width ) {
 add_filter( 'img_caption_shortcode_width', 'remove_caption_padding' );
 
 
+
+// Add media categories with capabilities for career editors
+
+function media_tax() {
+
+	$media_labels = array(
+
+		'name'                       => _x( 'Media Categories', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Media Category', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Media Categories', 'text_domain' ),
+		'all_items'                  => __( 'All Media Categories', 'text_domain' ),
+		'parent_item'                => __( 'Parent Media Category', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Media Category:', 'text_domain' ),
+		'new_item_name'              => __( 'New Media Category', 'text_domain' ),
+		'add_new_item'               => __( 'Add Media Category', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Media Category', 'text_domain' ),
+		'update_item'                => __( 'Update Media Category', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate Media Categories with commas', 'text_domain' ),
+		'search_items'               => __( 'Search Media Categories', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove Media Categories', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most cited Media Categories', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+
+	);
+	$media_args = array(
+
+		'labels'                     => $media_labels,
+		'hierarchical'               => true,
+        'with_front'                 => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => false,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'capabilities' => array(
+			'assign_terms' => 'assign_media_terms',
+		),
+
+	);
+	register_taxonomy( 'media_stuff', array('post'), $media_args );
+}
+
+
+
+add_action( 'init', 'media_tax' );
+
+
 ?>
