@@ -200,7 +200,7 @@
 
     .related-container {
         @extend .shadow;
-
+        width: 100%;
 
         &:hover {
             background-color: $accent;

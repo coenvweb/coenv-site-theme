@@ -47,8 +47,8 @@ function coenv_related_news_inline($atts) {
 		//$news_out .= get_the_title();
 	}
 	$rel_out .= '</div></div>';
-	return $rel_out;
 	wp_reset_postdata();
+	return $rel_out;
 
 }
 add_shortcode('related', 'coenv_related_news_inline');
