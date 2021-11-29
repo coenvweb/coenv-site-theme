@@ -43,6 +43,7 @@ if(!empty($description)) {
             <span class="class"><?php echo $class; ?></span>
              <?php  // check if the repeater field has rows of data
              $majors = '';
+             $minors = null;
                 if( have_rows('majors_and_minors') ) :
                     echo '<ul class="primary-majors">';
                     // loop through the rows of data
@@ -98,7 +99,6 @@ if(!empty($description)) {
                             $primary = "primary";
                         }
                         if ($minor) {
-                            $minors = '';
                             $minors .= '<li>' . $major;
                             if (!empty($concentration)){
                                 $minors .= '<span class="concentration">: ' . $concentration . ' </span></li>';
