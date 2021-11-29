@@ -139,7 +139,7 @@ if(!empty($description)) {
         <?php if (!empty($majors)) : ?>
             <div class="row"><div class="prompt">Major(s):</div><ul class="answer-content"><?php echo $majors; ?></ul></div>
         <?php endif; ?>  
-        <?php if (!empty($minor)) : ?>
+        <?php if (!empty($minors)) : ?>
         <div class="row"><div class="prompt">Minor(s):</div><ul class="answer-content"><?php echo $minors; ?></ul></div>
         <?php endif; ?>
         <?php if (!empty($department_degree)) : ?>
