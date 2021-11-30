@@ -51,54 +51,6 @@ $ancestor = array(
 					<?php endwhile ?>
 
 				<?php endif ?>
-                <article class="article majors-minors-section">
-                <section class="article__content majors-minors accordion" id="major">
-                    <h2>Masters and Ph.D.</h2>
-                <?php
-    
-                $major_page = get_page_by_title( 'Graduate Degrees' );
-
-                // check if the repeater field has rows of data
-                if( have_rows('majors', $major_page->ID) ):
-
-                    // loop through the rows of data
-                    while ( have_rows('majors', $major_page->ID) ) : the_row();
-
-                        // display a sub field value
-                        get_template_part( 'partials/partial', 'major-minor' );
-
-                    endwhile;
-
-                else :
-
-                    // no rows found
-
-                endif;
-                ?>
-                <h2>Graduate certificates</h2>
-                <?php
-                $major_page = get_page_by_title( 'Graduate Degrees' );
-
-                // check if the repeater field has rows of data
-                if( have_rows('minors', $major_page->ID) ):
-
-                    // loop through the rows of data
-                    while ( have_rows('minors', $major_page->ID) ) : the_row();
-
-                        // display a sub field value
-                        get_template_part( 'partials/partial', 'major-minor' );
-
-                    endwhile;
-
-                else :
-
-                    // no rows found
-
-                endif;
-
-                ?>
-                </section>
-                </article>
                 
             <div class="side-footer">
                 <?php get_sidebar('footer') ?>

@@ -31,7 +31,7 @@ $ancestor = array(
                 </section>
             </article>
             <div class="little-blurb">
-                <p>As a graduate student at the College of the Environment, <br />you’ll put science into action to discover the unknown</p>
+                <p>As a graduate student at the College of the Environment, <br />you’ll put your passion for science into action to make an impact in the world</p>
             </div>
             
         </div>
@@ -50,7 +50,7 @@ $ancestor = array(
 		<div class="container">
             
             
-            <?php get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
+            <?php //get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
 
 			<main id="main-col" class="main-col">
                 

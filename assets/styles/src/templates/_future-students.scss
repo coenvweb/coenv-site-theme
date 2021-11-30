@@ -5,12 +5,13 @@
     }
     .article__content {
         min-height: 0;
+        margin-top: 1rem;
     }
 }
 
 .page-id-38585 {
     .article__content > h2 {
-        margin-top: 1rem!important;
+        //margin-top: 1rem!important;
     }
     
     #arrow-nav {
@@ -174,7 +175,6 @@
         font-size: calc(.8em + 1vmin);
     }
     .article__content > h2 {
-        border-bottom: 3px solid #eee;
         margin: 3rem 0 2rem;
         clear: left;
         padding-bottom: 1rem;
