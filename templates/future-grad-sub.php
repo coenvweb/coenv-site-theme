@@ -22,7 +22,7 @@ $ancestor = array(
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                        <h2 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-graduate-students/">Future Graduate Students</a></h2>
+                        <h2 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-graduate-students/">Future Graduate Students</a></h2>
                     </div>
                 </header>
                 <section class="article__content">

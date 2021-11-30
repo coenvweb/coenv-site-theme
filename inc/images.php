@@ -1,5 +1,10 @@
 <?php
 
+// Featured images
+if ( function_exists( 'add_theme_support' ) ) {
+	add_theme_support('post-thumbnails');
+}
+
 add_filter('image_size_names_choose', 'my_image_sizes');
 function my_image_sizes($sizes) {
 $addsizes = array(
@@ -10,11 +15,6 @@ $addsizes = array(
 );
 $newsizes = array_merge($sizes, $addsizes);
 return $newsizes;
-
-	// Featured images
-	if ( function_exists( 'add_theme_support' ) ) {
-		add_theme_support('post-thumbnails');
-	}
 
 	// Set media sizes
 	// thumbnail: 200x200 square crop
