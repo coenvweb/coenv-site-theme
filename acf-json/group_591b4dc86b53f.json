@@ -1,10 +1,10 @@
 {
     "key": "group_591b4dc86b53f",
-    "title": "Degrees",
+    "title": "Undergraduate Degrees",
     "fields": [
         {
             "key": "field_591b5157792b9",
-            "label": "Majors \/ Masters and Ph.D.",
+            "label": "Majors",
             "name": "majors",
             "type": "repeater",
             "instructions": "",
@@ -96,7 +96,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": ""
+                    "default_value": "",
+                    "enable_opacity": false,
+                    "return_format": "string"
                 },
                 {
                     "key": "field_591b5179792bc",
@@ -242,7 +244,7 @@
         },
         {
             "key": "field_59234c88741e0",
-            "label": "Minors \/ Certificates",
+            "label": "Minors",
             "name": "minors",
             "type": "repeater",
             "instructions": "",
@@ -334,7 +336,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": ""
+                    "default_value": "",
+                    "enable_opacity": false,
+                    "return_format": "string"
                 },
                 {
                     "key": "field_59234c89741e5",
@@ -486,13 +490,6 @@
                 "operator": "==",
                 "value": "26990"
             }
-        ],
-        [
-            {
-                "param": "page",
-                "operator": "==",
-                "value": "26992"
-            }
         ]
     ],
     "menu_order": 0,
@@ -501,7 +498,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1495745423
+    "modified": 1638397946
 }

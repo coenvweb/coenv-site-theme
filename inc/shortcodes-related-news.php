@@ -43,7 +43,7 @@ function coenv_related_news_inline($atts) {
 	$rel_out = '<div class="related-news related-news-inline"><div class="related-heading"><div class="related-news-more"><a href="/news/' . $cat_out . '">More &raquo;</a></div><h2 class="title">' . $rel_title . '</h2></div><div class="related-news-blocks">';
 	while ( $rel_query->have_posts() ) {
 		$rel_query->the_post();
-		$rel_out .= '<div class="related-container"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '"><div class="related-thumb">' . get_the_post_thumbnail(get_the_ID(),'thumb') . '</div><div class="related-text-container"><div class="related-article-title"><h3>' . get_the_title() . '</h3></div></div></a></div>';
+		$rel_out .= '<div class="related-container"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '"><div class="related-thumb">' . get_the_post_thumbnail(get_the_ID(),'half') . '</div><div class="related-text-container"><div class="related-article-title"><h3>' . get_the_title() . '</h3></div></div></a></div>';
 		//$news_out .= get_the_title();
 	}
 	$rel_out .= '</div></div>';
