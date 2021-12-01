@@ -16,16 +16,27 @@
 
     if($attributes['type'] === "grad-research-degrees") {
         $major_page = get_page_by_title( 'Graduate Degrees*' );
-        $major_field = 'majors';
+        $major_field = 'research-degrees';
+    }
+
+    if($attributes['type'] === "grad-dual-title-research-degrees") {
+        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_field = 'dt_research_degrees';
+    }
+
+    if($attributes['type'] === "grad-professional-degrees") {
+        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_field = 'professional_degrees';
     }
 
     if($attributes['type'] === "grad-certificate-programs") {
         $major_page = get_page_by_title( 'Graduate Degrees*' );
-        $major_field = 'minors';
+        $major_field = 'certificate_degrees';
     }
 
     if($attributes['ids']) {
-    $degrees = array($degrees[$attributes['ids']]);
+        $degrees = get_field($major_field, $major_page);
+        $degrees = array($degrees[$attributes['ids']]);
         $ids = explode(',', $attributes['ids']);
         $degrees_acf = get_field($major_field, $major_page);
         $degrees = array();
