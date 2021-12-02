@@ -1,5 +1,5 @@
 <?php
-/**
+/** Template Name: Degrees
  *
  * The degree template
  */
@@ -50,11 +50,11 @@ $ancestor = array(
 
 					<?php endwhile ?>
 
-				<?php endif ?>
-                
+				<?php endif ?>                
             <div class="side-footer">
                 <?php get_sidebar('footer') ?>
             </div>
+
 			<div class="side-footer">
                 <div class="hidden">
                     <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
@@ -63,7 +63,6 @@ $ancestor = array(
                 </div>
                 <?php get_sidebar('footer') ?>
             </div>
-
 			</main><!-- .main-col -->
 
 			<div class="side-col">
@@ -79,6 +78,6 @@ $ancestor = array(
 <script type="text/javascript" src="https://environment.uw.edu/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>

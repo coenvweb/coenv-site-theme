@@ -369,6 +369,17 @@
                     font-size: 1.2rem;
                     padding: .7rem .7rem .7rem .7rem;
                 }
+                .future-subtext {
+                    text-transform: uppercase;
+                    @include sans;
+                    font-size: .85rem!important;
+                    letter-spacing: .1px;
+                    padding-top: 15px;
+                    font-weight: 600;
+                    @include max-width ( $iPadPortrait ) {
+                        display: none;
+                    }
+                }
             }
         }
     }

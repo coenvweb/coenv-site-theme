@@ -61,7 +61,7 @@ $ancestor = array(
                         ?>
                         <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-                            <section class="article__content">
+                            <section class="article__content" id="content">
                                 <h1 class="article__title"><?php the_title() ?></h1>
                                 <?php the_content() ?>
                             </section>
@@ -89,5 +89,12 @@ $ancestor = array(
 		</div><!-- .container -->
 
 	</section><!-- #page -->
+
+    <script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+/* ]]> */
+</script>
 
 <?php get_footer() ?>

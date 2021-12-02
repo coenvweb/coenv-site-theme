@@ -13,7 +13,7 @@ $ancestor = array(
 );
 ?>
 
-                        </header><!-- #header -->
+</header><!-- #header -->
 
     <div class="image-area small">
         
@@ -66,7 +66,7 @@ $ancestor = array(
                         ?>
                         <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
 
-                            <section class="article__content">
+                            <section class="article__content" id="content">
                                 
                                 <?php the_content() ?>
                             </section>
@@ -93,6 +93,6 @@ $ancestor = array(
 <script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>

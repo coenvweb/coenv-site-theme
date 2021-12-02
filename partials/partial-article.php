@@ -27,7 +27,7 @@
 
 	</header>
 
-	<section class="article__content">
+	<section class="article__content" id="content">
 
 		<?php the_content() ?>
 
