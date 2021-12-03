@@ -443,5 +443,32 @@
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
+    p:last-of-type {
+        text-align: center;
+        .next-text {
+            @extend h3;
+            @include serif;
+            line-height: 5rem;
+            &:after {
+                content: '▸';
+                padding: 0 .5rem;
+            }
+        }
+        .next-button {
+            background-color: $accent;
+            color: white;
+            min-width: 200px;
+            height: 35px;
+            padding-top: 6px;
+            font-size: 1.1rem;
+            &:hover {
+                background-color: $accent-lt;
+            }
+            @include min-width ( $iPadPortrait ) {
+                margin-left: 2rem;
+            }
+        }
+    }
+
     
 }
