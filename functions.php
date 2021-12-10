@@ -15,6 +15,9 @@ require_once locate_template( '/inc/rewrites.php' );
 // Ajax
 require_once locate_template( '/inc/ajax.php' );
 
+// Widgets
+require_once locate_template( '/inc/widgets.php' );
+
 // Signature Story
 require_once locate_template( '/inc/signature-story-fun.php' );
 //require_once locate_template( '/inc/gallery.php' ); (this is kinda working, but switched to slickslider plugin)
@@ -34,9 +37,6 @@ require_once locate_template( '/inc/shortcodes-degrees.php' );
 
 // Images
 require_once locate_template( '/inc/images.php' );
-
-// Widgets
-require_once locate_template( '/inc/widgets.php' );
 
 // Faculty
 require_once locate_template( 'member-api.php' );

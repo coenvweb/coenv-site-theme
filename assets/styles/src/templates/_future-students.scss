@@ -417,6 +417,30 @@
             margin-top: 1rem;
         }
     }
+    .widget-events {
+        @include min-width ( $iPadPortrait ) {
+            float: left!important;
+            margin-left: 0;
+            width: 40%!important;
+        }
+    }
+    .student-ambassadors-widget, .graduate-student-profiles-widget {
+        .widgettitle, .count, .ambassador-name {
+            display: none;
+        }
+        .ambassadors {
+            background: #fff;
+            a {
+                width: 32.4%;
+                margin-right: 3px;
+                border: none!important;
+            }
+        }
+        @include min-width ( $iPadPortrait ) {
+            width: 40%!important;
+            margin-left: 2rem;
+        }
+    }
     @include min-width ( $iPadPortrait ) {
         .join {
             display: inline-block;
@@ -443,17 +467,19 @@
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
-    p:last-of-type {
+    .article__content > p:last-of-type {
         text-align: center;
+        max-width: none;
         .next-text {
             @extend h3;
             @include serif;
-            line-height: 5rem;
+            line-height: 3.5rem;
             &:after {
                 content: '▸';
                 padding: 0 .5rem;
             }
         }
+
         .next-button {
             background-color: $accent;
             color: white;
@@ -471,4 +497,22 @@
     }
 
     
+}
+
+.article__content .widget-postdoc-profiles {
+    .widgettitle, .count, .ambassador-name {
+        display: none;
+    }
+    .ambassadors {
+        background: #fff;
+        a {
+            width: 48.4%;
+            margin-right: 3px;
+            border: none!important;
+        }
+    }
+    @include min-width ( $iPadPortrait ) {
+        width: 30%!important;
+        margin-left: 2rem;
+    }
 }
