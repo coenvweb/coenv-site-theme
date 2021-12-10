@@ -16,8 +16,6 @@ $facebook = get_sub_field('facebook_link');
 $twitter = get_sub_field('twitter_link');
 $faculty_link = get_sub_field('faculty_link');
 
-
-
 if( !empty($image) ) {
 
 	// vars
