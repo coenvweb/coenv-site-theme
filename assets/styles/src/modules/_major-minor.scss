@@ -6,13 +6,6 @@
         min-height: 0!important;   
     }
 }
-.majors-minors-section {
-    padding-top: 0;
-    
-    img {
-        transition-duration: .3s;
-    }
-}
 
 
 div.major-minor {
@@ -23,8 +16,9 @@ div.major-minor {
     position: relative;
     background-color: #fff;
 
-    &:nth-of-type(4n+1) {
-        margin-right: .74rem;
+    img {
+        transition-duration: .3s;
+        animation-delay: .3s;
     }
 
     @media print {
@@ -37,6 +31,9 @@ div.major-minor {
     @include min-width ( $iPadLandscape ) {
         display: inline-block;
         width: calc(50% - .5rem);
+        &:nth-of-type(4n+1) {
+            margin-right: .74rem;
+        }
     }
 
     &:not(.unit-color) {
