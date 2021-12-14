@@ -307,13 +307,15 @@
 	}
 
 	.column {
-		width: calc(50% - 8px);
-		margin-bottom: 3rem;
-		&.right {
-			float: right;
-		}
-		&.left {
-			float: left;
+		@include min-width ( 515 ) {
+			width: calc(50% - 8px);
+			margin-bottom: 3rem;
+			&.right {
+				float: right;
+			}
+			&.left {
+				float: left;
+			}
 		}
 	}
 
