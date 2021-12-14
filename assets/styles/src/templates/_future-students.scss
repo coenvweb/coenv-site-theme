@@ -273,6 +273,9 @@
         @include max-width ( $iPadPortrait ) {
             width: 100%;
         }
+        @include min-width ( $iPadPortrait ) {
+            margin-bottom: 3rem;
+        }
     }
     
     #arrow-nav {
@@ -439,6 +442,7 @@
         @include min-width ( $iPadPortrait ) {
             width: 40%!important;
             margin-left: 2rem;
+            margin-bottom: 3rem;
         }
     }
     @include min-width ( $iPadPortrait ) {
