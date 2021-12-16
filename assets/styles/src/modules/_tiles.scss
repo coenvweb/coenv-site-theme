@@ -7,6 +7,11 @@
     .page-tile {
         flex-grow: 1;
         width: calc(33% - 10px);
+        background-color: $accent;
+
+        @include max-width ( $iPadPortrait ) {
+            width: 100%
+        }
 
         a {
             display: flex;
@@ -32,7 +37,6 @@
         .content-wrap {
             bottom: -10px;
             width: 100%;
-            background-color: $accent;
             color: white;
             padding: 1rem;
         }
