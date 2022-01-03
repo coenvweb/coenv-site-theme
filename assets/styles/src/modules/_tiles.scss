@@ -1,0 +1,56 @@
+.tiles-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+
+    .page-tile {
+        flex-grow: 1;
+        width: calc(33% - 10px);
+        background-color: $accent;
+
+        @include max-width ( $iPadPortrait ) {
+            width: 100%
+        }
+
+        a {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
+            text-decoration: none;
+            &:hover {
+                filter: brightness(110%)
+            }
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .image-wrap {
+            display: flex;
+            flex: 1 220px;
+            max-height: 220px;
+        }
+
+        .content-wrap {
+            bottom: -10px;
+            width: 100%;
+            color: white;
+            padding: 1rem;
+        }
+
+        .title {
+            position: relative;
+            @extend h4;
+            @include sans;
+            font-weight: 600;
+            font-size: .9rem!important;
+            line-height: 150%!important;
+            letter-spacing: .1px;
+        }
+
+    }
+
+}

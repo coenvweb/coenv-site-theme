@@ -27,7 +27,7 @@
 
 	</header>
 
-	<section class="article__content">
+	<section class="article__content" id="content">
 
 		<?php the_content() ?>
 
@@ -44,23 +44,23 @@
 
 
     <?php 
-        $posts = get_field('page_contacts', get_the_ID());
+        $page_contacts = get_field('page_contacts', get_the_ID());
 
-      if( $posts ): ?>
+      if( $page_contacts ): ?>
         <div class="page-contacts">
         <h2 class="small-contact-title">
         <?php
         $page_contact_title = get_field('contact_title');
          if ($page_contact_title) {
             echo $page_contact_title;
-        } elseif (count($posts) > 1) {
+        } elseif (count($page_contacts) > 1) {
             echo 'Dean\'s Office Contacts:';
         } else {
             echo 'Dean\'s Office Contact:';
         };
         ?>
         </h2>
-        <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
+        <?php foreach( $page_contacts as $page_contact): // variable must be called $post (IMPORTANT) ?>
             <?php setup_postdata($post); ?>
             <?php get_template_part( 'partials/partial', 'staff' ) ?>
         <?php endforeach; ?>

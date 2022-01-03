@@ -46,4 +46,14 @@ function uwenvironment_trumba_embed( $atts = array() ) {
     return $output;
 }
 add_shortcode('trumba','uwenvironment_trumba_embed');
+
+// column (grid) shortcode
+function my_column($params,$content=null){
+  extract(shortcode_atts(array(
+      'type' => 'right'
+  ), $params));
+  return '<div class="column '.$type.'">'.do_shortcode($content).'</div>';
+}
+add_shortcode("column", "my_column");
+
 ?>
