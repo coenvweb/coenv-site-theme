@@ -61,7 +61,7 @@
         ?>
         </h2>
         <?php foreach( $page_contacts as $page_contact): // variable must be called $post (IMPORTANT) ?>
-            <?php setup_postdata($post); ?>
+            <?php setup_postdata($page_contacts); ?>
             <?php get_template_part( 'partials/partial', 'staff' ) ?>
         <?php endforeach; ?>
         <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
