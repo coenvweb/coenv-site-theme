@@ -1,5 +1,5 @@
 <?php
-/**
+/** Template Name: Degrees
  *
  * The degree template
  */
@@ -50,59 +50,11 @@ $ancestor = array(
 
 					<?php endwhile ?>
 
-				<?php endif ?>
-                <article class="article majors-minors-section">
-                <section class="article__content majors-minors accordion" id="major">
-                    <h2>Masters and Ph.D.</h2>
-                <?php
-    
-                $major_page = get_page_by_title( 'Graduate Degrees' );
-
-                // check if the repeater field has rows of data
-                if( have_rows('majors', $major_page->ID) ):
-
-                    // loop through the rows of data
-                    while ( have_rows('majors', $major_page->ID) ) : the_row();
-
-                        // display a sub field value
-                        get_template_part( 'partials/partial', 'major-minor' );
-
-                    endwhile;
-
-                else :
-
-                    // no rows found
-
-                endif;
-                ?>
-                <h2>Graduate certificates</h2>
-                <?php
-                $major_page = get_page_by_title( 'Graduate Degrees' );
-
-                // check if the repeater field has rows of data
-                if( have_rows('minors', $major_page->ID) ):
-
-                    // loop through the rows of data
-                    while ( have_rows('minors', $major_page->ID) ) : the_row();
-
-                        // display a sub field value
-                        get_template_part( 'partials/partial', 'major-minor' );
-
-                    endwhile;
-
-                else :
-
-                    // no rows found
-
-                endif;
-
-                ?>
-                </section>
-                </article>
-                
+				<?php endif ?>                
             <div class="side-footer">
                 <?php get_sidebar('footer') ?>
             </div>
+
 			<div class="side-footer">
                 <div class="hidden">
                     <?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
@@ -111,7 +63,6 @@ $ancestor = array(
                 </div>
                 <?php get_sidebar('footer') ?>
             </div>
-
 			</main><!-- .main-col -->
 
 			<div class="side-col">
@@ -127,6 +78,6 @@ $ancestor = array(
 <script type="text/javascript" src="https://environment.uw.edu/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>

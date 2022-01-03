@@ -1,6 +1,5 @@
 <?php
-/**
- Template Name: Graduate Student Profiles Page
+/** Template Name: Graduate Student Profiles Page
  *
  * The main page template edited for grad student profiles
  */

@@ -306,6 +306,19 @@
 		margin-left: auto;
 	}
 
+	.column {
+		@include min-width ( 515 ) {
+			width: calc(50% - 8px);
+			margin-bottom: 3rem;
+			&.right {
+				float: right;
+			}
+			&.left {
+				float: left;
+			}
+		}
+	}
+
 	// margins
 	img.alignleft,
 	.wp-caption.alignleft {

@@ -5,12 +5,13 @@
     }
     .article__content {
         min-height: 0;
+        margin-top: 1rem;
     }
 }
 
 .page-id-38585 {
     .article__content > h2 {
-        margin-top: 1rem!important;
+        //margin-top: 1rem!important;
     }
     
     #arrow-nav {
@@ -174,7 +175,6 @@
         font-size: calc(.8em + 1vmin);
     }
     .article__content > h2 {
-        border-bottom: 3px solid #eee;
         margin: 3rem 0 2rem;
         clear: left;
         padding-bottom: 1rem;
@@ -273,6 +273,9 @@
         @include max-width ( $iPadPortrait ) {
             width: 100%;
         }
+        @include min-width ( $iPadPortrait ) {
+            margin-bottom: 3rem;
+        }
     }
     
     #arrow-nav {
@@ -369,6 +372,17 @@
                     font-size: 1.2rem;
                     padding: .7rem .7rem .7rem .7rem;
                 }
+                .future-subtext {
+                    text-transform: uppercase;
+                    @include sans;
+                    font-size: .85rem!important;
+                    letter-spacing: .1px;
+                    padding-top: 15px;
+                    font-weight: 600;
+                    @include max-width ( $iPadPortrait ) {
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -406,6 +420,31 @@
             margin-top: 1rem;
         }
     }
+    .widget-events {
+        @include min-width ( $iPadPortrait ) {
+            float: left!important;
+            margin-left: 0;
+            width: 40%!important;
+        }
+    }
+    .student-ambassadors-widget, .graduate-student-profiles-widget {
+        .widgettitle, .count, .ambassador-name {
+            display: none;
+        }
+        .ambassadors {
+            background: #fff;
+            a {
+                width: 32.4%;
+                margin-right: 3px;
+                border: none!important;
+            }
+        }
+        @include min-width ( $iPadPortrait ) {
+            width: 40%!important;
+            margin-left: 2rem;
+            margin-bottom: 3rem;
+        }
+    }
     @include min-width ( $iPadPortrait ) {
         .join {
             display: inline-block;
@@ -432,5 +471,52 @@
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
+    .article__content > p:last-of-type {
+        text-align: center;
+        max-width: none;
+        .next-text {
+            @extend h3;
+            @include serif;
+            line-height: 3.5rem;
+            &:after {
+                content: '▸';
+                padding: 0 .5rem;
+            }
+        }
+
+        .next-button {
+            background-color: $accent;
+            color: white;
+            min-width: 200px;
+            height: 35px;
+            padding-top: 6px;
+            font-size: 1.1rem;
+            &:hover {
+                background-color: $accent-lt;
+            }
+            @include min-width ( $iPadPortrait ) {
+                margin-left: 2rem;
+            }
+        }
+    }
+
     
+}
+
+.article__content .widget-postdoc-profiles {
+    .widgettitle, .count, .ambassador-name {
+        display: none;
+    }
+    .ambassadors {
+        background: #fff;
+        a {
+            width: 48.4%;
+            margin-right: 3px;
+            border: none!important;
+        }
+    }
+    @include min-width ( $iPadPortrait ) {
+        width: 30%!important;
+        margin-left: 2rem;
+    }
 }
