@@ -5,32 +5,32 @@
     ), $atts);
 
     if($attributes['type'] === "undergrad-majors") {
-        $major_page = get_page_by_title( 'Undergraduate Degrees and Minors*' );
+        $major_page = get_page_by_title( 'Undergraduate Degrees and Minors' );
         $major_field = 'majors';
     }
 
     if($attributes['type'] === "undergrad-minors") {
-        $major_page = get_page_by_title( 'Undergraduate Degrees and Minors*' );
+        $major_page = get_page_by_title( 'Undergraduate Degrees and Minors' );
         $major_field = 'minors';
     }
 
     if($attributes['type'] === "grad-research-degrees") {
-        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_page = get_page_by_title( 'Graduate Degrees' );
         $major_field = 'research_degrees';
     }
 
     if($attributes['type'] === "grad-dual-title-research-degrees") {
-        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_page = get_page_by_title( 'Graduate Degrees' );
         $major_field = 'dt_research_degrees';
     }
 
     if($attributes['type'] === "grad-professional-degrees") {
-        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_page = get_page_by_title( 'Graduate Degrees' );
         $major_field = 'professional_degrees';
     }
 
     if($attributes['type'] === "grad-certificate-programs") {
-        $major_page = get_page_by_title( 'Graduate Degrees*' );
+        $major_page = get_page_by_title( 'Graduate Degrees' );
         $major_field = 'certificate_degrees';
     }
 
