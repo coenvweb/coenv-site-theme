@@ -23,7 +23,7 @@
     }
 }
 
-.widget {
+footer.related {
 
     .related-news, .related-faculty {
         .related-heading {
@@ -31,6 +31,16 @@
             width: 100%;
             border-bottom: 1px solid $border;
             @include rem('padding', 1);
+            h2 {
+                display: inline;
+                text-transform: uppercase;
+                letter-spacing: .1em;
+                font-weight: 600;
+                line-height: 0;
+                font-size: 11px;
+                font-size: .78571rem;
+                margin: 0.9rem 1rem 0.5rem;
+            }
         }
 
         .more {
@@ -58,12 +68,11 @@
         } //.related-article-title
     }
 
-
     .related-news {
         .related-thumb {
             overflow: hidden;
             @include rem('height', 12);
-
+    
             background: {
                 image: url(../../../assets/img/uw-flag.png);
                 size: cover;
@@ -71,8 +80,8 @@
                 position: 50%;
                 color: $accent;
             }
-
-
+    
+    
             .wp-post-image {
                 display: block;
                 margin: auto;
@@ -84,7 +93,7 @@
             position: relative;
             z-index: 1;
         }
-
+    
         .related-container {
             display: inline-block;
             width: 100%;
@@ -119,13 +128,13 @@
                     */
                 }
             }
-
+    
             @include max-width ( 600 ) {
                 &:nth-child(odd) {
                     border-bottom: 1px solid $border;
                 }
             }
-
+    
             @include min-width ( 600 ) {
                 width: 50%;
                 float: left;
@@ -135,18 +144,17 @@
                     border-right: 1px solid $border;
                 }
             }
-
+    
             a {
                 text-decoration: none;
                 color: $text;
             }
-
+    
         } //.related-container
-
-
-
+    
+    
+    
     } // .related-news
-
 }
 
 
