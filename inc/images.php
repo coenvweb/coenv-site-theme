@@ -5,16 +5,17 @@ if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support('post-thumbnails');
 }
 
-add_filter('image_size_names_choose', 'my_image_sizes');
-function my_image_sizes($sizes) {
-	$addsizes = array(
-	"half" => __( "50% of column"),
-	"one-third" => __( "33% of column"),
-	"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
-	"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
-	);
-	$newsizes = array_merge($sizes, $addsizes);
-	return $newsizes;
+
+add_filter('image_size_names_choose', 'my_custom_sizes');
+
+function my_custom_sizes($sizes) {
+	return array_merge($sizes, array(
+		"half" => __( "50% of column"),
+		"one-third" => __( "33% of column"),
+		"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
+		"homepage-hero-standard" => __( "Homepage Hero Standard Aspect"),
+	) );
+}
 
 	// Set media sizes
 	// thumbnail: 200x200 square crop
@@ -22,18 +23,17 @@ function my_image_sizes($sizes) {
 	update_option( 'thumbnail_size_h', 200 );
 	update_option( 'thumbnail_crop', 1 );
 
-	if ( function_exists( 'add_image_size' ) ) {
-		add_image_size( 'tiny', 129, 129, true );
-		add_image_size( 'small', 262, 262 );
-		add_image_size( 'banner', 1680 );
-        add_image_size( 'homepage-column-retina', 528 );
-        add_image_size( 'homepage-column', 253 );
-		add_image_size( 'half', 375 );
-		add_image_size( 'one-third', 250 );
-        // restrained height
-        add_image_size( 'homepage-column-standard', '253', '168', true );
-        add_image_size( 'homepage-hero-standard', '680', '450', true );
-	}
+	//custom sizes
+	add_image_size( 'small', 262, 262 );
+	add_image_size( 'banner', 1680 );
+	add_image_size( 'homepage-column-retina', 528 );
+	add_image_size( 'homepage-column', 253 );
+	add_image_size( 'half', 375 );
+	add_image_size( 'one-third', 250 );
+	
+	// restrained height
+	add_image_size( 'homepage-column-standard', '253', '168', true );
+	add_image_size( 'homepage-hero-standard', '680', '450', true );
 
 	// medium: 528x528
 	update_option( 'medium_size_w', 528 );
@@ -42,7 +42,7 @@ function my_image_sizes($sizes) {
 	// large: 750x750
 	update_option( 'large_size_w', 794 );
 	update_option( 'large_size_h', 794 );
-}
+
 
 
 /**
