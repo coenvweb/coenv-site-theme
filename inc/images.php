@@ -7,20 +7,20 @@ if ( function_exists( 'add_theme_support' ) ) {
 
 add_filter('image_size_names_choose', 'my_image_sizes');
 function my_image_sizes($sizes) {
-$addsizes = array(
-"half" => __( "50% of column"),
-"one-third" => __( "33% of column"),
-"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
-"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
-);
-$newsizes = array_merge($sizes, $addsizes);
-return $newsizes;
+	$addsizes = array(
+	"half" => __( "50% of column"),
+	"one-third" => __( "33% of column"),
+	"homepage-column-standard" => __( "Hompage Column Standard Aspect"),
+	"homepage-hero-standard" => __( "Homepage Hero Standard Aspect")
+	);
+	$newsizes = array_merge($sizes, $addsizes);
+	return $newsizes;
 
 	// Set media sizes
 	// thumbnail: 200x200 square crop
-  update_option( 'thumbnail_size_w', 200 );
-  update_option( 'thumbnail_size_h', 200 );
-  update_option( 'thumbnail_crop', 1 );
+	update_option( 'thumbnail_size_w', 200 );
+	update_option( 'thumbnail_size_h', 200 );
+	update_option( 'thumbnail_crop', 1 );
 
 	if ( function_exists( 'add_image_size' ) ) {
 		add_image_size( 'tiny', 129, 129, true );
@@ -35,13 +35,13 @@ return $newsizes;
         add_image_size( 'homepage-hero-standard', '680', '450', true );
 	}
 
-  // medium: 528x528
-  update_option( 'medium_size_w', 528 );
-  update_option( 'medium_size_h', 528 );
+	// medium: 528x528
+	update_option( 'medium_size_w', 528 );
+	update_option( 'medium_size_h', 528 );
 
-  // large: 750x750
-  update_option( 'large_size_w', 794 );
-  update_option( 'large_size_h', 794 );
+	// large: 750x750
+	update_option( 'large_size_w', 794 );
+	update_option( 'large_size_h', 794 );
 }
 
 
