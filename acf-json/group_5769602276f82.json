@@ -3,11 +3,6 @@
     "title": "Staff",
     "fields": [
         {
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "key": "field_57192e9dfebd2",
             "label": "Job Title",
             "name": "job_title",
@@ -20,16 +15,35 @@
                 "class": "",
                 "id": ""
             },
-            "formatting": "html",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
+            "formatting": "html",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_6204158e950a4",
+            "label": "Pronouns",
+            "name": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_57192f89ee577",
             "label": "Email",
             "name": "email",
@@ -42,16 +56,16 @@
                 "class": "",
                 "id": ""
             },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "formatting": "html",
             "readonly": 0,
             "disabled": 0
         },
         {
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "206-xxx-xxxx",
-            "prepend": "",
-            "append": "",
             "key": "field_57192fb308d89",
             "label": "Phone Number",
             "name": "phone_number",
@@ -64,21 +78,16 @@
                 "class": "",
                 "id": ""
             },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "206-xxx-xxxx",
+            "prepend": "",
+            "append": "",
             "formatting": "html",
             "readonly": 0,
             "disabled": 0
         },
         {
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": "",
             "key": "field_57192fb808d8a",
             "label": "Photo",
             "name": "photo",
@@ -90,20 +99,19 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
-            "layout": "horizontal",
-            "choices": {
-                "1": "Team Lead",
-                "2": "Assistant to Team Lead",
-                "3": "Default Alphabetical Sort"
-            },
-            "default_value": 3,
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "allow_null": 0,
-            "return_format": "value",
             "key": "field_57195c03a64ec",
             "label": "Placement",
             "name": "placement",
@@ -115,35 +123,20 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "layout": "horizontal",
+            "choices": {
+                "1": "Team Lead",
+                "2": "Assistant to Team Lead",
+                "3": "Default Alphabetical Sort"
+            },
+            "default_value": 3,
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "allow_null": 0,
+            "return_format": "value"
         },
         {
-            "sub_fields": [
-                {
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "key": "field_580ea19b36964",
-                    "label": "Responsibility",
-                    "name": "responsibility",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ],
-            "min": 0,
-            "max": 4,
-            "layout": "table",
-            "button_label": "Add Row",
-            "collapsed": "",
             "key": "field_580ea17e36963",
             "label": "Job Responsibilities",
             "name": "job_responsibilities",
@@ -155,14 +148,35 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Add Row",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_580ea19b36964",
+                    "label": "Responsibility",
+                    "name": "responsibility",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
         },
         {
-            "default_value": "",
-            "new_lines": "wpautop",
-            "maxlength": 500,
-            "placeholder": "",
-            "rows": "",
             "key": "field_580ea1a436965",
             "label": "Details",
             "name": "details",
@@ -174,7 +188,97 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            }
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 10,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_58599c874c7a7",
+            "label": "Links",
+            "name": "links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_58599c9b4c7a8",
+                    "label": "Link Text",
+                    "name": "link_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_58599ca34c7a9",
+                    "label": "Link URL",
+                    "name": "link_url",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_58599ca94c7aa",
+                    "label": "Link Icon",
+                    "name": "link_icon",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "choices": {
+                        "icon-faculty-grid-alt-2": "Faculty Profile",
+                        "icon-twitter": "Twitter",
+                        "icon-link": "Link"
+                    },
+                    "default_value": [],
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value"
+                }
+            ]
         }
     ],
     "location": [
@@ -194,7 +298,6 @@
     "hide_on_screen": [
         "the_content",
         "excerpt",
-        "custom_fields",
         "discussion",
         "comments",
         "revisions",
@@ -202,7 +305,8 @@
         "featured_image",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1481667525
+    "show_in_rest": 0,
+    "modified": 1644434846
 }
