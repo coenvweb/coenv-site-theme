@@ -168,47 +168,6 @@ add_filter( 'img_caption_shortcode', 'jk_img_caption_shortcode_filter', 10, 3 );
  * 2013.07.31 | Darin | disabled check for post thumbnail, will always fall back to ancestor thumbnail.
  */
 
-function inherited_featured_image( $page = NULL ) {
-	if ( is_numeric( $page ) ) {
-	  $page = get_post( $page );
-	} elseif( is_null( $page ) ) {
-	  $page = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : NULL;
-	}
-	if ( ! $page instanceof WP_Post ) return false;
-	// if we are here we have a valid post object to check,
-	// get the ancestors
-	$ancestors = get_ancestors( $page->ID, $page->post_type );
-	if ( empty( $ancestors ) ) return false;
-	// ancestors found, let's check if there are featured images for them
-	global $wpdb;
-	$metas = $wpdb->get_results(
-	  "SELECT post_id, meta_value
-	  FROM {$wpdb->postmeta}
-	  WHERE meta_key = '_thumbnail_id'
-	  AND post_id IN (" . implode( ',', $ancestors ) . ");"
-	);
-	if ( empty( $metas ) ) return false;
-	// extract only post ids from meta values
-	$post_ids = array_map( 'intval', wp_list_pluck( $metas, 'post_id' ) ); 
-	// compare each ancestor and if return meta value for nearest ancestor 
-	foreach ( $ancestors as $ancestor ) {
-	  if ( ( $i = array_search( $ancestor, $post_ids, TRUE ) ) !== FALSE ) {
-		return $metas[$i]->meta_value;
-	  }
-	}
-	return false;
-  }
-
-  add_action( "save_post_page", "inherited_featured", 20, 2 );
-
-	function inherited_featured( $pageid, $page ) {
-	if ( has_post_thumbnail( $pageid ) ) return;
-	$img = inherited_featured_image();
-	if ( $img ) {
-		set_post_thumbnail( $page, $img );
-	}
-	}
-
 
 function coenv_banner() {
 	$obj = get_queried_object();
@@ -241,8 +200,7 @@ function coenv_banner() {
 		$page_id = $obj->ID;
 
 	} else if ( has_post_thumbnail( $ancestor ) ) {
-		$thumb_id = inherited_featured_image();
-		$page_id = 1;
+		$page_id = $ancestor;
     }
 
 	if ( $page_id == false ) {
