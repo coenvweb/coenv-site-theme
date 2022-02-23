@@ -7,6 +7,7 @@ $first_name = get_field('first_name');
 $first_name_san = sanitize_title($first_name);
 $last_name = get_field('last_name');
 $last_name_san = sanitize_title($last_name);
+$pronouns = get_field('pronouns');
 $image = get_field('photo');
 $class = get_field('class');
 $last_school = get_field('last_school');
@@ -146,8 +147,11 @@ if(!empty($description)) {
         <?php if (!empty($last_school)) : ?>
             <div class="row"><div class="prompt">Last School:</div> <li class="answer-content"><?php echo $last_school; ?></li></div>
         <?php endif; ?>
-        <?php if (!empty($description)) : ?>
+        <?php if (!empty($tags)) : ?>
             <div class="row"><div class="prompt">Ask <?php echo $first_name ?> About:</div> <li class="answer-content"><?php echo $tags; ?></li></div>
+        <?php endif; ?>
+        <?php if (!empty($pronouns)) : ?>
+            <div class="row"><div class="prompt">Pronouns:</div> <li class="answer-content"><?php echo $pronouns; ?></li></div>
         <?php endif; ?>
         <?php if (!empty($description)) : ?>
             <div class="row"><div class="prompt">About <?php echo $first_name ?>:</div> <li class="answer-content"><?php echo $description; ?></li></div>
