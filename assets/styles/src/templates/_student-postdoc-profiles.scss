@@ -129,7 +129,7 @@
                 }
                 img {
                     width: 200px;
-                    height: 200px;
+                    //height: 200px; fixes vertical stretch issue
                 }
                 .primary-majors{
                     padding-top: .5rem;
