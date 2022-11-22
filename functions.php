@@ -672,7 +672,7 @@ function coenv_base_date_filter($post_type,$coenv_month,$coenv_year) {
 
 if($_SERVER['HTTP_HOST'] !== 'environment.uw.dev' && $_SERVER['HTTP_HOST'] !== 'environment.uw.local' && $_SERVER['HTTP_HOST'] !== 'uwenvironment.local' && $_SERVER['HTTP_HOST'] !== 'beta.environment.uw.edu') {
     function cdn_upload_url() {
-        return 'https://coenv-media-gene1ufvxiloffjq.stackpathdns.com';
+        return 'https://uw-env-media.b-cdn.net/wp-content/uploads';
     }
     add_filter( 'pre_option_upload_url_path', 'cdn_upload_url' );
 }

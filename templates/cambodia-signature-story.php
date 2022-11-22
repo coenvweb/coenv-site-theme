@@ -171,7 +171,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     <div class="feature-image video-container banner-wrapper">
                     <div class="filter"></div>
                         <?php
-                            echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" onplaying="this.controls=false" id="hero-video" poster="https://coenv-media-gene1ufvxiloffjq.stackpathdns.com/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg">';
+                            echo '<video autoplay loop muted class="fillWidth fullfade show-for-medium-up" onplaying="this.controls=false" id="hero-video" poster="https://uw-env-media.b-cdn.net/wp-content/uploads/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg">';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-looper-720.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.';
                             echo '<source src="' . get_bloginfo('template_directory') . '/assets/video/mekong-video-720.ogg" type="video/ogg"/>Your browser does not support the video tag. I suggest you upgrade your browser.';
@@ -179,7 +179,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                          ?>
                         <div class="poster poster-hidden">
                             <?php
-                            echo '<img src="https://coenv-media-gene1ufvxiloffjq.stackpathdns.com/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg" alt="">';
+                            echo '<img src="https://uw-env-media.b-cdn.net/wp-content/uploads/2018/05/20190114_CAMBODIA-FISH-C-OF-E_02263-e1559260230602.jpg" alt="">';
                              ?>
                         </div>
                         <div class="layout-container layout-container--header">
