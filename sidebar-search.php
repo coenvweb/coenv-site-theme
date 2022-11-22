@@ -73,7 +73,7 @@ if ($facSearch->have_posts() ) {
 <?php if($careerSearch->have_posts()) { ?>
     <section class="coenv-sidebar-search">
         <div class="search-feedback">
-            <p class="sidebar-feedback-number">CAREER OPPORTUNITY RESULTS</p>
+            <p class="sidebar-feedback-number">ENVIRONMENTAL JOB RESULTS</p>
         </div>
     <?php
         foreach($careerSearch->posts as $post) {
