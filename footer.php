@@ -76,42 +76,5 @@
         <![endif]-->
         
         <?php wp_footer() ?>
-
-        <?php //if (!'WP_LOCAL_DEV'): ?>
-            <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                ga('create', 'UA-42374937-1', 'auto');
-                ga('require', 'linkid', 'linkid.js');
-                ga('send', 'pageview');
-                ga('set', 'anonymizeIp', true);
-                var trackOutboundLink = function(url) {
-                    ga('send', 'event', 'outbound', 'click', url, {
-                    'transport': 'beacon',
-                    'hitCallback': function(){document.location = url;}
-                    });
-                }
-            </script>
-            
-            <script type="text/javascript">
-
-                try{
-                (function() {
-                var afterPrint = function() { ga('send', 'event', 'Print Intent', document.location.pathname); };
-                if (window.matchMedia) {
-                var mediaQueryList = window.matchMedia('print');
-                mediaQueryList.addListener(function(mql) {
-                if (!mql.matches)
-                afterPrint();
-                });
-                }
-                window.onafterprint = afterPrint;
-                }());
-                } catch(e) {}
-            </script>
-        <?php //endif; ?>
     </body>
 </html>
