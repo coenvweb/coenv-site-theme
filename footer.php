@@ -4,7 +4,7 @@
                     <div class="layout-container">
                         <div class="logo-headers">
                             <div class="right-college">
-                                <a href="http://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350"></a>
+                                <a href="http://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350" height="39"></a>
                             </div>
                         
                             <div class="left-college">
@@ -52,7 +52,7 @@
                             
                             <div class="be-boundless">
                                 <a href="http://washington.edu/" rel="home" target="_blank"><?php include('assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
-                                <a href="http://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
+                                <a href="http://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" width="150" height="50" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
                             </div>
                             
                             <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://washington.edu/" target="_blank">University of Washington</a></p></div>
