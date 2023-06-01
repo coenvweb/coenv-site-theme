@@ -444,12 +444,16 @@ body.home {
 			letter-spacing: .1em;
 			
 			&:hover {
-				color: rgba(255,255,255,0.45)!important;
+				color: white;
 			}
 			
 			@include max-width( $iPadPortrait ) {
 				@include rem('margin-left', 1);
 			}
+		}
+
+		svg {
+			margin-bottom: -3px;
 		}
 	} // .story-series
 
