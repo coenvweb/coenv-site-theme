@@ -1,0 +1,106 @@
+/*	Template: strategic plan
+		Customizations applied to content within the strategic-plan.php template
+		======================================================================== */
+
+// top level pages have bigger banners
+
+    
+
+.page-template-strategic-plan {
+    padding-bottom: 25%;
+    //photos
+    .article__content .wp-caption {
+        box-shadow: none;
+        background: none;
+        font-style: italic;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+        
+        .wp-caption-text {
+            color: #666;
+            margin-left: 0;
+            margin-top: .5rem;
+        }
+    }
+
+    //right download widget
+    #sp-toc {
+        background: #eeeeee;
+        border-left: solid 1px #dddddd;
+        border-right: solid 1px #dddddd;
+        border-bottom: solid 1px #dddddd;
+        border-top: solid 5px #4b2e83;
+        float: right;
+        margin: 0 0 1.5rem 1.5rem;
+        padding: 1rem 1rem 0 1rem;
+        width: 40%;
+
+        @include max-width ( 1020 ) {
+            width: 100%;
+        } 
+
+        a {
+            color: #613ba9!important;
+        }
+        h2 {
+            @include serif;
+            padding: 0;
+            margin: 0 0 1rem 0;
+    
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            list-style-type: none;
+            padding: 0.25rem;
+        }
+        h2:after {
+            content: none;
+        }
+        .button {
+            text-transform: uppercase;
+            border: 2px solid #3d266a;
+            background-color:#613ba9;
+            color: #fff;
+        }
+        .button:hover {
+            background-color: #000;
+        }
+        #sp-download {
+            background: #dddddd;
+            border: 1px solid #dddddd;
+            margin: 1rem 0 0.5rem;
+            padding: 1rem;
+        }
+        .related-container:hover {
+            background-color: transparent;
+            color: black;
+        }
+        .related-container {
+            box-shadow: none;
+        }
+        .related-container a {
+            color: rgb(0, 108, 162);
+            text-decoration: underline;
+        }
+        .related-article-title {
+            padding: 0;
+        }
+        .related-article-title h3 {
+            @include sans;
+            font-size: 14px;
+            font-weight: normal;
+        } 
+    } 
+    .button {
+        text-transform: uppercase;
+        border: 3px solid #666;
+        background-color: transparent;
+    }   
+    span.button {
+        border-width: 1px;
+        margin-top: 2rem;
+    }
+}
