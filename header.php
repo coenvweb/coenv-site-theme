@@ -29,8 +29,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 <!--prefetching-->
 <link rel="dns-prefetch" href="//p.typekit.net">
 <link rel="dns-prefetch" href="//use.typekit.net">
-<link rel="dns-prefetch" href="//www.google-analytics.com">
-<link rel="dns-prefetch" href="//www.washington.edu">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.washington.edu">
+
         
 <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/bg-wave-cut.png">
 <link rel="prefetch" href="<?php echo get_template_directory_uri() ?>/assets/img/black-white-suz.jpg">
