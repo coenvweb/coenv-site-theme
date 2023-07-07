@@ -72,12 +72,14 @@ p, ul, ol {
 	font-family: pt-serif-bold;
 	src: url("../../../assets/fonts/PT_Serif-Web-Bold.ttf") format('truetype');  
 	font-weight: 700;
-    font-style: normal;  
+    font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
 	font-family: pt-serif-bold-italic;
 	src: url("../../../assets/fonts/PT_Serif-Web-BoldItalic.ttf") format('truetype');  
 	font-weight: 700;
-  font-style: italic;  
+  font-style: italic;
+  font-display: swap;
 }
