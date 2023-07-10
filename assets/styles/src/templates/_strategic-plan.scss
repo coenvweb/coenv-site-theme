@@ -2,12 +2,13 @@
 		Customizations applied to content within the strategic-plan.php template
 		======================================================================== */
 
-// top level pages have bigger banners
 
+ .page-template-strategic-plan {
+    // has the bigger banner
+    .banner-wrapper {
+        padding-bottom: 25%;
+    }
     
-
-.page-template-strategic-plan {
-    padding-bottom: 25%;
     //photos
     .article__content .wp-caption {
         box-shadow: none;
