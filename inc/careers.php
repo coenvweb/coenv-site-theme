@@ -94,6 +94,29 @@ function careers_permalink($permalink, $post_id, $leavename) {
     return $permalink;
 }
 
+function custom_columns($columns)
+{
+    return array_merge(
+        $columns,
+        array(
+            'location' => __('Location'),
+        )
+    );
+}
+add_filter('manage_careers_posts_columns', 'custom_columns');
+
+function display_custom_columns($column, $post_id)
+{
+    switch ($column) {
+        case 'location':
+            echo get_post_meta($post_id, 'location', true);
+            break;
+    }
+}
+add_action('manage_careers_posts_custom_column', 'display_custom_columns', 10, 2);
+
+
+
 add_action( 'pre_get_posts', 'my_slice_orderby' );
 function my_slice_orderby( $query ) {
     if( ! is_admin() )
@@ -109,6 +132,7 @@ function my_slice_orderby( $query ) {
 
 function mbe_change_sortable_columns($columns){
     $columns['expirationdate'] = 'expirationdate';
+    $columns['location'] = 'location';
     return $columns;
 }
 add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns');
