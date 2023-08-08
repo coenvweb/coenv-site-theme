@@ -132,7 +132,6 @@ function my_slice_orderby( $query ) {
 
 function mbe_change_sortable_columns($columns){
     $columns['expirationdate'] = 'expirationdate';
-    $columns['location'] = 'location';
     return $columns;
 }
 add_filter('manage_edit-careers_sortable_columns', 'mbe_change_sortable_columns');
