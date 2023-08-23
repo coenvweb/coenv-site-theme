@@ -101,9 +101,9 @@ function coenv_admin_settings() {
 	add_settings_field( 'facebook', 'Facebook', 'coenv_setting_facebook', 'general' );
 	register_setting( 'general', 'facebook' );
 
-	add_option( 'twitter' );
-	add_settings_field( 'twitter', 'Twitter', 'coenv_setting_twitter', 'general' );
-	register_setting( 'general', 'twitter' );
+	add_option( 'linkedin' );
+	add_settings_field( 'linkedin', 'LinkedIn', 'coenv_setting_linkedin', 'general' );
+	register_setting( 'general', 'linkedin' );
 
 	add_option( 'youtube' );
 	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
@@ -143,14 +143,14 @@ function coenv_setting_facebook() {
 }
 
 /**
- * Twitter setting
+ * LinkedIn setting
  */
-function coenv_setting_twitter() {
-	$value = get_option('twitter');
+function coenv_setting_linkedin() {
+	$value = get_option('linkedin');
 
 	?>	
-		<input name="twitter" type="text" id="twitter" value="<?php echo $value; ?>" class="regular-text">
-		<p class="description">Just the handle ONLY (e.g. @handle).</p>
+		<input name="linkedin" type="text" id="linkedin" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to the LinkedIn page.</p>
 	<?php
 }
 
