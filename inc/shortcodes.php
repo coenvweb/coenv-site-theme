@@ -56,4 +56,36 @@ function my_column($params,$content=null){
 }
 add_shortcode("column", "my_column");
 
+// inline right sidebar shortcode - start
+function uwenvironment_inline_sidebar_start() {
+  $output = "<div class=\"sidebar-right-inline\">";
+  return $output;
+}
+add_shortcode("sidebar-start", "uwenvironment_inline_sidebar_start");
+
+// sidebar item - start
+function uwenvironment_inline_sidebar_item_start() {
+  $output = "<div class=\"sidebar-inline-item\">";
+  return $output;
+
+}
+add_shortcode("sidebar-item-start", "uwenvironment_inline_sidebar_item_start");
+
+// sidebar item - end
+function uwenvironment_inline_sidebar_item_end() {
+
+  $output = "</div>";
+  return $output;
+
+}
+add_shortcode("sidebar-item-end", "uwenvironment_inline_sidebar_item_end");
+
+
+// inline right sidebar shortcode - end
+function uwenvironment_inline_sidebar_end() {
+  $output = "</div>";
+  return $output;
+
+}
+add_shortcode("sidebar-end", "uwenvironment_inline_sidebar_end");
 ?>
