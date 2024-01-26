@@ -1142,7 +1142,7 @@ class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
                         $thumb = $image['sizes'][ $size ];
                     }
                     $name = $first_name . ' ' . $last_name;
-                    echo '<a href="/research/postdoctoral-scholars/meet-our-postdocs/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
+                    echo '<a href="/research/postdoctoral-fellows/meet-postdocs/#bio-t-' . sanitize_title_with_dashes($name) . '" title="' . the_title_attribute( 'echo=0' ) . '" " rel="bookmark">';
                         echo '<div class="ambassador-container" >';
                         if ( $image ) {
                             echo '<div class="ambassador-thumb">';
@@ -1160,7 +1160,7 @@ class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
                     echo '</div>';
                 echo '</a>';
             }
-            echo '<a href="/research/postdoctoral-scholars/meet-our-postdocs/" class="count" >';
+            echo '<a href="/research/postdoctoral-fellows/meet-postdocs/" class="count" >';
             echo '<div class="ambassador-container">';
             echo '<div class="ambassador-thumb">';
             echo '<i class="icon-faculty-grid-alt-2"></i>';
