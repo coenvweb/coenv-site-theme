@@ -4,7 +4,7 @@
                     <div class="layout-container">
                         <div class="logo-headers">
                             <div class="right-college">
-                                <a href="http://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350" height="39"></a>
+                                <a href="https://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350" height="39"></a>
                             </div>
                         
                             <div class="left-college">
