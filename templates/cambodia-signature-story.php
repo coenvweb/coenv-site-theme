@@ -126,8 +126,8 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
         <header class="mini-top-menu" role="banner">
             <div class="mini-top-menu-inner">
             <h1 id="logo">
-                <a href="http://washington.edu/" rel="home" target="_blank">
-                    <svg id="desktop-logo" width="108" height="73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
+                <a href="https://washington.edu/" rel="home" target="_blank">
+                    <svg id="desktop-logo" width="108" height="73" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 108 73" enable-background="new 0 0 108 73" xml:space="preserve">
                   <path d="M79.343,0.112c0,0.858,0,12.238,0,13.098c0.856,0,9.206,0,9.206,0L78.271,51.461
                     c0,0-12.577-50.636-12.756-51.349c-0.687,0-12.626,0-13.303,0c-0.188,0.696-13.796,51.352-13.796,51.352L28.95,13.21
                     c0,0,8.726,0,9.585,0c0-0.859,0-12.239,0-13.098c-0.919,0-37.532,0-38.451,0c0,0.858,0,12.238,0,13.098c0.851,0,8.52,0,8.52,0
@@ -225,7 +225,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                     <div class="layout-container">
                         <div class="colleges-schools">
-                            <a href="http://environment.uw.edu/" rel="home" title="UW College of the Environment" class="environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Environment.svg"></a>
+                            <a href="https://environment.uw.edu/" rel="home" title="UW College of the Environment" class="environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Environment.svg"></a>
                             <a href="https://www.engr.washington.edu/" rel="home" title="UW College of Engineering" class="engineering"><img alt="College of Engineering Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-Engineering.svg"></a>
                             <a href="https://sph.washington.edu/" rel="home" title="UW School of Public Health" class="public-health"><img alt="School of Public Health Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/mekong/Logo-PublicHealth.svg"></a>
                         </div>
@@ -235,11 +235,11 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                         <div class="layout-container">
                             
                             <div class="be-boundless">
-                                <a href="http://washington.edu/" rel="home" target="_blank"><?php include( $_SERVER['DOCUMENT_ROOT'] . '/wp-content/themes/coenv-wordpress-theme/assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
-                                <a href="http://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
+                                <a href="https://washington.edu/" rel="home" target="_blank"><?php include( $_SERVER['DOCUMENT_ROOT'] . '/wp-content/themes/coenv-wordpress-theme/assets/img/university-of-washington.svg'); ?><span class="visuallyhidden">University of Washington</span></a><br />
+                                <a href="https://www.washington.edu/boundless/" rel="home" target="_blank"><img class="boundless-logo" src='<?= get_template_directory_uri() ?>/assets/img/boundless_logo.png' alt="University of Washington - Be Boundless for Washington for the World" /><span class="visuallyhidden">Be Boundless - For Washington For the World</span></a>
                             </div>
                             
-                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://washington.edu/" target="_blank">University of Washington</a></p></div>
+                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="https://washington.edu/" target="_blank">University of Washington</a></p></div>
                             
                             <?php wp_nav_menu( array(
                                 'theme_location' => 'footer-links',
@@ -257,7 +257,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
         </div><!-- #outer -->
 
         <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
         <?php wp_footer() ?>
