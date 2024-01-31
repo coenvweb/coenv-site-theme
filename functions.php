@@ -700,5 +700,12 @@ function add_revision_link( $wp_admin_bar ) {
         $wp_admin_bar->add_node( $args );
     }
 }
+add_action('template_redirect', 'theme_add_last_modified_header');
 
-
+function theme_add_last_modified_header($headers) {
+    global $post;
+    if(isset($post) && isset($post->post_modified)){
+        $post_mod_date=date("D, d M Y H:i:s",strtotime($post->post_modified));
+        header('Last-Modified: '.$post_mod_date.' GMT');
+     }
+}
