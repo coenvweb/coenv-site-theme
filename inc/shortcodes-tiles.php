@@ -17,7 +17,7 @@ if($attributes['ids']) {
           }
       }
 } else {
-    $tiles = get_field('tiles', $page_id);
+    $tiles = get_field('tiles', get_the_ID());
   }
 
   $output = '<div class="tiles-container">';
