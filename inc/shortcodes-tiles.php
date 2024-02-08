@@ -3,7 +3,7 @@
 function tile_func($atts, $content = null) {
   $attributes = shortcode_atts( array(
       'ids' => '',
-      'columns' => '3',
+      'columns' => '',
   ), $atts);
 
 if($attributes['ids']) {
@@ -19,10 +19,12 @@ if($attributes['ids']) {
       }
 } else {
     $tiles = get_field('tiles', get_the_ID());
-  }
-
-  $output = '<div class="tiles-container cols-' . esc_attr($attributes['columns']) . '">';
-      if($tiles)  {
+}
+if (esc_attr($attributes['columns'])) {
+    $tilecols = " cols-" . esc_attr($attributes['columns']);
+}
+  $output = '<div class="tiles-container' . $tilecols . '">';
+      if($tiles) {
           foreach($tiles as $tile) {
 
             $output .= "<div class='page-tile'>";
