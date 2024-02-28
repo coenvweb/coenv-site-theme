@@ -31,7 +31,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     <div class="contact-info">
         <div class="contact-title">
             <h3><?php the_title(); ?></h3>
-            <h4><?php the_field('job_title'); ?></h4>
+            <h4><?php echo get_field('job_title'); ?></h4>
         </div>
         <?php if (!empty($email) || !empty($phone_number)) : ?>
             <ul class="Faculty-member-contact-list">
