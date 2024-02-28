@@ -36,7 +36,7 @@
         <?php } else { ?>
             <?php the_content() ?>
             <?php if ( !is_page() && get_field('story_link_url') ) { ?>
-                <a href="<?php the_field('story_link_url'); ?>" class="button" target="_blank"><?php the_field('story_source_name'); ?> »</a>
+                <a href="<?php echo get_field('story_link_url'); ?>" class="button" target="_blank"><?php echo get_field('story_source_name'); ?> »</a>
             <?php } ?>
             <p class="read-more"><a href="javascript();" class="button">Read More</a></p>
         <?php } ?>
