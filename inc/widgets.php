@@ -481,6 +481,188 @@ class CoEnv_Widget_Events extends WP_Widget {
 
 }
 
+
+/**
+ * Sidebar events Widget
+ */
+register_widget( 'CoEnv_Widget_Events_Sidebar' );
+class CoEnv_Widget_Events_Sidebar extends WP_Widget {
+
+	public function __construct() {
+		$args = array(
+			'classname' => 'widget widget-events-sidebar',
+			'description' => __( 'Display a short list of Trumba calendar events.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'trumba_events_sidebar', // base ID
+			'Trumba Events (sidebar)', // name
+			$args
+		);
+	}
+
+	public function widget( $args, $instance ) {
+		extract( $args );
+
+		$title = apply_filters( 'widget_title', $instance['title'] );
+		$feed_url = apply_filters( 'feed_url', $instance['feed_url'] );
+		$events_url = apply_filters( 'events_url', $instance['events_url'] );
+		$posts_per_page = (int) $instance['posts_per_page'];
+
+		if ( !isset( $feed_url ) || empty( $feed_url ) ) {
+			return;
+		}
+
+		// get cached XML from WP transient API
+        unset ($events_xml);
+        $events_xml = get_transient( 'trumba_events_xml' );
+        $ctx = stream_context_create(array('http'=>
+                array(
+                    'timeout' => 3,  //1200 Seconds is 20 Minutes
+                    'ignore_errors' => true
+                ),
+                'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
+            ));
+
+            if ($events_xml = @file_get_contents( $feed_url, false, $ctx )) {
+            } else {
+                return;
+            };
+
+        $xml = new SimpleXmlElement($events_xml);
+		
+		$events = array();
+
+		foreach ($xml->channel->item as $item) {     
+			$events[] = array(
+				'title' => $item->title,
+				'date'	=> $item->category,
+				'url'	=> $item->link
+			);
+		}
+
+		if ( empty( $events ) ) {
+			return;
+		}
+
+		$events = array_slice( $events, 0, $posts_per_page );
+
+		?>
+			<?php echo $before_widget ?>
+			
+				<?php echo $before_title ?>
+
+					<span><a href="<?php echo $events_url; ?>"><?php echo $title ?></a></span>
+
+				<?php echo $after_title ?>
+
+			<?php if ( count( $events ) ) : ?>
+
+				<?php foreach ( $events as $key => $event ) : ?>
+
+					<article class="event">
+                                <?php
+                                $date = substr($event['date'], 0, -6);
+                                $date = strtotime($date);
+                                $date = date('l, M j, Y ', $date);
+                                ?>
+								<div class="meta">
+									<p class="date"><a href="<?php echo $event['url'] ?>"><i class="icon-calendar"></i> <?php echo $date ?></a></p>
+								</div>
+
+								<header>
+									<h3><a href="<?php echo $event['url'] ?>"><?php echo $event['title'] ?></a></h3>
+								</header>
+						</a>
+					</article>
+				<?php endforeach ?>
+
+			<?php else : ?>
+
+				<p>No events found.</p>
+
+			<?php endif ?>
+			<?php if ( $events_url != '' ) : ?>
+				<div class="textwidget">              
+					<p>
+						<a class="more" href="<?php echo $events_url; ?>" title="View All Events"><span class="button">More events</span></a>
+					</p>
+				</div>
+			<?php endif ?>
+			<?php echo $after_widget ?>
+		
+		<?php
+	}
+
+	public function form( $instance ) {
+
+		$title = isset( $instance['title'] ) ? $instance['title'] : __( 'Events', 'coenv' );
+		$feed_url = $instance['feed_url'];
+		$events_url = $instance['events_url'];
+		$posts_per_page = isset( $instance['posts_per_page'] ) ? (int) $instance['posts_per_page'] : 5;
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'feed_url' ) ?>"><?php _e( 'Feed URL:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'feed_url' ) ?>" name="<?php echo $this->get_field_name( 'feed_url' ) ?>" value="<?php echo esc_attr( $feed_url ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'events_url' ) ?>"><?php _e( 'More link (URL):' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'events_url' ) ?>" name="<?php echo $this->get_field_name( 'events_url' ) ?>" value="<?php echo esc_attr( $events_url ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'posts_per_page' ) ?>">Number of events to show: </label>
+				<input name="<?php echo $this->get_field_name( 'posts_per_page' ) ?>" type="text" size="3" value="<?php echo $posts_per_page ?>" />
+			</p>
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['feed_url'] = strip_tags( $new_instance['feed_url'] );
+		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
+		$instance['events_url'] = strip_tags( $new_instance['events_url'] );
+		 
+		return $instance;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Headlines Newsletter Widget
  */
