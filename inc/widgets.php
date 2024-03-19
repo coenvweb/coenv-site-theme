@@ -597,8 +597,16 @@ class CoEnv_Widget_Events_Sidebar extends WP_Widget {
 	public function form( $instance ) {
 
 		$title = isset( $instance['title'] ) ? $instance['title'] : __( 'Events', 'coenv' );
-		$feed_url = $instance['feed_url'];
-		$events_url = $instance['events_url'];
+		if ( isset ($instance['feed_url']) ) {
+			$feed_url = $instance['feed_url'];
+		} else {
+			$feed_url = NULL;
+		}
+		if ( isset ($instance['events_url']) ) {
+			$events_url = $instance['events_url'];
+		} else {
+			$events_url = NULL;
+		}
 		$posts_per_page = isset( $instance['posts_per_page'] ) ? (int) $instance['posts_per_page'] : 5;
  
 		?>
@@ -632,35 +640,6 @@ class CoEnv_Widget_Events_Sidebar extends WP_Widget {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
