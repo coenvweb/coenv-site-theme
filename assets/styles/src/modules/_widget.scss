@@ -148,10 +148,11 @@ tr.twEventRow td {
         padding: .5rem 0;
     }
 	.event h3 {
-		text-transform: uppercase;
-		font-size: .88rem;
-		font-weight: 600;
-		letter-spacing: 0;
+		text-transform: none;
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 1;
+		line-height: 120%;
 		padding-left: 1.4rem;
 		padding-top: 0;
 
