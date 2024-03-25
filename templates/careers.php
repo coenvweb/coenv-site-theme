@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Careers & Funding Blog
+Template Name: Careers & Funding Blog (new)
 */
 /**
  * page.php
@@ -22,24 +22,27 @@ $ancestor = array(
 
 		<div class="container">
 
-			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+        <?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-				<nav id="secondary-nav" class="side-col">
+<nav id="secondary-nav" class="side-col">
 
-			<ul id="menu-secondary" class="menu">
-                <li class="pagenav">
-	              <?php echo '<a href="' . $ancestor['permalink'] . '"><span>Back to</span>' . $ancestor['title'] . '</a>'; ?>
-                    <ul class="career-actions">
-                    <li><a href="/for-employers/"><span class="dashicons dashicons-welcome-add-page"></span> Post an Opportunity</a></li>
-                    <li><a href="/tips-for-jobinternship-seekers/"><span class="dashicons dashicons-star-filled"></span> Tips for Seekers</a></li>
-                    <li><a href="../uw-environmental-career-fair/"><span class="dashicons dashicons-businessman"></span> UW Environmental Career Fair</a></li>
-                </ul>
-                </li>
-	          </ul>
+<ul id="menu-secondary" class="menu">
+  <?php
+  $list_args = array(
+      'child_of' => $ancestor['id'],
+      'depth' => 3,
+      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+      'link_after' => '<i class="icon-arrow-right"></i>',
+      'walker' => new CoEnv_Secondary_Menu_Walker,
+      'sort_column' => 'menu_order' 
+  );
+  wp_list_pages($list_args);
+  ?>
+</ul>
+<?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
+</nav><!-- #secondary-nav.side-col -->
 
-				</nav><!-- #secondary-nav.side-col -->
-
-			<?php endif ?>
+<?php endif ?>
 
 			<main id="main-col content" class="main-col site-content">
 				<div class="article">
@@ -48,15 +51,7 @@ $ancestor = array(
 							<h1 class="article__title">Career Opportunities</h1>
 							<div class="career-intro article__content">
 							<?php the_content(); ?>
-                           
-							</div>
-                        </div>
-                    </header>
-                </div>
-            </main><!-- .main-col -->
-            		</div><!-- .container -->
-        <div class="container career-container">
-            <div class="career-col main-col article">
+            
                 <div class="sorter-search-row">
                     <form role="search" class="search-form Form--inline" id="post-search">
                         <label for="st">Search</label>
@@ -104,10 +99,17 @@ $ancestor = array(
 
                 
             </div><!-- .career-col -->
-            <div class="side-col">
-                <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
+            <!--<div class="side-col">
+                <?php //include(locate_template( 'partials/partial-careers-filter.php' )) ?>
             </div><!-- .side-col -->
-        </div><!-- .container -->
+                           
+							</div>
+                        </div>
+                    </header>
+                </div>
+            </main><!-- .main-col -->
+            		</div><!-- .container -->
+        
 
 	</section><!-- #page -->
 

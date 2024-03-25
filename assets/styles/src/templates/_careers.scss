@@ -168,7 +168,7 @@ body.page-template-careers {
     width: 100%;
     height: 3.5rem;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     @include max-width ( $iPadPortrait ) {
         display: table;
         padding-bottom: 1rem;
@@ -243,7 +243,7 @@ body.page-template-careers {
 		font-size: .8rem;
 		color: #666;
         @include min-width ( $iPadPortrait ) {
-            margin-top: -1.5rem;
+            //margin-top: -1.5rem;
         }
         ul {
             padding: 0;
@@ -308,6 +308,7 @@ body.page-template-careers {
 }
 
 #results {
+    margin-top: 3rem;
     min-height: 100vh;
 }
 
