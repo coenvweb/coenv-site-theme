@@ -39,6 +39,7 @@ $ancestor = array(
   wp_list_pages($list_args);
   ?>
 </ul>
+<div>&nbsp;</div>
 <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
 </nav><!-- #secondary-nav.side-col -->
 
