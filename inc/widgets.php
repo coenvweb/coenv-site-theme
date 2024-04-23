@@ -1517,4 +1517,156 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
  
 }
 
+
+
+/**
+ * Podcast Widget
+ */
+register_widget( 'CoEnv_Widget_Podcast' );
+
+class CoEnv_Widget_Podcast extends WP_Widget {
+ 
+  public function __construct()
+	{
+		$args = array(
+			'classname' => 'widget-podcast',
+			'description' => __( 'Display the latest podcast episode and information about it when off season.', 'coenv' )
+		);
+ 
+		parent::__construct(
+			'podcast', // base ID
+			'Podcast', // name
+			$args
+		);
+	}
+ 
+	public function form( $instance )
+	{
+ 
+		if ( isset( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			$title = __( 'Podcast', 'coenv' );
+		}
+ 
+		if ( isset( $instance['text'] ) ) {
+			$text = $instance['text'];
+		} else {
+			$text = '';
+		}
+    
+    if ( isset( $instance['button_url'] ) ) {
+			$button_url = $instance['button_url'];
+		} else {
+			$button_url = '/podcast';
+		}
+      
+    if ( isset( $instance['button_text'] ) ) {
+			$button_text = $instance['button_text'];
+		} else {
+			$button_text = 'All Episodes';
+		}
+ 
+		?>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ) ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" value="<?php echo esc_attr( $title ) ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_name( 'text' ) ?>">Text to show: </label>
+				<textarea name="<?php echo $this->get_field_name( 'text' ) ?>" cols="31" rows="5"><?php echo $text ?></textarea>
+			</p>
+      <p>
+				<label for="<?php echo $this->get_field_name( 'button_url' ) ?>">Button URL: </label>
+				<input class="widefat" name="<?php echo $this->get_field_name( 'button_url' ) ?>" type="url" value="<?php echo $button_url ?>" />
+			</p>
+      <p>
+				<label for="<?php echo $this->get_field_name( 'button_text' ) ?>">Button Text: </label>
+				<input class="widefat" name="<?php echo $this->get_field_name( 'button_text' ) ?>" type="text" value="<?php echo $button_text ?>" />
+			</p>
+		<?php
+	}
+ 
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['text'] = strip_tags( $new_instance['text'] );
+    $instance['button_url'] = strip_tags( $new_instance['button_url'] );
+    $instance['button_text'] = strip_tags( $new_instance['button_text'] );
+ 
+		return $instance;
+	}
+ 
+	public function widget( $args, $instance )
+	{
+		extract( $args );
+		$title = apply_filters( 'widget_title', $instance['title'] );   
+        
+ 
+        $pod_args = array(
+            'post_type' => 'post',
+            'posts_per_page' => '1',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'story_type',
+                    'field'    => 'slug',
+                    'terms'    => 'podcast',
+                ),
+            ),
+		);
+        
+
+        $pod_query = new WP_Query( $pod_args );
+        
+        echo $before_widget; ?>
+        <?php echo $before_title ?>
+
+            <span><a href="<?php echo $instance['button_url'] ?>">
+                <?php 
+                if ( $title == '' ){
+                    echo 'Podcast';
+                } else {
+                    echo $title;
+                } ?>
+            </a></span>
+			<a class="more" href="<?php echo $instance['button_url']; ?>" title="View All episodes"><?php echo $instance['button_text']; ?> &raquo;</a>
+
+
+        <?php echo $after_title;
+
+        if ( $pod_query->have_posts()) {
+                echo '<div class="podcast-wrap">';
+                while ( $pod_query->have_posts() ) {
+                    $pod_query->the_post();
+            }
+			$pod_date = get_the_date();
+			if( strtotime( $pod_date ) < strtotime('-6 months') ) {
+				echo '<div class="podcast-promo-container off-season">';
+				echo '<a class="podcast-title" href="/podcast"><h3><span class="microphone">
+				<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
+				</span>FieldSound</h3>';
+				echo '<p class="small-title">Listen now »</p></a>';
+				echo '</div>';
+			} else {
+				echo '<div class="podcast-promo-container">';
+				echo '<a href="' . get_permalink() . '">';
+				the_post_thumbnail('large');
+				echo '</a>';
+				echo '<a class="podcast-title" href="/podcast"><h3><span class="microphone">
+				<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
+				</span>FieldSound</h3></a>';
+				echo '<a class="latest-episode" href="' . get_permalink() . '">';
+				echo '<p class="small-title">Latest episode:</p>';
+				echo '<h4 class="article__title"> ' . get_the_title() . '</h4></a>';
+				echo '</div>';
+			}
+        }
+		echo $after_widget;
+		return;
+
+	}
+ 
+}
+
 ?>

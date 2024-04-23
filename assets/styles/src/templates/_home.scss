@@ -527,7 +527,7 @@ body.home {
 
 } // .home .widget.featured-stories
 
-.home .widget-events {
+.home .widget-events, .home .widget-podcast {
 
 	@include min-width ( $maxWidthBreakpoint ) {
 		float: left;

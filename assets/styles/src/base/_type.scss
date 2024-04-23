@@ -83,3 +83,12 @@ p, ul, ol {
   font-style: italic;
   font-display: swap;
 }
+
+
+@font-face {
+	font-family: encode-sans-black;
+	src: url("../../../assets/fonts/EncodeSansCondensed-800-ExtraBold.ttf") format('truetype');
+  font-style: bold;
+	font-weight: 800;
+  font-display: swap;
+}
