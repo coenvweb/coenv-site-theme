@@ -7,16 +7,17 @@ function coenv_related_news_inline($atts) {
 
 	extract(shortcode_atts(array(
         "cat" => '',
+		"tax" => 'topic',
         "title" => 'Related News'
     ), $atts));
 
 
-    $cat_raw = get_terms('topic');
+    $cat_raw = get_terms($tax);
 	$cat_raw = wp_list_pluck( $cat_raw, 'slug' );
 
 	if ($cat != '') {
 		$cat = $cat;
-		$cat_out = 'topic/' . $cat;
+		$cat_out = $tax . '/' . $cat;
 	} else {
 		$cat = $cat_raw;
 		$cat_out = '';
@@ -31,7 +32,7 @@ function coenv_related_news_inline($atts) {
 		'tax_query' => array(
 		'relation' => 'AND',
 			array(
-			'taxonomy' => 'topic',
+			'taxonomy' => $tax,
 			'field' => 'slug',
 			'terms' => $cat,
 			'operator' => 'IN'
