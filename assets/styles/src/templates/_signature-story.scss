@@ -73,7 +73,7 @@
         
         .title__block {
             max-width: 640px!important;
-            @include min-width ( 800 ) {
+            @include min-width ( 900 ) {
                 width: 50%;
             }
         }
@@ -83,7 +83,7 @@
             padding: 0 2rem;
             margin: auto;
             position: relative;
-            @include min-width ( 800 ) {
+            @include min-width ( 900 ) {
                 width: 50%;
             }
         }
@@ -683,6 +683,95 @@
         margin-bottom: 3rem;
         @include max-width ( 800 ) {
             background-attachment: inherit;
+        }
+    }
+
+    // parallax dividers
+    
+    .photo-divider.big {
+        text-align: center;
+        position: relative;
+        margin-bottom: 1rem;
+        @include max-width ( 600 ) {
+            max-height: 100vw;
+            height: 100vw;
+            &:after {
+                background-image: linear-gradient(180deg, transparent 10%, black 110%)!important;
+                max-height: 105vw;
+                height: 105vw;
+            }
+        }
+        
+        @include min-width ( 600 ) {
+            min-height: 85vh;
+            &:after {
+                min-height: 85vh;
+            }
+        } 
+        
+        &:after {
+          display: block;
+          position: relative;
+          background-image: linear-gradient(180deg, transparent 50%, black 130%);
+          width: 100%;
+          content: '';
+        }
+
+        .inner-divider-content {
+            bottom: 0;
+            position: absolute;
+            margin: 0 2rem;
+            text-align: left;
+            z-index: 2;
+            @include min-width ( 600 ) {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 640px;
+                width: 100%;
+                padding: 0 2rem;
+                margin: 0 auto;
+            }
+            @include min-width ( 900 ) {
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: 640px;
+                margin: 1rem;
+                padding: 0;
+                width: auto;
+            }
+        }
+        
+        
+        .section-title {
+            font-style: italic;
+            line-height: 110%;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            font-family: 'pt-serif-bold-italic';
+            color: white;
+            max-width: 600px;
+            font-size: 3rem;
+            @include min-width ( 900 ) {
+                font-size: calc(2.5vw + 1rem);
+            }
+            @include min-width ( 1800 ) {
+                font-size: 5rem;
+            }
+            &:before, &:after {
+                display: none;
+            }
+        }
+        .subtitle {
+            font-size: 1.25rem;
+            line-height: normal;
+            letter-spacing: 2.5px;
+            @include sans();
+            font-weight: 800;
+            text-transform: uppercase;
+            color: white;
+            @include max-width ( 800 ) {
+                font-size: .9rem;
+            }
         }
     }
     
