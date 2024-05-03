@@ -8,7 +8,9 @@ function coenv_related_news_inline($atts) {
 	extract(shortcode_atts(array(
         "cat" => '',
 		"tax" => 'topic',
-        "title" => 'Related News'
+        "title" => 'Related News',
+		"num" => 2,
+		"order" => 'DESC',
     ), $atts));
 
 
@@ -25,9 +27,9 @@ function coenv_related_news_inline($atts) {
 
 	$rel_args = array (
 		'post_type' => 'post',
-		'posts_per_page' => '2',
+		'posts_per_page' => $num,
 		'meta_key' => '_thumbnail_id',
-		'order' => 'DESC',
+		'order' => $order,
 		'orderby' => 'date',
 		'tax_query' => array(
 		'relation' => 'AND',

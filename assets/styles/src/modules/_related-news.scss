@@ -204,10 +204,15 @@ footer.related {
         float: left;
         gap: 10px;
         margin-bottom: 3rem;
+        flex-wrap: wrap;
     }
 
     .related-container {
-        @extend .shadow;
+        background-color: $text-very-lt;
+        //@extend .shadow;
+        @include min-width ( 600 ) {
+            max-width: calc(50% - 5px);
+        }
         width: 100%;
 
         &:hover {
@@ -216,10 +221,6 @@ footer.related {
                 color: $white!important;
             }
         }
-
-        @include min-width ( 600 ) {
-        }
-
     }
 
     .related-thumb {
