@@ -241,7 +241,7 @@ function big_element_func( $atts ){
 				break; 
             case 'big_gallery':
                 $output .= '>' . $photo_holder;
-                if(!empty($text)){$gallery_caption = $text;
+                if(!empty($text)){$gallery_caption = wp_strip_all_tags($text);
                 } else {
                     $gallery_caption = $caption;
                 };
