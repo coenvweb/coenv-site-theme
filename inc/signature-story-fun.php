@@ -241,7 +241,11 @@ function big_element_func( $atts ){
 				break; 
             case 'big_gallery':
                 $output .= '>' . $photo_holder;
-                $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $caption . '</p>';
+                if(!empty($text)){$gallery_caption = $text;
+                } else {
+                    $gallery_caption = $caption;
+                };
+                $output .= '<p class="gallery-caption"><strong>Gallery</strong> // ' . $gallery_caption  . '</p>';
 				break;
             case 'slider_gallery':
                 $output .= '>' . $photo_holder;
