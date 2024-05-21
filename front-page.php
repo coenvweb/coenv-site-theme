@@ -15,11 +15,6 @@ $features = new WP_Query( array(
             'field' => 'slug',
             'terms' => 'featured-story'
         ),
-        array(
-            'taxonomy' => 'story_type',
-            'field' => 'slug',
-            'terms' => 'season-2'
-        )
     ),
     'orderby' => 'menu_order',
     'order' => 'ASC',
@@ -31,12 +26,14 @@ if( $sticky ) {
         'post_type' => 'post',
         'posts_per_page' => 8,
         'post__not_in' => array($features->post->ID)
+        'orderby' => 'menu_order',
     ) );
 }else{
     $post_sort = new WP_Query( array(
         'post_type' => 'post',
         'posts_per_page' => 9,
         'post__not_in' => array($features->post->ID)
+        'orderby' => 'menu_order',
     ) );
 }
 
