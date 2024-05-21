@@ -9,10 +9,16 @@ $features = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 1,
     'tax_query' => array(
+        'relation' => 'OR',
         array(
             'taxonomy' => 'story_type',
             'field' => 'slug',
             'terms' => 'featured-story'
+        ),
+        array(
+            'taxonomy' => 'story_type',
+            'field' => 'slug',
+            'terms' => 'season-2'
         )
     ),
     'orderby' => 'menu_order',
