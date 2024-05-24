@@ -1774,3 +1774,15 @@
     }
 
 }
+
+//tetiaroa
+
+.postid-102658 {
+    #element-content-5 {
+        &:first-of-type {
+            @include max-width ( 800 ) {
+                display: none;
+            }
+        }
+    }
+}
