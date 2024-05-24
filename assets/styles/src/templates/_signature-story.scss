@@ -35,6 +35,10 @@
             bottom: -1.5rem;
             left: 30px;
         }
+        @include min-width ( 600 ) {
+            font-size: 10vw;
+            line-height: 12vw;
+        }
     }
     
     .article__header {
@@ -135,11 +139,6 @@
             }
             &.left {
                 margin-left: calc(-24vw - 1rem);
-            }
-        }
-        @include max-width ( 900 ) {
-            img {
-                padding: 1rem;
             }
         }
         @include max-width ( 600 ) {
@@ -1780,7 +1779,7 @@
 .postid-102658 {
     #element-content-5 {
         &:first-of-type {
-            @include max-width ( 800 ) {
+            @include max-width ( 900 ) {
                 display: none;
             }
         }
