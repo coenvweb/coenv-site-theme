@@ -24,13 +24,29 @@ if( $sticky ) {
     $post_sort = new WP_Query( array(
         'post_type' => 'post',
         'posts_per_page' => 8,
-        'post__not_in' => array($features->post->ID)
+        'post__not_in' => array($features->post->ID),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'story_type',
+                'field' => 'term_id',
+                'terms' => array ( 7239, 7240 ),
+                'operator' => 'NOT IN'
+            )
+        )
     ) );
 }else{
     $post_sort = new WP_Query( array(
         'post_type' => 'post',
         'posts_per_page' => 9,
-        'post__not_in' => array($features->post->ID)
+        'post__not_in' => array($features->post->ID),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'story_type',
+                'field' => 'term_id',
+                'terms' => array ( 7239,7240 ),
+                'operator' => 'NOT IN'
+            )
+        )
     ) );
 }
 
@@ -73,7 +89,6 @@ if( $sticky ) {
                     <?php while ( $post_sort->have_posts() ) : $post_sort->the_post() ?>
 
                         <?php get_template_part( 'partials/partial', 'story' ) ?>
-
                     <?php endwhile  ?>
 
                 </div><!-- .stories-container -->
