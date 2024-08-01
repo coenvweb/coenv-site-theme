@@ -89,7 +89,32 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
       endif;
 ?>
-         
+<!-- uw munchkin -->
+<!-- UWMunchkin.init('munchkinID', 'serviceKey', 'testIP')-->
+<script type="text/javascript">
+    (function () {
+        var didInit = false,
+            s = document.createElement('script');
+
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://subscribe.gifts.washington.edu/Scripts/uwmunchkin/uwmunchkin.min.js';
+        s.onreadystatechange = function () {
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                initUWMunchkin();
+            }
+        };
+        s.onload = initUWMunchkin;
+        document.getElementsByTagName('head')[0].appendChild(s);
+
+        function initUWMunchkin() {
+            if (didInit === false) {
+                didInit = true;
+                UWMunchkin.init('131-AQO-225', '555556', null);
+            }
+        }
+    })();
+</script>       
 <script async src="//www.washington.edu/static/alert.min.js" type="text/javascript"></script>
 <script>
     (function(d) {
