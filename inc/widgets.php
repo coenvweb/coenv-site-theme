@@ -1611,7 +1611,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
                 array(
                     'taxonomy' => 'story_type',
                     'field'    => 'term_id',
-                    'terms'    => array( 7239, 7240 ),
+					'terms' => array ( 7239,7240,7241,7242,7243 ),
                 ),
             ),
 		);
