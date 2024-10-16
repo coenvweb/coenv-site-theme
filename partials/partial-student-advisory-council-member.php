@@ -63,22 +63,22 @@ if(!empty($description)) {
                         }
                         if (empty($link_to_major_info) && ($raw_major !== 'Other')){
                             if ($major == 'Aquatic and Fishery Sciences') {
-                                $link_to_major_info = 'https://fish.uw.edu/students/about-undergraduate-program/degrees-offered/';
+                                $link_to_major_info = 'https://fish.uw.edu/students/undergraduate-program/';
                             }
                             if ($major == 'Atmospheric Sciences') {
-                                $link_to_major_info = 'http://www.atmos.washington.edu/academics/undergrads/degrees.shtml#bs';
+                                $link_to_major_info = 'https://atmos.uw.edu/students/undergraduate-program/academic-program/';
                             }
                             if ($major == 'Bioresource Science and Engineering') {
-                                $link_to_major_info = 'http://depts.washington.edu/sefsbse/';
+                                $link_to_major_info = 'https://sefs.uw.edu/students/undergraduate/bse-major/';
                             }
                             if ($major == 'Earth and Space Sciences') {
-                                $link_to_major_info = 'http://www.ess.washington.edu/education/undergrad/';
+                                $link_to_major_info = 'https://ess.uw.edu/education/undergraduate-program/';
                             }
                             if ($major == 'Environmental Science and Terrestrial Resource Management') {
-                                $link_to_major_info = 'http://www.sefs.washington.edu/academicPrograms/undergrad/index.shtml';
+                                $link_to_major_info = 'https://sefs.uw.edu/students/undergraduate/esrm/';
                             }
                             if ($major == 'Environmental Studies') {
-                                $link_to_major_info = 'https://envstudies.uw.edu/undergraduate-students/prospective-students-undergrad/';
+                                $link_to_major_info = 'https://envstudies.uw.edu/students/';
                             }
                             if ($major == 'Oceanography') {
                                 $link_to_major_info = 'http://www.ocean.washington.edu/story/Undergraduate_Education';
@@ -90,7 +90,7 @@ if(!empty($description)) {
                                 $link_to_major_info = 'https://marinebiology.uw.edu/students/marine-biology-minor/';
                             }
                             if ($major == 'Quantitative Science') {
-                                $link_to_major_info = 'http://depts.washington.edu/cqs/minor.html';
+                                $link_to_major_info = 'https://quantitative.uw.edu/undergraduate/minor/';
                             }
                         }
                         if (empty($primary)) {
