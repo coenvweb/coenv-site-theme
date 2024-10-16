@@ -71,7 +71,7 @@ if(!empty($description)) {
                                 $link_to_major_info = 'http://www.atmos.washington.edu/academics/undergrads/degrees.shtml#bs';
                             }
                             if ($major == 'Bioresource Science and Engineering') {
-                                $link_to_major_info = 'http://depts.washington.edu/sefsbse/';
+                                $link_to_major_info = 'https://sefs.uw.edu/students/undergraduate/bse-major/';
                             }
                             if ($major == 'Earth and Space Sciences') {
                                 $link_to_major_info = 'http://www.ess.washington.edu/education/undergrad/';
