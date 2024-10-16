@@ -1275,10 +1275,10 @@ class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
         echo $before_widget; ?>
         <?php echo $before_title ?>
 
-            <span><a href="/research/postdoctoral-scholars/meet-our-postdocs/">
+            <span><a href="/research/postdoctoral-fellows/meet-postdocs/">
                 <?php 
                 if ( $title == '' ){
-                    echo 'Featured Postdocs';
+                    echo 'Meet our Postdocs';
                 } else {
                     echo $title;
                 } ?>
