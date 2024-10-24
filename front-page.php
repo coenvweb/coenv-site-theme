@@ -8,6 +8,7 @@ get_header();
 $features = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 1,
+    'post_status' => 'publish',
     'tax_query' => array(
         array(
             'taxonomy' => 'story_type',
@@ -24,6 +25,7 @@ if( $sticky ) {
     $post_sort = new WP_Query( array(
         'post_type' => 'post',
         'posts_per_page' => 8,
+        'post_status' => 'publish',
         'post__not_in' => array($features->post->ID),
         'tax_query' => array(
             array(
@@ -38,6 +40,7 @@ if( $sticky ) {
     $post_sort = new WP_Query( array(
         'post_type' => 'post',
         'posts_per_page' => 9,
+        'post_status' => 'publish',
         'post__not_in' => array($features->post->ID),
         'tax_query' => array(
             array(
