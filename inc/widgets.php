@@ -1260,6 +1260,7 @@ class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
            'post_type' => 'student_ambassadors',
             'posts_per_page' => '4',
             'orderby' => 'rand',
+			'post_status' => 'publish',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'student_type',
@@ -1431,6 +1432,7 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
             'post_type' => 'student_ambassadors',
             'posts_per_page' => '1',
             'orderby' => 'rand',
+			'post_status' => 'publish',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'student_type',
@@ -1607,6 +1609,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
         $pod_args = array(
             'post_type' => 'post',
             'posts_per_page' => '1',
+			'post_status' => 'publish',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'story_type',
