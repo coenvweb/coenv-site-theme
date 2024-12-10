@@ -10,7 +10,7 @@ function coenv_register_careers() {
 
 	$labels = array(
 		
-		'name' => __( 'Envirodemia' ),
+		'name' => __( 'Academic Opportunities' ),
 		'singular_name' => __( 'Opportunity' ),
 		'add_new' => __( 'Add New Opportunity' ),
 		'edit_item' => __( 'Edit Opportunity' ),
@@ -117,7 +117,7 @@ function coenv_add_careers_role() {
 	remove_role( 'careers_editor' );
 
  	add_role('careers_editor',
-            'Envirodemia Editor',
+            'Academic Opportunities Editor',
             array(
                 'read' => true,
                 'edit_posts' => false,
