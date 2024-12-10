@@ -40,7 +40,7 @@
                 <?php } elseif ($expired == 'openuntilfilled') { ?>
                 	Deadline: Open Until Filled
                 <?php } else { ?>
-                	Deadline passed (<time class="article__time expired" datetime="<?php echo date('Y-m-d h:i:s', $timestamp) ?>"><?php echo date('M j, Y', $timeexpired) ?></time>)
+                	Deadline passed
                 <?php } ?>               	
             	</span>
             </div>
@@ -60,7 +60,7 @@
 			<h2><a href="<?php the_permalink() ?>" rel="bookmark" target="_blank"><?php the_title() ?></a></h2>
             <h3 class="location"><?php echo $location; ?></h3>
 		<?php endif;
-		$career_tags = get_the_terms($post->ID,'career_post_tag');
+		$career_tags = get_the_terms($post->ID,'career_category');
 		if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
         $prefix = ' <span class="dot">•</span> ';
 		foreach ( $career_tags as $tag ) {

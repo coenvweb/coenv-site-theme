@@ -7,6 +7,7 @@ jQuery(function($)
         var ignore_scroll = false;
         var count = 2;
         var firstScroll = true;
+        loadFiltersFromURL(); 
         
         ajax_get_posts();
         
@@ -14,6 +15,82 @@ jQuery(function($)
             $(this).remove();
             ajax_get_posts(count)
         });
+
+        // Function to update the URL with a query string
+        function updateURL() {
+            var queryParams = getQueryParams();
+            var url = new URL(window.location.href);
+            url.search = queryParams;
+            window.history.pushState({}, '', url);
+        }
+
+        // Function to get query parameters from the filters
+        // Function to get query parameters from the filters
+        function getQueryParams() {
+            var params = [];
+
+            // Collect all selected filter values into separate parameters
+            var selectedTerms = getSelectedTerms();
+            selectedTerms.forEach(function(value) {
+                params.push('terms=' + encodeURIComponent(value));
+            });
+
+            // Handle search value
+            var searchValue = getSearchValue();
+            if (searchValue) {
+                params.push('search=' + encodeURIComponent(searchValue));
+            }
+
+            // Handle sort value
+            var sortValue = getSortValue();
+            if (sortValue) {
+                params.push('sort=' + encodeURIComponent(sortValue));
+            }
+
+            // Convert array of parameters to query string
+            var queryString = params.join('&');
+
+            return queryString;
+        }
+
+
+        // Function to get the current sort value
+        function getSortValue() {
+            var sortValue = $('.sorter .selected').data('value');
+            return sortValue;
+        }
+
+        // Function to get all selected terms
+        function getSelectedTerms() {
+            var terms = [];
+            $('#career-filter .button.selected').each(function() {
+                var value = $(this).attr('value');
+                terms.push(value);
+            });
+            return terms;
+        }
+
+        // Function to load filters from URL
+        function loadFiltersFromURL() {
+            var queryParams = new URLSearchParams(window.location.search);
+
+            queryParams.forEach(function(value, key) {
+                if (key === 'terms') {
+                    // Handle terms parameter
+                    var values = value.split(',');
+                    $('#career-filter .button').each(function() {
+                        var button = $(this);
+                        if (values.includes(button.attr('value'))) {
+                            button.addClass('selected').attr('aria-pressed', true).prepend('<i class="icon-cross"></i>');
+                        } 
+                    });
+                } else if (key === 'search') {
+                    $('#post-search input.text-search').val(value);
+                } else if (key === 'sort') {
+                    $('.sorter ul li[data-value="' + value + '"]').addClass('selected').attr('aria-pressed', true);
+                }
+            });
+        }
      
         //If list item is clicked, trigger input change and add css class
         $('.ajax-filters .button').on('click', function(){
@@ -29,7 +106,7 @@ jQuery(function($)
                 count = 2;
                 
             } else {
-                $(this).addClass('selected').attr('aria-pressed', true).delay(400).queue(function (next) {
+                $(this).addClass('selected').attr('aria-pressed', true).delay(200).queue(function (next) {
                     $(this).prepend('<i class="icon-cross"></i> ');
                     next();
                 });
@@ -43,18 +120,12 @@ jQuery(function($)
             if (!$(this).hasClass('selected') ) {
                 $('.sorter ul li').not(this).removeClass('selected').attr('aria-pressed', false);
                 $(this).attr('aria-pressed', true).addClass('selected');
+                updateURL(); // Update the URL as the user clicks sort
                 ajax_get_posts();
             }
             
             $(this).change();
         });
-        
-        //Get Search Form Values
-        function getSortValue()
-        {
-            var sortValue = $('.sorter .selected').data('value'); //Get sorter button value
-            return sortValue;
-        }
         
         // show breadcrumbs for filtered terms and allow them to be removed by clicking to unselect
         $('#results').on('click', '.filter-crumbs .term-filter', function(){
@@ -63,12 +134,14 @@ jQuery(function($)
             crumbVal = preClass+crumbVal;
             $(crumbVal).removeClass('selected').find('i').remove();
             count = 2;
+            updateURL(); // Update the URL with the modified filter state
             ajax_get_posts();
         });
      
         //If input is changed, load posts
         $('.ajax-filters, .filter-crumbs .term-filter').change( function(){
             count = 2;
+            updateURL(); // Update the URL with the new filter state
             ajax_get_posts(); //Load Posts
         });
      
@@ -107,6 +180,7 @@ jQuery(function($)
                     return;
                 } else {
                     count = 2;
+                    updateURL(); // Update the URL as the user types
                     ajax_get_posts(); //Load Posts
                 }
             }, 200 );
@@ -163,10 +237,10 @@ jQuery(function($)
                       type:'GET',
                       data: {
                         action: action,
-                        terms: getSelectedterms, //Get array of values from previous function
-                        search: getSearchValue, //Retrieve search value using function
+                        terms: getSelectedterms(), //Get array of values from previous function
+                        search: getSearchValue(), //Retrieve search value using function
                         paged: paged_value, //If paged value is being sent through with function call, store here
-                        sorter: getSortValue
+                        sorter: getSortValue()
                       },
                     beforeSend: function ()
                     {
@@ -250,6 +324,7 @@ jQuery(function($)
                         if (!$(".new")[0]){
                             $(newPostsSS).prepend('<p class="new"><span class="dashicons dashicons-star-filled"></span> New</p>');
                         }
+                        loadFiltersFromURL(); // Load filter state from URL
                     },
                     error: function()
                     {
@@ -259,6 +334,7 @@ jQuery(function($)
                 });
             };
         }
+        loadFiltersFromURL(); // Load filter state from URL
     }
 });
  

@@ -125,6 +125,7 @@ body.page-template-careers {
         .location {
             font-size: 1.1rem;
             color: $text-lt;
+            margin-bottom: .25rem!important;
             svg {
                 padding-top: 4px;
                 width: 12px;
@@ -261,7 +262,7 @@ body.page-template-careers {
     
     form {
         @include min-width ( $iPadPortrait ) {
-            width: calc(100% - 300px);
+            width: calc(100% - 210px);
         }
         width: 100%;
         margin-bottom: 1rem;
