@@ -67,12 +67,6 @@ $ancestor = array(
                             <li class="button" role="button" data-value="deadline" aria-pressed="false">Deadline</li>
                         </ul>
                     </div>
-                    <div class="subscribe">Subscribe
-                      <ul>
-                          <li><a class="button" href="http://eepurl.com/hN5H-/"><i class="icon-mail"></i><span class="visuallyhidden">Email</span></a></li>
-                          <li><a class="button" href="/feed/?post_type=careers"><i class="icon-rss"></i><span class="visuallyhidden">RSS</span></a></li>
-                      </ul>
-                    </div>
                     <div class="mobile-filter">Filter By
                       <ul>
                           <a class="filter-anchor" href="#filters"><li class="button"><span class="plus">+</span> Add Filter</li></a>

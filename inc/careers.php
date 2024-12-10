@@ -1,5 +1,170 @@
 <?php
 
+/**
+ * Register careers & funding
+ */
+
+add_action( 'init', 'coenv_register_careers' );
+
+function coenv_register_careers() {
+
+	$labels = array(
+		
+		'name' => __( 'Envirodemia' ),
+		'singular_name' => __( 'Opportunity' ),
+		'add_new' => __( 'Add New Opportunity' ),
+		'edit_item' => __( 'Edit Opportunity' ),
+		'add_new_item' => __( 'New Opportunity' ),
+		'view_item' => __( 'View Opportunities' ),
+		'search_items' => __( 'Search Opportunities' ),
+		'not_found' => __( 'No Opportunities found' ),
+		'not_found_in_trash' => __( 'No Opportunities found in Trash' )
+
+	);
+
+	$args = array(
+
+		'labels' => $labels,
+		'menu_position' => null,
+		'supports' => array( 'editor','revisions', 'title' ),
+        'taxonomies' => array( 'career_category' ),
+		'public' => true,
+		'has_archive' => false,
+		'hierarchical' => false,
+		'rewrite' => false,
+		'menu_icon' => 'dashicons-businessman',
+		'exclude_from_search' => false,
+        'map_meta_cap' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'opportunities', 'with_front' => false),
+        'capability_type' => 'post',
+			'capabilities' => array(
+				'publish_posts' => 'publish_careers',
+				'delete_others_posts' => 'delete_others_careers',
+				'delete_post' => 'delete_career',
+				'delete_posts' => 'delete_careers',
+				'delete_private_posts' => 'delete_private_careers',
+				'delete_published_posts' => 'delete_published_careers',
+				'edit_others_posts' => 'edit_others_careers',
+				'edit_post' => 'edit_career',
+				'edit_posts' => 'edit_careers',
+				'edit_private_posts' => 'edit_private_careers',
+				'edit_published_posts' => 'edit_published_careers',
+				'read_post' => 'read_career',
+				'read_private_posts' => 'read_private_careers',
+			),
+
+	);
+	register_post_type( 'careers', $args );
+
+}
+
+/**
+* Custom Taxonomies for Career Posts
+**/
+
+function career_tax() {
+
+	$career_labels = array(
+
+		'name'                       => _x( 'Opportunity Categories', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Opportunity Category', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Opportunity Categories', 'text_domain' ),
+		'all_items'                  => __( 'All Opportunity Categories', 'text_domain' ),
+		'parent_item'                => __( 'Parent Opportunity Category', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Opportunity Category:', 'text_domain' ),
+		'new_item_name'              => __( 'New Opportunity Category', 'text_domain' ),
+		'add_new_item'               => __( 'Add Opportunity Category', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Opportunity Category', 'text_domain' ),
+		'update_item'                => __( 'Update Opportunity Category', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate opportunity categories with commas', 'text_domain' ),
+		'search_items'               => __( 'Search opportunity categories', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove opportunity categories', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most cited opportunity categories', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+
+	);
+	$career_args = array(
+
+		'labels'                     => $career_labels,
+		'hierarchical'               => true,
+        'with_front'                 => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'capabilities' => array(
+			'assign_terms' => 'assign_career_terms',
+	        'edit_terms' => 'edit_career_terms',
+			'manage_terms' => 'manage_career_terms',
+			'delete_terms' => 'delete_career_terms',
+		),
+
+	);
+
+	register_taxonomy( 'career_category', array( 'careers' ), $career_args );
+}
+
+add_action( 'init', 'career_tax' );
+
+/**
+ * Add a role for Careers editors
+ */
+function coenv_add_careers_role() {
+
+	remove_role( 'careers_editor' );
+
+ 	add_role('careers_editor',
+            'Envirodemia Editor',
+            array(
+                'read' => true,
+                'edit_posts' => false,
+                'delete_posts' => false,
+                'publish_posts' => false,
+                'upload_files' => true,
+            )
+        );
+   }
+
+register_activation_hook( __FILE__, 'coenv_add_careers_role' );
+
+add_action('admin_init','coenv_add_role_caps',999);
+
+/**
+ * Add role permissions for Careers editors
+ */
+function coenv_add_role_caps() {
+
+// Add the roles you'd like to administer the custom post types
+	$roles = array('careers_editor', 'administrator');
+
+// Loop through each role and assign capabilities
+	foreach($roles as $the_role) { 
+
+	    $role = get_role($the_role);
+
+		$role->add_cap( 'publish_careers' );
+		$role->add_cap( 'delete_others_careers' );
+		$role->add_cap( 'delete_career' );
+		$role->add_cap( 'delete_careers' );
+		$role->add_cap( 'delete_private_careers' );
+		$role->add_cap( 'delete_published_careers' );
+		$role->add_cap( 'edit_others_careers' );
+		$role->add_cap( 'edit_career' );
+		$role->add_cap( 'edit_careers' );
+		$role->add_cap( 'edit_private_careers' );
+		$role->add_cap( 'edit_published_careers' );
+		$role->add_cap( 'read_career' );
+		$role->add_cap( 'read_private_careers' );
+		$role->add_cap( 'assign_career_terms' );
+	    $role->add_cap( 'edit_career_terms' );
+		$role->add_cap( 'manage_career_terms' );
+		$role->add_cap( 'delete_career_terms' );
+
+	}
+}
 
 
 // do not use on live/production servers

@@ -1,6 +1,6 @@
 <?php
 
-$exclude_slugs      = array( 'announcement', 'under-1-year', '1-2-years', '2-5-years', 'more-than-5-years', 'northwest-region-id-or-or', 'wa', 'seasonal', 'contract', 'permanent', 'organization-type', 'academia', 'tribal', 'gov', 'nonprofit', 'private-sector', 'careers', 'volunteer', 'uw-student-campus-jobs', 'uw-positions', 'us', 'field', 'compensation');           
+$exclude_slugs      = array( 'announcement');           
 $exclude_ids        = array();
 
 foreach( $exclude_slugs as $slug ) { 
