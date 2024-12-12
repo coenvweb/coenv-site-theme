@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Careers & Funding Blog (new)
+Template Name: Academic Opportunities Board
 */
 /**
  * page.php
@@ -49,7 +49,7 @@ $ancestor = array(
 				<div class="article">
 					<header class="article__header">
 						<div class="article__meta">
-							<h1 class="article__title">Career Opportunities</h1>
+							<h1 class="article__title"><?php the_title()?></h1>
 							<div class="career-intro article__content">
 							<?php the_content(); ?>
             
