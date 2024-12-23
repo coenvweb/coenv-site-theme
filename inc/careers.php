@@ -393,7 +393,7 @@ function careers_filter()
 		
     if ( ($career_terms || $search_value) && ($paged == 1)) {
         echo '<div class="filter-crumbs">';
-        echo '<h3>' . $career_loop->found_posts . ' careers tagged:</h3>';
+        echo '<h3>' . $career_loop->found_posts . ' opportunities tagged:</h3>';
         foreach ( $career_terms as $term ) {
             $term = get_term($term);
             $career_filter_links .= '<li class="button term-filter selected term_id_' . $term->term_id . '" name="filter_career[]" value="' . $term->term_id . '"><i class="icon-cross"></i> ' . $term->name . '</li>';

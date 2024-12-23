@@ -83,7 +83,7 @@ $ancestor = array(
                         <?php endwhile ?>
                     <?php else: ?>
                         <div class="no-results">
-                            <p>Sorry. No career opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
+                            <p>Sorry. No opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
                         </div>
                     <?php endif ?>
                 </div>
