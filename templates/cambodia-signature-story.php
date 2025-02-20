@@ -155,7 +155,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
      font-weight: 600;
  }
 </style>
-<script defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=**removed**"></script>
 
 <section id="blog" class="template-signature-story">
 

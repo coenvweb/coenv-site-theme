@@ -250,7 +250,7 @@ $banner = coenv_banner();
      font-weight: 600;
  }
 </style>
-<script defer src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***"></script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=**removed**"></script>
 
 <section id="blog" role="main" class="template-signature-story">
 
