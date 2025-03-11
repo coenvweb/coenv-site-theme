@@ -52,9 +52,9 @@ $links = get_field('outside_news');
 
                 <div class="newsletter_header <?=($nl_type == 'headlines' ? 'headlines' : 'scicomm')?>">
                     <?php if($nl_type == 'headlines') { ?>
-                        <img class="header_img" src="<?= get_template_directory_uri() ?>/assets/img/headlines_header.png" />
+                        <img class="header_img" alt="Headlines newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/headlines_header.png" />
                     <?php } else { ?>
-                        <img class="header_img" src="<?= get_template_directory_uri() ?>/assets/img/scicomm_header.png" />
+                        <img class="header_img" alt="Headlines newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/scicomm_header.png" />
                     <?php } ?>
                     <h1 class="newsletter_title"><?php echo $nl_title; ?></h1>
                 </div>
