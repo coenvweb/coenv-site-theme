@@ -88,4 +88,33 @@ function uwenvironment_inline_sidebar_end() {
 
 }
 add_shortcode("sidebar-end", "uwenvironment_inline_sidebar_end");
-?>
+
+function uwenvironment_datawrapper_embed( $atts = array() ) {
+  $a = shortcode_atts( array(
+      'dwid' => null,
+      'dwtitle' => null,
+      'dwwidth' => '600',
+      'dwheight' => '781',  // default height if not provided
+      'dwcharttype' => 'Donut Graph'
+  ), $atts );
+
+  // Check for required attributes
+  if ( !$a['dwid'] ) {
+      return 'Error: Missing data wrapper ID (dwid).';
+  }
+
+  // Sanitize inputs
+  $a['dwid'] = sanitize_text_field( $a['dwid'] );
+  $a['dwtitle'] = sanitize_text_field( $a['dwtitle'] );
+  $a['dwcharttype'] = sanitize_text_field( $a['dwcharttype'] );
+  $a['dwwidth'] = intval( $a['dwwidth'] );  // Ensure width is an integer
+  $a['dwheight'] = intval( $a['dwheight'] ); // Ensure height is an integer
+
+  // Generate iframe output
+ 
+  $output = '<iframe id="datawrapper-chart-' . $a['dwid'] . '" style="border: none;" src="https://datawrapper.dwcdn.net/' . $a['dwid'] . '/1/" frameborder="0" scrolling="no" aria-label="' . esc_attr( $a['dwcharttype'] ) . '" data-external="1" alt="' .  esc_attr( $a['dwcharttype'] ) . '" width="' .  esc_attr( $a['dwwidth'] ) . '" height="' . esc_attr( $a['dwheight'] ) . '"></iframe>';
+
+
+return $output;
+}
+add_shortcode('datawrap', 'uwenvironment_datawrapper_embed');
