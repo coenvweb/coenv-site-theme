@@ -30,7 +30,7 @@ function coenv_related_faculty ($id, $term = 0) {
             'orderby' => 'rand',
         );
         
-        $label = 'Faculty Profiles';
+        $label = 'Related faculty';
      
         
     } elseif ($coenv_term) {
@@ -52,7 +52,7 @@ function coenv_related_faculty ($id, $term = 0) {
 
         );
         
-        $label = get_field('related_faculty_label');
+        $label = "Related faculty";
     } else {
         $manual_choice = 1;
         $args = array (
@@ -64,7 +64,7 @@ function coenv_related_faculty ($id, $term = 0) {
              'post__in' => $term,
          );
          
-         $label = get_field('related_faculty_label');
+         $label = "Related faculty";
      }
 
 	$query = new WP_Query( $args );
@@ -77,11 +77,7 @@ function coenv_related_faculty ($id, $term = 0) {
             } else {
                 echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" >';
             }
-            if ($label) {
-                echo '<h2 class="title">' . $label . '</h2></a>';
-            } else {
                 echo '<h2 class="title">Related Faculty</h2></a>';
-            }
                 
             echo '</div>';
             echo '<div class="related-people">';
