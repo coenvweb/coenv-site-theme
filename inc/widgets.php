@@ -1661,9 +1661,10 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 				echo '<a class="latest-episode" href="' . get_permalink() . '">';
 				echo '<p class="small-title">Latest episode:</p>';
 				echo '<h4 class="article__title"> ' . get_the_title() . '</h4></a>';
+				echo '<p class="small-title" style="padding-left: 14px; padding-right: 14px; padding-bottom: 14px;">Season 4 coming soon.<br /><a href="https://www.buzzsprout.com/2134643/share">Subscribe now</a></p>';
 				echo '</div>';
 			}
-        }
+        }	
 		echo $after_widget;
 		return;
 
