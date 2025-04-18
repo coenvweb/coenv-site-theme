@@ -1785,3 +1785,13 @@
         }
     }
 }
+
+//axial
+
+.postid-110464 {
+    @include min-width ( 900 ) {
+        .element {
+            display: none;
+        }
+    }
+}
