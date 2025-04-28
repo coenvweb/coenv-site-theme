@@ -593,6 +593,11 @@ body.home {
 } // .home
 .home section#features {
 	margin-top: -80px;
+
+	@include max-width( 700 ) {
+		margin-top: -20px;
+
+	}
 }
 .home .banner-wrapper:after {
 	content: '';

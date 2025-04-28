@@ -449,6 +449,12 @@ li#wp-admin-bar-revision {
 		line-height: 4rem;
 		margin: 0;
 		padding: 0 0 20px 0;
+
+		@include max-width ( 700 ) {
+			font-size: 2.5rem;
+			line-height: 125%;
+		}
+
 	}
 	p {
 		font-size: 1.15rem;

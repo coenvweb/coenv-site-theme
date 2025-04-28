@@ -1,6 +1,9 @@
 /*	Social widget
 		======================================================================== */
 
+.home. .widget-social ul {
+	background: #ccc;
+}
 .widget-social {
 
 	ul {
@@ -9,7 +12,7 @@
 		padding: 0;
 		list-style: none;
 		@extend .shadow;
-		background: #ccc;
+		background: transparent;
 	}
 
 	li {
