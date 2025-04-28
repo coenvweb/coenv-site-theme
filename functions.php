@@ -709,3 +709,20 @@ function theme_add_last_modified_header($headers) {
         header('Last-Modified: '.$post_mod_date.' GMT');
      }
 }
+
+// Add no-cache <meta> to the homepage
+/**
+ * Conditionally add metatag to specific page
+ * 
+ * @return void
+ */
+function wpse359922_metatag_conditional() {
+
+    if( is_page( 2 ) ) {
+        echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">/n<meta http-equiv="Pragma" content="no-cache">';
+    } else {
+        echo '';
+    }
+
+}
+add_action( 'wp_head', 'wpse359922_metatag_conditional' );
