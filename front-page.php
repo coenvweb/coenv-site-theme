@@ -7,6 +7,7 @@ get_header();
 // Get all home page features and sort posts using post-types-order
 $features = new WP_Query( array(
     'post_type' => 'post',
+    'post_not_in' => array ( 110160, 110636 ),
     'posts_per_page' => 1,
     'post_status' => 'publish',
     'tax_query' => array(
@@ -31,9 +32,9 @@ if( $sticky ) {
             array(
                 'taxonomy' => 'story_type',
                 'field' => 'term_id',
-                'terms' => array ( 7239,7240,7241,7242,7243 ),
+                'terms' => array ( 7239,7240,7241,7242,7243,7274, ),
                 'operator' => 'NOT IN'
-            )
+            ),
         )
     ) );
 }else{
@@ -46,7 +47,7 @@ if( $sticky ) {
             array(
                 'taxonomy' => 'story_type',
                 'field' => 'term_id',
-                'terms' => array ( 7239,7240,7241,7242,7243 ),
+                'terms' => array ( 7239,7240,7241,7242,7243, 7274, ),
                 'operator' => 'NOT IN'
             )
         )
