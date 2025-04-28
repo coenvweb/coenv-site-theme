@@ -1797,12 +1797,7 @@
 }
 
 // research for washington. research for the world
-
-text-transform: uppercase;
-border: 3px solid #666;
-background-color: transparent;
-}
-
+.postid-110636 section.template-signature-story,
 .postid-110160 section.template-signature-story {
     #secondary-nav, .post-info {
         display: none;
@@ -1833,8 +1828,6 @@ background-color: transparent;
         li .button {
             background-color: #fff;
             color: #000;
-
-
         }
         li .button:hover {
             text-transform: uppercase;
@@ -1843,13 +1836,11 @@ background-color: transparent;
         }
     }
 }
-.postid-110160 section.template-signature-story ul li img {
-
+.postid-110160 section.template-signature-story ul li img,
+.postid-110636 section.template-signature-story ul li img {
     @include max-width ( 900 ) {
         
             width: 100%;
-            height: auto;                
-    
+            height: auto;                  
 }
-
 }
