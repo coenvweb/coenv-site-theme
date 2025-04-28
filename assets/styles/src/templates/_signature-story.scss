@@ -1823,7 +1823,7 @@
             margin-top: 20px;
             text-transform: uppercase;
             border: 3px solid #666;
-    background-color: transparent;
+        background-color: transparent;
         }
         li .button {
             background-color: #fff;
@@ -1832,7 +1832,8 @@
         li .button:hover {
             text-transform: uppercase;
 border: 3px solid #666;
-background-color: transparent;
+background-color: #000000;
+color: #ffffff;
         }
     }
 }
