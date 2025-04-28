@@ -60,6 +60,7 @@ $layout-wrapper-translateX: 80%;
 		width: auto;
 		overflow: auto;
 	}
+	
 
 	.mobile-menu-active & {
 		//@include transform( translateX(-$layout-wrapper-translateX) );
@@ -73,6 +74,11 @@ $layout-wrapper-translateX: 80%;
 	}
 
 } // .layout-wrapper
+
+.home .layout-wrapper {
+	background-image: none;
+	background-color: #000;
+} // .home .layout-wrapper
 
 // transitioning to .layout-container
 .layout-container,

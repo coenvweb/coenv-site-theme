@@ -518,6 +518,7 @@ body.home {
 		float: left;
 		@include col-3;
 		@include rem('padding-right', 0.5);
+		@include rem('margin-top', 2);
 
 		.stories-container {
 			@include rem('margin', 0, -0.5);
@@ -527,12 +528,27 @@ body.home {
 
 } // .home .widget.featured-stories
 
-.home .widget-events, .home .widget-podcast {
+.home .widget-podcast {
 
 	@include min-width ( $maxWidthBreakpoint ) {
 		float: left;
 		@include col-1;
 		@include rem('padding-left', 0.5);
+		@include rem('margin-top', 2);
+	}
+    
+    @include max-width( 1087 ) {
+        @include rem('padding-right', 0.5);
+    }
+}
+
+.home .widget-events {
+
+	@include min-width ( $maxWidthBreakpoint ) {
+		float: left;
+		@include col-1;
+		@include rem('padding-left', 0.5);
+		@include rem('margin-top', 0.5);
 	}
     
     @include max-width( 1087 ) {
@@ -574,4 +590,30 @@ body.home {
             
         }
     }
+} // .home
+.home section#features {
+	margin-top: -80px;
+}
+.home .banner-wrapper:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to bottom, transparent 0%, black 85%);
+  }
+  .home a.button {
+	background-color: #800080;
+	border: solid 1px #800080;
+	;
+
+	text-transform: uppercase;
+  }
+  .home a.button:hover {
+	background-color: #800080;
+	border: solid 1px #FA00FA;
+}
+.story .inner {
+	background-color: #CCC;
 }

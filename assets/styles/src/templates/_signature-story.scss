@@ -1795,3 +1795,61 @@
         }
     }
 }
+
+// research for washington. research for the world
+
+text-transform: uppercase;
+border: 3px solid #666;
+background-color: transparent;
+}
+
+.postid-110160 section.template-signature-story {
+    #secondary-nav, .post-info {
+        display: none;
+    }
+    ul {
+        text-decoration: none;
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+        display: inline-block;
+        li {
+            border-top: solid 2px #ddd;
+            float: left;
+            font-size: 20px;
+            line-height: 130%;
+            margin-bottom: 1rem;
+            padding-top: 1.6rem;
+            width: auto;
+        }
+        li img {
+        }
+        li .button {
+            margin-top: 20px;
+            text-transform: uppercase;
+            border: 3px solid #666;
+    background-color: transparent;
+        }
+        li .button {
+            background-color: #fff;
+            color: #000;
+
+
+        }
+        li .button:hover {
+            text-transform: uppercase;
+border: 3px solid #666;
+background-color: transparent;
+        }
+    }
+}
+.postid-110160 section.template-signature-story ul li img {
+
+    @include max-width ( 900 ) {
+        
+            width: 100%;
+            height: auto;                
+    
+}
+
+}

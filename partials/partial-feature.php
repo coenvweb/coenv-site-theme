@@ -8,7 +8,7 @@
 //    $content_url = the_field('story_source_name');
 //    $content_target = ' target="_blank" ';
  //} else {
-    $content_name = "Read more »";
+    $content_name = "Read more";
     $content_url = get_the_permalink();
     $content_target = '';
 //}
@@ -34,7 +34,6 @@ $feature = array(
 		'url' => $feature_image[0],
 		'caption' => $feature_caption
 	),
-	'color' => $unit_color != '' ? $unit_color : get_field('color_picker')
 );
 ?>
 
@@ -51,7 +50,7 @@ $feature = array(
     
 	<div class="feature-info-container">
             
-		<div class="feature-info" style="background-color: <?php echo $feature['color'] ?>">
+		<div class="feature-info" style="background-color: #33006f;">
 
 			<div class="feature-type">
             <?php

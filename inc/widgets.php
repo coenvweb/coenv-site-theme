@@ -140,7 +140,7 @@ class CoEnv_Widget_Social extends WP_Widget {
  
 			<ul>
 				<?php if (get_option('facebook')) { ?><li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Become a fan of <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow"><i class="icon-facebook"> </i>Facebook</a></li><?php } ?>
-				<?php if (get_option('linkedin')) { ?><li class="linkedin"><a href="<?php echo get_option('linkedin'); ?>" title="Follow <?php bloginfo('name'); ?> on LinkedIn" target="_blank" rel="nofollow"><svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #888; margin-bottom: -6px; width: 100%;"><g transform="scale(0.03125 0.03125)"><path d="M928 0h-832c-52.8 0-96 43.2-96 96v832c0 52.8 43.2 96 96 96h832c52.8 0 96-43.2 96-96v-832c0-52.8-43.2-96-96-96zM384 832h-128v-448h128v448zM320 320c-35.4 0-64-28.6-64-64s28.6-64 64-64c35.4 0 64 28.6 64 64s-28.6 64-64 64zM832 832h-128v-256c0-35.4-28.6-64-64-64s-64 28.6-64 64v256h-128v-448h128v79.4c26.4-36.2 66.8-79.4 112-79.4 79.6 0 144 71.6 144 160v288z"></path></g></svg>LinkedIn</a></li><?php } ?>
+				<?php if (get_option('linkedin')) { ?><li class="linkedin"><a href="<?php echo get_option('linkedin'); ?>" title="Follow <?php bloginfo('name'); ?> on LinkedIn" target="_blank" rel="nofollow"><svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; margin-bottom: -6px; width: 100%;"><g transform="scale(0.03125 0.03125)"><path d="M928 0h-832c-52.8 0-96 43.2-96 96v832c0 52.8 43.2 96 96 96h832c52.8 0 96-43.2 96-96v-832c0-52.8-43.2-96-96-96zM384 832h-128v-448h128v448zM320 320c-35.4 0-64-28.6-64-64s28.6-64 64-64c35.4 0 64 28.6 64 64s-28.6 64-64 64zM832 832h-128v-256c0-35.4-28.6-64-64-64s-64 28.6-64 64v256h-128v-448h128v79.4c26.4-36.2 66.8-79.4 112-79.4 79.6 0 144 71.6 144 160v288z"></path></g></svg>LinkedIn</a></li><?php } ?>
 				<?php if (get_option('google_plus')) { ?><li class="facebook"><a href="<?php echo get_option('google_plus'); ?>" title="View <?php bloginfo('name'); ?> Google+ profile" target="_blank" rel="nofollow"><i class="icon-googleplus"> </i> Google+</a></li><?php } ?>
                 <?php if (get_option('instagram')) { ?><li class="instagram"><a href="<?php echo get_option('instagram'); ?>" title="Follow <?php bloginfo('name'); ?> on Instagram" target="_blank" rel="nofollow"><i class="icon-instagram"> </i>Instagram</a></li><?php } ?>
 				<?php if (get_option('youtube')) { ?><li class="youtube"><a href="<?php echo get_option('youtube'); ?>" title="<?php bloginfo('name'); ?> You Tube Channel" target="_blank" rel="nofollow"><i class="icon-youtube"> </i>YouTube</a></li><?php } ?>
@@ -1649,7 +1649,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 				<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
 				</span>FieldSound</h3>';
 				echo '<p class="small-title">Listen now »</p></a>';
-				echo '<p class="small-title" style="padding-left: 14px; padding-right: 14px; padding-bottom: 14px;">Season 4 coming soon.<br /><a href="https://www.buzzsprout.com/2134643/share">Subscribe now</a></p>';
+				echo '<p class="small-title" style="padding-left: 14px; padding-right: 14px; padding-bottom: 14px;">Season 4 coming soon.<br /><a href="https://www.buzzsprout.com/2134643/share" style="color: #32006e;">Subscribe now</a></p>';
 				echo '</div>';
 			} else {
 				echo '<div class="podcast-promo-container">';
@@ -1662,7 +1662,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 				echo '<a class="latest-episode" href="' . get_permalink() . '">';
 				echo '<p class="small-title">Latest episode:</p>';
 				echo '<h4 class="article__title"> ' . get_the_title() . '</h4></a>';
-				echo '<p class="small-title" style="padding-left: 14px; padding-right: 14px; padding-bottom: 14px;">Season 4 coming soon.<br /><a href="https://www.buzzsprout.com/2134643/share">Subscribe now</a></p>';
+				echo '<p class="small-title" style="padding-left: 14px; padding-right: 14px; padding-bottom: 14px;">Season 4 coming soon.<br /><a href="https://www.buzzsprout.com/2134643/share" style="color: #32006e;">Subscribe now</a></p>';
 				echo '</div>';
 			}
         }	

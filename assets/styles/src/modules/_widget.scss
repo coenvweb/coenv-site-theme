@@ -206,3 +206,41 @@ tr.twEventRow td {
 		margin-bottom: .5rem;
 	}
 }
+.home .widget>header h2 {
+	font-size: 14px;
+	span {
+		background-image: none;
+		color: #fff !important;
+		font-size: 14px;
+		font-weight: normal;
+		text-transform: uppercase;
+	a {
+		background-color: #000;
+		background-image: none;
+		color: #fff;
+		font-size: 14px;
+		font-weight: 600;
+		padding-right: 20px;
+		text-transform: uppercase;
+	}
+	}
+}
+.home .widget>header h2:after {
+background-color: #000;
+background-image: none;
+border-top: none;
+}
+.home .widget>header h2 a {
+	background-image: none;
+	color: #fff;
+	padding-right: 5px;
+	text-transform: uppercase;
+}
+.home .widget>header h2 a:hover {
+	background-image: none;
+	color: #fff !important;
+}
+.home .widget-events .event {
+    margin-bottom: .5rem;
+    background: #ccc;
+}

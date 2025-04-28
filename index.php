@@ -39,8 +39,10 @@ $banner = coenv_banner();
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
-
+					<?php $categ = get_cat_ID(get_query_var('story_type')); ?>
+					<?php if ($categ != "7274") { ?>
 						<?php get_template_part( 'partials/partial', 'story' ) ?>
+					<?php } ?>
 
 					<?php endwhile ?>
                 

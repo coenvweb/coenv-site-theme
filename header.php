@@ -198,11 +198,11 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                 </nav><!-- #top-nav -->
 
-                <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?>>
+                <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
                     <div class="layout-container layout-container--header">
 
-                        <header id="header" role="banner" class="site-header">
+                        <header id="header" role="banner" class="site-header" style="margin-: 50%;">
 
                             <h1 id="logo">
                                 <a href="<?php bloginfo('url') ?>" rel="home" title="<?php bloginfo('name') ?>">
@@ -238,16 +238,21 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                     ) );
                                     ?>
                                 </ul>
-                            </nav>
-                            
-                <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php') || $post->ID == '38585' || is_page_template('templates/future-grad-sub.php') )) {
-    ?>
-                        </header><!-- #header -->
-
+                            </nav>  
+                        <?php if (!($post->ID == '38568' || is_page_template('templates/future-ug-sub.php') || $post->ID == '38585' || is_page_template('templates/future-grad-sub.php') )) {
+                        ?>    
+                    </header><!-- #header -->
                     </div><!-- .container.header-container -->
+                    <?php if(is_front_page()) { ?>
+                        <div class="hero-container" style="z-index:1;">
+                        <h2>Research for Washington. Research for the World.</h2>
+                        <p>Our research drives solutions that safeguard our planet and improve our quality of life. By understanding how the world works, we unlock new opportunities for a brighter, more sustainable future for everyone.</p>
+                        <p><a href="https://environment.uw.edu/news/2025/04/research-for-washington-research-for-the-world/"><span class="button">Learn more</a></span>
+                        </div><!-- .hero-container -->
+                    <?php } ?>
+                    <span role="img" aria-label="Background image of a field of flowers"></span>
 
                 </div><!-- .banner-wrapper -->
-    
     <?php
         }
-?>
+    ?>
