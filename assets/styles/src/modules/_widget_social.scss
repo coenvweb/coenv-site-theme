@@ -1,18 +1,17 @@
 /*	Social widget
 		======================================================================== */
 
-.home. .widget-social ul {
+.home .widget-social ul {
 	background: #ccc;
 }
 .widget-social {
-
 	ul {
 		@extend .clearfix;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 		@extend .shadow;
-		background: transparent;
+		background: #fff;
 	}
 
 	li {
