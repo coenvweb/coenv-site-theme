@@ -136,7 +136,7 @@ class CoEnv_Widget_Social extends WP_Widget {
 
         <?php if(!empty($title)) { ?>
 			
-			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
+			<?php echo $before_title ?><span style="font-weight: 600;"><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
  
 			<ul>
 				<?php if (get_option('facebook')) { ?>
