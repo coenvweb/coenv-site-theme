@@ -1786,9 +1786,9 @@
     }
 }
 
-//axial
+//axial & IBIS
 
-.postid-110464 {
+.postid-110464, .postid-111075 {
     @include max-width ( 900 ) {
         .element {
             display: none;
