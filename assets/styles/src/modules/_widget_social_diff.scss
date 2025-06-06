@@ -1,16 +1,8 @@
 /*	Social widget
 		======================================================================== */
 
-
-
-
-
 .home .widget-social ul {
 	background: #ccc;
-}
-.home .widget-social ul li a {
-		color: #333;
-
 }
 .widget-social {
 	ul {
@@ -33,9 +25,9 @@
 		border-right: none;
 	}
 
-	/*li:nth-child(5) a {
+	li:nth-child(5) a {
 		border-bottom: none;
-	}*/
+	}
     
     li:last-child a {
 		border-bottom: none;
@@ -43,16 +35,18 @@
 
 	a {
 		@include rem('padding', 1, 0);
-		@include font-size(9);
+		@include font-size(11);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
 		text-align: left;
+		border-right: 1px solid $border;
 		border-bottom: 1px solid $border;
 		color: #000;
 		text-decoration: none;
 		width: 100%;
 
 		svg {
+
 		width: 3em; // Size relative to text
     	height: 3em;
     	flex-shrink: 0; // Prevent SVG from shrinking
@@ -62,7 +56,7 @@
 		}
 		span.social-widget-text {
 			display: inline-flex;
-			font-size: .8rem;
+			font-size: .9rem;
 			line-height: 1; // Prevent text from pushing layout
 
 		}
