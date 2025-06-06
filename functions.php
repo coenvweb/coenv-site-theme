@@ -718,7 +718,7 @@ function theme_add_last_modified_header($headers) {
  */
 function wpse359922_metatag_conditional() {
 
-    if( is_page( 2 ) ) {
+    if( is_home() || is_front_page()) {
         echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache">';
     } else {
         echo '';
