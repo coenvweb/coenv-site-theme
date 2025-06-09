@@ -1,0 +1,1 @@
+/* See /inc/widgets for widget code */

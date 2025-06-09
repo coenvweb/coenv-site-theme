@@ -139,15 +139,15 @@ class CoEnv_Widget_Social extends WP_Widget {
 			<ul>
 				<?php if ( !is_front_page() ) { ?>
 					<li class="newsletter">
-						<a href="/news/college-newsletter/" title="Subscribe to the <?php bloginfo('name'); ?> email newsletter">
+						<a href="/news/college-newsletter/" title="Subscribe to our email newsletter">
 							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
 								<path d="M28 11.094v12.406c0 1.375-1.125 2.5-2.5 2.5h-23c-1.375 0-2.5-1.125-2.5-2.5v-12.406c0.469 0.516 1 0.969 1.578 1.359 2.594 1.766 5.219 3.531 7.766 5.391 1.313 0.969 2.938 2.156 4.641 2.156h0.031c1.703 0 3.328-1.188 4.641-2.156 2.547-1.844 5.172-3.625 7.781-5.391 0.562-0.391 1.094-0.844 1.563-1.359zM28 6.5c0 1.75-1.297 3.328-2.672 4.281-2.438 1.687-4.891 3.375-7.313 5.078-1.016 0.703-2.734 2.141-4 2.141h-0.031c-1.266 0-2.984-1.437-4-2.141-2.422-1.703-4.875-3.391-7.297-5.078-1.109-0.75-2.688-2.516-2.688-3.938 0-1.531 0.828-2.844 2.5-2.844h23c1.359 0 2.5 1.125 2.5 2.5z"></path>
 							</svg>
-							<span class="social-widget-text">Headlines Newsletter</span>
+							<span class="social-widget-text">Newsletter</span>
 						</a>
 					</li>
 				<li class="podcast">
-					<a href="/alumni-and-community/fieldsound-podcast/" title="Subscribe to the FieldSound podcast ?>" target="_blank" rel="nofollow" class="external">
+					<a href="/alumni-and-community/fieldsound-podcast/" title="Subscribe to the FieldSound podcast" class="external">
 						<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
 							<path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3zM8.719 25.975c-1.5 0-2.719-1.206-2.719-2.706 0-1.488 1.219-2.712 2.719-2.712 1.506 0 2.719 1.225 2.719 2.712 0 1.5-1.219 2.706-2.719 2.706zM15.544 26c0-2.556-0.994-4.962-2.794-6.762-1.806-1.806-4.2-2.8-6.75-2.8v-3.912c7.425 0 13.475 6.044 13.475 13.475h-3.931zM22.488 26c0-9.094-7.394-16.5-16.481-16.5v-3.912c11.25 0 20.406 9.162 20.406 20.413h-3.925z"></path>
 						</svg>
@@ -210,11 +210,11 @@ class CoEnv_Widget_Social extends WP_Widget {
 
 			<?php if ( is_front_page() ) { ?>
 				<li class="newsletter">
-						<a href="/news/college-newsletter/" title="Subscribe to the <?php bloginfo('name'); ?> email newsletter">
+						<a href="/news/college-newsletter/" title="Subscribe to our email newsletter">
 							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
 								<path d="M28 11.094v12.406c0 1.375-1.125 2.5-2.5 2.5h-23c-1.375 0-2.5-1.125-2.5-2.5v-12.406c0.469 0.516 1 0.969 1.578 1.359 2.594 1.766 5.219 3.531 7.766 5.391 1.313 0.969 2.938 2.156 4.641 2.156h0.031c1.703 0 3.328-1.188 4.641-2.156 2.547-1.844 5.172-3.625 7.781-5.391 0.562-0.391 1.094-0.844 1.563-1.359zM28 6.5c0 1.75-1.297 3.328-2.672 4.281-2.438 1.687-4.891 3.375-7.313 5.078-1.016 0.703-2.734 2.141-4 2.141h-0.031c-1.266 0-2.984-1.437-4-2.141-2.422-1.703-4.875-3.391-7.297-5.078-1.109-0.75-2.688-2.516-2.688-3.938 0-1.531 0.828-2.844 2.5-2.844h23c1.359 0 2.5 1.125 2.5 2.5z"></path>
 							</svg>
-							<span class="social-widget-text">Headlines Newsletter</span>
+							<span class="social-widget-text">Newsletter</span>
 						</a>
 					</li>
 			<?php } ?>
