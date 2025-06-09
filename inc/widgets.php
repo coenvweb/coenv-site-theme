@@ -1683,7 +1683,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
                 array(
                     'taxonomy' => 'story_type',
                     'field'    => 'term_id',
-					'terms' => array ( 7239,7240,7241,7242,7243 ),
+					'terms' => array ( 7239,7240,7242,7243,7244 ),
                 ),
             ),
 		);
@@ -1705,23 +1705,20 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 
 
         <?php echo $after_title;
-/*
         if ( $pod_query->have_posts()) {
                 echo '<div class="podcast-wrap">';
                 while ( $pod_query->have_posts() ) {
                     $pod_query->the_post();
             }
 			$pod_date = get_the_date();
-			
 			if( strtotime( $pod_date ) < strtotime('-1 months') ) {
-			*/
 				echo '<div class="podcast-promo-container off-season">';
 				echo '<a class="podcast-title" href="/podcast"><h3><span class="microphone">
 				<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
 				</span>FieldSound</h3>';
 				echo '<p class="small-title">Listen now »</p></a>';
 				echo '</div>';
-			/*
+
 			} else {
 				echo '<div class="podcast-promo-container">';
 				echo '<a href="' . get_permalink() . '">';
@@ -1735,7 +1732,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 				echo '<h4 class="article__title"> ' . get_the_title() . '</h4></a>';
 				echo '</div>';
 			}
-        }	*/
+        }	
 		echo $after_widget;
 		return;
 
