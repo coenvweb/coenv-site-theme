@@ -47,7 +47,7 @@ if( $sticky ) {
             array(
                 'taxonomy' => 'story_type',
                 'field' => 'term_id',
-                'terms' => array ( 7239,7240,7241,7242,7243, 7274, ),
+                'terms' => array ( 7239,7240,7242,7243,7244,7274, ),
                 'operator' => 'NOT IN'
             )
         )
