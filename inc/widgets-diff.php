@@ -134,94 +134,59 @@ class CoEnv_Widget_Social extends WP_Widget {
 		echo $before_widget;
 		?>
 
-        <?php if(!empty($title)) { ?>	
+        <?php if(!empty($title)) { ?>
+			
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
+ 
 			<ul>
-				<?php if ( !is_front_page() ) { ?>
-					<li class="newsletter">
-						<a href="/news/college-newsletter/" title="Subscribe to the <?php bloginfo('name'); ?> email newsletter">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-								<path d="M28 11.094v12.406c0 1.375-1.125 2.5-2.5 2.5h-23c-1.375 0-2.5-1.125-2.5-2.5v-12.406c0.469 0.516 1 0.969 1.578 1.359 2.594 1.766 5.219 3.531 7.766 5.391 1.313 0.969 2.938 2.156 4.641 2.156h0.031c1.703 0 3.328-1.188 4.641-2.156 2.547-1.844 5.172-3.625 7.781-5.391 0.562-0.391 1.094-0.844 1.563-1.359zM28 6.5c0 1.75-1.297 3.328-2.672 4.281-2.438 1.687-4.891 3.375-7.313 5.078-1.016 0.703-2.734 2.141-4 2.141h-0.031c-1.266 0-2.984-1.437-4-2.141-2.422-1.703-4.875-3.391-7.297-5.078-1.109-0.75-2.688-2.516-2.688-3.938 0-1.531 0.828-2.844 2.5-2.844h23c1.359 0 2.5 1.125 2.5 2.5z"></path>
-							</svg>
-							<span class="social-widget-text">Headlines Newsletter</span>
-						</a>
-					</li>
-				<li class="podcast">
-					<a href="/alumni-and-community/fieldsound-podcast/" title="Subscribe to the FieldSound podcast ?>" target="_blank" rel="nofollow" class="external">
-						<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-							<path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3zM8.719 25.975c-1.5 0-2.719-1.206-2.719-2.706 0-1.488 1.219-2.712 2.719-2.712 1.506 0 2.719 1.225 2.719 2.712 0 1.5-1.219 2.706-2.719 2.706zM15.544 26c0-2.556-0.994-4.962-2.794-6.762-1.806-1.806-4.2-2.8-6.75-2.8v-3.912c7.425 0 13.475 6.044 13.475 13.475h-3.931zM22.488 26c0-9.094-7.394-16.5-16.481-16.5v-3.912c11.25 0 20.406 9.162 20.406 20.413h-3.925z"></path>
-						</svg>
-						<span class="social-widget-text">Podcast</span>
-					</a>
-				</li>
+				<?php if (get_option('facebook')) { ?>
+					<li class="facebook"><a href="<?php echo get_option('facebook'); ?>" title="Follow <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow" class="external"><svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; "><path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path></svg><span class="social-widget-text">Facebook</span></a></li>
 				<?php } ?>
-				<?php if (get_option('instagram')) { ?>
-					<li class="instagram">
-						<a href="<?php echo get_option('instagram'); ?>" title="Follow <?php bloginfo('name'); ?> on Instagram" target="_blank" rel="nofollow" class="external">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-								<path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"></path>
-								<path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"></path>
-								<path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"></path>
-							</svg>
-							<span class="social-widget-text">Instagram</span>
-						</a>
-					</li>
-				<?php } ?>
-				<?php if (get_option('linkedin')) { ?>
-					<li class="linkedin">
-						<a href="<?php echo get_option('linkedin'); ?>" title="Follow <?php bloginfo('name'); ?> on LinkedIn" target="_blank" rel="nofollow" class="external">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-								<g transform="scale(0.03125 0.03125)">
-									<path d="M928 0h-832c-52.8 0-96 43.2-96 96v832c0 52.8 43.2 96 96 96h832c52.8 0 96-43.2 96-96v-832c0-52.8-43.2-96-96-96zM384 832h-128v-448h128v448zM320 320c-35.4 0-64-28.6-64-64s28.6-64 64-64c35.4 0 64 28.6 64 64s-28.6 64-64 64zM832 832h-128v-256c0-35.4-28.6-64-64-64s-64 28.6-64 64v256h-128v-448h128v79.4c26.4-36.2 66.8-79.4 112-79.4 79.6 0 144 71.6 144 160v288z"></path>
-								</g>
-							</svg>
-							<span class="social-widget-text">LinkedIn</span>
-						</a>
-					</li>
-			<?php } ?>
-			<?php if (get_option('facebook')) { ?>
-					<li class="facebook">
-						<a href="<?php echo get_option('facebook'); ?>" title="Follow <?php bloginfo('name'); ?> on Facebook" target="_blank" rel="nofollow" class="external">
-							<svg width="30" height="30" viewBox="0 2 37 34" style="display: inline-table; fill: #000; ">
-								<path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
-							</svg>
-							<span class="social-widget-text">Facebook</span>
-						</a>
-					</li>
-			<?php } ?>					
-					<li class="bluesky">
-						<a href="https://bsky.app/profile/uwenvironment.bsky.social" title="Follow <?php bloginfo('name'); ?> on Bluesky" target="_blank" rel="nofollow" class="external">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; "><g transform="scale(0.055 0.055)">
-								<path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 203.659 552.222 224.501C531.947 296.954 458.067 315.434 392.347 304.249C507.222 323.8 536.444 388.56 473.333 453.32C353.473 576.312 301.061 422.461 287.631 383.039C285.169 375.812 284.017 372.431 284 375.306C283.983 372.431 282.831 375.812 280.369 383.039C266.939 422.461 214.527 576.312 94.6667 453.32C31.5556 388.56 60.7778 323.8 175.653 304.249C109.933 315.434 36.0535 296.954 15.7778 224.501C9.94525 203.659 0 75.2916 0 57.9464C0 -28.9064 76.1345 -1.61183 123.121 33.6637Z"></path>
-							</svg>
-							<span class="social-widget-text">Bluesky</span>
-						</a>
-					</li>
-			<?php if (get_option('youtube')) { ?>
-					<li class="youtube">
-						<a href="https://www.youtube.com/user/UWEnvironment" title="Follow <?php bloginfo('name'); ?> on YouTube" target="_blank" rel="nofollow" class="external">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-								<path d="M31.681 9.6c0 0-0.313-2.206-1.275-3.175-1.219-1.275-2.581-1.281-3.206-1.356-4.475-0.325-11.194-0.325-11.194-0.325h-0.012c0 0-6.719 0-11.194 0.325-0.625 0.075-1.987 0.081-3.206 1.356-0.963 0.969-1.269 3.175-1.269 3.175s-0.319 2.588-0.319 5.181v2.425c0 2.587 0.319 5.181 0.319 5.181s0.313 2.206 1.269 3.175c1.219 1.275 2.819 1.231 3.531 1.369 2.563 0.244 10.881 0.319 10.881 0.319s6.725-0.012 11.2-0.331c0.625-0.075 1.988-0.081 3.206-1.356 0.962-0.969 1.275-3.175 1.275-3.175s0.319-2.587 0.319-5.181v-2.425c-0.006-2.588-0.325-5.181-0.325-5.181zM12.694 20.15v-8.994l8.644 4.513-8.644 4.481z"></path>
-							</svg>
-							<span class="social-widget-text">YouTube</span>
-						</a>
-					</li>
-			<?php } ?>
 
-			<?php if ( is_front_page() ) { ?>
-				<li class="newsletter">
-						<a href="/news/college-newsletter/" title="Subscribe to the <?php bloginfo('name'); ?> email newsletter">
-							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
-								<path d="M28 11.094v12.406c0 1.375-1.125 2.5-2.5 2.5h-23c-1.375 0-2.5-1.125-2.5-2.5v-12.406c0.469 0.516 1 0.969 1.578 1.359 2.594 1.766 5.219 3.531 7.766 5.391 1.313 0.969 2.938 2.156 4.641 2.156h0.031c1.703 0 3.328-1.188 4.641-2.156 2.547-1.844 5.172-3.625 7.781-5.391 0.562-0.391 1.094-0.844 1.563-1.359zM28 6.5c0 1.75-1.297 3.328-2.672 4.281-2.438 1.687-4.891 3.375-7.313 5.078-1.016 0.703-2.734 2.141-4 2.141h-0.031c-1.266 0-2.984-1.437-4-2.141-2.422-1.703-4.875-3.391-7.297-5.078-1.109-0.75-2.688-2.516-2.688-3.938 0-1.531 0.828-2.844 2.5-2.844h23c1.359 0 2.5 1.125 2.5 2.5z"></path>
-							</svg>
-							<span class="social-widget-text">Headlines Newsletter</span>
-						</a>
-					</li>
-			<?php } ?>
+
+
+
+
+				<?php if (get_option('instagram')) { ?>
+					<li class="instagram"><a href="<?php echo get_option('instagram'); ?>" title="Follow <?php bloginfo('name'); ?> on Instagram" target="_blank" rel="nofollow"><i class="icon-instagram"> </i>Instagram</a></li><?php } ?>
+				<?php if (get_option('linkedin')) { ?>
+					
+					<li class="linkedin"><a href="<?php echo get_option('linkedin'); ?>" title="Follow <?php bloginfo('name'); ?> on LinkedIn" target="_blank" rel="nofollow" class="external"><svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; "><g transform="scale(0.03125 0.03125)"><path d="M928 0h-832c-52.8 0-96 43.2-96 96v832c0 52.8 43.2 96 96 96h832c52.8 0 96-43.2 96-96v-832c0-52.8-43.2-96-96-96zM384 832h-128v-448h128v448zM320 320c-35.4 0-64-28.6-64-64s28.6-64 64-64c35.4 0 64 28.6 64 64s-28.6 64-64 64zM832 832h-128v-256c0-35.4-28.6-64-64-64s-64 28.6-64 64v256h-128v-448h128v79.4c26.4-36.2 66.8-79.4 112-79.4 79.6 0 144 71.6 144 160v288z"></path></g></svg><span class="social-widget-text">LinkedIn</span></a></li>
+					
+					<?php } ?>
+
+					<?php if (get_option('google_plus')) { ?>
+					<li class="facebook"><a href="<?php echo get_option('google_plus'); ?>" title="View <?php bloginfo('name'); ?> Google+ profile" target="_blank" rel="nofollow"><i class="icon-googleplus"> </i> Google+</a></li><?php } ?>
+                
+				<?php if (get_option('youtube')) { ?>
+					<li class="youtube"><a href="<?php echo get_option('youtube'); ?>" title="<?php bloginfo('name'); ?> You Tube Channel" target="_blank" rel="nofollow"><i class="icon-youtube"> </i>YouTube</a></li><?php } ?>
+                <li class="email"><a href="/alumni-and-community/stay-connected" title="Subscribe to our email newsletter."><i class="icon-mail"> </i>Newsletter</a></li>
+
+
+				
+
+				
+			<li class="feeds">
+				<a href="<?php echo get_option('linkedin'); ?>" title="Follow <?php bloginfo('name'); ?> on LinkedIn" target="_blank" rel="nofollow" class="external">
+					<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
+						<!---<g transform="scale(0.03125 0.03121,15)">-->
+							<path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3zM8.719 25.975c-1.5 0-2.719-1.206-2.719-2.706 0-1.488 1.219-2.712 2.719-2.712 1.506 0 2.719 1.225 2.719 2.712 0 1.5-1.219 2.706-2.719 2.706zM15.544 26c0-2.556-0.994-4.962-2.794-6.762-1.806-1.806-4.2-2.8-6.75-2.8v-3.912c7.425 0 13.475 6.044 13.475 13.475h-3.931zM22.488 26c0-9.094-7.394-16.5-16.481-16.5v-3.912c11.25 0 20.406 9.162 20.406 20.413h-3.925z"></path>
+						<!---</g>--->
+				</svg>
+				<span class="social-widget-text">Podcast</span>
+				</a>
+				</li>
+
+
+
+
+
 			</ul>
+ 
 		<?php
 		echo $after_widget;
 	}
+ 
 }
 
 /**
@@ -1705,23 +1670,23 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 
 
         <?php echo $after_title;
-/*
+
         if ( $pod_query->have_posts()) {
                 echo '<div class="podcast-wrap">';
                 while ( $pod_query->have_posts() ) {
                     $pod_query->the_post();
             }
 			$pod_date = get_the_date();
-			
 			if( strtotime( $pod_date ) < strtotime('-1 months') ) {
-			*/
 				echo '<div class="podcast-promo-container off-season">';
-				echo '<a class="podcast-title" href="/podcast"><h3><span class="microphone">
-				<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
-				</span>FieldSound</h3>';
+				echo '<a class="podcast-title" href="/podcast">
+				<h3>
+					<span class="microphone">
+					<?xml version="1.0" encoding="UTF-8"?><svg id="microphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.46 157.33"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:11px;}</style></defs><g id="Layer_1-2"><rect class="cls-1" x="29.21" y="5.5" width="49.04" height="95.16" rx="24.52" ry="24.52"/><path class="cls-1" d="M101.96,73.71c0,27.5-21.59,49.79-48.23,49.79S5.5,101.21,5.5,73.71"/><line class="cls-1" x1="53.73" y1="123.5" x2="53.73" y2="151.83"/><line class="cls-1" x1="33.73" y1="151.83" x2="73.73" y2="151.83"/></g></svg>
+				</span>
+				<FieldSound</h3>';
 				echo '<p class="small-title">Listen now »</p></a>';
 				echo '</div>';
-			/*
 			} else {
 				echo '<div class="podcast-promo-container">';
 				echo '<a href="' . get_permalink() . '">';
@@ -1735,7 +1700,7 @@ class CoEnv_Widget_Podcast extends WP_Widget {
 				echo '<h4 class="article__title"> ' . get_the_title() . '</h4></a>';
 				echo '</div>';
 			}
-        }	*/
+        }	
 		echo $after_widget;
 		return;
 
