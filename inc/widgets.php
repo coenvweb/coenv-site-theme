@@ -138,6 +138,7 @@ class CoEnv_Widget_Social extends WP_Widget {
 			<?php echo $before_title ?><span><?php echo $title; ?></span><?php echo $after_title ?><?php }; ?>
 			<ul>
 				<?php if ( !is_front_page() ) { ?>
+					<?php if ( get_post_type() != 'newsletter' ) {?>
 					<li class="newsletter">
 						<a href="/news/college-newsletter/" title="Subscribe to our email newsletter">
 							<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
@@ -146,6 +147,7 @@ class CoEnv_Widget_Social extends WP_Widget {
 							<span class="social-widget-text">Newsletter</span>
 						</a>
 					</li>
+					<?php } ?>
 				<li class="podcast">
 					<a href="/alumni-and-community/fieldsound-podcast/" title="Subscribe to the FieldSound podcast" class="external">
 						<svg width="30" height="30" viewBox="0 0 34 34" style="display: inline-table; fill: #000; ">
