@@ -27,7 +27,9 @@
             <div style="overflow:hidden; float:right; margin-left: 10px;">
                 <?php the_post_thumbnail('thumbnail'); ?>
             </div>
-            <?php the_advanced_excerpt('no_custom=1&no_shortcode=1&length=50&length_type=words') ?>
+            <?php //the_advanced_excerpt('no_custom=1&no_shortcode=1&length=50&length_type=words') ?>
+            <?php the_excerpt(); ?>
+
             <a class="button" href="<?php echo get_the_permalink(); ?>">Read More</a>
         <?php } else { ?>
             <?php the_content() ?>
