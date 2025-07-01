@@ -183,18 +183,20 @@
 				padding-left: 0px;
 				margin-bottom: 0px;
 				list-style-type: none;
-				a{
-					text-decoration: none;
-					p, li {
+                li {
+                    margin-bottom: 20px;
+                }
+
+					p a, li a {
 						color: $accent;
 						padding-bottom: 20px;
 						margin-bottom: 0px;
 						font-weight: 600;
+                        text-decoration: none;
 						span {
 							color: $text-md;
 						}   
-					}   
-				}   
+					}     
 			}
         }
         .section-title {
