@@ -7,6 +7,7 @@ require_once locate_template( '/inc/site-constants.php' );
 require_once locate_template( '/inc/walker-main-menu.php' );
 require_once locate_template( '/inc/walker-secondary-menu.php' );
 require_once locate_template( '/inc/walker-top-menu.php' );
+require_once locate_template( '/inc/walker-top-nav.php' );
 require_once locate_template( '/inc/walker-career-cat.php' );
 
 // Rewrites
@@ -51,9 +52,15 @@ require_once locate_template( '/inc/intranet.php' );
 require_once locate_template( '/inc/print.php' );
 
 //Enqueue the Dashicons script
-add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
+add_action( 'template_redirect', 'amethyst_enqueue_dashicons' );
 function amethyst_enqueue_dashicons() {
-    wp_enqueue_style( 'dashicons' );
+    // Only run on front-end (not admin, not AJAX, not during login)
+    if ( !is_admin() && !wp_doing_ajax() && !wp_is_json_request() ) {
+        add_action( 'wp_enqueue_scripts', function() {
+            wp_enqueue_style( 'dashicons' );
+            wp_enqueue_script( 'coenv-dropdown-nav', get_template_directory_uri() . '/assets/scripts/src/script.js', array(), '1.0.0', true );
+        });
+    }
 }
 
 

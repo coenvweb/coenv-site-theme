@@ -109,7 +109,7 @@ gulp.task('admin_js', function () {
 
 gulp.task('sass', function () {
   return gulp
-    .src('assets/styles/src/*.scss')
+    .src('assets/styles/src/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer({
