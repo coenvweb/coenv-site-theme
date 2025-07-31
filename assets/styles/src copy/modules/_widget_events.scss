@@ -1,0 +1,82 @@
+/*	Events widget
+		======================================================================== */
+		
+.widget-events {
+
+	.event {
+		@include rem('margin-bottom', 0.5);
+		background: #fff;
+		@extend .shadow;
+
+		@include min-width( $iPadPortrait ) {
+			@include rem('margin-bottom', 1);
+		}
+        
+        &:hover {
+            background-color: $accent;
+        }
+
+		// wraps entire event contents
+		a {
+			display: block;
+			@include rem('padding', 1);
+			text-decoration: none;
+			color: $text;
+            @include sans();
+			@media print {
+			 	padding: 0;
+			}
+            &:hover {
+                color: white!important;
+                i {
+                    color: white;
+                }
+            }
+		}
+
+		header {
+
+			h3 {
+				margin: 0;
+				@include font-size(14);
+				@include line-height(24);
+				font-weight: 600;
+                @include sans();
+			}
+
+		} // header
+
+		footer {
+			@include font-size(13);
+
+			p.date {
+				margin: 0;
+
+				i {
+					@include rem('padding-right', 0.25);
+				}
+
+			} // p.date
+
+		} // footer
+
+	} // .event
+
+} // .widget-events
+
+.main-col .widget-events {
+    
+    .event {
+        border-top: 1px #ddd solid;
+        background-color: transparent;
+        box-shadow: none;
+        margin-bottom: 0;
+        &:hover{
+            background-color: $accent;
+        }
+    }
+    .more {
+        display: none!important;
+    }
+    
+}

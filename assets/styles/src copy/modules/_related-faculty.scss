@@ -1,0 +1,298 @@
+.related-faculty {
+    position: relative;
+    overflow: inherit!important;
+    
+    @include min-width ( 600 ) {
+        height: 220px;
+    }
+
+    @include min-width ( 768 ) {
+        height: 200px;
+    }
+    
+    @include min-width ( 900 ) {
+        height: 220px;
+    }
+    
+    @include max-width ( 600 ) {
+        overflow: hidden!important;
+    }
+    
+	.related-faculty-name p {
+		margin: 0;
+        @include font-size(12);
+        line-height: 1;
+        font-weight: 600;
+        color: #fff;
+        padding: .5rem;
+        float: left;
+
+        @include min-width ( 600 ) {
+            @include font-size(12);
+            padding: .5rem;
+        }
+        
+         @include min-width ( 768 ) {
+            @include font-size(11);
+            padding: .5rem .25rem;
+        }
+
+        @include min-width ( 900 ) {
+            @include font-size(13);
+            padding: .5rem;
+        }
+		
+	} //.related-faculty-name
+	
+	.related-thumb {
+		overflow: hidden;
+		
+		.attachment-thumbnail {
+			display: block;
+			margin: auto;
+            min-width: 100%;
+		}
+	}
+    
+    .related-people {
+        @include min-width ( 600 ) {
+            margin-right: -1px;
+        }
+    }
+    
+    a {
+        text-decoration: none;
+        @include sans();
+    }
+    
+    .related-people a {
+        position: relative;
+        width: percentage( 1/3 );
+        display: inline-block;
+        text-decoration: none;
+        color: $text;
+        z-index: 2;
+        border-right: 1px solid $white;
+        &:last-of-type {
+            border: none;
+        }
+        @include min-width ( 600 ) {
+			width: percentage( 1/7 );
+			float: left;
+            &:hover {
+                transform: scale(1.1);
+                z-index: 99!important;
+                transition-duration: .3s;
+                border: none!important;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+        }
+        
+        @include max-width ( 600 ) {
+            border-right: none;
+            margin-right: 1px;
+            &:nth-child(6n+4){
+                border-top: 1px #ddd solid;
+            }
+            &:nth-child(6n+5){
+                border-top: 1px #ddd solid;
+            }
+            &:nth-child(6n+6) {
+                border-top: 1px #ddd solid;
+            }
+            &:nth-child(6n+7) {
+                border-top: 1px #ddd solid;
+            }
+            &:nth-child(6n+3) {
+                margin-right: -2px;
+            }
+            &:nth-child(6n+6) {
+                margin-right: -2px;
+            }
+        }
+            
+    }
+    
+	.related-container {
+        height: 150px;
+        position: relative;
+        
+        @include min-width ( 300 ) {
+            height: 190px;
+        }
+        
+        @include min-width ( 475 ) {
+            height: 240px;
+        }
+        
+        @include min-width ( 600 ) {
+            height: 170px;
+        }
+        
+        @include min-width ( 768 ) {
+            height: 150px;
+        }
+        
+        @include min-width ( 900 ) {
+            height: 170px;
+        }
+        
+		&:hover {
+			a {
+				color: $white!important;
+			}
+		}
+		
+	} //.related-container
+    
+    .count {
+        border-right: none;
+        background-color: $text;
+        text-align: center;
+        
+        .related-container {
+            @include max-width ( 600 ) {
+                height: 3rem;
+            }
+        }
+        
+        .related-thumb {
+            background-color: $text-very-lt;
+            height: 107px;
+            @include max-width ( 1125 ) {
+                height: 9.6vw;
+            }
+            @include max-width ( 768 ) {
+                height: 13.6vw;
+            }
+            @include max-width ( 600 ) {
+                display: none;
+            }
+        }
+        
+        .number {
+            color: $border;
+            @include font-size(13);
+            font-weight: 600;
+            padding: .5rem;
+            line-height: 2rem;
+        }
+        
+        @include max-width ( 600 ) {
+            height: 3rem;
+            width: 100%;
+            .number {
+                line-height: 3rem!important;
+                &:before {
+                    font-family: icomoon;
+                    content: "\e00e";
+                    padding-right: .5rem;
+                }
+            }
+            &:hover {
+                background-color: $accent;
+                color: $white;
+            }
+        }
+        
+        i {
+            font-size: 4rem;
+            color: $text-lt;
+            @include max-width ( 1000 ) {
+                top: 10%;
+                transform: none;
+            }
+            @include max-width ( 600 ) {
+                color: $border;
+                @include font-size(12);
+            }
+            top: 30%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    }
+    
+    .faculty-sidebar & {
+        display: table;
+        margin: 2rem -1.5rem -.5rem -1.5rem;
+        overflow: hidden;
+        .related-heading {
+            display: none;
+        }
+        .related-people a {
+            position: relative;
+            width: calc(33.33% - .5px);
+            display: inline-block;
+            text-decoration: none;
+            color: $text;
+            z-index: 2;
+            border-right: 1px solid $white;
+            &:last-of-type {
+                border: none;
+            }
+            border-right: none;
+            margin-right: 1px;
+            &:nth-child(6n+4){
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+5){
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+6) {
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+7) {
+                border-top: 1px $border solid;
+            }
+            &:nth-child(6n+3) {
+                margin-right: -2px;
+            }
+            &:nth-child(6n+6) {
+                margin-right: -2px;
+            }
+        }
+        .related-container {
+            height: 160px;
+        }
+        
+        .count {
+            height: 3rem;
+            width: 100%!important;
+            .number {
+                line-height: 3rem!important;
+                &:before {
+                    font-family: icomoon;
+                    content: "\e00e";
+                    padding-right: .5rem;
+                }
+            }
+            &:hover {
+                background-color: $accent;
+                color: $white;
+                transform: none;
+                border-top: 1px $border solid!important;
+            }
+            .related-thumb {
+                display: none;
+            }
+        }
+        
+    }
+
+} // .related-faculty
+
+.faculty-sidebar {
+    margin-top: -1rem!important;
+    h2 i {
+        font-size: 1.3rem;
+        margin-right: .25rem;
+    }
+    
+    .faculty-sidebar-title {
+        color: $text;
+        text-decoration: none;
+    }
+}
+

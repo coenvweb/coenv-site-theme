@@ -1,0 +1,213 @@
+
+/*	Search page specific styles
+		======================================================================== */
+@include min-width($bp-2) {
+    .search-wrap {
+        padding-left: 3rem;
+    }
+}
+
+.template-search {
+
+	.search-header {
+
+        overflow: hidden;
+
+		.results-text {
+			margin: 0;
+			padding-top: 1rem;
+			border: none;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #333;
+            text-decoration: none;
+            font-size: .78571rem;
+            font-weight: 600;
+            line-height: 2rem;
+		}
+
+        @include min-width($bp-2) {
+            .results-text {
+                width: 75%;
+            }
+
+            .searchAgain {
+			    padding-top: 1rem;
+                float: right;
+                width: 25%;
+            }
+        }
+
+	} // .search-header
+
+	.article {
+		border-bottom: 1px solid $border;
+        padding: .75rem 0rem;
+
+		.breadcrumbs {
+			@include rem('margin-bottom', 1);
+		}
+
+		.article__title {
+			margin: 0;
+			padding-bottom: 0.5rem;
+			@include font-size(22);
+			@include line-height(26);
+			border: none;
+		}
+
+        .article__content {
+            p {
+                margin: 0;
+            }
+        }
+
+	} // .article
+    
+    form .field-wrap input[type=text] {
+        background: #eee;
+    }
+    
+    .field-wrap button[type=submit] {
+        width: 20%;
+    }
+
+    // faculty side bar search styles
+    .coenv-sidebar-search {
+
+        article:nth-of-type(1) {
+            padding-top: 0rem;
+        }
+
+        @include max-width($bp-2) {
+            width: 70%;
+            margin:auto;
+        }
+
+        @include max-width(550) {
+            width: 100%;
+            margin:auto;
+        }
+
+        .search-feedback {
+            padding: 1rem 1rem 0.5rem 1rem;
+        }
+
+
+        .sidebar-feedback-number {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            font-size: .78571rem;
+            font-weight: 600;
+            text-align: center;
+            margin:0;
+            padding:0.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .fac-link {
+            display: block;
+            &:hover {
+                transform: scale(1.1);
+                z-index: 99; 
+                transition-duration: .3s;
+                border-right: none;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+        }
+
+        //facuty sidebar search
+        .search-faculty {
+            margin-bottom: 0.25rem;
+            color: #fff;
+
+            .faculty-img {
+                overflow: hidden;
+
+                .attachment-thumbnail {
+                    display: block;
+                    margin: auto;
+                }
+
+            }
+
+            .faculty-info {
+                float: right;
+                width: 60%;
+
+                @include max-width($bp-2) {
+                    width: 65%;
+                }
+
+                .faculty-container {
+                    padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+                    .article__title {
+                        margin-bottom: 0.5rem;
+                        font-weight: 600;
+                    }
+
+                    .faculty-unit {
+                        line-height: 1.666666667;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                    }
+
+                    @include min-width($bp-2) {
+
+                        .article__title {
+                            font-size: 1rem;
+                        }
+
+                        .faculty-unit {
+                            font-size: 0.8rem;
+                        }
+
+                        @include max-width(1096) {
+
+                            .faculty-unit {
+                                display: none;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        //career sidebar search
+        .career-op {
+            padding: 1rem 0rem;
+            border-bottom: 1px solid $border;
+
+            .career__title {
+                font-size: 0.9rem;
+            }
+        }
+
+        .more-sidebar{
+            padding: 0.5rem;
+            text-align: center;
+
+            @include min-width($bp-2) {
+                font-size: 0.9rem;
+            }
+        }
+
+    } // search in sidebar
+
+} // .template-search 

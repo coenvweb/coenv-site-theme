@@ -1,0 +1,89 @@
+/*	Social widget
+		======================================================================== */
+
+
+
+
+
+.home .widget-social ul {
+	background: #ccc;
+}
+.home .widget-social ul li a {
+		color: #333;
+
+}
+.widget-social {
+	ul {
+		@extend .clearfix;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		@extend .shadow;
+		background: #fff;
+	}
+
+	li {
+		display: inline-flex;
+  		align-items: left;
+  		gap: 0.5rem; // Adjust spacing between icon and text as needed
+		width: 100%;
+	}
+
+	li:nth-child(2n+0) a {
+		border-right: none;
+	}
+
+	/*li:nth-child(5) a {
+		border-bottom: none;
+	}*/
+    
+    li:last-child a {
+		border-bottom: none;
+	}
+
+	a {
+		@include rem('padding', 1, 0);
+		@include font-size(9);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		text-align: left;
+		border-bottom: 1px solid $border;
+		color: #000;
+		text-decoration: none;
+		width: 100%;
+
+		svg {
+		width: 3em; // Size relative to text
+    	height: 3em;
+    	flex-shrink: 0; // Prevent SVG from shrinking
+		vertical-align: middle;
+		margin: 0 10px;
+			
+		}
+		span.social-widget-text {
+			display: inline-flex;
+			font-size: .8rem;
+			line-height: 1; // Prevent text from pushing layout
+
+		}
+
+		&:hover {
+			color: #fff !important;
+			background: $accent;
+            i {
+                color: #fff !important;
+            }
+			svg {
+				fill: #fff !important;
+			}
+		}
+
+		i {
+            color: #000;
+			@include font-size(30);
+			@include line-height(30);
+		}
+
+	} // a
+
+} // .widget-social

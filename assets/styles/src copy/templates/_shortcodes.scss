@@ -1,0 +1,88 @@
+// Shortcodes for page components, starting with inline right sidebars for the DEI page
+ 
+    // parent container to float inline and set the width
+    .sidebar-right-inline {
+        float: right;
+        clear: right;
+        margin: 0 0 1.5rem 1.5rem;
+        width: 263px;
+        margin: 0 0 1.5rem 1.5rem;
+        @include max-width ( 1020 ) {
+            width: 100%;
+        } 
+    }
+    // content areas
+    .sidebar-inline-item {
+        background: #eeeeee;    
+        border-left: solid 1px #dddddd;
+        border-right: solid 1px #dddddd;
+        border-bottom: solid 1px #dddddd;
+        border-top: solid 5px #4b2e83;
+        padding: .5rem 1rem 0 1rem;
+        margin-bottom: 1.5rem;
+        h2 {
+            color: #000;
+            font-family: Skolar,Georgia,serif;
+            font-size: 22px;
+            line-height: 24px;    
+        }
+       
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            list-style-type: none;
+            padding: 0.25rem;
+        }
+        h2:after {
+            content: none;
+        }
+        .button {
+            margin-top: 1rem;
+            text-transform: uppercase;
+            border: 1px solid #3d266a;
+            background-color:#613ba9;
+            color: #fff;
+
+            .parent:nth-child(2) & {
+                margin-bottom: 5000px!important;
+            }
+        }
+        .button:hover {
+            background-color: #000;
+        }
+    }
+
+    .page-id-89273 #accordion-1 { //postdoc accordions
+    .accordion-title {
+        color: white;
+    }
+        #apl {
+            background: #aa7d2e;
+        }
+        #atmos {
+            background: #00527a;
+        }
+        #cicoes {
+            background: #18a1cd;
+        }
+        #ess {
+            background: #ca5f00;
+        }
+        #safs {
+            background: #b82828;
+        }
+        #sefs {
+            background: #0096a4;
+        }
+        #smea {
+            background: #0078a2;
+        }
+        #ocean {
+            background: #859c00;
+        }
+        #fhl {
+            background: #358051;
+        }
+    }

@@ -1,0 +1,93 @@
+/* 	==========================================================================
+		UW College of the Environment
+		Authors: Darin Reid & Ryan Scherler
+		2012-2013
+
+		Styles authored in SASS
+
+		Import all components here
+		========================================================================== */
+
+/*	Utilities
+		======================================================================== */
+@import 'utilities/config.scss';
+@import 'utilities/normalize.scss';
+@import 'utilities/mixins.scss';
+@import 'utilities/defaults.scss';
+
+/*	Vendor/plugins
+		======================================================================== */
+
+// RoyalSlider for home page features
+@import 'plugins/royalslider.scss';
+
+// Isotope for faculty grid
+@import 'plugins/isotope.scss';
+
+// Icomoon for icons
+@import 'plugins/icomoon.scss';
+
+// Nivo-Ligbox for lightboxes
+@import 'plugins/nivo-lightbox.scss';
+@import 'plugins/nivo-default.scss';
+
+// Scrollbar for scrollbar on faculty page
+@import 'plugins/scrollbar.scss';
+
+/*	Base styles
+		======================================================================== */
+@import 'base/type.scss';
+@import 'base/layout.scss';
+@import 'base/links.scss';
+
+/*	Modules
+		======================================================================== */
+@import 'modules/button.scss';
+@import 'modules/media.scss';
+@import 'modules/form.scss';
+@import 'modules/menu_top.scss';
+@import 'modules/header.scss';
+@import 'modules/menu_main.scss';
+@import 'modules/menu_secondary.scss';
+@import 'modules/article.scss';
+@import 'modules/pagination.scss';
+@import 'modules/breadcrumbs.scss';
+@import 'modules/share.scss';
+@import 'modules/slider-gallery.scss';
+@import 'modules/widget.scss';
+@import 'modules/widget_social.scss';
+@import 'modules/widget_events.scss';
+@import 'modules/widget_link.scss';
+@import 'modules/widget_podcast.scss';
+@import 'modules/widget_text.scss';
+@import 'modules/widget_student-profiles.scss';
+@import 'modules/faculty-list.scss';
+@import 'modules/faculty-selector.scss';
+@import 'modules/faculty-toolbox.scss';
+@import 'modules/faculty-single.scss';
+@import 'modules/related-news.scss';
+@import 'modules/related-faculty.scss';
+@import 'modules/feedback.scss';
+@import 'modules/major-minor.scss';
+@import 'modules/tiles.scss';
+
+/*	Templates
+		Specific pages and page areas that further extend modules and components
+		======================================================================== */
+@import 'templates/home.scss';
+@import 'templates/page.scss';
+@import 'templates/blog.scss';
+@import 'templates/courses.scss';
+@import 'templates/contact.scss';
+@import 'templates/search.scss';
+@import 'templates/footer.scss';
+@import 'templates/careers.scss';
+@import 'templates/ocean-acid.scss';
+@import 'templates/intranet.scss';
+@import 'templates/student-postdoc-profiles.scss';
+@import 'templates/newsletter.scss';
+@import 'templates/signature-story.scss';
+@import 'templates/future-students.scss';
+@import 'templates/calendar.scss';
+@import 'templates/strategic-plan.scss';
+@import 'templates/shortcodes.scss';

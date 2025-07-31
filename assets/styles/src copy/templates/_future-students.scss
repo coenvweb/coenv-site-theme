@@ -1,0 +1,522 @@
+.page-id-38568, .page-id-38585 {
+    .banner-wrapper {
+        padding-bottom: 0;
+        background-position-y: 75%;
+    }
+    .article__content {
+        min-height: 0;
+        margin-top: 1rem;
+    }
+}
+
+.page-id-38585 {
+    .article__content > h2 {
+        //margin-top: 1rem!important;
+    }
+    
+    #arrow-nav {
+        margin-bottom: 2rem!important;
+    }
+}
+.page-id-38568 {
+    @include min-width ( $iPadPortrait ) {
+        .article__content .fluid-width-video-wrapper {
+            width: calc(40% - .3rem);
+            float: right;
+            margin: 0 0 -31%;
+            iframe {
+                height: calc(40% - .3rem)!important;
+            }
+        }
+    }
+}
+
+.page-template-future-ug-sub .banner-wrapper{
+    background-position-y: 60%;
+}
+
+.page-template-future-grad-sub .banner-wrapper{
+    background-position-y: 75%;
+}
+
+.image-area {
+    display: block;
+    position: relative;
+    height: 25rem;
+    width: 100%;
+    padding-top: 0rem;
+    //opacity: .6; 
+    @include max-width ( $iPadPortrait ) {
+        height: 15rem;
+        padding-top: 0rem;
+        .first-section {
+            padding-left: 0!important;
+        }
+        .first-title {
+            font-size: 3.5rem!important;
+            line-height: 4rem!important;
+        }
+    }
+    
+    #top-tab {
+        @extend #secondary-nav;
+        @extend .side-col;
+        float: left;
+        margin-bottom: 0;
+        a {
+            display: table;
+            @include max-width ( $iPadPortrait ) {
+                width: calc(100vw - 2rem);
+            }
+        }
+    }
+    .article__title.small {
+        @extend .post-info;
+        margin: 0;
+        padding: 1rem 0 .25rem 0;
+        border: none;
+        line-height: 1rem;
+        @include sans();
+        font-size: .9rem!important;
+        color: $text-very-lt!important;
+        a {
+            color: $text-very-lt!important;
+        }
+        @include min-width ( $iPadPortrait ) {
+            font-size: 1.2rem!important;
+            .mobile {
+                display: none;
+            }
+        }
+    }
+    &.smaller {
+        padding-top: 0rem;
+        height: 8rem;
+    }
+    .first-section {
+        padding-left: 1rem;
+        display: inline-block;
+        padding-top: 1rem;
+        .article__content {
+            min-height: 0;
+        }
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
+    }
+    .little-blurb {
+        display: block;
+        width: 75%;
+        p {
+            color: $text-very-lt;
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+            padding: 1rem 1rem .5rem 1rem;
+        }
+        a {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: .5rem;
+            background: rgba(100,100,100,.4);
+                &:hover {
+                    background: rgba(150,150,150,.4)!important;
+                }
+        }
+        @include max-width ( $iPadPortrait ) {
+            display: none;
+        }
+    }
+    section {
+        position: relative;
+    }
+    .first-title {
+        @include serif();
+        margin-top: 2rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        color: $text-very-lt;
+        font-size: 4.5rem;
+        line-height: 6rem;
+        &:before {
+            content: '';
+            display: block;
+            width: 3rem;
+            border-top: .5rem solid $text-very-lt;
+            position: absolute;
+            top: 1rem;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4rem;
+            border-top: .5rem solid $text-very-lt;
+            transform: skewX(-15deg);
+            top: 1rem;
+            left: 10px;
+        }
+        &.small {
+            margin-top: 2.5rem;
+            font-size: 3.5rem;
+            line-height: 4rem;
+            
+        }
+    }
+}
+
+.future-students.front {
+    .article__content > h2 {
+        font-size: calc(1.2em + 1.2vmin);
+    }
+    .article__content > h3 {
+        font-size: calc(1em + 1vmin);
+    }
+    .article__content > h4 {
+        font-size: calc(.8em + 1vmin);
+    }
+    .article__content > h2 {
+        margin: 3rem 0 2rem;
+        clear: left;
+        padding-bottom: 1rem;
+        a {
+            text-decoration: none;
+            color: $accent;
+            width: 100%;
+            display: block;
+            span {
+                @include sans();
+                font-size: 12px;
+                position: relative;
+                top: -3px;
+                left: 3px;
+                @include max-width ( $iPadPortrait ) {
+                    top: -.3vw;
+                    left: .3vw;
+                }
+            }
+        }
+    }
+    .first-section {
+        width: 35%;
+        padding-left: 1rem;
+        display: inline-block;
+        padding-top: 1rem;
+        .article__content {
+            min-height: 275px;
+        }
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
+    }
+    .first-title {
+        font-size: 3rem!important;
+        line-height: 4rem!important;
+        @include min-width ( $iPadPortrait ) {
+            font-size: 3.3vw!important;
+            line-height: 4.5vw!important;
+        }
+    }
+    .majors-minors {
+        //margin-right: calc(-1rem + 2px);
+        div:not(.open) {
+            @include min-width ( $iPadPortrait ) {
+                &.major-minor{
+                    display: inline-block;
+                    width: calc(50% - .4rem);
+                    @include rem('margin-right', .3)
+                }
+                &:nth-of-type(4n+3) {
+                    margin-right: 0;
+                }
+                &.accordion-title {
+                    height: 100px;
+                    h3 {
+                        font-size: 1.1rem;
+                    }
+                    .type {
+                        font-size: .9rem!important;
+                    }
+                    img {
+                        height: 100px;
+                        width: 100px;
+                    }
+                    .major-title {
+                        padding-left: calc(100px + 1rem);
+                    }
+                    &:before {
+                        margin-left: 100px;
+                    }
+                }
+            }
+            @include min-width ( 1000 ) {
+                &.major-minor {
+                    display: inline-block;
+                    width: calc(33% - .2rem);
+                    margin-right: .3rem;
+                }
+                &:nth-of-type(4n+3) {
+                    margin-right: .3rem;
+                }
+                &:nth-of-type(6n-1) {
+                    margin-right: 0!important;
+                }
+            }
+        }
+    }
+}
+.future-students{
+    p:not(.intro), ul, .accordion-title, .accordion-content {
+        max-width: 760px;
+    }
+    
+    img[class*='wp-image-'] {
+        @include max-width ( $iPadPortrait ) {
+            width: 100%;
+        }
+        @include min-width ( $iPadPortrait ) {
+            margin-bottom: 3rem;
+        }
+    }
+    
+    #arrow-nav {
+        position: relative;
+        display: table;
+        width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        .back {
+            display: block;
+            margin-bottom: 3px;
+            padding: .35rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .2px;
+            @include sans();
+            background: $text-very-lt;
+            text-decoration: none;
+            color: $text;
+             &:hover{
+                background-color: $accent-lt;
+                 color: white!important;
+                &:before {
+                    background: $accent-lt!important;
+                 }
+            }
+        }
+        ul {
+            margin: 0!important;
+            padding: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: calc(100vw - 3px);
+            @include max-width ( 374 ) {
+                overflow: auto;
+            }
+        }
+        li {
+            display: inline-block;
+            width: calc(25% - 3px);
+            min-width: 85px;
+            transform: skewX(-15deg);
+            background: $text-very-lt;
+            text-align: center;
+            &:hover{
+                background-color: $accent-lt;
+                &:before {
+                    background: $accent-lt!important;
+                }
+                a {
+                    color: white!important;
+                }
+            }
+            &.active {
+                background-color: $accent;
+                &:before {
+                    background: $accent!important;
+                }
+                a {
+                    color: white!important;
+                }
+            }
+            &.arrow-1:before {
+                content: '';
+                position: absolute;
+                display: block;
+                background: $text-very-lt;
+                height: 100%;
+                width: 20px;
+                transform: skewX(15deg);
+            }
+            &.arrow-3:before {
+                content: '';
+                position: absolute;
+                display: block;
+                background: $text-very-lt;
+                height: 100%;
+                width: 20px;
+                right: -7px;
+                transform: skewX(15deg);
+            }
+            a {
+                display: inline-block;
+                @include serif();
+                font-size: 1.5rem;
+                width: 100%;
+                padding: 1rem 1rem 1rem 1.2rem;
+                text-decoration: none;
+                color: $text;
+                transform: skewX(15deg);
+                @include max-width ( $iPadPortrait ) {
+                    font-size: 1.2rem;
+                    padding: .7rem .7rem .7rem .7rem;
+                }
+                .future-subtext {
+                    text-transform: uppercase;
+                    @include sans;
+                    font-size: .85rem!important;
+                    letter-spacing: .1px;
+                    padding-top: 15px;
+                    font-weight: 600;
+                    @include max-width ( $iPadPortrait ) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .article {
+        @include min-width (1000) {
+            padding: 0rem 2rem;
+        }
+        padding: 1rem;
+        .article__content > h2:first-of-type {
+            margin-top: 1rem;
+        }
+        &.majors-minors-section {
+            padding: 0;
+        }
+    }
+
+    .main-col {
+        width: 100%!important;
+    }
+    .grey-widget {
+        @include min-width ( $iPadPortrait ) {
+            float: right!important;
+            width: 262px!important;
+            margin: 0 0 1rem 3rem;
+        }
+        margin: 0;
+        background-color: $text-very-lt;
+        margin-bottom: 1rem;
+        border-left: 1rem solid white;
+        p {
+            padding: .5rem 1rem 1rem 1rem;
+            margin-bottom: 0;
+        }
+        .button {
+            margin-top: 1rem;
+        }
+    }
+    .widget-events {
+        @include min-width ( $iPadPortrait ) {
+            float: left!important;
+            margin-left: 0;
+            width: 40%!important;
+        }
+    }
+    .student-ambassadors-widget, .graduate-student-profiles-widget {
+        .widgettitle, .count, .ambassador-name {
+            display: none;
+        }
+        .ambassadors {
+            background: #fff;
+            a {
+                width: 32.4%;
+                margin-right: 3px;
+                border: none!important;
+            }
+        }
+        @include min-width ( $iPadPortrait ) {
+            width: 40%!important;
+            margin-left: 2rem;
+            margin-bottom: 3rem;
+        }
+    }
+    @include min-width ( $iPadPortrait ) {
+        .join {
+            display: inline-block;
+            width: calc(49% + 0.5rem);
+            .apply {
+                padding-left: 2rem;
+            }
+            .declare {
+                padding-right: 2rem;
+            }
+        }
+    }
+    @include min-width ( $iPadPortrait ) {
+        hr {
+            border: none;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+    }
+    
+    .intro-video {
+        margin-right: -2rem;
+        margin-left: -2rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+    .article__content > p:last-of-type {
+        text-align: center;
+        max-width: none;
+        .next-text {
+            @extend h3;
+            @include serif;
+            line-height: 3.5rem;
+            &:after {
+                content: '▸';
+                padding: 0 .5rem;
+            }
+        }
+
+        .next-button {
+            background-color: $accent;
+            color: white;
+            min-width: 200px;
+            height: 35px;
+            padding-top: 6px;
+            font-size: 1.1rem;
+            &:hover {
+                background-color: $accent-lt;
+            }
+            @include min-width ( $iPadPortrait ) {
+                margin-left: 2rem;
+            }
+        }
+    }
+
+    
+}
+
+.article__content .widget-postdoc-profiles {
+    .widgettitle, .count, .ambassador-name {
+        display: none;
+    }
+    .ambassadors {
+        background: #fff;
+        a {
+            width: 48.4%;
+            margin-right: 3px;
+            border: none!important;
+        }
+    }
+    @include min-width ( $iPadPortrait ) {
+        width: 30%!important;
+        margin-left: 2rem;
+    }
+}

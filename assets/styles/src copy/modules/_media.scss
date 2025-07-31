@@ -1,0 +1,24 @@
+
+%media {
+	@include clearfix;
+	@include rem('margin-bottom', 1);
+
+	.content {
+		@include clearfix(facebook);
+	}
+
+	.img {
+		float: left;
+	}
+
+	.img img {
+		display: block;
+	}
+
+} // %media
+
+.gallery {
+    .wp-caption-text {
+        padding: 0 2rem
+    }
+}

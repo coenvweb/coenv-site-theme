@@ -1,0 +1,68 @@
+/*	Base font size and rounded corners
+		======================================================================== */
+$base-font-size: 14;
+$radius: 2px;
+
+/*  Maximum width and breakpoints
+    ======================================================================== */
+
+$bp-1: 321;
+$bp-2: 768;
+$bp-3: 1000;
+
+// support for old apple-specific names
+$iPhoneLandscape: $bp-1;
+$iPadPortrait: $bp-2;
+$iPadLandscape: $bp-3;
+
+$max-width: 1060px;
+$maxWidthBreakpoint: ( $max-width / 1px ) + ( ( $base-font-size * 2px ) / 1px );
+
+/*	Asset paths
+		======================================================================== */
+$images-path: '../../img/';
+$fonts-path: '../../fonts/';
+
+/*	Colors
+		======================================================================== */
+
+$white: #fff;
+$accent: #4b2e83;
+$accent-purple: $accent;
+$accent-lt: lighten( $accent, 10% );
+$accent-dk: darken( $accent, 10% );
+$accent-blue: #006ca2;
+$accent-red: #b82828;
+$accent-hover: $accent-lt;
+$accent-teal: #0096a4;
+$accent-green: #05774d;
+$accent-orange: #ca5f00;
+$accent-lt-green: #859c00;
+$accent-dk-blue: #0f4174;
+
+$dark-widget: #888;
+$white-button: #ddd;
+
+$text: #333;
+$text-md: #444;
+$text-lt: #666;
+$text-very-lt: #eee;
+
+$border: #ddd;
+$border-dk: #222;
+$border-dk-accent: #3d3d3d;
+
+$bg-dk: #363533;
+
+/*  Global shadow
+    ======================================================================== */
+
+@mixin shadow {
+  //@include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.shadow {
+  //@include box-shadow( rgba(0,0,0,0.1) 0 0 5px );
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}

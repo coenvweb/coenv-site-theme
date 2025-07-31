@@ -1,0 +1,53 @@
+
+/*	Module: button
+		======================================================================== */
+
+.button {
+	display: inline-block;
+	vertical-align: middle;
+	@include rem('padding', 0.25, 1);
+	@include sans;
+	@include font-size(12);
+	font-weight: 400;
+	background: #333;
+	background: rgba(0,0,0,0.3);
+	text-decoration: none;
+	color: #fff;
+	//@include border-radius( $radius );
+	border-radius: $radius;
+
+	&:hover {
+		background: rgba(0,0,0,0.6);
+		color: #fff !important;
+	}
+
+    a {
+        color: $text;
+        text-decoration: none;
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
+	@media print {
+        a[href]:after {
+            content: " (" attr(href) ")";
+    	}
+}
+
+} // .button
+
+.article, .side-col {
+	
+	.button {
+		background: $white-button;
+		text-decoration: none;
+		color: $text;
+		
+		&:hover {
+                background: $bg-dk;
+            }
+		
+	} // .button
+	
+} // .article

@@ -1,0 +1,259 @@
+.student-ambassadors-widget, .graduate-student-profiles-widget, .meet-postdoc-widget, .widget-postdoc-profiles {
+    position: relative;
+    overflow: inherit!important;
+    .main-col & {
+        @include min-width ( $iPadPortrait ) {
+            float: right!important;
+            width: 262px!important;
+            margin: 0 0 1rem 1rem;
+        }
+    }
+    margin: 0 0 1rem 0;
+    
+    .title {
+        color: #333;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-weight: 600;
+        line-height: 0;
+        font-size: 11px;
+        display: block;
+        border-bottom: 1px solid #ddd;
+        padding: 1.5rem 1rem;
+        @includes sans();
+    }
+    
+    .section-header {
+        margin: 0;
+        a {
+            color: $text;
+            @include sans();
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-weight: 600;
+            line-height: 0;
+            font-size: 11px;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 1rem;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    
+    .ambassador-name {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+	.ambassador-name h3 {
+		margin: 0;
+        @include font-size(12);
+        line-height: 1;
+        font-weight: 600;
+        padding: .5rem;
+        position: relative;
+        min-height: 38px;
+        @include sans;
+        width: 100%;
+        text-align: center;
+
+        @include min-width ( 600 ) {
+            @include font-size(12);
+            padding: .5rem;
+        }
+        
+         @include min-width ( 768 ) {
+            @include font-size(11);
+            padding: .5rem .25rem;
+        }
+
+        @include min-width ( 900 ) {
+            @include font-size(13);
+            padding: .5rem;
+        }
+		
+	} //.related-faculty-name
+	
+	.ambassador-thumb {
+		overflow: hidden;
+		
+		img {
+			display: block;
+			margin: auto;
+            min-width: 100%;
+		}
+	}
+    
+    .ambassadors {
+        @include min-width ( 600 ) {
+            margin-right: -1px;
+        }
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .ambassadors a {
+        position: relative;
+        width: calc(33.4%);
+        display: inline-block;
+        text-decoration: none;
+        color: $text;
+        z-index: 2;
+        border-right: 1px solid #ddd;
+        border-top: 1px #ddd solid;
+        background-color: #eee;
+        &:last-of-type {
+            border-right: none;
+        }
+        &:nth-child(6n+3) {
+            margin-right: -2px;
+            border-right: none;
+        }
+        &:nth-child(6n+6) {
+            margin-right: -2px;
+            border-right: none;
+        }
+        &:hover {
+            background-color: $accent;
+            margin-top: 0;
+            h3 {
+                color: $white;
+            }
+        }
+        @include min-width ( 600 ) {
+            &:hover {
+                transform: scale(1.1);
+                z-index: 99;
+                transition-duration: .3s;
+                border-right: none;
+                box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            }
+        }
+            
+    }
+    
+	.ambassador-container {
+        height: 130px;
+        position: relative;
+        height: 62%;
+        
+        @include min-width ( 300 ) {
+            
+        }
+        
+        @include min-width ( 475 ) {
+            
+        }
+        
+        @include min-width ( 600 ) {
+            height: 80%;
+        }
+        
+        @include min-width ( 768 ) {
+            height: 62%;
+        }
+        
+        @include min-width ( 900 ) {
+            height: 62%;
+        }
+        
+		&:hover {
+			a {
+				color: $white!important;
+			}
+		}
+		
+	} //.related-container
+    
+    .count {
+        border-right: none;
+        background-color: #eee!important;
+        text-align: center;
+        width: 100%!important;
+        @include font-size(13);
+        border-top: 1px solid #eee;
+        font-weight: 600;
+        padding: .5rem;
+        line-height: 2rem;
+        height: 3rem;
+        width: 100%;
+        
+        &:hover {
+            background-color: $accent!important;
+            color: $white!important;
+            transform: none!important;
+            box-shadow: none!important;
+            
+        }
+        
+        .ambassador-thumb {
+            display: none;
+        }
+
+        .number {
+            &:before {
+                font-family: icomoon;
+                content: "\e00e";
+                padding-right: .5rem;
+            }
+        }
+        
+        i {
+            font-size: 4rem;
+            color: $text-lt;
+            color: $border;
+            @include font-size(12);
+            top: 10%;
+            transform: none;
+            top: 30%;
+            transform: translateY(-50%);
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    }
+
+} // .ambassdor-widget
+
+.meet-postdoc-widget {
+    .ambassadors a {
+        width: 100%;
+        .ambassador-name {
+            display: block;
+            padding: 1rem .75rem .5rem .75rem;
+            height: auto;
+            h3 {
+                text-align: left;
+                font-family: 'skolar';
+                font-size: 1.5rem;
+                padding: 0;
+                min-height: 0;
+            }
+            h4 {
+                text-transform: uppercase;
+                letter-spacing: .1em;
+                font-weight: 600;
+                @include font-size(11);
+            }
+        }
+        &:hover {
+            h4 {
+                color: $white;
+            }
+        }
+        @include min-width ( 600 ) {
+            &:hover {
+                 transform: scale(1.05);
+            }
+        }
+    }
+}

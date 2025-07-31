@@ -1,0 +1,69 @@
+.page-id-433, .page-id-28128, .page-id-51037 {
+    .article__content {
+        
+        .object {
+            @include rem('margin', 2, 0);
+            background: #333;
+            p {
+                margin: 0;
+            }
+            a {
+                color: $white;
+            }
+        }
+        .column-restriction {
+            @include min-width ( $iPadPortrait ) {
+                max-width: 57%;
+            }
+        }
+        
+        .button {
+            @include rem('margin', 1, 1, 0, 0);
+            background: rgba(0,0,0,.1);
+            &:hover {
+                background: rgba(0,0,0,.6);
+                color: $white;
+            }
+        }
+        
+        .widget-column {
+            margin-top: 1rem;
+            @include min-width ( $iPadPortrait ) {
+                max-width: 40%;
+                float: right;
+                margin-left: 2rem;
+                .teal-widget, .grey-widget {
+                    @include rem('margin', 1, 0, 1, 1);
+                }
+            }
+            .teal-widget, .grey-widget {
+                @include rem('margin', 1, 0, 2, 0);
+            }
+        }
+        
+        .teal-widget, .grey-widget {
+            @include rem('padding', .5, 1.5);
+        }
+        
+        .teal-widget {
+            background-color: #378294;
+            color: $white;
+            .button {
+                color: $white;
+                background: rgba(0,0,0,.25);
+                &:hover {
+                    background: rgba(0,0,0,.6);
+                }
+            }
+        }
+        
+        .grey-widget {
+            h2 {
+                @include rem('margin-bottom', .5);
+            }
+            background-color: #E7E7E7;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+        
+    }
+}

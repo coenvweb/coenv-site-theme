@@ -1,0 +1,94 @@
+
+/* 	==========================================================================
+		Type
+		========================================================================== */
+
+
+@mixin sans() {
+  font: {
+    family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+@mixin serif() {
+  font: {
+    family: "Skolar", Georgia, serif;
+  }
+}
+
+h1 {
+	@include rem('margin', 1.5, 0); // 24
+	@include rem('line-height', 3); // 48
+	@include rem('font-size', 3); // 48
+
+}
+
+h2 {
+	@include rem('margin', 1.5, 0, 1.5); // 24
+	@include rem('line-height', 3); // 48
+	@include rem('font-size', 2); // 36
+}
+
+h3 {
+	@include rem('margin', 0, 0); // 8
+	@include rem('line-height', 1.5); // 32
+	@include rem('font-size', 1.5); // 24
+}
+
+h4 {
+	@include rem('margin', 0);
+	@include rem('line-height', 1.5);
+	@include rem('font-size', 1.125); // 18
+}
+
+h5 {
+	@include rem('margin', 0);
+	@include rem('line-height', 1.5);
+	@include rem('font-size', 1);
+}
+
+h6 {
+	@include rem('margin', 0);
+	@include rem('line-height', 1.5);
+	@include rem('font-size', 1);
+}
+
+/*
+ * Other elements
+ */
+
+p, ul, ol {
+	@include rem('margin', 0, 0, 1.5);
+}
+
+.intro {
+    @include serif;
+    @include rem('line-height', 2); // 32
+    @include rem('font-size', 1.5); // 24
+    font-weight: 200;
+}
+
+@font-face {
+	font-family: pt-serif-bold;
+	src: url("../../../assets/fonts/PT_Serif-Web-Bold.ttf") format('truetype');  
+	font-weight: 700;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: pt-serif-bold-italic;
+	src: url("../../../assets/fonts/PT_Serif-Web-BoldItalic.ttf") format('truetype');  
+	font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+	font-family: encode-sans-black;
+	src: url("../../../assets/fonts/EncodeSansCondensed-800-ExtraBold.ttf") format('truetype');
+  font-style: bold;
+	font-weight: 800;
+  font-display: swap;
+}
