@@ -50,9 +50,10 @@ add_shortcode('trumba','uwenvironment_trumba_embed');
 // column (grid) shortcode
 function my_column($params,$content=null){
   extract(shortcode_atts(array(
-      'type' => 'right'
+      'type' => '',
+      'link' => ''
   ), $params));
-  return '<div class="column '.$type.'">'.do_shortcode($content).'</div>';
+  return if(!empty($link)){'<a href="' . $link . '">' . }'<div class="column '.$type.'">'.do_shortcode($content).'</div>' . if(!empty($link)){'</a>'};
 }
 add_shortcode("column", "my_column");
 
