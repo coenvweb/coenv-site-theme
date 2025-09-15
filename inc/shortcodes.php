@@ -53,7 +53,13 @@ function my_column($params,$content=null){
       'type' => '',
       'link' => ''
   ), $params));
-  return if(!empty($link)){'<a href="' . $link . '">' . }'<div class="column '.$type.'">'.do_shortcode($content).'</div>' . if(!empty($link)){'</a>'};
+  $prefix = null; $suffix = null;
+  if(!empty($link)){
+    $prefix = '<a href="' . $link . '">';
+    $suffix = '</a>';
+  }
+  $output =  $prefix . '<div class="column '.$type.'">' . do_shortcode($content) . '</div>' . $suffix;
+  return $output;
 }
 add_shortcode("column", "my_column");
 
