@@ -55,13 +55,14 @@ function my_column($params,$content=null){
   ), $params));
   $prefix = null; $suffix = null;
   if(!empty($link)){
-    $prefix = '<a href="' . $link . '">';
-    $suffix = '</a>';
+    $output =  '<a href="' . $link . '" class="column '.$type.'">' . do_shortcode($content) . '</a>';
+  } else {
+    $output =  '<div class="column '.$type.'">' . do_shortcode($content) . '</div>';
   }
-  $output =  $prefix . '<div class="column '.$type.'">' . do_shortcode($content) . '</div>' . $suffix;
   return $output;
 }
 add_shortcode("column", "my_column");
+
 
 // inline right sidebar shortcode - start
 function uwenvironment_inline_sidebar_start() {

@@ -86,3 +86,24 @@
             background: #358051;
         }
     }
+
+    .column {
+        &.data {
+            font-size: 2rem;
+            text-align: center;
+            &::first-line {
+                font-size: 3rem;
+                @include serif();
+                font-weight: 600;
+                margin-bottom: 1rem;
+                line-height: 3rem;
+            }
+        }
+        &.third {
+            width: 33%;
+            display: inline-block;
+        }
+    }
+    a.column {
+        display: inline-block;
+    }

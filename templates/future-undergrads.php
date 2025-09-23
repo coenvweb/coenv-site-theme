@@ -30,7 +30,7 @@ $ancestor = array(
                 </section>
             </article>
             <div class="little-blurb">
-                 <p>At the College of the Environment, you can explore the environment from the Earth’s core to outer space, using high tech approaches to solve sustainability issues. Board a research ship to survey Pacific Ocean marine life. Trek into the Cascade Mountains to monitor volcanoes in the ancient Ring of Fire. Build computer modesl to predict how the climate is changing. Learn about natural resources from the communities who depend on them. </p>
+                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit.</p>
             </div>
             
         </div>

@@ -1,7 +1,7 @@
 .page-id-38568, .page-id-38585 {
     .banner-wrapper {
         padding-bottom: 0;
-        background-position-y: 75%;
+        background-position-y: 32%;
     }
     .article__content {
         min-height: 0;
@@ -21,18 +21,19 @@
 .page-id-38568 {
     @include min-width ( $iPadPortrait ) {
         .article__content .fluid-width-video-wrapper {
-            width: calc(40% - .3rem);
+            width: calc(50% - .3rem);
             float: right;
-            margin: 0 0 -31%;
+            margin: 5rem 0 -18% 2rem;
             iframe {
-                height: calc(40% - .3rem)!important;
+                height: calc(50% - .3rem)!important;
             }
         }
     }
 }
 
 .page-template-future-ug-sub .banner-wrapper{
-    background-position-y: 60%;
+    background-position-y: 25%;
+    padding-bottom: 1rem;
 }
 
 .page-template-future-grad-sub .banner-wrapper{
@@ -42,7 +43,7 @@
 .image-area {
     display: block;
     position: relative;
-    height: 25rem;
+    height: 35rem;
     width: 100%;
     padding-top: 0rem;
     //opacity: .6; 
@@ -56,6 +57,11 @@
             font-size: 3.5rem!important;
             line-height: 4rem!important;
         }
+    }
+
+    .container {
+        position: absolute;
+        bottom: 0;
     }
     
     #top-tab {
@@ -91,7 +97,7 @@
     }
     &.smaller {
         padding-top: 0rem;
-        height: 8rem;
+        height: 15rem;
     }
     .first-section {
         padding-left: 1rem;
@@ -106,7 +112,7 @@
     }
     .little-blurb {
         display: block;
-        width: 75%;
+        width: 65%;
         p {
             color: $text-very-lt;
             font-size: 1.2rem;
@@ -136,7 +142,7 @@
         margin-bottom: 0;
         color: $text-very-lt;
         font-size: 4.5rem;
-        line-height: 6rem;
+        line-height: 5rem;
         &:before {
             content: '';
             display: block;
@@ -164,9 +170,14 @@
     }
 }
 
-.future-students.front {
-    .article__content > h2 {
-        font-size: calc(1.2em + 1.2vmin);
+.page-template-future-undergrads.page-id-38568 {
+    .article__content > h2:first-of-type {
+        font-size: calc(3.2em + 1.2vmin);
+        line-height: 4rem;
+        margin-bottom: 1rem;
+    }
+    .article__content > h2, .article__content > div > h2 {
+        font-size: calc(1.4em + 1.2vmin);
     }
     .article__content > h3 {
         font-size: calc(1em + 1vmin);
@@ -197,13 +208,10 @@
         }
     }
     .first-section {
-        width: 35%;
+        width: 50%;
         padding-left: 1rem;
         display: inline-block;
         padding-top: 1rem;
-        .article__content {
-            min-height: 275px;
-        }
         @include max-width ( $iPadPortrait ) {
             width: 100%;
         }
@@ -212,8 +220,8 @@
         font-size: 3rem!important;
         line-height: 4rem!important;
         @include min-width ( $iPadPortrait ) {
-            font-size: 3.3vw!important;
-            line-height: 4.5vw!important;
+            font-size: calc(4rem + .5vw) !important;
+            line-height: calc(6rem + .5vw) !important;
         }
     }
     .majors-minors {
@@ -269,14 +277,6 @@
         max-width: 760px;
     }
     
-    img[class*='wp-image-'] {
-        @include max-width ( $iPadPortrait ) {
-            width: 100%;
-        }
-        @include min-width ( $iPadPortrait ) {
-            margin-bottom: 3rem;
-        }
-    }
     
     #arrow-nav {
         position: relative;
@@ -427,6 +427,45 @@
             width: 40%!important;
         }
     }
+    .tiles-container {
+        column-gap: 2%;
+        row-gap: 3%;
+        .tile-link {
+            @extend .shadow;
+        }
+        h3.title {
+            @include serif();
+            font-size: 1.7rem!important;
+            text-transform: none!important;
+        }
+    }
+    .grey-slice {
+        background-color: $text-very-lt;
+        opacity: 1;
+        margin: 2rem -2rem 0 -2rem;
+        color: $accent;
+        width: calc(100% + 4rem);
+        display: inline-block;
+        padding-top: 2rem;
+    }
+
+    .purple-slice {
+        display: table;
+        background-color: #4b2e83;
+        opacity: 1;
+        background-image:  linear-gradient(135deg, #3c2468 25%, transparent 25%), linear-gradient(225deg, #3c2468 25%, transparent 25%), linear-gradient(45deg, #3c2468 25%, transparent 25%), linear-gradient(315deg, #3c2468 25%, #4b2e83 25%);
+        background-position:  4px 0, 4px 0, 0 0, 0 0;
+        background-size: 8px 8px;
+        background-repeat: repeat;
+        padding: 1rem 3rem;
+        margin: 2rem 0 3rem 0;
+        color: #fff;
+        @extend .shadow;
+
+        p {
+            max-width: 100%;
+        }
+    }
     .student-ambassadors-widget, .graduate-student-profiles-widget {
         .widgettitle, .count, .ambassador-name {
             display: none;
@@ -478,6 +517,7 @@
             @extend h3;
             @include serif;
             line-height: 3.5rem;
+            font-size: 1.5rem;
             &:after {
                 content: '▸';
                 padding: 0 .5rem;
@@ -501,6 +541,17 @@
     }
 
     
+}
+
+.page-id-38568 .purple-slice {
+    margin: 0 -2rem 2rem -2rem;
+    width: calc(100% + 4rem);
+}
+
+.page-id-55796 {
+    p {
+        max-width: none!important;
+    }
 }
 
 .article__content .widget-postdoc-profiles {
