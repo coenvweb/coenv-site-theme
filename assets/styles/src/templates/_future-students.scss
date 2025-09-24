@@ -224,6 +224,10 @@
             line-height: calc(6rem + .5vw) !important;
         }
     }
+
+    .wp-image-112873 {
+        margin-bottom: 2rem;
+    }
     .majors-minors {
         //margin-right: calc(-1rem + 2px);
         div:not(.open) {
@@ -437,6 +441,9 @@
             @include serif();
             font-size: 1.7rem!important;
             text-transform: none!important;
+        }
+        @include max-width ( $iPadPortrait ) {
+            margin-bottom: 10rem;
         }
     }
     .grey-slice {

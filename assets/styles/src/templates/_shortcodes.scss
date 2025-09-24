@@ -102,6 +102,9 @@
         &.third {
             width: 33%;
             display: inline-block;
+            @include max-width ( 750 ) {
+                width: 32%;
+            }
         }
     }
     a.column {
