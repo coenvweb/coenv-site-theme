@@ -159,7 +159,7 @@ $links = get_field('outside_news');
                     <div class="college">
                         <ul class="around_list">
                         <?php foreach($links as $link) { ?>
-                                <li>
+                                <li class="around-list-item">
                                     <a href="<?php echo $link['link']; ?>" target="_blank"><?php echo $link['title']; ?>, <span><?php echo $link['source'];?></span></a>
                                 </li>
                             </a>
