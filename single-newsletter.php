@@ -213,16 +213,24 @@ $links = get_field('outside_news');
 
 <?php get_footer() ?>
 
+
 <script type="text/javascript">
 /* <![CDATA[ */
 jQuery(document).ready(function(){
     (function($) {
-		var hash = window.location.hash;
-		$(hash).find('.read-more a')[0].click();
-		$(window).on('hashchange', function() {
-			var hash = window.location.hash;
-			$(hash).find('.read-more a')[0].click();
-		});
+        var hash = window.location.hash;
+        var $link = $(hash).find('.read-more a'); // Store the result in a variable
+        if ($link.length > 0) { // Check if any elements were found
+            $link[0].click();
+        }
+
+        $(window).on('hashchange', function() {
+            var hash = window.location.hash;
+            var $link = $(hash).find('.read-more a'); // Store the result in a variable
+            if ($link.length > 0) { // Check if any elements were found
+                $link[0].click();
+            }
+        });
     })(jQuery);
 });
 /* ]]> */
