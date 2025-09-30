@@ -69,7 +69,7 @@ $feature = array(
                     
                 </a>
                 
-                    <a class="button feature-button" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
+                    <a class="button feature-button" aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 
                 <?php if ( !empty( $feature['image']['caption'] ) ) : ?>
                     <p class="feature-caption"><?php echo  'Photo: ' . $feature['image']['caption'] ?></p>
