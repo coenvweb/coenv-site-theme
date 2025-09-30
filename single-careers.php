@@ -110,7 +110,7 @@ $ancestor = array(
 								<section class="career__content">
 								<?php
 									$content = get_the_content();
-									echo strip_tags($content, '<a>');
+									echo strip_tags($content, '<a><p>');
 								?>
 								</section>
 								<?php $career_tags = get_the_terms(get_the_ID(),'career_post_tag'); ?>
