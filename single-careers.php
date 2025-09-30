@@ -27,12 +27,12 @@ $ancestor = array(
                         <li class="pagenav">
                           <?php echo '<a href="' . $ancestor['permalink'] . '"><span>Back to</span>' . $ancestor['title'] . '</a>'; ?>
                             <ul class="career-actions">
-                                <li><a class="back-side" href="/students/career-resources/career-opportunities/">← Back to All Career Opportunities</a>
+                                <li><a class="back-side" href="/students/career-resources/pursue-graduate-school-and-academic-careers/academic-opportunities/">← Back to All Career Opportunities</a>
                                 </li>
                             </ul>
                             <ul class="career-actions">
-                                <li><a href="/students/career-resources/career-opportunities/for-employers/"><span class="dashicons dashicons-welcome-add-page"></span> Post an Opportunity</a></li>
-                                <li><a href="/students/career-resources/career-opportunities/tips-for-jobinternship-seekers/"><span class="dashicons dashicons-star-filled"></span> Tips for Seekers</a></li>
+                                <!--<li><a href="/students/career-resources/career-opportunities/for-employers/"><span class="dashicons dashicons-welcome-add-page"></span> Post an Opportunity</a></li>-->
+                                <!--<li><a href="/students/career-resources/career-opportunities/tips-for-jobinternship-seekers/"><span class="dashicons dashicons-star-filled"></span> Tips for Seekers</a></li>-->
                                 <li><a href="/students/career-resources/career-opportunities/uw-environmental-career-fair/"><span class="dashicons dashicons-businessman"></span> UW Environmental Career Fair</a></li>
                             </ul>
                         </li>
