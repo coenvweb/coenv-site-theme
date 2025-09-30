@@ -71,7 +71,7 @@ function element_func( $atts ){
                 };
                 $photo_holder .= '</div>';
             } else {
-                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" alt=' . $photo_alt . $gallery . '>' . $photo_el . '</a>';
             }
             
         }
@@ -162,7 +162,7 @@ function big_element_func( $atts ){
                 $photo_holder .= '<div class="slide-and-caption"><img class="photo" src="' . $photo_url[0] . '" alt="' . $photo_alt . '"></img><div class="caption-wrapper"><p class="specialCaption">' . $caption . '</p></div></div>';
                 $element_extra_class .= ' rsDefault';
             } else {
-                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" ' . $gallery . '>' . $photo_el . '</a>';
+                $photo_holder .= '<a class="photo" href="' . $top_link . '" title="' . $photo['caption'] . '" alt="' . $photo_alt . '" ' . $gallery . '>' . $photo_el . '</a>';
             }
             
             $i++;
@@ -296,7 +296,7 @@ function define_term_func( $atts, $content = null ){
     $a = shortcode_atts( array(
         'definition' => '',
     ), $atts );
-return '<span class="define-term"><span class="element left element-content define-element"><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition"><i class="underline"></i><span class="definition-text"><strong>'. $content  . ':</strong> ' . $atts['definition'] . '</span></span><a>' . $content . '</a></span>';
+return '<span class="define-term"><span class="element left element-content define-element"><img src="'. get_template_directory_uri() . '/assets/img/definition.jpg" alt="definition-glyph"><i class="underline"></i><span class="definition-text"><strong>'. $content  . ':</strong> ' . $atts['definition'] . '</span></span><a>' . $content . '</a></span>';
 };
 add_shortcode( 'define_term', 'define_term_func' );
 
