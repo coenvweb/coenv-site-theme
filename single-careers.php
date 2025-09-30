@@ -27,7 +27,7 @@ $ancestor = array(
                         <li class="pagenav">
                           <?php echo '<a href="' . $ancestor['permalink'] . '"><span>Back to</span>' . $ancestor['title'] . '</a>'; ?>
                             <ul class="career-actions">
-                                <li><a class="back-side" href="/students/career-resources/pursue-graduate-school-and-academic-careers/academic-opportunities/">← Back to All Career Opportunities</a>
+                                <li><a class="back-side" href="/students/career-resources/pursue-graduate-school-and-academic-careers/academic-opportunities/">← Back to All Academic Opportunities</a>
                                 </li>
                             </ul>
                             <ul class="career-actions">
@@ -106,7 +106,7 @@ $ancestor = array(
 									<h2><?php the_title(); echo $location; ?></h2>
 								</div>
 								
-								<p class="back"><a class="button" href="/students/career-resources/career-opportunities/">← Back to Career Opportunities</a></p>
+								<p class="back"><a class="button" href="/students/career-resources/pursue-graduate-school-and-academic-careers/academic-opportunities/">← Back to Academic Opportunities</a></p>
 								<section class="career__content">
 								<?php
 									$content = get_the_content();
