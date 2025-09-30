@@ -108,7 +108,7 @@ $ancestor = array(
 								
 								<p class="back"><a class="button" href="/students/career-resources/career-opportunities/">← Back to Career Opportunities</a></p>
 								<section class="career__content">
-								<?php the_content() ?>
+								<?php strip_tags(the_content(), '<a>'); ?>
 								</section>
 								<?php $career_tags = get_the_terms(get_the_ID(),'career_post_tag'); ?>
 								<?php if ( $career_tags && ! is_wp_error( $career_tags ) ) : 
