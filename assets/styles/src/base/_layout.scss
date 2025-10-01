@@ -122,7 +122,7 @@ $layout-wrapper-translateX: 80%;
 /*	Main content section
 		======================================================================== */
 
-section[role="main"] {
+section#page {
 	@extend .clearfix;
 	position: relative;
 	@extend .hide-on-banner-reveal;
