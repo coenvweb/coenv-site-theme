@@ -68,9 +68,8 @@ if(!empty($description) || have_rows('job_responsibilities')) {
         <?php endif; ?>
     </div>
 </div>
-<div id="bio-c-<?php echo $post->post_name ?>" class="accordion-content" aria-labelledby="bio-t-<? echo $post->post_name ?>" aria-hidden="true" aria-controlled-by="bio-t-<? echo $post->post_name ?>" style="display: none;">
-<? if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>
-<?php
+<?php if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) {
+    echo '<div id="bio-c-' . $post->post_name . '" class="accordion-content" aria-labelledby="bio-t-' . $post->post_name . '" aria-hidden="true" aria-controlled-by="bio-t-' . $post->post_name .'" style="display: none;">';
     // check if the repeater field has rows of data
     if( have_rows('job_responsibilities') ):
         echo '<ul class="responsibilities">';
@@ -93,8 +92,10 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 
     echo $description;
 ?>
-<? } ?>
+<?php } ?>
 <?php if(is_page('deans-office-staff') && (current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others'))) { ?>
     <p class="revision"><?php echo do_shortcode('[ow_make_revision_link text="Make a revision" class="" type="text" post_id="'.$post->ID.'"]'); ?></p>
 <?php } ?>
+<?php if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>
 </div>
+<?php } ?>
