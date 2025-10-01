@@ -4,7 +4,7 @@
  */
 ?>
 <div class="news_item post-<?php the_ID() ?>" id="<?php the_ID() ?>" >
-    <header class="article__header">
+    <div class="article__header">
         <div class="article__meta">
         <?php if ( !is_page() && !is_singular('intranet') ) : ?>
             <div class="post-info">
@@ -19,9 +19,9 @@
             <h1 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h1>
         <?php endif ?>
 
-    </header>
+        </div>
 
-    <section class="article__content">
+    <div class="article__content">
             <a class="button"  aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo get_the_permalink(); ?>">Read More</a>
 
         <?php if(get_field('feature_label') == 'Signature Story') { ?>
@@ -40,7 +40,7 @@
         <?php } ?>
 
         
-    </section>
+        </div>
 
     <?php remove_filter( 'the_title', 'wptexturize' );
     remove_filter( 'the_excerpt', 'wptexturize' ); ?>
