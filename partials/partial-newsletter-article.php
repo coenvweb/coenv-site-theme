@@ -22,7 +22,7 @@
     </header>
 
     <section class="article__content">
-            <a class="button" href="<?php echo get_the_permalink(); ?>">Read More</a>
+            <a class="button"  aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo get_the_permalink(); ?>">Read More</a>
 
         <?php if(get_field('feature_label') == 'Signature Story') { ?>
             <div style="overflow:hidden; float:right; margin-left: 10px;">
