@@ -8,9 +8,9 @@
                             </div>
                         
                             <div class="left-college">
-                               <header class="site-footer__header">
+                               <div class="site-footer__header">
                                     <h1><span>College of the Environment</span></h1>
-                                </header>
+                                </div>
                             </div>
                         </div>
                         <div class="footer__info">
