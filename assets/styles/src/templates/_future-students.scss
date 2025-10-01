@@ -437,7 +437,7 @@
         .tile-link {
             @extend .shadow;
         }
-        h3.title {
+        .title {
             @include serif();
             font-size: 1.7rem!important;
             text-transform: none!important;
