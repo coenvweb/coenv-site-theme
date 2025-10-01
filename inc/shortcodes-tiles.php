@@ -39,7 +39,7 @@ if (esc_attr($attributes['columns'])) {
 
                 $output .= '<div class="content-wrap">';
 
-                  $output .= "<h3 class='title'>".$tile['title']."</h3>";
+                  $output .= "<p class='title'>".$tile['title']."</p>";
 
                   if($tile['subtext']) {
                     $output .= "<div class='body'>".$tile['subtext']."</div>";
