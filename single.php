@@ -18,7 +18,7 @@ $ancestor = array(
 $banner = coenv_banner();
 ?>
 
-	<section id="blog" role="main" class="template-blog">
+	<section id="blog" class="template-blog">
 
 		<div class="container">
 
