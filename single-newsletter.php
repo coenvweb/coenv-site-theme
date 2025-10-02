@@ -29,7 +29,7 @@ $links = get_field('outside_news');
 ?>
 
 
-	<section id="page" role="main" class="template-newsletter">
+	<section id="page" class="template-newsletter">
 
 		<div class="container">
 
