@@ -250,7 +250,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                         <p><a href="https://environment.uw.edu/news/2025/04/research-for-washington-research-for-the-world/"><span class="button">Learn more</a></span>
                         </div><!-- .hero-container -->
                     <?php } ?>
-                    <span role="img" aria-label="Background image of a field of flowers"></span>
 
                 </div><!-- .banner-wrapper -->
     <?php
