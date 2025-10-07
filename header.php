@@ -196,7 +196,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                     </div><!-- .container -->
 
-                </nav><!-- #top-nav -->
+                </nav>
 
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
