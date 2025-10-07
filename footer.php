@@ -45,7 +45,6 @@
                             ?>
                         </nav>
                     </div>
-                </footer><!-- #footer -->
 
                     <div class="uw-footer">
                         <div class="layout-container">
@@ -66,6 +65,7 @@
                             ) ) ?>
                         </div>
                     </div>
+                </footer><!-- #footer -->
                     
             </div><!-- #wrapper -->
 
