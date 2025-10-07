@@ -159,7 +159,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
             <div id="wrapper" class="layout-wrapper">
 
-                <nav id="top-nav">
+                <nav id="top-nav" aria-label="secondary">
 
                     <div class="container layout-container">
 
@@ -222,7 +222,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                 </button>
                             </div><!-- #show-menu -->
 
-                            <nav class="nav-main main-menu normal-menu" role="navigation">
+                            <nav aria-label="primary" class="nav-main main-menu normal-menu" role="navigation">
 
                                 <?php get_search_form() ?>
                                 

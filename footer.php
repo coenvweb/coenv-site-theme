@@ -28,7 +28,7 @@
                             <p><a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
                         </div>
 
-                        <nav class="footer-nav">
+                        <nav aria-label="mobile" class="footer-nav">
                             <!--<h1 class="footer-nav__title">Units and programs</h1>-->
                             <?php $footer_menu = wp_nav_menu( array(
                                 'theme_location' => 'footer-units',
