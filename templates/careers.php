@@ -18,7 +18,7 @@ $ancestor = array(
 );
 
 ?>
-	<section id="page primary" role="main" class="template-page content-area">
+	<section id="page" role="main" class="template-page content-area">
 
 		<div class="container">
 
