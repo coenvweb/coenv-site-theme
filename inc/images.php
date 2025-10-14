@@ -25,7 +25,7 @@ function my_custom_sizes($sizes) {
 
 	//custom sizes
 	add_image_size( 'small', 262, 262 );
-	add_image_size( 'banner', 2000 );
+	add_image_size( 'banner', 1900 );
 	add_image_size( 'homepage-column-retina', 528 );
 	add_image_size( 'homepage-column', 253 );
 	add_image_size( 'half', 375 );
