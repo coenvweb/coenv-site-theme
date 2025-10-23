@@ -92,7 +92,7 @@
                 width: 50%;
             }
         }
-        .article__content > p:not(.intro) {
+        .article__content > p:not(.intro), .article__content > ul {
             font-size: 1.1rem;
             line-height: 2rem;
             margin-bottom: 2.5rem;
@@ -212,7 +212,7 @@
             }
         }
         
-        p {
+        p, ul, ol {
             margin-bottom: 1rem;
             letter-spacing: .5px;
         }
