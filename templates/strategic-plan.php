@@ -2,6 +2,7 @@
 /*
 Template Name: Strategic Plan
 */
+
 get_header();
 
 $ancestor_id = coenv_get_ancestor();
@@ -13,7 +14,7 @@ $ancestor = array(
 );
 ?>
 
-	<section id="page strategic-plan" class="template-page">
+	<section id="page" class="strategic-plan template-page">
 
 		<div class="container">
 
