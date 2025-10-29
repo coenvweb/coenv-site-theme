@@ -1,7 +1,6 @@
 <?php
 /**
  * page.php
- *
  * The main page template
  */
 get_header();

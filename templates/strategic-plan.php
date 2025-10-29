@@ -13,7 +13,7 @@ $ancestor = array(
 );
 ?>
 
-	<section id="page strategic-plan" role="main" class="template-page">
+	<section id="page strategic-plan" class="template-page">
 
 		<div class="container">
 
@@ -48,7 +48,6 @@ $ancestor = array(
 						<?php get_template_part( 'partials/partial', 'article' ) ?>
 
 					<?php endwhile ?>
-
 
 				<?php endif ?>
           
