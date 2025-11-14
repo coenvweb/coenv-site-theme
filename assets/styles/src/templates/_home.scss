@@ -622,3 +622,59 @@ body.home {
 .story .inner {
 	background-color: #CCC;
 }
+
+
+/* Homepage hero message */
+.home .hero-container {
+	//background-color:rgba(0, 0, 0, 0.2);
+	color: #FFF;
+	display: block;
+	left: 50%;
+	max-width: 44%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	min-width: 44%;
+	padding: 20px;
+	position: relative;
+	text-align: center;
+	top: 50%;
+	transform: translateX(-50%);	
+	@include max-width( $iPadPortrait ) {
+		max-width: 100%;
+	}
+	
+	
+	h2 {
+		@include serif;
+		font-weight: normal;
+		font-size: 3.75rem;
+		line-height: 4rem;
+		margin: 0;
+		padding: 0 0 20px 0;
+
+		@include max-width ( 700 ) {
+			font-size: 2.5rem;
+			line-height: 125%;
+		}
+
+	}
+	p {
+		font-size: 1.15rem;
+		margin-bottom: 2rem;
+	}
+	p a.button {
+		font-size: 1rem;
+	}
+	
+	.button {
+	background-color: #800080;
+	border: solid 1px #800080;
+	color: #FFF;
+	text-transform: uppercase;
+	background-size: contain;
+	}
+	.button:hover {
+		background-color: #4D004D;
+		border: solid 1px #FA00FA;
+	}
+}
