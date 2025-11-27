@@ -245,7 +245,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     </div><!-- .container.header-container -->
                     <?php if(is_front_page()) { ?>
                         <div class="hero-container" style="z-index:1;">
-                        <h2>Research for Washington. Research for the World.</h2>
+                        <h2>Research for Washington. <br /> Research for the World.</h2>
                         <p>Our research drives solutions that safeguard our planet and improve our quality of life. By understanding how the world works, we unlock new opportunities for a brighter, more sustainable future for everyone.</p>
                         <p><a href="https://environment.uw.edu/news/2025/04/research-for-washington-research-for-the-world/"><span class="button">Learn more</a></span>
                         </div><!-- .hero-container -->
