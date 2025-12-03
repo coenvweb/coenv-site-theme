@@ -8,7 +8,7 @@ function wpse_313419_conditional_admin_color($result) {
     if(get_site_url() == 'http://environment.uw.local/wordpress') {
         return 'light';
     // Staging: use 'blue' color scheme
-    } elseif(get_site_url() == 'http://staging.environment.uw.edu/wordpress') {
+    } elseif(get_site_url() == 'https://staging.environment.uw.edu/wordpress') {
         return 'blue';
     // Production (all other cases): use 'sunrise' color scheme
     } else {
