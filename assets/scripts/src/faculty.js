@@ -411,29 +411,6 @@
 	};
 
 	/**
-	 * Isotope filtering
-	 */
-	CoEnvFaculty.prototype.isoFilter = function () {
-		var _this = this,
-			filterString,
-			$firstItem;
-
-		// listen for filter event
-		this.$isoContainer.on( 'filter', function ( event, data ) {
-
-			filterString = _this.buildIsoFilterString( data.filters );
-
-			// the first item in a filtered set should never be featured
-			// (i.e. big), otherwise the layout will break
-			$firstItem = _this.$isoItems.filter( filterString ).first().removeClass( _this.isoItemFeaturedClass );
-
-			// filter isotope
-			_this.$isoContainer.isotope( { filter: filterString } );
-
-		} );
-	};
-
-	/**
 	 * Run filters passed through hash on page load
 	 */
 	CoEnvFaculty.prototype.filterInit = function () {

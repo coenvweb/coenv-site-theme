@@ -75,7 +75,7 @@ body.home {
 			// background image is set inline
 			background-repeat: no-repeat;
 			background-size: cover;
-			background-position: center;
+			background-position: center 20%;
 
 			@include max-width ( $iPadPortrait - 1 ) {
 				.lt-ie9 & {
