@@ -47,7 +47,7 @@
 	.has-banner & {
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center;
+		background-position: center 20%;
 		//@include transition( padding-bottom .25s ease );
 
 		// help out older browsers with background-size
