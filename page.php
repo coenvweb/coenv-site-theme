@@ -63,7 +63,7 @@ $ancestor = array(
 
 			</main><!-- .main-col -->
 
-			<div class="side-col">
+			<div class="side-col" role="complementary">
 				<?php get_sidebar() ?>
 			</div><!-- .side-col -->
 
