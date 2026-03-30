@@ -322,12 +322,12 @@
 	// margins
 	img.alignleft,
 	.wp-caption.alignleft {
-		@include rem('margin', 0, 1, 1, 0);
+		@include rem('margin', 1, 1, 1, 0);
 	}
 
 	img.alignright,
 	.wp-caption.alignright {
-		@include rem('margin', 0, 0, 1, 1);
+		@include rem('margin', 1, 0, 1, 1);
 	}
 
 	// captions
