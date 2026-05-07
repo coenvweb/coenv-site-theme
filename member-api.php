@@ -528,6 +528,8 @@ class CoEnvMemberAPI {
 			$member['website'] = get_field( 'website', $f->ID );
 			$member['scival'] = get_field( 'scival', $f->ID );
 			$member['twitter'] = get_field( 'twitter', $f->ID );
+			$member['bluesky'] = get_field( 'bluesky', $f->ID );
+			$member['instagram'] = get_field( 'instagram', $f->ID );
 			$member['facebook'] = get_field( 'facebook', $f->ID );
 			$member['endowments_chairs'] = get_field( 'endowments_chairs', $f->ID );
 			$member['degree_institutions'] = get_field( 'degree_institutions', $f->ID );

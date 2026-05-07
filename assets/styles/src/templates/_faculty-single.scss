@@ -211,8 +211,9 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 /*	Page area
 		======================================================================== */
 
-	.profile-bottom{
-		@include rem('padding-bottom', 2);
+		.profile-bottom{
+			@include rem('padding-bottom', 2);
+		} // .profile-bottom
 
 		#secondary-nav {
 			margin: 0;
@@ -222,7 +223,7 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 			border-bottom: 1px solid darken( $border, 5% );
 		}
 
-		.member-contact-links {
+		.Faculty-member-contact-list {
 			margin: 0;
 			@include rem('padding', 1);
 			list-style: none;
@@ -237,6 +238,11 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 			a {
 				text-decoration: none;
 				color: $text;
+				&:hover {
+					svg {
+						fill: $accent;
+					}
+				}
 			} // a
 
 			i {
@@ -263,7 +269,14 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 				@extend .icon-twitter;
 			}
 
-		} // .member-contact-links
+			.instagram, .bluesky {
+				svg {
+					margin-right: 5px;
+				}
+			}
+
+
+		} // .Faculty-member-contact-list
 
 		#member-tab-nav {
 			margin: 4px 0 0;
@@ -331,8 +344,6 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 			}
 
 		} // .member-bio
-
-	} // .profile-bottom
 
 } // .single-faculty
 

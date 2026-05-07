@@ -373,6 +373,16 @@
 	a {
 		text-decoration: none;
 		color: $text;
+		svg {
+			fill: $text;
+			vertical-align: middle;
+			transition: fill 0.2s ease-in-out;
+		}
+		&:hover {
+			svg {
+				fill: $accent;
+			}
+		}
 	}
 
 	i {
@@ -401,6 +411,12 @@
 
 	i.icon-contact-link-facebook {
 		@extend .icon-facebook;
+	}
+
+	.instagram, .bluesky {
+		svg {
+			margin-right: .5rem;
+		}
 	}
 }
 
