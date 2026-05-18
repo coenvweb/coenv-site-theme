@@ -19,6 +19,7 @@ div.major-minor {
     img {
         transition-duration: .3s;
         animation-delay: .3s;
+        margin: 0!important;
     }
 
     @media print {
