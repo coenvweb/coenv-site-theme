@@ -1,7 +1,8 @@
 <?php
 
-// Load constants
+// Load constants and scripts
 require_once locate_template( '/inc/site-constants.php' );
+require_once locate_template( '/inc/scripts.php' );
 
 // Custom Menu Walkers
 require_once locate_template( '/inc/walker-main-menu.php' );
@@ -50,22 +51,9 @@ require_once locate_template( '/inc/intranet.php' );
 // Print Styles
 require_once locate_template( '/inc/print.php' );
 
-//Enqueue the Dashicons script
-add_action( 'wp_enqueue_scripts', 'amethyst_enqueue_dashicons' );
-function amethyst_enqueue_dashicons() {
-    wp_enqueue_style( 'dashicons' );
-}
 
+add_theme_support('custom-logo');
 
-
-/**
- * Admin only scripts
- */
-add_action( 'admin_enqueue_scripts', 'coenv_admin_scripts' );
-function coenv_admin_scripts() {
-	wp_register_script( 'coenv_admin', get_template_directory_uri() . '/assets/scripts/build/admin.min.js' );
-	wp_enqueue_script( 'coenv_admin' );
-}
 
 /**
  * Hide ACF editor for non-admins

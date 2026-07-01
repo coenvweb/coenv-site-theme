@@ -6,6 +6,7 @@
             "key": "field_5a9ef91a45ebb",
             "label": "Contact Title",
             "name": "contact_title",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_5a9ef1976df62",
             "label": "Page Contact(s)",
             "name": "page_contacts",
+            "aria-label": "",
             "type": "relationship",
             "instructions": "",
             "required": 0,
@@ -46,7 +48,8 @@
             ],
             "min": "",
             "max": "",
-            "return_format": "object"
+            "return_format": "object",
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -56,6 +59,20 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_template",
+                "operator": "!=",
+                "value": "templates\/homepage.php"
+            }
+        ],
+        [
+            {
+                "param": "post_template",
+                "operator": "!=",
+                "value": "templates\/careers.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -64,7 +81,11 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1520367933
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1782851227
 }

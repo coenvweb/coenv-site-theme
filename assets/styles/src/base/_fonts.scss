@@ -1,6 +1,8 @@
 /*	Fonts
 		======================================================================== */
 
+$font-path: '../../../assets/fonts';
+
 @mixin sans() {
   font: {
     family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -15,25 +17,188 @@
 }
 
 @font-face {
-	font-family: pt-serif-bold;
-	src: url("../assets/fonts/PT_Serif-Web-Bold.ttf") format('truetype');  
-	font-weight: 700;
+    font-family: 'pt-serif-bold';
+    src: url('#{$font-path}/PT_Serif-Web-Bold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-	font-family: pt-serif-bold-italic;
-	src: url("../assets/fonts/PT_Serif-Web-BoldItalic.ttf") format('truetype');  
+    font-family: 'pt-serif-bold-italic';
+    src: url('#{$font-path}/PT_Serif-Web-BoldItalic.ttf') format('truetype');
 	font-weight: 700;
-  font-style: italic;  
+  font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-	font-family: encode-sans-black;
-	src: url("../assets/fonts/EncodeSansCondensed-800-ExtraBold.ttf") format('truetype');
-  font-style: bold;
-	font-weight: 800;
-  font-display: swap;
+    font-family: 'encode-sans-normal';
+    src: url('#{$font-path}/encodesansnormal-400-regular-webfont.eot');
+    src: url('#{$font-path}/encodesansnormal-400-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/encodesansnormal-400-regular-webfont.woff2') format('woff2'),
+         url('#{$font-path}/encodesansnormal-400-regular-webfont.woff') format('woff'),
+         url('#{$font-path}/encodesansnormal-400-regular-webfont.ttf') format('truetype'),
+         url('#{$font-path}/encodesansnormal-400-regular-webfont.svg#encode_sans_normal_regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'encode-sans-condensed';
+    src: url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.eot');
+    src: url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.woff2') format('woff2'),
+         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.woff') format('woff'),
+         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.ttf') format('truetype'),
+         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.svg#encode_sans_condensed_extrabold') format('svg');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'encode-sans-black';
+    src: url('#{$font-path}/encodesansnormal-900-black-webfont.eot');
+    src: url('#{$font-path}/encodesansnormal-900-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/encodesansnormal-900-black-webfont.woff2') format('woff2'),
+         url('#{$font-path}/encodesansnormal-900-black-webfont.woff') format('woff'),
+         url('#{$font-path}/encodesansnormal-900-black-webfont.ttf') format('truetype'),
+         url('#{$font-path}/encodesansnormal-900-black-webfont.svg#encode_sans_normal_black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'encodesanswide-regular';
+    src: url('#{$font-path}/EncodeSansWide-300-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'encodesanswide-black';
+    src: url('#{$font-path}/EncodeSansWide-900-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'open-sans';
+    src: url('#{$font-path}/opensans-regular-webfont.eot');
+    src: url('#{$font-path}/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/opensans-regular-webfont.woff2') format('woff2'),
+         url('#{$font-path}/opensans-regular-webfont.woff') format('woff'),
+         url('#{$font-path}/opensans-regular-webfont.ttf') format('truetype'),
+         url('#{$font-path}/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'open-sans';
+    src: url('#{$font-path}/OpenSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'open-sans-bold';
+    src: url('#{$font-path}/opensans-600-webfont.eot');
+    src: url('#{$font-path}/opensans-600-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/opensans-600-webfont.woff2') format('woff2'),
+         url('#{$font-path}/opensans-600-webfont.woff') format('woff'),
+         url('#{$font-path}/opensans-600-webfont.ttf') format('truetype'),
+         url('#{$font-path}/opensans-600-webfont.svg#open_sanssemibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'uni-sans-light';
+    src: url('#{$font-path}/fontfabric_-_unisanslight-webfont.eot');
+    src: url('#{$font-path}/fontfabric_-_unisanslight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/fontfabric_-_unisanslight-webfont.woff2') format('woff2'),
+         url('#{$font-path}/fontfabric_-_unisanslight-webfont.woff') format('woff'),
+         url('#{$font-path}/fontfabric_-_unisanslight-webfont.ttf') format('truetype'),
+         url('#{$font-path}/fontfabric_-_unisanslight-webfont.svg#uni_sans_light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'uni-sans-light-italic';
+    src: url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.eot');
+    src: url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.woff2') format('woff2'),
+         url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.woff') format('woff'),
+         url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.ttf') format('truetype'),
+         url('#{$font-path}/fontfabric_-_unisanslightitalic-webfont.svg#uni_sans_light_italic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@mixin o_sans() {
+    font-family: "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin o_sans_bold() {
+    font-family: "open-sans-bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin encode() {
+    font-family: "encode-sans-normal", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin encode_black() {
+    font-family: "encode-sans-black", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin encode_wide() {
+    font-family: "encodesanswide-regular", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin encode_wide_black() {
+    font-family: "encodesanswide-black", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin encode_cb() {
+    letter-spacing: .5px;
+    -webkit-font-smoothing: antialiased;
+    font-family: "encode-sans-condensed", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    //text-transform: uppercase;
+}
+
+@mixin uni() {
+    font-family: "uni-sans-light", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: .5px;
+}
+
+@mixin uni_italic() {
+    font-family: "uni-sans-light-italic", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

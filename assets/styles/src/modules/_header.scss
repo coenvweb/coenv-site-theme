@@ -1,20 +1,4 @@
 
-/*	Browsehappy message
-		======================================================================== */
-.lt-ie9 .browsehappy {
-	position: fixed;
-	z-index: 99999999;
-	top: 0;
-	right: 0;
-	left: 0;
-	@include rem('padding', 1);
-	width: 100%;
-	background: $accent-purple;
-	color: #fff;
-	text-decoration: none;
-
-} // .browshappy
-
 
 /*	Header
 		Site-wide header area, including primary navigation and banner images.
@@ -29,6 +13,153 @@
 	}
 
 } // .hide-on-banner-reveal
+
+.uw-header {
+	background: $accent;
+	border-bottom: 2px solid $accent-border;
+	img {
+		padding: 0.75rem 0;
+	}
+}
+
+/*	Site-wide header
+		======================================================================== */
+
+.site-header {
+	@extend .clearfix;
+	width: 100%;
+	background: $accent-dk;
+	position: relative;
+
+	@include min-width ( $iPadLandscape ) {
+		height: 99px;
+	}
+
+	.site-name-header {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		gap: 0.75rem;
+
+		@include min-width ( $iPadPortrait ) {
+			grid-template-columns: 2fr 1fr;
+		}
+	}
+
+	.logo-area,
+	#logo {
+		grid-column: 1;
+		justify-self: start;
+		min-width: 0;
+		position: relative;
+		margin: 0;
+		width: 100%;
+
+		a:hover {
+			svg {
+				path{
+					fill: $accent-lt;
+				}
+			}
+		}
+
+		svg {
+			float: left;
+			margin-right: 1rem;
+			margin-top: .5rem;
+			width: 120px;
+			path{
+				fill: #fff;
+			}
+		}
+		
+		h1 {
+			text-transform: uppercase;
+			a {
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+		.college-small {
+			display: block;
+			font-size: 1.5rem;
+			letter-spacing: 2px;
+			line-height: 30px;
+			@include encode_wide();
+		}
+		.college-large {
+			display: block;
+			font-size: 3rem;
+			line-height: 35px;
+			@include encode_wide_black();
+			letter-spacing: 2px;
+		}
+	}
+
+	.top-menu-area {
+		grid-column: 1;
+		justify-self: start;
+		max-width: 100%;
+
+		@include min-width ( $iPadPortrait ) {
+			grid-column: 2;
+			justify-self: end;
+		}
+	 }
+
+	#show-menu {
+		display: table-cell;
+		height: 100%;
+		vertical-align: middle;
+		text-align: right;
+
+		@media print {
+			display: none;
+		}
+
+		@include min-width ( $iPadLandscape ) {
+			display: none;
+		}
+
+		button {
+			display: inline;
+			margin: 0;
+			@include rem('padding-right', 1);
+			border: none;
+			background: none;
+			@extend .icon-list;
+			@include font-size(14);
+			color: #888;
+
+			&:hover {
+				color: $text !important;
+			}
+
+            &:before {
+                @include max-width ( 585 ) {
+                    display: block;
+                }
+            }
+
+			span {
+				position: relative;
+				@include sans;
+				@include font-size(11);
+				font-weight: 600;
+				text-transform: uppercase;
+				//@extend .visuallyhidden;
+
+				@include min-width ( 580 ) {
+					top: -0.1em;
+				}
+
+			} // span
+
+		} // button
+
+	} // #show-menu
+
+} // .site-header
 
 .banner-wrapper {
 	position: relative;
@@ -177,183 +308,6 @@
 
 } // .container.header-container
 
-/*	Site-wide header
-		======================================================================== */
-
-.site-header {
-	@extend .clearfix;
-	display: table;
-	width: 100%;
-	height: 100%;
-	background: $white;
-	@extend .shadow;
-	@extend .hide-on-banner-reveal;
-  z-index: 99;
-  position: relative;
-
-	@include min-width ( $iPadLandscape ) {
-		display: block;
-		height: 99px;
-	}
-
-	#logo {
-		position: relative;
-		display: table-cell;
-		margin: 0;
-		width: 100%;
-        
-        @include min-width ( $iPadPortrait ) {
-            @include rem('margin', 0, -12, 0, 0);
-		}
-
-		@include min-width ( 580 ) {
-        float: left;
-        display: block;
-        width: 502px;
-        max-height: 99px;
-		}
-
-		// take care of ~1px white space to the right of the logo
-		&:before {
-			display: block;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: -1px;
-			background: $accent;
-			width: 2px;
-			height: 100%;
-		}
-
-		a {
-			position: relative;
-			z-index: 100;
-			display: block;
-			padding-top: 19.7%;
-			width: 90%;
-			background: {
-                image: url(../../../assets/img/boundless_logo.png);
-				repeat: no-repeat;
-                color: $accent;
-                position-x: -2px;
-			}
-            @include max-width ( 999 ) {
-                background-color: #fff!important;
-                width: 100%!important;
-            }  
-
-			.svg & {
-                background: {
-                    image: url(../../../assets/img/boundless_logo.svg);
-                    repeat: no-repeat;
-                    size: cover;
-                }
-                @include min-width ( $iPadLandscape ) {
-					   background: {
-                           image: url(../../../assets/img/boundless_logo_left.svg);
-                           repeat: no-repeat;
-                       }
-				}
-                
-                @include max-width ( $iPadLandscape ) {
-				    margin-left: -1px; //fine tuning for ipad
-				}
-                
-                @include max-width ( $iPhoneLandscape ) {
-				    margin-left: -2px; //fine tuning for iphone
-				}
-			}
-
-			@media print {
-				position: relative;
-				display: block;
-				padding-top: 19.9%;
-				width: 100%;
-				background: none !important;
-
-				&:after {
-					display: none !important;
-				}
-
-			} // @media print
-
-			img {
-				display: none;
-
-				@media print {
-					display: block;
-					position: absolute;
-					top: 0;
-					right: 0;
-					bottom: 0;
-					left: -30px; // fine tune white gaps
-					max-height: 99px;
-					float: left;
-				}
-
-			} // img
-
-			span {
-				@extend .visuallyhidden;
-			}
-
-		} // a
-
-	} // #logo
-
-	#show-menu {
-		display: table-cell;
-		height: 100%;
-		vertical-align: middle;
-		text-align: right;
-
-		@media print {
-			display: none;
-		}
-
-		@include min-width ( $iPadLandscape ) {
-			display: none;
-		}
-
-		button {
-			display: inline;
-			margin: 0;
-			@include rem('padding-right', 1);
-			border: none;
-			background: none;
-			@extend .icon-list;
-			@include font-size(14);
-			color: #888;
-
-			&:hover {
-				color: $text !important;
-			}
-
-            &:before {
-                @include max-width ( 585 ) {
-                    display: block;
-                }
-            }
-
-			span {
-				position: relative;
-				@include sans;
-				@include font-size(11);
-				font-weight: 600;
-				text-transform: uppercase;
-				//@extend .visuallyhidden;
-
-				@include min-width ( 580 ) {
-					top: -0.1em;
-				}
-
-			} // span
-
-		} // button
-
-	} // #show-menu
-
-} // .site-header
 
 /*	Print breadcrumbs
 		======================================================================== */
