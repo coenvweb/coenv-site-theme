@@ -212,6 +212,40 @@ jQuery(function ($) {
 		
 		// share buttons
 		$('.share').coenvshare();
+
+        // header search toggle
+        var $searchToggle = $('.search-toggle');
+        var $searchWrapper = $('#header-search-form');
+
+        if ( $searchToggle.length && $searchWrapper.length ) {
+            $searchToggle.on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var isOpen = $searchWrapper.hasClass('is-open');
+                $searchWrapper.toggleClass('is-open', !isOpen);
+                $searchToggle.attr('aria-expanded', !isOpen);
+                $searchWrapper.attr('aria-hidden', isOpen);
+
+                if ( !isOpen ) {
+                    $searchWrapper.find('input[type="search"], input[type="text"]').first().focus();
+                }
+            });
+
+            $(document).on('click', function (e) {
+                if ( !$(e.target).closest('.search-toggle, #header-search-form').length ) {
+                    $searchWrapper.removeClass('is-open').attr('aria-hidden', true);
+                    $searchToggle.attr('aria-expanded', false);
+                }
+            });
+
+            $(document).on('keydown', function (e) {
+                if ( e.key === 'Escape' || e.keyCode === 27 ) {
+                    $searchWrapper.removeClass('is-open').attr('aria-hidden', true);
+                    $searchToggle.attr('aria-expanded', false);
+                }
+            });
+        }
       
     //$('a').each(function () { //outbound link tracking
     //    if( location.hostname === this.hostname || !this.hostname.length ) {

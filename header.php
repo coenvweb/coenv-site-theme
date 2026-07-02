@@ -111,11 +111,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                     </div><!-- #show-menu -->
 
                                     <nav aria-label="secondary" class="nav-secondary" role="navigation">
-
-                                        <?php get_search_form() ?>
                                         
-                                        <div class="close-mobile"><i class="icon-cross"></i></div>
-
                                         <ul id="menu-top" class="top-menu  menu">
                                             <?php wp_nav_menu(array(
                                                 'theme_location' => 'top-links', 
@@ -126,6 +122,18 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                                 'fallback_cb' => false
                                             )); ?>
                                         </ul>
+
+                                        <button class="search-toggle" type="button" aria-expanded="false" aria-controls="header-search-form" aria-label="Toggle site search">
+                                            <i class="icon-search" aria-hidden="true"></i>
+                                            <span>Search</span>
+                                        </button>
+
+                                        <div id="header-search-form" class="search-form-wrapper" aria-hidden="true">
+                                            <?php get_search_form() ?>
+                                        </div>
+                                        
+                                        <div class="close-mobile"><i class="icon-cross"></i></div>
+
                                     </nav>  
                                 </div><!-- .top-menu-area -->
 
@@ -133,22 +141,25 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                     </div>
 
-                        <div class="container layout-container menu-header">
+                        <div class="menu-header">
 
-                            <nav aria-label="primary" class="nav-main main-menu normal-menu" role="navigation">
+                            <div class="container layout-container">
 
-                                <ul id="menu-main" class="nav-main__menu  menu">
-                                    <?php 
-                                    wp_list_pages( array(
-                                        'depth' => 3,
-                                        'walker' => new CoEnv_Main_Menu_Walker(),
-                                        'title_li' => false,
-                                        'sort_column' => 'menu_order'
-                                    ) );
-                                    ?>
-                                </ul>
+                                <nav aria-label="primary" class="nav-main main-menu normal-menu" role="navigation">
 
-                            </nav>  
+                                    <ul id="menu-main" class="nav-main__menu  menu">
+                                        <?php 
+                                        wp_list_pages( array(
+                                            'depth' => 3,
+                                            'walker' => new CoEnv_Main_Menu_Walker(),
+                                            'title_li' => false,
+                                            'sort_column' => 'menu_order'
+                                        ) );
+                                        ?>
+                                    </ul>
+
+                                </nav>  
+                            </div><!-- .container -->
 
                         </div>
 

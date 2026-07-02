@@ -21,6 +21,8 @@ get_header(); ?>
     </div>
 </div>
 </div><!-- .banner-wrapper  holdover from header.php -->
+            </div>
+        </header>
 
 <?php
 
