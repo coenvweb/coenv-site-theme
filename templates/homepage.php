@@ -6,16 +6,17 @@ get_header(); ?>
 
 
 <div class="hero-wrapper" <?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >    
-    <div class="hero-container">
+    <div class="container hero-container">
         <div class="hero-content">
             <?php if ( get_field('big_hero_text_line_1') ) : ?>
-                <h2 class="hero-heading hero-heading-line-1"><a href="<?php echo get_field('hero_link'); ?>"><?php echo get_field('big_hero_text_line_1'); ?></a></h2>
+                <h2 class="hero-heading hero-heading-line-1"><?php echo get_field('big_hero_text_line_1'); ?>
             <?php endif; ?>
             <?php if ( get_field('big_hero_text_line_2') ) : ?>
-                <h2 class="hero-heading hero-heading-line-2"><a href="<?php echo get_field('hero_link'); ?>"><?php echo get_field('big_hero_text_line_2'); ?></a></h2>
+                <span class="hero-heading hero-heading-line-2"><a href="<?php echo get_field('hero_link'); ?>"><?php echo get_field('big_hero_text_line_2'); ?></a></span>
             <?php endif; ?>
+            </h2>
             <?php if ( get_field('hero_small_text') ) : ?>
-                <p><?php echo get_field('hero_small_text'); ?></p>
+                <p class="hero-subheading"><?php echo get_field('hero_small_text'); ?></p>
             <?php endif; ?>
         </div>
     </div>

@@ -143,7 +143,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                         <div class="menu-header">
 
-                            <div class="container layout-container">
+                            <div class="container">
 
                                 <nav aria-label="primary" class="nav-main main-menu normal-menu" role="navigation">
 
