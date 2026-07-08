@@ -8,7 +8,9 @@
             }; ?>
             <?php if ( has_term( 'weekly-research', 'topic' ) || ( has_term( 'deans-letter', 'story_type' ) ) || ( has_term( 'podcast', 'story_type' ) ) ) : ?>
                     <a href="<?php the_permalink() ?>" class="img">
-                        <?php the_post_thumbnail( $col_image ); ?>
+                        <div class="img-container">
+                            <?php the_post_thumbnail( $col_image ); ?>
+                        </div>
                     </a>
 
                 <?php if ( has_term( 'weekly-research', 'topic' ) ): ?> 
@@ -26,7 +28,9 @@
                 </a>
 			<?php else : ?>
 				<a href="<?php the_permalink() ?>" class="img">
-					<?php the_post_thumbnail( $col_image ); ?>
+					<div class="img-container">
+						<?php the_post_thumbnail( $col_image ); ?>
+					</div>
                     <div class="content">
                         <h3><?php the_title() ?></h3>
                     </div>

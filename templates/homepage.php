@@ -87,7 +87,7 @@ if( $sticky ) {
 
         <header>
 
-            <h2><a href="/news">Latest News</a></h2> <a class="right" href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">See all news &raquo;</a>
+            <a class="more-news right" href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">See all news &raquo;</a> <h2 class="news-heading"><a href="/news">Latest News</a></h2>
 
         </header>
 
@@ -134,6 +134,51 @@ if( $sticky ) {
             </div><!-- .stories-container -->
 
         </section><!-- #featured-stories --> 
+
+        <div class="social-media-container">
+
+            <div class="social-media">
+
+                <ul class="social-media-links">
+                    <?php if ( get_option('instagram') ) { ?>
+                        <li>
+                            <a href="<?php echo esc_url( get_option('instagram') ); ?>" target="_blank" rel="noopener noreferrer" title="Follow <?php bloginfo('name'); ?> on Instagram">
+                                <span class="visuallyhidden">Instagram</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+                                    <path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"></path>
+                                    <path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"></path>
+                                    <path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php } ?>
+
+                    <?php if ( get_option('linkedin') ) { ?>
+                        <li>
+                            <a href="<?php echo esc_url( get_option('linkedin') ); ?>" target="_blank" rel="noopener noreferrer" title="Follow <?php bloginfo('name'); ?> on LinkedIn">
+                                <span class="visuallyhidden">LinkedIn</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+                                    <g transform="scale(0.03125 0.03125)">
+                                        <path d="M928 0h-832c-52.8 0-96 43.2-96 96v832c0 52.8 43.2 96 96 96h832c52.8 0 96-43.2 96-96v-832c0-52.8-43.2-96-96-96zM384 832h-128v-448h128v448zM320 320c-35.4 0-64-28.6-64-64s28.6-64 64-64c35.4 0 64 28.6 64 64s-28.6 64-64 64zM832 832h-128v-256c0-35.4-28.6-64-64-64s-64 28.6-64 64v256h-128v-448h128v79.4c26.4-36.2 66.8-79.4 112-79.4 79.6 0 144 71.6 144 160v288z"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php } ?>
+
+                    <?php if ( get_option('facebook') ) { ?>
+                        <li>
+                            <a href="<?php echo esc_url( get_option('facebook') ); ?>" target="_blank" rel="noopener noreferrer" title="Follow <?php bloginfo('name'); ?> on Facebook">
+                                <span class="visuallyhidden">Facebook</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 37 34" aria-hidden="true" focusable="false">
+                                    <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div><!-- .social-media -->
+        </div><!-- .social-media-container -->
         
     </div><!-- .container -->
 
@@ -147,7 +192,7 @@ if( $sticky ) {
                 $slice_description = get_sub_field('slice_description');
                 $slice_numbers = get_sub_field('slice_numbers');
                 $slice_type_class = $slice_type ? sanitize_html_class($slice_type) : 'default';
-                $is_big_picture = ( 'big_picture' === $slice_type );
+                $is_big_picture = ( 'Big Picture' === $slice_type );
                 $is_numbers = ( 'numbers' === $slice_type );
                 $numbers_count = is_array($slice_numbers) ? count($slice_numbers) : 0;
 
@@ -224,7 +269,7 @@ if( $sticky ) {
                                 ?>
                                     <?php if ( $link_url && $link_text ) : ?>
                                         <li>
-                                            <a href="<?php echo esc_url($link_url); ?>"<?php echo $link_target ? ' target="' . esc_attr($link_target) . '"' : ''; ?>><?php echo esc_html($link_text); ?></a>
+                                            <a class="button" href="<?php echo esc_url($link_url); ?>"<?php echo $link_target ? ' target="' . esc_attr($link_target) . '"' : ''; ?>><?php echo esc_html($link_text); ?></a>
                                         </li>
                                     <?php endif; ?>
                                 <?php endwhile; ?>

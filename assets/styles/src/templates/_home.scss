@@ -42,14 +42,12 @@ body.home {
 	.feature {
 		@extend .clearfix;
 		position: relative;
-		@include rem('margin', 0, 0.5, 0.5, 0.5);
 		max-width: $max_width;
-		background: #fff;
-		@extend .shadow;
+		background: $bg-lt;
 		text-align: left;
+		margin-bottom: 1rem;
 
 		@include min-width ( $iPadPortrait ) {
-			@include rem('margin', 0, 1, 1, 1);
 			min-height: 450px;
 		}
 
@@ -67,6 +65,10 @@ body.home {
 			max-height: auto;
 		}
 
+		.feature-title {
+			text-decoration: none;
+		}
+
 		.feature-image {
 			position: relative;
 			padding-top: 60%;
@@ -76,12 +78,6 @@ body.home {
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: center;
-
-			@include max-width ( $iPadPortrait - 1 ) {
-				.lt-ie9 & {
-					-ms-behavior: url(/backgroundsize.min.htc);
-				}
-			}
 
 			@include min-width ( $iPadPortrait ) {
 				float: left;
@@ -132,39 +128,42 @@ body.home {
 					vertical-align: bottom;
 				}
 
-				.feature-content {
-					color: #fff;
+				.feature-button {
+					svg {
+						width: 2rem;
+						height: 2rem;
+						position: absolute;
+						top: 1rem;
+						right: 1rem;
+						stroke: $accent-dk;
+						text-decoration: none;
+					}
+				}
 
-					h1 {
+				.feature-content {
+					position: relative;
+					
+
+					h3 {
 						@extend .antialiased;
 						@include rem('margin', 0, 0, 0.5);
-						@include serif;
+						@include encode_black();
 						@include font-size(24);
 						@include line-height(30);
-						font-weight: 400;
+						text-transform: uppercase;
+						color: $accent-dk;
 					}
 
 					p {
 						@include rem('margin', 0, 0, 1);
-						@include font-size(13);
+						@include font-size(14);
 						@include line-height(19.5);
-						color: #fff;
-						color: rgba(255,255,255,0.9);
+						color: $text;
 					}
 
 					.feature-caption {
 						@include rem('margin', 1, 0, 0);
 						@include font-size(11);
-						color: rgba(255,255,255,0.8);
-					}
-
-					a {
-						color: #fff;
-                        text-decoration: none;
-					}
-
-					a:hover {
-						color: #fff !important;
 					}
 
 				} // .feature-content
@@ -194,18 +193,18 @@ body.home {
 }
 
 .stories-container {
-	@include clearfix;
     @include rem('margin', 0, -0.5); // counteract .story padding below
+
+	@include min-width( $iPadPortrait ) {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+	}
 
 } // .stories-container
 
-.story-sizer {
-    margin: 0;
-    height: 0
-        
-}
 
-.story, .story-sizer {
+.story {
 	@extend %media;
 
     overflow: visible; //fixes shadow on homepage?
@@ -214,6 +213,11 @@ body.home {
     @include rem('padding', 0, 0.5);
     width: 33.3%;
     display: block;
+
+	@include min-width( $iPadPortrait ) {
+		display: flex;
+		float: none;
+	}
 
     @include max-width( $iPadPortrait ) {
         width: 50%;
@@ -230,9 +234,10 @@ body.home {
     }
     
 	.inner {
-		@include clearfix;
-		@include shadow();
 		background: #fff;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
         &:hover {
             background-color: $accent;
             a {
@@ -248,18 +253,19 @@ body.home {
 
 	.content {
 		@include rem('padding', 1);
+		flex: 1 1 auto;
 
 		h3 {
 			margin: 0;
-			@include serif;
+			@include o_sans_bold();
 			@include font-size(16);
 			@include line-height(20);
 			font-weight: 400;
 
 			@include min-width( $iPadPortrait ) {
 				@include rem('margin-bottom', .2);
-				@include font-size(20);
-				@include line-height(24);
+				@include font-size(16);
+				@include line-height(20);
 			}
 
 		} // h1
@@ -317,11 +323,17 @@ body.home {
 		}
 	} // .story-series
 
-	.img {
+	.img-container {
         float: none;
+		position: relative;
+		aspect-ratio: 4 / 3;
+
 		img {
 			width: 100%;
+            height: 100%;
             float: none;
+			display: block;
+			object-fit: cover;
 		}
 
 	} // .img
@@ -452,10 +464,17 @@ body.home {
 } // .home
 
 /* Homepage hero message */
+
+.home .banner-wrapper {
+	padding-bottom: 0;
+	background-size: cover;
+}
+
 .home .hero-container {
 	display: block;
 	position: relative;
 	min-height: 600px;
+	height: 66vh;
 
 	.hero-content {
 		position: absolute;
@@ -475,6 +494,12 @@ body.home {
 			a {
 				color: $accent-yellow;
 				text-decoration: none;
+				&:hover {
+					color: darken($accent-yellow, 10%);
+					&:after {
+						background-color: darken($accent-yellow, 10%);
+					}
+				}
 			}
 			&:after {
 				content: '';
@@ -529,5 +554,55 @@ body.home {
 	.button:hover {
 		background-color: #4D004D;
 		border: solid 1px #FA00FA;
+	}
+}
+
+.home #main-col {
+	background-color: $accent-dk;
+	.container-news {
+		header {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+
+			.news-heading {
+				@include encode_black();
+				margin: 0;
+				padding: 0;
+			}
+			.more-news {
+				float: right;
+				margin-top: 1rem;
+				@include o_sans_bold();
+			}
+			a {
+				line-height: normal;
+				color: white;
+				font-size: 1rem;
+				margin: 0;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+.social-media-container {
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	.social-media-links {
+		text-align: center;
+		li {
+			display: inline-block;
+			background-color: $accent-dk;
+			svg {
+				height: 2rem;
+				width: 2rem;
+				margin: 0 0.5rem;
+				fill: $white;
+				&:hover {
+					fill: $accent-yellow;
+				}
+			}
+		}
 	}
 }

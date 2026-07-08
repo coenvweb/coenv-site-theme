@@ -19,10 +19,10 @@ $feature_caption = get_post_meta(get_post_thumbnail_id(), "_credit_text", true);
 $units = get_the_terms( $post->ID, 'unit' );
 $unit = $units[0]->term_id;
 
-$unit_color = coenv_unit_color($unit);
-if (!$unit_color){
-    $unit_color = '#333333';
-} 
+# $unit_color = coenv_unit_color($unit);
+# if (!$unit_color){
+#     $unit_color = '#333333';
+# } 
 $feature = array(
 	'label' => get_field('feature_label'),
 	'content_link' => array(
@@ -45,12 +45,12 @@ $feature = array(
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
 	</div>
-        
-    </a>
     
 	<div class="feature-info-container">
             
-		<div class="feature-info" style="background-color: #33006f;">
+		<div class="feature-info">
+
+            <a class="feature-button" aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.09 55.09" aria-hidden="true" focusable="false"><circle cx="27.55" cy="27.55" r="26.05" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><polyline points="29.52 37.68 40.72 27.55 29.52 17.41" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><line x1="39.27" y1="27.55" x2="15.37" y2="27.55" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></a>
 
 			<div class="feature-type">
             <?php
@@ -63,13 +63,11 @@ $feature = array(
 			<div class="feature-content">
                 <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
-                    <h1><?php the_title() ?></h1>
+                    <h3><?php the_title() ?></h3>
 
                     <p><?php the_advanced_excerpt('length=20&length_type=words'); ?></p>
                     
                 </a>
-                
-                    <a class="button feature-button" aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><?php echo $feature['content_link']['title'] ?></a>
 
                 <?php if ( !empty( $feature['image']['caption'] ) ) : ?>
                     <p class="feature-caption"><?php echo  'Photo: ' . $feature['image']['caption'] ?></p>
@@ -80,5 +78,7 @@ $feature = array(
 		</div><!-- .feature-info -->
             
 	</div><!-- .feature-info-container -->
+    
+    </a>
 
 </article><!-- .feature -->

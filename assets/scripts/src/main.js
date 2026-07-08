@@ -1,36 +1,6 @@
 jQuery(function ($) {    
     
     /**
-     * Banner image reveals
-     */
-    $.fn.bannerReveals = function () {
-        'use strict';
-
-        return this.each( function () {
-
-            var $container = $(this),
-                    $revealBtn = $('.banner-info'),
-                    activeClass = 'banner-revealed';
-
-
-
-            $revealBtn.on( 'click', function ( e ) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $('body').toggleClass( activeClass );
-            } );
-
-            $container.on( 'click', function () {
-                if ( $('body').hasClass( activeClass ) ) {
-                    $('body').removeClass( activeClass );
-                }
-            } );
-
-        } );
-    };
-
-    /**
      * Handle responsive videos
      */
     $.fn.handleFitVids = function () {
@@ -206,9 +176,6 @@ jQuery(function ($) {
 
 		// single faculty member tabs
 		$('.Faculty-member-tab-nav').memberTabs();
-
-		// banner image reveals
-		$('.banner-wrapper').bannerReveals();
 		
 		// share buttons
 		$('.share').coenvshare();
@@ -292,24 +259,6 @@ jQuery(function ($) {
             );
         }
         
-        if ( $('body').hasClass('home') ) {
-            var $boxes = $('.story-thung');
-            $boxes.hide();
-
-            $('.stories-container').imagesLoaded( function() {
-                setTimeout(function(){ 
-                    $boxes.fadeIn();
-                    $('.stories-container').masonry({
-                        // options
-                        itemSelector: '.story',
-                        columnWidth: '.story-sizer',
-                        percentPosition: true
-                    });
-                }, 200);
-                
-            });
-            
-        }
         $('.Faculty-member-contact-list').click(function(event){
             event.stopPropagation();
         });
