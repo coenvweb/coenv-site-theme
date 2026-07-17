@@ -88,7 +88,15 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3dba5d30abf",
+                                "operator": "!=",
+                                "value": "Events and Newsletter"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "66",
                         "class": "",
@@ -110,7 +118,15 @@
                     "type": "textarea",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3dba5d30abf",
+                                "operator": "!=",
+                                "value": "Events and Newsletter"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "100",
                         "class": "",
@@ -138,6 +154,13 @@
                                 "field": "field_6a3dba5d30abf",
                                 "operator": "!=",
                                 "value": "Numbers"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6a3dba5d30abf",
+                                "operator": "!=",
+                                "value": "Events and Newsletter"
                             }
                         ]
                     ],
@@ -249,6 +272,36 @@
                         }
                     ],
                     "parent_repeater": "field_6a3dbe082f990"
+                },
+                {
+                    "key": "field_6a57e9ba5e040",
+                    "label": "Newsletter signup text",
+                    "name": "newsletter_signup_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3dba5d30abf",
+                                "operator": "==",
+                                "value": "Events and Newsletter"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3dbe082f990"
                 }
             ]
         }
@@ -274,5 +327,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1782851004
+    "modified": 1784146478
 }

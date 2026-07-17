@@ -191,10 +191,37 @@ if( $sticky ) {
                 $slice_title = get_sub_field('slice_title');
                 $slice_description = get_sub_field('slice_description');
                 $slice_numbers = get_sub_field('slice_numbers');
-                $slice_type_class = $slice_type ? sanitize_html_class($slice_type) : 'default';
-                $is_big_picture = ( 'Big Picture' === $slice_type );
-                $is_numbers = ( 'numbers' === $slice_type );
+                $slice_links = get_sub_field('slice_links');
+                $slice_type_key = $slice_type ? strtolower($slice_type) : 'default';
+                $slice_type_class = $slice_type ? sanitize_html_class($slice_type_key) : 'default';
+                $is_big_picture = ( 'big picture' === $slice_type_key );
+                $is_numbers = ( 'numbers' === $slice_type_key );
                 $numbers_count = is_array($slice_numbers) ? count($slice_numbers) : 0;
+                $slice_link_items = array();
+                if ( is_array($slice_links) ) {
+                    foreach ( $slice_links as $slice_link_row ) {
+                        if ( !is_array($slice_link_row) || empty($slice_link_row['slice_link']) || !is_array($slice_link_row['slice_link']) ) {
+                            continue;
+                        }
+
+                        $slice_link = $slice_link_row['slice_link'];
+                        $link_url = !empty($slice_link['url']) ? $slice_link['url'] : '';
+                        $link_text = !empty($slice_link['title']) ? $slice_link['title'] : '';
+                        $link_target = !empty($slice_link['target']) ? $slice_link['target'] : '';
+
+                        if ( $link_url && $link_text ) {
+                            $slice_link_items[] = array(
+                                'url' => $link_url,
+                                'text' => $link_text,
+                                'target' => $link_target,
+                            );
+                        }
+                    }
+                }
+                $slice_links_count = count($slice_link_items);
+                $slice_has_multi_links = ( $slice_links_count > 1 );
+                $slice_has_single_link = ( 1 === $slice_links_count );
+                $slice_multi_links_class = $slice_has_multi_links ? ' slice-multi-links' : '';
 
                 $image_url = '';
                 $image_alt = $slice_title;
@@ -205,7 +232,7 @@ if( $sticky ) {
                     }
                 }
 
-                $slice_has_bg = ( $is_big_picture && $image_url );
+                $slice_has_bg = ( $image_url );
                 $slice_bg_class = $slice_has_bg ? 'slice-has-bg' : 'slice-no-bg';
 
                 $slice_style_rules = array();
@@ -218,24 +245,32 @@ if( $sticky ) {
 
                 $slice_style = $slice_style_rules ? ' style="' . esc_attr(implode('; ', $slice_style_rules)) . ';"' : '';
             ?>
-                <article class="slice slice-full-width <?php echo esc_attr($slice_bg_class); ?> slice-<?php echo esc_attr($slice_type_class); ?>"<?php echo $slice_style; ?>>
-                    <?php if ( !$is_big_picture && $image_url ) : ?>
-                        <div class="slice-image">
-                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                        </div>
-                    <?php endif; ?>
+                <article class="slice slice-full-width <?php echo esc_attr($slice_bg_class); ?> slice-<?php echo esc_attr($slice_type_class . $slice_multi_links_class); ?>"<?php echo $slice_style; ?>>
 
                     <div class="slice-content container">
                         <?php if ( $slice_title ) : ?>
                             <h3 class="slice-title"><?php echo esc_html($slice_title); ?></h3>
                         <?php endif; ?>
 
-                        <?php if ( $slice_description ) : ?>
+                        <?php if ( !$slice_has_multi_links && ( $slice_description || $slice_has_single_link ) ) : ?>
+                            <div class="slice-description-area">
+                                <?php if ( $slice_description ) : ?>
+                                    <p class="slice-description"><?php echo esc_html($slice_description); ?></p>
+                                <?php endif; ?>
+                                <?php if ( $slice_has_single_link ) :
+                                    $inline_link = $slice_link_items[0];
+                                ?>
+                                    <a class="slice-link slice-link-inline" href="<?php echo esc_url($inline_link['url']); ?>"<?php echo $inline_link['target'] ? ' target="' . esc_attr($inline_link['target']) . '"' : ''; ?>><?php echo esc_html($inline_link['text']); ?></a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ( $slice_has_multi_links && $slice_description ) : ?>
                             <p class="slice-description"><?php echo esc_html($slice_description); ?></p>
                         <?php endif; ?>
 
                         <?php if ( $is_numbers && $numbers_count > 0 ) : ?>
-                            <ul class="slice-numbers">
+                            <ul class="slice-number-list">
                                 <?php foreach ( $slice_numbers as $fact ) :
                                     $fact_number = '';
                                     $fact_text = '';
@@ -259,21 +294,35 @@ if( $sticky ) {
                             </ul>
                         <?php endif; ?>
 
-                        <?php if ( have_rows('slice_links') ) : ?>
+                        <?php if ( $slice_has_multi_links ) : ?>
                             <ul class="slice-links">
-                                <?php while ( have_rows('slice_links') ) : the_row();
-                                    $link = get_sub_field('slice_link');
-                                    $link_url = ( is_array($link) && !empty($link['url']) ) ? $link['url'] : '';
-                                    $link_text = ( is_array($link) && !empty($link['title']) ) ? $link['title'] : '';
-                                    $link_target = ( is_array($link) && !empty($link['target']) ) ? $link['target'] : '';
+                                <?php foreach ( $slice_link_items as $slice_link_item ) :
+                                    $link_url = $slice_link_item['url'];
+                                    $link_text = $slice_link_item['text'];
+                                    $link_target = $slice_link_item['target'];
+                                    $link_svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.09 55.09" aria-hidden="true" focusable="false"><circle cx="27.55" cy="27.55" r="26.05" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><polyline points="29.52 37.68 40.72 27.55 29.52 17.41" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><line x1="39.27" y1="27.55" x2="15.37" y2="27.55" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg>';
                                 ?>
-                                    <?php if ( $link_url && $link_text ) : ?>
-                                        <li>
-                                            <a class="button" href="<?php echo esc_url($link_url); ?>"<?php echo $link_target ? ' target="' . esc_attr($link_target) . '"' : ''; ?>><?php echo esc_html($link_text); ?></a>
-                                        </li>
-                                    <?php endif; ?>
-                                <?php endwhile; ?>
+                                    <li>
+                                        <a class="slice-link" href="<?php echo esc_url($link_url); ?>"<?php echo $link_target ? ' target="' . esc_attr($link_target) . '"' : ''; ?>><?php echo esc_html($link_text); ?><?php if ( $slice_has_multi_links ) { echo $link_svg; } ?></a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
+                        <?php endif; ?>
+
+                        <?php if ($slice_type == "Events and Newsletter") : ?>
+                            <div class="slice-events">
+                                <h3 class="slice-events-newsletter-title">Events</h3> <a class="more-events right button" href="http://environment.uw.local/alumni-and-community/calendar-events/">See all events &raquo;</a>
+                                <?php the_widget('CoEnv_Widget_Events', array( 'feed_url' => 'https://www.trumba.com/calendars/featuredevents-1.rss', 'posts_per_page' => 3)); ?>
+                            </div>
+                            <div class="slice-newsletter">
+                                <div class="newsletter-title-area">
+                                    <h3 class="slice-events-newsletter-title">Newsletter</h3>
+                                    <p><?php echo esc_html(get_sub_field('newsletter_signup_text')); ?></p>
+                                </div>
+                                <div class="newsletter-signup-form">
+                                    <?php echo do_shortcode('[mkto_signup subID=378]'); ?>
+                                </div>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </article>

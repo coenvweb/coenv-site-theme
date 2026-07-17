@@ -1,0 +1,191 @@
+.container-slices {
+    .slice {
+        height: 450px;
+        display: flex;
+        align-items: center;
+        border-bottom: .5rem solid $accent-dk;
+
+        &:not(.slice-multi-links) {
+            .slice-link {
+                @extend .button;
+            }
+        }
+
+        &.slice-no-bg:nth-child(odd of .slice-no-bg) {
+            background-color: $accent-dk;
+        }
+
+        &.slice-no-bg:nth-child(even of .slice-no-bg) {
+            background-color: $accent;
+            border-bottom-color: $accent;
+            
+        }
+
+        &.slice-has-bg {
+            background-size: cover;
+            background-position: center;
+            background-color: rgba($accent, .75);
+            background-blend-mode: multiply;
+        }
+
+        &.slice-multi-links {
+            .slice-content {
+                align-items: center;
+                row-gap: 1rem;
+            }
+
+            .slice-title {
+                grid-column: 1 / 2;
+                grid-row: 1;
+                font-size: 3rem;
+                @include encode_wide_black();
+                text-transform: uppercase;
+                margin-bottom: 0;
+            }
+
+            .slice-description {
+                grid-column: 1 / 2;
+                grid-row: 2;
+                @include o_sans_bold();
+                font-size: 1.25rem;
+            }
+
+            .slice-links {
+                grid-column: 2 / 3;
+                grid-row: 1 / 3;
+                align-self: center;
+
+                li {
+                    border-top: 2px solid $accent-yellow;
+                    @include o_sans_bold();
+                    font-size: 1.25rem;
+                    padding: 1rem;
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        &:hover {
+                            color: $accent-yellow;
+                        }
+                        svg {
+                            float: right;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            stroke: white;
+                        }
+                    }
+                }
+            }
+        }
+        &.slice-numbers {
+            .slice-content {
+                grid-column: 1 / 3;
+                grid-template-columns: 1fr;
+            }
+
+            .slice-title {
+                grid-column: 1 / -1;
+                line-height: normal;
+				color: white;
+				font-size: 1rem;
+				margin-bottom: 1rem;
+				text-decoration: none;
+				text-transform: uppercase;
+                @include encode_black();
+            }
+
+            .slice-number-list {
+                display: grid;
+                grid-auto-flow: column;
+                grid-auto-columns: minmax(0, 1fr);
+                grid-template-columns: repeat(var(--slice-columns, 1), minmax(0, 1fr));
+                gap: 1.5rem;
+                list-style: none;
+                padding-left: 0;
+                margin: 0;
+                text-align: center;
+                .slice-number-value {
+                    display: block;
+                    font-size: 4rem;
+                    @include encode_wide_black();
+                    border-bottom: 3px solid $accent-yellow;
+                    line-height: normal;
+                    margin-bottom: 1rem;
+                    padding-bottom: 1rem;
+                }
+                .slice-number-label{
+                    display: block;
+                    font-size: 1.25rem;
+                    @include o_sans_bold();
+                }
+            }
+        }
+
+        &.slice-eventsandnewsletter {
+            .slice-events {
+                grid-column: 1 / 2;
+            }
+            .slice-newsletter {
+                grid-column: 2 / 3;
+                .newsletter-title-area {
+                    background-color: $accent-dk;
+                    padding: 2rem;
+                    margin-bottom: 0;
+                    h3 {
+                        color: white;
+                        margin-bottom: 1rem;
+                    }
+                    p {
+                        margin-bottom: 0rem;
+                    }
+                }
+                .newsletter-signup-form {
+                    background-color: $bg-lt;
+                    padding: 2rem;
+                }
+            }
+        }
+    }
+    .slice-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+        color: white;
+        width: 100%;
+        
+        .slice-title {
+            grid-column: 1 / 2;
+            font-size: 3rem;
+            @include encode_wide_black();
+            text-transform: uppercase;
+            line-height: normal;
+            margin-bottom: 1rem;
+        }
+        .slice-description-area {
+            grid-column: 2 / 3;
+
+            .slice-description {
+                @include o_sans_bold();
+                font-size: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .slice-link-inline {
+                display: inline-block;
+                margin-top: 1.75rem;
+            }
+        }
+
+        .slice-description {
+            grid-column: 2 / 3;
+            @include o_sans_bold();
+            font-size: 1.25rem;
+        }
+        .slice-links {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+    }
+    
+}

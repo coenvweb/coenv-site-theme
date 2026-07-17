@@ -6,15 +6,13 @@
 	display: inline-block;
 	vertical-align: middle;
 	@include rem('padding', 0.25, 1);
-	@include sans;
-	@include font-size(12);
-	font-weight: 400;
-	background: #333;
-	background: rgba(0,0,0,0.3);
+	@include o_sans_bold();
+	font-size: 1rem;
+	background: $accent-dk;
+	border: 1px solid $accent-yellow;
 	text-decoration: none;
+	text-transform: uppercase;
 	color: #fff;
-	//@include border-radius( $radius );
-	border-radius: $radius;
 
 	&:hover {
 		background: rgba(0,0,0,0.6);
