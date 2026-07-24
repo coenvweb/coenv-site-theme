@@ -35,33 +35,22 @@
 
 	// top level <li>
 	.pagenav {
+		margin-top: 2rem;
 
 		// ancestor title
 		> a {
-			position: absolute;
-			right: 0;
-			bottom: 100%;
-			left: 0;
+			@include encode_wide_black();
+			font-size: 1.25rem;
+			text-transform: uppercase;
+			background: none;
+			color: $accent-dk;
+			border-bottom: 1px solid $accent-dk;
+			padding-bottom: 1rem;
+			width: 100%;
 			display: block;
-			@include rem('padding', 1);
-			@include serif;
-			@include font-size(24);
-			@include line-height(24);
-			font-weight: 400;
-			@extend .antialiased;
-			background: $bg-dk;
-			background: rgba(0,0,0,0.9);
-			color: #fff;
 
 			&:hover {
-				background: $accent-lt;
-				color: #fff !important;
-				//background: $accent;
-			}
-
-			@include min-width ( $iPadLandscape ) {
-				@include font-size(36);
-				@include line-height(36);
+				color: $accent-yellow;
 			}
 
 		} // a

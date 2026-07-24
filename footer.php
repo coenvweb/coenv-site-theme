@@ -1,22 +1,28 @@
 
-                <footer id="footer" role="contentinfo" class="site-footer">
+
+                <footer id="footer" role="contentinfo" class="site-footer" style="background-image: url('<?php echo get_field('background_image', 'option') ?>'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
 
                     <div class="layout-container">
 
                         <div class="footer-social-address">
-                            <p><a href="http://maps.google.com/?q=1492+NE+Boat+St" title="Google Maps link">1492 NE Boat St., Seattle, WA 98105</a></p>
-                            <p><a href="mailto:<?=antispambot("coenv@uw.edu")?>" title="Send us an Email"><?php echo antispambot("coenv@uw.edu") ?></a> | <a href="tel:<?=antispambot("206-685-5410")?>" title="Call us">206-685-5410</a></p>
-                            <p><a href="/intranet" title="Intranet">Intranet</a> | <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
+                            <p><a href="http://maps.google.com/?q=1492+NE+Boat+St" title="Google Maps link">1492 NE Boat St., Seattle, WA 98105</a><br />
+                            <a href="mailto:<?=antispambot("coenv@uw.edu")?>" title="Send us an Email"><?php echo antispambot("coenv@uw.edu") ?></a> | <a href="tel:<?=antispambot("206-685-5410")?>" title="Call us">206-685-5410</a></p>
+                            <p class="footer-links-internal"><a href="/intranet" title="Intranet">Intranet</a> | <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
                         </div>
 
                         <div class="footer-logo-links">
                             <div class="footer-social">
                                 <a href="https://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350" height="39"></a>
                             </div>
+                            <ul class="footer-links">
+                                <li><a href="https://enviroment.uw.edu/about/college-units">College Units</a></li>
+                                <li><a href="https://environment.uw.edu/faculty">Faculty</a></li>
+                                <li><a href="https://environment.uw.edu/students">Admissions</a></li>
+                            </ul>
                         </div>
 
                         <div class="footer-end-row">
-                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> <a href="http://washington.edu/" target="_blank">University of Washington, College of the Environment</a></p></div>
+                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> University of Washington, College of the Environment</p></div>
                             <div class="uw-links right"><p><a href="http://washington.edu/privacy/" target="_blank">Privacy</a> | <a href="http://washington.edu/terms/" target="_blank">Terms</a> | <a href="http://washington.edu/link-policy/" target="_blank">Link Policy</a> | <a href="http://environment.uw.edu/intranet/report/" target="_blank">Intranet</a></p></div>
                         </div>
 

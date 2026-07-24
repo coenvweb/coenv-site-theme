@@ -74,7 +74,7 @@ $font-path: '../../../assets/fonts';
 
 @font-face {
     font-family: 'encodesans-semibold';
-    src: url('#{$font-path}/EncodeSans-600-Semibold.ttf') format('truetype');
+    src: url('#{$font-path}/EncodeSansNormal-600-Semibold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -191,7 +191,6 @@ $font-path: '../../../assets/fonts';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 @mixin encode_wide_black() {
     font-family: "encodesanswide-black", "open-sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
     -webkit-font-smoothing: antialiased;
