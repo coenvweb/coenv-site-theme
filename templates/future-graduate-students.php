@@ -13,8 +13,6 @@ $ancestor = array(
 );
 ?>
 
-</header><!-- #header -->
-
     <div class="image-area small">
         
 		<div class="container">
@@ -22,7 +20,7 @@ $ancestor = array(
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                         <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-graduate-students/">Future Graduate Students</a></h1>
+                        <h1 class="article__title small"><a class="mobile" href="<?php echo esc_url( $ancestor['permalink'] ); ?>"><?php echo esc_html( $ancestor['title'] ); ?> &gt; </a><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h1>
                     </div>
                 </header>
                 <section class="article__content">
@@ -40,6 +38,8 @@ $ancestor = array(
                     </div><!-- .container.header-container -->
 
                 </div><!-- .banner-wrapper -->
+
+                </header><!-- #header -->
 
 
 	<section id="page" role="main" class="template-page future-students front">

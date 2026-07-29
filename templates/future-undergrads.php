@@ -13,8 +13,6 @@ $ancestor = array(
 );
 ?>
 
-                        </header><!-- #header -->
-
     <div class="image-area small">
         
 		<div class="container">
@@ -40,6 +38,9 @@ $ancestor = array(
                     </div><!-- .container.header-container -->
 
                 </div><!-- .banner-wrapper -->
+
+
+                        </header><!-- #header -->
 
 
 	<section id="page" role="main" class="template-page future-students front">

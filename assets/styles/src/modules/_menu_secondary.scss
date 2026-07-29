@@ -3,7 +3,7 @@
 
 #secondary-nav {
 	position: relative;
-	@include rem('margin-bottom', 1);
+	margin-top: -6.5rem;
 
 	// all <ul>s
 	ul {
@@ -33,6 +33,64 @@
 
 	} // a
 
+	li.has-children {
+		position: relative;
+
+		> a {
+			@include rem('padding-left', 2.75);
+		}
+
+		> .secondary-nav-caret {
+			position: absolute;
+			left: 0.45rem;
+			top: 0.65rem;
+			width: 1.25rem;
+			height: 1.25rem;
+			line-height: 1;
+			padding: 0;
+			margin: 0;
+			border: 0;
+			background: transparent;
+			color: $text;
+			cursor: pointer;
+
+			&:before {
+				content: "";
+				display: block;
+				width: 0;
+				height: 0;
+				margin: 0 auto;
+				border-top: 0.3rem solid transparent;
+				border-bottom: 0.3rem solid transparent;
+				border-left: 0.4rem solid currentColor;
+				opacity: 0.85;
+				transition: transform 0.2s ease;
+			}
+
+			&:focus {
+				outline: 2px solid $accent-dk;
+				outline-offset: 2px;
+			}
+		}
+
+		&.is-expanded > .secondary-nav-caret:before {
+			transform: rotate(90deg);
+		}
+	}
+
+	.children > li.has-children > .secondary-nav-caret {
+		top: 0.4rem;
+	}
+
+	// Keep caret-bearing items padded at deeper hierarchy levels.
+	.pagenav > ul .children li.has-children > a {
+		@include rem('padding-left', 2.75);
+	}
+
+	.pagenav > ul .children .children li.has-children > a {
+		@include rem('padding-left', 3);
+	}
+
 	// top level <li>
 	.pagenav {
 		margin-top: 2rem;
@@ -40,24 +98,24 @@
 		// ancestor title
 		> a {
 			@include encode_wide_black();
-			font-size: 1.25rem;
+			font-size: 4rem;
 			text-transform: uppercase;
 			background: none;
-			color: $accent-dk;
-			border-bottom: 1px solid $accent-dk;
-			padding-bottom: 1rem;
+			color: $accent-yellow;
+			padding-bottom: 5rem;
 			width: 100%;
 			display: block;
+			white-space: nowrap;
 
 			&:hover {
-				color: $accent-yellow;
+				color: $accent-lt;
 			}
 
 		} // a
 
 		// everything under the title <li>
 		> ul {
-			background: #eee;
+			//background: #eee;
 
 			> li {
 
@@ -67,7 +125,7 @@
 
 				> a {
 					display: block;
-					@include rem('padding', 0.5, 1);
+					@include rem('padding', 0.5, 1.75);
 					border-bottom: 1px solid darken( $border, 5% );
 				}
 
@@ -101,14 +159,10 @@
 			> li.current_page_parent,
 			> li.current_page_ancestor {
 
-				> a {
-
-				} // > a
-
 				> .children {
 					position: relative;
 					display: block;
-					background: #d9d9d9;
+					//background: #d9d9d9;
 
 					&:before {
 						display: block;
@@ -173,7 +227,7 @@
 
 					> .children {
 						display: block;
-						background: #ccc;
+						//background: #ccc;
 					}
 
 				} //

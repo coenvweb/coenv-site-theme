@@ -166,4 +166,4 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
                     
-                <?php if (!(is_front_page())) { echo '</div> </header>'; } ?>
+                <?php if (!(is_front_page())) { echo '</div> </div> </header>'; } ?>

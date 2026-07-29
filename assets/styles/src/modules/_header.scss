@@ -284,11 +284,28 @@
 		padding-bottom: 25%;
 	}
 	.page-top-level.has-banner & , .page-template-default &{
-		padding-bottom: 10%;
+		padding-bottom: 25%;
 	}
 
 	@media print {
 		padding: 0 !important;
+	}
+
+	.page-title-wrap {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.page-title {
+		margin: 0;
+		padding: 0.7rem 0;
+		@include encode_wide_black();
+		@include font-size(36);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: $accent-yellow;
 	}
 
 } // .banner-wrapper
