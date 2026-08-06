@@ -256,36 +256,15 @@
 	position: relative;
 
 	// default banner padding
-	@include rem('padding-bottom', 7);
-
-	// disable for certain templates
-	.post-type-archive-faculty &,
-	.single-faculty & {
-		@include rem('padding-bottom', 0);		
-	}
-
-	// for pages that have banners assigned
-	// define banner behavior
-	.has-banner & {
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center 30%;
-		//@include transition( padding-bottom .25s ease );
-
-		// help out older browsers with background-size
-		.lt-ie9 & {
-			-ms-behavior: url(/backgroundsize.min.htc);
-		}
-
-	} // .has-banner &
+	padding-bottom: 25%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 30%;
 
 	// top level pages have bigger banners
-	.page-top-level.has-banner & , .post-template-signature-story &, .post-template-cambodia-signature-story &{
-		padding-bottom: 25%;
-	}
-	.page-top-level.has-banner & , .page-template-default &{
-		padding-bottom: 25%;
-	}
+	//.page-top-level.has-banner & , .page-template-default &, .post-template-signature-story &, .post-template-cambodia-signature-story &{
+	//	padding-bottom: 25%;
+	//}
 
 	@media print {
 		padding: 0 !important;

@@ -196,10 +196,17 @@ function coenv_banner() {
         $ancestor = 38585;
     }
 
+    if ( is_post_type_archive( 'faculty' ) ) {
+        $faculty_page = get_page_by_path( 'faculty' );
+        if ( $faculty_page && isset( $faculty_page->ID ) ) {
+            $ancestor = $faculty_page->ID;
+        }
+    }
+
 	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
 		$page_id = $obj->ID;
 
-	} else if ( has_post_thumbnail( $ancestor ) ) {
+	} else if ( $ancestor && has_post_thumbnail( $ancestor ) ) {
 		$page_id = $ancestor;
     }
 

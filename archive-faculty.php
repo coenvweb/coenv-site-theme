@@ -10,6 +10,15 @@
  * The faculty archive page
  */
 get_header();
+
+$ancestor_id = coenv_get_ancestor();
+
+$ancestor = array(
+	'id' => $ancestor_id,
+	'permalink' => get_permalink( $ancestor_id ),
+	'title' => get_the_title( $ancestor_id )
+);
+
 wp_enqueue_script( 'coenv-faculty' );
 
 $themes = $coenv_member_api->get_themes();

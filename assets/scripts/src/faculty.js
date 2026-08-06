@@ -11,9 +11,6 @@
         // This prevents "undefined" errors if methods are called out of order
         $isoContainer: null,
         $toolbox: null,
-        $roller: null,
-        $rollerInner: null,
-        $rollerSet: null,
         $isoItems: null,
         $formToggle: null,
         $form: null,
@@ -31,24 +28,18 @@
 
         // Static Configuration
         toolboxSelector: '.Faculty-toolbox',
-        rollerItemSelector: '.Faculty-toolbox-roller-item',
-        rollerItemActiveClass: 'Faculty-toolbox-roller-item--active',
         isoItemSelector: '.Faculty-list-item',
         isoItemFeaturedClass: 'Faculty-list-item--featured',
         isoItemImageSelector: '.Faculty-list-item-image',
         formViewClass: 'Faculty-toolbox--show-form',
         
         // State variables
-        rollerInnerPos: 0,
-        rollerSetPrependPos: 0,
-        rollerSetAppendPos: 0,
         feedbackMessageInclusive: '',
         feedbackMessage: 'Faculty members are working',
         feedbackMessageSingular: 'Faculty member is working',
 
         // Filter queue
         filterQ: {
-            $rollerItem: $(),
             filters: {}
         }
     };
@@ -58,13 +49,10 @@
         // We do this here to ensure the HTML exists before we try to find it.
         this.$isoContainer = $('.Faculty-list-content');
         this.$toolbox = $('.Faculty-toolbox');
-        this.$roller = $('.Faculty-toolbox-roller-items');
-        this.$rollerInner = $('.Faculty-toolbox-roller-items-inner');
-        this.$rollerSet = $('.Faculty-toolbox-roller-items-set');
         this.$isoItems = $('.Faculty-list-item');
         this.$formToggle = $('.Faculty-toolbox-toggle');
         this.$form = $('.Faculty-toolbox-form');
-        this.$toolboxForm = $('.Faculty-toolbox-form'); // Same as $form
+        this.$toolboxForm = this.$form;
         this.$themeSelect = $('.Faculty-toolbox-theme-select');
         this.$unitSelect = $('.Faculty-toolbox-unit-select');
         this.$searchField = $('.Faculty-toolbox-search');
@@ -82,46 +70,25 @@
         this.$mobileUnitSelect = $('.Faculty-selector-unit');
 
         // 2. Initialize Logic
-        this.rollerInit();
+        this.measurements();
         this.updateHash();
         this.selectSync();
         this.feedback();
         this.feedbackLinks();
         this.isoInit();      // This calls isoFilter
         this.filterInit();
+        this.formToggleOn();
         this.formToggleButton();
         this.formSelects();
         this.handleSearch();
         this.mobileForm();
     };
 
-    /**
-     * Initialize Roller
-     */
-    CoEnvFaculty.prototype.rollerInit = function () {
-        this.measurements();
-        this.rollerAddSets();
-        this.rollerInteractions();
-        this.rollerSlider();
-    };
-
-    /**
-     * Track Roller measurements
-     */
     CoEnvFaculty.prototype.measurements = function () {
         var _this = this;
 
         var onResize = function () {
             _this.windowHeight = $(window).height();
-            _this.rollerHeight = _this.$roller.height();
-            // Guard against undefined elements if DOM is missing parts
-            if (_this.$roller.length) {
-                _this.rollerOffsetTop = _this.$roller.offset().top;
-                _this.rollerCenter = _this.rollerOffsetTop + (_this.rollerHeight / 2);
-            }
-            if (_this.$rollerInner.length) {
-                _this.rollerInnerOffset = _this.$rollerInner.offset().top;
-            }
         };
 
         onResize();
@@ -133,93 +100,6 @@
 
         onScroll();
         $(window).on('scroll', onScroll);
-    };
-
-    /**
-     * Add Roller item sets on roll
-     */
-    CoEnvFaculty.prototype.rollerAddSets = function () {
-        var _this = this;
-
-        this.$roller.on('preroll', function (event, data) {
-            var $rollerItems = _this.$roller.find(_this.rollerItemSelector);
-            var $firstItem = $rollerItems.first();
-            var $lastItem = $rollerItems.last();
-
-            if (!$firstItem.length || !$lastItem.length) return;
-
-            var firstItemOffset = $firstItem.offset().top;
-            var lastItemOffset = $lastItem.offset().top;
-            var lastItemHeight = $lastItem.outerHeight();
-
-            if (firstItemOffset > _this.rollerOffsetTop - data.change) {
-                _this.rollerPrependSet();
-            }
-
-            if (lastItemOffset + lastItemHeight < _this.rollerOffsetTop + _this.rollerHeight - data.change) {
-                _this.rollerAppendSet();
-            }
-        });
-    };
-
-    /**
-     * Move roller to active item
-     */
-    CoEnvFaculty.prototype.rollerSlider = function () {
-        var _this = this;
-
-        function doRoll($item) {
-            if ($item === undefined || $item.length === 0) {
-                return;
-            }
-
-            // deactivate active items
-            _this.$roller.find('.' + _this.rollerItemActiveClass).removeClass(_this.rollerItemActiveClass);
-
-            // Using eq(2) specifically per original logic
-            $item.eq(2).addClass('scroll-here');
-
-            // make item active
-            $item.addClass(_this.rollerItemActiveClass);
-        }
-
-        this.$isoContainer.on('filter', function (event, data) {
-            doRoll(data.$rollerItem);
-        });
-    };
-
-    CoEnvFaculty.prototype.rollerPrependSet = function () {
-        this.rollerSetPrependPos -= this.$rollerSet.outerHeight();
-        var $newSet = this.$rollerSet.clone(true);
-        $newSet.css('top', this.rollerSetPrependPos);
-        this.$rollerInner.prepend($newSet);
-    };
-
-    CoEnvFaculty.prototype.rollerAppendSet = function () {
-        this.rollerSetAppendPos += this.$rollerSet.outerHeight();
-        var $newSet = this.$rollerSet.clone(true);
-        $newSet.css('top', this.rollerSetAppendPos);
-        this.$rollerInner.append($newSet);
-    };
-
-    CoEnvFaculty.prototype.rollerInteractions = function () {
-        var _this = this;
-
-        this.$roller.on('click', this.rollerItemSelector, function (event) {
-            event.preventDefault();
-            var $item = $(this).find('a');
-            
-            _this.doFilter({
-                $rollerItem: $(this),
-                filters: {
-                    theme: {
-                        name: $item.text(),
-                        slug: $item.data('theme'),
-                        url: $item.attr('href')
-                    }
-                }
-            });
-        });
     };
 
     /**
@@ -298,7 +178,9 @@
     };
 
     CoEnvFaculty.prototype.isoItemVisible = function (el) {
-        return ($(el).data('offset') < (this.windowHeight + this.scrollTop));
+        var windowHeight = this.windowHeight || $(window).height();
+        var scrollTop = this.scrollTop || $(window).scrollTop();
+        return ($(el).data('offset') < (windowHeight + scrollTop));
     };
 
     /**
@@ -375,15 +257,6 @@
             this.filterQ.filters[prop] = data.filters[prop];
         }
 
-        if (data.$rollerItem === undefined && data.filters !== undefined && data.filters.theme !== undefined) {
-            data.$rollerItem = this.$roller.find(this.rollerItemSelector).filter(function () {
-                var theme = _this.filterQ.filters.theme.slug === 'theme-all' ? '*' : _this.filterQ.filters.theme.slug;
-                if ($(this).find('a').data('theme') === theme) {
-                    return true;
-                }
-            });
-        }
-
         if (data.search !== undefined) {
             this.filterQ.filters = {
                 search: data.search,
@@ -393,7 +266,6 @@
         }
 
         this.filterQ.feedback = data.feedback;
-        this.filterQ.$rollerItem = data.$rollerItem;
         this.$isoContainer.trigger('filter', [this.filterQ]);
     };
 
@@ -434,15 +306,11 @@
     };
 
     CoEnvFaculty.prototype.formToggleButton = function () {
-        var _this = this;
-        this.$formToggle.on('click', function (event) {
-            event.preventDefault();
-            if (_this.$toolbox.hasClass(_this.formViewClass)) {
-                _this.formToggleOff();
-            } else {
-                _this.formToggleOn();
-            }
-        });
+        if (!this.$formToggle.length) {
+            return;
+        }
+
+        this.$formToggle.remove();
     };
 
     CoEnvFaculty.prototype.formToggleOn = function () {
