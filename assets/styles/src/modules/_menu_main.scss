@@ -472,6 +472,19 @@
 
 			} // &.current-page-ancestor a
 
+			&.page-item-118 {
+				right: 0;
+				position: absolute;
+				& > span a:before {
+					content: "♥";
+					display: inline-block;
+					position: relative;
+					right: .25rem;
+					bottom: 0;
+					font-size: 1rem;
+				}
+			}
+
 		} // .page-depth-0
 
 	} // #menu-main
