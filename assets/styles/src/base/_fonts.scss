@@ -34,12 +34,7 @@ $font-path: '../../../assets/fonts';
 
 @font-face {
     font-family: 'encode-sans-normal';
-    src: url('#{$font-path}/encodesansnormal-400-regular-webfont.eot');
-    src: url('#{$font-path}/encodesansnormal-400-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('#{$font-path}/encodesansnormal-400-regular-webfont.woff2') format('woff2'),
-         url('#{$font-path}/encodesansnormal-400-regular-webfont.woff') format('woff'),
-         url('#{$font-path}/encodesansnormal-400-regular-webfont.ttf') format('truetype'),
-         url('#{$font-path}/encodesansnormal-400-regular-webfont.svg#encode_sans_normal_regular') format('svg');
+    src: url('#{$font-path}/EncodeSansNormal-400-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -47,12 +42,7 @@ $font-path: '../../../assets/fonts';
 
 @font-face {
     font-family: 'encode-sans-condensed';
-    src: url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.eot');
-    src: url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.woff2') format('woff2'),
-         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.woff') format('woff'),
-         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.ttf') format('truetype'),
-         url('#{$font-path}/encodesanscondensed-800-extrabold-webfont.svg#encode_sans_condensed_extrabold') format('svg');
+    src: url('#{$font-path}/EncodeSansCondensed-800-ExtraBold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
@@ -60,12 +50,7 @@ $font-path: '../../../assets/fonts';
 
 @font-face {
     font-family: 'encode-sans-black';
-    src: url('#{$font-path}/encodesansnormal-900-black-webfont.eot');
-    src: url('#{$font-path}/encodesansnormal-900-black-webfont.eot?#iefix') format('embedded-opentype'),
-         url('#{$font-path}/encodesansnormal-900-black-webfont.woff2') format('woff2'),
-         url('#{$font-path}/encodesansnormal-900-black-webfont.woff') format('woff'),
-         url('#{$font-path}/encodesansnormal-900-black-webfont.ttf') format('truetype'),
-         url('#{$font-path}/encodesansnormal-900-black-webfont.svg#encode_sans_normal_black') format('svg');
+    src: url('#{$font-path}/EncodeSansNormal-900-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -74,7 +59,7 @@ $font-path: '../../../assets/fonts';
 
 @font-face {
     font-family: 'encodesans-semibold';
-    src: url('#{$font-path}/EncodeSansNormal-600-Semibold.ttf') format('truetype');
+    src: url('#{$font-path}/EncodeSansNormal-600-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
