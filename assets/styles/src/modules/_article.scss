@@ -124,6 +124,7 @@
 
 .article__content {
     @extend .clearfix;
+	min-height: 50vh;
 
 	h1 {
 		@include encode_wide_black();
