@@ -14,7 +14,10 @@
 			</div>
 		<?php endif ?>
 
-		<?php if ( is_page() || is_single() ) : ?>
+		<?php $page_parent_id = wp_get_post_parent_id( get_the_ID() ); ?>
+		<?php if ( is_page() && ! $page_parent_id ) : ?>
+			<!-- No title for top-level pages -->
+		<?php elseif ( is_page() || is_single() ) : ?>
       <!--<div class="post-info subtitle"><p><?php echo get_field('feature_label'); ?></p></div>-->
 			<h1 class="article__title"><?php the_title() ?></h1>
 		<?php else : ?>

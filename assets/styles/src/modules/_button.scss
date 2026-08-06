@@ -15,12 +15,12 @@
 	color: #fff;
 
 	&:hover {
-		background: rgba(0,0,0,0.6);
+		background: $accent-lt;
 		color: #fff !important;
 	}
 
     a {
-        color: $text;
+        color: white;
         text-decoration: none;
         &:hover {
             color: #fff !important;
@@ -38,12 +38,12 @@
 .article, .side-col, .newsletter {
 	
 	.button {
-		background: $white-button;
+		//background: $white-button;
 		text-decoration: none;
-		color: $text;
+		//color: $text;
 		
 		&:hover {
-                background: $bg-dk;
+                //background: $bg-dk;
             }
 		
 	} // .button

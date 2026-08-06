@@ -28,7 +28,6 @@ $ancestor = array(
                       'child_of' => $ancestor['id'],
                       'depth' => 3,
                       'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-                      'link_after' => '<i class="icon-arrow-right"></i>',
                       'walker' => new CoEnv_Secondary_Menu_Walker,
                       'sort_column' => 'menu_order' 
                   );

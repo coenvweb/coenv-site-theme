@@ -40,11 +40,11 @@
 	.article__title {
 		margin-top: 0;
 		@include rem('padding-bottom', 1);
-		@include serif;
+		@include encode_wide_black();
 		@include font-size(24);
 		@include line-height(30);
-		font-weight: 400;
 		border-bottom: 2px solid $border;
+		color: $accent-dk;
 
 		@include min-width ( $iPadPortrait ) {
 			@include font-size(36);
@@ -53,7 +53,7 @@
 
 		a {
 			text-decoration: none;
-			color: $text;
+			color: $accent-dk;
 		}
 
 		br {
@@ -126,7 +126,7 @@
     @extend .clearfix;
 
 	h1 {
-		@include serif;
+		@include encode_wide_black();
 		@include font-size(24);
 		@include line-height(30);
 		font-weight: 400;
@@ -139,7 +139,7 @@
 	} // h1
 
 	h2 {
-		@include serif;
+		@include encode_sb();
 		@include font-size(18);
 		@include line-height(24);
 		font-weight: 400;
@@ -153,7 +153,7 @@
 	} // h2
 
 	h3 {
-		@include serif;
+		@include encode_sb();
 		@include font-size(16);
 		@include line-height(24);
         margin-bottom: 1rem;
@@ -171,6 +171,7 @@
 	} // h3
 
 	h4 {
+		@include encode_sb();
 		@include font-size(14);
 		@include line-height(24);
 		text-transform: uppercase;
