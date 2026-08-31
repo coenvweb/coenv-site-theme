@@ -284,8 +284,32 @@
 		letter-spacing: 0.04em;
 		color: $accent-yellow;
 	}
+	.container {
+		height: 0;
+	}
 
 } // .banner-wrapper
+
+.section-title {
+	@include encode_wide_black();
+	font-size: 4rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: none;
+	color: $accent-yellow;
+	padding-bottom: 5rem;
+	display: block;
+	white-space: nowrap;
+
+	&:hover {
+		color: $accent-lt;
+	}
+}
+
+.no-sidenav-title .section-title {
+	position: absolute;
+	bottom: -3rem;
+}
 
 .layout-container--header {
 	@include rem('padding', 0.5);

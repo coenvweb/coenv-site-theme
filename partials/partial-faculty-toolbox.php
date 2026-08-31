@@ -13,7 +13,7 @@ $ordered_themes = $themes;
 
 		<div class="Faculty-toolbox-header">
 			<h2 class="Faculty-toolbox-title">
-                <a href="<?php bloginfo('url') ?>/faculty/" class="Faculty-toolbox-title-link">Filter</a>
+                Filter
 			</h2>
 		</div>
 
@@ -24,6 +24,8 @@ $ordered_themes = $themes;
 				<form action="">
 
 					<div class="Faculty-toolbox-form-group">
+
+						<label for="theme">Research themes</label>
 
 						<select id="theme" name="theme" class="Faculty-toolbox-theme-select">
 
@@ -39,11 +41,11 @@ $ordered_themes = $themes;
 
 						</select>
 
-						<label for="theme">Research themes</label>
-
 					</div>
 
 					<div class="Faculty-toolbox-form-group">
+
+						<label for="unit">School/department</label>
 
 						<select id="unit" name="unit" class="Faculty-toolbox-unit-select">
 
@@ -70,18 +72,16 @@ $ordered_themes = $themes;
 
 						</select>
 
-						<label for="unit">School/department</label>
-
 					</div>
 
 					<div class="Faculty-toolbox-form-group">
+
+						<label for="search">Search all faculty</label>
 
 						<div class="field-wrap">
     						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
     						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
   						</div>
-
-						<label for="search">Search all faculty</label>
 
 					</div>
 
@@ -98,16 +98,6 @@ $ordered_themes = $themes;
 				<span class="Faculty-toolbox-feedback-number"><?php echo $faculty->post_count ?></span>
 
 				<p class="Faculty-toolbox-feedback-message">College of the Environment Faculty Profiles</p>
-
-			</div>
-
-			<div class="Faculty-toolbox-toggle">
-
-				<div class="Faculty-toolbox-toggle-inner">
-
-					<a href="#"><i class="icon-search"></i> More search tools</a>
-
-				</div>
 
 			</div>
 

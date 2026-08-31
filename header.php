@@ -165,5 +165,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
-                    
+                <?php if (is_singular('faculty')) {
+                    echo '<div class="container"><h2 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h2></div>';
+                } elseif (is_post_type_archive( 'faculty' )) {
+                    echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h1></div>';
+                }
+                ?>
                 <?php if (!(is_front_page())) { echo '</div> </div> </header>'; } ?>

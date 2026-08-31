@@ -23,6 +23,7 @@ $faculty-item-height-ratio: 1.33;
 
 
 .Faculty-list {
+	margin-top: 3rem;
 	@media print{
 		display: none;
 	}

@@ -6,6 +6,7 @@
             "key": "field_59d51e04d3852",
             "label": "Department and Pursued Degree",
             "name": "department_and_pursued_degree",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -33,6 +34,7 @@
             "key": "field_59d664a1d6636",
             "label": "Research Location",
             "name": "location",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -60,6 +62,7 @@
             "key": "field_59d6650bd663a",
             "label": "Faculty advisor",
             "name": "faculty_advisor",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -94,6 +97,7 @@
             "key": "field_587fd3c41a2e9",
             "label": "First Name",
             "name": "first_name",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -113,6 +117,7 @@
             "key": "field_58815ad821714",
             "label": "Last Name",
             "name": "last_name",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -132,6 +137,7 @@
             "key": "field_61660643d573e",
             "label": "Pronouns",
             "name": "pronouns",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -151,6 +157,7 @@
             "key": "field_587eb2ce0c91c",
             "label": "Class",
             "name": "class",
+            "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 0,
@@ -168,18 +175,21 @@
                 "Graduate Student": "Graduate Student",
                 "Postdoctoral Fellow": "Postdoctoral Fellow"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_587fdd9353b62",
             "label": "Majors and Minors",
             "name": "majors_and_minors",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -206,12 +216,13 @@
             "min": 1,
             "max": 6,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Row",
             "sub_fields": [
                 {
                     "key": "field_587fde5053b63",
                     "label": "Major \/ Minor",
                     "name": "major__minor",
+                    "aria-label": "",
                     "type": "select",
                     "instructions": "",
                     "required": 0,
@@ -221,31 +232,38 @@
                         "class": "",
                         "id": ""
                     },
-                    "multiple": 0,
-                    "allow_null": 0,
                     "choices": {
+                        "Aquatic Conservation and Ecology": "Aquatic Conservation and Ecology",
                         "Aquatic and Fishery Sciences": "Aquatic and Fishery Sciences",
-                        "Atmospheric Sciences": "Atmospheric Sciences",
+                        "Atmospheric and Climate Sciences": "Atmospheric and Climate Sciences",
                         "Bioresource Science and Engineering": "Bioresource Science and Engineering",
+                        "Climate Science": "Climate Science",
                         "Earth and Space Sciences": "Earth and Space Sciences",
                         "Environmental Science and Terrestrial Resource Management": "Environmental Science and Terrestrial Resource Management",
                         "Environmental Studies": "Environmental Studies",
-                        "Oceanography": "Oceanography",
-                        "Climate Science": "Climate Science",
                         "Marine Biology": "Marine Biology",
+                        "Oceanography": "Oceanography",
                         "Quantitative Science": "Quantitative Science",
+                        "Sustainable Bioresource Systems Engineering": "Sustainable Bioresource Systems Engineering",
                         "Other": "Other"
                     },
-                    "default_value": [],
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
-                    "return_format": "value"
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_587fdd9353b62"
                 },
                 {
                     "key": "field_588297343cf99",
                     "label": "Other Major",
                     "name": "other_major",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -267,12 +285,14 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_587fdd9353b62"
                 },
                 {
                     "key": "field_58864c510cadc",
                     "label": "Link to Major Info",
                     "name": "link_to_major_info",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -294,12 +314,14 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_587fdd9353b62"
                 },
                 {
                     "key": "field_587fde6553b64",
                     "label": "Concentration",
                     "name": "concentration",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -313,12 +335,14 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_587fdd9353b62"
                 },
                 {
                     "key": "field_587fde6d53b65",
                     "label": "Primary Major(s)",
                     "name": "primary_majors",
+                    "aria-label": "",
                     "type": "checkbox",
                     "instructions": "",
                     "required": 0,
@@ -336,12 +360,15 @@
                     "allow_custom": 0,
                     "save_custom": 0,
                     "toggle": 0,
-                    "return_format": "value"
+                    "return_format": "value",
+                    "custom_choice_button_text": "Add new choice",
+                    "parent_repeater": "field_587fdd9353b62"
                 },
                 {
                     "key": "field_58815030c01b8",
                     "label": "Minor",
                     "name": "minor",
+                    "aria-label": "",
                     "type": "checkbox",
                     "instructions": "",
                     "required": 0,
@@ -359,14 +386,18 @@
                     "allow_custom": 0,
                     "save_custom": 0,
                     "toggle": 0,
-                    "return_format": "value"
+                    "return_format": "value",
+                    "custom_choice_button_text": "Add new choice",
+                    "parent_repeater": "field_587fdd9353b62"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
             "key": "field_587eb2fd0c91d",
             "label": "Last School",
             "name": "last_school",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -394,6 +425,7 @@
             "key": "field_587eb3280c91e",
             "label": "Hometown (city, state, country)",
             "name": "hometown",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -426,6 +458,7 @@
             "key": "field_587eb33b0c91f",
             "label": "LinkedIn Profile Link",
             "name": "linkedin_profile_link",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -458,41 +491,31 @@
             "key": "field_587eb3460c920",
             "label": "Twitter Profile Link",
             "name": "twitter_profile_link",
+            "aria-label": "",
             "type": "text",
-            "instructions": "You should include https:\/\/twitter.com\/ in your field.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "!=",
-                        "value": "Postdoctoral Fellow"
-                    },
-                    {
-                        "field": "field_587eb2ce0c91c",
-                        "operator": "!=",
-                        "value": "Graduate Student"
-                    }
-                ]
-            ],
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "0": false,
             "default_value": "",
+            "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "append": ""
         },
         {
             "key": "field_587fad0fec8c8",
             "label": "Photo",
             "name": "photo",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -514,6 +537,7 @@
             "key": "field_587faf1c1540f",
             "label": "Response",
             "name": "response",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -537,15 +561,17 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "wpautop"
+            "allow_in_bindings": 1,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5bca3ccbba618",
             "label": "Academic Unit",
             "name": "academic_unit",
+            "aria-label": "",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
@@ -570,12 +596,14 @@
             "load_terms": 0,
             "return_format": "object",
             "multiple": 0,
-            "allow_null": 0
+            "allow_null": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_5bca3d3fba61a",
             "label": "Year joined UW",
             "name": "year_joined_uw",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -605,6 +633,7 @@
             "key": "field_5bca3d8bba61b",
             "label": "Quarter joined UW",
             "name": "quarter_joined_uw",
+            "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 0,
@@ -628,18 +657,21 @@
                 "Spring": "Spring",
                 "Summer": "Summer"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_5bca3de1ba61d",
             "label": "What is your current research project?",
             "name": "current_research_project",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -667,9 +699,10 @@
             "key": "field_5bca3e77ba61e",
             "label": "Bio \/ Description",
             "name": "research_description",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
@@ -694,6 +727,7 @@
             "key": "field_5bca3ec1ba620",
             "label": "Research image",
             "name": "research_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -726,6 +760,7 @@
             "key": "field_59d51ddad3851",
             "label": "Previous Institution and Degree Earned",
             "name": "undergraduate_degree",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -753,6 +788,7 @@
             "key": "field_5d533467d739b",
             "label": "Dissertation or Thesis Title",
             "name": "dissertation_title",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -780,6 +816,7 @@
             "key": "field_59d66490d6635",
             "label": "Research Interests",
             "name": "research_interests",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -807,6 +844,7 @@
             "key": "field_5db9d835529bf",
             "label": "Research Image Description",
             "name": "research_image_description",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -834,6 +872,7 @@
             "key": "field_616606c7d5740",
             "label": "Student Advisory Council Member",
             "name": "sac_member",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -853,6 +892,7 @@
             "key": "field_6166067ad573f",
             "label": "Department\/Organization Representing",
             "name": "sac_representing",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -880,7 +920,8 @@
             "key": "field_61662056bc72a",
             "label": "About this Student Advisory Council member",
             "name": "sac_about_me",
-            "type": "textarea",
+            "aria-label": "",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -898,15 +939,16 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_6166083ed5743",
             "label": "Random fact",
             "name": "sac_random_fact",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -950,5 +992,9 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1634082942
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1787590929
 }

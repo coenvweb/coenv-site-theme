@@ -97,19 +97,8 @@
 
 		// ancestor title
 		> a {
-			@include encode_wide_black();
-			font-size: 4rem;
-			text-transform: uppercase;
-			background: none;
-			color: $accent-yellow;
-			padding-bottom: 5rem;
+			@extend .section-title;
 			width: 100%;
-			display: block;
-			white-space: nowrap;
-
-			&:hover {
-				color: $accent-lt;
-			}
 
 		} // a
 
