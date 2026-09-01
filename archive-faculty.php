@@ -55,12 +55,27 @@ if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
 // Make query
 $faculty = new WP_Query( $query );
 
-// randomize featured (large) faculty members
-//$featured = range(9, 199);
-//shuffle($featured);
-//$featured = array_slice($featured, 0, 20);
+$faculty_facts = array();
+if ( have_rows( 'faculty_facts', 'option' ) ) {
+	while ( have_rows( 'faculty_facts', 'option' ) ) {
+		the_row();
 
-$featured = array(6,14,29,38,42,56,64,77,85,93,103,115,124,139,144,156,161,172,188,198,200);?>
+		$factoid = get_sub_field( 'factoid' );
+		if ( empty( $factoid ) ) {
+			continue;
+		}
+
+		$faculty_facts[] = array(
+			'number_value' => get_sub_field( 'number_value' ),
+			'factoid' => $factoid,
+		);
+	}
+}
+
+if ( count( $faculty_facts ) > 1 ) {
+	shuffle( $faculty_facts );
+}
+?>
 
 <div class="container">
 		 <div class="print">
@@ -80,17 +95,65 @@ $featured = array(6,14,29,38,42,56,64,77,85,93,103,115,124,139,144,156,161,172,1
 
 				<div class="Faculty-list-content" id="main-col">
 
-					<?php $count = 0; ?>
-
 					<?php get_template_part( 'partials/partial', 'faculty-toolbox' ); ?>
+
+					<?php
+					$faculty_count = (int) $faculty->post_count;
+					$fact_count = count( $faculty_facts );
+					$faculty_index = 0;
+					$fact_index = 0;
+					$fact_positions = array();
+
+					if ( $fact_count > 0 ) {
+						for ( $i = 0; $i < $fact_count; $i++ ) {
+							$base_position = ( ( $i + 0.5 ) * $faculty_count ) / $fact_count;
+							$jitter = mt_rand( -3, 3 );
+							$position = (int) round( $base_position + $jitter );
+
+							if ( $i > 0 ) {
+								$position = max( $position, $fact_positions[ $i - 1 ] + 1 );
+							}
+
+							$max_position = $faculty_count - ( $fact_count - $i - 1 );
+							$position = max( 0, min( $position, $max_position ) );
+
+							$fact_positions[] = $position;
+						}
+					}
+
+					$render_fact_tile = function ( $fact ) {
+						?>
+						<article class="Faculty-list-item Faculty-list-item--fact jsIsotopeItem theme-all unit-all">
+							<div class="Faculty-list-item-inner Faculty-list-item-inner--fact">
+
+								<?php if ( !empty( $fact['number_value'] ) ) : ?>
+									<p class="Faculty-list-item-fact-number"><?php echo esc_html( $fact['number_value'] ); ?></p>
+								<?php endif; ?>
+
+								<p class="Faculty-list-item-fact-text"><?php echo esc_html( $fact['factoid'] ); ?></p>
+
+							</div>
+						</article>
+						<?php
+					};
+					?>
 
 					<?php while ( $faculty->have_posts() ) : $faculty->the_post() ?>
 
-						<?php get_template_part( 'partials/partial', 'faculty-list-item' ); ?>
+						<?php while ( $fact_index < $fact_count && $faculty_index >= $fact_positions[$fact_index] ) : ?>
+							<?php $render_fact_tile( $faculty_facts[$fact_index] ); ?>
+							<?php $fact_index++; ?>
+						<?php endwhile; ?>
 
-						<?php $count++ ?>
+						<?php get_template_part( 'partials/partial', 'faculty-list-item' ); ?>
+						<?php $faculty_index++; ?>
 
 					<?php endwhile ?>
+
+					<?php while ( $fact_index < $fact_count ) : ?>
+						<?php $render_fact_tile( $faculty_facts[$fact_index] ); ?>
+						<?php $fact_index++; ?>
+					<?php endwhile; ?>
 
 					<div class="gutter-sizer"></div>
 

@@ -39,7 +39,7 @@
 	margin: 0;
 	width: 100%;
 	display: table-cell;
-	@include encode_wide_black();
+	@include encode_black();
 	@include font-size(26);
 	line-height: 1.5;
 	font-weight: 200;
@@ -61,8 +61,19 @@
 	select {
 		display: block;
 		width: 100%;
-		@include font-size(16);
+		@include font-size(14);
 		height: 2.75rem;
+		padding: 0 2rem 0 .65rem;
+		border: 1px solid $border-mid;
+		background: #fff;
+		appearance: none;
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+		&:focus {
+			outline: none;
+			border-color: $accent-yellow;
+			box-shadow: 0 0 0 3px rgba(241, 179, 0, 0.2), 0 12px 26px rgba(0, 0, 0, 0.12);
+		}
 	}
 
 	label {
@@ -81,39 +92,273 @@
 
 	.field-wrap {
 		width: 100%;
+		position: relative;
 
 		input[type="text"] {
-			border: none !important;
-			background: #666;
-			color: #fff;
+			border: 1px solid $border-mid;
+			height: 2.75rem;
+			width: 100%;
+			padding-right: 3.25rem;
 		}
 
 		button[type="submit"] {
-			border: none !important;
-			background: #666;
-			color: #eee;
+			border: none;
+			height: 1.85rem;
+			width: 1.85rem;
+			position: absolute;
 		}
 	}
 }
 
 .Faculty-toolbox-form-group {
 	@include rem('margin-bottom', 1);
+	.field-wrap {
+		button[type="submit"] {
+			background: none;
+		}
+	}
 }
 
-.Faculty-toolbox-theme-select {
+.Faculty-toolbox-select-wrap {
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 1.2rem;
+		width: 0.65rem;
+		height: 0.65rem;
+		border-right: 2px solid $accent;
+		border-bottom: 2px solid $accent;
+		pointer-events: none;
+		transform: translateY(-65%) rotate(45deg);
+		transition: opacity 0.2s ease, transform 0.2s ease;
+	}
+
+	&.has-value:after {
+		opacity: 0;
+		transform: translateY(-65%) rotate(45deg) scale(0.8);
+	}
 }
 
-.Faculty-toolbox-unit-select {
+.Faculty-toolbox-select-clear {
+	position: absolute;
+	top: 50%;
+	right: 0.55rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: $accent;
+	color: #fff;
+	cursor: pointer;
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-50%) scale(0.8);
+	transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+	&:hover,
+	&:focus {
+		background: darken($accent, 6%);
+		outline: none;
+	}
+
+	.icon-cross {
+		@include font-size(16);
+	}
+
+	&:disabled {
+		cursor: default;
+	}
+}
+
+.Faculty-toolbox-select-wrap.has-value .Faculty-toolbox-select-clear {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(-50%) scale(1);
+}
+
+.Faculty-toolbox-search-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	background: none;
+	color: $accent;
+	cursor: pointer;
+	&button[type="submit"] {
+		background: none;
+	}
+
+	.Faculty-toolbox-search-button-label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
+	&:disabled {
+		cursor: wait;
+	}
+}
+
+.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button {
+	position: absolute;
+	top: 50%;
+	right: 0.55rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: $accent!important;
+	color: #fff;
+	cursor: pointer;
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(-50%) scale(1);
+	transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+	&:hover,
+	&:focus {
+		background: darken($accent, 6%);
+		outline: none;
+	}
+}
+
+.Faculty-toolbox-search-button-icon,
+.Faculty-toolbox-search-button-spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.Faculty-toolbox-search-button-icon {
+	@include font-size(22);
+	opacity: 0;
+	position: absolute!important;
+	&.icon-search {
+		padding-top: 8px;
+    	padding-right: 11px;
+	}
+}
+
+.Faculty-toolbox-search-button-icon--search {
+	opacity: 1;
+}
+
+.Faculty-toolbox-search-button-spinner {
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid rgba($accent, 0.2);
+	border-top-color: $accent;
+	border-radius: 50%;
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.8);
+}
+
+.Faculty-toolbox-search-wrap {
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 3px;
+		border-radius: 999px;
+		background-image: repeating-linear-gradient(
+			90deg,
+			rgba($accent, 0.18) 0,
+			rgba($accent, 0.18) 10px,
+			$accent 10px,
+			$accent 20px
+		);
+		background-size: 200% 100%;
+		opacity: 0;
+		pointer-events: none;
+		transform: scaleX(0.96);
+		transform-origin: center;
+		transition: opacity 0.2s ease;
+	}
+}
+
+.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--search {
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.8);
+}
+
+.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--clear {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+	left: 50%;
+}
+
+.Faculty-toolbox-search-wrap.is-loading .Faculty-toolbox-search-button-icon--clear {
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.8);
+}
+
+.Faculty-toolbox-search-wrap.is-loading .Faculty-toolbox-search-button-icon--search {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.Faculty-toolbox-search-wrap.is-loading .Faculty-toolbox-search-button-spinner {
+	opacity: 0;
+}
+
+.Faculty-toolbox-search-wrap.is-loading:after {
+	opacity: 1;
+	animation: Faculty-toolbox-search-ants 0.85s linear infinite;
+}
+
+@keyframes Faculty-toolbox-search-spin {
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes Faculty-toolbox-search-ants {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 40px 0;
+	}
 }
 
 .Faculty-toolbox-footer {
-	border-top: 1px solid $border-dk-accent;
-	color: #fff;
+	border-top: 1px solid $border-mid;
+	color: $text;
 }
 
 .Faculty-toolbox-feedback {
-	display: table;
-	@include rem('padding', 0.3, 1);
+	@include rem('padding', 1);
 	width: 100%;
 }
 
@@ -121,6 +366,8 @@
 	display: table-cell;
 	vertical-align: top;
 	@include font-size(36);
+	@include encode_black();
+	color: $accent-dk;
 	line-height: 1;
 	font-weight: 600;
 }
@@ -132,16 +379,15 @@
 	@include font-size(12);
 	line-height: 1.5;
 	font-weight: 600;
-	color: #aaa;
 
 	a {
 		text-decoration: none;
 		font-style: italic;
-		color: #fff;
+		color: $accent;
 	}
 
 	a:hover {
-		color: #fff !important;
+		color: $accent-dk !important;
 		text-decoration: underline;
 	}
 }

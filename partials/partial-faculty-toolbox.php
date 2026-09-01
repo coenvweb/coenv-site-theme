@@ -27,19 +27,27 @@ $ordered_themes = $themes;
 
 						<label for="theme">Research themes</label>
 
-						<select id="theme" name="theme" class="Faculty-toolbox-theme-select">
+						<div class="Faculty-toolbox-select-wrap" data-filter="theme">
 
-							<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#theme-all">All Research Themes</option>
+							<select id="theme" name="theme" class="Faculty-toolbox-theme-select">
 
-							<?php foreach ( $themes as $theme ) : ?>
+								<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/">All Research Themes</option>
+
+								<?php foreach ( $themes as $theme ) : ?>
                                 <?php if (!$theme['count'] == 0) : ?>
 
-								<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
+									<option value="theme-<?php echo $theme['slug'] ?>" data-url="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></option>
                             
                                 <?php endif; ?>
-							<?php endforeach; ?>
+								<?php endforeach; ?>
 
-						</select>
+							</select>
+
+							<button type="button" class="Faculty-toolbox-select-clear" data-filter="theme" aria-label="Clear research theme filter">
+								<i class="icon-cross" aria-hidden="true"></i>
+							</button>
+
+						</div>
 
 					</div>
 
@@ -47,11 +55,13 @@ $ordered_themes = $themes;
 
 						<label for="unit">School/department</label>
 
-						<select id="unit" name="unit" class="Faculty-toolbox-unit-select">
+						<div class="Faculty-toolbox-select-wrap" data-filter="unit">
 
-							<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
+							<select id="unit" name="unit" class="Faculty-toolbox-unit-select">
 
-							<?php foreach ( $units as $unit ) : ?>
+								<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/">All Schools/Departments</option>
+
+								<?php foreach ( $units as $unit ) : ?>
                   <?php
                       $the_query = new WP_Query( array(
                           'post_type' => 'faculty',
@@ -66,11 +76,17 @@ $ordered_themes = $themes;
                   ?>
                   <?php if (!$the_query->found_posts == 0) : ?>
 					 <?php if ($unit['name'] == 'Marine Biology' || $unit['name'] == 'Cooperative Institute for Climate, Ocean, and Ecosystem Studies') {break; }; ?>
-                    <option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
+									<option value="unit-<?php echo $unit['slug'] ?>" data-url="<?php bloginfo('url') ?>/faculty/?unit=<?php echo $unit['slug'] ?>"><?php echo $unit['name'] ?></option>
                   <?php endif; ?>
-							<?php endforeach ?>
+								<?php endforeach ?>
 
-						</select>
+							</select>
+
+							<button type="button" class="Faculty-toolbox-select-clear" data-filter="unit" aria-label="Clear school or department filter">
+								<i class="icon-cross" aria-hidden="true"></i>
+							</button>
+
+						</div>
 
 					</div>
 
@@ -78,9 +94,14 @@ $ordered_themes = $themes;
 
 						<label for="search">Search all faculty</label>
 
-						<div class="field-wrap">
+						<div class="field-wrap Faculty-toolbox-search-wrap">
     						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
-    						<button type="submit"><i class="icon-search"></i><span>Search</span></button>
+							<button type="submit" class="Faculty-toolbox-search-button" aria-label="Search faculty">
+								<i class="icon-search Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--search" aria-hidden="true"></i>
+								<i class="icon-cross Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--clear" aria-hidden="true"></i>
+								<span class="Faculty-toolbox-search-button-spinner" aria-hidden="true"></span>
+								<span class="Faculty-toolbox-search-button-label">Search</span>
+							</button>
   						</div>
 
 					</div>

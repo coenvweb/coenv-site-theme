@@ -2,7 +2,7 @@
 /**
  * Partial for displaying a single faculty member within the faculty grid
  */
-global $coenv_member_api, $count, $featured;
+global $coenv_member_api;
 
 // set up theme classes
 $themes = get_the_terms( get_the_ID(), 'member_theme' );
@@ -26,16 +26,10 @@ if ( !empty( $unit ) ) {
 }
 
 $image_id = get_field( 'image' );
-if ( in_array( $count, $featured ) ) {
-	$member_classes .= ' Faculty-list-item--featured';
-	// TODO: update these sizes for retina images
-	$image = wp_get_attachment_image_src( $image_id, 'medium' );
-} else {
-	$member_classes .= ' grid-sizer';
+$member_classes .= ' grid-sizer';
 
-	// TODO: update these sizes for retina images
-	$image = wp_get_attachment_image_src( $image_id, 'small' );
-}
+// TODO: update these sizes for retina images
+$image = wp_get_attachment_image_src( $image_id, 'small' );
 
 ?>
 

@@ -182,13 +182,14 @@ div.major-minor {
 
         }
     }
-
-}
-
-[aria-hidden=false] {
+    [aria-hidden=false] {
         transition: width .3s;
         width: 100%!important;
     }
+
+}
+
+
 
 .major-title {
     position: absolute;

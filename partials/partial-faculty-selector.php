@@ -13,17 +13,17 @@ global $themes, $units, $faculty, $query_args;
 	<form action="" class="Faculty-selector">
 		View faculty working in 
 		<select class="Faculty-selector-theme" name="theme" id="theme-mobile">
-			<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All research themes</option>
+			<option value="theme-all" data-url="<?php bloginfo('url') ?>/faculty/">All research themes</option>
 		  	<?php foreach ( $themes as $theme ) : ?>
                 
-		  		<option value="theme-<?php echo $theme['slug'] ?>"<?php if ( $query_args['theme'] == $theme['slug'] ) echo ' selected' ?> data-url="<?php echo $theme['url'] ?>"><?php echo $theme['name'] ?></option>
+		  		<option value="theme-<?php echo $theme['slug'] ?>"<?php if ( $query_args['theme'] == $theme['slug'] ) echo ' selected' ?> data-url="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></option>
                 
 		  	<?php endforeach ?>
 		</select>
         <label for="theme-mobile" style="display:none;">Research themes</label>
         <div style="margin-bottom: 10px;"></div>
 		<select class="Faculty-selector-unit" name="unit" id="unit-mobile">
-			<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/#unit-all">All Schools/Departments</option>
+			<option value="unit-all" data-url="<?php bloginfo('url') ?>/faculty/">All Schools/Departments</option>
 			<?php foreach ( $units as $unit ) : ?>
 				<?php
 				$the_query = new WP_Query( array(
@@ -39,7 +39,7 @@ global $themes, $units, $faculty, $query_args;
 			?>
 				<?php if (!$the_query->found_posts == 0) : ?>
 					<?php if ($unit['name'] == 'Marine Biology' || $unit['name'] == 'Cooperative Institute for Climate, Ocean, and Ecosystem Studies') {break; }; ?>
-			  <option value="unit-<?php echo $unit['slug'] ?>"<?php if ( $query_args['unit'] == $unit['slug'] ) echo ' selected' ?> data-url="<?php echo $unit['url'] ?>"><?php echo $unit['name'] ?></option>
+			  <option value="unit-<?php echo $unit['slug'] ?>"<?php if ( $query_args['unit'] == $unit['slug'] ) echo ' selected' ?> data-url="<?php bloginfo('url') ?>/faculty/?unit=<?php echo $unit['slug'] ?>"><?php echo $unit['name'] ?></option>
 			<?php endif;?>
 			<?php endforeach ?>
 		</select>

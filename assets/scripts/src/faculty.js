@@ -16,7 +16,13 @@
         $form: null,
         $themeSelect: null,
         $unitSelect: null,
+        $themeSelectWrap: null,
+        $unitSelectWrap: null,
+        $themeClear: null,
+        $unitClear: null,
         $searchField: null,
+        $searchButton: null,
+        $searchWrap: null,
         $searchFeedback: null,
         $feedback: null,
         $feedbackNumber: null,
@@ -29,7 +35,7 @@
         // Static Configuration
         toolboxSelector: '.Faculty-toolbox',
         isoItemSelector: '.Faculty-list-item',
-        isoItemFeaturedClass: 'Faculty-list-item--featured',
+        isoItemFactClass: 'Faculty-list-item--fact',
         isoItemImageSelector: '.Faculty-list-item-image',
         formViewClass: 'Faculty-toolbox--show-form',
         
@@ -41,10 +47,16 @@
         // Filter queue
         filterQ: {
             filters: {}
-        }
+        },
+
+        currentSearchRequest: null,
+		activeSearchTerm: '',
+        isSearchLoading: false
     };
 
     CoEnvFaculty.prototype.init = function () {
+        var _this = this;
+
         // 1. Initialize DOM Elements (Selectors)
         // We do this here to ensure the HTML exists before we try to find it.
         this.$isoContainer = $('.Faculty-list-content');
@@ -55,7 +67,13 @@
         this.$toolboxForm = this.$form;
         this.$themeSelect = $('.Faculty-toolbox-theme-select');
         this.$unitSelect = $('.Faculty-toolbox-unit-select');
+        this.$themeSelectWrap = this.$themeSelect.closest('.Faculty-toolbox-select-wrap');
+        this.$unitSelectWrap = this.$unitSelect.closest('.Faculty-toolbox-select-wrap');
+        this.$themeClear = this.$themeSelectWrap.find('.Faculty-toolbox-select-clear');
+        this.$unitClear = this.$unitSelectWrap.find('.Faculty-toolbox-select-clear');
         this.$searchField = $('.Faculty-toolbox-search');
+        this.$searchWrap = $('.Faculty-toolbox-search-wrap');
+        this.$searchButton = this.$searchWrap.find('.Faculty-toolbox-search-button');
         this.$searchFeedback = $('.Faculty-toolbox-search-feedback');
         this.$feedback = $('.Faculty-toolbox-feedback');
         this.$feedbackNumber = $('.Faculty-toolbox-feedback-number');
@@ -82,6 +100,20 @@
         this.formSelects();
         this.handleSearch();
         this.mobileForm();
+        this.syncSearchState();
+    };
+
+    CoEnvFaculty.prototype.isDefaultFilterSet = function (filters) {
+        var f = filters || {};
+
+        if (f.search !== undefined) {
+            return false;
+        }
+
+        var themeSlug = (f.theme && f.theme.slug) ? f.theme.slug : 'theme-all';
+        var unitSlug = (f.unit && f.unit.slug) ? f.unit.slug : 'unit-all';
+
+        return themeSlug === 'theme-all' && unitSlug === 'unit-all';
     };
 
     CoEnvFaculty.prototype.measurements = function () {
@@ -112,7 +144,8 @@
             itemSelector: this.isoItemSelector,
             stamp: this.toolboxSelector,
             masonry: {
-                columnWidth: '.grid-sizer'
+                columnWidth: '.grid-sizer',
+                horizontalOrder: true
             }
         };
 
@@ -192,24 +225,18 @@
         this.$isoContainer.on('filter', function (event, data) {
             var filterString = _this.buildIsoFilterString(data.filters);
 
-            // The first item in a filtered set should never be featured
-            if (_this.$isoItems) {
-                _this.$isoItems.filter(filterString).first().removeClass(_this.isoItemFeaturedClass);
-            }
-
             // Filter isotope
             _this.$isoContainer.isotope({ filter: filterString });
         });
     };
 
     CoEnvFaculty.prototype.filterInit = function () {
-        var _this = this;
-        var hashFilters = this.hashFilters();
+        var queryFilters = this.queryFilters();
         var data = { filters: {} };
         var $optAllThemes = this.$themeSelect.find('option[value="theme-all"]');
         var $optAllUnits = this.$unitSelect.find('option[value="unit-all"]');
 
-        if (!hashFilters) {
+        if (!queryFilters) {
             data.filters = {
                 theme: {
                     name: $optAllThemes.text(),
@@ -223,15 +250,10 @@
                 }
             };
         } else {
-            $.each(hashFilters, function () {
-                var $selectOpt = _this.$toolboxForm.find('option[value="' + this + '"]');
-                data.filters[this.split('-')[0]] = {
-                    name: $selectOpt.text(),
-                    slug: this.toString() // ensure string
-                };
-            });
+            data.filters.theme = this.filterDataBySlug('theme', queryFilters.theme);
+            data.filters.unit = this.filterDataBySlug('unit', queryFilters.unit);
 
-            if (data.filters.unit !== undefined && data.filters.unit.slug !== 'unit-all') {
+            if (queryFilters.unit !== 'unit-all') {
                 this.formToggleOn();
             }
         }
@@ -239,32 +261,119 @@
         this.doFilter(data);
     };
 
-    CoEnvFaculty.prototype.hashFilters = function () {
-        var hash = window.location.hash;
-        if (hash === '' || hash === '#') {
+    CoEnvFaculty.prototype.queryFilters = function () {
+        var params = new URLSearchParams(window.location.search);
+        var theme = params.get('theme');
+        var unit = params.get('unit');
+        var hasAny = false;
+
+        var normalize = function (value, prefix) {
+            if (!value) {
+                return prefix + '-all';
+            }
+
+            hasAny = true;
+
+            if (value.indexOf(prefix + '-') === 0) {
+                return value;
+            }
+
+            if (value === 'all') {
+                return prefix + '-all';
+            }
+
+            return prefix + '-' + value;
+        };
+
+        var filters = {
+            theme: normalize(theme, 'theme'),
+            unit: normalize(unit, 'unit')
+        };
+
+        if (!hasAny) {
             return false;
         }
-        return hash.substring(1).split('&');
+
+        return filters;
+    };
+
+    CoEnvFaculty.prototype.filterDataBySlug = function (filter, slug) {
+        var $select = filter === 'theme' ? this.$themeSelect : this.$unitSelect;
+        var $opt = $select.find('option[value="' + slug + '"]');
+
+        if ($opt.length) {
+            return {
+                name: $opt.text(),
+                slug: slug,
+                url: $opt.data('url')
+            };
+        }
+
+        return {
+            slug: slug
+        };
+    };
+
+    CoEnvFaculty.prototype.applyThemeUnitFilters = function (themeSlug, unitSlug) {
+        this.doFilter({
+            filters: {
+                theme: this.filterDataBySlug('theme', themeSlug || 'theme-all'),
+                unit: this.filterDataBySlug('unit', unitSlug || 'unit-all')
+            }
+        });
     };
 
     CoEnvFaculty.prototype.doFilter = function (data) {
-        var _this = this;
-
-        for (var prop in data.filters) {
-            if (data.filters[prop].slug === '*') {
-                data.filters[prop].slug = prop + '-all';
-            }
-            this.filterQ.filters[prop] = data.filters[prop];
-        }
+        var incomingFilters = data.filters || {};
+        var defaults = this.defaultFilterData();
+        var nextFilters;
 
         if (data.search !== undefined) {
             this.filterQ.filters = {
                 search: data.search,
-                theme: { slug: 'theme-all' },
-                unit: { slug: 'unit-all' }
+                theme: defaults.theme,
+                unit: defaults.unit
             };
+            this.filterQ.feedback = data.feedback;
+            this.$isoContainer.trigger('filter', [this.filterQ]);
+            return;
         }
 
+        nextFilters = $.extend(true, {}, this.filterQ.filters || {});
+
+        if (nextFilters.search !== undefined) {
+            delete nextFilters.search;
+        }
+
+        if (nextFilters.theme === undefined) {
+            nextFilters.theme = defaults.theme;
+        }
+        if (nextFilters.unit === undefined) {
+            nextFilters.unit = defaults.unit;
+        }
+
+        for (var prop in incomingFilters) {
+            if (!incomingFilters.hasOwnProperty(prop)) {
+                continue;
+            }
+
+            var slug = incomingFilters[prop].slug;
+            if (slug === '*') {
+                slug = prop + '-all';
+            }
+
+            if (prop === 'theme' || prop === 'unit') {
+                nextFilters[prop] = this.filterDataBySlug(prop, slug);
+            } else {
+                nextFilters[prop] = incomingFilters[prop];
+            }
+        }
+
+        if (this.isDefaultFilterSet(nextFilters)) {
+            nextFilters = defaults;
+        }
+
+        this.filterQ.filters = nextFilters;
         this.filterQ.feedback = data.feedback;
         this.$isoContainer.trigger('filter', [this.filterQ]);
     };
@@ -272,15 +381,13 @@
     CoEnvFaculty.prototype.updateHash = function () {
         var _this = this;
         this.$isoContainer.on('filter', function (event, data) {
-            var hash = _this.buildHashFromFilters(data.filters);
-            if (hash === 'theme-all&unit-all') {
-                hash = '';
-            }
-            // Prevent scrolling when setting hash
+            var query = _this.buildHashFromFilters(data.filters);
+            var url = window.location.pathname + (query ? '?' + query : '');
+
             if(history.pushState) {
-                history.pushState(null, null, hash ? '#' + hash : window.location.pathname);
+                history.pushState(null, null, url);
             } else {
-                window.location.hash = hash;
+                window.location.search = query;
             }
         });
     };
@@ -300,9 +407,23 @@
     };
 
     CoEnvFaculty.prototype.buildHashFromFilters = function (filters) {
-        return $.map(filters, function (val) {
-            return val.slug;
-        }).join('&');
+        var params = [];
+
+        if (filters.theme && filters.theme.slug) {
+            var themeSlug = filters.theme.slug.replace(/^theme-/, '');
+            if (themeSlug !== 'all') {
+                params.push('theme=' + encodeURIComponent(themeSlug));
+            }
+        }
+
+        if (filters.unit && filters.unit.slug) {
+            var unitSlug = filters.unit.slug.replace(/^unit-/, '');
+            if (unitSlug !== 'all') {
+                params.push('unit=' + encodeURIComponent(unitSlug));
+            }
+        }
+
+        return params.join('&');
     };
 
     CoEnvFaculty.prototype.formToggleButton = function () {
@@ -334,53 +455,144 @@
                 var themeOptSelector = 'option[value="' + data.filters.theme.slug + '"]';
                 _this.$themeSelect.find(themeOptSelector).prop('selected', true);
                 _this.$mobileThemeSelect.find(themeOptSelector).prop('selected', true);
+                _this.syncSelectState('theme');
             }
             if (data.filters.unit !== undefined) {
                 var unitOptSelector = 'option[value="' + data.filters.unit.slug + '"]';
                 _this.$unitSelect.find(unitOptSelector).prop('selected', true);
                 _this.$mobileUnitSelect.find(unitOptSelector).prop('selected', true);
+                _this.syncSelectState('unit');
             }
+
+            _this.syncSearchState();
         });
     };
 
+    CoEnvFaculty.prototype.syncSelectState = function (filter) {
+        var $select = filter === 'theme' ? this.$themeSelect : this.$unitSelect;
+        var $wrap = filter === 'theme' ? this.$themeSelectWrap : this.$unitSelectWrap;
+        var $clear = filter === 'theme' ? this.$themeClear : this.$unitClear;
+        var hasValue = $select.val() !== filter + '-all';
+
+        $clear.prop('disabled', false);
+        $wrap.toggleClass('has-value', hasValue);
+        $clear.attr('aria-hidden', !hasValue);
+    };
+
     CoEnvFaculty.prototype.resetFilter = function (filter) {
-        var data = { filters: {} };
-        data.filters[filter] = {
-            slug: filter + '-all'
+        var themeSlug = this.$themeSelect.val() || 'theme-all';
+        var unitSlug = this.$unitSelect.val() || 'unit-all';
+
+        if (filter === 'theme') {
+            themeSlug = 'theme-all';
+        }
+        if (filter === 'unit') {
+            unitSlug = 'unit-all';
+        }
+
+        this.$themeSelect.val(themeSlug);
+        this.$mobileThemeSelect.val(themeSlug);
+        this.$unitSelect.val(unitSlug);
+        this.$mobileUnitSelect.val(unitSlug);
+
+        this.syncSelectState('theme');
+        this.syncSelectState('unit');
+
+        this.applyThemeUnitFilters(themeSlug, unitSlug);
+    };
+
+    CoEnvFaculty.prototype.hasActiveSearch = function () {
+        return !!(this.filterQ.filters && this.filterQ.filters.search);
+    };
+
+    CoEnvFaculty.prototype.getSearchTerm = function () {
+        return $.trim(this.$searchField.val());
+    };
+
+    CoEnvFaculty.prototype.shouldClearSearch = function () {
+        return this.hasActiveSearch() && this.getSearchTerm() === this.activeSearchTerm;
+    };
+
+    CoEnvFaculty.prototype.syncSearchState = function () {
+        var hasActiveSearch = this.hasActiveSearch();
+        var shouldClearSearch = this.shouldClearSearch();
+
+		this.$searchWrap.toggleClass('has-active-search', shouldClearSearch);
+        this.$searchWrap.toggleClass('is-loading', this.isSearchLoading);
+        this.$searchButton.prop('disabled', this.isSearchLoading);
+
+        if (this.isSearchLoading) {
+            this.$searchButton.attr('aria-label', 'Searching faculty');
+        } else if (shouldClearSearch) {
+            this.$searchButton.attr('aria-label', 'Clear faculty search');
+        } else {
+            this.$searchButton.attr('aria-label', 'Search faculty');
+        }
+    };
+
+    CoEnvFaculty.prototype.setSearchLoading = function (isLoading) {
+        this.isSearchLoading = isLoading;
+        this.syncSearchState();
+    };
+
+    CoEnvFaculty.prototype.defaultFilterData = function () {
+        var $optAllThemes = this.$themeSelect.find('option[value="theme-all"]');
+        var $optAllUnits = this.$unitSelect.find('option[value="unit-all"]');
+
+        return {
+            theme: {
+                name: $optAllThemes.text(),
+                slug: $optAllThemes.val(),
+                url: $optAllThemes.data('url')
+            },
+            unit: {
+                name: $optAllUnits.text(),
+                slug: $optAllUnits.val(),
+                url: $optAllUnits.data('url')
+            }
         };
-        this.doFilter(data);
+    };
+
+    CoEnvFaculty.prototype.resetSearch = function (applyFilter) {
+        if (this.currentSearchRequest && typeof this.currentSearchRequest.abort === 'function') {
+            this.currentSearchRequest.abort();
+            this.currentSearchRequest = null;
+        }
+
+        this.activeSearchTerm = '';
+        this.setSearchLoading(false);
+        this.clearSearch();
+
+        if (applyFilter) {
+            this.doFilter({ filters: this.defaultFilterData() });
+        } else {
+            this.syncSearchState();
+        }
     };
 
     CoEnvFaculty.prototype.formSelects = function () {
         var _this = this;
 
         this.$themeSelect.on('change', function () {
-            var $opt = $(this).find('option:selected');
-            var data = { filters: {} };
-            
-            data.filters = {
-                theme: {
-                    name: $opt.text(),
-                    slug: $opt.val(),
-                    url: $opt.data('url')
-                }
-            };
             _this.clearSearch();
-            _this.doFilter(data);
+            _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
         });
 
         this.$unitSelect.on('change', function () {
-            var $opt = $(this).find('option:selected');
             _this.clearSearch();
-            _this.doFilter({
-                filters: {
-                    unit: {
-                        name: $opt.text(),
-                        slug: $opt.val(),
-                        url: $opt.data('url')
-                    }
-                }
-            });
+            _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
+        });
+
+        this.$toolbox.on('click', '.Faculty-toolbox-select-clear', function (event) {
+            event.preventDefault();
+
+            var filter = $(this).data('filter');
+            if (filter !== 'theme' && filter !== 'unit') {
+                return;
+            }
+
+            _this.clearSearch();
+            _this.resetFilter(filter);
         });
     };
 
@@ -401,7 +613,9 @@
             // Get number of filtered items safely
             var isotopeInstance = _this.$isoContainer.data('isotope');
             if (isotopeInstance && isotopeInstance.filteredItems) {
-                number = isotopeInstance.filteredItems.length;
+                number = isotopeInstance.filteredItems.filter(function (item) {
+                    return !$(item.element).hasClass(_this.isoItemFactClass);
+                }).length;
             } else {
                 number = 0;
             }
@@ -454,6 +668,10 @@
                 return;
             }
             for (var filter in _this.filterQ.filters) {
+                if ((filter !== 'theme' && filter !== 'unit') || !_this.filterQ.filters[filter].slug) {
+                    continue;
+                }
+
                 if (_this.filterQ.filters[filter].slug !== $(this).data('slug')) {
                     _this.resetFilter(filter);
                 }
@@ -464,18 +682,48 @@
     CoEnvFaculty.prototype.handleSearch = function () {
         var _this = this;
 
+		this.$searchField.on('input', function () {
+			_this.syncSearchState();
+		});
+
+        this.$searchButton.on('click', function (event) {
+            if (_this.isSearchLoading) {
+                event.preventDefault();
+                return;
+            }
+
+            if (_this.shouldClearSearch()) {
+                event.preventDefault();
+                _this.resetSearch(true);
+            }
+        });
+
         this.$form.on('submit', function (event) {
             event.preventDefault();
+            var keywords = _this.getSearchTerm();
+
+            if (keywords === '') {
+                if (_this.hasActiveSearch()) {
+                    _this.resetSearch(true);
+                }
+                return;
+            }
+
+            if (_this.currentSearchRequest && typeof _this.currentSearchRequest.abort === 'function') {
+                _this.currentSearchRequest.abort();
+            }
+
+            _this.setSearchLoading(true);
             
             // Safety check for global vars
             var ajaxUrl = (typeof themeVars !== 'undefined') ? themeVars.ajaxurl : '/wp-admin/admin-ajax.php';
 
             var searchData = {
                 action: 'coenv_member_api_search',
-                data: _this.$searchField.val()
+                data: keywords
             };
 
-            $.post(ajaxUrl, searchData, function (response) {
+            _this.currentSearchRequest = $.post(ajaxUrl, searchData, function (response) {
                 var searchResponse = $.parseJSON(response);
                 var memberIDs;
 
@@ -491,10 +739,20 @@
                 data.feedback = searchResponse.message;
                 data.search = {
                     ids: memberIDs,
-                    keywords: searchResponse.message
+                    keywords: keywords
                 };
 
+                _this.activeSearchTerm = keywords;
                 _this.doFilter(data);
+            }).fail(function (jqXHR, textStatus) {
+                if (textStatus === 'abort') {
+                    return;
+                }
+
+                _this.$feedbackMessage.text('Search is taking longer than expected. Please try again.');
+            }).always(function () {
+                _this.currentSearchRequest = null;
+                _this.setSearchLoading(false);
             });
         });
     };
@@ -504,6 +762,7 @@
         if (this.filterQ.filters && this.filterQ.filters.search) {
             delete this.filterQ.filters.search;
         }
+        this.syncSearchState();
     };
 
     CoEnvFaculty.prototype.mobileForm = function () {
@@ -514,31 +773,15 @@
         });
 
         this.$mobileThemeSelect.on('change', function () {
-            var $opt = $(this).find('option:selected');
             _this.clearSearch();
-            _this.doFilter({
-                filters: {
-                    theme: {
-                        name: $opt.text(),
-                        slug: $opt.val(),
-                        url: $opt.data('url')
-                    }
-                }
-            });
+            _this.$themeSelect.val(_this.$mobileThemeSelect.val());
+            _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
         });
 
         this.$mobileUnitSelect.on('change', function () {
-            var $opt = $(this).find('option:selected');
             _this.clearSearch();
-            _this.doFilter({
-                filters: {
-                    unit: {
-                        name: $opt.text(),
-                        slug: $opt.val(),
-                        url: $opt.data('url')
-                    }
-                }
-            });
+            _this.$unitSelect.val(_this.$mobileUnitSelect.val());
+            _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
         });
     };
 

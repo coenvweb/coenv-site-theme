@@ -79,6 +79,14 @@
 			a {
 				color: #fff;
 				text-decoration: none;
+				&:hover {
+					color: $accent-yellow!important;
+					svg {
+						path{
+							fill: $accent-yellow!important;
+						}
+					}
+				}
 			}
 		}
 		.college-small {
