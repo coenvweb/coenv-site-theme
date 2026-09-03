@@ -5,6 +5,10 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 		======================================================================== */
 
 .single-faculty {
+	
+	.faculty-single-container {
+		@include rem('padding', 1, 0, 2);
+	}
 
 	.faculty-header {
 		position: relative;
@@ -15,78 +19,6 @@ REPLACING WITH MODULES/FACULTY-SINGLE.SCSS
 		height: 262px;
 		background: #303030;
 
-		// decorative block
-		&:after {
-			display: block;
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 100%;
-			margin-left: 4px;
-			width: 100%;
-			height: 100%;
-			background: #b4b4b4;
-		}
-
-		.upper {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			border-bottom: 1px solid #3d3d3d;
-		}
-
-		a.back-to-faculty {
-			display: block;
-			@include rem('padding', 0.6, 1);
-			@include font-size(12);
-			color: #ddd;
-			text-decoration: none;
-			border-bottom: 1px solid #222;
-
-			&:hover {
-				background: $accent;
-				color: #fff !important;
-			}
-
-			i {
-				float: left;
-				display: block;
-				@include rem('margin-right', 0.5);
-				@include font-size(14);
-				@include line-height(21);
-			}
-
-		} // a.back-to-faculty
-
-		.lower {
-			display: table-cell;
-			vertical-align: bottom;
-		}
-
-		h1 {
-			margin: 0;
-			@include rem('padding', 0.5, 1);
-			@include serif;
-			@include font-size(36);
-			font-weight: 200;
-			color: #fff;
-			@extend .antialiased;
-			//border-top: 1px solid #222;
-		}
-
-//		h1 a {
-//			display: block;
-//			@include rem('padding', 0.5, 1);
-//			color: #fff;
-//			text-decoration: none;
-//			border-top: 1px solid #3d3d3d;
-//		}
-
-		h1 a:hover {
-			background: $accent;
-			color: #fff !important;
-		}
 
 	} // .faculty-header
 

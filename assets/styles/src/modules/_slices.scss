@@ -197,3 +197,12 @@
     }
     
 }
+
+.template-page .article__content .container-slices-shortcode {
+    @include min-width ( $iPadPortrait ) {
+        width: calc(100vw - .55rem);
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw - 16.7506% - 2rem);
+        margin-right: 0;
+    }
+}

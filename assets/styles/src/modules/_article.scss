@@ -5,10 +5,10 @@
 
 .article {
 	position: relative;
-	@include rem('padding', 1);
+	@include rem('padding', 1, 1, 0, 1);
 
 	@include min-width ( $iPadPortrait ) {
-		@include rem('padding', 2, 0, 2, 3);
+		@include rem('padding', 2, 0, 0, 3);
 	}
 
 	@media print {

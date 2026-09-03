@@ -20,17 +20,6 @@ $member = $coenv_member_api->setup_faculty_attributes( $obj, 'heavy' );
 		
 			<nav class="Faculty-header">
 
-				<div class="Faculty-header-inner">
-					
-					<div class="Faculty-header-top">
-						<a class="Faculty-header-link" href="<?php bloginfo('url') ?>/faculty/"><i class="icon-faculty-grid-alt-2"></i> Search and filter faculty</a>
-					</div>
-
-					<div class="Faculty-header-bottom">
-						<h1 class="Faculty-header-title">Faculty</h1>
-					</div>
-
-				</div><!-- .Faculty-header-inner -->
 
 			</nav><!-- .Faculty-header -->
 

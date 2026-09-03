@@ -35,6 +35,7 @@ require_once locate_template( '/inc/shortcodes-tiles.php' );
 require_once locate_template( '/inc/shortcodes-widget.php' );
 require_once locate_template( '/inc/shortcodes-related-news.php' );
 require_once locate_template( '/inc/shortcodes-degrees.php' );
+require_once locate_template( '/inc/shortcodes-slices.php' );
 
 // Images
 require_once locate_template( '/inc/images.php' );

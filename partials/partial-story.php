@@ -85,9 +85,9 @@
           $env_target = '_blank';
         }
         ?>
-        <a href="<?php echo get_field('story_link_url'); ?>" class="button" target="<?php echo $env_target; ?>"><?php echo get_field('story_source_name'); ?> »</a>
+        <a href="<?php echo get_field('story_link_url'); ?>" class="button" target="<?php echo $env_target; ?>"><?php echo get_field('story_source_name'); ?></a>
 				<?php } else { ?>
-					<a href="<?php echo the_permalink(); ?>" aria-label="Read more about <?php echo get_the_title(); ?>" class="button">Read more »</a>
+					<a href="<?php echo the_permalink(); ?>" aria-label="Read more about <?php echo get_the_title(); ?>" class="button">Read more</a>
 				<?php } ?>
 
 		<?php } ?>

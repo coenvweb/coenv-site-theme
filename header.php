@@ -170,5 +170,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 } elseif (is_post_type_archive( 'faculty' )) {
                     echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h1></div>';
                 }
+
                 ?>
                 <?php if (!(is_front_page())) { echo '</div> </div> </header>'; } ?>
