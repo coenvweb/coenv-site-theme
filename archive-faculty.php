@@ -30,7 +30,9 @@ $query_args = wp_parse_args( $_SERVER['QUERY_STRING'] );
 $query = array(
 	'post_type' => 'faculty',
 	'posts_per_page' => -1,
-	'orderby' => 'rand',
+	'orderby' => 'meta_value',
+	'order' => 'ASC',
+	'meta_key' => 'last_name',
 	'tax_query' => array()
 );
 

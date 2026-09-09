@@ -26,7 +26,16 @@ if ( !empty( $unit ) ) {
 }
 
 $image_id = get_field( 'image' );
+$title_length = strlen( wp_strip_all_tags( get_the_title() ) );
 $member_classes .= ' grid-sizer';
+
+if ( !empty( $image_id ) ) {
+	$member_classes .= ' Faculty-list-item--has-image';
+}
+
+if ( $title_length > 20 ) {
+	$member_classes .= ' Faculty-list-item--long-name';
+}
 
 // TODO: update these sizes for retina images
 $image = wp_get_attachment_image_src( $image_id, 'small' );

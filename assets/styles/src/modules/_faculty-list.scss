@@ -6,18 +6,25 @@
 		Large: 262px
 	========================================================================== */
 
-$faculty-item-height-ratio: 1.33;
+$faculty-item-height-ratio: 1.3;
+$faculty-tile-transition-duration: 0.2s;
+$faculty-tile-z-index-delay: $faculty-tile-transition-duration;
+$faculty-tile-hover-delay: 0.5s;
+$faculty-tile-reveal-delay: 0.75s;
+$faculty-tile-scale-default: 1;
+$faculty-tile-scale-active: 1.75;
+$faculty-tile-scale-bounce: 1.8;
+$faculty-tile-scale-settle: 1.68;
+$faculty-header-lift-default: 0rem;
+$faculty-header-lift-active: -0.75rem;
+$faculty-header-lift-long-name: -2rem;
+$faculty-tile-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.22);
+$faculty-bounce-duration: 0.28s;
 
 .print{
 	display: none;
 	@media print {
 		display: block;
-	}
-}
-
-.Faculty-list-item--57609 {
-	.Faculty-list-item-title {
-		margin-top: -.25rem!important; //edward blanchard wrigglesworth
 	}
 }
 
@@ -47,13 +54,15 @@ $faculty-item-height-ratio: 1.33;
 
 .Faculty-list-content {
 	@extend .clearfix;
-	margin-right: -4px;
+	margin-right: 10px;
 	transition: all 0.3s ease-in-out;
 }
 
 .Faculty-list-item,
 .Faculty-toolbox {
 	position: relative;
+	z-index: 1;
+	transition: z-index 0s linear $faculty-tile-z-index-delay;
 	float: left;
 	padding-bottom: percentage( ( 1/3 ) * $faculty-item-height-ratio );
 	width: percentage( 1/3 );
@@ -64,26 +73,26 @@ $faculty-item-height-ratio: 1.33;
 	}
 
 	@include min-width ( $bp-2 ) {
-		padding-bottom: percentage( ( 1/6 ) * $faculty-item-height-ratio );
-		width: percentage( 1/6 );
+		padding-bottom: percentage( ( 1/5 ) * $faculty-item-height-ratio );
+		width: percentage( 1/5 );
 	}
 
 	@include min-width ( $bp-3 ) {
-		padding-bottom: percentage( ( 1/8 ) * $faculty-item-height-ratio );
-		width: percentage( 1/8 );
+		padding-bottom: percentage( ( 1/7 ) * $faculty-item-height-ratio );
+		width: percentage( 1/7);
 	}
 }
 
 .js .Faculty-toolbox {
 
 	@include min-width ( $bp-2 ) {
-		padding-bottom: percentage( ( 2/6 ) * $faculty-item-height-ratio );
-		width: percentage( 2/6 );
+		padding-bottom: percentage( ( 2/5 ) * $faculty-item-height-ratio );
+		width: percentage( 2/5 );
 	}
 
 	@include min-width ( $bp-3 ) {
-		padding-bottom: percentage( ( 2/8 ) * $faculty-item-height-ratio );
-		width: percentage( 2/8 );
+		padding-bottom: percentage( ( 2/7 ) * $faculty-item-height-ratio );
+		width: percentage( 2/7 );
 	}
 }
 
@@ -97,13 +106,13 @@ $faculty-item-height-ratio: 1.33;
 	}
 
 	@include min-width ( $bp-2 ) {
-		padding-bottom: percentage( ( 1/6 ) * $faculty-item-height-ratio );
-		width: percentage( 2/6 );
+		padding-bottom: percentage( ( 1/5 ) * $faculty-item-height-ratio );
+		width: percentage( 2/5 );
 	}
 
 	@include min-width ( $bp-3 ) {
-		padding-bottom: percentage( ( 1/8 ) * $faculty-item-height-ratio );
-		width: percentage( 2/8 );
+		padding-bottom: percentage( ( 1/7 ) * $faculty-item-height-ratio );
+		width: percentage( 2/7 );
 	}
 }
 
@@ -115,10 +124,79 @@ $faculty-item-height-ratio: 1.33;
 	bottom: 4px;
 	left: 0;
 	text-decoration: none;
+	overflow: hidden;
+	--faculty-tile-scale: #{$faculty-tile-scale-default};
+	--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce};
+	--faculty-tile-settle-scale: #{$faculty-tile-scale-settle};
+	--faculty-header-lift: #{$faculty-header-lift-default};
+	transform: scale(var(--faculty-tile-scale));
+	transform-origin: center;
+	transition: transform $faculty-tile-transition-duration ease, box-shadow $faculty-tile-transition-duration ease;
 
 	.Faculty-toolbox & {
 		display: block;
 	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.Faculty-list-item--has-image .Faculty-list-item-inner:hover {
+		--faculty-tile-scale: #{$faculty-tile-scale-active};
+		--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce};
+		--faculty-tile-settle-scale: #{$faculty-tile-scale-settle};
+		--faculty-header-lift: #{$faculty-header-lift-active};
+		box-shadow: $faculty-tile-shadow;
+		transition-delay: $faculty-tile-hover-delay;
+	}
+
+	.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:hover {
+		--faculty-header-lift: #{$faculty-header-lift-long-name};
+	}
+
+	.Faculty-list-item--has-image .Faculty-list-item-inner:hover .Faculty-list-item-subtitle {
+		max-height: 2.5rem;
+		opacity: 1;
+		transform: translateY(0);
+		transition-delay: $faculty-tile-reveal-delay;
+	}
+}
+
+.Faculty-list-item--has-image:hover,
+.Faculty-list-item--has-image:focus-within,
+.Faculty-list-item--has-image.is-bouncing,
+.Faculty-list-item--has-image:active  {
+	transition-delay: 0s;
+	z-index: 20;
+}
+
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus,
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible,
+.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing,
+.Faculty-list-item--has-image .Faculty-list-item-inner:active {
+	--faculty-tile-scale: #{$faculty-tile-scale-active};
+	--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce};
+	--faculty-tile-settle-scale: #{$faculty-tile-scale-settle};
+	--faculty-header-lift: #{$faculty-header-lift-active};
+	box-shadow: $faculty-tile-shadow;
+	outline: none;
+}
+
+.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:focus,
+.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:focus-visible,
+.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner.is-bouncing,
+.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:active {
+	--faculty-header-lift: #{$faculty-header-lift-long-name};
+}
+
+.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing {
+	animation: faculty-tile-bounce $faculty-bounce-duration ease-out;
+}
+
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus .Faculty-list-item-subtitle,
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible .Faculty-list-item-subtitle,
+.Faculty-list-item--has-image .Faculty-list-item-inner:active .Faculty-list-item-subtitle {
+	max-height: 2.5rem;
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .Faculty-list-item-image {
@@ -130,17 +208,55 @@ $faculty-item-height-ratio: 1.33;
 
 .Faculty-list-item-header {
 	@extend .antialiased;
+	position: absolute;
+	right: 0;
+	left: 0;
 	padding: 0;
+	background-color: inherit;
 	@include rem('padding', 0.25);
+	transform: translateY(var(--faculty-header-lift));
+	transition: transform $faculty-tile-transition-duration ease, padding $faculty-tile-transition-duration ease;
 
 	@include min-width ( $bp-1 + 150 ) {
 		@include rem('padding', 0.25);
 	}
 
 	@include min-width ( $bp-2 ) {
-		@include rem('padding', 0.5);
+		@include rem('padding', 0.65);
 	}
 
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.Faculty-list-item--has-image .Faculty-list-item-inner:hover .Faculty-list-item-header {
+		@include rem('padding-bottom', 0.75);
+		transition-delay: $faculty-tile-reveal-delay;
+	}
+}
+
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus .Faculty-list-item-header,
+.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible .Faculty-list-item-header,
+.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing .Faculty-list-item-header,
+.Faculty-list-item--has-image .Faculty-list-item-inner:active .Faculty-list-item-header {
+	@include rem('padding-bottom', 0.75);
+}
+
+@keyframes faculty-tile-bounce {
+	0% {
+		transform: scale(var(--faculty-tile-scale));
+	}
+
+	45% {
+		transform: scale(var(--faculty-tile-bounce-scale));
+	}
+
+	70% {
+		transform: scale(var(--faculty-tile-settle-scale));
+	}
+
+	100% {
+		transform: scale(var(--faculty-tile-scale));
+	}
 }
 
 .Faculty-list-item-title {
@@ -148,6 +264,7 @@ $faculty-item-height-ratio: 1.33;
 	@include font-size(11);
 	line-height: 1;
 	font-weight: 600;
+	@include o_sans_bold();
 	color: #fff;
 
 
@@ -160,20 +277,28 @@ $faculty-item-height-ratio: 1.33;
 	}
 
 	@include min-width ( $bp-2 ) {
-		@include font-size(13);
+		@include font-size(14);
+		line-height: 1.2;
 	}
 
 }
 
 .Faculty-list-item-subtitle {
-	display: none;
+	display: block;
 	@include rem('margin', 0.25, 0, 0);
-	@include font-size(10);
+	@include font-size(8);
 	line-height: 1.2;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	font-weight: 900;
 	color: #fff;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transform: translateY(0.35rem);
+	transition: max-height 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+	transition: max-height $faculty-tile-transition-duration ease, opacity $faculty-tile-transition-duration ease, transform $faculty-tile-transition-duration ease;
+	text-wrap: pretty;
 
 }
 

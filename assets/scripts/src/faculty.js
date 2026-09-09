@@ -100,6 +100,7 @@
         this.formSelects();
         this.handleSearch();
         this.mobileForm();
+        this.cardBounce();
         this.syncSearchState();
     };
 
@@ -142,6 +143,7 @@
         var isoOpts = {
             isInitLayout: false, // Don't layout immediately
             itemSelector: this.isoItemSelector,
+            sortBy: 'original-order',
             stamp: this.toolboxSelector,
             masonry: {
                 columnWidth: '.grid-sizer',
@@ -782,6 +784,56 @@
             _this.clearSearch();
             _this.$unitSelect.val(_this.$mobileUnitSelect.val());
             _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
+        });
+    };
+
+    CoEnvFaculty.prototype.cardBounce = function () {
+        var bounceDuration = 280;
+
+        this.$isoContainer.on('click', '.Faculty-list-item--has-image .Faculty-list-item-inner', function (event) {
+            var $link;
+            var $item;
+            var href;
+            var bounceTimeout;
+
+            if (event.isDefaultPrevented()) {
+                return;
+            }
+
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.which !== 1) {
+                return;
+            }
+
+            $link = $(this);
+            $item = $link.closest('.Faculty-list-item');
+            href = $link.attr('href');
+
+            if (!href || href.charAt(0) === '#' || (this.target && this.target !== '_self')) {
+                return;
+            }
+
+            event.preventDefault();
+
+            bounceTimeout = $link.data('bounceTimeout');
+            if (bounceTimeout) {
+                window.clearTimeout(bounceTimeout);
+            }
+
+            $item.addClass('is-bouncing');
+            $link.removeClass('is-bouncing');
+            this.offsetWidth;
+            $link.addClass('is-bouncing');
+
+            window.setTimeout(function () {
+                $item.removeClass('is-bouncing');
+                $link.removeClass('is-bouncing');
+            }, bounceDuration);
+
+            bounceTimeout = window.setTimeout(function () {
+                window.location.href = href;
+            }, bounceDuration);
+
+            $link.data('bounceTimeout', bounceTimeout);
         });
     };
 

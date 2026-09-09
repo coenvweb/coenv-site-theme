@@ -123,10 +123,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                             )); ?>
                                         </ul>
 
-                                        <button class="search-toggle" type="button" aria-expanded="false" aria-controls="header-search-form" aria-label="Toggle site search">
+                                        <a class="search-toggle" href="#" aria-expanded="false" aria-controls="header-search-form" aria-label="Toggle site search">
                                             <i class="icon-search" aria-hidden="true"></i>
                                             <span>Search</span>
-                                        </button>
+                                        </a>
 
                                         <div id="header-search-form" class="search-form-wrapper" aria-hidden="true">
                                             <?php get_search_form() ?>
