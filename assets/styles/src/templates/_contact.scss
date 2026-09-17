@@ -3,8 +3,11 @@
 .page-contacts {
 
     .contact {
-        height: 130px;
-        margin-bottom: 1.6rem;
+        background-color: #f7f7f7;
+        height: 150px;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        margin-bottom: .6rem;
         overflow: hidden;
         transition-duration: .3s;
         position: relative;
@@ -12,8 +15,8 @@
             display: none;
         }
         &.accordion-title {
+            background: #F8F6F5;
             padding: 0;
-            background-color: white;
             z-index: 1;
             &:after {
                 content: "\e028";
@@ -39,6 +42,7 @@
         @include max-width ( 380 ) {
             .contact-info {
                 margin-left: 0!important;
+                padding-left: 0;
             }
             img {
                 display: none!important;
@@ -57,7 +61,7 @@
                 font-size: 20px;
                 margin-top: -4px;
                 right: 0.5rem;
-                top: 35%;
+                top: 3rem;
                 border: none;
                 color: #666;
             }
@@ -65,21 +69,30 @@
             @include min-width ( 600 ) {
                 h3 {
                     font-size: 1.7rem;
-                    padding-top: .5rem;
+                }
+                h4 {
+                    zoom: 1.2;
                 }
                 .contact-title {
                     font-size: 1.2rem;
-                    padding-top: .3rem;
-                    bottom: 58%;
+                    padding-top: 0;
+                    position: static;
                     transition: .3s;
+                    height: 150px;
                 }
                 .contact-info {
-                    margin-left: 200px;
-                    font-size: 1.2rem;
+                    margin-left: 0;
+                    padding-left: 1rem;
+                    font-size: 1.1rem;
+                    display: grid;
+                    grid-template-rows: 1fr 1fr;
+                    ul li {
+                        zoom: 1.2;
+                    }
                 }
                 img {
-                    width: 200px;
-                    height: 100%;
+                    width: 250px;
+                    height: 250px;
                 }
                 .left {
                     display: block;
@@ -97,7 +110,8 @@
                         }
                     }
                 }
-                height: 200px;
+                height: 250px;
+                grid-template-columns: 250px 1fr;
                 &:after {
                     height: 32px;
                     width: 33px;
@@ -134,23 +148,24 @@
         bottom: 2rem;
         z-index: 0;
         padding-bottom: 1rem;
+        padding-top: .5rem;
         @include min-width ( $iPadLandscape ) {
             width: 368px;
             transition: .3s;
         }
 
         .responsibilities {
-            font-size: .9rem;
+            font-size: 1.125rem;
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: .1px;
-            text-align: center;
-            padding: 3rem 1rem .5rem 1rem;
+            padding: 2.5rem 1rem .5rem 1rem;
             margin-bottom: 0;
             li {
                 display: inline-block;
                 margin: 0 .15rem;
                 white-space: nowrap;
+                color: $accent-dk;
             }
             
             li:not(:first-child):before {
@@ -169,42 +184,52 @@
             
         }
         p {
-            padding: 1rem 1rem 0 1rem;
+            padding: .25rem 1rem 0 1rem;
             margin-bottom: 0;
         }
     }
     
     img {
         transition-duration: .3s;
+        margin: 0!important;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
     }
     .contact-info {
-        margin-left: 130px;
+        margin-left: 0;
+        padding-left: 1rem;
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
         transition-duration: .3s;
         @include max-width ( $iPhoneLandscape ) {
             @include rem('padding-right', .6);
-            h3 {
-                font-size: 90%!important;
-            }
         }
 
         .contact-title {
-            position: absolute;
-            bottom: 60%;
-            @include rem('padding-left', 1);
+            position: static;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding-left: 0;
             @include max-width ( $iPadLandscape ) {
-                bottom: 50%!important;
+                bottom: auto!important;
             }
         }
 
         h3 {
+            margin-top: 0;
             margin-bottom: 0!important;
 
         }
 
         h4 {
-            font-size: 70%!important;
+            font-size: .85rem;
             line-height: normal!important;
             padding-right: 2rem;
+            padding-top: .25rem;
 
             @include max-width ( $iPhoneLandscape ) {
                 font-size: 60%!important;
@@ -212,13 +237,34 @@
         }
 
         ul {
-            position: absolute;
-            bottom: 0px;
-            width: 100%;
+            position: static;
+            width: calc(100% + 1rem);
             z-index: 99;
+            margin: 0 -1rem 0rem -1rem;
+            border-top: 0;
+            padding-top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: .5rem 1rem;
+            max-height: 72px;
+            bottom: 0;
+            position: absolute;
+            background: #f7f7f7;
+            &:before {
+                content: "";
+                display: block;
+                border-top: 1px solid $accent-yellow;
+                position: absolute;
+                top: 0;
+                left: 1rem;
+                right: 1rem;
+                width: auto;
+            }
+
             @include max-width ( $iPadLandscape ) {
                 bottom: 0!important;
-                @include rem ('padding', .5, 0, .5, 1);
+                @include rem ('padding', 0, 1, 0, 1);
 
                 li {
                     font-size: 80%!important;
@@ -242,4 +288,10 @@
     #bio-t-john-meyer h4, #bio-t-liz-exell h4 {
         padding-right: 0;
     }
+}
+
+.team-title {
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid $accent-yellow;
 }

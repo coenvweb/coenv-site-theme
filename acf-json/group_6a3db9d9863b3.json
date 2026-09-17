@@ -21,7 +21,7 @@
             "min": 0,
             "max": 0,
             "collapsed": "",
-            "button_label": "Add Row",
+            "button_label": "Add Slice",
             "rows_per_page": 20,
             "sub_fields": [
                 {
@@ -334,5 +334,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788379489
+    "modified": 1788989634
 }

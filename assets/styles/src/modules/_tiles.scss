@@ -1,75 +1,176 @@
-//support 1-4 columns
-.tiles-container.cols-1 {
-    grid-template-columns: 100%;
-    @include max-width ( 640 ) {
-        grid-template-columns: 100%;
-    }  
-}
-.tiles-container.cols-2 {
-    grid-template-columns: 50% 50%;
-    @include max-width ( 640 ) {
-        grid-template-columns: 100%;
-    }   
-}
-.tiles-container.cols-3 {
-    grid-template-columns: 32% 32% 32%;
-    @include max-width ( 640 ) {
-        grid-template-columns: 100%;
-    }
-}
-.tiles-container.cols-4 {
-    grid-template-columns: 25% 25% 25% 25%;
-    @include max-width ( 640 ) {
-        grid-template-columns: 100%;
-    }
-}
+$tiles-gap: 1.5rem;
+$tiles-border-color: #d5d9df;
+$tiles-shadow: none;
+$tiles-overlay-start: rgba(34, 0, 120, 0.6);
+$tiles-overlay-end: rgba(64, 19, 103, 0.75);
+$tiles-overlay-accent: $accent-yellow;
+$tiles-accent-line-top-space: 0.35rem;
+$tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
+
+
 .tiles-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
-    grid-gap: 2%;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $tiles-gap;
+    margin: $tiles-gap auto;
+
+    @include max-width ( 900 ) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     @include max-width ( 640 ) {
         grid-template-columns: 100%;
     }
-    .page-tile {
-        flex-grow: 1;
-       // width: calc(33% - 10px);
-        background-color: $accent;
-        @include max-width ( $iPadPortrait ) {
-            width: 100%
+
+    &.cols-1 {
+        grid-template-columns: 100%;
+    }
+
+    &.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        @include max-width ( 640 ) {
+            grid-template-columns: 100%;
         }
-        a {
-            display: flex;
-            height: 100%;
-            width: 100%;
-            flex-direction: column;
-            text-decoration: none;
-            &:hover {
-                filter: brightness(110%)
+    }
+
+    &.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        @include max-width ( 900 ) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include max-width ( 640 ) {
+            grid-template-columns: 100%;
+        }
+    }
+
+    &.cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        @include max-width ( 1080 ) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @include max-width ( 900 ) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include max-width ( 640 ) {
+            grid-template-columns: 100%;
+        }
+    }
+
+    .page-tile {
+        display: flex;
+        border: 1px solid $tiles-border-color;
+        box-shadow: $tiles-shadow;
+        background-color: #fff;
+    }
+
+    .tile-link {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        transform-origin: center center;
+        transition: transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            transform: scale(1.02);
+        }
+    }
+
+    .image-wrap {
+        display: block;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content-wrap {
+        position: relative;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        padding: 1rem 1rem 1.1rem;
+        background-color: $accent;
+        background-image:
+            linear-gradient(180deg, $tiles-overlay-start 0%, $tiles-overlay-end 85%),
+            url(#{$tiles-texture-image-path});
+        background-size: cover, cover;
+        background-position: center center, center center;
+    }
+
+    .title {
+        @include encode_sb();
+        margin: 0;
+        color: #fff;
+        line-height: 1.25;
+        letter-spacing: 0;
+        font-size: 1.6rem;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 5rem;
+            border-top: 3px solid $tiles-overlay-accent;
+            margin: $tiles-accent-line-top-space 0 0.7rem;
+        }
+    }
+
+    .body {
+        margin-top: 0.5rem;
+        color: #fff;
+        line-height: 1.4;
+    }
+
+    &.cols-1 {
+        .tile-link {
+            @include min-width ( 700 ) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: stretch;
             }
         }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;        }
+
         .image-wrap {
-            display: flex;
-            flex: 1 220px;
-            max-height: 220px;
+            @include min-width ( 700 ) {
+                aspect-ratio: 4 / 3;
+            }
         }
+
         .content-wrap {
-            bottom: -10px;
-            width: 100%;
-            color: white;
-            padding: 1rem;
+            @include min-width ( 700 ) {
+                padding: 1.4rem 1.6rem;
+            }
         }
+    }
+
+    &.cols-3,
+    &.cols-4 {
+        .content-wrap {
+            padding: 0.8rem 0.9rem 0.85rem;
+        }
+
         .title {
-            position: relative;
-            @extend h4;
-            @include sans;
-            font-size: .9rem!important;
-            line-height: 150%!important;
-            letter-spacing: .1px;
+
+            &:before {
+                width: 4.5rem;
+                margin-bottom: 0.55rem;
+            }
         }
     }
 }

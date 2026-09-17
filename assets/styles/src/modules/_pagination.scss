@@ -20,8 +20,6 @@
 		@extend .button;
 		background: $accent!important;
         color: white!important;
-        margin-bottom: .4rem;
-        margin-right: .25rem;
 	}
 
 	a {
@@ -29,6 +27,9 @@
 		text-decoration: none;
 		color: $text;
 		background-color: $white-button;
+		@include encode_sb();
+		border-radius: 8px;
+		border: none;
 	}
 	
 	@media print {

@@ -77,7 +77,7 @@ $ancestor = array(
                         );
                         $query = new WP_Query( $args );
 
-                        echo '<h2>' . $term->name . '</h2>';
+                        echo '<h2 class="team-title">' . $term->name . '</h2>';
                 
                         while ( $query->have_posts() ) : $query->the_post();
                              include( locate_template( 'partials/partial-staff.php', false, false ));

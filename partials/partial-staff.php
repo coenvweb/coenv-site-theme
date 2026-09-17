@@ -14,8 +14,8 @@ if( !empty($image) ) {
 	// vars
 	$alt = $image['alt'];
 
-	// thumbnail
-	$size = 'thumbnail';
+    // next square size up
+    $size = 'small';
 	$thumb = $image['sizes'][ $size ];
 }
 
@@ -26,7 +26,7 @@ if(!empty($description) || have_rows('job_responsibilities')) {
 ?>
 <div id="bio-t-<?php echo $post->post_name ?>" class="contact <?php if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>accordion-title read" aria-label="Toggle more information" aria-expanded="false" tabindex="0<?php } ?>" >
 
-    <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
+    <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
 
     <div class="contact-info">
         <div class="contact-title">

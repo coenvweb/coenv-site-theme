@@ -367,7 +367,7 @@
 	color: $text;
 
 	li {
-		@include font-size(13);
+		font-size: 1rem;
 	}
 
 	a {

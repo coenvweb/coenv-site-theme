@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_61940a7d23a5b",
-            "label": "",
+            "label": "Tiles",
             "name": "tiles",
             "aria-label": "",
             "type": "repeater",
@@ -16,11 +16,13 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_61940ae523a5d",
+            "layout": "block",
+            "pagination": 0,
             "min": 0,
             "max": 0,
-            "layout": "block",
+            "collapsed": "field_61940ae523a5d",
             "button_label": "Add Tile",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_61940b0523a60",
@@ -32,12 +34,11 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
-                        "class": "",
+                        "width": "10",
+                        "class": "left",
                         "id": ""
                     },
                     "return_format": "array",
-                    "preview_size": "medium",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -46,6 +47,8 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
+                    "preview_size": "medium",
                     "parent_repeater": "field_61940a7d23a5b"
                 },
                 {
@@ -58,15 +61,16 @@
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
-                        "class": "",
+                        "width": "90",
+                        "class": "right",
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
                     "parent_repeater": "field_61940a7d23a5b"
                 },
                 {
@@ -79,15 +83,16 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
-                        "class": "",
+                        "width": "80",
+                        "class": "right",
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
                     "parent_repeater": "field_61940a7d23a5b"
                 },
                 {
@@ -95,21 +100,20 @@
                     "label": "Link",
                     "name": "link",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
-                        "class": "",
+                        "width": "80",
+                        "class": "right",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
+                    "return_format": "array",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_61940a7d23a5b"
                 }
-            ],
-            "rows_per_page": 20
+            ]
         }
     ],
     "location": [
@@ -140,5 +144,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788379437
+    "modified": 1789504264
 }
