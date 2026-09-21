@@ -575,6 +575,7 @@ class CoEnvMemberAPI {
 				// add 'color' attribute for units
 				if ( $taxonomy == 'unit' ) {
 					$atts['color'] = $this->unit_color( $term->term_id );
+					$atts['image'] = $this->unit_image( $term->term_id );
 				}
 
 				$results[] = $atts;
@@ -692,6 +693,46 @@ class CoEnvMemberAPI {
             $color = '#333333';
         }
         return $color;
+	}
+
+	/**
+	 * Get unit texture image URL
+	 */
+	function unit_image( $unit_id ) {
+		$image = get_field( 'image_texture', 'unit_' . $unit_id );
+
+		// Backward compatibility for terms still using the previous field key.
+		if ( empty( $image ) ) {
+			$image = get_field( 'image', 'unit_' . $unit_id );
+		}
+
+		if ( is_array( $image ) ) {
+			if ( ! empty( $image['url'] ) ) {
+				return $image['url'];
+			}
+
+			if ( ! empty( $image['ID'] ) ) {
+				$image_src = wp_get_attachment_image_src( $image['ID'], 'full' );
+
+				if ( ! empty( $image_src[0] ) ) {
+					return $image_src[0];
+				}
+			}
+		}
+
+		if ( is_numeric( $image ) ) {
+			$image_src = wp_get_attachment_image_src( $image, 'full' );
+
+			if ( ! empty( $image_src[0] ) ) {
+				return $image_src[0];
+			}
+		}
+
+		if ( is_string( $image ) ) {
+			return $image;
+		}
+
+		return '';
 	}
 
 	/**
