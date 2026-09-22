@@ -166,9 +166,24 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
                 <?php if (is_singular('faculty')) {
-                    echo '<div class="container"><h2 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h2></div>';
+                    echo '<div class="container"><a href="' . get_post_type_archive_link('faculty') . '"><span class="title-label">← back to all</span><h2 class="no-sidenav-title"><span class="section-title">Faculty</span></h2></a></div>';
+                } elseif (is_singular('post')) {
+                    $news_page_id = (int) get_option('page_for_posts');
+                    $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');
+                    echo '<div class="container"><a href="' . esc_url($news_link) . '"><span class="title-label">← back to all</span><h2 class="no-sidenav-title"><span class="section-title">News</span></h2></a></div>';
+                } elseif (is_home() && !is_front_page()) {
+                    $news_page_id = (int) get_option('page_for_posts');
+                    $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');
+                    echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . esc_url($news_link) . '">News</a></h1></div>';
                 } elseif (is_post_type_archive( 'faculty' )) {
                     echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h1></div>';
+                } elseif (is_page() && !is_front_page()) {
+                    $ancestor_id = coenv_get_ancestor('ID');
+                    if ($ancestor_id) {
+                        $current_id = get_queried_object_id();
+                        $heading_tag = ((int) $ancestor_id === (int) $current_id) ? 'h1' : 'h2';
+                        echo '<div class="container"><' . $heading_tag . ' class="no-sidenav-title"><a class="section-title" href="' . esc_url(get_permalink($ancestor_id)) . '">' . esc_html(get_the_title($ancestor_id)) . '</a></' . $heading_tag . '></div>';
+                    }
                 }
 
                 ?>

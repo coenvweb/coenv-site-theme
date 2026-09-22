@@ -27,11 +27,13 @@ $ancestor = array(
                   $list_args = array(
                       'child_of' => $ancestor['id'],
                       'depth' => 3,
-                      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+					  'title_li' => '',
+					  'echo' => 0,
                       'walker' => new CoEnv_Secondary_Menu_Walker,
                       'sort_column' => 'menu_order' 
                   );
-                  wp_list_pages($list_args);
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
                   ?>
 	          </ul>
 

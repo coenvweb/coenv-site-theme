@@ -294,8 +294,9 @@
 .banner-wrapper {
 	position: relative;
 
-	// default banner padding
-	padding-bottom: 25%;
+	// Use explicit height so inner container can reliably stretch to full banner height.
+	height: 25vw;
+	padding-bottom: 0;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center 30%;
@@ -316,6 +317,7 @@
 
 	@media print {
 		padding: 0 !important;
+		height: auto;
 	}
 
 	.page-title-wrap {
@@ -335,9 +337,22 @@
 		color: $accent-yellow;
 	}
 	.container {
-		height: 0;
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		position: relative;
+		z-index: 1;
 	}
 
+	a {
+		text-decoration: none;
+		color: $accent-yellow;
+		&:hover {
+			h1, h2, span {
+			color: lighten($accent-yellow, 10%);
+			}
+		}
+	}
 } // .banner-wrapper
 
 .section-title {
@@ -347,18 +362,41 @@
 	text-decoration: none;
 	background: none;
 	color: $accent-yellow;
-	padding-bottom: 5rem;
+	padding-bottom: 0.75rem;
 	display: block;
 	white-space: nowrap;
-
 	&:hover {
-		color: $accent-lt;
+		color: lighten($accent-yellow, 10%)!important;
 	}
 }
 
 .no-sidenav-title .section-title {
-	position: absolute;
-	bottom: -3rem;
+	position: static;
+}
+
+.single-faculty .banner-wrapper .container,
+.single-post .banner-wrapper .container {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+
+.single-faculty .banner-wrapper .title-label,
+.single-post .banner-wrapper .title-label {
+	display: block;
+	margin: 0 0 0.35rem;
+	@include encode();
+	font-size: 1rem;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: $accent-yellow;
+}
+
+.single-faculty .banner-wrapper .no-sidenav-title,
+.single-post .banner-wrapper .no-sidenav-title {
+	margin: 0 0 2rem 0;
 }
 
 .layout-container--header {

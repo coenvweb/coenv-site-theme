@@ -104,6 +104,9 @@ function my_page_css_class( $css_class, $page ) {
 	if ( $post->ID == $page->ID ) {
 		$css_class[] = 'current_page_item';
 	}
+	if ( is_singular( 'post' ) && $page->ID == (int) get_option( 'page_for_posts' ) ) {
+		$css_class[] = 'current_page_item';
+	}
     if (is_singular('careers') && $page->ID == 27023) {
         $css_class[] = 'current_page_item';
     }

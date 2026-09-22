@@ -15,6 +15,21 @@ $ancestor = array(
 	'title' => get_the_title( $ancestor_id )
 );
 
+if ( is_singular( 'post' ) ) {
+	$posts_page_id = (int) get_option( 'page_for_posts' );
+
+	if ( $posts_page_id ) {
+		$posts_page_ancestors = get_post_ancestors( $posts_page_id );
+		$nav_root_id = !empty( $posts_page_ancestors ) ? (int) array_pop( $posts_page_ancestors ) : $posts_page_id;
+
+		$ancestor = array(
+			'id' => $nav_root_id,
+			'permalink' => get_permalink( $nav_root_id ),
+			'title' => get_the_title( $nav_root_id )
+		);
+	}
+}
+
 $banner = coenv_banner();
 ?>
 
@@ -29,11 +44,13 @@ $banner = coenv_banner();
                   $list_args = array(
                       'child_of' => $ancestor['id'],
                       'depth' => 3,
-                      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
+					  'title_li' => '',
+					  'echo' => 0,
                       'walker' => new CoEnv_Secondary_Menu_Walker,
                       'sort_column' => 'menu_order' 
                   );
-                  wp_list_pages($list_args);
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
                   ?>
 	          </ul>
                 
