@@ -336,7 +336,7 @@
 		letter-spacing: 0.04em;
 		color: $accent-yellow;
 	}
-	.container {
+	> .container {
 		height: 100%;
 		display: flex;
 		align-items: flex-end;
@@ -344,7 +344,8 @@
 		z-index: 1;
 	}
 
-	a {
+	> .container > a,
+	> .container .no-sidenav-title > a {
 		text-decoration: none;
 		color: $accent-yellow;
 		&:hover {
@@ -374,8 +375,8 @@
 	position: static;
 }
 
-.single-faculty .banner-wrapper .container,
-.single-post .banner-wrapper .container {
+.single-faculty .banner-wrapper > .container,
+.single-post .banner-wrapper > .container {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: flex-end;
@@ -397,6 +398,12 @@
 .single-faculty .banner-wrapper .no-sidenav-title,
 .single-post .banner-wrapper .no-sidenav-title {
 	margin: 0 0 2rem 0;
+}
+
+.home .banner-wrapper,
+.front-page .banner-wrapper {
+	height: auto;
+	padding-bottom: 25%;
 }
 
 .layout-container--header {
