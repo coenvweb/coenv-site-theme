@@ -13,34 +13,6 @@ $ancestor = array(
 );
 ?>
 
-    <div class="image-area small">
-        
-		<div class="container">
-            
-            <article class="first-section">
-                <header class="article__header">
-                    <div class="article__meta">
-                         <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
-                    </div>
-                </header>
-                <section class="article__content">
-                    <p class="first-title">One College,<br> Many Paths</p>
-                </section>
-            </article>
-            <div class="little-blurb">
-                <p>With an entire environment-focused College to explore, you’ll be able to try new things and discover the right fit.</p>
-            </div>
-            
-        </div>
-            
-        </div>
-
-                    </div><!-- .container.header-container -->
-
-                </div><!-- .banner-wrapper -->
-
-
-                        </header><!-- #header -->
 
 
 	<section id="page" role="main" class="template-page future-students front">
@@ -49,11 +21,50 @@ $ancestor = array(
         <div>
         
 		<div class="container">
+
+            <nav id="secondary-nav" class="side-col">
+                <ul id="menu-secondary" class="menu">
+                    <?php
+                    $list_args = array(
+                        'child_of' => $ancestor['id'],
+                        'depth' => 3,
+                        'title_li' => '',
+                        'echo' => 0,
+                        'walker' => new CoEnv_Secondary_Menu_Walker,
+                        'sort_column' => 'menu_order' 
+                    );
+                    $secondary_nav_items = wp_list_pages($list_args);
+                    echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                    ?>
+                </ul>
+
+            </nav><!-- #secondary-nav.side-col -->
+
+			<main id="main-col" class="main-col container">
+
+            <div class="image-area small">
             
+                <div class="container" style="background-image: url(<?php echo get_field('future_students_header_image'); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    
+                    <article class="first-section">
+                        <header class="article__header">
+                            <div class="article__meta">
+                                <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
+                            </div>
+                        </header>
+                        <section class="article__content">
+                            <p class="first-title"><?php echo get_field('future_students_heading'); ?></p>
+                        </section>
+                    </article>
+                    <div class="little-blurb">
+                        <p><?php echo get_field('future_students_subheading'); ?></p>
+                    </div>
+                    
+                </div>
+                    
+            </div>
             
             <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
-
-			<main id="main-col" class="main-col">
                 
                 
 				<?php if ( have_posts() ) : ?>

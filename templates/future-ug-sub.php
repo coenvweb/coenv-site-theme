@@ -42,8 +42,50 @@ $ancestor = array(
 	<section id="page" role="main" class="template-page future-students">
 
         <div>
-        
-		<div class="container">
+            
+        <div class="container">
+
+            <nav id="secondary-nav" class="side-col">
+                <ul id="menu-secondary" class="menu">
+                    <?php
+                    $list_args = array(
+                        'child_of' => $ancestor['id'],
+                        'depth' => 3,
+                        'title_li' => '',
+                        'echo' => 0,
+                        'walker' => new CoEnv_Secondary_Menu_Walker,
+                        'sort_column' => 'menu_order' 
+                    );
+                    $secondary_nav_items = wp_list_pages($list_args);
+                    echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                    ?>
+                </ul>
+
+            </nav><!-- #secondary-nav.side-col -->
+
+			<main id="main-col" class="main-col container">
+
+            <div class="image-area small">
+            
+                <div class="container" style="background-image: url(<?php echo get_field('future_students_header_image', $ancestor['id']); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    
+                    <article class="first-section">
+                        <header class="article__header">
+                            <div class="article__meta">
+                                <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
+                            </div>
+                        </header>
+                        <section class="article__content">
+                            <p class="first-title"><?php echo get_field('future_students_heading', $ancestor['id']); ?></p>
+                        </section>
+                    </article>
+                    <div class="little-blurb">
+                        <p><?php echo get_field('future_students_subheading', $ancestor['id']); ?></p>
+                    </div>
+                    
+                </div>
+                    
+            </div>
             
             <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
 

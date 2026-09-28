@@ -216,9 +216,10 @@ div.major-minor {
     }
 
     .type {
-        font-size: 120%!important;
+        font-size: 80%!important;
         display: block;
-        font-family: 'skolar';
+        @include encode_sb();
+        text-transform: uppercase;
         font-weight: 400;
         margin-top: .25rem;
     }
@@ -287,7 +288,6 @@ div.major-minor {
         }
     }
     @include min-width ( $iPadLandscape ) {
-        width: 368px;
         transition: .3s width;
     }
 }

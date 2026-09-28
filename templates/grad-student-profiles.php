@@ -29,14 +29,18 @@ $ancestor = array(
 				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
-	              <?php wp_list_pages( array(
-	              		'child_of' => $ancestor['id'],
-	                  'depth' => 3,
-	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-	                  'link_after' => '<i class="icon-arrow-right"></i>',
-	                  'walker' => new CoEnv_Secondary_Menu_Walker,
-	                  'sort_column' => 'menu_order'
-	              ) ) ?>
+                  <?php
+                  $list_args = array(
+                      'child_of' => $ancestor['id'],
+                      'depth' => 3,
+					  'title_li' => '',
+					  'echo' => 0,
+                      'walker' => new CoEnv_Secondary_Menu_Walker,
+                      'sort_column' => 'menu_order' 
+                  );
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                  ?>
 	          </ul>
 
 				</nav><!-- #secondary-nav.side-col -->

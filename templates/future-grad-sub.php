@@ -15,18 +15,26 @@ $ancestor = array(
 
                         </header><!-- #header -->
 
-    <div class="image-area smaller">
+    <?php
+        $future_header_image = get_field('future_students_header_image', $ancestor['id']);
+        $future_header_image_url = is_array($future_header_image) ? $future_header_image['url'] : $future_header_image;
+        $future_heading = get_field('future_students_heading', $ancestor['id']);
+        $future_subheading = get_field('future_students_subheading', $ancestor['id']);
+    ?>
+
+    <div class="image-area smaller"<?php if ( !empty( $future_header_image_url ) ) : ?> style="background-image: url('<?php echo esc_url( $future_header_image_url ); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;"<?php endif; ?>>
         
 		<div class="container">
             
             <article class="first-section">
                 <header class="article__header">
                     <div class="article__meta">
-                        <h2 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-graduate-students/">Future Graduate Students</a></h2>
+                        <h2 class="article__title small">
+                            <a class="mobile" href="<?php echo esc_url( home_url('/students/') ); ?>">Students > </a><a  class="mobile" href="/students/">Students > </a><a href="students/future-graduate-students/">Future Graduate Students</a></h2>
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title small">Passion never rests</p>
+                    <p class="first-title small"><?php echo esc_html( $future_heading ); ?></p>
                 </section>
             </article>
             

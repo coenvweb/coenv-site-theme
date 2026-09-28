@@ -53,7 +53,7 @@
         position: relative;
         &.accordion-title {
             padding: 0;
-            background-color: white;
+            background-color: #F8F6F5;
             z-index: 1;
             
             &:after {
@@ -189,6 +189,7 @@
     
     img {
         transition-duration: .3s;
+        margin: 0!important;
     }
     
     .contact-title {
@@ -210,14 +211,13 @@
             text-transform: capitalize;
             padding-bottom: .5rem;
             margin-bottom: .25rem;
-            border-bottom: 1px solid $border;
+            border-bottom: 1px solid $accent-yellow;
             
         }
 
         .class {
             font-size: 120%!important;
             display: block;
-            font-family: 'skolar';
             font-weight: 400;
             margin-top: .25rem;
         }
@@ -230,6 +230,7 @@
             line-height: normal!important;
             padding-top: .1rem;
             text-transform: uppercase;
+            @include encode_sb();
             font-weight: 700;
             @include max-width ( $iPadPortrait ) {
                 font-size: 60%!important;
@@ -320,6 +321,7 @@
             display: inline-block;
             font-size: 90%!important;
             color: $text-md;
+            @include encode_sb();
             width: 100%;
             margin: 0;
             background: #eee;

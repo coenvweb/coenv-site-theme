@@ -402,7 +402,8 @@
 
 .home .banner-wrapper,
 .front-page .banner-wrapper {
-	height: auto;
+	height: 65vh;
+	min-height: 600px;
 	padding-bottom: 25%;
 }
 

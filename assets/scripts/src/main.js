@@ -1,5 +1,33 @@
-jQuery(function ($) {    
-    
+jQuery(function ($) {
+    var $heroVideo = $('#hero-video');
+    var $playPauseHero = $('.play-pause-hero');
+
+    if ($heroVideo.length && $playPauseHero.length) {
+        var autoplay = true;
+
+        if (window.matchMedia('(prefers-reduced-motion)').matches) {
+            $heroVideo.get(0).pause();
+            autoplay = false;
+            $playPauseHero.html('<i class="fi-play"> ►</i>');
+        }
+
+        $playPauseHero.on('click', function () {
+            var video = $heroVideo.get(0);
+
+            if (video.paused) {
+                video.play();
+                autoplay = true;
+                $playPauseHero.html('<i class="fi-pause">▐▐</i>');
+                $playPauseHero.attr('aria-label', 'Pause background video');
+            } else {
+                video.pause();
+                autoplay = false;
+                $playPauseHero.html('<i class="fi-play"> ►</i>');
+                $playPauseHero.attr('aria-label', 'Play background video');
+            }
+        });
+    }
+
     /**
      * Handle responsive videos
      */

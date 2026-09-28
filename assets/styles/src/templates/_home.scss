@@ -351,13 +351,13 @@ body.home {
 .home .hero-container {
 	display: block;
 	position: relative;
-	min-height: 600px;
 	height: 66vh;
+	min-height: 600px;
 	z-index: 1;
 
 	.hero-content {
 		position: absolute;
-		bottom: 10rem;
+		bottom: 5rem;
 	}
 
 	h2 {

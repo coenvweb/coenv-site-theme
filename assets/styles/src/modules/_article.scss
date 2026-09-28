@@ -337,9 +337,8 @@
 		margin: 0 0 1rem 0;
 		@include rem('padding-bottom', .1);
 		//width: auto !important;
-		color: #fff;
-		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-		background-color: $bg-dk;
+		color: $text;
+		background-color: #F8F6F5;
 		max-width: 100%;
 		@include max-width ( 515 ) {
 			width: 100%!important;
@@ -380,7 +379,7 @@
 		.wp-caption-text {
 			@include rem('margin', 0.25, 1, 0.5, 1);
 			@include font-size(12);
-			color: $text-very-lt;
+			color: $text;
 			text-align: left;
 		}
 
@@ -396,6 +395,7 @@
        background: #eee;
         padding: 1rem 2rem 1rem 1rem;
         position: relative;
+		margin-bottom: 0rem;
         
         &:hover {
             cursor: pointer;
@@ -431,6 +431,8 @@
     
     .accordion-content {
         margin-bottom: 1.5rem;
+		padding: 1rem;
+		background: $menu-grey;
     }
 
 
