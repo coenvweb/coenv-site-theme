@@ -348,6 +348,21 @@ body.home {
 	background-size: cover;
 }
 
+.home .hero-wrapper {
+	position: relative;
+	overflow: hidden;
+	background: #471645;
+	background-blend-mode: lighten;
+	height: 100%;
+
+	#hero-video {
+		background: #471645;
+		background-blend-mode: lighten;
+		mix-blend-mode: lighten;
+		filter: saturate(0.8) brightness(1.2);
+	}
+}
+
 .home .hero-container {
 	display: block;
 	position: relative;
