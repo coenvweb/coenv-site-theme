@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div class="hero-wrapper">
     <video id="hero-video" class="hero-video" autoplay loop muted playsinline poster="<?php echo get_template_directory_uri(); ?>/assets/video/ess-video.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; z-index:0;">
-        <source src="<?php echo get_template_directory_uri(); ?>/assets/video/hero-video-v1.mp4" type="video/mp4" />
+        <source src="<?php echo get_template_directory_uri(); ?>/assets/video/hero-video-v2.mp4" type="video/mp4" />
     </video>
     <button type="button" class="play-pause-hero" aria-label="Pause background video" style="position:absolute; right:1rem; bottom:1rem; z-index:2; background:rgba(0,0,0,.5); color:#fff; border:1px solid rgba(255,255,255,.7); border-radius:999px; padding:.5rem .75rem; cursor:pointer;">
         <i class="fi-pause">▐▐</i>
