@@ -52,9 +52,9 @@ $links = get_field('outside_news');
 
                 <div class="newsletter_header <?=($nl_type == 'headlines' ? 'headlines' : 'scicomm')?>">
                     <?php if($nl_type == 'headlines') { ?>
-                        <img class="header_img" alt="Headlines newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/headlines_header.png" />
+                        <img class="header_img" alt="Newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/headlines_header.png" />
                     <?php } else { ?>
-                        <img class="header_img" alt="Headlines newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/scicomm_header.png" />
+                        <img class="header_img" alt="Newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/scicomm_header.png" />
                     <?php } ?>
                     <h1 class="newsletter_title"><?php echo $nl_title; ?></h1>
                 </div>
@@ -187,11 +187,11 @@ $links = get_field('outside_news');
                   </a>
 							</div>
 							<div class="related-container">
-                <a href="https://environment.uw.edu/news/college-newsletter/" title="Sign up to receive UW Headlines monthly" rel="bookmark">
+                <a href="https://environment.uw.edu/news/college-newsletter/" title="Sign up to receive our newsletter monthly" rel="bookmark">
                     <div class="related-article-title">
                             <h3>
                                 <i class="icon-mail"></i>
-                                <span>Sign up to receive <br />UW Headlines monthly</span>
+                                <span>Sign up to receive <br />our newsletter monthly</span>
                             </h3>
                     </div>
                 </a>
@@ -203,7 +203,7 @@ $links = get_field('outside_news');
 			</main><!-- .main-col -->
 
             <div class="side-col">
-                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Headlines Newsletter', 'newsletter_url' => get_site_url() . '/news/college-newsletter/')); ?>
+                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Newsletter', 'newsletter_url' => get_site_url() . '/news/college-newsletter/')); ?>
                 <?php dynamic_sidebar('News / Sidebar'); ?>
             </div><!-- .side-col -->
 
