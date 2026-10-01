@@ -31,7 +31,7 @@ div.major-minor {
 
     @include min-width ( $iPadLandscape ) {
         display: inline-block;
-        width: calc(50% - .5rem);
+        width: calc(50% - .75rem);
         &:nth-of-type(4n+1) {
             margin-right: .74rem;
         }
