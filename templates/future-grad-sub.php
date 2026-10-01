@@ -13,16 +13,9 @@ $ancestor = array(
 );
 ?>
 
-                        </header><!-- #header -->
+    </header><!-- #header -->
 
-    <?php
-        $future_header_image = get_field('future_students_header_image', $ancestor['id']);
-        $future_header_image_url = is_array($future_header_image) ? $future_header_image['url'] : $future_header_image;
-        $future_heading = get_field('future_students_heading', $ancestor['id']);
-        $future_subheading = get_field('future_students_subheading', $ancestor['id']);
-    ?>
-
-    <div class="image-area smaller"<?php if ( !empty( $future_header_image_url ) ) : ?> style="background-image: url('<?php echo esc_url( $future_header_image_url ); ?>'); background-size: cover; background-position: center; background-repeat: no-repeat;"<?php endif; ?>>
+    <div class="image-area smaller">
         
 		<div class="container">
             
@@ -34,7 +27,7 @@ $ancestor = array(
                     </div>
                 </header>
                 <section class="article__content">
-                    <p class="first-title small"><?php echo esc_html( $future_heading ); ?></p>
+                    <p class="first-title small">Passion never rests</p>
                 </section>
             </article>
             

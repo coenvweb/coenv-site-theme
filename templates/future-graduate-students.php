@@ -13,33 +13,6 @@ $ancestor = array(
 );
 ?>
 
-    <div class="image-area small">
-        
-		<div class="container">
-            
-            <article class="first-section">
-                <header class="article__header">
-                    <div class="article__meta">
-                        <h1 class="article__title small"><a class="mobile" href="<?php echo esc_url( $ancestor['permalink'] ); ?>"><?php echo esc_html( $ancestor['title'] ); ?> &gt; </a><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h1>
-                    </div>
-                </header>
-                <section class="article__content">
-                    <p class="first-title">Passion never rests
-</p>
-                </section>
-            </article>
-            <div class="little-blurb">
-                <p>As a graduate student at the College of the Environment, <br />you’ll put your passion for science into action to make an impact in the world</p>
-            </div>
-            
-        </div>
-        </div> 
-
-                    </div><!-- .container.header-container -->
-
-                </div><!-- .banner-wrapper -->
-
-                </header><!-- #header -->
 
 
 	<section id="page" role="main" class="template-page future-students front">
@@ -48,11 +21,48 @@ $ancestor = array(
         <div>
         
 		<div class="container">
-            
-            
-            <?php //get_template_part( 'partials/partial', 'future-grad-menu' ); ?>
 
-			<main id="main-col" class="main-col">
+            <nav id="secondary-nav" class="side-col">
+                <ul id="menu-secondary" class="menu">
+                    <?php
+                    $list_args = array(
+                        'child_of' => $ancestor['id'],
+                        'depth' => 3,
+                        'title_li' => '',
+                        'echo' => 0,
+                        'walker' => new CoEnv_Secondary_Menu_Walker,
+                        'sort_column' => 'menu_order' 
+                    );
+                    $secondary_nav_items = wp_list_pages($list_args);
+                    echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                    ?>
+                </ul>
+
+            </nav><!-- #secondary-nav.side-col -->
+
+			<main id="main-col" class="main-col container">
+
+            <div class="image-area small">
+            
+                <div class="container" style="background-image: url(<?php echo get_field('future_students_header_image'); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    
+                    <article class="first-section">
+                        <header class="article__header">
+                            <div class="article__meta">
+                                <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-graduate-students/">Future Graduate Students</a></h1>
+                            </div>
+                        </header>
+                        <section class="article__content">
+                            <p class="first-title"><?php echo get_field('future_students_heading'); ?></p>
+                        </section>
+                    </article>
+                    <div class="little-blurb">
+                        <p><?php echo get_field('future_students_subheading'); ?></p>
+                    </div>
+                    
+                </div>
+                    
+            </div>
                 
                 
 				<?php if ( have_posts() ) : ?>
@@ -65,8 +75,8 @@ $ancestor = array(
                          */
                         ?>
                         <article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>>
-
-                            <section class="article__content" id="content">
+                                                        
+                            <section class="article__content">
                                 
                                 <?php the_content() ?>
                             </section>
@@ -76,7 +86,14 @@ $ancestor = array(
 					<?php endwhile ?>
 
 				<?php endif ?>
-                
+                <div class="side-footer">
+					<div class="hidden">
+						<?php if(current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others')) { ?>
+							<?php echo do_shortcode('[ow_make_revision_link text="Make Revision" class="" type="text" post_id="'.get_the_ID().'"]'); ?>
+						<?php } ?>
+					</div>
+					<?php get_sidebar('footer') ?>
+				</div>
 
 			</main><!-- .main-col -->
 
@@ -93,6 +110,6 @@ $ancestor = array(
 <script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>
