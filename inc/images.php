@@ -186,14 +186,8 @@ function coenv_banner() {
         $ancestor = 5;
     }
     
-    if (is_page_template('templates/future-ug-sub.php')) {
-        unset($ancestor);
-        $ancestor = 38568;
-    }
-    
-    if (is_page_template('templates/future-grad-sub.php')) {
-        unset($ancestor);
-        $ancestor = 38585;
+    if (is_page_template('templates/future-ug-sub.php') || is_page_template('templates/future-grad-sub.php')) {
+        $ancestor = coenv_get_ancestor();
     }
 
     if ( is_post_type_archive( 'faculty' ) ) {

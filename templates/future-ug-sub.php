@@ -5,6 +5,14 @@ Template Name: Future Undergrad Subpage
 get_header();
 
 $ancestor_id = coenv_get_ancestor();
+$header_page_id = $ancestor_id;
+
+if ( empty( get_field('future_students_header_image', $header_page_id) ) || empty( get_field('future_students_heading', $header_page_id) ) ) {
+	$parent_id = wp_get_post_parent_id( get_the_ID() );
+	if ( ! empty( $parent_id ) ) {
+		$header_page_id = $parent_id;
+	}
+}
 
 $ancestor = array(
 	'id' => $ancestor_id,
@@ -13,37 +21,11 @@ $ancestor = array(
 );
 ?>
 
-                        </header><!-- #header -->
-
-    <div class="image-area smaller">
-        
-		<div class="container">
-            
-            <article class="first-section">
-                <header class="article__header">
-                    <div class="article__meta">
-                        <h2 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h2>
-                    </div>
-                </header>
-                <section class="article__content">
-                    <p class="first-title small">One College,<br> many paths</p>
-                </section>
-            </article>
-            
-        </div>
-            
-        </div>
-
-
-                    </div><!-- .container.header-container -->
-
-                </div><!-- .banner-wrapper -->
-
-	<section id="page" role="main" class="template-page future-students">
+	<section id="page" role="main" class="template-page future-students front">
 
         <div>
-            
-        <div class="container">
+
+		<div class="container">
 
             <nav id="secondary-nav" class="side-col">
                 <ul id="menu-secondary" class="menu">
@@ -54,7 +36,7 @@ $ancestor = array(
                         'title_li' => '',
                         'echo' => 0,
                         'walker' => new CoEnv_Secondary_Menu_Walker,
-                        'sort_column' => 'menu_order' 
+                        'sort_column' => 'menu_order'
                     );
                     $secondary_nav_items = wp_list_pages($list_args);
                     echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
@@ -66,37 +48,31 @@ $ancestor = array(
 			<main id="main-col" class="main-col container">
 
             <div class="image-area small">
-            
-                <div class="container" style="background-image: url(<?php echo get_field('future_students_header_image', $ancestor['id']); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                    
+
+                <div class="container" style="background-image: url(<?php echo get_field('future_students_header_image', $header_page_id); ?>); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
                     <article class="first-section">
                         <header class="article__header">
                             <div class="article__meta">
-                                <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
+                                <h2 class="article__title small"><a class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h2>
                             </div>
                         </header>
                         <section class="article__content">
-                            <p class="first-title"><?php echo get_field('future_students_heading', $ancestor['id']); ?></p>
+                            <p class="first-title"><?php echo get_field('future_students_heading', $header_page_id); ?></p>
                         </section>
                     </article>
-                    <div class="little-blurb">
-                        <p><?php echo get_field('future_students_subheading', $ancestor['id']); ?></p>
-                    </div>
-                    
+
                 </div>
-                    
+
             </div>
-            
+
             <?php get_template_part( 'partials/partial', 'future-undergrad-menu' ); ?>
 
-			<main id="main-col" class="main-col">
-                
-                
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
 
-						<?php  
+						<?php
                         /**
                          * An individual article
                          */
@@ -107,7 +83,7 @@ $ancestor = array(
                                 <h1 class="article__title"><?php the_title() ?></h1>
                                 <?php the_content() ?>
                             </section>
-                            
+
                         </article><!-- .article -->
 
 					<?php endwhile ?>
@@ -132,7 +108,7 @@ $ancestor = array(
 
 	</section><!-- #page -->
 
-    <script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+<script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
