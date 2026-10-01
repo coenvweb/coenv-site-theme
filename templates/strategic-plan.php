@@ -18,6 +18,7 @@ $ancestor = array(
 
 		<div class="container">
 
+
 			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
 				<nav id="secondary-nav" class="side-col">

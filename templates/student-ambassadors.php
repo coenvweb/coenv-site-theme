@@ -25,9 +25,9 @@ $ancestor = array(
 
         <div class="container">
 
-            <?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-                <nav id="secondary-nav" class="side-col">
+				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
                   <?php
@@ -44,9 +44,9 @@ $ancestor = array(
                   ?>
 	          </ul>
 
-                </nav><!-- #secondary-nav.side-col -->
+				</nav><!-- #secondary-nav.side-col -->
 
-            <?php endif ?>
+			<?php endif ?>
 
             <main id="main-col" class="main-col">
                 

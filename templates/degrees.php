@@ -18,6 +18,7 @@ $ancestor = array(
 
 		<div class="container">
 
+
 			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
 				<nav id="secondary-nav" class="side-col">
@@ -27,18 +28,20 @@ $ancestor = array(
                   $list_args = array(
                       'child_of' => $ancestor['id'],
                       'depth' => 3,
-                      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-                      'link_after' => '<i class="icon-arrow-right"></i>',
+					  'title_li' => '',
+					  'echo' => 0,
                       'walker' => new CoEnv_Secondary_Menu_Walker,
                       'sort_column' => 'menu_order' 
                   );
-                  wp_list_pages($list_args);
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
                   ?>
 	          </ul>
 
 				</nav><!-- #secondary-nav.side-col -->
 
 			<?php endif ?>
+
 
 			<main id="main-col" class="main-col">
 

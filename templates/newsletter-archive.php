@@ -65,15 +65,30 @@ $upperQuery = new WP_Query($upperArgs);
 
 		<div class="container">
 
-			<nav id="secondary-nav" class="side-col">
 
-					<ul id="menu-secondary" class="menu">
-						<li class="pagenav">
-							<a href="<?php echo home_url("/news"); ?>">News</a>
-						</li>
-          </ul>
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-			</nav><!-- #secondary-nav.side-col -->
+				<nav id="secondary-nav" class="side-col">
+
+			<ul id="menu-secondary" class="menu">
+                  <?php
+                  $list_args = array(
+                      'child_of' => $ancestor['id'],
+                      'depth' => 3,
+					  'title_li' => '',
+					  'echo' => 0,
+                      'walker' => new CoEnv_Secondary_Menu_Walker,
+                      'sort_column' => 'menu_order' 
+                  );
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                  ?>
+	          </ul>
+
+				</nav><!-- #secondary-nav.side-col -->
+
+			<?php endif ?>
+
 
 			<main id="main-col" class="main-col">
 				<article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>> 

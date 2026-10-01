@@ -33,7 +33,9 @@ $query = new WP_Query($args);
 
 		<div class="container">
 
-			<nav id="secondary-nav" class="side-col">
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+
+				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
                   <?php
@@ -50,7 +52,10 @@ $query = new WP_Query($args);
                   ?>
 	          </ul>
 
-			</nav><!-- #secondary-nav.side-col -->
+				</nav><!-- #secondary-nav.side-col -->
+
+			<?php endif ?>
+
 
 			<main id="main-col" class="main-col">
 				<article id="post-<?php the_ID() ?>" <?php post_class( 'article' ) ?>> 
