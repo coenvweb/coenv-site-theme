@@ -185,10 +185,7 @@ function coenv_banner() {
         unset($ancestor);
         $ancestor = 5;
     }
-    
-    if (is_page_template('templates/future-ug-sub.php') || is_page_template('templates/future-grad-sub.php')) {
-        $ancestor = coenv_get_ancestor();
-    }
+
 
     if ( is_post_type_archive( 'faculty' ) ) {
         $faculty_page = get_page_by_path( 'faculty' );
