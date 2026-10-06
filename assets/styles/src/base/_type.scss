@@ -67,6 +67,12 @@ p, ul, ol {
     @include rem('font-size', 1.5); // 24
     font-weight: 200;
 	color: $accent-dk;
+	border-bottom: 2px solid $accent-yellow;
+	padding-bottom: 1.5rem;
+}
+
+.intro + hr {
+	display: none;
 }
 
 @font-face {
