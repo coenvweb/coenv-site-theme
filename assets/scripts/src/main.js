@@ -3,28 +3,52 @@ jQuery(function ($) {
     var $playPauseHero = $('.play-pause-hero');
 
     if ($heroVideo.length && $playPauseHero.length) {
-        var autoplay = true;
+        var video = $heroVideo.get(0);
+
+        function setHeroProgress() {
+            if (!video || !isFinite(video.duration) || !video.duration) {
+                return;
+            }
+
+            $playPauseHero[0].style.setProperty('--hero-video-progress', ((video.currentTime / video.duration) * 100) + '%');
+        }
+
+        function setHeroButtonState(isPlaying) {
+            if (isPlaying) {
+                $playPauseHero.html('<i class="fi-pause">▐▐</i>');
+                $playPauseHero.attr('aria-label', 'Pause background video');
+                $playPauseHero.attr('title', 'Pause background video');
+            } else {
+                $playPauseHero.html('<i class="fi-play"> ►</i>');
+                $playPauseHero.attr('aria-label', 'Play background video');
+                $playPauseHero.attr('title', 'Play background video');
+            }
+        }
 
         if (window.matchMedia('(prefers-reduced-motion)').matches) {
-            $heroVideo.get(0).pause();
-            autoplay = false;
-            $playPauseHero.html('<i class="fi-play"> ►</i>');
+            video.pause();
+            setHeroButtonState(false);
+            setHeroProgress();
+        } else {
+            setHeroButtonState(!video.paused);
+        }
+
+        $heroVideo.on('loadedmetadata timeupdate play pause ended', setHeroProgress);
+
+        if (video.readyState >= 1) {
+            setHeroProgress();
         }
 
         $playPauseHero.on('click', function () {
-            var video = $heroVideo.get(0);
-
             if (video.paused) {
                 video.play();
-                autoplay = true;
-                $playPauseHero.html('<i class="fi-pause">▐▐</i>');
-                $playPauseHero.attr('aria-label', 'Pause background video');
+                setHeroButtonState(true);
             } else {
                 video.pause();
-                autoplay = false;
-                $playPauseHero.html('<i class="fi-play"> ►</i>');
-                $playPauseHero.attr('aria-label', 'Play background video');
+                setHeroButtonState(false);
             }
+
+            setHeroProgress();
         });
     }
 

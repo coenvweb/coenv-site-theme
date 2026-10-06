@@ -93,18 +93,14 @@
             text-align: center;
             &::first-line {
                 font-size: 3rem;
-                @include serif();
-                font-weight: 600;
+                @include encode_cb();
                 margin-bottom: 1rem;
                 line-height: 3rem;
             }
         }
         &.third {
-            width: 33%;
+            width: 32%;
             display: inline-block;
-            @include max-width ( 750 ) {
-                width: 32%;
-            }
         }
     }
     a.column {

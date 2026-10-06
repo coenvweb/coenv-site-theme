@@ -178,6 +178,18 @@
 		text-transform: uppercase;
 	}
 
+	h1, h2, h3, h4 {
+		a {
+			color: $accent-dk;
+			&:hover {
+				color: $accent;
+			}
+			&:after {
+				@extend .circle-arrow;
+			}
+		}
+	}
+
 	hr {
 		height: 2px;
 		border: none;
