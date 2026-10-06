@@ -61,7 +61,7 @@ p, ul, ol {
 	@include rem('margin', 0, 0, 1.5);
 }
 
-.intro {
+p.intro {
     @include encode;
     @include rem('line-height', 2); // 32
     @include rem('font-size', 1.5); // 24
@@ -71,7 +71,7 @@ p, ul, ol {
 	padding-bottom: 1.5rem;
 }
 
-.intro + hr {
+p.intro + hr {
 	display: none;
 }
 
