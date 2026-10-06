@@ -17,7 +17,11 @@
 .uw-header {
 	background: $accent;
 	img {
-		padding: 0.75rem 0;
+		padding: 0.5rem 0 0rem 0;
+		@include min-width ( 1000 ) {
+			padding: 1rem 0 0.5rem 0;
+			margin-left: -0.5rem;
+		}
 	}
 }
 
@@ -38,11 +42,14 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		align-items: end;
-		gap: 0.75rem;
-		padding-bottom: 0.75rem;
 
-		@include min-width ( $iPadPortrait ) {
+		@include min-width ( 1000 ) {
 			grid-template-columns: 2fr 1fr;
+			gap: 0.75rem;
+			padding-bottom: 0.75rem;
+		}
+
+		@include max-width ( $iPadPortrait ) {
 		}
 	}
 
@@ -54,6 +61,22 @@
 		position: relative;
 		margin: 0;
 		width: 100%;
+
+		@include min-width ( $iPadPortrait ) {
+			margin-left: -.25rem;
+		}
+
+		@include max-width ( 1000 ) {
+			zoom: .9;
+			margin-top: .5rem;
+			margin-bottom: -1px;
+		}
+
+		@include max-width ( 560 ) {
+			zoom: .8;
+			margin-top: .5rem;
+			margin-bottom: -1px;
+		}
 
 		a:hover {
 			svg {
@@ -84,7 +107,7 @@
 				background-position: 100% 0;
 				-webkit-background-clip: text;
 				background-clip: text;
-				-webkit-text-fill-color: transparent;
+				//-webkit-text-fill-color: transparent;
 				animation: none;
 
 				&:hover {
@@ -111,6 +134,7 @@
 			letter-spacing: 1px;
 			line-height: 35px;
 			@include encode_wide();
+			
 		}
 		.college-large {
 			display: block;
@@ -119,193 +143,7 @@
 			@include encode_wide_black();
 			letter-spacing: 3px;
 		}
-		} // .name
 	}
-
-	.top-menu-area {
-		grid-column: 1;
-		justify-self: start;
-		max-width: 100%;
-		position: relative;
-
-		@include min-width ( $iPadPortrait ) {
-			grid-column: 2;
-			justify-self: end;
-		}
-
-		.nav-secondary {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			gap: 0.95rem;
-			line-height: 1;
-			margin-bottom: 1rem;
-		}
-
-		.menu {
-			display: inline-flex;
-			align-items: center;
-			gap: 1rem;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			
-			li {
-				display: inline-flex;
-				align-items: center;
-
-				a {
-					color: #fff;
-					font-size: 1.1rem;
-					line-height: 1;
-					text-decoration: none;
-					@include encode();
-					text-transform: uppercase;
-					&:hover {
-						color: $accent-yellow!important;
-					}
-				}
-
-			}
-
-		}
-
-		.search-toggle {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.35rem;
-			padding: 0.25rem 0.6rem;
-			margin-left: 0;
-			background: none;
-			vertical-align: middle;
-			border: none;
-			color: #fff;
-			@include o_sans_bold();
-			font-size: 1.1rem;
-			line-height: 1;
-			text-decoration: none;
-			@include encode();
-			text-transform: uppercase;
-
-			&:hover{
-				color: $accent-yellow!important;
-				outline: none;
-			}
-		}
-
-		.search-form-wrapper {
-			display: none;
-			position: absolute;
-			top: 36px;
-			right: 0;
-			z-index: 20;
-			min-width: 260px;
-			form {
-				float: right;
-				border-radius: 0;
-				height: 41px;
-				width: 100%;
-				.field-wrap {
-					width: calc(100% - 2.5rem);
-				}
-			}
-
-			.search-form {
-				margin: 0;
-				border-radius: 0;
-				background: #fff;
-			}
-
-			input[type='search'],
-			input[type='text'] {
-				width: 100%;
-				height: 41px;
-			}
-
-			button[type='submit'] {
-				position: absolute;
-				top: 0;
-				right: 0;
-				height: 100%;
-				width: 2.5rem;
-				background: $accent-yellow;
-				border: none;
-				color: #fff;
-				@include encode_wide_black();
-				font-size: 1.5rem;
-				line-height: 1;
-				text-transform: uppercase;
-
-				&:hover {
-					background-color: darken($accent-yellow, 10%);
-					color: #fff;
-					outline: none;
-				}
-			}
-		}
-
-		.search-form-wrapper.is-open {
-			display: block;
-		}
-		
-	 }
-
-	#show-menu {
-		display: table-cell;
-		height: 100%;
-		vertical-align: middle;
-		text-align: right;
-
-		@media print {
-			display: none;
-		}
-
-		@include min-width ( $iPadLandscape ) {
-			display: none;
-		}
-
-		button {
-			display: inline;
-			margin: 0;
-			@include rem('padding-right', 1);
-			border: none;
-			background: none;
-			@extend .icon-list;
-			@include font-size(14);
-			color: #888;
-
-			&:hover {
-				color: $text !important;
-			}
-
-            &:before {
-                @include max-width ( 585 ) {
-                    display: block;
-                }
-            }
-
-			span {
-				position: relative;
-				@include sans;
-				@include font-size(11);
-				font-weight: 600;
-				text-transform: uppercase;
-				//@extend .visuallyhidden;
-
-				@include min-width ( 580 ) {
-					top: -0.1em;
-				}
-
-			} // span
-
-		} // button
-
-	} // #show-menu
-
-} // .site-header
-
-.menu-header {
-	background-color: $menu-grey;
 }
 
 .banner-wrapper {

@@ -361,8 +361,8 @@ body.home {
 		right: 1rem;
 		bottom: 1rem;
 		z-index: 2;
-		width: 4rem;
-		height: 4rem;
+		width: 3rem;
+		height: 3rem;
 		padding: 0;
 		border: 0;
 		appearance: none;
@@ -391,6 +391,9 @@ body.home {
 			z-index: 1;
 			font-size: 1rem;
 			line-height: 1;
+			&.fi-play {
+				font-size: 1.5rem;
+			}
 		}
 	}
 

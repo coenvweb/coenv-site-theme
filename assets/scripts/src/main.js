@@ -4,6 +4,8 @@ jQuery(function ($) {
 
     if ($heroVideo.length && $playPauseHero.length) {
         var video = $heroVideo.get(0);
+        var initialAutoPauseTimer = null;
+        var didInitialAutoPause = false;
 
         function setHeroProgress() {
             if (!video || !isFinite(video.duration) || !video.duration) {
@@ -25,15 +27,44 @@ jQuery(function ($) {
             }
         }
 
+        function scheduleInitialAutoPause() {
+            if (didInitialAutoPause || initialAutoPauseTimer) {
+                return;
+            }
+
+            initialAutoPauseTimer = setTimeout(function () {
+                initialAutoPauseTimer = null;
+                didInitialAutoPause = true;
+
+                if (!video.paused) {
+                    video.pause();
+                }
+
+                setHeroButtonState(false);
+                setHeroProgress();
+            }, 30000);
+        }
+
         if (window.matchMedia('(prefers-reduced-motion)').matches) {
             video.pause();
             setHeroButtonState(false);
             setHeroProgress();
         } else {
             setHeroButtonState(!video.paused);
+
+            if (!video.paused) {
+                scheduleInitialAutoPause();
+            }
         }
 
         $heroVideo.on('loadedmetadata timeupdate play pause ended', setHeroProgress);
+        $heroVideo.on('play', function () {
+            setHeroButtonState(true);
+            scheduleInitialAutoPause();
+        });
+        $heroVideo.on('pause ended', function () {
+            setHeroButtonState(false);
+        });
 
         if (video.readyState >= 1) {
             setHeroProgress();
@@ -41,8 +72,8 @@ jQuery(function ($) {
 
         $playPauseHero.on('click', function () {
             if (video.paused) {
-                video.play();
                 setHeroButtonState(true);
+                video.play();
             } else {
                 video.pause();
                 setHeroButtonState(false);
@@ -130,7 +161,7 @@ jQuery(function ($) {
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
                     $('.poster').removeClass("poster-hidden");
-                }, 120000);
+                }, 30000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
                 hero.get(0).pause()
@@ -149,7 +180,7 @@ jQuery(function ($) {
                 ppbutton.html('<i class="fi-play"> ►</i>');
                 $('.poster').removeClass("poster-hidden");
                 autoplay = false;
-        }, 120000);
+        }, 30000);
 };
 });
 

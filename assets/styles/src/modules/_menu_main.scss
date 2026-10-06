@@ -194,29 +194,9 @@
 	.top-menu.mobile-top-menu {
 		border-top: 1px solid #222;
         @include rem('padding', 1, 0, 1, 0);
-
-        li.give a {
-            background: $accent-red;
-            border-radius: $radius;
-            color: #fff;
-            @include rem('margin', 1, 1, 0, 1);
-            @include rem('padding', 1, 1, 1, 1);
-
-            i {
-                position: absolute;
-                margin-top: -4px;
-                right: 2rem;
-                font-size: 1.7rem;
-            }
-
-        } // li.give a
-
-        li.give a:hover {
-            background: darken( $accent-red, 10% );
-        }
         
         li {
-			@include font-size(12);
+			@include font-size(14);
 			@include line-height(14);
 		}
         
