@@ -433,12 +433,36 @@ body.home {
 			a {
 				color: $accent-yellow;
 				text-decoration: none;
-				&:hover {
-					color: darken($accent-yellow, 10%);
-					&:after {
-						background-color: darken($accent-yellow, 10%);
+				position: relative;
+				display: inline-block;
+
+					&:before {
+						content: "";
+						position: absolute;
+						left: 0;
+						right: 1.4em;
+						bottom: 0;
+						height: 2px;
+						background: $accent-yellow;
+						transform: scaleX(0);
+						transform-origin: left center;
+						transition: transform 0.3s ease 0.18s;
 					}
-				}
+
+					&:hover {
+						color: lighten($accent-yellow, 10%)!important;
+					}
+
+					&:focus,
+					&:focus-visible,
+					&:hover {
+						&:before {
+							transform: scaleX(1.3);
+						}
+						&:after {
+							background-color: $accent-yellow!important;
+						}
+					}
 			}
 			&:after {
 				content: '';
