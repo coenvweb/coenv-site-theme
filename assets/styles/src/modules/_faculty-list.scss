@@ -372,5 +372,5 @@ $faculty-bounce-duration: 0.28s;
 	@include font-size(24);
 	line-height: 1.3;
 	@include encode_black();
-
+	text-wrap: pretty;
 }
