@@ -6,8 +6,13 @@ jQuery(function ($) {
         var video = $heroVideo.get(0);
         var initialAutoPauseTimer = null;
         var didInitialAutoPause = false;
+        var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function shouldServeHeroHighResVideo() {
+            if (prefersReducedMotion) {
+                return false;
+            }
+
             if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
                 return false;
             }
@@ -34,7 +39,7 @@ jQuery(function ($) {
             var highResSrc = $heroVideo.attr('data-high-res-src');
             var defaultSrc = $heroVideo.attr('data-default-src') || $heroVideo.find('source').first().attr('src');
 
-            if (!highResSrc || !defaultSrc || !shouldServeHeroHighResVideo()) {
+            if (prefersReducedMotion || !highResSrc || !defaultSrc || !shouldServeHeroHighResVideo()) {
                 return;
             }
 
@@ -87,17 +92,17 @@ jQuery(function ($) {
 
                 setHeroButtonState(false);
                 setHeroProgress();
-            }, 30000);
+            }, 36000);
         }
 
-        loadHeroVideoSource();
-
-        if (window.matchMedia('(prefers-reduced-motion)').matches) {
+        if (prefersReducedMotion) {
             video.pause();
+            video.removeAttribute('autoplay');
             setHeroButtonState(false);
             setHeroProgress();
             syncHeroVideoVisibility();
         } else {
+            loadHeroVideoSource();
             setHeroButtonState(!video.paused);
             syncHeroVideoVisibility();
 
@@ -217,7 +222,7 @@ jQuery(function ($) {
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
                     $('.poster').removeClass("poster-hidden");
-                }, 30000);
+                }, 36000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
                 hero.get(0).pause()
@@ -236,7 +241,7 @@ jQuery(function ($) {
                 ppbutton.html('<i class="fi-play"> ►</i>');
                 $('.poster').removeClass("poster-hidden");
                 autoplay = false;
-        }, 30000);
+        }, 36000);
 };
 });
 
