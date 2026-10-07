@@ -92,7 +92,7 @@ jQuery(function ($) {
 
                 setHeroButtonState(false);
                 setHeroProgress();
-            }, 36000);
+            }, 40000);
         }
 
         if (prefersReducedMotion) {
@@ -222,7 +222,7 @@ jQuery(function ($) {
                     ppbutton.html('<i class="fi-play"> ►</i>');
                     autoplay = false;
                     $('.poster').removeClass("poster-hidden");
-                }, 36000);
+                }, 40000);
             } else {
                 $(this).html('<i class="fi-play"> ►</i>');
                 hero.get(0).pause()
@@ -241,7 +241,7 @@ jQuery(function ($) {
                 ppbutton.html('<i class="fi-play"> ►</i>');
                 $('.poster').removeClass("poster-hidden");
                 autoplay = false;
-        }, 36000);
+        }, 40000);
 };
 });
 

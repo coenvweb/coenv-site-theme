@@ -256,13 +256,6 @@
 	margin: 0 0 2rem 0;
 }
 
-.home .banner-wrapper,
-.front-page .banner-wrapper {
-	height: 65vh;
-	min-height: 600px;
-	padding-bottom: 25%;
-}
-
 .layout-container--header {
 	@include rem('padding', 0.5);
 
