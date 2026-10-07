@@ -7,6 +7,45 @@ jQuery(function ($) {
         var initialAutoPauseTimer = null;
         var didInitialAutoPause = false;
 
+        function shouldServeHeroHighResVideo() {
+            if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
+                return false;
+            }
+
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (connection && connection.saveData) {
+                return false;
+            }
+
+            if (connection) {
+                if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.effectiveType === '3g') {
+                    return false;
+                }
+
+                if (connection.effectiveType === '4g' || connection.effectiveType === '5g' || (connection.downlink && connection.downlink >= 8)) {
+                    return true;
+                }
+            }
+
+            return true;
+        }
+
+        function loadHeroVideoSource() {
+            var highResSrc = $heroVideo.attr('data-high-res-src');
+            var defaultSrc = $heroVideo.attr('data-default-src') || $heroVideo.find('source').first().attr('src');
+
+            if (!highResSrc || !defaultSrc || !shouldServeHeroHighResVideo()) {
+                return;
+            }
+
+            if (video.currentSrc && video.currentSrc.indexOf(highResSrc) !== -1) {
+                return;
+            }
+
+            video.src = highResSrc;
+            video.load();
+        }
+
         function setHeroProgress() {
             if (!video || !isFinite(video.duration) || !video.duration) {
                 return;
@@ -27,6 +66,12 @@ jQuery(function ($) {
             }
         }
 
+        function syncHeroVideoVisibility() {
+            var isPaused = video.paused || video.ended;
+            $heroVideo.toggleClass('is-paused', isPaused);
+            $heroVideo.closest('.hero-wrapper').toggleClass('is-paused', isPaused);
+        }
+
         function scheduleInitialAutoPause() {
             if (didInitialAutoPause || initialAutoPauseTimer) {
                 return;
@@ -45,29 +90,39 @@ jQuery(function ($) {
             }, 30000);
         }
 
+        loadHeroVideoSource();
+
         if (window.matchMedia('(prefers-reduced-motion)').matches) {
             video.pause();
             setHeroButtonState(false);
             setHeroProgress();
+            syncHeroVideoVisibility();
         } else {
             setHeroButtonState(!video.paused);
+            syncHeroVideoVisibility();
 
             if (!video.paused) {
                 scheduleInitialAutoPause();
             }
         }
 
-        $heroVideo.on('loadedmetadata timeupdate play pause ended', setHeroProgress);
+        $heroVideo.on('loadedmetadata timeupdate play pause ended', function () {
+            setHeroProgress();
+            syncHeroVideoVisibility();
+        });
         $heroVideo.on('play', function () {
             setHeroButtonState(true);
+            syncHeroVideoVisibility();
             scheduleInitialAutoPause();
         });
         $heroVideo.on('pause ended', function () {
             setHeroButtonState(false);
+            syncHeroVideoVisibility();
         });
 
         if (video.readyState >= 1) {
             setHeroProgress();
+            syncHeroVideoVisibility();
         }
 
         $playPauseHero.on('click', function () {
@@ -80,6 +135,7 @@ jQuery(function ($) {
             }
 
             setHeroProgress();
+            syncHeroVideoVisibility();
         });
     }
 

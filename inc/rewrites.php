@@ -67,10 +67,4 @@ function add_query_vars() {
 }
 add_action('init', 'add_query_vars');
 
-function fix_faculty_postdoc_404() {
-    // Map the exact URL path to the Post ID of Postdoctoral Scholars (ID 134 based on your admin tree)
-    add_rewrite_rule('^faculty/postdoctoral-scholars/?$', 'index.php?page_id=134', 'top');
-}
-add_action('init', 'fix_faculty_postdoc_404');
-
 ?>

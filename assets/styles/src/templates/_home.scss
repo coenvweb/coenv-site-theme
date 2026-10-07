@@ -355,6 +355,22 @@ body.home {
 	background-blend-mode: lighten;
 	height: 100%;
 
+	.hero-video-poster {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0;
+		transition: opacity .25s ease;
+		pointer-events: none;
+	}
+
+	&.is-paused .hero-video-poster {
+		opacity: 1;
+	}
+
 	.play-pause-hero {
 		--hero-video-progress: 0%;
 		position: absolute;
@@ -401,8 +417,15 @@ body.home {
 		background: #471645;
 		background-blend-mode: lighten;
 		mix-blend-mode: lighten;
-		filter: saturate(.8) brightness(1.1) blur(.5px)
+		filter: saturate(.8) brightness(1.1) blur(.5px);
+		opacity: 1;
+		transition: opacity .25s ease;
 	}
+
+	&.is-paused #hero-video {
+		opacity: 0;
+	}
+
 	.fi-pause {
 		margin-left: -7px;
 	}
