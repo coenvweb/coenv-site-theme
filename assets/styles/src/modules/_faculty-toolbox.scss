@@ -111,7 +111,7 @@
 }
 
 .Faculty-toolbox-form-group {
-	@include rem('margin-bottom', 1.5);
+	@include rem('margin-bottom', 1);
 	.field-wrap {
 		button[type="submit"] {
 			background: none;
@@ -358,7 +358,7 @@
 }
 
 .Faculty-toolbox-feedback {
-	padding: 1.5rem 1rem 1rem 1rem;
+	padding: 1rem 1rem 1rem 1rem;
 	width: 100%;
 }
 
