@@ -302,6 +302,37 @@ $faculty-bounce-duration: 0.28s;
 
 }
 
+.Faculty-list-item--fact a {
+	.link-label {
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		text-transform: uppercase;
+		font-weight: 600;
+		@include font-size(11);
+		letter-spacing: 0.1em;
+		transition: opacity 0.2s ease, visibility 0.2s ease;
+		&:after {
+			transform: translate(0px, -2px);
+			@extend %circle-arrow;
+		}
+	}
+
+	&:hover,
+	&:focus-visible {
+		.Faculty-list-item-fact-text {
+			color: $accent-yellow;
+		}
+	}
+	.Faculty-list-item-fact-text:after {
+		@extend %circle-arrow;
+		transform: translate(0px, -2px);
+	}
+}
+
 .Faculty-list-item-inner--fact {
 	display: flex;
 	flex-direction: column;
@@ -341,4 +372,5 @@ $faculty-bounce-duration: 0.28s;
 	@include font-size(24);
 	line-height: 1.3;
 	@include encode_black();
+
 }

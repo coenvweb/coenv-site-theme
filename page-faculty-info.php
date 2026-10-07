@@ -1,8 +1,8 @@
 <?php
 /**
- * page.php
+ * faculty-info.php
  *
- * The main page template
+ * The faculty info template
  */
 get_header();
 

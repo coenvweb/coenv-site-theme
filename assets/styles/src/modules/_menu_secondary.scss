@@ -36,6 +36,11 @@
 	li.has-children {
 		position: relative;
 
+		> .secondary-nav-caret:hover:before,
+		&.current_page_item > .secondary-nav-caret:before {
+			border-left-color: $accent-yellow;
+		}
+
 		> a {
 			@include rem('padding-left', 2.75);
 		}
@@ -70,9 +75,6 @@
 
 		&.is-expanded > .secondary-nav-caret:before {
 			transform: rotate(90deg);
-		}
-		&.current_page_ancestor > .secondary-nav-caret:before, &.current_page_item > .secondary-nav-caret:before {
-			border-left-color: $accent-yellow;
 		}
 	}
 

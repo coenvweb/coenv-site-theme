@@ -180,7 +180,7 @@
 	}
 
 	h1, h2, h3, h4 {
-		a:not(:has(img)) {
+		a[href]:not([href^="#"]):not(:has(img)) {
 			position: relative;
 			display: inline-block;
 			padding-right: 1.4em;
@@ -408,14 +408,16 @@
 	}
 
 	// margins
-	img.alignleft,
-	.wp-caption.alignleft {
-		@include rem('margin', 1, 1, 1, 0);
-	}
+	@include min-width ( 1000 ) {
+		img.alignleft,
+		.wp-caption.alignleft {
+			@include rem('margin', 1, 1, 1, 0);
+		}
 
-	img.alignright,
-	.wp-caption.alignright {
-		@include rem('margin', 1, 0, 1, 1);
+		img.alignright,
+		.wp-caption.alignright {
+			@include rem('margin', 1, 0, 1, 1);
+		}
 	}
 
 	// captions

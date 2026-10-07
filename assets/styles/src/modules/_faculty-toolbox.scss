@@ -62,7 +62,7 @@
 		display: block;
 		width: 100%;
 		@include font-size(14);
-		height: 2.75rem;
+		height: 3rem;
 		padding: 0 2rem 0 .65rem;
 		border: 1px solid $border-mid;
 		background: #fff;
@@ -96,7 +96,7 @@
 
 		input[type="text"] {
 			border: 1px solid $border-mid;
-			height: 2.75rem;
+			height: 3rem;
 			width: 100%;
 			padding-right: 3.25rem;
 		}
@@ -111,7 +111,7 @@
 }
 
 .Faculty-toolbox-form-group {
-	@include rem('margin-bottom', 1);
+	@include rem('margin-bottom', 1.5);
 	.field-wrap {
 		button[type="submit"] {
 			background: none;
@@ -358,7 +358,7 @@
 }
 
 .Faculty-toolbox-feedback {
-	@include rem('padding', 1);
+	padding: 1.5rem 1rem 1rem 1rem;
 	width: 100%;
 }
 

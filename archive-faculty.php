@@ -58,8 +58,8 @@ if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
 $faculty = new WP_Query( $query );
 
 $faculty_facts = array();
-if ( have_rows( 'faculty_facts', 'option' ) ) {
-	while ( have_rows( 'faculty_facts', 'option' ) ) {
+if ( have_rows( 'faculty_facts', 'option' ) ) :
+	while ( have_rows( 'faculty_facts', 'option' ) ) :
 		the_row();
 
 		$factoid = get_sub_field( 'factoid' );
@@ -67,15 +67,30 @@ if ( have_rows( 'faculty_facts', 'option' ) ) {
 			continue;
 		}
 
+		$link = get_sub_field( 'link' );
+		$link_url = '';
+		$link_text = '';
+
+		if ( is_array( $link ) ) {
+			$link_url = ! empty( $link['url'] ) ? $link['url'] : '';
+			$link_text = ! empty( $link['title'] ) ? $link['title'] : '';
+		} elseif ( is_string( $link ) ) {
+			$link_url = trim( $link );
+		}
+
 		$faculty_facts[] = array(
 			'number_value' => get_sub_field( 'number_value' ),
 			'factoid' => $factoid,
+			'link' => $link_url,
+			'link_text' => $link_text,
 		);
-	}
-}
+	endwhile;
+endif;
 
 if ( count( $faculty_facts ) > 1 ) {
+	$first_fact = array_shift( $faculty_facts );
 	shuffle( $faculty_facts );
+	array_unshift( $faculty_facts, $first_fact );
 }
 ?>
 
@@ -124,9 +139,18 @@ if ( count( $faculty_facts ) > 1 ) {
 					}
 
 					$render_fact_tile = function ( $fact ) {
+						$link_url = ! empty( $fact['link'] ) ? $fact['link'] : '';
+						$link_text = ! empty( $fact['link_text'] ) ? $fact['link_text'] : '';
 						?>
 						<article class="Faculty-list-item Faculty-list-item--fact jsIsotopeItem theme-all unit-all">
+							<?php if ( $link_url ) : ?>
+								<a href="<?php echo esc_url( $link_url ); ?>">
+							<?php endif; ?>
 							<div class="Faculty-list-item-inner Faculty-list-item-inner--fact">
+
+								<!--<?php if ( $link_text ) : ?>
+									<span class="link-label"><?php echo esc_html( $link_text ); ?></span>
+								<?php endif; ?>-->
 
 								<?php if ( !empty( $fact['number_value'] ) ) : ?>
 									<p class="Faculty-list-item-fact-number"><?php echo esc_html( $fact['number_value'] ); ?></p>
@@ -135,6 +159,9 @@ if ( count( $faculty_facts ) > 1 ) {
 								<p class="Faculty-list-item-fact-text"><?php echo esc_html( $fact['factoid'] ); ?></p>
 
 							</div>
+							<?php if ( $link_url ) : ?>
+								</a>
+							<?php endif; ?>
 						</article>
 						<?php
 					};

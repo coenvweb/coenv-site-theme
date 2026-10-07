@@ -58,7 +58,7 @@ $faculty = new WP_Query( $query );
 
 $faculty_facts = array();
 if ( have_rows( 'faculty_facts', 'option' ) ) {
-	while ( have_rows( 'faculty_facts', 'option' ) ) {
+	while ( have_rows() ) {
 		the_row();
 
 		$factoid = get_sub_field( 'factoid' );
@@ -66,15 +66,20 @@ if ( have_rows( 'faculty_facts', 'option' ) ) {
 			continue;
 		}
 
+		$link = get_sub_field( 'link' );
+
 		$faculty_facts[] = array(
 			'number_value' => get_sub_field( 'number_value' ),
 			'factoid' => $factoid,
+			'link' => $link,
 		);
 	}
 }
 
 if ( count( $faculty_facts ) > 1 ) {
+	$first_fact = array_shift( $faculty_facts );
 	shuffle( $faculty_facts );
+	array_unshift( $faculty_facts, $first_fact );
 }
 ?>
 
@@ -123,8 +128,27 @@ if ( count( $faculty_facts ) > 1 ) {
 					}
 
 					$render_fact_tile = function ( $fact ) {
+						$link = ! empty( $fact['link'] ) ? $fact['link'] : null;
+						$url = null;
+						$target = '';
+						$rel = '';
+
+						if ( is_array( $link ) && ! empty( $link['url'] ) ) {
+							$url = esc_url( $link['url'] );
+							if ( ! empty( $link['target'] ) ) {
+								$target = ' target="' . esc_attr( $link['target'] ) . '"';
+								if ( '_blank' === strtolower( $link['target'] ) ) {
+									$rel = ' rel="noopener noreferrer"';
+								}
+							}
+						} elseif ( is_string( $link ) && '' !== trim( $link ) ) {
+							$url = esc_url( $link );
+						}
 						?>
 						<article class="Faculty-list-item Faculty-list-item--fact jsIsotopeItem theme-all unit-all">
+							<?php if ( $url ) : ?>
+								<a href="<?php echo $url; ?>"<?php echo $target; ?><?php echo $rel; ?>>
+							<?php endif; ?>
 							<div class="Faculty-list-item-inner Faculty-list-item-inner--fact">
 
 								<?php if ( !empty( $fact['number_value'] ) ) : ?>
@@ -134,6 +158,9 @@ if ( count( $faculty_facts ) > 1 ) {
 								<p class="Faculty-list-item-fact-text"><?php echo esc_html( $fact['factoid'] ); ?></p>
 
 							</div>
+							<?php if ( $url ) : ?>
+								</a>
+							<?php endif; ?>
 						</article>
 						<?php
 					};
