@@ -489,47 +489,63 @@
     
     // accordion
     .accordion-title {
-       background: #eee;
+       background: $bg-lt;
         padding: 1rem 2rem 1rem 1rem;
         position: relative;
 		margin-bottom: 0rem;
+		border-top: 1px solid $accent-yellow;
+		border-bottom: 2px solid $accent-yellow;
+		text-transform: uppercase;
+		font-size: 1rem;
+		@include encode_sb();
+		letter-spacing: 1px;
         
         &:hover {
             cursor: pointer;
             cursor: hand;
-            background: #d9d9d9;
+            background: $accent;
+			color: white;
             &:after {
-                color: $accent;
+                color: $white;
             }
         }
         &:after {
-            content: "\e028";
-            float: right;
-            font-family: "icomoon";
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            font-size: 1.5rem;
-            -webkit-font-smoothing: antialiased;
-            display: inline-block;
-            text-decoration: inherit;
+            @extend %circle-arrow;
+            content: "\2192";
             position: absolute;
             right: 1.5rem;
             top: 50%;
             transform: translateY(-50%) rotate(-90deg);
+            margin-left: 0;
+            font-size: 1.5rem;
+            width: 1.75rem;
+            height: 1.75rem;
+            border-width: 2px;
+			color: $accent;
         }
+		
+		&.open {
+			background: $accent-dk;
+			color: white;
+		}
+
         &.open:after {
-            content: "\e028";
+            content: "\2192";
+			color: white;
             transform: translateY(-50%) rotate(90deg);
         }
+		&h2, h3, h4, h5, h6 {
+			&:after {
+				font-size: 1.5rem;
+			}
+		}
+
     }
     
     .accordion-content {
         margin-bottom: 1.5rem;
 		padding: 1rem;
-		background: $menu-grey;
+		background: $bg-lt;
     }
 
 

@@ -46,34 +46,21 @@
     }
 
     .contact {
+        border-top: 1px solid $accent-yellow;
+        border-bottom: 2px solid $accent-yellow;
         height: 130px;
         margin-bottom: 1.6rem;
         overflow: hidden;
         transition-duration: .3s;
         position: relative;
+        background-color: $bg-lt;
         &.accordion-title {
             padding: 0;
-            background-color: #F8F6F5;
             z-index: 1;
             
             &:after {
-                content: "\e028";
-                 font-size: 20px;
-                -webkit-transform: rotate(-90deg);
-                -ms-transform: rotate(-90deg);
-                transform: rotate(-90deg);
-                width: 16px;
-                height: 16px;
-                padding: 2px 2px 1px 1px;
-                background: transparent;
-                color: #666;
-                text-align: center;
                 right: .75rem;
-                top: 7%;
-            }
-            &.open:after {
-                content: "\e028";
-                transform: translateY(-50%) rotate(90deg);
+                top: 1.75rem;
             }
             .last {
                 display: none;
@@ -94,16 +81,9 @@
                 padding-right: 3rem;
             }
             &:after {
-                letter-spacing: -1px;
-                padding-top: 3px;
-                height: 16px;
-                width: 16px;
-                font-size: 20px;
-                margin-top: -4px;
+
                 right: .5rem;
                 top: 50%;
-                border: none;
-                color: #666;
             }
             
             .primary-majors {
@@ -216,7 +196,6 @@
         }
 
         .class {
-            font-size: 120%!important;
             display: block;
             font-weight: 400;
             margin-top: .25rem;
@@ -281,6 +260,7 @@
         padding-top: 7rem;
         transition: .3s height;
         width: 100%;
+        padding-left: 0;
         
         a {
             color: $text;
