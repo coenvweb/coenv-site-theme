@@ -163,6 +163,20 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                         </div>
 
+                <?php
+                    if ( is_404() ) {
+                        $banner = array(
+                            'url' => get_template_directory_uri() . '/assets/img/404-bg.jpg'
+                        );
+                    } elseif ( is_search() ) {
+                        $banner = array(
+                            'url' => get_template_directory_uri() . '/assets/img/search-bg.jpg'
+                        );
+                    } elseif ( !is_404() ) {
+                        $banner = coenv_banner();
+                    }
+                ?>
+
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
                 <?php
@@ -184,6 +198,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     $news_page_id = (int) get_option('page_for_posts');
                     $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');
                     echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . esc_url($news_link) . '">News</a></h1></div>';
+                } elseif (is_search()) {
+                    echo '<div class="container"><h1 class="no-sidenav-title"><span class="section-title">Search Results</span></h1></div>';
+                } elseif (is_404()) {
+                    echo '<div class="container"><h1 class="no-sidenav-title"><span class="section-title">Oops...</span></h1></div>';
                 } elseif (is_post_type_archive( 'faculty' )) {
                     echo '<div class="container"><h1 class="no-sidenav-title"><a class="section-title" href="' . get_post_type_archive_link('faculty') . '">Faculty</a></h1></div>';
                 } elseif (is_page() && !is_front_page()) {

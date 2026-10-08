@@ -7,7 +7,6 @@
     overflow: hidden;
     @extend .plum;
     @extend .purple-overlay;
-    margin-top: 2rem;
 
     .layout-container {
         display: grid;
@@ -47,7 +46,7 @@
         }
         ul {
             list-style: none;
-            margin: 0 0 0 8rem;
+            margin: 0 0 0 10.5rem;
             padding: 0;
             li {
                 display: inline-block;

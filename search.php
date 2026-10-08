@@ -19,15 +19,13 @@ if ( get_query_var('post_type') == 'post') {
 
 	<section id="search" role="main" class="<?php echo implode( ' ', $classes ) ?>">
 
-		<div class="layout-container">
+		<div class="container">
 
 			<nav id="secondary-nav" class="side-col">
-				<ul>
-					<li class="pagenav"><a href="#">Search results</a></li>
-				</ul>
+
 			</nav><!-- #secondary-nav.side-col -->
 
-			<main id="main-col" class="main-col search-wrap">
+			<main id="main-col" class="main-col">
 
 				<section class="article search-header">
                     <div class="searchAgain">
