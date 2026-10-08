@@ -1,0 +1,111 @@
+.widget.coenv_static_widget {
+	background: $bg-lt;
+	border: 0;
+	border-top: 5px solid $accent-dk;
+	padding: 0.75rem 1.5rem 1rem;
+	margin-bottom: 1.5rem;
+	overflow: hidden;
+	color: #000;
+
+	.widget-title,
+	.widget_area h3 {
+        @include encode_sb();
+        margin-bottom: 0.75rem;
+		a {
+            color: $text;
+			text-decoration: none;
+            &:hover {
+                color: $accent-yellow!important;
+            }
+		}
+	}
+
+	.widget_area p,
+	.widget-content,
+	p {
+		margin: 0 0 0.75rem;
+		color: #000;
+		line-height: 1.6;
+	}
+
+	.widget_img {
+		margin: -1rem -1.5rem 1rem -1.5rem;
+	}
+
+	.widget_img img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.widget_links {
+		list-style: none;
+		padding: 0;
+		margin: 1rem 0 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.widget_links li {
+		list-style: none;
+		margin: 0;
+	}
+
+
+}
+
+.side-col .widget.coenv_static_widget:first-of-type {
+	background: $accent;
+	color: #fff;
+
+	.widget-title a,
+	.widget_area h3,
+    .widget_area h3 a,
+	.widget_area p,
+	.widget-content,
+	p,
+	.widget_links a,
+	.widget_links .button {
+		color: #fff;
+	}
+}
+
+.side-col .widget.coenv_static_widget + .widget.coenv_static_widget {
+	background: $bg-lt;
+	color: #000;
+
+	.widget-title a,
+    .widget_area h3 a,
+	.widget_area h3,
+	.widget_area p,
+	.widget-content,
+	p,
+	.widget_links a,
+	.widget_links .button {
+		color: #000;
+	}
+
+	.widget_links a,
+	.widget_links .button {
+		background: $accent;
+		color: #fff;
+	}
+}
+
+@media (max-width: 48rem) {
+	.widget.coenv_static_widget,
+	.solid-widget,
+	.widget_custom_post_widget {
+		padding: 0.85rem;
+
+		.widget_links {
+			flex-direction: column;
+		}
+
+		.widget_links a,
+		.widget_links .button {
+			width: 100%;
+		}
+	}
+}

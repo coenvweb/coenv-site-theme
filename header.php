@@ -165,12 +165,21 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                 <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
 
+                <?php
+                    $news_request = isset( $wp->request ) ? $wp->request : '';
+                    $is_news_route = preg_match( '#^about/news(?:/|$)#', $news_request );
+                ?>
+
                 <?php if (is_singular('faculty')) {
                     echo '<div class="container"><a href="' . get_post_type_archive_link('faculty') . '"><span class="title-label">← back to all</span><h2 class="no-sidenav-title"><span class="section-title">Faculty</span></h2></a></div>';
                 } elseif (is_singular('post')) {
                     $news_page_id = (int) get_option('page_for_posts');
                     $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');
                     echo '<div class="container"><a href="' . esc_url($news_link) . '"><span class="title-label">← back to all</span><h2 class="no-sidenav-title"><span class="section-title">News</span></h2></a></div>';
+                } elseif ( $is_news_route ) {
+                    $news_page_id = (int) get_option('page_for_posts');
+                    $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/about/news/');
+                    echo '<div class="container"><a href="' . esc_url($news_link) . '"><h2 class="no-sidenav-title"><span class="section-title">News</span></h2></a></div>';
                 } elseif (is_home() && !is_front_page()) {
                     $news_page_id = (int) get_option('page_for_posts');
                     $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');

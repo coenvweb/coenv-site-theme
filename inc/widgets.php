@@ -1,7 +1,5 @@
 <?php
 
-
-
 function coenv_widgets_init() {
 
 	$before_widget	= '<section id="%1$s" class="widget %2$s">';

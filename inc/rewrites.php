@@ -54,7 +54,12 @@ function generate_cpt_rewrite_rules( $post_type, $index_path, $query_vars = arra
 
 function add_cpt_rewrites($wp_rewrite) {
     $a_rules = generate_cpt_rewrite_rules('careers', 'students/career-resources/career-opportunities', array('coenv-year', 'coenv-month', 'career_category', 'career_post_tag', 'sort'));
-    $wp_rewrite->rules = $a_rules + $wp_rewrite->rules;
+    $news_rules = array(
+        'about/news/topic/([^/]+)/page/([0-9]{1,})/?$' => 'index.php?topic=' . $wp_rewrite->preg_index(1) . '&paged=' . $wp_rewrite->preg_index(2),
+        'about/news/topic/([^/]+)/?$' => 'index.php?topic=' . $wp_rewrite->preg_index(1),
+    );
+
+    $wp_rewrite->rules = $news_rules + $a_rules + $wp_rewrite->rules;
 }
 add_action('generate_rewrite_rules', 'add_cpt_rewrites');
 

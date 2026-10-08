@@ -35,7 +35,11 @@ function coenv_meta_title() {
     elseif (is_post_type_archive('faculty') ) {
         $html = '<title>Faculty Profiles | '. $site_title . $page_number . '</title>';
     }
-    // If it's a taxonomy category, return a custom title. 
+    // If it's a taxonomy category, return the News title for the blog index area.
+    elseif (is_tax('topic')) {
+        $html = '<title>News | '. $site_title . $page_number . '</title>';
+    }
+    // If it's any other taxonomy archive, return a custom title.
     elseif (is_archive()) {
         $html = '<title>' . $taxonomy_title . ' News | '. $site_title . $page_number . '</title>';
     } 

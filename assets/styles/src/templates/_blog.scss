@@ -69,32 +69,165 @@
 		.input-item {
 			float: none;
 			@include rem('padding', 1);
+			position: relative;
 			@include min-width ( $iPadPortrait ) {
 				float: left;
 				width: 33.3333%;
 			}
 
-		select {
-			border: none;
-			width: 100%;
-			color: $text;
-			// background-color: $text-very-lt;
-			background-color: $white-button;
-			@include rem('padding', 0.5);
-			@include rem('height', 2);
-			@include font-size(12);
+			select {
+				display: block;
+				width: 100%;
+				color: $text;
+				@include font-size(14);
+				height: 3rem;
+				padding: 0 2rem 0 .65rem;
+				border: 1px solid $border-mid;
+				background: #fff;
+				appearance: none;
+				transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+				&:focus {
+					outline: none;
+					border-color: $accent-yellow;
+					box-shadow: 0 0 0 3px rgba(241, 179, 0, 0.2), 0 12px 26px rgba(0, 0, 0, 0.12);
+				}
+			}
+
+			.Faculty-toolbox-select-wrap {
+				position: relative;
+
+				&:after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 1.2rem;
+					width: 0.65rem;
+					height: 0.65rem;
+					border-right: 2px solid $accent;
+					border-bottom: 2px solid $accent;
+					pointer-events: none;
+					transform: translateY(-65%) rotate(45deg);
+					transition: opacity 0.2s ease, transform 0.2s ease;
+				}
+
+				&.has-value:after {
+					opacity: 0;
+					transform: translateY(-65%) rotate(45deg) scale(0.8);
+				}
+			}
+
+			.Faculty-toolbox-select-clear {
+				position: absolute;
+				top: 50%;
+				right: 0.55rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 1.75rem;
+				height: 1.75rem;
+				padding: 0;
+				border: 0;
+				border-radius: 50%;
+				background: $accent;
+				color: #fff;
+				cursor: pointer;
+				opacity: 0;
+				pointer-events: none;
+				transform: translateY(-50%) scale(0.8);
+				transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+				&:hover,
+				&:focus {
+					background: darken($accent, 6%);
+					outline: none;
+				}
+			}
+
+			.Faculty-toolbox-select-wrap.has-value .Faculty-toolbox-select-clear {
+				opacity: 1;
+				pointer-events: auto;
+				transform: translateY(-50%) scale(1);
 			}
  
 		}
 
 		.field-wrap {
 			width: 100% !important;
+			position: relative;
+
+			input[type="text"] {
+				border: 1px solid $border-mid;
+				height: 3rem;
+				width: 100%;
+				padding-right: 3.25rem;
+			}
+
+			button[type="submit"] {
+				border: none;
+				height: 35px;
+				width: 1.85rem;
+				position: absolute;
+				right: 0.55rem;
+				background: none;
+			}
+
+			.Faculty-toolbox-search-button {
+				padding: 0;
+				color: $accent;
+				cursor: pointer;
+			}
+
+			.Faculty-toolbox-search-button-label {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				border: 0;
+			}
+
+			.Faculty-toolbox-search-button-icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 2;
+				pointer-events: none;
+				transition: opacity 0.2s ease, transform 0.2s ease;
+				transform: translate(-50%, -50%) scale(1);
+				@include font-size(22);
+			}
+
+			.Faculty-toolbox-search-button-icon--clear {
+				opacity: 0;
+				pointer-events: none;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button {
+				border-radius: 50%;
+				background: $accent;
+				color: #fff;
+			}
+
+			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--search {
+				opacity: 0;
+				transform: translate(-50%, -50%) scale(0.8);
+			}
+
+			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--clear {
+				opacity: 1;
+				pointer-events: auto;
+				transform: translate(-50%, -50%) scale(1);
+			}
 		}
 
 		form {
 
 			input[type="text"] {
-				background: #ddd;
+				background: #fff;
 			}
 
 		} // form

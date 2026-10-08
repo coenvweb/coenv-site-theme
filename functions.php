@@ -274,6 +274,12 @@ function coenv_get_ancestor($attr = 'ID') {
 	if ( (is_archive() || $post->post_type == 'post' || $post->post_type == 'intranet' || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
 
 		$page_for_posts = get_option( 'page_for_posts' );
+		if ( ! $page_for_posts ) {
+			$news_page = get_page_by_path( 'about/news' );
+			if ( $news_page ) {
+				$page_for_posts = $news_page->ID;
+			}
+		}
 
 		if ( $page_for_posts == 0 ) {
 			return false;
