@@ -527,6 +527,9 @@
 		&.open {
 			background: $accent-dk;
 			color: white;
+			&:hover {
+				background: $accent;
+			}
 		}
 
         &.open:after {
