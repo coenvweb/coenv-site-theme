@@ -607,3 +607,12 @@ body.home {
 		}
 	}
 }
+
+.slice-events {
+	position: relative;
+	a.more-events {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}

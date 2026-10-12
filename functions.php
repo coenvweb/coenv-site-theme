@@ -97,6 +97,10 @@ function coenv_admin_settings() {
 	add_option( 'youtube' );
 	add_settings_field( 'youtube', 'YouTube', 'coenv_setting_youtube', 'general' );
 	register_setting( 'general', 'youtube' );
+
+	add_option( 'bluesky' );
+	add_settings_field( 'bluesky', 'Bluesky', 'coenv_setting_bluesky', 'general' );
+	register_setting( 'general', 'bluesky' );
     
     add_option( 'instagram' );
 	add_settings_field( 'instagram', 'Instagram', 'coenv_setting_instagram', 'general' );
@@ -152,6 +156,18 @@ function coenv_setting_youtube() {
 	?>	
 		<input name="youtube" type="text" id="youtube" value="<?php echo $value; ?>" class="regular-text">
 		<p class="description">Full URL to your YouTube Channel.</p>
+	<?php
+}
+
+/**
+ * Bluesky setting
+ */
+function coenv_setting_bluesky() {
+	$value = get_option('bluesky');
+
+	?>	
+		<input name="bluesky" type="text" id="bluesky" value="<?php echo $value; ?>" class="regular-text">
+		<p class="description">Full URL to your Bluesky profile.</p>
 	<?php
 }
 
