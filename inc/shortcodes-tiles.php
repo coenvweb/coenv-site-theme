@@ -64,7 +64,10 @@ if ($columns_attr !== '') {
             if ($tile_link) {
               $parsed_tile_url = wp_parse_url($tile_link);
               $tile_path = !empty($parsed_tile_url['path']) ? $parsed_tile_url['path'] : '';
-              if ($tile_path && preg_match('#^/news(?:/|$)#', $tile_path) && ! preg_match('#^/news/?$#', $tile_path)) {
+              $news_path_match = preg_match('#(?:^|/)(?:about/)?news(?:/|$)#', $tile_path);
+              $news_home_match = preg_match('#(?:^|/)(?:about/)?news/?$#', $tile_path);
+
+              if ($tile_path && $news_path_match && ! $news_home_match) {
                 $is_story_link = true;
               }
             }
