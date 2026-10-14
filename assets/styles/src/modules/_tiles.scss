@@ -67,6 +67,10 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
         border: 1px solid $tiles-border-color;
         box-shadow: $tiles-shadow;
         background-color: #fff;
+
+        .page-tile--story .title {
+            font-size: 1.4rem;
+        }
     }
 
     .tile-link {
@@ -138,10 +142,6 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
         line-height: 1.25;
         letter-spacing: 0;
         font-size: 1.6rem;
-
-        .page-tile--story & {
-            font-size: 1.4rem;
-        }
     }
 
     .body {
