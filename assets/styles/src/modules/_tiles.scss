@@ -112,6 +112,14 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
             url(#{$tiles-texture-image-path});
         background-size: cover, cover;
         background-position: center center, center center;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 5rem;
+            border-top: 3px solid $tiles-overlay-accent;
+            margin: $tiles-accent-line-top-space 0 0.7rem;
+        }
     }
 
     .tile-story-label {
@@ -133,14 +141,6 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
 
         .page-tile--story & {
             font-size: 1.4rem;
-        }
-
-        &:before {
-            content: '';
-            display: block;
-            width: 5rem;
-            border-top: 3px solid $tiles-overlay-accent;
-            margin: $tiles-accent-line-top-space 0 0.7rem;
         }
     }
 

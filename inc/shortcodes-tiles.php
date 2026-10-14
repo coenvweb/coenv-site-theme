@@ -69,12 +69,11 @@ if ($columns_attr !== '') {
               }
             }
 
-            $tile_class = 'page-tile';
-            if ($is_story_link) {
-              $tile_class .= ' page-tile--story';
-            }
-
             $output .= "<div class='" . esc_attr($tile_class) . "'>";
+                $tile_class = 'page-tile';
+                if ($is_story_link) {
+                  $tile_class .= ' page-tile--story';
+                }
               if($tile_link) {
                 $output .= '<a class="tile-link" href="' . esc_url($tile_link) . '"' . ($tile_target ? ' target="' . esc_attr($tile_target) . '"' : '') . $tile_rel . '>';
               } else {
@@ -88,12 +87,11 @@ if ($columns_attr !== '') {
 
                 $output .= '<div class="content-wrap">';
 
-                  $title_output = "<p class='title'>";
                   if ($is_story_link) {
-                    $title_output .= "<span class='tile-story-label'>Read our story</span> <br />";
+                    $output .= "<p class='tile-story-label'>Read our story</p>";
                   }
-                  $title_output .= esc_html($tile['title']) . "</p>";
-                  $output .= $title_output;
+
+                  $output .= "<p class='title'>" . esc_html($tile['title']) . "</p>";
 
                   if($tile['subtext']) {
                     $output .= "<div class='body'>" . wp_kses_post($tile['subtext']) . "</div>";
