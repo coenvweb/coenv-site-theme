@@ -88,11 +88,12 @@ if ($columns_attr !== '') {
 
                 $output .= '<div class="content-wrap">';
 
+                  $title_output = "<p class='title'>";
                   if ($is_story_link) {
-                    $output .= "<p class='tile-story-label'>Read the story</p>";
+                    $title_output .= "<span class='tile-story-label'>Read our story</span>";
                   }
-
-                  $output .= "<p class='title'>" . esc_html($tile['title']) . "</p>";
+                  $title_output .= esc_html($tile['title']) . "</p>";
+                  $output .= $title_output;
 
                   if($tile['subtext']) {
                     $output .= "<div class='body'>" . wp_kses_post($tile['subtext']) . "</div>";
