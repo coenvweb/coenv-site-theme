@@ -14,6 +14,7 @@ $adviser_phone = get_sub_field('adviser_phone_number');
 $link = get_sub_field('link');
 $facebook = get_sub_field('facebook_link');
 $twitter = get_sub_field('twitter_link');
+$bluesky = get_sub_field('bluesky_link');
 $faculty_link = get_sub_field('faculty_link');
 
 if( !empty($image) ) {
@@ -30,8 +31,19 @@ if(!empty($description)) {
     $accordionclass = 'accordion-title';
 }
 
+$major_minor_slug = sanitize_title( $name );
+if ( ! isset( $GLOBALS['coenv_major_minor_ids'] ) ) {
+    $GLOBALS['coenv_major_minor_ids'] = array();
+}
+
+$major_minor_count = isset( $GLOBALS['coenv_major_minor_ids'][ $major_minor_slug ] ) ? $GLOBALS['coenv_major_minor_ids'][ $major_minor_slug ] + 1 : 1;
+$GLOBALS['coenv_major_minor_ids'][ $major_minor_slug ] = $major_minor_count;
+$major_minor_id = $major_minor_slug . ( $major_minor_count > 1 ? (string) $major_minor_count : '' );
+$title_id = 'major-t-' . $major_minor_id;
+$content_id = 'major-c-' . $major_minor_id;
+
 ?>
-<div id="major-t-<?php echo sanitize_title($name); ?>" class="major-minor accordion-title read <?php if($unit_color){ echo 'unit-color" style="background-color:' . $unit_color . ';';} ?>" aria-label="Toggle more information" tabindex="0" aria-expanded="false">
+<div id="<?php echo esc_attr( $title_id ); ?>" class="major-minor accordion-title read <?php if($unit_color){ echo 'unit-color" style="background-color:' . $unit_color . ';';} ?>" aria-label="Toggle more information" tabindex="0" aria-expanded="false" aria-controls="<?php echo esc_attr( $content_id ); ?>">
 
     <img class="alignleft" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="130" height="130" />
 
@@ -42,7 +54,7 @@ if(!empty($description)) {
         </div>
     </div>
 </div>
-<div id="major-c-<?php echo sanitize_title($name); ?>" class="accordion-content major-content" aria-labelledby="major-t-<?php echo sanitize_title($name); ?>" aria-hidden="true" aria-controlled-by="major-t-<? echo sanitize_title($name); ?>" style="display: none;">
+<div id="<?php echo esc_attr( $content_id ); ?>" class="accordion-content major-content" aria-labelledby="<?php echo esc_attr( $title_id ); ?>" aria-hidden="true" aria-controls="<?php echo esc_attr( $title_id ); ?>" style="display: none;">
             
     <ul class="major-info">
         <?php if (!empty($description)) : ?>
@@ -70,7 +82,16 @@ if(!empty($description)) {
                     <li><a href="<?php echo $facebook; ?>"><i class="icon-facebook"></i>Like on Facebook</a></li>
                 <?php endif; ?>    
                 <?php if (!empty($twitter)) : ?>
-                    <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow on Twitter</a></li>
+                    <li><a href="<?php echo $twitter; ?>"><i class="icon-twitter"></i>Follow on X</a></li>
+                <?php endif; ?>            
+                <?php if (!empty($bluesky)) : ?>
+                    <li>
+                        <a href="<?php echo $bluesky; ?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+                            <g transform="scale(0.055 0.055)">
+                                <path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 203.659 552.222 224.501C531.947 296.954 458.067 315.434 392.347 304.249C507.222 323.8 536.444 388.56 473.333 453.32C353.473 576.312 301.061 422.461 287.631 383.039C285.169 375.812 284.017 372.431 284 375.306C283.983 372.431 282.831 375.812 280.369 383.039C266.939 422.461 214.527 576.312 94.6667 453.32C31.5556 388.56 60.7778 323.8 175.653 304.249C109.933 315.434 36.0535 296.954 15.7778 224.501C9.94525 203.659 0 75.2916 0 57.9464C0 -28.9064 76.1345 -1.61183 123.121 33.6637Z"></path>
+                            </g>
+                        </svg>Follow on Bluesky</a>
+                    </li>
                 <?php endif; ?>            
             </ul>
         </div>

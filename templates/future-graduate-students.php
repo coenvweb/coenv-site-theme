@@ -107,9 +107,25 @@ $ancestor = array(
 
 <?php get_footer() ?>
         
-<script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
+
 <script type="text/javascript">
-/* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
-/* ]]> */
+jQuery(document).ready(function($) {
+    $('.accordion-title').off('click.manualToggle').on('click.manualToggle', function(e) {
+        e.preventDefault();
+        var $title = $(this);
+        var targetId = $title.attr('aria-controls');
+        var $content = $('#' + targetId);
+
+        if (!$content.length) {
+            return;
+        }
+
+        var isExpanded = $title.attr('aria-expanded') === 'true';
+
+        $title.attr('aria-expanded', !isExpanded);
+        $title.toggleClass('open', !isExpanded);
+        $content.attr('aria-hidden', isExpanded);
+        $content.slideToggle(200);
+    });
+});
 </script>

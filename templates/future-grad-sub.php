@@ -111,7 +111,7 @@ $ancestor = array(
 <script type="text/javascript" src="/wp-content/plugins/accordion-shortcodes/accordion.min.js?ver=2.3.0"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
-var accordionShortcodesSettings = [{"id":"content","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
+var accordionShortcodesSettings = [{"id":"major","autoClose":false,"openFirst":false,"openAll":false,"clickToClose":true,"scroll":false}];
 /* ]]> */
 </script>
 
