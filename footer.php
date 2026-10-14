@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="footer-end-row">
-                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> University of Washington, College of the Environment</p></div>
+                            <div class="copyright"><p>&copy; <?php echo date('Y') ?> University of Washington College of the Environment</p></div>
                             <div class="uw-links right"><p><a href="http://washington.edu/privacy/" target="_blank">Privacy</a> | <a href="http://washington.edu/terms/" target="_blank">Terms</a> | <a href="http://washington.edu/link-policy/" target="_blank">Link Policy</a> | <a href="http://environment.uw.edu/intranet/report/" target="_blank">Intranet</a></p></div>
                         </div>
 
