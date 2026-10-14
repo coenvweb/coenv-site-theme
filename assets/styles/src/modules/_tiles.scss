@@ -114,6 +114,15 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
         background-position: center center, center center;
     }
 
+    .tile-story-label {
+        font-size: 0.9rem;
+        @include encode_sb();
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: $accent-yellow;
+        margin-bottom: 0.3rem;
+    }
+
     .title {
         @include encode_sb();
         margin: 0;
@@ -121,6 +130,10 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
         line-height: 1.25;
         letter-spacing: 0;
         font-size: 1.6rem;
+
+        .page-tile--story & {
+            font-size: 1.4rem;
+        }
 
         &:before {
             content: '';
