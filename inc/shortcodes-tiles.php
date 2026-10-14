@@ -90,7 +90,7 @@ if ($columns_attr !== '') {
 
                   $title_output = "<p class='title'>";
                   if ($is_story_link) {
-                    $title_output .= "<span class='tile-story-label'>Read our story</span>";
+                    $title_output .= "<span class='tile-story-label'>Read our story</span> <br />";
                   }
                   $title_output .= esc_html($tile['title']) . "</p>";
                   $output .= $title_output;
