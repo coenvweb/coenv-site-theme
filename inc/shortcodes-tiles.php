@@ -64,19 +64,21 @@ if ($columns_attr !== '') {
             if ($tile_link) {
               $parsed_tile_url = wp_parse_url($tile_link);
               $tile_path = !empty($parsed_tile_url['path']) ? $parsed_tile_url['path'] : '';
-              $news_path_match = preg_match('#(?:^|/)(?:about/)?news(?:/|$)#', $tile_path);
-              $news_home_match = preg_match('#(?:^|/)(?:about/)?news/?$#', $tile_path);
+              $news_home_paths = array( '/news', '/news/', '/about/news', '/about/news/' );
 
-              if ($tile_path && $news_path_match && ! $news_home_match) {
-                $is_story_link = true;
+              if ($tile_path && ! in_array( $tile_path, $news_home_paths, true ) ) {
+                if ( preg_match('#/(?:about/)?news(?:/|$)#', $tile_path) ) {
+                  $is_story_link = true;
+                }
               }
             }
 
+            $tile_class = 'page-tile';
+            if ($is_story_link) {
+              $tile_class .= ' page-tile--story';
+            }
+
             $output .= "<div class='" . esc_attr($tile_class) . "'>";
-                $tile_class = 'page-tile';
-                if ($is_story_link) {
-                  $tile_class .= ' page-tile--story';
-                }
               if($tile_link) {
                 $output .= '<a class="tile-link" href="' . esc_url($tile_link) . '"' . ($tile_target ? ' target="' . esc_attr($tile_target) . '"' : '') . $tile_rel . '>';
               } else {
