@@ -68,7 +68,7 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
         box-shadow: $tiles-shadow;
         background-color: #fff;
 
-        .page-tile--story .title {
+        &.page-tile--story .title {
             font-size: 1.4rem;
         }
     }
@@ -127,7 +127,7 @@ $tiles-texture-image-path: '../../img/tile-texture-kelp.jpg';
     }
 
     .tile-story-label {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         @include encode_sb();
         text-transform: uppercase;
         letter-spacing: 0.05em;
