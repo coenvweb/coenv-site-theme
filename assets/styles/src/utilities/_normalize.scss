@@ -135,6 +135,7 @@ abbr[title] {
 b,
 strong {
     font-weight: bold;
+    @include o_sans_bold();
 }
 
 /**

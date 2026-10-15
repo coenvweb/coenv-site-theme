@@ -69,7 +69,7 @@
                             </ul>
                             <p><a href="http://maps.google.com/?q=1492+NE+Boat+St" title="Google Maps link">1492 NE Boat St., Seattle, WA 98105</a><br />
                             <a href="mailto:<?=antispambot("coenv@uw.edu")?>" title="Send us an Email"><?php echo antispambot("coenv@uw.edu") ?></a> | <a href="tel:<?=antispambot("206-685-5410")?>" title="Call us">206-685-5410</a></p>
-                            <p class="footer-links-internal"><a href="/intranet" title="Intranet">Intranet</a> | <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
+                            <p class="footer-links-internal"><a href="/intranet" title="Website Feedback">Web Feedback</a> | <a href="/intranet" title="Intranet">Intranet</a> | <a href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login">Staff Login</a></p>
                         </div>
 
                         <div class="footer-logo-links">

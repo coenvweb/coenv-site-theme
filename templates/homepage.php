@@ -94,7 +94,7 @@ if( $sticky ) {
 
         <header>
 
-            <a class="more-news right" href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">See all news &raquo;</a> <h2 class="news-heading"><a href="/news">Latest News</a></h2>
+            <a class="more-news right" href="<?php echo get_permalink( get_option('page_for_posts') ) ?>">See all news</a> <h2 class="news-heading"><a href="/news">Latest News</a></h2>
 
         </header>
 

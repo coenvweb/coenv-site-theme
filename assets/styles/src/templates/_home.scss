@@ -448,7 +448,7 @@ body.home {
 
 	.hero-content {
 		position: absolute;
-		bottom: 5rem;
+		bottom: calc(2vw + 1rem);
 	}
 
 	h2 {
