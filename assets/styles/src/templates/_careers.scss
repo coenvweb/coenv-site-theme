@@ -120,7 +120,7 @@ body.page-template-careers {
 					text-decoration: none;
 				}
                 &:after {
-                    display: none;
+                    display: none!important;
                 }
 			}
 		}
@@ -324,7 +324,6 @@ body.page-template-careers {
     h3 {
         text-transform: uppercase;
 		letter-spacing: .1em;
-		font-weight: 600;
 		vertical-align: middle;
 		text-decoration: none;
 		font-size: .8rem;
@@ -339,6 +338,12 @@ body.page-template-careers {
         margin-bottom: .25rem;
         line-height: 2rem;
         background: rgba(0,0,0,.05);
+        border: none;
+        color: $accent-dk;
+        &:hover {
+            background: $accent-lt;
+            color: #fff;
+        }
     }
 }
 
@@ -426,6 +431,8 @@ ul.career-actions {
         line-height: 1.5;
         font-size: 1.2rem!important;
         color: $accent-yellow!important;
+        background-color: $accent-dk!important;
+        padding: .5rem 1rem;
 
         a:after {
             display: none;

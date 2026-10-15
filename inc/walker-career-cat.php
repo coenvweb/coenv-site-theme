@@ -16,11 +16,15 @@ class CoEnv_Career_Category extends Walker_Category{
         if ( $category->parent > 0 ) {
         	// Link to career opportunities url is hard-coded below
             $link = '<li class="term_id_'.$category->term_id.' button"  name="filter_career[]" role="button" aria-pressed="false" value="'.$category->term_id.'">';
+        } else {
+            $link = '<h4 class="category-title">';
         }
             $link .= $cat_name;
  
         if ( $category->parent > 0 ) {
             $link .= '</li>';
+        } else {
+            $link .= '</h4>';
         }
  
         if ( !empty($feed_image) || !empty($feed) ) {
