@@ -5,7 +5,6 @@
 
 	.event {
 		@include rem('margin-bottom', 0.5);
-		background: #fff;
 		@extend .shadow;
 
 		@include min-width( $iPadPortrait ) {
@@ -27,6 +26,7 @@
 			 	padding: 0;
 			}
             &:hover {
+				background-color: $accent-lt;
                 color: white!important;
                 i {
                     color: white;
@@ -40,8 +40,7 @@
 				margin: 0;
 				@include font-size(14);
 				@include line-height(24);
-				font-weight: 600;
-                @include sans();
+                @include encode_sb();
 			}
 
 		} // header
@@ -64,6 +63,81 @@
 
 } // .widget-events
 
+
+// trumba main column
+tr.twEventRow td {
+    background-color: #333!important;
+}
+
+.side-col .widget-events-sidebar {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    background: $text-very-lt;
+	padding: .5rem 0 0 0;
+    .section-header {
+        border-bottom: 1px solid rgba(0,0,0,.05);
+        padding: .5rem 0;
+    }
+	.event h3 {
+		text-transform: none;
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: .03em;
+		line-height: 120%;
+		padding-left: 1.4rem;
+		padding-top: 0;
+
+		
+	}
+    h3 {
+        text-transform: uppercase;
+        font-size: .8rem;
+        letter-spacing: .1em;
+        line-height: 1rem;
+        font-weight: 600;
+        padding: .5rem 1rem;
+
+		a {
+			color: #333;
+			text-decoration: none;
+
+			.more {
+				background-color: rgb(221, 221, 221);
+				padding-bottom: 3.5px
+				padding-left 14px
+				padding-right 14px
+				padding-top 3.5px
+			}
+		}
+		span::after {
+			content: "\a";
+    		white-space: pre;
+		}
+
+    }
+    .event{
+        margin-top: 1rem;
+		padding: 0 1rem;
+    }
+	.textwidget {
+		margin-top: 1.75rem;
+		padding: 0 1rem;
+
+	}
+	.event {
+		background: transparent;
+		box-shadow: none;
+
+		a {
+			color: #333;
+			text-decoration: none;
+		}
+	}
+	p.date {
+		margin-bottom: .5rem;
+	}
+}
+
 .main-col .widget-events {
     
     .event {
@@ -79,4 +153,9 @@
         display: none!important;
     }
     
+}
+
+.home .widget-events .event {
+    margin-bottom: .75rem;
+    background: $bg-lt;
 }
