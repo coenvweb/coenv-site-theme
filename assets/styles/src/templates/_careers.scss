@@ -186,7 +186,7 @@ body.page-template-careers {
         .button {
             font-size: 1.4rem!important;
             height: 35px;
-            padding: .5rem;
+            padding: .25rem;
             color: #000;
         }
         li {
@@ -199,12 +199,13 @@ body.page-template-careers {
         li, form {
             border-radius: 0 4px 4px 0;
             height: 35px;
-            padding-top: .5rem;
+            padding-top: .325rem;
             cursor: pointer;
             background-color: $bg-lt;
             color: $text;
+            border: none;
             &:hover {
-                color: $accent;
+                background-color: $accent-lt!important;
             }
             &.selected {
                 background-color: $accent!important;
@@ -406,7 +407,7 @@ ul.career-actions {
             z-index: 9999;
             position: fixed;
             width: 27vw;
-            max-width: 262px;
+            max-width: 296px;
             top: 0;
             margin-bottom: 800px;
             .filters {
@@ -491,7 +492,7 @@ ul.career-actions {
 			padding-left: 0;
             margin-bottom: 0;
 			li {
-                @include encode_sb();
+                @include o_sans_bold();
 				list-style: none;
 				&.cat-item {
 					margin-bottom: .75rem;

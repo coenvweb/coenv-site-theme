@@ -416,7 +416,7 @@ jQuery("document").ready(function($){
 	var nav = $('#careers-filter');
 	
 	$(window).scroll(function () {
-		if ($(this).scrollTop() > 355) {
+		if ($(this).scrollTop() > 650) {
 			nav.addClass("f-nav");
 		} else {
 			nav.removeClass("f-nav");
