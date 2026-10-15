@@ -302,13 +302,17 @@ function coenv_get_ancestor($attr = 'ID') {
 		}
 
 		$ancestor = get_post( $page_for_posts );
+
+		if ( $ancestor && $ancestor->post_parent ) {
+			$ancestor = get_post( $ancestor->post_parent );
+		}
         
         
         if ((isset($post->post_type)) && $post->post_type == 'intranet') {
             unset ($ancestor);
             $ancestor = get_post( 267 );
         }
-		return $ancestor->$attr;
+		return $ancestor ? $ancestor->$attr : false;
         
 	}
 

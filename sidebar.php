@@ -15,7 +15,8 @@ if ( is_tax( 'topic' ) || is_search() || is_date() || is_home() ) {
 	}
 
 	if ( $page_for_posts ) {
-		$ancestor_id = $page_for_posts;
+		$posts_page = get_post( $page_for_posts );
+		$ancestor_id = $posts_page && $posts_page->post_parent ? $posts_page->post_parent : $page_for_posts;
 	}
 }
 

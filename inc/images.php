@@ -193,10 +193,22 @@ function coenv_banner() {
         }
     }
 
-	if ((isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
+	if ( is_singular( 'post' ) || is_home() || is_tax( 'topic' ) || is_search() || is_date() ) {
+		$news_page_id = (int) get_option( 'page_for_posts' );
+		if ( ! $news_page_id ) {
+			$news_page = get_page_by_path( 'about/news' );
+			$news_page_id = $news_page ? (int) $news_page->ID : 0;
+		}
+
+		if ( $news_page_id && has_post_thumbnail( $news_page_id ) ) {
+			$page_id = $news_page_id;
+		}
+	}
+
+	if ( $page_id === false && (isset($obj->ID)) && has_post_thumbnail( $obj->ID ) && (!is_single() || is_page_template('templates/signature-story.php')) ) {
 		$page_id = $obj->ID;
 
-	} else if ( $ancestor && has_post_thumbnail( $ancestor ) ) {
+	} else if ( $page_id === false && $ancestor && has_post_thumbnail( $ancestor ) ) {
 		$page_id = $ancestor;
     }
 
