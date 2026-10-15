@@ -39,7 +39,7 @@ $feature = array(
 
 <article class="feature">
     
-    <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
+    <a class="feature-title" title="<?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
         
     <span class="visuallyhidden">Link to article</span>
 

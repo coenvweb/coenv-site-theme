@@ -98,35 +98,54 @@
 		}
 		
 		h1 {
-			text-transform: uppercase;
-			a {
-				color: #fff;
-				text-decoration: none;
-				background-repeat: no-repeat;
-				background-size: 230% 100%;
-				background-position: 100% 0;
-				-webkit-background-clip: text;
-				background-clip: text;
-				//-webkit-text-fill-color: transparent;
-				animation: none;
+            text-transform: uppercase;
+            
+            a {
+                color: #fff; 
+                text-decoration: none;
+                position: relative;
+                display: inline-block;
+                white-space: nowrap;
+                padding-right: 10rem;
+                
+                background: linear-gradient(105deg, $accent-yellow 50%, #fff 50%);
+                background-size: 220% 100%;
+                background-position: 100% 0; 
+                
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                
+                // Slow transition out (when mouse leaves)
+                transition: background-position 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 
-				&:hover {
-					color: $accent-yellow!important;
-					svg {
-						path{
-							fill: $accent-yellow!important;
-						}
-					}
-				}
+                svg path {
+                    // Slow transition out for the SVG (e.g. 0.6s)
+                    transition: fill 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+                }
 
-				&:focus,
-				&:focus-visible {
-					color: $accent-yellow !important;
-				}
-			}
-		}
+                &:hover {
+                    background-position: 0 0; 
+                    // Quick transition in (fast snap on hover, e.g. 0.15s)
+                    transition: background-position 0.15s ease-out;
 
+                    svg path {
+                        fill: $accent-yellow !important;
+                        // Quick transition in for the SVG
+                        transition: fill 0.15s ease-out;
+                    }
+                }
 
+                &:focus,
+                &:focus-visible {
+                    background-position: 0 0;
+                    
+                    svg path {
+                        fill: $accent-yellow !important;
+                    }
+                }
+            }
+        }
 	
 		.college-small {
 			display: block;

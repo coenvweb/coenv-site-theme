@@ -19,16 +19,18 @@
 	</form>
 	<div class="input-item select-category" data-news-url="<?php echo $news_base_url; ?>">
 		<?php
-			$cats = get_categories(array(
-				'type' => 'post',
-				'taxonomy' => array('topic')
+			$cats = get_terms(array(
+				'taxonomy' => 'topic',
+				'orderby' => 'name',
+				'order' => 'ASC',
+				'hide_empty' => false,
 			));
                 
 				$output = '<label for="category">Filter by Category</label>';
 				$output .= '<div class="Faculty-toolbox-select-wrap">';
 				$output .= '<select name="category-dropdown" id="category">';
 				$output .= '<option value="">Choose a topic</option>';
-				if ( !empty( $cats ) ) {	
+				if ( !empty( $cats ) && !is_wp_error( $cats ) ) {	
 				foreach ( $cats as $cat ) {
                     if (!term_is_ancestor_of(1232, $cat->term_id, 'topic') and ($cat->term_id != 1232)) {
 					$selected = $current_topic_id == $cat->term_id ? ' selected="selected"' : '';

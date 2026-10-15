@@ -446,9 +446,30 @@ body.home {
 	min-height: 40vw;
 	z-index: 1;
 
-	.hero-content {
+.hero-content {
 		position: absolute;
 		bottom: calc(2vw + 1rem);
+		
+		/* Ensures text is hidden before the animation triggers, preventing font flash */
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(25px);
+		
+		animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		animation-delay: 0.6s; 
+	}
+
+	@keyframes heroFadeUp {
+		0% {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(25px);
+		}
+		100% {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
 	}
 
 	h2 {
@@ -480,40 +501,40 @@ body.home {
 						transition: transform 0.3s ease 0.18s;
 					}
 
-					&:hover {
-						color: lighten($accent-yellow, 10%)!important;
-					}
-
 					&:focus,
 					&:focus-visible,
 					&:hover {
+						color: $accent-yellow!important;
 						&:before {
-							transform: scaleX(1.3);
+							transform: scaleX(1.08);
 						}
 						&:after {
 							background-color: $accent-yellow!important;
 						}
 					}
+				&:after {
+					content: '';
+					display: inline-block;
+					border-radius: 50%;
+					width: 3.5rem;
+					height: 3.5rem;
+					background-color: $white;
+					-webkit-mask-image: url('/wp-content/themes/coenv-wordpress-theme/assets/img/arrow.svg');
+					-webkit-mask-repeat: no-repeat;
+					-webkit-mask-position: center;
+					-webkit-mask-size: 3.5rem 3.5rem;
+					mask-image: url('/wp-content/themes/coenv-wordpress-theme/assets/img/arrow.svg');
+					mask-repeat: no-repeat;
+					mask-position: center;
+					mask-size: 3rem;
+					position: relative;
+					top: 4px;
+					left: 5px;
+					animation-delay: .3s;
+					transition: background-color 0.3s ease 0.18s;
+				}
 			}
-			&:after {
-				content: '';
-				display: inline-block;
-				border-radius: 50%;
-				width: 3.5rem;
-				height: 3.5rem;
-				background-color: $white;
-				-webkit-mask-image: url('/wp-content/themes/coenv-wordpress-theme/assets/img/arrow.svg');
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-position: center;
-				-webkit-mask-size: 3.5rem 3.5rem;
-				mask-image: url('/wp-content/themes/coenv-wordpress-theme/assets/img/arrow.svg');
-				mask-repeat: no-repeat;
-				mask-position: center;
-				mask-size: 3rem;
-				position: relative;
-				top: 4px;
-				left: 5px;
-			}
+			
 		}
 
 		@include max-width ( 700 ) {
