@@ -62,7 +62,7 @@ body.page-template-careers {
             text-decoration: none;
             font-size: .8rem;
             line-height: 1.2rem;
-            color: $text-lt;
+            color: $text;
             &:last-of-type {
                 .dot {
                     display: none;
@@ -107,25 +107,27 @@ body.page-template-careers {
 		h2 {
 			float: left;
 			font-size: 1.65rem;
-			line-height: 1.5rem;
+			line-height: normal;
 			width: 100%;
 			margin-bottom: .5rem;
 			margin-top: 0;
 			a {
 				color: #333;
 				font-weight: 600;
-                @include serif();
 				text-decoration: none;
 				&:hover {
 					color: #421491 !important;
 					text-decoration: none;
 				}
+                &:after {
+                    display: none;
+                }
 			}
 		}
         .location {
             font-size: 1.1rem;
             color: $text-lt;
-            margin-bottom: .25rem!important;
+            margin-bottom: 0rem!important;
             svg {
                 padding-top: 4px;
                 width: 12px;
@@ -135,8 +137,11 @@ body.page-template-careers {
             }
             a {
                 text-decoration: none;
-                color: $text-lt;
+                color: $text-lt!important;
                 font-weight: 600;
+                &:after {
+                    display: none!important;
+                }
                 &:hover svg path {
                     fill: $accent-lt;
                 }
@@ -194,13 +199,15 @@ body.page-template-careers {
         li, form {
             border-radius: 0 4px 4px 0;
             height: 35px;
-            padding-top: .5rem;
+            padding-top: .1rem;
             cursor: pointer;
+            background-color: $bg-lt;
+            color: $text;
             &:hover {
                 color: $accent;
             }
             &.selected {
-                background-color: $accent;
+                background-color: $accent!important;
                 color: white!important;
             }
             &:first-of-type {
@@ -239,10 +246,10 @@ body.page-template-careers {
         list-style: none;
         text-transform: uppercase;
 		letter-spacing: .1em;
-		font-weight: 600;
+        @include encode_sb();
 		text-decoration: none;
 		font-size: .8rem;
-		color: #666;
+		color: $text;
         @include min-width ( $iPadPortrait ) {
             //margin-top: -1.5rem;
         }
@@ -295,7 +302,6 @@ body.page-template-careers {
 #results .status {
     text-transform: uppercase;
     letter-spacing: .1em;
-    font-weight: 600;
     vertical-align: middle;
     text-decoration: none;
     font-size: .8rem;
@@ -413,13 +419,17 @@ ul.career-actions {
     }
     
 	h3.title {
-		background-color: #000;
-		color: #fff;
-		border-bottom: solid 1px rgb(208, 208, 208);
-		font-size: 1rem;
-		font-weight: normal;
-		letter-spacing: .05rem;
-		padding: .5rem 1rem;
+        margin: 0;
+        width: 100%;
+        @include encode_black();
+        @include font-size(26);
+        line-height: 1.5;
+        font-size: 1.2rem!important;
+        color: $accent-yellow!important;
+
+        a:after {
+            display: none;
+        }
 	}
     
 	h4 {
@@ -448,6 +458,8 @@ ul.career-actions {
                 margin-left: 0.03rem;
                 padding-left: 1.1rem;
                 transition: .1s linear;
+                border: none;
+                text-transform: none;
                 
                 .icon-cross {
                     position: absolute;
@@ -472,7 +484,7 @@ ul.career-actions {
 			padding-left: 0;
             margin-bottom: 0;
 			li {
-				font-weight: 600;
+                @include encode_sb();
 				list-style: none;
 				&.cat-item {
 					margin-bottom: .75rem;

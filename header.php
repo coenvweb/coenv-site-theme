@@ -17,6 +17,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 <meta name="twitter:dnt" content="on">
 <?php echo coenv_custom_metas(); ?>
 <link rel="stylesheet" id="screen-css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/build/screen.css?<?php echo time(); ?>" type="text/css" media="all" />
+<link rel="stylesheet" id="careers-branding-css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/build/careers-branding.css?<?php echo time(); ?>" type="text/css" media="all" />
 
 <!-- Resource hints for performance -->
 <link rel="dns-prefetch" href="//use.typekit.net">

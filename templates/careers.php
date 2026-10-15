@@ -22,30 +22,33 @@ $ancestor = array(
 
 		<div class="container">
 
-        <?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
 
-<nav id="secondary-nav" class="side-col">
+				<nav id="secondary-nav" class="side-col">
 
-<ul id="menu-secondary" class="menu">
-  <?php
-  $list_args = array(
-      'child_of' => $ancestor['id'],
-      'depth' => 3,
-      'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-      'link_after' => '<i class="icon-arrow-right"></i>',
-      'walker' => new CoEnv_Secondary_Menu_Walker,
-      'sort_column' => 'menu_order' 
-  );
-  wp_list_pages($list_args);
-  ?>
-</ul>
+			<ul id="menu-secondary" class="menu">
+                  <?php
+                  $list_args = array(
+                      'child_of' => $ancestor['id'],
+                      'depth' => 3,
+					  'title_li' => '',
+					  'echo' => 0,
+                      'walker' => new CoEnv_Secondary_Menu_Walker,
+                      'sort_column' => 'menu_order' 
+                  );
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                  ?>
+	          </ul>
+
+
+			<?php endif ?>
 <div>&nbsp;</div>
 <?php include(locate_template( 'partials/partial-careers-filter.php' )) ?>
 </nav><!-- #secondary-nav.side-col -->
 
-<?php endif ?>
 
-			<main id="main-col content" class="main-col site-content">
+            <main id="main-col" class="main-col site-content">
 				<div class="article">
 					<header class="article__header">
 						<div class="article__meta">
@@ -67,12 +70,12 @@ $ancestor = array(
                             <li class="button" role="button" data-value="deadline" aria-pressed="false">Deadline</li>
                         </ul>
                     </div>
-                    <div class="mobile-filter">Filter By
-                      <ul>
-                          <a class="filter-anchor" href="#filters"><li class="button"><span class="plus">+</span> Add Filter</li></a>
-                          <a class="filter-clear" href=""><li class="button"><i class="icon-cross"></i> Clear Filters</li></a>
-                      </ul>
-                    </div>
+                                        <div class="mobile-filter">Filter By
+                                            <ul>
+                                                    <li><a class="button filter-anchor" href="#filters"><span class="plus">+</span> Add Filter</a></li>
+                                                    <li><a class="button filter-clear" href="#"><i class="icon-cross"></i> Clear Filters</a></li>
+                                            </ul>
+                                        </div>
                 </div>
                  
                 <div id="results" data-action="careers_filter" aria-live="polite">
@@ -83,7 +86,7 @@ $ancestor = array(
                         <?php endwhile ?>
                     <?php else: ?>
                         <div class="no-results">
-                            <p>Sorry. No opportunities were found with those criteria. <a href="/students/career-resources/career-opportunities/">Please try your search again</a>.</p>
+                            <p>Sorry. No opportunities were found with those criteria. <a href="/students/career-resources/pursue-graduate-school-and-academic-careers/academic-opportunities/">Please try your search again</a>.</p>
                         </div>
                     <?php endif ?>
                 </div>
