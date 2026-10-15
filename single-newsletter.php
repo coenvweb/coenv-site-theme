@@ -33,30 +33,34 @@ $links = get_field('outside_news');
 
 		<div class="container">
 
-            <nav id="secondary-nav" class="side-col">
+			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
+
+				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
-	              <?php wp_list_pages( array(
-	                  'child_of' => $ancestor['id'],
-	                  'depth' => 3,
-	                  'title_li' => '<a href="' . $ancestor['permalink'] . '">' . $ancestor['title'] . '</a>',
-	                  'link_after' => '<i class="icon-arrow-right"></i>',
-	                  'walker' => new CoEnv_Secondary_Menu_Walker,
-	                  'sort_column' => 'menu_order'
-	              ) ) ?>
+                  <?php
+                  $list_args = array(
+                      'child_of' => $ancestor['id'],
+                      'depth' => 3,
+					  'title_li' => '',
+					  'echo' => 0,
+                      'walker' => new CoEnv_Secondary_Menu_Walker,
+                      'sort_column' => 'menu_order' 
+                  );
+				  $secondary_nav_items = wp_list_pages($list_args);
+				  echo '<li class="pagenav"><ul>' . $secondary_nav_items . '</ul></li>';
+                  ?>
 	          </ul>
 
-            </nav><!-- #secondary-nav.side-col -->
+				</nav><!-- #secondary-nav.side-col -->
+
+			<?php endif ?>
 
 			<main id="main-col" class="main-col">
 
                 <div class="newsletter_header <?=($nl_type == 'headlines' ? 'headlines' : 'scicomm')?>">
-                    <?php if($nl_type == 'headlines') { ?>
-                        <img class="header_img" alt="Newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/headlines_header.png" />
-                    <?php } else { ?>
-                        <img class="header_img" alt="Newsletter page title" src="<?= get_template_directory_uri() ?>/assets/img/scicomm_header.png" />
-                    <?php } ?>
-                    <h1 class="newsletter_title"><?php echo $nl_title; ?></h1>
+                    <h1 class="newsletter_title">College of the Environment Newsletter</h1>
+                    <h2 class="newsletter_subtitle"><?php echo $nl_title; ?></h2>
                 </div>
 
                 <section class="newsletter">

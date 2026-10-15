@@ -102,7 +102,7 @@ div.major-minor {
 
 
     &.open {
-        width: calc(100% - 5px);
+        width: calc(100% - 8px);
         margin-bottom: 0rem;
         .major-title {
             padding-right: 3rem;
@@ -167,6 +167,7 @@ div.major-minor {
                 width: 33px;
                 font-size: 30px;
                 right: 1.5rem;
+                padding-bottom: 3px;
             }
 
         }

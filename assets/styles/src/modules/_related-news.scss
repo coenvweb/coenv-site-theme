@@ -59,8 +59,7 @@ footer.related {
             bottom: 0;
 
             h3 {
-                @include serif;
-                font-weight: 400;
+                @include encode_sb();
                 @extend .antialiased;
             }	
 
@@ -129,9 +128,6 @@ footer.related {
             }
     
             @include max-width ( 600 ) {
-                &:nth-child(odd) {
-                    border-bottom: 1px solid $border;
-                }
             }
     
             @include min-width ( 600 ) {
@@ -139,9 +135,6 @@ footer.related {
                 float: left;
                 padding-bottom: 50em;
                 margin-bottom: -50em;
-                &:nth-child(odd) {
-                    border-right: 1px solid $border;
-                }
             }
     
             a {
