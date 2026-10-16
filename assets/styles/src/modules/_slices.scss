@@ -1,22 +1,20 @@
 .container-slices {
-    .slice {
-        // Leave the container static so layout and grid positioning stay stable
-        
-        // Target the content wrappers/elements inside each slice
+  .slice {
         .slice-content {
             opacity: 0;
-            transform: translateY(280px); // Deep starting point for a dramatic rise
+            transform: translateY(120px);
             
-            animation: elementReveal linear forwards;
-            animation-timeline: view();
-            animation-range: entry 0% cover 30%;
+            // Scope the view timeline specifically to this element's geometry
+            animation: sliceContentReveal linear forwards;
+            animation-timeline: view(block);
+            animation-range: entry 0% cover 25%;
         }
     }
 
-    @keyframes elementReveal {
+    @keyframes sliceContentReveal {
         0% {
             opacity: 0;
-            transform: translateY(280px);
+            transform: translateY(120px);
         }
         100% {
             opacity: 1;
@@ -48,7 +46,7 @@
 
         &.slice-has-bg {
             position: relative;
-            overflow: hidden;
+            //overflow: hidden;
             background-size: cover;
             background-position: center;
             background-color: rgba($accent, .75);
