@@ -96,7 +96,10 @@
                         text-decoration: none;
                         text-transform: uppercase;
                         &:hover {
-                            color: $accent-yellow;
+                            color: $accent-yellow!important;
+                            svg {
+                                stroke: $accent-yellow;
+                            }
                         }
                         svg {
                             float: right;
