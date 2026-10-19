@@ -10,28 +10,48 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 
 	function __construct() {
 		$this->menu_pages = array();
+		$this->top_level_pages = array();
 
-		// get all pages that are set to appear in the main menu
+		// Fetch only the IDs needed for this menu. This avoids a large post object payload
+		// and prevents the meta query from being re-run repeatedly during page rendering.
 		$menu_pages = get_posts( array(
 			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'meta_query' => array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+			'no_found_rows'  => true,
+			'meta_query'     => array(
 				array(
-					'key' => 'show_in_main_menu',
-					'value' => 1,
-					'compare' => 'LIKE'
+					'key'     => 'show_in_main_menu',
+					'value'   => '1',
+					'compare' => '='
 				)
 			)
 		) );
 
-		if ( !empty( $menu_pages ) ) {
-			foreach ( $menu_pages as $page ) {
-				$this->menu_pages[] = $page->ID;
+		if ( ! empty( $menu_pages ) ) {
+			foreach ( $menu_pages as $page_id ) {
+				$this->menu_pages[] = (int) $page_id;
+			}
 
-				if ( empty( $page->ancestors ) ) {
-					$this->top_level_pages[] = $page->ID;
-				}
+			$top_level_ids = get_posts( array(
+				'posts_per_page' => -1,
+				'post_type'      => 'page',
+				'post_status'    => 'publish',
+				'post_parent'    => 0,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+				'meta_query'     => array(
+					array(
+						'key'     => 'show_in_main_menu',
+						'value'   => '1',
+						'compare' => '='
+					)
+				)
+			) );
+
+			if ( ! empty( $top_level_ids ) ) {
+				$this->top_level_pages = array_map( 'intval', $top_level_ids );
 			}
 		}
 	}
@@ -98,18 +118,24 @@ class CoEnv_Secondary_Menu_Walker extends Walker_Page {
 
 }
 
-
 function my_page_css_class( $css_class, $page ) {
 	global $post;
-	if ( $post->ID == $page->ID ) {
-		$css_class[] = 'current_page_item';
+	
+	// Safely check if $post is a valid object before reading its ID
+	if ( isset( $post ) && is_object( $post ) && isset( $post->ID ) ) {
+		if ( $post->ID == $page->ID ) {
+			$css_class[] = 'current_page_item';
+		}
 	}
+
 	if ( is_singular( 'post' ) && $page->ID == (int) get_option( 'page_for_posts' ) ) {
 		$css_class[] = 'current_page_item';
 	}
-    if (is_singular('careers') && $page->ID == 27023) {
-        $css_class[] = 'current_page_item';
-    }
+	
+	if ( is_singular( 'careers' ) && $page->ID == 27023 ) {
+		$css_class[] = 'current_page_item';
+	}
+	
 	return $css_class;
 }
 add_filter( 'page_css_class', 'my_page_css_class', 10, 2 );

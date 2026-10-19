@@ -14,6 +14,9 @@ $coenv_member_api = new CoEnvMemberAPI();
 
 class CoEnvMemberAPI {
 
+	public $directory;
+	public $base_url;
+
 	function __construct() {
 
 		$this->directory = dirname( __FILE__ ) . '/';

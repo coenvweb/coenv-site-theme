@@ -7,7 +7,13 @@
  */
 function coenv_custom_metas() {
     // Post info
-    $page_id = get_queried_object_id(); 
+    $page_id = get_queried_object_id();
+    if ( empty( $page_id ) ) {
+        $page_id = get_the_ID();
+    }
+    if ( empty( $page_id ) ) {
+        return '';
+    }
     
     // Set ancestors for featured image inheritance
     if (is_search() || is_404()) {
@@ -22,22 +28,29 @@ function coenv_custom_metas() {
     $break = PHP_EOL;
  
     // Meta ACFs
-    $meta_description_on_page = trim(get_field('meta_description_on_page', $page_id));
-    $meta_robots = trim(get_field('meta_robots', $page_id));
+    $meta_description_on_page_value = get_field('meta_description_on_page', $page_id);
+    $meta_description_on_page = is_string( $meta_description_on_page_value ) ? trim( $meta_description_on_page_value ) : '';
+
+    $meta_robots_value = get_field('meta_robots', $page_id);
+    $meta_robots = is_string( $meta_robots_value ) ? trim( $meta_robots_value ) : '';
         
     // Social ACFs
-    if (get_field('social_share_title')) {
-        $social_share_title = trim(get_field('social_share_title', $page_id));
+    $social_share_title_value = get_field('social_share_title', $page_id);
+    if ( ! empty( $social_share_title_value ) ) {
+        $social_share_title = is_string( $social_share_title_value ) ? trim( $social_share_title_value ) : '';
     } else {
         $social_share_title = get_the_title($page_id);
     }
-    if (get_field('social_share_description')) {
-        $social_share_description = trim(get_field('social_share_description', $page_id));
+
+    $social_share_description_value = get_field('social_share_description', $page_id);
+    if ( ! empty( $social_share_description_value ) ) {
+        $social_share_description = is_string( $social_share_description_value ) ? trim( $social_share_description_value ) : '';
     } else {
         $social_share_description = get_the_excerpt($page_id);
     }
     
-    $social_image = trim(get_field('social_image', $page_id)); 
+    $social_image_value = get_field('social_image', $page_id);
+    $social_image = is_string( $social_image_value ) ? trim( $social_image_value ) : '';
 
     // Get featured image, or use ancestor's if empty, or fallback to logo
     if ($social_image) {

@@ -212,6 +212,8 @@ function coenv_setting_uw_social() {
 add_action( 'after_setup_theme', 'coenv_theme_setup' );
 function coenv_theme_setup() {
 
+	load_theme_textdomain( 'coenv', get_template_directory() . '/languages' );
+
 	// Add RSS feed links to <head> for posts and comments.
 	add_theme_support('automatic-feed-links');
 
@@ -253,6 +255,10 @@ function coenv_unit_color( $unit_id ) {
 	return $coenv_member_api->unit_color( $unit_id );
 }
 
+$start_time = microtime(true);
+add_action('shutdown', function() use ($start_time) {
+    error_log('Page load time: ' . (microtime(true) - $start_time) . ' seconds');
+});
 
 
 /**
@@ -263,7 +269,7 @@ function coenv_page_top_ancestor_class( $classes ) {
 	$post = get_queried_object();
 	$ancestor_id = coenv_get_ancestor('ID');
 
-	if ( isset( $post->ID ) && $post->ID == $ancestor_id ) {
+	if ( is_object( $post ) && isset( $post->ID ) && $post->ID == $ancestor_id ) {
 		$classes[] = 'page-top-level';
 	}
 	return $classes;
@@ -280,6 +286,7 @@ function coenv_page_top_ancestor_class( $classes ) {
 function coenv_get_ancestor($attr = 'ID') {
 	
 	$post = get_queried_object();
+	$post_type = is_object( $post ) && isset( $post->post_type ) ? $post->post_type : '';
 
 	// test for search
 	if ( is_search() ) {
@@ -287,7 +294,7 @@ function coenv_get_ancestor($attr = 'ID') {
 	}
     
 
-	if ( (is_archive() || $post->post_type == 'post' || $post->post_type == 'intranet' || is_search()) && !is_post_type_archive( array( 'faculty' ) ) && !is_post_type_archive( array( 'careers' ) ) ) {
+	if ( ( is_archive() || in_array( $post_type, array( 'post', 'intranet' ), true ) || is_search() ) && ! is_post_type_archive( 'faculty' ) && ! is_post_type_archive( 'careers' ) ) {
 
 		$page_for_posts = get_option( 'page_for_posts' );
 		if ( ! $page_for_posts ) {
@@ -308,7 +315,7 @@ function coenv_get_ancestor($attr = 'ID') {
 		}
         
         
-        if ((isset($post->post_type)) && $post->post_type == 'intranet') {
+        if ( 'intranet' === $post_type ) {
             unset ($ancestor);
             $ancestor = get_post( 267 );
         }

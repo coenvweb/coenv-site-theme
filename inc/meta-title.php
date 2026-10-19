@@ -11,13 +11,19 @@ function coenv_meta_title() {
     global $page, $paged;
     
     // "You Are Here" info
-    $page_id = get_queried_object_id(); 
+    $page_id = get_queried_object_id();
+    if ( empty( $page_id ) ) {
+        $page_id = get_the_ID();
+    }
+
     //$page_for_posts_id = get_option( 'page_for_posts' );
     $page_title = wp_title('|', FALSE, 'right');
     $taxonomy_title = single_term_title('', FALSE);
     $site_title = get_bloginfo('name');
     $site_description = get_bloginfo('description');
-    $meta_title = trim(get_field('meta_title', $page_id));
+
+    $meta_title_value = ! empty( $page_id ) ? get_field('meta_title', $page_id) : false;
+    $meta_title = is_string( $meta_title_value ) ? trim( $meta_title_value ) : '';
     $search_query = apply_filters( 'get_search_query', get_query_var( 's' ) );
     
     // Page numbers for archive pages

@@ -71,6 +71,22 @@ function coenv_widgets_init() {
 }
 
 add_action( 'widgets_init', 'coenv_widgets_init' );
+add_action( 'widgets_init', 'coenv_register_theme_widgets' );
+
+function coenv_register_theme_widgets() {
+	register_widget( 'CoEnv_Widget_Social' );
+	register_widget( 'CoEnv_Widget_UG_majors' );
+	register_widget( 'CoEnv_Widget_G_degrees' );
+	register_widget( 'CoEnv_Widget_Events' );
+	register_widget( 'CoEnv_Widget_Events_Sidebar' );
+	register_widget( 'CoEnv_Widget_Newsletter' );
+	register_widget( 'CoEnv_Widget_Related_Posts' );
+	register_widget( 'CoEnv_Widget_Student_Ambassadors' );
+	register_widget( 'CoEnv_Widget_Graduate_Student_Profiles' );
+	register_widget( 'CoEnv_Widget_Postdoc_Profiles' );
+	register_widget( 'CoEnv_Widget_Meet_Postdoc' );
+	register_widget( 'CoEnv_Widget_Podcast' );
+}
 
 /*
 |---------------------------------------------------------------------------
@@ -87,7 +103,6 @@ add_action( 'after_setup_theme', 'phi_theme_support' );
 /**
  * Social Links Widget
  */
-register_widget( 'CoEnv_Widget_Social' );
 
 class CoEnv_Widget_Social extends WP_Widget {
  
@@ -192,7 +207,6 @@ class CoEnv_Widget_Social extends WP_Widget {
 /**
  * Undergrad Majors and Minors Widget
  */
-register_widget( 'CoEnv_Widget_UG_majors' );
 
 class CoEnv_Widget_UG_majors extends WP_Widget {
  
@@ -277,7 +291,6 @@ class CoEnv_Widget_UG_majors extends WP_Widget {
 /**
  * Grad Majors and Minors Widget
  */
-register_widget( 'CoEnv_Widget_G_degrees' );
 
 class CoEnv_Widget_G_degrees extends WP_Widget {
  
@@ -362,7 +375,6 @@ class CoEnv_Widget_G_degrees extends WP_Widget {
 /**
  * Events Widget
  */
-register_widget( 'CoEnv_Widget_Events' );
 class CoEnv_Widget_Events extends WP_Widget {
 
 	public function __construct() {
@@ -519,7 +531,6 @@ class CoEnv_Widget_Events extends WP_Widget {
 /**
  * Sidebar events Widget
  */
-register_widget( 'CoEnv_Widget_Events_Sidebar' );
 class CoEnv_Widget_Events_Sidebar extends WP_Widget {
 
 	public function __construct() {
@@ -679,7 +690,6 @@ class CoEnv_Widget_Events_Sidebar extends WP_Widget {
 /**
  * Headlines Newsletter Widget
  */
-register_widget( 'CoEnv_Widget_Newsletter' );
 
 class CoEnv_Widget_Newsletter extends WP_Widget {
  
@@ -750,7 +760,6 @@ class CoEnv_Widget_Newsletter extends WP_Widget {
 /**
  * Related Posts Widget
  */
-register_widget( 'CoEnv_Widget_Related_Posts' );
 
 class CoEnv_Widget_Related_Posts extends WP_Widget {
  
@@ -929,7 +938,6 @@ class CoEnv_Widget_Related_Posts extends WP_Widget {
 /**
  * Student Ambassadors Widget
  */
-register_widget( 'CoEnv_Widget_Student_Ambassadors' );
 
 class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
  
@@ -1079,7 +1087,6 @@ class CoEnv_Widget_Student_Ambassadors extends WP_Widget {
 /**
  * Graduate Student Profiles Widget
  */
-register_widget( 'CoEnv_Widget_Graduate_Student_Profiles' );
 
 class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
  
@@ -1229,7 +1236,6 @@ class CoEnv_Widget_Graduate_Student_Profiles extends WP_Widget {
 /**
  * Postdoc Profiles Widget
  */
-register_widget( 'CoEnv_Widget_Postdoc_Profiles' );
 
 class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
  
@@ -1380,7 +1386,6 @@ class CoEnv_Widget_Postdoc_Profiles extends WP_Widget {
 /**
  * Meet a Postdoc
  */
-register_widget( 'CoEnv_Widget_Meet_Postdoc' );
 
 class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
  
@@ -1558,7 +1563,6 @@ class CoEnv_Widget_Meet_Postdoc extends WP_Widget {
 /**
  * Podcast Widget
  */
-register_widget( 'CoEnv_Widget_Podcast' );
 
 class CoEnv_Widget_Podcast extends WP_Widget {
  

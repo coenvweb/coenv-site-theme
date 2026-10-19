@@ -9,43 +9,50 @@
  */
 class CoEnv_Main_Menu_Walker extends Walker_Page {
 
-	/**
-	 * Intialization
-	 */
 	public function __construct() {
+		// Pull from cache or fetch once for 12 hours
+		$menu_data = get_transient( 'coenv_main_menu_data' );
 
-		// All menu items
-		$this->items = $this->get_items();
-		$this->item_ids = $this->get_ids( $this->items );
+		if ( false === $menu_data ) {
+			$menu_data = array(
+				'items'           => $this->fetch_items(),
+				'top_level'       => $this->fetch_top_level_items(),
+				'subhead'         => $this->fetch_subhead_items(),
+			);
+			set_transient( 'coenv_main_menu_data', $menu_data, 12 * HOUR_IN_SECONDS );
+		}
 
-		// Items that are set as top-level
-		$this->top_level_items = $this->get_top_level_items();
+		$this->items             = $menu_data['items'];
+		$this->item_ids          = $this->get_ids( $this->items );
+
+		$this->top_level_items   = $menu_data['top_level'];
 		$this->top_level_item_ids = $this->get_ids( $this->top_level_items );
 
-		// Items that are set to appear as sub-headers
-		$this->subhead_items = $this->get_subhead_items();
-		$this->subhead_item_ids = $this->get_ids( $this->subhead_items );
+		$this->subhead_items     = $menu_data['subhead'];
+		$this->subhead_item_ids  = $this->get_ids( $this->subhead_items );
 
 		// ID of blog home page
-		$this->page_for_posts = get_option( 'page_for_posts' ); 
+		$this->page_for_posts    = get_option( 'page_for_posts' );
+		$this->current_page_obj = null;
+		$this->current_page_id = 0;
+		$this->current_page_ancestors = array();
 
 		// Keep count of top-level items
 		$this->top_level_counter = 0;
 	}
 
 	/**
-	 * Get post objects for all pages that are set to 
-	 * appear in the menu.
+	 * Actual database query methods (renamed from get_ to fetch_)
 	 */
-	public function get_items() {
-
+	public function fetch_items() {
 		return get_posts( array(
 			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'meta_query' => array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'no_found_rows'  => true,
+			'meta_query'     => array(
 				array(
-					'key' => 'show_in_main_menu',
+					'key'   => 'show_in_main_menu',
 					'value' => '1',
 					'compare' => '=='
 				)
@@ -53,20 +60,16 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		) );
 	}
 
-	/**
-	 * Get post objects for pages that are set to appear 
-	 * as top-level menu items.
-	 */
-	public function get_top_level_items() {
-
+	public function fetch_top_level_items() {
 		return get_posts( array(
 			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_parent' => 0,
-			'post_status' => 'publish',
-			'meta_query' => array(
+			'post_type'      => 'page',
+			'post_parent'    => 0,
+			'post_status'    => 'publish',
+			'no_found_rows'  => true,
+			'meta_query'     => array(
 				array(
-					'key' => 'show_as_top-level_page',
+					'key'   => 'show_as_top-level_page',
 					'value' => '1',
 					'compare' => '=='
 				)
@@ -74,19 +77,15 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		) );
 	}
 
-	/**
-	 * Get post objects for pages that are set to appear
-	 * as subheaders (current example: GRADUATE | UNDERGRADUATE)
-	 */
-	public function get_subhead_items() {
-
+	public function fetch_subhead_items() {
 		return get_posts( array(
 			'posts_per_page' => -1,
-			'post_type' => 'page',
-			'post_status' => 'publish',
-			'meta_query' => array(
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'no_found_rows'  => true,
+			'meta_query'     => array(
 				array(
-					'key' => 'show_as_sub-header',
+					'key'   => 'show_as_sub-header',
 					'value' => '1',
 					'compare' => '=='
 				)
@@ -219,21 +218,27 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		}
 
 		if ( ! empty( $current_page ) ) {
+			$current_page_id = (int) $current_page;
 
-			$item_obj = get_post( $current_page );
+			if ( $this->current_page_id !== $current_page_id ) {
+				$this->current_page_id = $current_page_id;
+				$this->current_page_obj = get_post( $this->current_page_id );
+				$this->current_page_ancestors = $this->current_page_obj ? get_post_ancestors( $this->current_page_id ) : array();
+			}
 
-			if ( in_array( $page->ID, $item_obj->ancestors ) ) {
+			$item_obj = $this->current_page_obj;
+
+			if ( $item_obj && in_array( $page->ID, $this->current_page_ancestors ) ) {
 				$css_class[] = 'current_page_ancestor';
 			}
 
-			if ( $page->ID == $current_page ) {
+			if ( $page->ID == $current_page_id ) {
 				$css_class[] = 'current_page_item';
 			}
 
 			if ( $item_obj && $page->ID == $item_obj->post_parent ) {
 				$css_class[] = 'current_page_parent';
 			}
-		
 		}
 		// If we're on the 'faculty' item
 		if ( $page->post_name == 'faculty' ) {
@@ -259,9 +264,11 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 		if ( $depth == 0 ) {
 
 			// Check for alternate drop-down title such as
-			// "Meet our faculty" for "Faculty"
-			$alt_title = get_field( 'drop-down_title', $page->ID );
-			$alt_title = $alt_title ? ' title=' . $alt_title . '"' : '';
+			// "Meet our faculty" for "Faculty".
+			// Use the native post meta lookup here instead of ACF's get_field()
+			// to avoid one database call per menu item.
+			$alt_title = get_post_meta( $page->ID, 'drop-down_title', true );
+			$alt_title = $alt_title ? ' title="' . esc_attr( $alt_title ) . '"' : '';
 
 			$output .= '<span>';
 		}
