@@ -131,7 +131,7 @@ if ( ! function_exists( 'coenv_render_single_slice' ) ) {
                 <?php if ( 'Events and Newsletter' === $slice_type ) : ?>
                     <div class="slice-events">
                         <h3 class="slice-events-newsletter-title">Events</h3> <a class="more-events right button" href="http://environment.uw.local/alumni-and-community/calendar-events/">See all events &raquo;</a>
-                        <?php the_widget( 'CoEnv_Widget_Events', array( 'feed_url' => 'https://www.trumba.com/calendars/featuredevents-1.rss', 'posts_per_page' => 3 ) ); ?>
+                        <?php the_widget( 'CoEnv_Widget_Events', array( 'title' => '', 'feed_url' => 'https://www.trumba.com/calendars/featuredevents-1.rss', 'posts_per_page' => 3 ) ); ?>
                     </div>
                     <div class="slice-newsletter">
                         <div class="newsletter-title-area">
