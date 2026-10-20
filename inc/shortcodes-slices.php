@@ -67,7 +67,7 @@ if ( ! function_exists( 'coenv_render_single_slice' ) ) {
 
         ob_start();
         ?>
-        <article class="slice slice-full-width <?php echo esc_attr( $slice_bg_class ); ?> slice-<?php echo esc_attr( $slice_type_class . $slice_multi_links_class ); ?>"<?php echo $slice_style; ?>>
+        <article class="slice slice-full-width <?php echo esc_attr( sanitize_title( $slice_title ) ); ?> <?php echo esc_attr( $slice_bg_class ); ?> slice-<?php echo esc_attr( $slice_type_class . $slice_multi_links_class ); ?>"<?php echo $slice_style; ?>>
             <div class="slice-content container">
                 <?php if ( $slice_title ) : ?>
                     <h3 class="slice-title"><?php echo esc_html( $slice_title ); ?></h3>
@@ -130,7 +130,7 @@ if ( ! function_exists( 'coenv_render_single_slice' ) ) {
 
                 <?php if ( 'Events and Newsletter' === $slice_type ) : ?>
                     <div class="slice-events">
-                        <h3 class="slice-events-newsletter-title">Events</h3> <a class="more-events right button" href="http://environment.uw.local/alumni-and-community/calendar-events/">See all events &raquo;</a>
+                        <h3 class="slice-events-newsletter-title">Events</h3> <a class="more-events right button" href="http://environment.uw.local/alumni-and-community/calendar-events/">See all events</a>
                         <?php the_widget( 'CoEnv_Widget_Events', array( 'title' => '', 'feed_url' => 'https://www.trumba.com/calendars/featuredevents-1.rss', 'posts_per_page' => 3 ) ); ?>
                     </div>
                     <div class="slice-newsletter">

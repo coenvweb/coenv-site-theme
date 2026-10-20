@@ -82,7 +82,7 @@
                 @include max-width ( $iPadPortrait ) {
                     grid-column: 1 / -1;
                     grid-row: auto;
-                    
+                    font-size: 2rem;
                 }
             }
 
@@ -113,10 +113,14 @@
                     @include o_sans_bold();
                     font-size: 1.25rem;
                     padding: 1rem;
+                    
                     a {
                         color: white;
                         text-decoration: none;
                         text-transform: uppercase;
+                        display: inline-block;
+                        width: 100%;
+                        
                         &:hover {
                             color: $accent-yellow!important;
                             svg {

@@ -681,11 +681,11 @@ body.home {
 }
 
 .home .container-slices {         // Target the first character of the CTA in the last homepage slice.
-	&:last-child {
+	.support-the-college {
 		.slice-link::first-letter {
-			//display: inline-block;
-			//color: $accent-yellow;
-			//transform: scaleX(1.25);
+			display: inline-block;
+			color: $accent-yellow;
+			transform: scaleX(1.25);
 		}
 	}
 }
