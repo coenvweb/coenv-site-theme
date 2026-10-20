@@ -38,10 +38,7 @@ $feature = array(
 ?>
 
 <article class="feature">
-    
-    <a class="feature-title" title="<?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
-        
-    <span class="visuallyhidden">Link to article</span>
+	<a class="feature-link" title="<?php echo get_the_title(); ?>" aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
 
 	<div class="feature-image" style="background-image: url(<?php echo $feature['image']['url']  ?>);">
 	</div>
@@ -50,7 +47,7 @@ $feature = array(
             
 		<div class="feature-info">
 
-            <a class="feature-button" aria-label="Read more about <?php echo get_the_title(); ?>" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.09 55.09" aria-hidden="true" focusable="false"><circle cx="27.55" cy="27.55" r="26.05" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><polyline points="29.52 37.68 40.72 27.55 29.52 17.41" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><line x1="39.27" y1="27.55" x2="15.37" y2="27.55" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></a>
+			<span class="feature-button" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.09 55.09" aria-hidden="true" focusable="false"><circle cx="27.55" cy="27.55" r="26.05" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><polyline points="29.52 37.68 40.72 27.55 29.52 17.41" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><line x1="39.27" y1="27.55" x2="15.37" y2="27.55" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/></svg></span>
 
 			<div class="feature-type">
             <?php
@@ -61,13 +58,9 @@ $feature = array(
 			</div><!-- .feature-type -->
 
 			<div class="feature-content">
-                <a class="feature-title" href="<?php echo $feature['content_link']['url'] ?>"<?php echo $feature['content_link']['target'] ?>>
+				<h3><?php the_title() ?></h3>
 
-                    <h3><?php the_title() ?></h3>
-
-                    <p><?php the_advanced_excerpt('length=20&length_type=words'); ?></p>
-                    
-                </a>
+				<p><?php the_advanced_excerpt('length=20&length_type=words'); ?></p>
 
                 <?php if ( !empty( $feature['image']['caption'] ) ) : ?>
                     <p class="feature-caption"><?php echo  'Photo: ' . $feature['image']['caption'] ?></p>
@@ -78,7 +71,6 @@ $feature = array(
 		</div><!-- .feature-info -->
             
 	</div><!-- .feature-info-container -->
-    
-    </a>
+	</a>
 
 </article><!-- .feature -->

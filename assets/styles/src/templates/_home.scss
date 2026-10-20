@@ -54,6 +54,7 @@ body.home {
 		background: $bg-lt;
 		text-align: left;
 		margin-bottom: 1rem;
+		transition: background-color 0.2s ease;
 
 		@include min-width ( $iPadPortrait ) {
 			min-height: 450px;
@@ -77,6 +78,12 @@ body.home {
 			text-decoration: none;
 		}
 
+		.feature-link {
+			display: block;
+			color: inherit;
+			text-decoration: none;
+		}
+
 		.feature-image {
 			position: relative;
 			padding-top: 60%;
@@ -95,7 +102,7 @@ body.home {
 				left: 0;
 				bottom: 0;
 				padding: 0;
-				width: 66.4%;
+				width: 67%;
 			}
 
 			// TODO: display feature image caption
@@ -115,7 +122,7 @@ body.home {
 			@include min-width ( $iPadPortrait ) {
 				display: table;
 				float: right;
-				width: percentage( 386 / ( $max-width / 1px ) );
+				width: 33%;
 				height: 450px;
 			}
 
@@ -128,7 +135,8 @@ body.home {
 
 			.feature-info {
 				@include rem('padding', 1);
-				// background-color is set inline
+				background-color: $bg-lt;
+				transition: background-color 0.2s ease;
 
 				@include min-width ( $iPadPortrait ) {
 					display: table-cell;
@@ -145,7 +153,14 @@ body.home {
 						right: 1rem;
 						stroke: $accent-dk;
 						text-decoration: none;
+						transition: stroke 0.2s ease;
 					}
+				}
+
+				.feature-type,
+				.feature-content h3,
+				.feature-content p {
+					transition: color 0.2s ease;
 				}
 
 				.feature-content {
@@ -179,6 +194,23 @@ body.home {
 			} // .feature-info
 
 		} // .feature-info-container
+
+		&:hover,
+		&:focus-within {
+			.feature-info {
+				background-color: $accent;
+			}
+
+			.feature-info .feature-type,
+			.feature-info .feature-content h3,
+			.feature-info .feature-content p {
+				color: $white;
+			}
+
+			.feature-info .feature-button svg {
+				stroke: $white;
+			}
+		}
 
 		.feature-content {
 			position: relative;
@@ -239,6 +271,7 @@ body.home {
         text-decoration: none;
         color: $text;
         -webkit-font-smoothing: antialiased;
+		transition: color 0.2s ease;
     }
     
 	.inner {
@@ -246,15 +279,21 @@ body.home {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		transition: background-color 0.2s ease;
+
+		.related-article-title {
+			transition: background-color 0.2s ease;
+		}
+
         &:hover {
             background-color: $accent;
+
             a {
                 color: $white!important;
             }
+
             .related-article-title {
                 background-color: $accent;
-            }
-            .related-thumb {
             }
         }
 	}
@@ -638,5 +677,15 @@ body.home {
 		position: absolute;
 		right: 0;
 		top: 0;
+	}
+}
+
+.home .container-slices {         // Target the first character of the CTA in the last homepage slice.
+	&:last-child {
+		.slice-link::first-letter {
+			display: inline-block;
+			color: $accent-yellow;
+			transform: scaleX(1.25);
+		}
 	}
 }
