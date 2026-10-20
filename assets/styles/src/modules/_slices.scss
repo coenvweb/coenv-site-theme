@@ -7,7 +7,7 @@
             // Scope the view timeline specifically to this element's geometry
             animation: sliceContentReveal linear forwards;
             animation-timeline: view(block);
-            animation-range: entry 0% cover 25%;
+            animation-range: entry 0% cover 15%;
         }
     }
 
@@ -75,7 +75,6 @@
             .slice-title {
                 grid-column: 1 / 2;
                 grid-row: 1;
-                font-size: 3rem;
                 @include encode_wide_black();
                 text-transform: uppercase;
                 margin-bottom: 0;
@@ -154,25 +153,36 @@
             }
 
             .slice-number-list {
-                grid-auto-flow: column;
-                grid-auto-columns: minmax(0, 1fr);
-                grid-template-columns: repeat(var(--slice-columns, 1), minmax(0, 1fr));
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 1.5rem;
                 list-style: none;
                 padding-left: 0;
                 margin: 0;
                 text-align: center;
-                @include min-width ( $iPadPortrait ) {
-                    display: grid;
+                @include max-width ( $iPadLandscape ) {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                @include max-width ( $iPadPortrait ) {
+                    grid-template-columns: 1fr;
+                }
+                .slice-number-item {
+                    margin-bottom: 1rem;
+                    @include min-width ( $iPadPortrait ) {
+                        display: block;
+                    }
                 }
                 .slice-number-value {
                     display: block;
-                    font-size: 4rem;
+                    font-size: 2rem;
                     @include encode_wide_black();
                     border-bottom: 3px solid $accent-yellow;
                     line-height: normal;
                     margin-bottom: 1rem;
                     padding-bottom: 1rem;
+                    @include min-width ( $iPadPortrait ) {
+                        font-size: 4rem;
+                    }
                 }
                 .slice-number-label{
                     display: block;
@@ -232,6 +242,8 @@
             margin-bottom: 1rem;
             @include max-width ( $iPadPortrait ) {
                 grid-column: 1 / -1;
+                font-size: 2rem;
+                margin-bottom: 0;
             }
         }
         .slice-description-area {
