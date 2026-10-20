@@ -165,6 +165,7 @@ footer.related {
 .article__content .related-news {
     @extend .article;
     display: block;
+    padding: 1rem 0 0 0;
 
     @include min-width ( $iPhoneLandscape) {
         @include rem('margin-bottom', 1.5);
