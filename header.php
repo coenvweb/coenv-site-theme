@@ -78,7 +78,7 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                         <div class="uw-header__logo">
                             <a href="https://www.washington.edu/" title="University of Washington" rel="home">
-                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/university-of-washington.svg" alt="University of Washington Logo" />
+                                <?php include( get_template_directory() . '/assets/img/university-of-washington.svg' ); ?>
                             </a>
                         </div>
 

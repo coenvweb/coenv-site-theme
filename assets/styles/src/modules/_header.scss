@@ -16,12 +16,23 @@
 
 .uw-header {
 	background: $accent;
-	img {
+	.uw-header__logo a svg {
 		padding: 0.5rem 0 0rem 0;
 		@include min-width ( 1000 ) {
 			padding: 1rem 0 0.5rem 0;
 			margin-left: -0.5rem;
 		}
+	}
+
+	.uw-header__logo a svg path {
+		fill: #fff;
+		transition: fill 0.15s ease-out;
+	}
+
+	.uw-header__logo a:hover svg path,
+	.uw-header__logo a:focus svg path,
+	.uw-header__logo a:focus-visible svg path {
+		fill: $accent-yellow;
 	}
 }
 
@@ -343,6 +354,21 @@ li#wp-admin-bar-revision {
             position: relative;
             transform: scale(1.15);
             left: 1.5rem;
+			height: 36px;
+
+			path {
+				transition: fill 0.15s ease-out;
+			}
+
+			&:hover path,
+			&:focus path,
+			&:focus-visible path,
+			a:hover & path,
+			a:focus & path,
+			a:focus-visible & path {
+				fill: $accent-yellow;
+			}
+
             @include max-width ( 700 ) {
                 width: calc(100% - 160px);
                 left: 1rem;
