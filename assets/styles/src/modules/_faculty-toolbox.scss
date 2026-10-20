@@ -99,6 +99,12 @@
 			height: 3rem;
 			width: 100%;
 			padding-right: 3.25rem;
+			font-size: 1rem;
+			line-height: 1.2;
+			color: $text;
+			-webkit-text-fill-color: $text;
+			caret-color: $text;
+			cursor: text;
 		}
 
 		button[type="submit"] {
@@ -254,13 +260,9 @@
 }
 
 .Faculty-toolbox-search-button-icon {
-	@include font-size(22);
+	font-size: 22px!important;
 	opacity: 0;
 	position: absolute!important;
-	&.icon-search {
-		padding-top: 8px;
-    	padding-right: 11px;
-	}
 }
 
 .Faculty-toolbox-search-button-icon--search {

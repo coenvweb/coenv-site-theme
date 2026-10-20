@@ -683,6 +683,15 @@
 
     CoEnvFaculty.prototype.handleSearch = function () {
         var _this = this;
+        var $searchForm = this.$searchField.closest('form');
+
+        this.$searchWrap.on('click', function (event) {
+            if ($(event.target).closest('.Faculty-toolbox-search-button').length) {
+                return;
+            }
+
+            _this.$searchField.trigger('focus');
+        });
 
 		this.$searchField.on('input', function () {
 			_this.syncSearchState();
@@ -700,25 +709,35 @@
             }
         });
 
-        this.$form.on('submit', function (event) {
-            event.preventDefault();
+        $searchForm.on('submit', function (event) {
             var keywords = _this.getSearchTerm();
+
+            if (_this.isSearchLoading) {
+                event.preventDefault();
+                return;
+            }
 
             if (keywords === '') {
                 if (_this.hasActiveSearch()) {
+                    event.preventDefault();
                     _this.resetSearch(true);
                 }
                 return;
             }
+
+            // If Ajax config is not available, let native form submission continue.
+            var ajaxUrl = (typeof themeVars !== 'undefined' && themeVars.ajaxurl) ? themeVars.ajaxurl : '';
+            if (!ajaxUrl) {
+                return;
+            }
+
+            event.preventDefault();
 
             if (_this.currentSearchRequest && typeof _this.currentSearchRequest.abort === 'function') {
                 _this.currentSearchRequest.abort();
             }
 
             _this.setSearchLoading(true);
-            
-            // Safety check for global vars
-            var ajaxUrl = (typeof themeVars !== 'undefined') ? themeVars.ajaxurl : '/wp-admin/admin-ajax.php';
 
             var searchData = {
                 action: 'coenv_member_api_search',
@@ -726,8 +745,22 @@
             };
 
             _this.currentSearchRequest = $.post(ajaxUrl, searchData, function (response) {
-                var searchResponse = $.parseJSON(response);
+                var searchResponse = response;
                 var memberIDs;
+
+                if (typeof searchResponse === 'string') {
+                    try {
+                        searchResponse = $.parseJSON(searchResponse);
+                    } catch (parseError) {
+                        _this.$feedbackMessage.text('Search is currently unavailable. Please try again.');
+                        return;
+                    }
+                }
+
+                if (!searchResponse || searchResponse.results === undefined || searchResponse.number === undefined) {
+                    _this.$feedbackMessage.text('Search is currently unavailable. Please try again.');
+                    return;
+                }
 
                 if (searchResponse.number === 0) {
                     memberIDs = ['Faculty-list-item--*'];

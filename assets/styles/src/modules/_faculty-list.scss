@@ -79,6 +79,11 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
+// Keep toolbox controls above hovered/focused tiles so inputs remain interactive.
+.Faculty-toolbox {
+	z-index: 30;
+}
+
 .js .Faculty-toolbox {
 
 	@include min-width ( $bp-2 ) {

@@ -95,13 +95,15 @@ $ordered_themes = $themes;
 						<label for="search">Search all faculty</label>
 
 						<div class="field-wrap Faculty-toolbox-search-wrap">
-    						<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
-							<button type="submit" class="Faculty-toolbox-search-button" aria-label="Search faculty">
-								<i class="icon-search Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--search" aria-hidden="true"></i>
-								<i class="icon-cross Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--clear" aria-hidden="true"></i>
-								<span class="Faculty-toolbox-search-button-spinner" aria-hidden="true"></span>
-								<span class="Faculty-toolbox-search-button-label">Search</span>
-							</button>
+							<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+								<input class="Faculty-toolbox-search" type="text" value="<?php echo get_search_query() ?>" name="search" id="search" role="search" />
+								<button type="submit" class="Faculty-toolbox-search-button" aria-label="Search faculty">
+									<i class="icon-search Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--search" aria-hidden="true"></i>
+									<i class="icon-cross Faculty-toolbox-search-button-icon Faculty-toolbox-search-button-icon--clear" aria-hidden="true"></i>
+									<span class="Faculty-toolbox-search-button-spinner" aria-hidden="true"></span>
+									<span class="Faculty-toolbox-search-button-label">Search</span>
+								</button>
+							</form
   						</div>
 
 					</div>
@@ -123,7 +125,7 @@ $ordered_themes = $themes;
 			</div>
 
 		</div><!-- .Faculty-toolbox-footer -->
-		
+
 	</div>
 
 </header>

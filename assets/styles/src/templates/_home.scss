@@ -155,6 +155,10 @@ body.home {
 						text-decoration: none;
 						transition: stroke 0.2s ease;
 					}
+					@include max-width ( $iPadPortrait ) {
+						display: none;
+			
+					}
 				}
 
 				.feature-type,
@@ -375,6 +379,10 @@ body.home {
 		position: relative;
 		aspect-ratio: 4 / 3;
 
+		@include max-width ( 700 ) {
+			aspect-ratio: 16 / 9;
+		}
+
 		img {
 			width: 100%;
             height: 100%;
@@ -571,14 +579,20 @@ body.home {
 					left: 5px;
 					animation-delay: .3s;
 					transition: background-color 0.3s ease 0.18s;
+					@include max-width ( 700 ) {
+						width: 2.5rem;
+						height: 2.5rem;
+						font-size: 1rem;
+						mask-size: 2rem;
+					}
 				}
 			}
 			
 		}
 
 		@include max-width ( 700 ) {
-			font-size: 2.5rem;
-			line-height: 125%;
+			font-size: 2.5rem!important;
+			line-height: normal!important;
 		}
 
 
@@ -595,6 +609,9 @@ body.home {
 		color: $white;
 		margin: 0 0 2rem 0;
 		max-width: 700px;
+		@include max-width ( 700 ) {
+			font-size: 1.25rem;
+		}
 	}
 
 	p {
@@ -650,6 +667,8 @@ body.home {
 .social-media-container {
 	margin-top: 1rem;
 	margin-bottom: 2rem;
+	display: inline-block;
+	width: 100%;
 	.social-media-links {
 		text-align: center;
 		li {

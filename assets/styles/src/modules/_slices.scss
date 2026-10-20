@@ -82,7 +82,6 @@
                 @include max-width ( $iPadPortrait ) {
                     grid-column: 1 / -1;
                     grid-row: auto;
-                    font-size: 2rem;
                 }
             }
 
