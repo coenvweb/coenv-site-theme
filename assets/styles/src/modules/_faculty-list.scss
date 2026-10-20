@@ -48,10 +48,6 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
-.Faculty-list-header {
-
-}
-
 .Faculty-list-content {
 	@extend .clearfix;
 	margin-right: 10px;
@@ -160,17 +156,16 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
-.Faculty-list-item--has-image:hover,
-.Faculty-list-item--has-image:focus-within,
-.Faculty-list-item--has-image.is-bouncing,
-.Faculty-list-item--has-image:active  {
+.Faculty-list-item--has-image:hover {
 	transition-delay: 0s;
 	z-index: 20;
 }
 
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus,
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible,
-.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing,
+.Faculty-list-item--has-image:active {
+	transition-delay: 0s;
+	z-index: 20;
+}
+
 .Faculty-list-item--has-image .Faculty-list-item-inner:active {
 	--faculty-tile-scale: #{$faculty-tile-scale-active};
 	--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce};
@@ -178,21 +173,13 @@ $faculty-bounce-duration: 0.28s;
 	--faculty-header-lift: #{$faculty-header-lift-active};
 	box-shadow: $faculty-tile-shadow;
 	outline: none;
+	animation: faculty-tile-bounce $faculty-bounce-duration ease-out;
 }
 
-.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:focus,
-.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:focus-visible,
-.Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner.is-bouncing,
 .Faculty-list-item--has-image.Faculty-list-item--long-name .Faculty-list-item-inner:active {
 	--faculty-header-lift: #{$faculty-header-lift-long-name};
 }
 
-.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing {
-	animation: faculty-tile-bounce $faculty-bounce-duration ease-out;
-}
-
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus .Faculty-list-item-subtitle,
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible .Faculty-list-item-subtitle,
 .Faculty-list-item--has-image .Faculty-list-item-inner:active .Faculty-list-item-subtitle {
 	max-height: 2.5rem;
 	opacity: 1;
@@ -234,9 +221,6 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus .Faculty-list-item-header,
-.Faculty-list-item--has-image .Faculty-list-item-inner:focus-visible .Faculty-list-item-header,
-.Faculty-list-item--has-image .Faculty-list-item-inner.is-bouncing .Faculty-list-item-header,
 .Faculty-list-item--has-image .Faculty-list-item-inner:active .Faculty-list-item-header {
 	@include rem('padding-bottom', 0.75);
 }
@@ -321,8 +305,7 @@ $faculty-bounce-duration: 0.28s;
 		}
 	}
 
-	&:hover,
-	&:focus-visible {
+	&:hover {
 		.Faculty-list-item-fact-text {
 			color: $accent-yellow;
 		}
