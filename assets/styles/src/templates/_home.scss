@@ -682,8 +682,13 @@ body.home {
 
 .home .container-slices {         // Target the first character of the CTA in the last homepage slice.
 	.support-the-college {
-		.slice-link::first-letter {
+		.slice-link:before {
+			content: "♥";
 			display: inline-block;
+			position: relative;
+			right: .35rem;
+			bottom: 0;
+			font-size: 1rem;
 			color: $accent-yellow;
 			transform: scaleX(1.25);
 		}
