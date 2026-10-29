@@ -437,6 +437,20 @@
 		}
 	}
 
+	@include max-width ( 600 ) {
+		img.alignleft,
+		.wp-caption.alignleft {
+			width: 100%;
+			max-width: 100%;
+		}
+
+		img.alignright,
+		.wp-caption.alignright {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+
 	// captions
 	.wp-caption {
 		margin: 0 0 1rem 0;

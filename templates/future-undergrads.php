@@ -49,7 +49,7 @@ $ancestor = array(
                     <article class="first-section">
                         <header class="article__header">
                             <div class="article__meta">
-                                <h1 class="article__title small"><a  class="mobile" href="/students/">Students > </a><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
+                                <h1 class="article__title small"><a href="students/future-students/future-undergrads/">Future Undergrads</a></h1>
                             </div>
                         </header>
                         <section class="article__content">

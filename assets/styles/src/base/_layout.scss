@@ -91,6 +91,10 @@ $layout-wrapper-translateX: 80%;
 		@include rem('padding', 0, 1);
 	}
 
+	@include max-width ( $iPadPortrait - 1 ) {
+		display: grid;
+	}
+
 } // .layout-container
 
 // columns
@@ -125,6 +129,21 @@ section#page, section#blog, section.Faculty-single {
 	@extend .clearfix;
 	position: relative;
 	@extend .hide-on-banner-reveal;
+
+	// Mobile single-column flow: content first, secondary nav after.
+	@include max-width ( $iPadPortrait - 1 ) {
+		display: flex;
+		flex-direction: column;
+
+		.main-col {
+			order: 1;
+		}
+
+		#secondary-nav.side-col {
+			order: 2;
+		}
+	}
+
 	// big title within banner area
 	// place within main col if main and side cols are present
 	.section-header {

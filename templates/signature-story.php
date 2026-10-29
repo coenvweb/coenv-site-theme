@@ -1,9 +1,10 @@
 <?php
-/*
- * Template Name: Signature Story
- * Template Post Type: post
+/**
+ * index.php
+ *
+ * Main template
+ * Used for blog posts
  */
-  
 get_header();
 
 $ancestor_id = coenv_get_ancestor();
@@ -14,35 +15,31 @@ $ancestor = array(
 	'title' => get_the_title( $ancestor_id )
 );
 
+if ( is_singular( 'post' ) ) {
+	$posts_page_id = (int) get_option( 'page_for_posts' );
+
+	if ( $posts_page_id ) {
+		$posts_page_ancestors = get_post_ancestors( $posts_page_id );
+		$nav_root_id = !empty( $posts_page_ancestors ) ? (int) array_pop( $posts_page_ancestors ) : $posts_page_id;
+
+		$ancestor = array(
+			'id' => $nav_root_id,
+			'permalink' => get_permalink( $nav_root_id ),
+			'title' => get_the_title( $nav_root_id )
+		);
+	}
+}
+
 $banner = coenv_banner();
 ?>
 
-<style type="text/css">
- .element a {
-    color: <?php echo get_field('accent_color'); ?>;
-     font-weight: 600;
- }
-</style>
-
-
-<section id="blog" role="main" class="template-signature-story">
+	<section id="blog" class="template-signature-story">
 
 		<div class="container">
-
-			<nav id="secondary-nav" class="side-col">
-
-					<ul id="menu-secondary" class="menu">
-						<li class="pagenav">
-							<a href="<?php echo home_url("/news"); ?>">News</a>
-						</li>
-          </ul>
-                
-			</nav><!-- #secondary-nav.side-col -->
-  </div>
+			<br />
 
 			<main id="main-col" class="main-col">
-          <div id="section-introduction" class="scrollto">
-          
+
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post() ?>
@@ -52,8 +49,14 @@ $banner = coenv_banner();
 					<?php endwhile ?>
                 
                 <footer class="related">
-					<?php get_template_part( 'partials/partial', 'related-news' ) ?>
-                    <?php get_template_part( 'partials/partial', 'related-faculty' ) ?>
+                    <?php
+                        global $post;
+                        $tempPost = $post;
+                        get_template_part( 'partials/partial', 'related-news' );
+                        $post = $tempPost;
+                        get_template_part( 'partials/partial', 'related-faculty' );
+                        $post = $tempPost;
+                    ?>
                 </footer>
 				<footer class="pagination">
 					<?php coenv_paginate() ?>
@@ -63,6 +66,10 @@ $banner = coenv_banner();
 				<?php endif ?>
                 
 			</main><!-- .main-col -->
+
+			<div class="side-col">
+				<?php get_sidebar() ?>
+			</div><!-- .side-col -->
 
 		</div><!-- .container -->
 

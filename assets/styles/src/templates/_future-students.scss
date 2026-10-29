@@ -53,7 +53,7 @@
         }
         .first-title {
             font-size: 3.5rem!important;
-            line-height: 4rem!important;
+            line-height: normal!important;
         }
     }
 
@@ -104,7 +104,7 @@
         .article__content {
             min-height: 0;
         }
-        @include max-width ( $iPadPortrait ) {
+        @include max-width ( $iPadLandscape ) {
             width: 100%;
         }
     }
@@ -210,7 +210,7 @@
         padding-left: 1rem;
         display: inline-block;
         padding-top: 4rem;
-        @include max-width ( $iPadPortrait ) {
+        @include max-width ( 1000 ) {
             width: 100%;
         }
     }
@@ -370,7 +370,7 @@
                 line-height: 1;
                 @include max-width ( $iPadPortrait ) {
                     font-size: 1.2rem;
-                    padding: .7rem .7rem .25rem .7rem;
+                    padding: .7rem;
                 }
                 .future-subtext {
                     text-transform: uppercase;
@@ -379,7 +379,7 @@
                     letter-spacing: .1px;
                     padding-top: 5px;
                     font-weight: 600;
-                    @include max-width ( $iPadPortrait ) {
+                    @include max-width ( 1000 ) {
                         display: none;
                     }
                 }

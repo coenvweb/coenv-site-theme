@@ -99,10 +99,6 @@ $ancestor = array(
                     </section>
                     
                 </article>
-                
-            <div class="side-footer">
-                <?php get_sidebar('contact') ?>
-            </div>
 
 			</main><!-- .main-col -->
 

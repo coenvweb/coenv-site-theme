@@ -189,7 +189,7 @@
 	background-size: cover;
 	background-position: center 30%;
 
-	&::before {
+	&:not(.template-signature-story)::before {
 		content: '';
 		display: block;
 		position: absolute;
@@ -290,6 +290,9 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	color: $accent-yellow;
+	@include max-width ( $iPadPortrait ) {
+		margin: 0;
+	}
 }
 
 .single-faculty .banner-wrapper .no-sidenav-title,
@@ -361,7 +364,7 @@ li#wp-admin-bar-revision {
             position: relative;
         }
         #university-of-washington-svg {
-            top: -5px;
+            //top: -5px;
             position: relative;
             transform: scale(1.15);
             left: 1.5rem;

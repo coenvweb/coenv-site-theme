@@ -162,10 +162,6 @@ $ancestor = array(
                     
                 </article>
                 
-            <div class="side-footer">
-                <?php get_sidebar('contact') ?>
-            </div>
-
 			</main><!-- .main-col -->
 
 			<div class="side-col">

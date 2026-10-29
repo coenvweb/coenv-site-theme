@@ -103,11 +103,6 @@
         }
     }
     
-    .button {
-        text-transform: uppercase;
-        border: 3px solid #666;
-        background-color: transparent;
-    }
     .article__content .element-wrapper, .article__content > .element, .article__content > p > .element, .article__content > p > .define-term > .element{
         position: relative;
          @include min-width ( 1200 ) {
@@ -755,6 +750,7 @@
             color: white;
             max-width: 600px;
             font-size: 3rem;
+            text-wrap: auto;
             @include min-width ( 900 ) {
                 font-size: calc(2.5vw + 1rem);
             }
@@ -911,28 +907,6 @@
     }
 }
 
-
-.element-green-crabs-are-survivors {
-    img {
-        display: none;
-    }
-    @include min-width ( 800 ) {
-        p img:nth-of-type(1) {
-            display: block;
-        }
-        p img:nth-of-type(2) {
-                display: none;
-        }
-    }
-    @include max-width ( 800 ) {
-        p img:nth-of-type(1) {
-            display: none;
-        }
-        p img:nth-of-type(2) {
-            display: block;
-        }
-    }
-}
 
 .element-green-crabs-are-survivors {
     img {
@@ -1143,7 +1117,7 @@
         .big__title {
             font-style: italic;
             line-height: 90%;
-            font-family: 'pt-serif-bold-italic';
+            @include encode_black();
             font-size: 4rem;
             @include min-width ( 900 ) {
                 font-size: calc(2.5vw + 4rem);
@@ -1353,6 +1327,7 @@
             color: white;
             max-width: 600px;
             font-size: 3rem;
+            text-wrap: auto;
             @include min-width ( 900 ) {
                 font-size: calc(2.5vw + 3rem);
             }
@@ -1735,6 +1710,7 @@
         .layout-container {
             max-width: 1200px;
             padding-bottom: 2rem;
+            display: block;
         }
         .colleges-schools {
             position: relative;
