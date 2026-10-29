@@ -438,14 +438,18 @@
 	}
 
 	@include max-width ( 600 ) {
-		img.alignleft,
-		.wp-caption.alignleft {
+		& > img.alignleft,
+		& > .wp-caption.alignleft,
+		p > img.alignleft,
+		p > .wp-caption.alignleft {
 			width: 100%;
 			max-width: 100%;
 		}
 
-		img.alignright,
-		.wp-caption.alignright {
+		& > img.alignright,
+		& > .wp-caption.alignright,
+		p > img.alignright,
+		p > .wp-caption.alignright {
 			width: 100%;
 			max-width: 100%;
 		}
