@@ -116,11 +116,14 @@
 				}
 				
 			}
+			@include max-width ( 400 ) {
+				display: none;
+			}
+
 			@include max-width ( 560 ) {
 				top: -2.5rem;
 				right: 3.5rem;
 			}
-
 		}
 
 		.search-form-wrapper {
@@ -208,8 +211,13 @@
 		button {
 			display: inline;
 			margin: 0;
+			padding: 0;
 			border: none;
-			background: none;
+			border-radius: 0;
+			background: transparent;
+			-webkit-appearance: none;
+			appearance: none;
+			box-shadow: none;
 			@extend .icon-list;
 			font-size: 1.5rem;
 			color: white;
