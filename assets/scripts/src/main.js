@@ -5,24 +5,22 @@ jQuery(function ($) {
     function shouldDisableHeroMedia() {
         var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
         var isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-        var isSmallTouchViewport = window.matchMedia && window.matchMedia('(max-width: 1023px)').matches;
         var isPhoneLikeViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+        var isTabletLikeViewport = window.matchMedia && window.matchMedia('(min-width: 768px) and (max-width: 1023px)').matches;
         var isOnWifi = !!connection && (
             connection.type === 'wifi' ||
-            connection.effectiveType === '4g' ||
-            connection.effectiveType === '5g' ||
-            (connection.downlink && connection.downlink >= 8)
+            connection.effectiveType === 'wifi'
         );
 
         if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.effectiveType === '3g')) {
             return true;
         }
 
-        if (isCoarsePointer && isSmallTouchViewport && !isOnWifi) {
+        if (isPhoneLikeViewport && isCoarsePointer) {
             return true;
         }
 
-        if (window.matchMedia && (window.matchMedia('(hover: none)').matches || isPhoneLikeViewport) && !isOnWifi) {
+        if (isCoarsePointer && isTabletLikeViewport && !isOnWifi) {
             return true;
         }
 
