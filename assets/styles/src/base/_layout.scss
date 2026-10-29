@@ -136,11 +136,11 @@ section#page, section#blog, section.Faculty-single {
 		flex-direction: column;
 
 		.main-col {
-			order: 1;
+			order: 2;
 		}
 
 		#secondary-nav.side-col {
-			order: 2;
+			order: 1;
 		}
 	}
 

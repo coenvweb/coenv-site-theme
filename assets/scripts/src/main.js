@@ -245,6 +245,10 @@ jQuery(function ($) {
 };
 });
 
+
+console.log('MAIN-V2-2026-10-29');
+
+
 /**
  * Close UW Alert
  */

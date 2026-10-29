@@ -232,50 +232,31 @@ jQuery(function ($) {
 	// =========================================================================
 	$.CoEnvMenu.prototype._handleMenuInteractions = function () {
 
-		var _this = this;
+		var _this = this,
+				$items = this.$mobileMenu.find( this.options.topLevelItemSelector ),
+				$itemLinks = $items.find('> span > a');
 
-		function setMobileSubmenuState($item, $submenu, $toggle, isExpanded) {
-			$item.toggleClass('expanded', isExpanded);
-			$submenu.toggle(isExpanded);
-			$toggle.attr('aria-expanded', isExpanded ? 'true' : 'false');
-			$toggle.attr('aria-label', isExpanded ? 'Collapse submenu' : 'Expand submenu');
-			$toggle.find('.screen-reader-text').text(isExpanded ? 'Collapse submenu' : 'Expand submenu');
-		}
-
-		this.$mobileMenu.find('li').each(function () {
-			var $item = $(this),
-				$submenu = $item.children('.' + _this.options.submenuClass).first(),
-				$link = $item.children('> span > a, > a').first(),
-				$toggle;
-
-			if ( !$submenu.length || !$link.length ) {
-				return;
-			}
-
-			$item.addClass('has-children');
-
-			if ( $item.children('.mobile-nav-caret').length ) {
-				$toggle = $item.children('.mobile-nav-caret').first();
-			} else {
-				$toggle = $('<button type="button" class="mobile-nav-caret" aria-expanded="false" aria-label="Expand submenu"><span class="screen-reader-text">Expand submenu</span></button>');
-				$link.before($toggle);
-			}
-
-			var expandedByDefault = $item.is('.menu-item-active, .current_page_item, .current-page-ancestor, .current_page_ancestor, .current_page_parent, .expanded');
-			setMobileSubmenuState($item, $submenu, $toggle, expandedByDefault);
-
-			$toggle.off('click.mobileNav').on('click.mobileNav', function (e) {
-				e.preventDefault();
-				e.stopPropagation();
-
-				var $button = $(this),
-					$parent = $button.parent('li'),
-					$childMenu = $parent.children('.' + _this.options.submenuClass).first(),
-					isExpanded = $button.attr('aria-expanded') === 'true';
-
-				setMobileSubmenuState($parent, $childMenu, $button, !isExpanded);
-			});
+		// on page load, make sure appropriate item has the expanded class
+		$items.filter('.menu-item-active, .current_page_item, .current-page-ancestor').each(function () {
+			$(this).addClass('expanded');
+			//$(this).find('> span > a > i').css('outline', '1px solid red');
 		});
+
+		$itemLinks.fastClick( function (e) {
+			e.preventDefault();
+
+			var $item = $(this).parents( _this.options.topLevelItemSelector ),
+					$icon = $(this).find('i'),
+					$subMenu = $item.find('.' + _this.options.submenuClass);
+
+			if ( $item.hasClass('expanded') ) {
+				$subMenu.slideUp( 200 );
+				$item.removeClass('expanded');
+			} else {
+				$subMenu.slideDown( 200 );
+				$item.addClass('expanded');
+			}
+		} );
 
 	};
 
@@ -335,70 +316,8 @@ jQuery(function ($) {
 })(jQuery, window, document);
 
 (function ($, window, document, undefined) {
-	function setSecondaryNavState($item, $submenu, $toggle, isExpanded) {
-		if (isExpanded) {
-			$item.addClass('is-expanded');
-			$submenu.show();
-			$toggle.attr('aria-expanded', 'true');
-			$toggle.attr('aria-label', 'Collapse submenu');
-			$toggle.find('.screen-reader-text').text('Collapse submenu');
-		} else {
-			$item.removeClass('is-expanded');
-			$submenu.hide();
-			$toggle.attr('aria-expanded', 'false');
-			$toggle.attr('aria-label', 'Expand submenu');
-			$toggle.find('.screen-reader-text').text('Expand submenu');
-		}
-	}
-
-	function initSecondaryNavAccordion() {
-		$('#secondary-nav li').each(function() {
-			var $item = $(this),
-				$submenu,
-				$link,
-				$toggle,
-				expandedByDefault;
-
-			if ($item.hasClass('pagenav')) {
-				return;
-			}
-
-			$submenu = $item.children('ul.children').first();
-			$link = $item.children('a').first();
-
-			if (!$submenu.length || !$link.length) {
-				return;
-			}
-
-			$item.addClass('has-children');
-
-			if ($item.children('.secondary-nav-caret').length) {
-				$toggle = $item.children('.secondary-nav-caret').first();
-			} else {
-				$toggle = $('<button type="button" class="secondary-nav-caret" aria-expanded="false" aria-label="Expand submenu"><span class="screen-reader-text">Expand submenu</span></button>');
-				$link.before($toggle);
-			}
-
-			expandedByDefault = $item.is('.current_page_item, .current_page_parent, .current_page_ancestor, .parent_page_item');
-			setSecondaryNavState($item, $submenu, $toggle, expandedByDefault);
-
-			$toggle.off('click.secondaryNav').on('click.secondaryNav', function(e) {
-				e.preventDefault();
-
-				var $button = $(this),
-					$parent = $button.parent('li'),
-					$childMenu = $parent.children('ul.children').first(),
-					isExpanded = $button.attr('aria-expanded') === 'true';
-
-				setSecondaryNavState($parent, $childMenu, $button, !isExpanded);
-			});
-		});
-	}
-
     $(document).ready(function() {
 	    $('#secondary-nav li:has(li.current_page_item)').addClass('parent_page_item current_page_parent');
-		initSecondaryNavAccordion();
-
         var children = $('.page-item-270').find('.children');
         children.each(function() {
             var sorted = $(this).children('li').detach().sort(function(a, b) {
