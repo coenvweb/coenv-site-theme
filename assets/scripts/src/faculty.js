@@ -31,6 +31,10 @@
         $mobileForm: null,
         $mobileThemeSelect: null,
         $mobileUnitSelect: null,
+        $mobileThemeSelectWrap: null,
+        $mobileUnitSelectWrap: null,
+        $mobileThemeClear: null,
+        $mobileUnitClear: null,
 
         // Static Configuration
         toolboxSelector: '.Faculty-toolbox',
@@ -65,8 +69,8 @@
         this.$formToggle = $('.Faculty-toolbox-toggle');
         this.$form = $('.Faculty-toolbox-form');
         this.$toolboxForm = this.$form;
-        this.$themeSelect = $('.Faculty-toolbox-theme-select');
-        this.$unitSelect = $('.Faculty-toolbox-unit-select');
+        this.$themeSelect = this.$toolbox.find('.Faculty-toolbox-theme-select');
+        this.$unitSelect = this.$toolbox.find('.Faculty-toolbox-unit-select');
         this.$themeSelectWrap = this.$themeSelect.closest('.Faculty-toolbox-select-wrap');
         this.$unitSelectWrap = this.$unitSelect.closest('.Faculty-toolbox-select-wrap');
         this.$themeClear = this.$themeSelectWrap.find('.Faculty-toolbox-select-clear');
@@ -86,6 +90,10 @@
         this.$mobileForm = $('.Faculty-selector');
         this.$mobileThemeSelect = $('.Faculty-selector-theme');
         this.$mobileUnitSelect = $('.Faculty-selector-unit');
+        this.$mobileThemeSelectWrap = this.$mobileThemeSelect.closest('.Faculty-toolbox-select-wrap');
+        this.$mobileUnitSelectWrap = this.$mobileUnitSelect.closest('.Faculty-toolbox-select-wrap');
+        this.$mobileThemeClear = this.$mobileThemeSelectWrap.find('.Faculty-toolbox-select-clear');
+        this.$mobileUnitClear = this.$mobileUnitSelectWrap.find('.Faculty-toolbox-select-clear');
 
         // 2. Initialize Logic
         this.measurements();
@@ -471,14 +479,26 @@
     };
 
     CoEnvFaculty.prototype.syncSelectState = function (filter) {
-        var $select = filter === 'theme' ? this.$themeSelect : this.$unitSelect;
-        var $wrap = filter === 'theme' ? this.$themeSelectWrap : this.$unitSelectWrap;
-        var $clear = filter === 'theme' ? this.$themeClear : this.$unitClear;
-        var hasValue = $select.val() !== filter + '-all';
+        var $desktopSelect = filter === 'theme' ? this.$themeSelect : this.$unitSelect;
+        var $mobileSelect = filter === 'theme' ? this.$mobileThemeSelect : this.$mobileUnitSelect;
+        var $desktopWrap = filter === 'theme' ? this.$themeSelectWrap : this.$unitSelectWrap;
+        var $mobileWrap = filter === 'theme' ? this.$mobileThemeSelectWrap : this.$mobileUnitSelectWrap;
+        var $desktopClear = filter === 'theme' ? this.$themeClear : this.$unitClear;
+        var $mobileClear = filter === 'theme' ? this.$mobileThemeClear : this.$mobileUnitClear;
+        var hasValue = $desktopSelect.val() !== filter + '-all';
 
-        $clear.prop('disabled', false);
-        $wrap.toggleClass('has-value', hasValue);
-        $clear.attr('aria-hidden', !hasValue);
+        $desktopClear.prop('disabled', false);
+        $mobileClear.prop('disabled', false);
+
+        $desktopWrap.toggleClass('has-value', hasValue);
+        $mobileWrap.toggleClass('has-value', hasValue);
+
+        $desktopClear.attr('aria-hidden', !hasValue);
+        $mobileClear.attr('aria-hidden', !hasValue);
+
+        if ($mobileSelect.val() !== $desktopSelect.val()) {
+            $mobileSelect.val($desktopSelect.val());
+        }
     };
 
     CoEnvFaculty.prototype.resetFilter = function (filter) {
@@ -574,6 +594,17 @@
 
     CoEnvFaculty.prototype.formSelects = function () {
         var _this = this;
+        var onClearClick = function (event) {
+            event.preventDefault();
+
+            var filter = $(this).data('filter');
+            if (filter !== 'theme' && filter !== 'unit') {
+                return;
+            }
+
+            _this.clearSearch();
+            _this.resetFilter(filter);
+        };
 
         this.$themeSelect.on('change', function () {
             _this.clearSearch();
@@ -585,17 +616,8 @@
             _this.applyThemeUnitFilters(_this.$themeSelect.val(), _this.$unitSelect.val());
         });
 
-        this.$toolbox.on('click', '.Faculty-toolbox-select-clear', function (event) {
-            event.preventDefault();
-
-            var filter = $(this).data('filter');
-            if (filter !== 'theme' && filter !== 'unit') {
-                return;
-            }
-
-            _this.clearSearch();
-            _this.resetFilter(filter);
-        });
+        this.$toolbox.on('click', '.Faculty-toolbox-select-clear', onClearClick);
+        this.$mobileForm.on('click', '.Faculty-toolbox-select-clear', onClearClick);
     };
 
     CoEnvFaculty.prototype.feedback = function () {
@@ -822,12 +844,21 @@
 
     CoEnvFaculty.prototype.cardBounce = function () {
         var bounceDuration = 280;
+        var isTouchDevice = function () {
+            return (('ontouchstart' in window) ||
+                (navigator && navigator.maxTouchPoints > 0) ||
+                (window.matchMedia && window.matchMedia('(pointer: coarse)').matches));
+        };
 
         this.$isoContainer.on('click', '.Faculty-list-item--has-image .Faculty-list-item-inner', function (event) {
             var $link;
             var $item;
             var href;
             var bounceTimeout;
+
+            if (isTouchDevice()) {
+                return;
+            }
 
             if (event.isDefaultPrevented()) {
                 return;

@@ -5,6 +5,9 @@
                     <div class="layout-container">
 
                         <div class="footer-social-address">
+
+                            <?php get_search_form(); ?>
+
                             <ul class="footer-social-links">
                                 <?php if ( get_option('instagram') ) { ?>
                                     <li class="instagram">

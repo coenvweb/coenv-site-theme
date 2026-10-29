@@ -28,6 +28,11 @@ global $themes, $units, $faculty, $query_args;
 								<option value="theme-<?php echo $theme['slug'] ?>"<?php if ( isset( $query_args['theme'] ) && $query_args['theme'] == $theme['slug'] ) echo ' selected' ?> data-url="<?php bloginfo('url') ?>/faculty/?theme=<?php echo $theme['slug'] ?>"><?php echo $theme['name'] ?></option>
 							<?php endforeach ?>
 						</select>
+
+
+							<button type="button" class="Faculty-toolbox-select-clear" data-filter="theme" aria-label="Clear research theme filter">
+								<i class="icon-cross" aria-hidden="true"></i>
+							</button>
 					</div>
 				</div>
 
@@ -55,6 +60,11 @@ global $themes, $units, $faculty, $query_args;
 								<?php endif; ?>
 							<?php endforeach ?>
 						</select>
+
+
+							<button type="button" class="Faculty-toolbox-select-clear" data-filter="unit" aria-label="Clear school or department filter">
+								<i class="icon-cross" aria-hidden="true"></i>
+							</button>
 					</div>
 				</div>
 

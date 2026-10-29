@@ -46,6 +46,18 @@
         grid-column: 1 / 2;
         @include o_sans_bold();
         font-size: 1.25rem;
+
+        .search-form {
+            display: none;
+        }
+
+        @include max-width ( $iPadPortrait ) {
+            .search-form {
+                display: block;
+                margin-bottom: 1rem;
+            }
+        }
+
         @include max-width ( $iPadPortrait ) {
             grid-column: 1 / -1;
             grid-row: auto;
