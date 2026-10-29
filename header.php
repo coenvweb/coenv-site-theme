@@ -19,7 +19,6 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 <link rel="stylesheet" id="screen-css" href="<?php echo get_template_directory_uri(); ?>/assets/styles/build/screen.css?<?php echo time(); ?>" type="text/css" media="all" />
 
 <!-- Resource hints for performance -->
-<link rel="dns-prefetch" href="//use.typekit.net">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://www.washington.edu">
         

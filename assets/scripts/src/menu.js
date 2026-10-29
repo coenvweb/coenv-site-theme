@@ -232,31 +232,50 @@ jQuery(function ($) {
 	// =========================================================================
 	$.CoEnvMenu.prototype._handleMenuInteractions = function () {
 
-		var _this = this,
-				$items = this.$mobileMenu.find( this.options.topLevelItemSelector ),
-				$itemLinks = $items.find('> span > a');
+		var _this = this;
 
-		// on page load, make sure appropriate item has the expanded class
-		$items.filter('.menu-item-active, .current_page_item, .current-page-ancestor').each(function () {
-			$(this).addClass('expanded');
-			//$(this).find('> span > a > i').css('outline', '1px solid red');
-		});
+		function setMobileSubmenuState($item, $submenu, $toggle, isExpanded) {
+			$item.toggleClass('expanded', isExpanded);
+			$submenu.toggle(isExpanded);
+			$toggle.attr('aria-expanded', isExpanded ? 'true' : 'false');
+			$toggle.attr('aria-label', isExpanded ? 'Collapse submenu' : 'Expand submenu');
+			$toggle.find('.screen-reader-text').text(isExpanded ? 'Collapse submenu' : 'Expand submenu');
+		}
 
-		$itemLinks.fastClick( function (e) {
-			e.preventDefault();
+		this.$mobileMenu.find('li').each(function () {
+			var $item = $(this),
+				$submenu = $item.children('.' + _this.options.submenuClass).first(),
+				$link = $item.children('> span > a, > a').first(),
+				$toggle;
 
-			var $item = $(this).parents( _this.options.topLevelItemSelector ),
-					$icon = $(this).find('i'),
-					$subMenu = $item.find('.' + _this.options.submenuClass);
-
-			if ( $item.hasClass('expanded') ) {
-				$subMenu.slideUp( 200 );
-				$item.removeClass('expanded');
-			} else {
-				$subMenu.slideDown( 200 );
-				$item.addClass('expanded');
+			if ( !$submenu.length || !$link.length ) {
+				return;
 			}
-		} );
+
+			$item.addClass('has-children');
+
+			if ( $item.children('.mobile-nav-caret').length ) {
+				$toggle = $item.children('.mobile-nav-caret').first();
+			} else {
+				$toggle = $('<button type="button" class="mobile-nav-caret" aria-expanded="false" aria-label="Expand submenu"><span class="screen-reader-text">Expand submenu</span></button>');
+				$link.before($toggle);
+			}
+
+			var expandedByDefault = $item.is('.menu-item-active, .current_page_item, .current-page-ancestor, .current_page_ancestor, .current_page_parent, .expanded');
+			setMobileSubmenuState($item, $submenu, $toggle, expandedByDefault);
+
+			$toggle.off('click.mobileNav').on('click.mobileNav', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				var $button = $(this),
+					$parent = $button.parent('li'),
+					$childMenu = $parent.children('.' + _this.options.submenuClass).first(),
+					isExpanded = $button.attr('aria-expanded') === 'true';
+
+				setMobileSubmenuState($parent, $childMenu, $button, !isExpanded);
+			});
+		});
 
 	};
 

@@ -255,7 +255,11 @@
 		} // .children
 
 	} // current or ancestor
-    
+
+	li.has-children {
+		position: relative;
+	}
+
 	.children {
 		display: none;
 
@@ -293,6 +297,37 @@
 		}
 
 	} // .children
+
+	.mobile-nav-caret {
+		position: absolute;
+		right: 0.75rem;
+		top: 0.75rem;
+		background: transparent;
+		border: 0;
+		color: #888;
+		cursor: pointer;
+		padding: 0;
+		width: 2rem;
+		height: 2rem;
+		z-index: 2;
+
+		&:before {
+			@extend .icon-arrow-right;
+			font-size: 0.9rem;
+		}
+
+		&[aria-expanded="true"]:before {
+			@extend .icon-arrow-down;
+		}
+	}
+
+	li.has-children > ul.children {
+		display: none;
+	}
+
+	li.has-children.expanded > ul.children {
+		display: block;
+	}
 
 } // .main-menu.mobile-menu .page-depth-0
 
