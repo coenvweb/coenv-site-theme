@@ -108,6 +108,10 @@
 			//background: #eee;
 			border-top: 3px solid $accent-dk;
 
+			@include max-width ( $iPadPortrait ) {
+				border-bottom: 3px solid $border-mid;
+			}
+
 			> li {
 
 				&:last-child a {
@@ -125,6 +129,7 @@
 
 				> a:hover {
 					color: #fff !important;
+					background: $accent;
 					//color: $text !important;
 
 					.no-touch & {

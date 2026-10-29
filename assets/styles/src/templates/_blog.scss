@@ -66,6 +66,7 @@
 			float: none;
 			@include rem('padding', 1);
 			position: relative;
+			width: 100%;
 			@include min-width ( $iPadPortrait ) {
 				float: left;
 				width: 33.3333%;

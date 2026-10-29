@@ -87,7 +87,7 @@ if ($columns_attr !== '') {
 
                 if($tile['image']) {
                   $image = $tile['image'];
-                  $output .= '<div class="image-wrap"><img src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '" /></div>';
+                  $output .= '<div class="image-wrap"><img src="' . esc_url($image['sizes']['medium']) . '" alt="' . esc_attr($image['alt']) . '" /></div>';
                 }
 
                 $output .= '<div class="content-wrap">';

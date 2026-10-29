@@ -26,7 +26,8 @@ if ( !empty( $unit ) ) {
 }
 
 $image_id = get_field( 'image' );
-$title_length = strlen( wp_strip_all_tags( get_the_title() ) );
+$title_text = wp_strip_all_tags( get_the_title() );
+$title_length = function_exists( 'mb_strlen' ) ? mb_strlen( $title_text ) : strlen( $title_text );
 $member_classes .= ' grid-sizer';
 
 if ( !empty( $image_id ) ) {
@@ -35,6 +36,14 @@ if ( !empty( $image_id ) ) {
 
 if ( $title_length > 20 ) {
 	$member_classes .= ' Faculty-list-item--long-name';
+}
+
+if ( $title_length > 26 ) {
+	$member_classes .= ' Faculty-list-item--longer-name';
+}
+
+if ( $title_length > 32 ) {
+	$member_classes .= ' Faculty-list-item--longest-name';
 }
 
 // TODO: update these sizes for retina images

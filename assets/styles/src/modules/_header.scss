@@ -263,6 +263,9 @@
 		padding-bottom: 0.75rem;
 		white-space: nowrap;
 	}
+	@include max-width ( $iPadPortrait ) {
+		margin-bottom: -1rem;
+	}
 }
 
 .no-sidenav-title .section-title {

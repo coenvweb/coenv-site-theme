@@ -39,6 +39,10 @@
 		position: relative;
 		z-index: 1;
 	}
+
+	@include max-width ( 710 ) {
+		margin-bottom: 0;
+	}
 }
 
 .Faculty-member-header-inner {
@@ -73,6 +77,14 @@
 		max-width: 460px;
 		margin-left: auto;
 		margin-right: 0;
+	}
+
+	@include max-width ( 710 ) {
+		order: 1;
+		margin-bottom: -1rem;
+		margin-left: 0;
+		flex: 0 0 50%;
+		flex-basis: 50%;
 	}
 	
 	@media print {
@@ -109,6 +121,10 @@
 	@include min-width ( 600 ) {
 		flex: 1 1 auto;
 		padding: 1.5rem 0;
+	}
+
+	@include min-width ( 710 ) {
+		max-width: 50%;
 	}
 
 	@media print {

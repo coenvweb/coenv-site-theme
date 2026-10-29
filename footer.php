@@ -77,9 +77,9 @@
                                 <a href="https://environment.uw.edu/" rel="home" title="UW College of the Environment"><img alt="College of the Environment Logo" src="<?php echo get_template_directory_uri() ?>/assets/img/uw-footer.svg" width="350" height="39"></a>
                             </div>
                             <ul class="footer-links">
-                                <li><a href="https://enviroment.uw.edu/about/college-units">College Units</a></li>
-                                <li><a href="https://environment.uw.edu/faculty">Faculty</a></li>
-                                <li><a href="https://environment.uw.edu/students">Admissions</a></li>
+                                <li><a href="/about/college-units">College Units</a></li>
+                                <li><a href="/faculty">Faculty</a></li>
+                                <li><a href="/students">Admissions</a></li>
                             </ul>
                         </div>
 

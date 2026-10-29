@@ -228,6 +228,10 @@
 				top: 50%;
 				right: 0;
 				margin-left: 0;
+				@include max-width ( $iPadPortrait ) {
+					top: 55%;
+					right: -.25rem;
+				}
 			}
 		}
 	}
