@@ -316,8 +316,70 @@ jQuery(function ($) {
 })(jQuery, window, document);
 
 (function ($, window, document, undefined) {
+	function setSecondaryNavState($item, $submenu, $toggle, isExpanded) {
+		if (isExpanded) {
+			$item.addClass('is-expanded');
+			$submenu.show();
+			$toggle.attr('aria-expanded', 'true');
+			$toggle.attr('aria-label', 'Collapse submenu');
+			$toggle.find('.screen-reader-text').text('Collapse submenu');
+		} else {
+			$item.removeClass('is-expanded');
+			$submenu.hide();
+			$toggle.attr('aria-expanded', 'false');
+			$toggle.attr('aria-label', 'Expand submenu');
+			$toggle.find('.screen-reader-text').text('Expand submenu');
+		}
+	}
+
+	function initSecondaryNavAccordion() {
+		$('#secondary-nav li').each(function() {
+			var $item = $(this),
+				$submenu,
+				$link,
+				$toggle,
+				expandedByDefault;
+
+			if ($item.hasClass('pagenav')) {
+				return;
+			}
+
+			$submenu = $item.children('ul.children').first();
+			$link = $item.children('a').first();
+
+			if (!$submenu.length || !$link.length) {
+				return;
+			}
+
+			$item.addClass('has-children');
+
+			if ($item.children('.secondary-nav-caret').length) {
+				$toggle = $item.children('.secondary-nav-caret').first();
+			} else {
+				$toggle = $('<button type="button" class="secondary-nav-caret" aria-expanded="false" aria-label="Expand submenu"><span class="screen-reader-text">Expand submenu</span></button>');
+				$link.before($toggle);
+			}
+
+			expandedByDefault = $item.is('.current_page_item, .current_page_parent, .current_page_ancestor, .parent_page_item');
+			setSecondaryNavState($item, $submenu, $toggle, expandedByDefault);
+
+			$toggle.off('click.secondaryNav').on('click.secondaryNav', function(e) {
+				e.preventDefault();
+
+				var $button = $(this),
+					$parent = $button.parent('li'),
+					$childMenu = $parent.children('ul.children').first(),
+					isExpanded = $button.attr('aria-expanded') === 'true';
+
+				setSecondaryNavState($parent, $childMenu, $button, !isExpanded);
+			});
+		});
+	}
+
     $(document).ready(function() {
 	    $('#secondary-nav li:has(li.current_page_item)').addClass('parent_page_item current_page_parent');
+		initSecondaryNavAccordion();
+
         var children = $('.page-item-270').find('.children');
         children.each(function() {
             var sorted = $(this).children('li').detach().sort(function(a, b) {
