@@ -88,7 +88,7 @@ if ( ! empty( $unit_texture ) ) {
 					<?php endif ?>
 
 					<?php if ( ! empty( $member['twitter'] ) ) : ?>
-						<li><a href="<?php echo $member['twitter'] ?>" target="_blank" rel="noopener"><i class="icon-contact-link-twitter"></i> Twitter</a></li>
+						<li><a href="<?php echo $member['twitter'] ?>" target="_blank" rel="noopener"><i class="icon-contact-link-twitter"></i> X Profile</a></li>
 					<?php endif ?>
 						
 					<?php if ( ! empty( $member['bluesky'] ) ) : ?>

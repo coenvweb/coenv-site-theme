@@ -117,8 +117,10 @@
 				
 			}
 			@include max-width ( 560 ) {
-				display: none;
-			}	
+				top: -2.5rem;
+				right: 3.5rem;
+			}
+
 		}
 
 		.search-form-wrapper {

@@ -241,6 +241,8 @@
             bottom: 0;
             position: absolute;
             background: #f7f7f7;
+            @include o_sans_bold();
+            font-weight: 400;
             &:before {
                 content: "";
                 display: block;
@@ -251,13 +253,19 @@
                 right: 1rem;
                 width: auto;
             }
+            li a {
+                @include o_sans_bold();
+            }
 
             @include max-width ( $iPadLandscape ) {
                 bottom: 0!important;
                 @include rem ('padding', 0, 1, 0, 1);
+            }
+
+            @include max-width ( 500 ) {
 
                 li {
-                    font-size: 80%!important;
+                    font-size: .9rem!important;
                 }
             }
         }

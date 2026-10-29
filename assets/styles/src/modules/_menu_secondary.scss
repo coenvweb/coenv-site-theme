@@ -95,6 +95,9 @@
 	// top level <li>
 	.pagenav {
 		margin-top: 2rem;
+		@include max-width ( $iPadPortrait ) {
+			margin-top: -.5rem;
+		}
 
 		// ancestor title
 		> a {
