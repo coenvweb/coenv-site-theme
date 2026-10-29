@@ -135,7 +135,7 @@
 			min-width: 260px;
 			@include max-width ( 1000 ) {
 				top: 15px;
-				width: calc(100vw - 1rem);
+				width: 95vw;
 			}
 			form {
 				float: right;

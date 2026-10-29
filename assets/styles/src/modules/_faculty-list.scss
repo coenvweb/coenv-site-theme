@@ -242,6 +242,11 @@ $faculty-bounce-duration: 0.28s;
 
 }
 
+// Keep the name anchored to the image edge even before lazy-loaded images hydrate.
+.Faculty-list-item--has-image .Faculty-list-item-header {
+	bottom: -5px;
+}
+
 @media (hover: hover) and (pointer: fine) {
 	.Faculty-list-item--has-image .Faculty-list-item-inner:hover .Faculty-list-item-header {
 		@include rem('padding-bottom', 0.75);

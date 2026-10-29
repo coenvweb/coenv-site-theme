@@ -50,143 +50,143 @@ jQuery(function ($) {
 
         if (shouldDisableHeroMedia()) {
             disableHeroMedia();
-            return;
-        }
-
-        function shouldServeHeroHighResVideo() {
-            if (prefersReducedMotion) {
-                return false;
-            }
-
-            if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
-                return false;
-            }
-
-            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            if (connection && connection.saveData) {
-                return false;
-            }
-
-            if (connection) {
-                if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.effectiveType === '3g') {
+            video = null;
+        } else {
+            function shouldServeHeroHighResVideo() {
+                if (prefersReducedMotion) {
                     return false;
                 }
 
-                if (connection.effectiveType === '4g' || connection.effectiveType === '5g' || (connection.downlink && connection.downlink >= 8)) {
-                    return true;
+                if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
+                    return false;
+                }
+
+                var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && connection.saveData) {
+                    return false;
+                }
+
+                if (connection) {
+                    if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.effectiveType === '3g') {
+                        return false;
+                    }
+
+                    if (connection.effectiveType === '4g' || connection.effectiveType === '5g' || (connection.downlink && connection.downlink >= 8)) {
+                        return true;
+                    }
+                }
+
+                return true;
+            }
+
+            function loadHeroVideoSource() {
+                var highResSrc = $heroVideo.attr('data-high-res-src');
+                var defaultSrc = $heroVideo.attr('data-default-src') || $heroVideo.find('source').first().attr('src');
+
+                if (prefersReducedMotion || !highResSrc || !defaultSrc || !shouldServeHeroHighResVideo()) {
+                    return;
+                }
+
+                if (video.currentSrc && video.currentSrc.indexOf(highResSrc) !== -1) {
+                    return;
+                }
+
+                video.src = highResSrc;
+                video.load();
+            }
+
+            function setHeroProgress() {
+                if (!video || !isFinite(video.duration) || !video.duration) {
+                    return;
+                }
+
+                $playPauseHero[0].style.setProperty('--hero-video-progress', ((video.currentTime / video.duration) * 100) + '%');
+            }
+
+            function setHeroButtonState(isPlaying) {
+                if (isPlaying) {
+                    $playPauseHero.html('<i class="fi-pause">▐▐</i>');
+                    $playPauseHero.attr('aria-label', 'Pause background video');
+                    $playPauseHero.attr('title', 'Pause background video');
+                } else {
+                    $playPauseHero.html('<i class="fi-play"> ►</i>');
+                    $playPauseHero.attr('aria-label', 'Play background video');
+                    $playPauseHero.attr('title', 'Play background video');
                 }
             }
 
-            return true;
-        }
-
-        function loadHeroVideoSource() {
-            var highResSrc = $heroVideo.attr('data-high-res-src');
-            var defaultSrc = $heroVideo.attr('data-default-src') || $heroVideo.find('source').first().attr('src');
-
-            if (prefersReducedMotion || !highResSrc || !defaultSrc || !shouldServeHeroHighResVideo()) {
-                return;
+            function syncHeroVideoVisibility() {
+                var isPaused = video.paused || video.ended;
+                $heroVideo.toggleClass('is-paused', isPaused);
+                $heroVideo.closest('.hero-wrapper').toggleClass('is-paused', isPaused);
             }
 
-            if (video.currentSrc && video.currentSrc.indexOf(highResSrc) !== -1) {
-                return;
-            }
-
-            video.src = highResSrc;
-            video.load();
-        }
-
-        function setHeroProgress() {
-            if (!video || !isFinite(video.duration) || !video.duration) {
-                return;
-            }
-
-            $playPauseHero[0].style.setProperty('--hero-video-progress', ((video.currentTime / video.duration) * 100) + '%');
-        }
-
-        function setHeroButtonState(isPlaying) {
-            if (isPlaying) {
-                $playPauseHero.html('<i class="fi-pause">▐▐</i>');
-                $playPauseHero.attr('aria-label', 'Pause background video');
-                $playPauseHero.attr('title', 'Pause background video');
-            } else {
-                $playPauseHero.html('<i class="fi-play"> ►</i>');
-                $playPauseHero.attr('aria-label', 'Play background video');
-                $playPauseHero.attr('title', 'Play background video');
-            }
-        }
-
-        function syncHeroVideoVisibility() {
-            var isPaused = video.paused || video.ended;
-            $heroVideo.toggleClass('is-paused', isPaused);
-            $heroVideo.closest('.hero-wrapper').toggleClass('is-paused', isPaused);
-        }
-
-        function scheduleInitialAutoPause() {
-            if (didInitialAutoPause || initialAutoPauseTimer) {
-                return;
-            }
-
-            initialAutoPauseTimer = setTimeout(function () {
-                initialAutoPauseTimer = null;
-                didInitialAutoPause = true;
-
-                if (!video.paused) {
-                    video.pause();
+            function scheduleInitialAutoPause() {
+                if (didInitialAutoPause || initialAutoPauseTimer) {
+                    return;
                 }
 
+                initialAutoPauseTimer = setTimeout(function () {
+                    initialAutoPauseTimer = null;
+                    didInitialAutoPause = true;
+
+                    if (!video.paused) {
+                        video.pause();
+                    }
+
+                    setHeroButtonState(false);
+                    setHeroProgress();
+                }, 40000);
+            }
+
+            if (prefersReducedMotion) {
+                video.pause();
+                video.removeAttribute('autoplay');
                 setHeroButtonState(false);
                 setHeroProgress();
-            }, 40000);
-        }
-
-        if (prefersReducedMotion) {
-            video.pause();
-            video.removeAttribute('autoplay');
-            setHeroButtonState(false);
-            setHeroProgress();
-            syncHeroVideoVisibility();
-        } else {
-            loadHeroVideoSource();
-            setHeroButtonState(!video.paused);
-            syncHeroVideoVisibility();
-
-            if (!video.paused) {
-                scheduleInitialAutoPause();
-            }
-        }
-
-        $heroVideo.on('loadedmetadata timeupdate play pause ended', function () {
-            setHeroProgress();
-            syncHeroVideoVisibility();
-        });
-        $heroVideo.on('play', function () {
-            setHeroButtonState(true);
-            syncHeroVideoVisibility();
-            scheduleInitialAutoPause();
-        });
-        $heroVideo.on('pause ended', function () {
-            setHeroButtonState(false);
-            syncHeroVideoVisibility();
-        });
-
-        if (video.readyState >= 1) {
-            setHeroProgress();
-            syncHeroVideoVisibility();
-        }
-
-        $playPauseHero.on('click', function () {
-            if (video.paused) {
-                setHeroButtonState(true);
-                video.play();
+                syncHeroVideoVisibility();
             } else {
-                video.pause();
-                setHeroButtonState(false);
+                loadHeroVideoSource();
+                setHeroButtonState(!video.paused);
+                syncHeroVideoVisibility();
+
+                if (!video.paused) {
+                    scheduleInitialAutoPause();
+                }
             }
 
-            setHeroProgress();
-            syncHeroVideoVisibility();
-        });
+            $heroVideo.on('loadedmetadata timeupdate play pause ended', function () {
+                setHeroProgress();
+                syncHeroVideoVisibility();
+            });
+            $heroVideo.on('play', function () {
+                setHeroButtonState(true);
+                syncHeroVideoVisibility();
+                scheduleInitialAutoPause();
+            });
+            $heroVideo.on('pause ended', function () {
+                setHeroButtonState(false);
+                syncHeroVideoVisibility();
+            });
+
+            if (video.readyState >= 1) {
+                setHeroProgress();
+                syncHeroVideoVisibility();
+            }
+
+            $playPauseHero.on('click', function () {
+                if (video.paused) {
+                    setHeroButtonState(true);
+                    video.play();
+                } else {
+                    video.pause();
+                    setHeroButtonState(false);
+                }
+
+                setHeroProgress();
+                syncHeroVideoVisibility();
+            });
+        }
     }
 
     /**
@@ -300,7 +300,7 @@ jQuery(function ($) {
                 $('.poster').removeClass("poster-hidden");
                 autoplay = false;
         }, 40000);
-};
+}
 });
 
 
