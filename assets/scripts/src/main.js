@@ -2,11 +2,58 @@ jQuery(function ($) {
     var $heroVideo = $('#hero-video');
     var $playPauseHero = $('.play-pause-hero');
 
+    function shouldDisableHeroMedia() {
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        var isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+        var isSmallTouchViewport = window.matchMedia && window.matchMedia('(max-width: 1023px)').matches;
+        var isPhoneLikeViewport = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+        var isOnWifi = !!connection && (
+            connection.type === 'wifi' ||
+            connection.effectiveType === '4g' ||
+            connection.effectiveType === '5g' ||
+            (connection.downlink && connection.downlink >= 8)
+        );
+
+        if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g' || connection.effectiveType === '3g')) {
+            return true;
+        }
+
+        if (isCoarsePointer && isSmallTouchViewport && !isOnWifi) {
+            return true;
+        }
+
+        if (window.matchMedia && (window.matchMedia('(hover: none)').matches || isPhoneLikeViewport) && !isOnWifi) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function disableHeroMedia() {
+        if (!$heroVideo.length || !$playPauseHero.length) {
+            return;
+        }
+
+        $heroVideo.removeAttr('autoplay');
+        $heroVideo.removeAttr('src');
+        $heroVideo.attr('preload', 'none');
+        $heroVideo.find('source').remove();
+        $playPauseHero.off('click keypress');
+        $playPauseHero.hide();
+        $playPauseHero.attr('aria-hidden', 'true');
+        $playPauseHero.prop('disabled', true);
+    }
+
     if ($heroVideo.length && $playPauseHero.length) {
         var video = $heroVideo.get(0);
         var initialAutoPauseTimer = null;
         var didInitialAutoPause = false;
         var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (shouldDisableHeroMedia()) {
+            disableHeroMedia();
+            return;
+        }
 
         function shouldServeHeroHighResVideo() {
             if (prefersReducedMotion) {
@@ -195,6 +242,19 @@ jQuery(function ($) {
         var ppbutton = $('.play-pause-hero');
         var poster = $('.poster');
         var hero = $('#hero-video');
+
+        if (shouldDisableHeroMedia()) {
+            hero.removeAttr('autoplay');
+            hero.removeAttr('src');
+            hero.find('source').remove();
+            hero.attr('preload', 'none');
+            ppbutton.off('click keypress');
+            ppbutton.hide();
+            ppbutton.attr('aria-hidden', 'true');
+            ppbutton.prop('disabled', true);
+            return;
+        }
+
         ppbutton.html('<i class="fi-pause">▐▐</i>');
         hero.removeClass("fullfade");
         if (window.matchMedia('(prefers-reduced-motion)').matches) {
