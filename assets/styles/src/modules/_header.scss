@@ -247,7 +247,8 @@
 
 .section-title {
 	@include encode_wide_black();
-	font-size: calc(1.25rem + 3vw);
+	font-size: calc(1.25rem + 2vw);
+	line-height: normal;
 	text-transform: uppercase;
 	text-decoration: none;
 	background: none;
@@ -266,6 +267,9 @@
 	@include max-width ( $iPadPortrait ) {
 		margin-bottom: -1rem;
 		margin-left: 1rem;
+	}
+	@include max-width ( 500 ) {
+		font-size: 1.5rem;
 	}
 }
 

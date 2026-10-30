@@ -18,6 +18,10 @@ $faculty-tile-scale-settle: 1.68;
 $faculty-tile-scale-active-small: 1.1;
 $faculty-tile-scale-bounce-small: 1.45;
 $faculty-tile-scale-settle-small: 1.1;
+$faculty-tile-scale-active-medium: 1.375;
+$faculty-tile-scale-bounce-medium: 1.625;
+$faculty-tile-scale-settle-medium: 1.39;
+$faculty-image-height-percentage: percentage( 1 / $faculty-item-height-ratio );
 $faculty-header-lift-default: 0rem;
 $faculty-header-lift-active: -0.75rem;
 $faculty-header-lift-long-name: -2rem;
@@ -196,7 +200,16 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
-@media (max-width: 1349px) and (hover: hover) and (pointer: fine) {
+@media (min-width: 800px) and (max-width: 1300px) and (hover: hover) and (pointer: fine) {
+	.Faculty-list-item--has-image .Faculty-list-item-inner:hover {
+		--faculty-tile-scale: #{$faculty-tile-scale-active-medium};
+		--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce-medium};
+		--faculty-tile-settle-scale: #{$faculty-tile-scale-settle-medium};
+		box-shadow: 0 0.55rem 1.1rem rgba(0, 0, 0, 0.19);
+	}
+}
+
+@media (max-width: 800px) and (hover: hover) and (pointer: fine) {
 	.Faculty-list-item--has-image .Faculty-list-item-inner:hover {
 		--faculty-tile-scale: #{$faculty-tile-scale-active-small};
 		--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce-small};
@@ -205,7 +218,7 @@ $faculty-bounce-duration: 0.28s;
 	}
 }
 
-@media (max-width: 1349px) {
+@media (max-width: 800px) {
 	.Faculty-list-item--has-image .Faculty-list-item-inner:active {
 		--faculty-tile-scale: #{$faculty-tile-scale-active-small};
 		--faculty-tile-bounce-scale: #{$faculty-tile-scale-bounce-small};
@@ -215,9 +228,18 @@ $faculty-bounce-duration: 0.28s;
 }
 
 .Faculty-list-item-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: $faculty-image-height-percentage;
+	overflow: hidden;
 
 	img {
 		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 }
 
@@ -244,7 +266,7 @@ $faculty-bounce-duration: 0.28s;
 
 // Keep the name anchored to the image edge even before lazy-loaded images hydrate.
 .Faculty-list-item--has-image .Faculty-list-item-header {
-	bottom: 0px;
+	top: $faculty-image-height-percentage;
 }
 
 @media (hover: hover) and (pointer: fine) {

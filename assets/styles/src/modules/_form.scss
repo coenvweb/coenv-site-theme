@@ -37,6 +37,7 @@ form {
 		vertical-align: middle;
 		font-size: 0; // white space hack
 		white-space: nowrap;
+		width: 100%;
 
 		label {
 			@extend .visuallyhidden;
@@ -47,21 +48,19 @@ form {
 			display: inline-block;
 			vertical-align: middle;
 			border-radius: 0;
-			@include rem('height', $field-wrap-height);
+			height: 2.5rem;
 		}
 
 		input[type="text"] {
 			@include rem('padding', 0, 0.5);
-			width: 80%;
-			border-radius: $radius 0 0 $radius;
+			width: 85%;
 		}
 
 		button[type="submit"] {
 			@include rem('padding', 0, 0.5);
-			width: 20%;
+			width: 15%;
 			text-align: center;
 			background: #ddd;
-			border-radius: 0 $radius $radius 0;
 
 			span {
 				@extend .visuallyhidden;
