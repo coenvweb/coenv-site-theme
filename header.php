@@ -163,6 +163,8 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                         </div>
 
                 <?php
+                    $is_big_sky_signature_story = is_singular( 'post' ) && is_page_template( 'templates/big-sky-signature-story.php' );
+
                     if ( is_404() ) {
                         $banner = array(
                             'url' => get_template_directory_uri() . '/assets/img/404-bg.jpg'
@@ -176,7 +178,23 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     }
                 ?>
 
-                <div class="banner-wrapper"<?php if (!empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
+                <div class="banner-wrapper<?php echo $is_big_sky_signature_story ? ' video-container' : ''; ?>"<?php if (!$is_big_sky_signature_story && !empty( $banner )) echo ' style="background-image: url(' . $banner['url'] . ');"' ?> >
+
+                <?php if ( $is_big_sky_signature_story ) : ?>
+                    <div class="filter"></div>
+                    <video autoplay loop muted class="fillWidth fullfade show-for-medium-up" id="hero-video" poster="<?php echo esc_url( get_template_directory_uri() . '/assets/video/ess-video.jpg' ); ?>">
+                        <source src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/ess-video.mp4' ); ?>" type="video/mp4" />
+                        <source src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/ess-video.webm' ); ?>" type="video/webm" />
+                        <source src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/ess-video.ogg' ); ?>" type="video/ogg" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="poster visuallyhidden">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/video/ess-video.jpg' ); ?>" alt="" />
+                    </div>
+                    <div class="feature-info-container">
+                        <a class="play-pause-hero right show-for-medium-up"></a>
+                    </div>
+                <?php endif; ?>
 
                 <?php
                     $news_request = isset( $wp->request ) ? $wp->request : '';

@@ -9,6 +9,17 @@
         background: #fff;
         min-height: 500px;
     }
+
+    h2.no-sidenav-title {
+        &::after, &::before {
+            display: none;
+        }
+    }
+
+    .side-col {
+        display: none;
+    }
+
     .article__title {
         font-size: 3.5rem;
         line-height: 4.25rem;
@@ -36,8 +47,8 @@
             left: 30px;
         }
         @include max-width ( 600 ) {
-            font-size: 10vw;
-            line-height: 12vw;
+            font-size: 8vw;
+            line-height: 10vw;
         }
     }
     
@@ -47,6 +58,10 @@
     .intro {
         font-size: 1.8rem;
         line-height: 150%;
+        @include max-width ( 600 ) {
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+        }
     }
     h2 {
         margin-bottom: 3rem;
@@ -231,8 +246,15 @@
     }
     
     .big-element {
-        &.element-call_to_action {
-            width: 100%;
+        width: 100vw;
+        max-width: none;
+        margin-left: calc(50% - 50vw);
+        position: relative;
+        clear: both;
+
+        &.element-call_to_action,
+        &.element-call_to_action2 {
+            width: 100vw;
             position: relative;
             max-width: none;
             background-size: contain;
@@ -500,7 +522,7 @@
     }
     
     .feat-quote {
-        @include serif();
+        @include encode_wide();
         font-size: 1.8rem;
         line-height: 150%;
         margin: 3rem 0 4rem 0;
@@ -670,16 +692,25 @@
         }
     }
 
+    .scrollto {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        position: relative;
+        left: 0;
+    }
+
     .photo-divider {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 100vw;
+        max-width: none;
         min-height: 40vh; 
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        margin-bottom: 3rem;
+        margin: 0 0 3rem;
         @include max-width ( 800 ) {
             background-attachment: inherit;
         }
@@ -1668,8 +1699,12 @@
     
     //call-to-action
     
-    .element-call_to_action {
+    .element-call_to_action,
+    .element-call_to_action2 {
         overflow: hidden;
+        width: 100vw;
+        max-width: none;
+        margin-left: calc(50% - 50vw);
         
         .cta-content {
             h2.title {

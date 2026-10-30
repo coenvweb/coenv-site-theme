@@ -45,7 +45,7 @@
     position: relative;
     width: 100%;
     padding: 2rem 0;
-    //opacity: .6; 
+    
     @include max-width ( $iPadPortrait ) {
         padding-top: 0rem;
         .first-section {

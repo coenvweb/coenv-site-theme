@@ -326,11 +326,11 @@ function photo_divider_func( $atts, $content = null ){
         $divider_subtitle = null;
     }
     preg_match_all('/wp-image-([\d]+)/', $content, $matches);
-    $output = '</section></div><div id="section-' . $sanitized_title . '" class="scrollto"><div class="photo-divider photo-divider-1 ' . $divider_class . ' divider-' . $sanitized_title . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
+    $output = '</section><div id="section-' . $sanitized_title . '" class="scrollto"><div class="photo-divider photo-divider-1 ' . $divider_class . ' divider-' . $sanitized_title . '" style="background-image:url(' . wp_get_attachment_url($matches[1][0]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div>';
     if (isset($matches[1][1])) {
-        $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div><section class="article__content">';
+        $output .= '<div class="photo-divider photo-divider-2" style="background-image:url(' . wp_get_attachment_url($matches[1][1]) . ')"><div class="inner-divider-content"><div class="title-block">' . $divider_title . $divider_subtitle . '</div></div></div></div><section class="article__content">';
     } else {
-        $output .= '<section class="article__content">';
+        $output .= '</div><section class="article__content">';
     }
     return $output;
 };
