@@ -4,7 +4,7 @@
         &.headlines {
             //background-image: url("../../img/headlines_background.png");
             .newsletter_title {
-                color: black;
+                color: white;
             }
             .header_img {
                 width: 40%;
@@ -15,16 +15,28 @@
         }
         background-size: cover;
         background-position: 75% center;
-        text-align: center;
+        text-align: left;
+        margin-left: 2rem;
+        background: $accent-dk;
+        color: white;
+        @extend .plum;
         
         @include rem('margin', 1);
-        @include rem('padding', 2, 1, 1, 1);
+        @include rem('padding', 2);
         .newsletter_title {
+            @include encode_black();
             font-size: 1.5rem;
+            line-height: 1.2;
             @include max-width( $iPadPortrait ) {
                 font-size: 1rem;
             }
             margin: 0rem;
+        }
+
+        .newsletter_subtitle {
+            @include encode_black();
+            @include rem('margin', 0.35, 0, 0, 0);
+            line-height: 1.25;
         }
     }
 

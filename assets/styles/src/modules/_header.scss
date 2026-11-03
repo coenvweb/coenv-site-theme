@@ -284,8 +284,7 @@
 	justify-content: flex-end;
 }
 
-.single-faculty .banner-wrapper .title-label,
-.single-post .banner-wrapper .title-label {
+.banner-wrapper .title-label {
 	display: block;
 	margin: 0 0 0.35rem;
 	@include encode();
@@ -301,7 +300,8 @@
 }
 
 .single-faculty .banner-wrapper .no-sidenav-title,
-.single-post .banner-wrapper .no-sidenav-title {
+.single-post .banner-wrapper .no-sidenav-title, 
+.single-newsletter .banner-wrapper .no-sidenav-title {
 	margin: 0 0 2rem 0;
 }
 

@@ -234,10 +234,64 @@ jQuery(function ($) {
 
 		var _this = this,
 				$items = this.$mobileMenu.find( this.options.topLevelItemSelector ),
-				$itemLinks = $items.find('> span > a');
+				$itemLinks = $items.find('> span > a'),
+				activeItemSelector = '.menu-item-active, .current_page_item, .current_page_parent, .current_page_ancestor, .current-menu-item, .current-menu-parent, .current-menu-ancestor, .current-page-parent, .current-page-ancestor';
+
+		// backfill active classes by URL so parent branches expand reliably on mobile
+		(function markCurrentPathItems() {
+			var pathAnchor = document.createElement('a'),
+				currentPath,
+				currentHost;
+
+			function normalizePath(path) {
+				if (!path) {
+					return '/';
+				}
+
+				path = path.replace(/\/+$/, '');
+
+				if (path === '') {
+					return '/';
+				}
+
+				return path;
+			}
+
+			function getPathFromUrl(url) {
+				if (!url || url === '#') {
+					return null;
+				}
+
+				pathAnchor.href = url;
+
+				if (pathAnchor.host && pathAnchor.host !== currentHost) {
+					return null;
+				}
+
+				return normalizePath(pathAnchor.pathname);
+			}
+
+			currentHost = window.location.host;
+			currentPath = normalizePath(window.location.pathname);
+
+			_this.$mobileMenu.find('a').each(function () {
+				var $link = $(this),
+					linkPath = getPathFromUrl($link.attr('href')),
+					$item;
+
+				if (!linkPath || linkPath !== currentPath) {
+					return;
+				}
+
+				$item = $link.closest('li');
+
+				$item.addClass('current_page_item current-menu-item');
+				$item.parents('li').addClass('current_page_ancestor current-menu-ancestor');
+			});
+		})();
 
 		// on page load, make sure appropriate item has the expanded class
-		$items.filter('.menu-item-active, .current_page_item, .current-page-ancestor').each(function () {
+		$items.filter(activeItemSelector).each(function () {
 			$(this).addClass('expanded');
 			//$(this).find('> span > a > i').css('outline', '1px solid red');
 		});

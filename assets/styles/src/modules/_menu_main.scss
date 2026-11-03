@@ -237,6 +237,12 @@
 
 	&.menu-item-active,
 	&.current_page_item,
+		&.current_page_parent,
+		&.current_page_ancestor,
+		&.current-menu-item,
+		&.current-menu-parent,
+		&.current-menu-ancestor,
+		&.current-page-parent,
 	&.current-page-ancestor {
 
 		> span > a {
@@ -283,7 +289,14 @@
 			color: #ddd;
 		}
 
-		li.current_page_item > a {
+			li.current_page_item > a,
+			li.current_page_parent > a,
+			li.current_page_ancestor > a,
+			li.current-menu-item > a,
+			li.current-menu-parent > a,
+			li.current-menu-ancestor > a,
+			li.current-page-parent > a,
+			li.current-page-ancestor > a {
 			background: $accent;
 			color: #fff;
 		}
@@ -304,8 +317,24 @@
 		color: #ddd !important;
 	}
 
-	.menu-item-active > a,
-	.current_page_item > a {
+		.menu-item-active > a,
+		.current_page_item > a,
+		.current_page_parent > a,
+		.current_page_ancestor > a,
+		.current-menu-item > a,
+		.current-menu-parent > a,
+		.current-menu-ancestor > a,
+		.current-page-parent > a,
+		.current-page-ancestor > a,
+		.menu-item-active > span > a,
+		.current_page_item > span > a,
+		.current_page_parent > span > a,
+		.current_page_ancestor > span > a,
+		.current-menu-item > span > a,
+		.current-menu-parent > span > a,
+		.current-menu-ancestor > span > a,
+		.current-page-parent > span > a,
+		.current-page-ancestor > span > a {
 		background: $accent !important;
 		color: #fff !important;
 	}

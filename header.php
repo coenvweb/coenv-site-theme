@@ -146,6 +146,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
 
                                 <nav aria-label="primary" class="nav-main main-menu normal-menu" role="navigation">
 
+                                    <?php get_search_form() ?>
+                                
+                                    <div class="close-mobile"><i class="icon-cross"></i></div>
+
                                     <ul id="menu-main" class="nav-main__menu  menu">
                                         <?php 
                                         wp_list_pages( array(
@@ -207,6 +211,10 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                     $news_page_id = (int) get_option('page_for_posts');
                     $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/');
                     echo '<div class="container"><a href="' . esc_url($news_link) . '"><span class="title-label">← back to all</span><h2 class="no-sidenav-title"><span class="section-title">News</span></h2></a></div>';
+                } elseif (is_singular('newsletter')) {
+                    $news_page_id = (int) get_option('page_for_posts');
+                    $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/about/news/');
+                    echo '<div class="container"><a href="' . esc_url($news_link) . '"><span class="title-label">← back to all news</span><h2 class="no-sidenav-title"><span class="section-title">News</span></h2></a></div>';
                 } elseif ( $is_news_route ) {
                     $news_page_id = (int) get_option('page_for_posts');
                     $news_link = $news_page_id ? get_permalink($news_page_id) : home_url('/about/news/');

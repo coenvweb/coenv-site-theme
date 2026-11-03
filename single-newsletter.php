@@ -6,6 +6,12 @@
 get_header();
 
 $ancestor_id = 5;
+$posts_page_id = (int) get_option( 'page_for_posts' );
+
+if ( $posts_page_id ) {
+    $posts_page_ancestors = get_post_ancestors( $posts_page_id );
+    $ancestor_id = ! empty( $posts_page_ancestors ) ? (int) array_pop( $posts_page_ancestors ) : $posts_page_id;
+}
 
 $ancestor = array(
 	'id' => $ancestor_id,
@@ -33,8 +39,6 @@ $links = get_field('outside_news');
 
 		<div class="container">
 
-			<?php if ( in_array( $post->post_type, array('page') ) ) : ?>
-
 				<nav id="secondary-nav" class="side-col">
 
 			<ul id="menu-secondary" class="menu">
@@ -53,8 +57,6 @@ $links = get_field('outside_news');
 	          </ul>
 
 				</nav><!-- #secondary-nav.side-col -->
-
-			<?php endif ?>
 
 			<main id="main-col" class="main-col">
 
@@ -207,7 +209,6 @@ $links = get_field('outside_news');
 			</main><!-- .main-col -->
 
             <div class="side-col">
-                <?php the_widget('CoEnv_Widget_Newsletter', array('title' => 'Newsletter', 'newsletter_url' => get_site_url() . '/news/college-newsletter/')); ?>
                 <?php dynamic_sidebar('News / Sidebar'); ?>
             </div><!-- .side-col -->
 
