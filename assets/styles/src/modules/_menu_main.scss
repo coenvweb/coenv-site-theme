@@ -138,6 +138,10 @@
             margin-left: -1rem;
             top: 30%;
         }
+
+		@include min-width ( 400 ) {
+			display: none;
+		}
         
     }
 
@@ -181,6 +185,10 @@
             font-size: 1.7rem;
             margin-left: -1rem;
         }
+
+		@include min-width ( 400 ) {
+			display: none;
+		}
 
 	} // .search-form
 

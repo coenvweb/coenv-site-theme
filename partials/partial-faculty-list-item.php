@@ -34,15 +34,15 @@ if ( !empty( $image_id ) ) {
 	$member_classes .= ' Faculty-list-item--has-image';
 }
 
-if ( $title_length > 20 ) {
+if ( $title_length >= 20 ) {
 	$member_classes .= ' Faculty-list-item--long-name';
 }
 
-if ( $title_length > 26 ) {
+if ( $title_length >= 26 ) {
 	$member_classes .= ' Faculty-list-item--longer-name';
 }
 
-if ( $title_length > 32 ) {
+if ( $title_length >= 32 ) {
 	$member_classes .= ' Faculty-list-item--longest-name';
 }
 
