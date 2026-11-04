@@ -9,8 +9,8 @@
 	background: #ccc;
 }
 .home .widget-social ul li a {
-		color: #333;
-		fill: #333;
+		color: $accent-dk;
+		fill:  $accent-dk;
 
 }
 .widget-social {
@@ -19,7 +19,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		@extend .shadow;
 		background: #fff;
 	}
 
@@ -49,8 +48,8 @@
 		letter-spacing: 0.1em;
 		text-align: left;
 		border-bottom: 1px solid $border;
-		color: #333;
-		fill: #666;
+		color: $accent-dk;
+		fill: $accent-dk;
 		text-decoration: none;
 		width: 100%;
 

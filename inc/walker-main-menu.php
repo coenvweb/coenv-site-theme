@@ -8,10 +8,12 @@
  * us more flexibility in splitting menu items into columns.
  */
 class CoEnv_Main_Menu_Walker extends Walker_Page {
+	const MENU_TRANSIENT_KEY = 'coenv_main_menu_data_v2';
+	const MENU_TRANSIENT_TTL = 10 * MINUTE_IN_SECONDS;
 
 	public function __construct() {
-		// Pull from cache or fetch once for 12 hours
-		$menu_data = get_transient( 'coenv_main_menu_data' );
+		// Pull from cache or fetch once for a short period.
+		$menu_data = get_transient( self::MENU_TRANSIENT_KEY );
 
 		if ( false === $menu_data ) {
 			$menu_data = array(
@@ -19,7 +21,7 @@ class CoEnv_Main_Menu_Walker extends Walker_Page {
 				'top_level'       => $this->fetch_top_level_items(),
 				'subhead'         => $this->fetch_subhead_items(),
 			);
-			set_transient( 'coenv_main_menu_data', $menu_data, 12 * HOUR_IN_SECONDS );
+			set_transient( self::MENU_TRANSIENT_KEY, $menu_data, self::MENU_TRANSIENT_TTL );
 		}
 
 		$this->items             = $menu_data['items'];

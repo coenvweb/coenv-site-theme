@@ -526,18 +526,22 @@
         }
 
         .next-button {
-            background-color: $accent;
-            color: white;
-            min-width: 200px;
-            height: 35px;
-            padding-top: 6px;
-            font-size: 1.1rem;
-            &:hover {
-                background-color: $accent-lt;
-            }
-            @include min-width ( $iPadPortrait ) {
-                margin-left: 2rem;
-            }
+            display: inline-block;
+            width: auto;
+            margin-left: 1rem;
+            margin-top: -5px;
+            //background-color: $accent;
+            //color: white;
+            //min-width: 200px;
+            //height: 35px;
+            //padding-top: 6px;
+            //font-size: 1.1rem;
+            //&:hover {
+              //  background-color: $accent-lt;
+            //}
+            //@include min-width ( $iPadPortrait ) {
+             //   margin-left: 2rem;
+            //}
         }
     }
 
