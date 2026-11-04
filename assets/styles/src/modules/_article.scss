@@ -236,6 +236,23 @@
 		}
 	}
 
+	h3 a {
+		&:after {
+			top: 56%!important;
+			right: -2px!important;
+		}
+	}
+
+	h4 a {
+		&:before {
+			bottom: 4px!important;
+		}
+		&:after {
+			top: 56%!important;
+			right: -4px!important;
+		}
+	}
+
 	hr {
 		height: 2px;
 		border: none;
