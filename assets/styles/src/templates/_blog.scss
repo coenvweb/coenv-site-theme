@@ -161,11 +161,16 @@
 			}
 
 			button[type="submit"] {
-				border: none;
-				height: 35px;
-				width: 1.85rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 0;
+				height: 2.75rem;
+				width: 2.75rem;
 				position: absolute;
+				top: 0;
 				right: 0.55rem;
+				padding: 0;
 				background: none;
 			}
 
@@ -188,9 +193,11 @@
 
 			.Faculty-toolbox-search-button-icon {
 				position: absolute;
-				top: 40%;
+				top: 50%;
 				left: 50%;
 				z-index: 2;
+				margin: 0;
+				line-height: 1;
 				transition: opacity 0.2s ease, transform 0.2s ease;
 				transform: translate(-50%, -50%) scale(1);
 				@include font-size(22);
@@ -201,20 +208,64 @@
 				transform: translate(-50%, -50%) scale(0.8);
 			}
 
-			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button {
+			&.blog-search.blog-has-active-search .Faculty-toolbox-search-button {
+				top: 50%;
+				height: 1.75rem;
+				width: 1.75rem;
+				right: 0.55rem;
+				padding: 0;
+				border: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				border-radius: 50%;
 				background: $accent;
 				color: #fff;
+				transform: translateY(-50%) scale(1);
 			}
 
-			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--search {
+			&.blog-search.blog-has-active-search .Faculty-toolbox-search-button-icon--search {
 				opacity: 0;
 				transform: translate(-50%, -50%) scale(0.8);
 			}
 
-			.Faculty-toolbox-search-wrap.has-active-search .Faculty-toolbox-search-button-icon--clear {
-				opacity: 1;
+			&.blog-search.blog-has-active-search .Faculty-toolbox-search-button-icon--clear {
+				opacity: 1!important;
+				color: #fff!important;
+				@include font-size(16);
+				margin-left: 0 !important;
+				margin-top: 0 !important;
 				transform: translate(-50%, -50%) scale(1);
+			}
+
+			/* Keep generic shared state from revealing clear icon before a real blog search is active. */
+			&.blog-search.has-active-search:not(.blog-has-active-search) .Faculty-toolbox-search-button-icon--clear {
+				opacity: 0 !important;
+				transform: translate(-50%, -50%) scale(0.8) !important;
+			}
+
+			&.blog-search.has-active-search:not(.blog-has-active-search) .Faculty-toolbox-search-button-icon--search {
+				opacity: 1 !important;
+				transform: translate(-50%, -50%) scale(1) !important;
+			}
+
+			&.blog-search.has-active-search:not(.blog-has-active-search) .Faculty-toolbox-search-button {
+				top: 0;
+				right: 0.55rem;
+				height: 2.75rem;
+				width: 2.75rem;
+				border-radius: 0;
+				background: none;
+				color: $accent;
+				transform: none;
+			}
+
+			&.blog-search.blog-has-active-search .Faculty-toolbox-search-button-icon--search {
+				margin: 0;
+			}
+
+			&.blog-search.blog-has-active-search .Faculty-toolbox-search-button-icon--clear {
+				margin: 0;
 			}
 		}
 

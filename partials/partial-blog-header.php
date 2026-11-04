@@ -7,7 +7,7 @@
 	?>
 
 	<form role="search" method="get" class="search-form Form--inline" action="<?php echo $news_base_url; ?>">
-	  <div class="field-wrap Faculty-toolbox-search-wrap">
+	  <div class="field-wrap Faculty-toolbox-search-wrap blog-search">
         <label for="s">Search news</label>
 	    <input type="text" value="<?php echo $current_search; ?>" name="s" id="s" placeholder="Search news" aria-label="Search" title="Search" />
 	    <button type="submit" class="Faculty-toolbox-search-button" aria-label="Search news">

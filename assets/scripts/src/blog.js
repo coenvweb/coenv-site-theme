@@ -8,9 +8,21 @@ jQuery(function ($) {
                 $selectCategory = $header.find('.select-category select'),
                 $selectMonth = $header.find('.select-month select'),
                 $selects = $header.find('.input-item select'),
-                $searchWrap = $header.find('.Faculty-toolbox-search-wrap'),
+                $searchWrap = $header.find('.blog-search'),
                 $searchInput = $searchWrap.find('input[type="text"]'),
-                $searchButton = $searchWrap.find('.Faculty-toolbox-search-button');
+                $searchButton = $searchWrap.find('.Faculty-toolbox-search-button'),
+                currentUrlSearch = $.trim(getCurrentUrlSearchTerm());
+
+        if (!$searchWrap.length) {
+            $searchWrap = $header.find('.Faculty-toolbox-search-wrap');
+            $searchInput = $searchWrap.find('input[type="text"]');
+            $searchButton = $searchWrap.find('.Faculty-toolbox-search-button');
+        }
+
+        function getCurrentUrlSearchTerm() {
+            var match = window.location.search.match(/[?&]s=([^&]*)/);
+            return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : '';
+        }
 
         function updateSelectState($select) {
             var hasValue = $.trim($select.val()) !== '' && $select.prop('selectedIndex') > 0;
@@ -18,7 +30,9 @@ jQuery(function ($) {
         }
 
         function updateSearchState() {
-            var hasSearch = $.trim($searchInput.val()) !== '' && /(?:\?|&)s=/.test(window.location.search);
+            var inputValue = $.trim($searchInput.val());
+            var hasSearch = currentUrlSearch !== '' && inputValue !== '' && inputValue === currentUrlSearch;
+            $searchWrap.toggleClass('blog-has-active-search', hasSearch);
             $searchWrap.toggleClass('has-active-search', hasSearch);
         }
 
@@ -27,6 +41,10 @@ jQuery(function ($) {
         });
 
         updateSearchState();
+
+        $searchInput.on('input', function () {
+            updateSearchState();
+        });
 
         $selects.on('change', function () {
             updateSelectState($(this));
@@ -47,7 +65,7 @@ jQuery(function ($) {
         });
 
         $searchButton.on('click', function (event) {
-            if ($searchWrap.hasClass('has-active-search')) {
+            if ($searchWrap.hasClass('blog-has-active-search')) {
                 event.preventDefault();
                 $searchInput.val('');
                 window.location.href = $header.find('.select-category').attr('data-news-url') || '/about/news/';
