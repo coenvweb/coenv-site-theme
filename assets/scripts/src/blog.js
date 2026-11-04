@@ -64,14 +64,6 @@ jQuery(function ($) {
             $searchInput.trigger('focus');
         });
 
-        $searchButton.on('click', function (event) {
-            if ($searchWrap.hasClass('blog-has-active-search')) {
-                event.preventDefault();
-                $searchInput.val('');
-                window.location.href = $header.find('.select-category').attr('data-news-url') || '/about/news/';
-            }
-        });
-
         $selectCategory.on( 'change', function () {
             var selectedUrl = $(this).val(),
                     $container = $(this).closest('.select-category'),
