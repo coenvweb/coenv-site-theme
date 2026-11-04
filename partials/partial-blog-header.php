@@ -68,7 +68,7 @@
 				<p class="all-news"><a href="/about/news/" class="button"><i class="icon-cross" aria-hidden="true"></i><span class="visuallyhidden">Clear filters</span></a></p>
 			<?php } elseif (is_date()) { ?>
 				<p><?php echo $coenv_post_count; ?> news posts from <span class="term-name"><?php echo single_month_title(' '); ?></span></p>
-				<p class="all-news"><a href="/about/news/" class="button"><i class="icon-cross" aria-hidden="true"></i>span class="visuallyhidden">Clear filters</span></a></p>
+				<p class="all-news"><a href="/about/news/" class="button"><i class="icon-cross" aria-hidden="true"></i><span class="visuallyhidden">Clear filters</span></a></p>
 			<?php } ?>
 		</div>
 	<?php } ?>
