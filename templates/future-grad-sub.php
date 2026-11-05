@@ -7,10 +7,12 @@ get_header();
 $ancestor_id = coenv_get_ancestor();
 $header_page_id = $ancestor_id;
 
-if ( empty( get_field('future_students_header_image', $header_page_id) ) || empty( get_field('future_students_heading', $header_page_id) ) ) {
-	$parent_id = wp_get_post_parent_id( get_the_ID() );
-	if ( ! empty( $parent_id ) ) {
-		$header_page_id = $parent_id;
+if ( $header_page_id ) {
+	if ( empty( get_field('future_students_header_image', $header_page_id) ) || empty( get_field('future_students_heading', $header_page_id) ) ) {
+		$parent_id = wp_get_post_parent_id( get_the_ID() );
+		if ( ! empty( $parent_id ) ) {
+			$header_page_id = $parent_id;
+		}
 	}
 }
 

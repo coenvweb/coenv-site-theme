@@ -288,6 +288,10 @@ function coenv_get_ancestor($attr = 'ID') {
 	$post = get_queried_object();
 	$post_type = is_object( $post ) && isset( $post->post_type ) ? $post->post_type : '';
 
+	if ( ! $post && ! is_admin() ) {
+		return false;
+	}
+
 	// test for search
 	if ( is_search() ) {
 		return false;
@@ -324,22 +328,29 @@ function coenv_get_ancestor($attr = 'ID') {
 	}
 
 	// test for pages
-    if ((isset($post->post_type)) && $post->post_type == 'page' ) {
+    if ( is_object( $post ) && isset( $post->post_type ) && $post->post_type == 'page' ) {
 
         // test for top-level pages
-        if ( $post->post_parent == 0 ) {
+        if ( isset( $post->post_parent ) && $post->post_parent == 0 ) {
             return $post->$attr;
         }
 
         // must be a child page
         $ancestors = get_post_ancestors( $post->ID );
-        $ancestor = get_post( array_pop( $ancestors ) );
-        return $ancestor->$attr;
+        $ancestor = ! empty( $ancestors ) ? get_post( array_pop( $ancestors ) ) : null;
+
+        if ( $ancestor ) {
+            return $ancestor->$attr;
+        }
+
+        return false;
     }
 
 	// test for custom post types
 	$custom_post_types = get_post_types( array( '_builtin' => false ), 'object' );
-	if ( !empty( $custom_post_types ) && (isset($post->post_type)) && array_key_exists( $post->post_type, $custom_post_types ) ) {
+	if ( !empty( $custom_post_types ) && is_object( $post ) && isset( $post->post_type ) && array_key_exists( $post->post_type, $custom_post_types ) ) {
+
+		$parent = null;
 
 		// is parent_page slug defined?
 		if ( isset( $custom_post_types[ $post->post_type ]->parent_page ) ) {
@@ -351,10 +362,14 @@ function coenv_get_ancestor($attr = 'ID') {
 
 			// parent_page slug is not defined
 			// find custom slug
-			$slug = $custom_post_types[ $post->post_type ]->rewrite[ 'slug' ];
+			$slug = isset( $custom_post_types[ $post->post_type ]->rewrite['slug'] ) ? $custom_post_types[ $post->post_type ]->rewrite['slug'] : '';
 
 			// if a page exists with the same slug, assume that's the parent page
-			$parent = get_page_by_path( $slug );
+			$parent = $slug ? get_page_by_path( $slug ) : null;
+		}
+
+		if ( ! $parent ) {
+			return false;
 		}
 
 		// get ancestors of $parent
@@ -366,7 +381,7 @@ function coenv_get_ancestor($attr = 'ID') {
 		}
 
 		$ancestor = get_post( array_pop( $ancestors ) );
-		return $ancestor->$attr;
+		return $ancestor ? $ancestor->$attr : false;
 	}
     
 }
