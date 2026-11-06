@@ -751,8 +751,7 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$unit = array(
 				'term_id' => $term->term_id,
-				'url' => $this->base_url . '#theme-all&unit-' . $term->slug,
-				//'url' => get_bloginfo('url') . '/faculty/?unit=' . $term->slug,
+				'url' => $this->base_url . '?unit=' . rawurlencode( $term->slug ),
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count,
@@ -777,14 +776,16 @@ class CoEnvMemberAPI {
 	 */
 	function term_url( $term ) {
 
-		$url = $this->base_url . '#theme-';
+		$url = $this->base_url;
 
 		switch ( $term->taxonomy ) {
 			case 'unit':
-				$url .= 'all&unit-' . $term->slug;
+				$url .= '?unit=' . rawurlencode( $term->slug );
 				break;
 			case 'member_theme':
-				$url .= $term->slug . '&unit-all';
+				$url .= '?theme=' . rawurlencode( $term->slug );
+				break;
+			default:
 				break;
 		}
 
@@ -803,8 +804,7 @@ class CoEnvMemberAPI {
 		foreach ( $terms as $term ) {
 			$theme = array(
 				'term_id' => $term->term_id,
-				'url' => $this->base_url . '#theme-' . $term->slug . '&unit-all',
-				//'url' => get_bloginfo('url') . '/faculty/?theme=' . $term->slug,
+				'url' => $this->base_url . '?theme=' . rawurlencode( $term->slug ),
 				'name' => $term->name,
 				'slug' => $term->slug,
 				'count' => $term->count

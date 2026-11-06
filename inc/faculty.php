@@ -75,7 +75,7 @@ function coenv_related_faculty ($id, $term = 0) {
             if (empty($term)) {
                 echo '<a href="/faculty/" title="Browse more faculty in the College of the Environment">';
             } else {
-                echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" >';
+                echo '<a href="/faculty/?theme=' . rawurlencode( $term->slug ) . '" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" >';
             }
                 echo '<h2 class="title">Related Faculty</h2></a>';
                 
@@ -111,7 +111,7 @@ function coenv_related_faculty ($id, $term = 0) {
                 $profile_count = $profile_count->publish;
                 echo '<a href="/faculty/" title="Browse ' . ($profile_count - 6) . ' more faculty in the College of the Environment" class="count" >';
             } else {
-                echo '<a href="/faculty/#theme-' . $term->slug . '&unit-all" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
+                echo '<a href="/faculty/?theme=' . rawurlencode( $term->slug ) . '" title="Browse ' . ($query->post_count - 6) . ' more faculty in ' . $term->name . '" class="count" >';
             }
             echo '<div class="related-container">';
             echo '<div class="related-thumb">';

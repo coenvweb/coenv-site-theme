@@ -399,25 +399,6 @@
         }
     }
 
-
-    .grey-widget {
-        @include min-width ( $iPadPortrait ) {
-            float: right!important;
-            width: 262px!important;
-            margin: 0 0 1rem 3rem;
-        }
-        margin: 0;
-        background-color: $text-very-lt;
-        margin-bottom: 1rem;
-        border-left: 1rem solid white;
-        p {
-            padding: .5rem 1rem 1rem 1rem;
-            margin-bottom: 0;
-        }
-        .button {
-            margin-top: 1rem;
-        }
-    }
     .widget-events {
         @include min-width ( $iPadPortrait ) {
             float: left!important;

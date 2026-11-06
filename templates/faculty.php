@@ -26,6 +26,20 @@ $units = $coenv_member_api->get_units();
 
 $query_args = wp_parse_args( $_SERVER['QUERY_STRING'] );
 
+if ( ! empty( $query_args['theme'] ) ) {
+	$query_args['theme'] = preg_replace( '/^theme-/', '', $query_args['theme'] );
+	if ( 'all' === $query_args['theme'] ) {
+		$query_args['theme'] = '';
+	}
+}
+
+if ( ! empty( $query_args['unit'] ) ) {
+	$query_args['unit'] = preg_replace( '/^unit-/', '', $query_args['unit'] );
+	if ( 'all' === $query_args['unit'] ) {
+		$query_args['unit'] = '';
+	}
+}
+
 // build the faculty query based on $query_args
 $query = array(
 	'post_type' => 'faculty',
@@ -47,7 +61,7 @@ if ( isset( $query_args['theme'] ) && !empty( $query_args['theme'] ) ) {
 // add unit
 if ( isset( $query_args['unit'] ) && !empty( $query_args['unit'] ) ) {
 	$query['tax_query'][] = array(
-		'taxonomy' => 'member_unit',
+		'taxonomy' => 'unit',
 		'field' => 'slug',
 		'terms' => $query_args['unit']
  	);

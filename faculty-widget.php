@@ -8,7 +8,7 @@ shuffle($related_faculty);
 
 $units = array();
 $raw_units = get_terms(
-	array('member_unit'),
+	array('unit'),
 	array(
 		'hide_empty' => false
 	)
