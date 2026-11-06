@@ -1,7 +1,7 @@
 .related-faculty {
     position: relative;
     overflow: inherit!important;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem!important;
     
     @include min-width ( 600 ) {
         height: 220px;
