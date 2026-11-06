@@ -93,9 +93,6 @@ if(!empty($description) || have_rows('job_responsibilities')) {
     echo $description;
 ?>
 <?php } ?>
-<?php if(is_page('deans-office-staff') && (current_user_can('ow_make_revision') && current_user_can('ow_make_revision_others'))) { ?>
-    <p class="revision"><?php echo do_shortcode('[ow_make_revision_link text="Make a revision" class="" type="text" post_id="'.$post->ID.'"]'); ?></p>
-<?php } ?>
 <?php if( (is_page('deans-office-staff') || is_page('our-advancement-team')) && (!empty($description) || have_rows('job_responsibilities'))) { ?>
 </div>
 <?php } ?>
