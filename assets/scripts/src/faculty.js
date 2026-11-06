@@ -278,6 +278,8 @@
         var hasAny = false;
 
         var normalize = function (value, prefix) {
+            var $select = prefix === 'theme' ? this.$themeSelect : this.$unitSelect;
+
             if (!value) {
                 return prefix + '-all';
             }
@@ -285,7 +287,13 @@
             hasAny = true;
 
             if (value.indexOf(prefix + '-') === 0) {
-                return value;
+                var candidate = value;
+
+                if ($select.length && !$select.find('option[value="' + candidate + '"]').length) {
+                    candidate = prefix + '-' + candidate;
+                }
+
+                return candidate;
             }
 
             if (value === 'all') {
@@ -293,7 +301,7 @@
             }
 
             return prefix + '-' + value;
-        };
+        }.bind(this);
 
         var filters = {
             theme: normalize(theme, 'theme'),
@@ -310,6 +318,12 @@
     CoEnvFaculty.prototype.filterDataBySlug = function (filter, slug) {
         var $select = filter === 'theme' ? this.$themeSelect : this.$unitSelect;
         var $opt = $select.find('option[value="' + slug + '"]');
+
+        if (!$opt.length && slug && slug.indexOf(filter + '-') === 0) {
+            var fallbackSlug = slug.indexOf(filter + '-' + filter + '-') === 0 ? slug : filter + '-' + slug;
+            $opt = $select.find('option[value="' + fallbackSlug + '"]');
+            slug = fallbackSlug;
+        }
 
         if ($opt.length) {
             return {

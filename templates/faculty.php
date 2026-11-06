@@ -33,13 +33,6 @@ if ( ! empty( $query_args['theme'] ) ) {
 	}
 }
 
-if ( ! empty( $query_args['unit'] ) ) {
-	$query_args['unit'] = preg_replace( '/^unit-/', '', $query_args['unit'] );
-	if ( 'all' === $query_args['unit'] ) {
-		$query_args['unit'] = '';
-	}
-}
-
 // build the faculty query based on $query_args
 $query = array(
 	'post_type' => 'faculty',
