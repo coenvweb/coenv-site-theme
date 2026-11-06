@@ -130,7 +130,9 @@
 					@include encode_sb();
 				}
 
-				> a:hover {
+				> a:hover,
+				> .secondary-nav-caret:hover + a,
+				> .secondary-nav-caret:focus-visible + a {
 					color: #fff !important;
 					background: $accent;
 					//color: $text !important;
