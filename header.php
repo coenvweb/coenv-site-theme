@@ -120,17 +120,15 @@ $post_link = home_url( add_query_arg( array(), $wp->request ) );
                                     </div><!-- #show-menu -->
 
                                     <nav aria-label="secondary" class="nav-secondary" role="navigation">
-                                        
-                                        <ul id="menu-top" class="top-menu  menu">
-                                            <?php wp_nav_menu(array(
-                                                'theme_location' => 'top-links', 
-                                                'depth' => 1,
-                                                'menu_id' => 'menu-top',
-                                                'container' => false, 
-                                                'walker' => new CoEnv_Top_Menu_Walker(),
-                                                'fallback_cb' => false
-                                            )); ?>
-                                        </ul>
+                                        <?php wp_nav_menu(array(
+                                            'theme_location' => 'top-links',
+                                            'depth' => 1,
+                                            'menu_id' => 'menu-top',
+                                            'menu_class' => 'top-menu menu',
+                                            'container' => false,
+                                            'walker' => new CoEnv_Top_Menu_Walker(),
+                                            'fallback_cb' => false
+                                        )); ?>
 
                                         <a class="search-toggle" href="#" aria-expanded="false" aria-controls="header-search-form" aria-label="Toggle site search">
                                             <i class="icon-search" aria-hidden="true"></i>
