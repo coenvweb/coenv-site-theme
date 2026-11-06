@@ -93,7 +93,7 @@
 				display: inline-block;
 				@include rem('margin', 0, 0, 0, .3);
 				@include rem('padding', 0, 0, 0, .3);
-				line-height: .75rem;
+				line-height: normal;
 			}
 			
 			line-height: 1.25rem;
