@@ -25,6 +25,12 @@
 
 	} // & > header
 
+    h2, h3, h4 {
+        a:before, a:after {
+            display: none!important;
+        }
+    }
+
 } // .widget
 
 .main-col .widget-events, .main-col .student-ambassadors-widget, .main-col .early-explorers, .main-col .graduate-student-profiles-widget, .meet-postdoc-widget{
