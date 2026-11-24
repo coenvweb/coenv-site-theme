@@ -14,9 +14,9 @@
                 date_default_timezone_set('America/Los_Angeles');
 				$deadline = get_post_meta( get_the_ID(), '_expiration-date', true );
 				$timestamp = time();
-				$timeexpired = (int) strtotime(do_shortcode('[postexpirator type="full"]'));
+				$timeexpired = (int) $deadline;
 				
-				if ( $timeexpired < $timestamp ) {
+				if ( $timeexpired > 0 && $timeexpired < $timestamp ) {
 
 					$expired = 'expired';
                     

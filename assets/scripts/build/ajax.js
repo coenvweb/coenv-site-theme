@@ -1,4 +1,3 @@
-
 //Universal Ajax Filtering
 jQuery(function($)
 {
@@ -261,10 +260,10 @@ jQuery(function($)
                     url: ajax_params.ajax_url,
                     data: {
                         action: action,
-                        terms: getSelectedterms, //Get array of values from previous function
-                        search: getSearchValue, //Retrieve search value using function
+                        terms: getSelectedterms(), //Get array of values from previous function
+                        search: getSearchValue(), //Retrieve search value using function
                         paged: paged_value, //If paged value is being sent through with function call, store here
-                        sorter: getSortValue
+                        sorter: getSortValue()
                     },
                     beforeSend: function ()
                     {
@@ -337,4 +336,4 @@ jQuery(function($)
         loadFiltersFromURL(); // Load filter state from URL
     }
 });
- 
+

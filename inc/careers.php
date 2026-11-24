@@ -310,74 +310,94 @@ add_action('wp_ajax_nopriv_careers_filter', 'careers_filter');
 
 function careers_filter()
 {
-	$query_data = $_GET;
-	
-	$career_terms = ($query_data['terms']) ? explode(',',$query_data['terms']) : false;
-	
-	$tax_query = ($career_terms) ? array(
-		'taxonomy' => 'career_category',
-		'field' => 'id',
-		'terms' => $career_terms,
-        'operator' => 'AND'
-	) : false;
-    
-    $tax_query = 
-    array(
-        'relation' => 'AND',
-        array(
-            'taxonomy' => 'career_category',
-            'terms' => array('announcement'),
-            'field' => 'slug',
-            'operator' => 'NOT IN',
-        ),
-        $tax_query,
-    );
-        
-        
-    
-	
-	$search_value = ($query_data['search']) ? $query_data['search'] : false;
-	
-	$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
-    
-    $coenv_sort = ($query_data['sorter']) ? $query_data['sorter'] : false;
-    
-    
-    // build the query based on $query_args
-    $career_args = array(
+	$query_data = stripslashes_deep( wp_unslash( $_GET ) );
 
-        'post_type' => 'careers',
-        'post_status' => 'publish',
-        'posts_per_page' => 20,
-        's' => $search_value,
-        'tax_query' => $tax_query,
-        'paged' => $paged,
-        'meta_query' => array(
-            'relation'    => 'OR',
-            array(
-                'key' => 'deadline',
-                'compare' => 'NOT EXISTS',
-                'value' => ''
-            ),
-            array(
-                'key' => 'deadline',
-                'value' => date('Ymd'),
-                'type' => 'date',
-                'compare' => '>='
-            ),
-            array(
-                'key' => '_expiration-date',
-                'value' => time(),
-                'type' => 'char',
-                'compare' => '>='
-            ),
-            array(
-                'key' => 'location',
-                'value' => $search_value,
-                'compare' => 'LIKE'
-            ),
-        )
-    );
+	$career_terms = array();
+	if ( isset( $query_data['terms'] ) ) {
+		if ( is_array( $query_data['terms'] ) ) {
+			$career_terms = $query_data['terms'];
+		} else {
+			$career_terms = explode( ',', $query_data['terms'] );
+		}
+	}
+	$career_terms = array_values( array_unique( array_filter( array_map( 'absint', $career_terms ) ) ) );
+	$career_terms = array_slice( $career_terms, 0, 10 );
+
+	$search_value = isset( $query_data['search'] ) ? sanitize_text_field( $query_data['search'] ) : '';
+	$search_value = substr( $search_value, 0, 100 );
+
+	$paged = isset( $query_data['paged'] ) ? absint( $query_data['paged'] ) : 1;
+	$paged = $paged > 0 ? min( $paged, 100 ) : 1;
+
+	$coenv_sort = isset( $query_data['sorter'] ) && $query_data['sorter'] === 'deadline' ? 'deadline' : 'date';
+
+	$cache_key = 'careers_filter_' . md5( wp_json_encode( array(
+		'terms' => $career_terms,
+		'search' => $search_value,
+		'paged' => $paged,
+		'sort' => $coenv_sort,
+	) ) );
+
+	if ( ! is_user_logged_in() ) {
+		$cached_output = get_transient( $cache_key );
+		if ( false !== $cached_output ) {
+			echo $cached_output;
+			die;
+		}
+		ob_start();
+	}
+
+	$tax_query = $career_terms ? array(
+		'taxonomy' => 'career_category',
+		'field' => 'term_id',
+		'terms' => $career_terms,
+		'operator' => 'AND'
+	) : false;
+
+	$tax_query = array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'career_category',
+			'terms' => array( 'announcement' ),
+			'field' => 'slug',
+			'operator' => 'NOT IN',
+		),
+		$tax_query,
+	);
+
+	if ( false === $tax_query[2] ) {
+		unset( $tax_query[2] );
+	}
+
+	// build the query based on $query_args
+	$career_args = array(
+
+		'post_type' => 'careers',
+		'post_status' => 'publish',
+		'posts_per_page' => 20,
+		's' => $search_value ? $search_value : false,
+		'tax_query' => $tax_query,
+		'paged' => $paged,
+		'meta_query' => array(
+			'relation' => 'OR',
+			array(
+				'key' => 'deadline',
+				'compare' => 'NOT EXISTS',
+			),
+			array(
+				'key' => 'deadline',
+				'value' => date('Ymd'),
+				'type' => 'NUMERIC',
+				'compare' => '>='
+			),
+			array(
+				'key' => '_expiration-date',
+				'value' => time(),
+				'type' => 'NUMERIC',
+				'compare' => '>='
+			),
+		),
+	);
     
         //Sort/*
 	if ($coenv_sort == 'deadline') {
@@ -458,7 +478,13 @@ function careers_filter()
 		endwhile;		
 	endif;
 	wp_reset_postdata();
-	
+
+	if ( ! is_user_logged_in() ) {
+		$career_output = ob_get_clean();
+		echo $career_output;
+		set_transient( $cache_key, $career_output, 5 * MINUTE_IN_SECONDS );
+	}
+
 	die();
 }
 
